@@ -1,3 +1,6 @@
 [submodule "Submodules/objective-git"]
 	path = Submodules/objective-git
 	url = https://github.com/genkernel/objective-git.git
+[submodule "Submodules/NSStringMask"]
+	path = Submodules/NSStringMask
+	url = git://github.com/fjcaetano/NSStringMask.git

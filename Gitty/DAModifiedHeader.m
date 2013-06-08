@@ -25,7 +25,10 @@
 }
 
 - (void)loadDelta:(GTDiffDelta *)delta {
-	self.statsLabel.text = [NSString stringWithFormat:@"%d additions / %d deletions", delta.addedLinesCount, delta.deletedLinesCount];
+	self.additionsLabel.text = [NSString stringWithFormat:@"%d additions", delta.addedLinesCount];
+	self.deletionsLabel.text = [NSString stringWithFormat:@"%d deletions", delta.deletedLinesCount];
+	
+	self.graph.delta = delta;
 }
 
 @end

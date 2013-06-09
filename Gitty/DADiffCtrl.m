@@ -16,6 +16,7 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 
 @interface DADiffCtrl ()
 @property (strong, nonatomic, readonly) NSArray *deltas;
+@property (strong, nonatomic, readonly) NSDictionary *deltasLineNumbers;
 
 @property (strong, nonatomic, readonly) NSMutableSet *cachedHeaders, *cachedFooters;
 @end
@@ -28,7 +29,8 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 	_cachedHeaders = NSMutableSet.set;
 	_cachedFooters = NSMutableSet.set;
 	
-	[self.table registerClass:DADeltaContentCell.class forCellReuseIdentifier:DADeltaContentCell.className];
+	UINib *nib = [UINib nibWithNibName:DADeltaContentCell.className bundle:nil];
+	[self.table registerNib:nib forCellReuseIdentifier:DADeltaContentCell.className];
 	
 	[NSObject startMeasurement];
 	{
@@ -45,21 +47,30 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 	GTDiff *diff = [GTDiff diffOldTree:self.previousCommit.tree withNewTree:self.changeCommit.tree options:opts error:&err];
 	
 	NSMutableArray *deltas = [NSMutableArray arrayWithCapacity:200];
+	NSMutableDictionary *lineNumbers = [NSMutableDictionary dictionaryWithCapacity:200];
+	
 	[diff enumerateDeltasUsingBlock:^(GTDiffDelta *delta, BOOL *stop) {
 		[deltas addObject:delta];
 		
 		[Logger info:@"delta (t:%d-b:%d-hc:%d): a:%d/d:%d/c:%d", delta.type, delta.isBinary, delta.hunkCount, delta.addedLinesCount, delta.deletedLinesCount, delta.contextLinesCount];
 		
+		__block NSUInteger linesCount = 1;
+		
 		[delta enumerateHunksWithBlock:^(GTDiffHunk *hunk, BOOL *stop) {
 			[Logger info:@"  hunk (lc:%d) : %@", hunk.lineCount, hunk.header];
+			
+			linesCount += hunk.lineCount;
 			
 			[hunk enumerateLinesInHunkUsingBlock:^(GTDiffLine *line, BOOL *stop) {
 				[Logger info:@"    line (o:%d %d->%d) : %@", line.origin, line.oldLineNumber, line.newLineNumber, line.content];
 			}];
 		}];
+		
+		lineNumbers[@(deltas.count - 1)] = @(linesCount);
 	}];
 	
 	_deltas = [NSArray arrayWithArray:deltas];
+	_deltasLineNumbers = [NSDictionary dictionaryWithDictionary:lineNumbers];
 }
 
 #pragma mark UITableViewDataSource, UITableViewDelegate
@@ -69,7 +80,7 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-	return 80.;
+	return 50.;	// Original is 80px. Extra 30px overlaps cell as shadow effect.
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -118,7 +129,8 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 500.0;
+	NSUInteger linesNumber = [self.deltasLineNumbers[@(indexPath.section)] unsignedIntValue];
+	return (1 + linesNumber) * 17. + 5.;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -19,5 +19,7 @@
 #import "System.h"
 #import "UI.h"
 
+#import "UIColor+Gitty.h"
+
 #import "DAGitManager.h"
 #endif

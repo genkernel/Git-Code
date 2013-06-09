@@ -6,9 +6,10 @@
 //  Copyright (c) 2013 kernel@realm. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "DAHunkContentView.h"
 
 @interface DADeltaContentCell : UITableViewCell
 - (void)loadDelta:(GTDiffDelta *)delta;
+
+@property (strong, nonatomic) IBOutlet UIScrollView *scroll;
 @end

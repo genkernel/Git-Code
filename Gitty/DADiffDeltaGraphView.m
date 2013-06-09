@@ -42,12 +42,11 @@ static const CGFloat DefaultSquaresMargin = 3.;
 - (void)reloadSubviewWithDelta:(GTDiffDelta *)delta {
 	[self removeAllSubviews];
 	
-	UIColor *additionSquareColor = [UIColor colorWithRed:51./255. green:204./255. blue:102./255. alpha:1.];
-	UIColor *deletionSquareColor = [UIColor colorWithRed:1. green:51./255. blue:51./255. alpha:1.];
-	UIColor *neutralSquareColor = [UIColor colorWithRed:155./255. green:155./255. blue:155./255. alpha:1.];
+	UIColor *additionSquareColor = UIColor.graphAdditionColor;
+	UIColor *deletionSquareColor = UIColor.graphDeletionColor;
+	UIColor *neutralSquareColor = UIColor.graphContextColor;
 	
 	NSUInteger count = self.squaresNumber;
-	
 	
 	NSUInteger additionSquaresCount = 0, deletionSquaresCount = 0;
 	NSUInteger totalChangesCount = delta.addedLinesCount + delta.deletedLinesCount;

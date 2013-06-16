@@ -34,4 +34,8 @@
 	return [UIColor colorWithRed:230./255. green:230./255. blue:230./255. alpha:1.];
 }
 
++ (UIColor *)acceptingGreenColor {
+	return [UIColor colorWithRed:51./255. green:204./255. blue:102./255. alpha:1.];
+}
+
 @end

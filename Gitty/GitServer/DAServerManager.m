@@ -8,7 +8,18 @@
 
 #import "DAServerManager.h"
 
-@implementation DAServerManager
+static NSString *StoreFilename = @"GitServers.plist";
+
+@interface DAServerManager ()
+@property (strong, nonatomic, readonly) NSString *storePath;
+@end
+
+@implementation DAServerManager {
+	NSMutableDictionary *_namedList;
+}
+@dynamic list;
+@synthesize namedList = _namedList;
+@dynamic storePath;
 
 + (instancetype)manager {
 	static id instance = nil;
@@ -22,18 +33,50 @@
 - (id)init {
 	self = [super init];
 	if (self) {
-		// Load * servers list.
-		NSString *path = [[NSBundle mainBundle] pathForResource:@"GitServers" ofType:@"plist"];
-		NSArray *servers = [NSArray arrayWithContentsOfFile:path];
+		[self copyInitialStoreFileIfNeeded];
+		
+		NSArray *servers = [NSArray arrayWithContentsOfFile:self.storePath];
 
-		NSMutableArray *items = [NSMutableArray arrayWithCapacity:servers.count];
+		NSMutableDictionary *items = [NSMutableDictionary dictionaryWithCapacity:servers.count];
 		for (NSDictionary *dict in servers) {
 			DAGitServer *server = [DAGitServer serverWithDictionary:dict];
-			[items addObject:server];
+			items[server.name] = server;
 		}
-		_list = [NSArray arrayWithArray:items];
+		_namedList = [NSMutableDictionary dictionaryWithDictionary:items];
 	}
 	return self;
+}
+
+- (void)addNewServer:(DAGitServer *)server {
+	_namedList[server.name] = server;
+	
+	NSMutableArray *saveArr = [NSMutableArray arrayWithCapacity:self.namedList.count];
+	for (DAGitServer *saveServer in self.list) {
+		[saveArr addObject:saveServer.saveDict];
+	}
+	[saveArr writeToFile:self.storePath atomically:YES];
+}
+
+#pragma mark Properties
+
+- (NSArray *)list {
+	return self.namedList.allValues;
+}
+
+- (NSString *)storePath {
+	return [UIApplication.sharedApplication.documentsPath stringByAppendingPathComponent:StoreFilename];
+}
+
+#pragma mark Internals
+
+- (void)copyInitialStoreFileIfNeeded {
+	NSFileManager *fs = UIApplication.sharedApplication.fs;
+	if ([fs isFileExistent:self.storePath]) {
+		return;
+	}
+	
+	NSString *bundlePath = [[NSBundle mainBundle] pathForResource:StoreFilename.stringByDeletingPathExtension ofType:StoreFilename.pathExtension];
+	[fs copyItemAtPath:bundlePath toPath:self.storePath error:nil];
 }
 
 @end

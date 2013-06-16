@@ -18,6 +18,7 @@
 		18170922175BCC1B002A2D93 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18170921175BCC1B002A2D93 /* Icon-72@2x.png */; };
 		18184B6017555AB5001C58D8 /* DABaseCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18184B5F17555AB5001C58D8 /* DABaseCtrl.m */; };
 		18184B6717556968001C58D8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18184B6617556968001C58D8 /* libz.dylib */; };
+		181993D5176D25BE00D4BE1F /* DACreateServerTopMargin.m in Sources */ = {isa = PBXBuildFile; fileRef = 181993D4176D23D900D4BE1F /* DACreateServerTopMargin.m */; };
 		183DA706175549F900140DA8 /* libObjectiveGit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 183DA703175549D100140DA8 /* libObjectiveGit-iOS.a */; };
 		18706EDB1763B3B40046A2A6 /* DADiffDeltaGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18706EDA1763B3B40046A2A6 /* DADiffDeltaGraphView.m */; };
 		18706EDF1763ECF10046A2A6 /* DADeltaContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18706EDE1763ECF10046A2A6 /* DADeltaContentCell.xib */; };
@@ -138,6 +139,10 @@
 		18184B5E17555AB5001C58D8 /* DABaseCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABaseCtrl.h; sourceTree = "<group>"; };
 		18184B5F17555AB5001C58D8 /* DABaseCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABaseCtrl.m; sourceTree = "<group>"; };
 		18184B6617556968001C58D8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		181993D3176D23D900D4BE1F /* DACreateServerTopMargin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DACreateServerTopMargin.h; sourceTree = "<group>"; };
+		181993D4176D23D900D4BE1F /* DACreateServerTopMargin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DACreateServerTopMargin.m; sourceTree = "<group>"; };
+		181993D6176D3D1000D4BE1F /* DAGitServer+Creation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DAGitServer+Creation.h"; sourceTree = "<group>"; };
+		181993D7176D3D1000D4BE1F /* DAGitServer+Creation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DAGitServer+Creation.m"; sourceTree = "<group>"; };
 		183DA6F4175549D100140DA8 /* ObjectiveGitFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveGitFramework.xcodeproj; path = "Submodules/objective-git/ObjectiveGitFramework.xcodeproj"; sourceTree = "<group>"; };
 		18706ED91763B3B40046A2A6 /* DADiffDeltaGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADiffDeltaGraphView.h; sourceTree = "<group>"; };
 		18706EDA1763B3B40046A2A6 /* DADiffDeltaGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADiffDeltaGraphView.m; sourceTree = "<group>"; };
@@ -409,6 +414,22 @@
 			name = Shared;
 			sourceTree = "<group>";
 		};
+		181993D1176CEEEE00D4BE1F /* ServerCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ServerCell;
+			sourceTree = "<group>";
+		};
+		181993D2176D23B100D4BE1F /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				181993D3176D23D900D4BE1F /* DACreateServerTopMargin.h */,
+				181993D4176D23D900D4BE1F /* DACreateServerTopMargin.m */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
 		183DA6F3175549BC00140DA8 /* Submodules */ = {
 			isa = PBXGroup;
 			children = (
@@ -596,13 +617,15 @@
 			name = About;
 			sourceTree = "<group>";
 		};
-		189016C1175ABBC600F19CE4 /* Settings */ = {
+		189016C1175ABBC600F19CE4 /* Servers */ = {
 			isa = PBXGroup;
 			children = (
+				181993D2176D23B100D4BE1F /* Layout */,
+				181993D1176CEEEE00D4BE1F /* ServerCell */,
 				189016C5175ABC0B00F19CE4 /* DASettingsCtrl.h */,
 				189016C6175ABC0B00F19CE4 /* DASettingsCtrl.m */,
 			);
-			name = Settings;
+			name = Servers;
 			sourceTree = "<group>";
 		};
 		189016CB175AC44900F19CE4 /* xlib */ = {
@@ -917,6 +940,8 @@
 				18BAA85F1758016400154019 /* GitServers.plist */,
 				18BAA8601758016400154019 /* DAGitServer.h */,
 				18BAA8611758016400154019 /* DAGitServer.m */,
+				181993D6176D3D1000D4BE1F /* DAGitServer+Creation.h */,
+				181993D7176D3D1000D4BE1F /* DAGitServer+Creation.m */,
 				18BAA8621758016400154019 /* DAServerManager.h */,
 				18BAA8631758016400154019 /* DAServerManager.m */,
 			);
@@ -944,7 +969,7 @@
 				189A531E175922BF00B5BD8D /* Login */,
 				189A531F175922D100B5BD8D /* Repo */,
 				18F995B0175F6EA00033A4A0 /* Diff */,
-				189016C1175ABBC600F19CE4 /* Settings */,
+				189016C1175ABBC600F19CE4 /* Servers */,
 				189016C0175ABBC000F19CE4 /* About */,
 			);
 			name = UI;
@@ -1172,6 +1197,7 @@
 				189016F1175AC46400F19CE4 /* UncaughtExceptionHandler.m in Sources */,
 				18901724175AC47000F19CE4 /* AccordeonGroupCell.m in Sources */,
 				18901725175AC47000F19CE4 /* AccordeonTableView.m in Sources */,
+				181993D5176D25BE00D4BE1F /* DACreateServerTopMargin.m in Sources */,
 				18901726175AC47000F19CE4 /* ActivityIndicatorView.m in Sources */,
 				18901727175AC47000F19CE4 /* AlertView.m in Sources */,
 				18901728175AC47000F19CE4 /* Button.m in Sources */,

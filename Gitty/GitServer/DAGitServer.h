@@ -11,6 +11,8 @@
 @interface DAGitServer : NSObject
 + (instancetype)serverWithDictionary:(NSDictionary *)dict;
 
+@property (strong, nonatomic, readonly) NSDictionary *saveDict;
+
 @property (strong, nonatomic, readonly) NSString *name;
 @property (strong, nonatomic, readonly) NSString *gitBaseUrl;
 @property (strong, nonatomic, readonly) NSString *saveDirectoryName;

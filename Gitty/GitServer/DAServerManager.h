@@ -10,6 +10,8 @@
 
 @interface DAServerManager : NSObject
 + (instancetype)manager;
+- (void)addNewServer:(DAGitServer *)server;
 
+@property (strong, nonatomic, readonly) NSDictionary *namedList;
 @property (strong, nonatomic, readonly) NSArray *list;
 @end

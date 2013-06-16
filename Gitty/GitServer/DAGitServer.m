@@ -7,12 +7,10 @@
 //
 
 #import "DAGitServer.h"
-
-static NSString *ServerName = @"Name";
-static NSString *ServerGitBaseUrl = @"GitBaseUrl";
-static NSString *SaveDirectory = @"SaveDirectoryName";
+#import "DAGitServer+Creation.h"
 
 @implementation DAGitServer
+@dynamic saveDict;
 
 + (instancetype)serverWithDictionary:(NSDictionary *)dict {
 	return [self.alloc initWithDictionary:dict];
@@ -30,6 +28,12 @@ static NSString *SaveDirectory = @"SaveDirectoryName";
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"[%@, 0x%X]", self.name, (int)self];
+}
+
+- (NSDictionary *)saveDict {
+	return @{ServerName: self.name,
+			 ServerGitBaseUrl: self.gitBaseUrl,
+			 SaveDirectory: self.saveDirectoryName};
 }
 
 @end

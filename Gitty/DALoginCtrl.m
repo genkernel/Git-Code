@@ -10,6 +10,7 @@
 #import "DARepoCtrl.h"
 
 static NSString *RepoSegue = @"RepoSegue";
+static NSString *SettingsSegue = @"SettingsSegue";
 
 @interface DALoginCtrl ()
 @property (strong, nonatomic, readonly) DAGitServer *currentServer;
@@ -23,6 +24,7 @@ static NSString *RepoSegue = @"RepoSegue";
 		
 		DARepoCtrl *ctrl = segue.destinationViewController;
 		ctrl.currentRepo = sender;
+	} else if ([segue.identifier isEqualToString:SettingsSegue]) {
 	} else {
 		[super prepareForSegue:segue sender:sender];
 	}

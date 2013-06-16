@@ -8,6 +8,11 @@
 
 #import "DABaseCtrl.h"
 
-@interface DASettingsCtrl : DABaseCtrl
+@interface DASettingsCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@property (strong, nonatomic) IBOutlet UITableView *table;
+@property (strong, nonatomic) IBOutlet UIButton *createButton, *createServerButton;
+@property (strong, nonatomic) IBOutlet UIView *createContainer, *serverContainer;
+@property (strong, nonatomic) IBOutlet UITextField *urlField, *nameField;
+
 
 @end

@@ -16,4 +16,6 @@
 + (UIColor *)codeDeletionColor;
 + (UIColor *)codeAdditionColor;
 + (UIColor *)codeContextColor;
+
++ (UIColor *)acceptingGreenColor;
 @end

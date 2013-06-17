@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 kernel@realm. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "DAGitUser.h"
 
 @class DAGitAction;
 

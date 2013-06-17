@@ -97,6 +97,7 @@
 		18C94425175B6BBB00A4D7CA /* DABranchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C94424175B6BBB00A4D7CA /* DABranchCell.xib */; };
 		18C94433175B93C400A4D7CA /* DABranchPickerCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C94432175B93C400A4D7CA /* DABranchPickerCtrl.m */; };
 		18D9EA3D17554EB400454F3C /* DAGitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9EA3C17554EB400454F3C /* DAGitManager.m */; };
+		18EADFE6176F05F6005D0F28 /* DAGitUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EADFE0176F05EA005D0F28 /* DAGitUser.m */; };
 		18F995B7175F6EB70033A4A0 /* DADiffCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F995B6175F6EB70033A4A0 /* DADiffCtrl.m */; };
 		18F995BC175FAE710033A4A0 /* DAModifiedHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F995BB175FAE710033A4A0 /* DAModifiedHeader.m */; };
 		18F995BE175FAF2E0033A4A0 /* DAModifiedHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F995BD175FAF2E0033A4A0 /* DAModifiedHeader.xib */; };
@@ -375,6 +376,8 @@
 		18C94432175B93C400A4D7CA /* DABranchPickerCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABranchPickerCtrl.m; sourceTree = "<group>"; };
 		18D9EA3B17554EB400454F3C /* DAGitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGitManager.h; sourceTree = "<group>"; };
 		18D9EA3C17554EB400454F3C /* DAGitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitManager.m; sourceTree = "<group>"; };
+		18EADFDF176F05EA005D0F28 /* DAGitUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAGitUser.h; sourceTree = "<group>"; };
+		18EADFE0176F05EA005D0F28 /* DAGitUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAGitUser.m; sourceTree = "<group>"; };
 		18F995B5175F6EB70033A4A0 /* DADiffCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADiffCtrl.h; sourceTree = "<group>"; };
 		18F995B6175F6EB70033A4A0 /* DADiffCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADiffCtrl.m; sourceTree = "<group>"; };
 		18F995BA175FAE710033A4A0 /* DAModifiedHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAModifiedHeader.h; sourceTree = "<group>"; };
@@ -1104,6 +1107,8 @@
 				18D9EA3C17554EB400454F3C /* DAGitManager.m */,
 				189016B9175AA6D700F19CE4 /* DAGitManager+ActionsInterface.h */,
 				189016BA175AA6D800F19CE4 /* DAGitManager+ActionsInterface.m */,
+				18EADFDF176F05EA005D0F28 /* DAGitUser.h */,
+				18EADFE0176F05EA005D0F28 /* DAGitUser.m */,
 			);
 			name = Gitty;
 			sourceTree = "<group>";
@@ -1300,6 +1305,7 @@
 				189016B0175AA36D00F19CE4 /* DAGitActionDelegate.m in Sources */,
 				189016B4175AA39A00F19CE4 /* DAGitAction.m in Sources */,
 				189016B7175AA49300F19CE4 /* DAGitClone.m in Sources */,
+				18EADFE6176F05F6005D0F28 /* DAGitUser.m in Sources */,
 				189016BB175AA6D800F19CE4 /* DAGitManager+ActionsInterface.m in Sources */,
 				189016BE175AAD8200F19CE4 /* DAGitCloneDelegate.m in Sources */,
 				189016C4175ABBDB00F19CE4 /* DAAboutCtrl.m in Sources */,

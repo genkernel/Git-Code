@@ -13,6 +13,7 @@
 + (instancetype)cloneRepoWithName:(NSString *)name fromServer:(DAGitServer *)server;
 
 @property (strong, nonatomic) DAGitCloneDelegate *delegate;
+@property (strong, nonatomic) DAGitUser *authenticationUser;
 
 @property (strong, nonatomic, readonly) GTRepository *clonedRepo;
 @end

@@ -68,13 +68,13 @@ static NSString *SettingsSegue = @"SettingsSegue";
 //	return UIInterfaceOrientationMaskPortrait;
 //}
 
-- (void)testRepoWithUserString:(NSString *)repoName {
+- (void)testRepoWithUserString:(NSString *)repoName credentialsObject:(DAGitUser *)user {
 	BOOL existent = [self.git isLocalRepoExistent:repoName forServer:self.currentServer];
 	if (existent) {
 		GTRepository *repo = [self.git localRepoWithName:repoName forServer:self.currentServer];
 		[self performSegueWithIdentifier:RepoSegue sender:repo];
 	} else {
-		[self cloneRemoteRepoWithName:repoName fromServer:self.currentServer];
+		[self cloneRemoteRepoWithName:repoName fromServer:self.currentServer authenticationUser:user];
 	}
 }
 
@@ -129,15 +129,22 @@ static NSString *SettingsSegue = @"SettingsSegue";
 		return;
 	}
 	
+	for (DAServerCtrl *ctrl in self.ctrls) {
+		PagerItemView *view = (PagerItemView *)ctrl.view;
+		if (view.datasourceIndex == index) {
+			_currentCtrl = ctrl;
+			break;
+		}
+	}
+	
 	_currentServer = self.servers.list[index];
-	_currentCtrl = self.ctrls[pagerView.tag];
 	
 	[Logger info:@"Current server (t:%d idx:%d): %@", pagerView.tag, index, self.currentServer];
 }
 
 #pragma mark Internals
 
-- (void)cloneRemoteRepoWithName:(NSString *)repoName fromServer:(DAGitServer *)server {
+- (void)cloneRemoteRepoWithName:(NSString *)repoName fromServer:(DAGitServer *)server authenticationUser:(DAGitUser *)user {
 ////	self.repoField.enabled = NO;
 	
 	DAGitCloneDelegate *delegate = DAGitCloneDelegate.new;
@@ -168,6 +175,7 @@ static NSString *SettingsSegue = @"SettingsSegue";
 	};
 	
 	DAGitClone *clone = [DAGitClone cloneRepoWithName:repoName fromServer:self.currentServer];
+	clone.authenticationUser = user;
 	clone.delegate = delegate;
 	
 	[self.git request:clone];
@@ -176,7 +184,12 @@ static NSString *SettingsSegue = @"SettingsSegue";
 #pragma mark Actions
 
 - (void)exploreDidClick:(UIButton *)sender {
-	[self testRepoWithUserString:self.currentCtrl.repoField.text];
+	DAGitUser *user = nil;
+	if (self.currentCtrl.isUsingCredentials) {
+		user = [DAGitUser userWithName:self.currentCtrl.userNameField.text password:self.currentCtrl.userPasswordField.text];
+	}
+	
+	[self testRepoWithUserString:self.currentCtrl.repoField.text credentialsObject:user];
 }
 
 - (void)createDidClick:(UIButton *)sender {

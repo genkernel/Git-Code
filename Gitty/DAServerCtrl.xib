@@ -111,7 +111,6 @@
 								<int key="NSvFlags">1296</int>
 								<string key="NSFrame">{{129, 15}, {1, 40}}</string>
 								<reference key="NSSuperview" ref="763360860"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<reference key="IBUIBackgroundColor" ref="943591819"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -127,7 +126,7 @@
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentVerticalAlignment">0</int>
-								<string key="IBUIText"/>
+								<string key="IBUIText">genkernel/emptydisk.git</string>
 								<int key="IBUIBorderStyle">3</int>
 								<string key="IBUIPlaceholder">username/repo</string>
 								<reference key="IBUITextColor" ref="315470396"/>
@@ -168,7 +167,7 @@
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIContentVerticalAlignment">0</int>
-										<string key="IBUIText"/>
+										<string key="IBUIText">genkernel</string>
 										<int key="IBUIBorderStyle">3</int>
 										<string key="IBUIPlaceholder">username</string>
 										<reference key="IBUITextColor" ref="315470396"/>
@@ -195,7 +194,7 @@
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIContentVerticalAlignment">0</int>
-										<string key="IBUIText"/>
+										<string key="IBUIText">dRaz6B4c</string>
 										<int key="IBUIBorderStyle">3</int>
 										<string key="IBUIPlaceholder">password</string>
 										<reference key="IBUITextColor" ref="315470396"/>
@@ -419,6 +418,22 @@
 						<reference key="destination" ref="1044005158"/>
 					</object>
 					<string key="id">QDM-c9-iYA</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">userPasswordField</string>
+						<reference key="source" ref="1029505013"/>
+						<reference key="destination" ref="160387499"/>
+					</object>
+					<string key="id">l17-r6-19k</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">userNameField</string>
+						<reference key="source" ref="1029505013"/>
+						<reference key="destination" ref="1019904685"/>
+					</object>
+					<string key="id">BG8-nZ-sD0</string>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">

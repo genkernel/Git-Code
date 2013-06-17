@@ -11,9 +11,7 @@
 @interface DAServerCtrl ()
 @end
 
-@implementation DAServerCtrl {
-	BOOL isCredentialsContainerShown;
-}
+@implementation DAServerCtrl
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,18 +47,29 @@
 #pragma mark Actions
 
 - (IBAction)didClickLogin:(UIButton *)sender {
-	isCredentialsContainerShown = !isCredentialsContainerShown;
+	_isUsingCredentials = !self.isUsingCredentials;
 	
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
 		CGFloat offset = self.credentialsContainer.height;
-		if (isCredentialsContainerShown) {
+		if (self.isUsingCredentials) {
 			[self showAnonymousButton];
 		} else {
 			[self showLoginButton];
 			offset *= -1;
 		}
 		self.exploreContainer.height += offset;
+	} completion:^(BOOL finished) {
+		[self updateControlButtonsState];
 	}];
+}
+
+- (void)updateControlButtonsState {
+	if (self.isUsingCredentials) {
+		BOOL isCredentialsSupplied = self.userNameField.text.length && self.userPasswordField.text.length;
+		self.exploreButton.enabled = self.repoField.text.length && isCredentialsSupplied;
+	} else {
+		self.exploreButton.enabled = self.repoField.text.length;
+	}
 }
 
 - (void)showAnonymousButton {

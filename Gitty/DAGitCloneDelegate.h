@@ -11,5 +11,4 @@
 @interface DAGitCloneDelegate : DAGitActionDelegate
 @property (strong, nonatomic) void (^transferProgressBlock)(const git_transfer_progress *);
 @property (strong, nonatomic) void (^checkoutProgressBlock)(NSString *path, NSUInteger completedSteps, NSUInteger totalSteps);
-@property (strong, nonatomic) void (^authenticationBlock)();
 @end

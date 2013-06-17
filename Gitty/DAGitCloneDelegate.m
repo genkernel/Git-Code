@@ -9,5 +9,4 @@
 #import "DAGitCloneDelegate.h"
 
 @implementation DAGitCloneDelegate
-
 @end

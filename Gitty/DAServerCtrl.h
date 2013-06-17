@@ -9,11 +9,13 @@
 #import "DABaseCtrl.h"
 
 @interface DAServerCtrl : DABaseCtrl <UITextFieldDelegate>
-@property (strong, nonatomic) IBOutlet UITextField *repoField;
+@property (strong, nonatomic) IBOutlet UITextField *repoField, *userNameField, *userPasswordField;
 @property (strong, nonatomic) IBOutlet UIButton *exploreButton, *loginButton;
 @property (strong, nonatomic) IBOutlet UIImageView *logoIcon;
 @property (strong, nonatomic) IBOutlet UILabel *serverName;
 @property (strong, nonatomic) IBOutlet UIView *exploreContainer, *credentialsContainer;
 
 - (void)loadServer:(DAGitServer *)server;
+
+@property () BOOL isUsingCredentials;
 @end

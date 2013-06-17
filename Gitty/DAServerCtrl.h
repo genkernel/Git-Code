@@ -16,6 +16,8 @@
 @property (strong, nonatomic) IBOutlet UIView *exploreContainer, *credentialsContainer;
 
 - (void)loadServer:(DAGitServer *)server;
+- (void)setProgress:(CGFloat)progress;
+- (void)resetProgress;
 
 @property () BOOL isUsingCredentials;
 @end

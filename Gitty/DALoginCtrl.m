@@ -145,7 +145,10 @@ static NSString *SettingsSegue = @"SettingsSegue";
 #pragma mark Internals
 
 - (void)cloneRemoteRepoWithName:(NSString *)repoName fromServer:(DAGitServer *)server authenticationUser:(DAGitUser *)user {
-////	self.repoField.enabled = NO;
+	DAServerCtrl *serverCtrl = self.currentCtrl;
+	
+	self.pager.userInteractionEnabled = NO;
+	[serverCtrl setEditing:NO animated:YES];
 	
 	DAGitCloneDelegate *delegate = DAGitCloneDelegate.new;
 	delegate.transferProgressBlock = ^(const git_transfer_progress *progress){
@@ -153,14 +156,20 @@ static NSString *SettingsSegue = @"SettingsSegue";
 			[Logger warn:@"0 total_objects specified during repo cloning."];
 			return;
 		}
-		unsigned int percent = progress->received_objects * 100 / progress->total_objects;
+		CGFloat percent = (CGFloat)progress->received_objects / progress->total_objects;
 		[Logger info:@"clone.transfer transter percent: %d", percent];
+		
+		[serverCtrl setProgress:percent];
 	};
 	delegate.checkoutProgressBlock = ^(NSString *path, NSUInteger completedSteps, NSUInteger totalSteps){
+		// 'Bare' repo is not checked out.
 		[Logger info:@"clone.checkout.checkout %d/%d", completedSteps, totalSteps];
 	};
 	delegate.finishBlock = ^(DAGitAction *action, NSError *err){
-////		self.repoField.enabled = YES;
+		self.pager.userInteractionEnabled = YES;
+		[serverCtrl setEditing:YES animated:YES];
+		
+		[serverCtrl resetProgress];
 		
 		if (err) {
 			NSString *title = NSLocalizedString(@"Error", nil);

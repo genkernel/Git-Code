@@ -98,6 +98,7 @@
 		18C94433175B93C400A4D7CA /* DABranchPickerCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C94432175B93C400A4D7CA /* DABranchPickerCtrl.m */; };
 		18D9EA3D17554EB400454F3C /* DAGitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9EA3C17554EB400454F3C /* DAGitManager.m */; };
 		18EADFE6176F05F6005D0F28 /* DAGitUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EADFE0176F05EA005D0F28 /* DAGitUser.m */; };
+		18F04E3C176FC9F80035C918 /* UITextField+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F04E3B176FC9960035C918 /* UITextField+Helper.m */; };
 		18F995B7175F6EB70033A4A0 /* DADiffCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F995B6175F6EB70033A4A0 /* DADiffCtrl.m */; };
 		18F995BC175FAE710033A4A0 /* DAModifiedHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F995BB175FAE710033A4A0 /* DAModifiedHeader.m */; };
 		18F995BE175FAF2E0033A4A0 /* DAModifiedHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F995BD175FAF2E0033A4A0 /* DAModifiedHeader.xib */; };
@@ -378,6 +379,17 @@
 		18D9EA3C17554EB400454F3C /* DAGitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitManager.m; sourceTree = "<group>"; };
 		18EADFDF176F05EA005D0F28 /* DAGitUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAGitUser.h; sourceTree = "<group>"; };
 		18EADFE0176F05EA005D0F28 /* DAGitUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAGitUser.m; sourceTree = "<group>"; };
+		18F04E2C176FC83D0035C918 /* Graphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Graphics.h; sourceTree = "<group>"; };
+		18F04E2D176FC83D0035C918 /* ImageUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
+		18F04E2E176FC83D0035C918 /* ImageUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
+		18F04E2F176FC83D0035C918 /* UIImage+Masking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Masking.h"; sourceTree = "<group>"; };
+		18F04E30176FC83D0035C918 /* UIImage+Masking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Masking.m"; sourceTree = "<group>"; };
+		18F04E31176FC83D0035C918 /* UIImage+Resize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		18F04E32176FC83D0035C918 /* UIImage+Resize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		18F04E33176FC83D0035C918 /* UIImage+Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utils.h"; sourceTree = "<group>"; };
+		18F04E34176FC83D0035C918 /* UIImage+Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Utils.m"; sourceTree = "<group>"; };
+		18F04E3A176FC9960035C918 /* UITextField+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UITextField+Helper.h"; path = "UITextField/UITextField+Helper.h"; sourceTree = "<group>"; };
+		18F04E3B176FC9960035C918 /* UITextField+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UITextField+Helper.m"; path = "UITextField/UITextField+Helper.m"; sourceTree = "<group>"; };
 		18F995B5175F6EB70033A4A0 /* DADiffCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADiffCtrl.h; sourceTree = "<group>"; };
 		18F995B6175F6EB70033A4A0 /* DADiffCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADiffCtrl.m; sourceTree = "<group>"; };
 		18F995BA175FAE710033A4A0 /* DAModifiedHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAModifiedHeader.h; sourceTree = "<group>"; };
@@ -762,6 +774,7 @@
 		189016CB175AC44900F19CE4 /* xlib */ = {
 			isa = PBXGroup;
 			children = (
+				18F04E2B176FC83D0035C918 /* Graphics */,
 				18901735175AC4BA00F19CE4 /* Service */,
 				189016F2175AC46F00F19CE4 /* UI */,
 				189016CC175AC46400F19CE4 /* System */,
@@ -819,6 +832,7 @@
 		189016F2175AC46F00F19CE4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				18F04E39176FC96F0035C918 /* UITextField */,
 				189016F8175AC47000F19CE4 /* ActivityIndicator */,
 				189016FB175AC47000F19CE4 /* AlertView */,
 				189016FE175AC47000F19CE4 /* Button */,
@@ -1113,6 +1127,32 @@
 			name = Gitty;
 			sourceTree = "<group>";
 		};
+		18F04E2B176FC83D0035C918 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				18F04E2C176FC83D0035C918 /* Graphics.h */,
+				18F04E2D176FC83D0035C918 /* ImageUtils.h */,
+				18F04E2E176FC83D0035C918 /* ImageUtils.m */,
+				18F04E2F176FC83D0035C918 /* UIImage+Masking.h */,
+				18F04E30176FC83D0035C918 /* UIImage+Masking.m */,
+				18F04E31176FC83D0035C918 /* UIImage+Resize.h */,
+				18F04E32176FC83D0035C918 /* UIImage+Resize.m */,
+				18F04E33176FC83D0035C918 /* UIImage+Utils.h */,
+				18F04E34176FC83D0035C918 /* UIImage+Utils.m */,
+			);
+			name = Graphics;
+			path = ../../xlib/xlib/Graphics;
+			sourceTree = "<group>";
+		};
+		18F04E39176FC96F0035C918 /* UITextField */ = {
+			isa = PBXGroup;
+			children = (
+				18F04E3A176FC9960035C918 /* UITextField+Helper.h */,
+				18F04E3B176FC9960035C918 /* UITextField+Helper.m */,
+			);
+			name = UITextField;
+			sourceTree = "<group>";
+		};
 		18F995B0175F6EA00033A4A0 /* Diff */ = {
 			isa = PBXGroup;
 			children = (
@@ -1320,6 +1360,7 @@
 				189016EE175AC46400F19CE4 /* UIApplication+Filesystem.m in Sources */,
 				1804FAAA176E78BD0080AB50 /* Reachability.m in Sources */,
 				1861887B176E145F00666DFB /* DAServerCtrl.m in Sources */,
+				18F04E3C176FC9F80035C918 /* UITextField+Helper.m in Sources */,
 				189016EF175AC46400F19CE4 /* UIApplication+General.m in Sources */,
 				189016F0175AC46400F19CE4 /* UIDevice+Helper.m in Sources */,
 				189016F1175AC46400F19CE4 /* UncaughtExceptionHandler.m in Sources */,

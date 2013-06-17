@@ -122,12 +122,15 @@
 								<string key="NSFrameSize">{260, 30}</string>
 								<reference key="NSSuperview" ref="763360860"/>
 								<reference key="NSNextKeyView" ref="1044005158"/>
+								<object class="NSColor" key="IBUIBackgroundColor" id="1033408263">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MQA</bytes>
+								</object>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentVerticalAlignment">0</int>
-								<string key="IBUIText">genkernel/emptydisk.git</string>
-								<int key="IBUIBorderStyle">3</int>
+								<string key="IBUIText">genkernel/objective-git.git</string>
 								<string key="IBUIPlaceholder">username/repo</string>
 								<reference key="IBUITextColor" ref="315470396"/>
 								<int key="IBUITextAlignment">1</int>
@@ -215,10 +218,7 @@
 								<reference key="NSSuperview" ref="763360860"/>
 								<reference key="NSNextKeyView" ref="1019904685"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
-								<object class="NSColor" key="IBUIBackgroundColor" id="1033408263">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MQA</bytes>
-								</object>
+								<reference key="IBUIBackgroundColor" ref="1033408263"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 							<object class="IBUIView" id="278436672">

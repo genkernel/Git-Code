@@ -10,9 +10,8 @@
 		<key>Name</key>
 		<string>Github</string>
 		<key>GitBaseUrl</key>
-		<string>git@github.com</string>
+		<string>github.com</string>
 	</dict>
-	
 	<dict>
 		<key>LogoIcon</key>
 		<string>bitbucket.png</string>

@@ -11,20 +11,56 @@
 @interface DAServerCtrl ()
 @end
 
-@implementation DAServerCtrl
+@implementation DAServerCtrl {
+	CGFloat progress;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	[self setEditing:YES animated:NO];
 	
 	((PagerItemView *)self.view).identifier = self.className;
 	
 	[self.exploreButton applyBlueStyle];
 	[self.loginButton applyGreenStyle];
+	
+	self.repoField.layer.borderColor = UIColor.lightGrayColor.CGColor;
+	self.repoField.layer.borderWidth = 1.;
+	self.repoField.layer.cornerRadius = 5.;
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+	[super setEditing:editing animated:animated];
+	
+	self.repoField.enabled = editing;
 }
 
 - (void)loadServer:(DAGitServer *)server {
 	self.serverName.text = server.name;
 	self.logoIcon.image = [UIImage imageNamed:server.logoIconName];
+}
+
+- (void)setProgress:(CGFloat)updatedProgress {
+	if (updatedProgress < .0 || updatedProgress > 1.) {
+		[Logger error:@"Invalid progress specified. %s", __PRETTY_FUNCTION__];
+        return;
+    }
+	
+	if (progress >= updatedProgress) {
+		return;
+	}
+	
+	progress = updatedProgress;
+	
+	[self.repoField setProgress:progress withBackgroundColor:UIColor.acceptingGreenColor];
+}
+
+- (void)resetProgress {
+	progress = .0;
+	
+	self.repoField.background = nil;
+	self.repoField.disabledBackground = nil;
 }
 
 #pragma mark UITextFieldDelegate

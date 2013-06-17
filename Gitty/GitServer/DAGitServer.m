@@ -22,6 +22,7 @@
 		_name = dict[ServerName];
 		_gitBaseUrl = dict[ServerGitBaseUrl];
 		_saveDirectoryName = dict[SaveDirectory];
+		_logoIconName = dict[LogoIcon];
 	}
 	return self;
 }
@@ -33,7 +34,8 @@
 - (NSDictionary *)saveDict {
 	return @{ServerName: self.name,
 			 ServerGitBaseUrl: self.gitBaseUrl,
-			 SaveDirectory: self.saveDirectoryName};
+			 SaveDirectory: self.saveDirectoryName,
+			 LogoIcon: self.logoIconName};
 }
 
 @end

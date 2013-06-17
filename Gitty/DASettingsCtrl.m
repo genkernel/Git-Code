@@ -11,12 +11,10 @@
 #import "DAGitServer+Creation.h"
 
 @interface DASettingsCtrl ()
-@property (strong, nonatomic, readonly) NSArray *servers;
 @property (strong, nonatomic, readonly) NSLayoutConstraint *createContainerTopMargin;
 @end
 
 @implementation DASettingsCtrl
-@dynamic servers;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -58,7 +56,7 @@
 	
 	[self.table setEditing:editing animated:animated];
 }
-
+/*
 #pragma mark UITableViewDataSource, UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -74,7 +72,7 @@
 	cell.detailTextLabel.text = server.gitBaseUrl;
 	
 	return cell;
-}
+}*/
 
 #pragma mark UITextFieldDelegate
 
@@ -86,12 +84,6 @@
 	}
 	
 	return YES;
-}
-
-#pragma mark Properties
-
-- (NSArray *)servers {
-	return DAServerManager.manager.list;
 }
 
 #pragma mark Actions

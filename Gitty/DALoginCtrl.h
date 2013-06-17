@@ -8,6 +8,6 @@
 
 #import "DABaseCtrl.h"
 
-@interface DALoginCtrl : DABaseCtrl <UITextFieldDelegate>
-@property (strong, nonatomic) IBOutlet UITextField *repoField;
+@interface DALoginCtrl : DABaseCtrl <PagerViewDataSource, PagerViewDelegate>
+@property (strong, nonatomic) IBOutlet PagerView *pager;
 @end

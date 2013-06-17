@@ -5,7 +5,7 @@
 #import <Availability.h>
 
 #ifndef __IPHONE_6_0
-#warning "This project uses features only available in iOS SDK 5.0 and later."
+#warning "This project uses features only available in iOS SDK 6.0 and later."
 #endif
 
 #ifdef __OBJC__
@@ -16,10 +16,14 @@
 #import <ObjectiveGit/ObjectiveGit.h>
 
 #import "UIViewAdditions.h"
+#import "Reachability.h"
 #import "System.h"
 #import "UI.h"
+#import "PagerView.h"
 
 #import "UIColor+Gitty.h"
+#import "UIButton+Gitty.h"
+#import "NSString+Gitty.h"
 
 #import "DAGitManager.h"
 #endif

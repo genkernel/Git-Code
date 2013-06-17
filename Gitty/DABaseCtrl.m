@@ -31,4 +31,19 @@
 	return UIApplication.sharedApplication;
 }
 
+#pragma mark Alert methods
+
+- (void)showAlert:(NSString *)message withTitle:(NSString *)title {
+	UIAlertView *alert = [UIAlertView.alloc initWithTitle:title message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+	[alert show];
+}
+
+- (void)showErrorAlert:(NSString *)message {
+	[self showAlert:message withTitle:@"Error"];
+}
+
+- (void)showInfoAlert:(NSString *)message {
+	[self showAlert:message withTitle:@"Info"];
+}
+
 @end

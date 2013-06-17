@@ -34,8 +34,8 @@
 	NSString *remotePath = [self.manager remotePathForRepoWithName:repoFullName atServer:server];
 	NSURL *remoteURL = [NSURL URLWithString:remotePath];
 	
-	//	NSURL *url = [NSURL URLWithString:@"https://github.com/genkernel/AmazonCoverArt.git"];
-	//NSURL *url = [NSURL URLWithString:@"git://github.com/genkernel/AmazonCoverArt.git"];
+//	remoteURL = [NSURL URLWithString:@"https://github.com/genkernel/TreeView.git"];
+	remoteURL = [NSURL URLWithString:@"https://bitbucket.org/genkernel/emptydisk.git"];
 	
 	// Local.
 	NSString *path = [self.manager localPathForRepoWithName:repoFullName atServer:server];

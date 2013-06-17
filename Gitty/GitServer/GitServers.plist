@@ -3,12 +3,25 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>LogoIcon</key>
+		<string>GitHub-Mark-120px-plus.png</string>
 		<key>SaveDirectoryName</key>
 		<string>github.com</string>
 		<key>Name</key>
 		<string>Github</string>
 		<key>GitBaseUrl</key>
-		<string>git://github.com/</string>
+		<string>git@github.com</string>
+	</dict>
+	
+	<dict>
+		<key>LogoIcon</key>
+		<string>bitbucket.png</string>
+		<key>SaveDirectoryName</key>
+		<string>bitbucket.org</string>
+		<key>Name</key>
+		<string>BitBucket</string>
+		<key>GitBaseUrl</key>
+		<string>bitbucket.org</string>
 	</dict>
 </array>
 </plist>

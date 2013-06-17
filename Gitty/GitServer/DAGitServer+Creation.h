@@ -11,6 +11,7 @@
 static NSString *ServerName = @"Name";
 static NSString *ServerGitBaseUrl = @"GitBaseUrl";
 static NSString *SaveDirectory = @"SaveDirectoryName";
+static NSString *LogoIcon = @"LogoIcon";
 
 @interface DAGitServer (Creation)
 @end

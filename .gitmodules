@@ -4,3 +4,6 @@
 [submodule "Submodules/NSStringMask"]
 	path = Submodules/NSStringMask
 	url = git://github.com/fjcaetano/NSStringMask.git
+[submodule "Submodules/ConceptScroll"]
+	path = Submodules/ConceptScroll
+	url = https://github.com/genkernel/ConceptScroll.git

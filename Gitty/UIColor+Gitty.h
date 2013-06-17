@@ -18,4 +18,7 @@
 + (UIColor *)codeContextColor;
 
 + (UIColor *)acceptingGreenColor;
++ (UIColor *)acceptingBlueColor;
++ (UIColor *)inactiveGrayColor;
++ (UIColor *)cancelingRedColor;
 @end

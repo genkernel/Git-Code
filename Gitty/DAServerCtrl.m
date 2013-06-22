@@ -53,7 +53,7 @@
 	
 	progress = updatedProgress;
 	
-	[self.repoField setProgress:progress withBackgroundColor:UIColor.acceptingGreenColor];
+	[self.repoField setProgress:progress progressColor:UIColor.acceptingGreenColor backgroundColor:UIColor.whiteColor];
 }
 
 - (void)resetProgress {

@@ -26,7 +26,7 @@
 		}];
 	} else {
 		if (self.isCompletedSuccessfully) {
-			[Logger error:@"Git action(%@) has finished successfully.", self.className];
+			[Logger warn:@"Git action(%@) has finished successfully.", self.className];
 		} else {
 			[Logger error:@"Git action(%@) failed with error: %@", self.className, self.completionError];
 		}

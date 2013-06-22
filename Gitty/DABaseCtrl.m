@@ -34,16 +34,15 @@
 #pragma mark Alert methods
 
 - (void)showAlert:(NSString *)message withTitle:(NSString *)title {
-	UIAlertView *alert = [UIAlertView.alloc initWithTitle:title message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-	[alert show];
+	[self showMessage:message withTitle:title];
 }
 
 - (void)showErrorAlert:(NSString *)message {
-	[self showAlert:message withTitle:@"Error"];
+	[self showErrorMessage:message];
 }
 
 - (void)showInfoAlert:(NSString *)message {
-	[self showAlert:message withTitle:@"Info"];
+	[self showInfoMessage:message];
 }
 
 @end

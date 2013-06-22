@@ -10,4 +10,5 @@
 
 @interface DARepoCtrl (GitFetcher)
 - (NSArray *)loadCommitsInBranch:(GTBranch *)branch betweenNowAndDate:(NSDate *)date;
+- (void)pull;
 @end

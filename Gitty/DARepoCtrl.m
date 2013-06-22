@@ -30,7 +30,9 @@ static NSString *DiffSegue = @"DiffSegue";
 @property (strong, nonatomic, readonly) DABranchPickerCtrl *branchPickerCtrl;
 @end
 
-@implementation DARepoCtrl
+@implementation DARepoCtrl {
+	BOOL isFiltersContainerVisible;
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:BranchPickerSegue]) {
@@ -70,8 +72,16 @@ static NSString *DiffSegue = @"DiffSegue";
 	UINib *nib = [UINib nibWithNibName:DACommitCell.className bundle:nil];
 	[self.commitsTable registerNib:nib forCellReuseIdentifier:DACommitCell.className];
 	
-	[self updateFilters];
+	[self.toggleFiltersButton applyGreenStyle];
+	
+	[self reloadFilters];
 	[self reloadCommits];
+	
+	if (!self.shouldPull) {
+		[self setPullingViewVisible:NO animated:NO];
+	} else {
+		[self pull];
+	}
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -80,7 +90,7 @@ static NSString *DiffSegue = @"DiffSegue";
 	[self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
-- (void)updateFilters {
+- (void)reloadFilters {
 	[self updateBranchesFilter];
 }
 
@@ -199,6 +209,11 @@ static NSString *DiffSegue = @"DiffSegue";
 }
 
 #pragma mark Actions
+
+- (IBAction)toggleFiltersPressed:(UIButton *)sender {
+	isFiltersContainerVisible = !isFiltersContainerVisible;
+	[self setFiltersViewVisible:isFiltersContainerVisible animated:YES];
+}
 
 - (IBAction)selectBranchPressed:(UIButton *)sender {
 	self.branchPickerCtrl.branches = self.remoteBranches;

@@ -10,7 +10,7 @@
 #import "DAServerManager.h"
 // Actions (+ its Delegates).
 #import "DAGitClone.h"
-#import "DAGitActionDelegate.h"
+#import "DAGitPull.h"
 
 typedef void (^GitAction)();
 

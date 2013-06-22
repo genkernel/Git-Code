@@ -7,6 +7,7 @@
 //
 
 #import "DARepoCtrl+GitFetcher.h"
+#import "DARepoCtrl+Animation.h"
 
 @implementation DARepoCtrl (GitFetcher)
 
@@ -20,6 +21,35 @@
 	}];
 	
 	return commits;
+}
+
+- (void)pull {
+	DAGitPullDelegate *delegate = DAGitPullDelegate.new;
+	delegate.transferProgressBlock = ^(const git_transfer_progress *progress){
+		[Logger info:@"pull progress: %d/%d", progress->received_objects, progress->total_objects];
+		
+		if (0 == progress->total_objects) {
+			[Logger warn:@"0 total_objects specified during pulling."];
+			return;
+		}
+		CGFloat percent = (CGFloat)progress->received_objects / progress->total_objects;
+		[self.pullingField setProgress:percent progressColor:UIColor.acceptingGreenColor backgroundColor:UIColor.blackColor];
+	};
+	delegate.finishBlock = ^(DAGitAction *pull, NSError *err){
+		if (err) {
+			[self showErrorAlert:err.localizedDescription];
+		}
+		
+		[self setPullingViewVisible:NO animated:YES];
+		
+		[self reloadFilters];
+		[self reloadCommits];
+	};
+	
+	DAGitPull *pull = [DAGitPull pullForRepository:self.currentRepo];
+	pull.delegate = delegate;
+	
+	[self.git request:pull];
 }
 
 @end

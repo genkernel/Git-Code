@@ -14,6 +14,7 @@
 	#import <QuartzCore/QuartzCore.h>
 
 #import <ObjectiveGit/ObjectiveGit.h>
+#import "GTRepository+Gitty.h"
 
 #import "UIViewAdditions.h"
 #import "Reachability.h"

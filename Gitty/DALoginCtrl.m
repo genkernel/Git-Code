@@ -24,7 +24,9 @@ static NSString *SettingsSegue = @"SettingsSegue";
 @property (strong, nonatomic, readonly) DANewServerCtrl *createCtrl;
 @end
 
-@implementation DALoginCtrl
+@implementation DALoginCtrl {
+	BOOL isRepoCloned;
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:RepoSegue]) {
@@ -32,6 +34,7 @@ static NSString *SettingsSegue = @"SettingsSegue";
 		
 		DARepoCtrl *ctrl = segue.destinationViewController;
 		ctrl.currentRepo = sender;
+		ctrl.shouldPull = !isRepoCloned;
 	} else if ([segue.identifier isEqualToString:SettingsSegue]) {
 	} else {
 		[super prepareForSegue:segue sender:sender];
@@ -70,6 +73,8 @@ static NSString *SettingsSegue = @"SettingsSegue";
 
 - (void)testRepoWithUserString:(NSString *)repoName credentialsObject:(DAGitUser *)user {
 	BOOL existent = [self.git isLocalRepoExistent:repoName forServer:self.currentServer];
+	isRepoCloned = !existent;
+	
 	if (existent) {
 		GTRepository *repo = [self.git localRepoWithName:repoName forServer:self.currentServer];
 		[self performSegueWithIdentifier:RepoSegue sender:repo];

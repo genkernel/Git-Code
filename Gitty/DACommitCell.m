@@ -15,6 +15,13 @@
 @implementation DACommitCell
 @dynamic dateFormatter;
 
+- (void)awakeFromNib {
+	[super awakeFromNib];
+	
+	self.avatar.layer.cornerRadius = 4.;
+	self.avatar.layer.masksToBounds = YES;
+}
+
 - (void)loadCommit:(GTCommit *)commit {
 	self.shortShaLabel.text = [NSString stringWithFormat:@"#%@", commit.shortSha];
 	
@@ -27,6 +34,8 @@
 	self.authorLabel.text = [NSString stringWithFormat:@"%@<%@>", commit.author.name, commit.author.email];
 	
 	self.commitLabel.text = [NSString stringWithFormat:@"%@", commit.messageSummary];
+	
+	[self.avatar setGravatarImageWithEmail:commit.author.email];
 }
 
 #pragma mark Properties

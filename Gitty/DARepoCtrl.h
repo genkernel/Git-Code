@@ -11,9 +11,15 @@
 @interface DARepoCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate> {
 	BOOL isBranchOverlayVisible, isPeriodOverlayVisible;
 	BOOL isFiltersContainerVisible;
+	
+	NSDictionary *_commitsOnDateSection;
+	NSDictionary *_authorsOnDateSection;
+	NSArray *_dateSections;
 }
 @property (strong, nonatomic) GTRepository *currentRepo;
 @property (nonatomic) BOOL shouldPull;
+
+@property (strong, nonatomic, readonly) NSDateFormatter *dateSectionTitleFormatter;
 
 @property (strong, nonatomic) IBOutlet UIView *commitsContainer;
 @property (strong, nonatomic) IBOutlet UITableView *commitsTable;

@@ -11,16 +11,55 @@
 
 @implementation DARepoCtrl (GitFetcher)
 
-- (NSArray *)loadCommitsInBranch:(GTBranch *)branch betweenNowAndDate:(NSDate *)date {
+- (void)loadCommitsInBranch:(GTBranch *)branch betweenNowAndDate:(NSDate *)date {
 	NSError *err = nil;
-	NSMutableArray *commits = [NSMutableArray arrayWithCapacity:2000];
+	NSMutableSet *zones = NSMutableSet.new;
+	
+	NSMutableArray *sections = NSMutableArray.new;
+	NSMutableDictionary *commitsOnDate = NSMutableDictionary.new;
+	NSMutableDictionary *authorsOnDate = NSMutableDictionary.new;
 	
 	GTEnumeratorOptions opts = GTEnumeratorOptionsTimeSort;
 	[self.currentRepo enumerateCommitsBeginningAtSha:branch.sha sortOptions:opts error:&err usingBlock:^(GTCommit *commit, BOOL *stop) {
+		[zones addObject:commit.commitTimeZone];
+		
+		NSDate *commitLocalDate = commit.commitDate;
+		
+		[Logger info:@"%@", commitLocalDate];
+		
+		BOOL isCommitEarlier = NSOrderedAscending == [commitLocalDate compare:date];
+		if (isCommitEarlier) {
+			*stop = YES;
+			return;
+		}
+		
+		self.dateSectionTitleFormatter.timeZone = commit.commitTimeZone;
+		NSString *title = [self.dateSectionTitleFormatter stringFromDate:commitLocalDate];
+		
+		if (![sections containsObject:title]) {
+			[sections addObject:title];
+		}
+		
+		NSMutableArray *commits = commitsOnDate[title];
+		if (!commits) {
+			commits = NSMutableArray.new;
+			commitsOnDate[title] = commits;
+		}
 		[commits addObject:commit];
+		
+		NSMutableArray *authors = authorsOnDate[title];
+		if (!authors) {
+			authors = NSMutableArray.new;
+			authorsOnDate[title] = authors;
+		}
+		if (![authors containsObject:commit.author]) {
+			[authors addObject:commit.author];
+		}
 	}];
 	
-	return commits;
+	_commitsOnDateSection = [NSDictionary dictionaryWithDictionary:commitsOnDate];
+	_authorsOnDateSection = [NSDictionary dictionaryWithDictionary:authorsOnDate];
+	_dateSections = [NSArray arrayWithArray:sections];
 }
 
 - (void)pull {

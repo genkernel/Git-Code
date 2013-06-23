@@ -44,6 +44,21 @@
 		18184B6717556968001C58D8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18184B6617556968001C58D8 /* libz.dylib */; };
 		181993D5176D25BE00D4BE1F /* DACreateServerTopMargin.m in Sources */ = {isa = PBXBuildFile; fileRef = 181993D4176D23D900D4BE1F /* DACreateServerTopMargin.m */; };
 		183DA706175549F900140DA8 /* libObjectiveGit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 183DA703175549D100140DA8 /* libObjectiveGit-iOS.a */; };
+		18438B181777778200943F9F /* GTCommit+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B171777778200943F9F /* GTCommit+Gitty.m */; };
+		18438B471777A35100943F9F /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B351777A35100943F9F /* AFHTTPClient.m */; };
+		18438B481777A35100943F9F /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B371777A35100943F9F /* AFHTTPRequestOperation.m */; };
+		18438B491777A35100943F9F /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B391777A35100943F9F /* AFImageRequestOperation.m */; };
+		18438B4A1777A35100943F9F /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B3B1777A35100943F9F /* AFJSONRequestOperation.m */; };
+		18438B4B1777A35100943F9F /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B3D1777A35100943F9F /* AFNetworkActivityIndicatorManager.m */; };
+		18438B4C1777A35100943F9F /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B401777A35100943F9F /* AFPropertyListRequestOperation.m */; };
+		18438B4D1777A35100943F9F /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B421777A35100943F9F /* AFURLConnectionOperation.m */; };
+		18438B4E1777A35100943F9F /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B441777A35100943F9F /* AFXMLRequestOperation.m */; };
+		18438B4F1777A35100943F9F /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B461777A35100943F9F /* UIImageView+AFNetworking.m */; };
+		18438B551777A5AD00943F9F /* Cryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B521777A45300943F9F /* Cryptor.m */; };
+		18438B561777A5B000943F9F /* NSString+Cryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B541777A4AF00943F9F /* NSString+Cryptor.m */; };
+		18438B5C1777A7E100943F9F /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 18438B591777A7E100943F9F /* profile.png */; };
+		18438B611777A8CC00943F9F /* DAGravatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B601777A8CC00943F9F /* DAGravatar.m */; };
+		18438B641777AA0600943F9F /* UIImageView+Gravatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B631777AA0600943F9F /* UIImageView+Gravatar.m */; };
 		1861887B176E145F00666DFB /* DAServerCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18618879176E0FF000666DFB /* DAServerCtrl.m */; };
 		18706EDB1763B3B40046A2A6 /* DADiffDeltaGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18706EDA1763B3B40046A2A6 /* DADiffDeltaGraphView.m */; };
 		18706EDF1763ECF10046A2A6 /* DADeltaContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18706EDE1763ECF10046A2A6 /* DADeltaContentCell.xib */; };
@@ -197,6 +212,37 @@
 		181993D6176D3D1000D4BE1F /* DAGitServer+Creation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DAGitServer+Creation.h"; sourceTree = "<group>"; };
 		181993D7176D3D1000D4BE1F /* DAGitServer+Creation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DAGitServer+Creation.m"; sourceTree = "<group>"; };
 		183DA6F4175549D100140DA8 /* ObjectiveGitFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveGitFramework.xcodeproj; path = "Submodules/objective-git/ObjectiveGitFramework.xcodeproj"; sourceTree = "<group>"; };
+		18438B161777778200943F9F /* GTCommit+Gitty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GTCommit+Gitty.h"; path = "LibGit2/GTCommit+Gitty.h"; sourceTree = "<group>"; };
+		18438B171777778200943F9F /* GTCommit+Gitty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GTCommit+Gitty.m"; path = "LibGit2/GTCommit+Gitty.m"; sourceTree = "<group>"; };
+		18438B1D177777C200943F9F /* LibGit2-Helpers.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "LibGit2-Helpers.pch"; path = "LibGit2/LibGit2-Helpers.pch"; sourceTree = "<group>"; };
+		18438B341777A35100943F9F /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		18438B351777A35100943F9F /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
+		18438B361777A35100943F9F /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		18438B371777A35100943F9F /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		18438B381777A35100943F9F /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
+		18438B391777A35100943F9F /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
+		18438B3A1777A35100943F9F /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		18438B3B1777A35100943F9F /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		18438B3C1777A35100943F9F /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		18438B3D1777A35100943F9F /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		18438B3E1777A35100943F9F /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		18438B3F1777A35100943F9F /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		18438B401777A35100943F9F /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		18438B411777A35100943F9F /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		18438B421777A35100943F9F /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		18438B431777A35100943F9F /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		18438B441777A35100943F9F /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		18438B451777A35100943F9F /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		18438B461777A35100943F9F /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		18438B511777A45300943F9F /* Cryptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cryptor.h; sourceTree = "<group>"; };
+		18438B521777A45300943F9F /* Cryptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cryptor.m; sourceTree = "<group>"; };
+		18438B531777A4AF00943F9F /* NSString+Cryptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Cryptor.h"; sourceTree = "<group>"; };
+		18438B541777A4AF00943F9F /* NSString+Cryptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Cryptor.m"; sourceTree = "<group>"; };
+		18438B591777A7E100943F9F /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
+		18438B5F1777A8CC00943F9F /* DAGravatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGravatar.h; sourceTree = "<group>"; };
+		18438B601777A8CC00943F9F /* DAGravatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGravatar.m; sourceTree = "<group>"; };
+		18438B621777AA0600943F9F /* UIImageView+Gravatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Gravatar.h"; sourceTree = "<group>"; };
+		18438B631777AA0600943F9F /* UIImageView+Gravatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Gravatar.m"; sourceTree = "<group>"; };
 		1861886B176E0BBF00666DFB /* PagerItemView+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PagerItemView+Internal.h"; sourceTree = "<group>"; };
 		1861886C176E0BBF00666DFB /* PagerItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagerItemView.h; sourceTree = "<group>"; };
 		1861886D176E0BBF00666DFB /* PagerItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagerItemView.m; sourceTree = "<group>"; };
@@ -809,6 +855,65 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		18438B331777A35100943F9F /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				18438B3E1777A35100943F9F /* AFNetworking.h */,
+				18438B341777A35100943F9F /* AFHTTPClient.h */,
+				18438B351777A35100943F9F /* AFHTTPClient.m */,
+				18438B361777A35100943F9F /* AFHTTPRequestOperation.h */,
+				18438B371777A35100943F9F /* AFHTTPRequestOperation.m */,
+				18438B381777A35100943F9F /* AFImageRequestOperation.h */,
+				18438B391777A35100943F9F /* AFImageRequestOperation.m */,
+				18438B3A1777A35100943F9F /* AFJSONRequestOperation.h */,
+				18438B3B1777A35100943F9F /* AFJSONRequestOperation.m */,
+				18438B3C1777A35100943F9F /* AFNetworkActivityIndicatorManager.h */,
+				18438B3D1777A35100943F9F /* AFNetworkActivityIndicatorManager.m */,
+				18438B3F1777A35100943F9F /* AFPropertyListRequestOperation.h */,
+				18438B401777A35100943F9F /* AFPropertyListRequestOperation.m */,
+				18438B411777A35100943F9F /* AFURLConnectionOperation.h */,
+				18438B421777A35100943F9F /* AFURLConnectionOperation.m */,
+				18438B431777A35100943F9F /* AFXMLRequestOperation.h */,
+				18438B441777A35100943F9F /* AFXMLRequestOperation.m */,
+				18438B451777A35100943F9F /* UIImageView+AFNetworking.h */,
+				18438B461777A35100943F9F /* UIImageView+AFNetworking.m */,
+			);
+			name = AFNetworking;
+			path = AFNetworking/AFNetworking;
+			sourceTree = "<group>";
+		};
+		18438B501777A45300943F9F /* Cryptor */ = {
+			isa = PBXGroup;
+			children = (
+				18438B511777A45300943F9F /* Cryptor.h */,
+				18438B521777A45300943F9F /* Cryptor.m */,
+				18438B531777A4AF00943F9F /* NSString+Cryptor.h */,
+				18438B541777A4AF00943F9F /* NSString+Cryptor.m */,
+			);
+			name = Cryptor;
+			path = ../../xlib/xlib/Service/Cryptor;
+			sourceTree = "<group>";
+		};
+		18438B571777A7E100943F9F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				18438B591777A7E100943F9F /* profile.png */,
+			);
+			name = Profile;
+			path = Res/Profile;
+			sourceTree = "<group>";
+		};
+		18438B5E1777A8BB00943F9F /* Gravatar */ = {
+			isa = PBXGroup;
+			children = (
+				18438B5F1777A8CC00943F9F /* DAGravatar.h */,
+				18438B601777A8CC00943F9F /* DAGravatar.m */,
+				18438B621777AA0600943F9F /* UIImageView+Gravatar.h */,
+				18438B631777AA0600943F9F /* UIImageView+Gravatar.m */,
+			);
+			name = Gravatar;
+			sourceTree = "<group>";
+		};
 		1861886A176E0BBF00666DFB /* PagerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1188,6 +1293,7 @@
 		18901735175AC4BA00F19CE4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				18438B501777A45300943F9F /* Cryptor */,
 				18901736175AC4C700F19CE4 /* Logger */,
 			);
 			name = Service;
@@ -1255,11 +1361,12 @@
 		18933CDE1755395D00E92183 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				18438B5E1777A8BB00943F9F /* Gravatar */,
 				18A625431775D52500FC27AE /* LibGit2 */,
 				1804FAAB176E78EC0080AB50 /* Reachability */,
 				18706EE0176407430046A2A6 /* Helpers */,
 				18BAA85E1758016300154019 /* GitServer */,
-				18D9EA3A17554E9E00454F3C /* Gitty */,
+				18D9EA3A17554E9E00454F3C /* Git */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -1278,8 +1385,8 @@
 		189A531F175922D100B5BD8D /* Repo */ = {
 			isa = PBXGroup;
 			children = (
-				18A6254E17763BC600FC27AE /* PeriodPicker */,
 				188B2D4F175D3E1C00BD1EEB /* CommitCell */,
+				18A6254E17763BC600FC27AE /* PeriodPicker */,
 				18C9441C175B6B3E00A4D7CA /* BranchPickerCtrl */,
 				189A5320175922FA00B5BD8D /* DARepoCtrl.h */,
 				189A5321175922FA00B5BD8D /* DARepoCtrl.m */,
@@ -1294,6 +1401,7 @@
 		189A53331759242800B5BD8D /* shared */ = {
 			isa = PBXGroup;
 			children = (
+				18438B331777A35100943F9F /* AFNetworking */,
 				1804FAA6176E78A60080AB50 /* Reachability */,
 				189A534E1759242800B5BD8D /* UIViewAdditions */,
 			);
@@ -1597,8 +1705,11 @@
 		18A625431775D52500FC27AE /* LibGit2 */ = {
 			isa = PBXGroup;
 			children = (
+				18438B1D177777C200943F9F /* LibGit2-Helpers.pch */,
 				18A625441775D54600FC27AE /* GTRepository+Gitty.h */,
 				18A625451775D54600FC27AE /* GTRepository+Gitty.m */,
+				18438B161777778200943F9F /* GTCommit+Gitty.h */,
+				18438B171777778200943F9F /* GTCommit+Gitty.m */,
 			);
 			name = LibGit2;
 			sourceTree = "<group>";
@@ -1660,6 +1771,7 @@
 		18D9EA3917554BEE00454F3C /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				18438B571777A7E100943F9F /* Profile */,
 				1804FA8C176E2D510080AB50 /* Logos */,
 				1817091A175BCBEA002A2D93 /* Backgrounds */,
 				18F995D1175FBEDB0033A4A0 /* UI */,
@@ -1670,7 +1782,7 @@
 			name = Res;
 			sourceTree = "<group>";
 		};
-		18D9EA3A17554E9E00454F3C /* Gitty */ = {
+		18D9EA3A17554E9E00454F3C /* Git */ = {
 			isa = PBXGroup;
 			children = (
 				189016B1175AA38900F19CE4 /* Actions */,
@@ -1681,7 +1793,7 @@
 				18EADFDF176F05EA005D0F28 /* DAGitUser.h */,
 				18EADFE0176F05EA005D0F28 /* DAGitUser.m */,
 			);
-			name = Gitty;
+			name = Git;
 			sourceTree = "<group>";
 		};
 		18F04E2B176FC83D0035C918 /* Graphics */ = {
@@ -1849,6 +1961,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18438B5C1777A7E100943F9F /* profile.png in Resources */,
 				1804FAB9176E85820080AB50 /* btn-green.png in Resources */,
 				1804FAB8176E857F0080AB50 /* btn-gray.png in Resources */,
 				18933CE21755395D00E92183 /* InfoPlist.strings in Resources */,
@@ -1891,26 +2004,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18438B4D1777A35100943F9F /* AFURLConnectionOperation.m in Sources */,
 				18933CE41755395D00E92183 /* main.m in Sources */,
 				18933CE81755395D00E92183 /* DAAppDelegate.m in Sources */,
 				18A625461775D54900FC27AE /* GTRepository+Gitty.m in Sources */,
 				18933CF41755395D00E92183 /* DALoginCtrl.m in Sources */,
 				18D9EA3D17554EB400454F3C /* DAGitManager.m in Sources */,
 				18184B6017555AB5001C58D8 /* DABaseCtrl.m in Sources */,
+				18438B4C1777A35100943F9F /* AFPropertyListRequestOperation.m in Sources */,
 				18BAA8651758016400154019 /* DAGitServer.m in Sources */,
 				18BAA8661758016400154019 /* DAServerManager.m in Sources */,
 				189A5322175922FA00B5BD8D /* DARepoCtrl.m in Sources */,
+				18438B641777AA0600943F9F /* UIImageView+Gravatar.m in Sources */,
 				18A6254D1776101D00FC27AE /* NavViewCtrl.m in Sources */,
 				189A535C1759242800B5BD8D /* UIViewAdditions.m in Sources */,
 				189016B0175AA36D00F19CE4 /* DAGitActionDelegate.m in Sources */,
 				189016B4175AA39A00F19CE4 /* DAGitAction.m in Sources */,
 				189016B7175AA49300F19CE4 /* DAGitClone.m in Sources */,
+				18438B4E1777A35100943F9F /* AFXMLRequestOperation.m in Sources */,
 				18EADFE6176F05F6005D0F28 /* DAGitUser.m in Sources */,
 				189016BB175AA6D800F19CE4 /* DAGitManager+ActionsInterface.m in Sources */,
 				18A6254B1775D59400FC27AE /* DAGitPullDelegate.m in Sources */,
 				189016BE175AAD8200F19CE4 /* DAGitCloneDelegate.m in Sources */,
 				189016C4175ABBDB00F19CE4 /* DAAboutCtrl.m in Sources */,
 				1816715717763D3300F1DE4D /* DAPeriodPicker.m in Sources */,
+				18438B551777A5AD00943F9F /* Cryptor.m in Sources */,
 				189016C7175ABC0B00F19CE4 /* DASettingsCtrl.m in Sources */,
 				181671611776745200F1DE4D /* DAPeriod.m in Sources */,
 				189016E7175AC46400F19CE4 /* DynamicObject.m in Sources */,
@@ -1919,14 +2037,19 @@
 				189016E9175AC46400F19CE4 /* NSDate+InternetDateTime.m in Sources */,
 				189016EA175AC46400F19CE4 /* NSFileManager+Helper.m in Sources */,
 				189016EB175AC46400F19CE4 /* NSNumber+Bits.m in Sources */,
+				18438B4F1777A35100943F9F /* UIImageView+AFNetworking.m in Sources */,
 				189016EC175AC46400F19CE4 /* NSObject+Runtime.m in Sources */,
+				18438B491777A35100943F9F /* AFImageRequestOperation.m in Sources */,
 				18A6254C1775D59700FC27AE /* DAGitPull.m in Sources */,
 				189016ED175AC46400F19CE4 /* NSString+Helper.m in Sources */,
+				18438B4A1777A35100943F9F /* AFJSONRequestOperation.m in Sources */,
+				18438B611777A8CC00943F9F /* DAGravatar.m in Sources */,
 				189016EE175AC46400F19CE4 /* UIApplication+Filesystem.m in Sources */,
 				1804FAAA176E78BD0080AB50 /* Reachability.m in Sources */,
 				1861887B176E145F00666DFB /* DAServerCtrl.m in Sources */,
 				18F04E3C176FC9F80035C918 /* UITextField+Helper.m in Sources */,
 				189016EF175AC46400F19CE4 /* UIApplication+General.m in Sources */,
+				18438B481777A35100943F9F /* AFHTTPRequestOperation.m in Sources */,
 				189016F0175AC46400F19CE4 /* UIDevice+Helper.m in Sources */,
 				189016F1175AC46400F19CE4 /* UncaughtExceptionHandler.m in Sources */,
 				181993D5176D25BE00D4BE1F /* DACreateServerTopMargin.m in Sources */,
@@ -1934,6 +2057,7 @@
 				18901726175AC47000F19CE4 /* ActivityIndicatorView.m in Sources */,
 				18901727175AC47000F19CE4 /* AlertView.m in Sources */,
 				18901728175AC47000F19CE4 /* Button.m in Sources */,
+				18438B561777A5B000943F9F /* NSString+Cryptor.m in Sources */,
 				1804FA8B176E2AFD0080AB50 /* UIButton+Gitty.m in Sources */,
 				1804FABC176E87780080AB50 /* NSString+Gitty.m in Sources */,
 				18901729175AC47000F19CE4 /* ContainerController.m in Sources */,
@@ -1946,6 +2070,7 @@
 				18901734175AC47000F19CE4 /* ViewCtrl.m in Sources */,
 				18901739175AC4C700F19CE4 /* Logger.m in Sources */,
 				1890173C175AC54000F19CE4 /* UIView+Helper.m in Sources */,
+				18438B181777778200943F9F /* GTCommit+Gitty.m in Sources */,
 				18C94423175B6BA800A4D7CA /* DABranchCell.m in Sources */,
 				18C94433175B93C400A4D7CA /* DABranchPickerCtrl.m in Sources */,
 				181240F5175BD21100E6F571 /* DARepoCtrl+Animation.m in Sources */,
@@ -1955,11 +2080,13 @@
 				1804FAA2176E71490080AB50 /* DANewServerCtrl.m in Sources */,
 				18F995B7175F6EB70033A4A0 /* DADiffCtrl.m in Sources */,
 				18F995BC175FAE710033A4A0 /* DAModifiedHeader.m in Sources */,
+				18438B471777A35100943F9F /* AFHTTPClient.m in Sources */,
 				18F995C2175FB2330033A4A0 /* DADeltaContentCell.m in Sources */,
 				18F995C5175FB2BC0033A4A0 /* DAHunkContentView.m in Sources */,
 				18706EDB1763B3B40046A2A6 /* DADiffDeltaGraphView.m in Sources */,
 				1804FA7F176E15D80080AB50 /* PagerItemView.m in Sources */,
 				18706EE31764075D0046A2A6 /* UIColor+Gitty.m in Sources */,
+				18438B4B1777A35100943F9F /* AFNetworkActivityIndicatorManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

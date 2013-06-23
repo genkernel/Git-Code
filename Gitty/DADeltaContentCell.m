@@ -35,7 +35,9 @@
 	
 	self.scroll.contentSize = CGSizeMake(longestLineWidth, vOffset);
 	
+#ifdef DEBUG
 	[self.scroll colorizeBorderWithColor:UIColor.blueColor];
+#endif
 }
 
 @end

@@ -28,7 +28,9 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 @property (strong, nonatomic, readonly) NSDictionary *namedBranches;
 
 @property (strong, nonatomic, readonly) GTBranch *currentBranch;
-@property (strong, nonatomic, readonly) NSArray *commits;
+@property (strong, nonatomic, readonly) NSDictionary *commitsOnDateSection;
+@property (strong, nonatomic, readonly) NSDictionary *authorsOnDateSection;
+@property (strong, nonatomic, readonly) NSArray *dateSections;
 
 @property (strong, nonatomic) DAPeriod *periodFilter;
 
@@ -37,6 +39,9 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 @end
 
 @implementation DARepoCtrl
+@synthesize commitsOnDateSection = _commitsOnDateSection;
+@synthesize authorsOnDateSection = _authorsOnDateSection;
+@synthesize dateSections = _dateSections;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:BranchPickerSegue]) {
@@ -72,13 +77,18 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 		DADiffCtrl *ctrl = segue.destinationViewController;
 		
 		NSIndexPath *ip = sender;
-		BOOL isFirstCommit = ip.row == self.commits.count - 1;
+		// FIXME: hi
+		BOOL isFirstCommit = NO;//ip.row == self.commits.count - 1;
 		
 		if (isFirstCommit) {
 			NSAssert(NO, @"First commit diff.");
 		} else {
-			ctrl.changeCommit = self.commits[ip.row];
-			ctrl.previousCommit = self.commits[ip.row + 1];
+//			NSDate *date = self.commitsSectionDates[ip.section];
+//			NSArray *commits = self.commitsByDate[date];
+			
+//			ctrl.changeCommit = commits[ip.row];
+			// FIXME: +1 is valid in section? - better diff.
+//			ctrl.previousCommit = commits[ip.row + 1];
 		}
 	} else {
 		[super prepareForSegue:segue sender:sender];
@@ -146,10 +156,10 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 - (void)reloadCommits {
 	[NSObject startMeasurement];
 	{
-		_commits = [self loadCommitsInBranch:self.currentBranch betweenNowAndDate:self.periodFilter.date];
+		[self loadCommitsInBranch:self.currentBranch betweenNowAndDate:self.periodFilter.date];
 	}
 	double period = [NSObject endMeasurement];
-	[Logger info:@"%d commits loaded in %.2f.", self.commits.count, period];
+	[Logger info:@"Commits of %d days loaded in %.2f.", self.dateSections.count, period];
 	
 	[self.commitsTable reloadData];
 }
@@ -206,12 +216,26 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 
 #pragma mark UITableViewDataSource, UITableViewDelegate
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+	return self.dateSections.count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	return self.dateSections[section];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return self.commits.count;
+	NSString *title = self.dateSections[section];
+	NSArray *commits = self.commitsOnDateSection[title];
+	
+	return commits.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	GTCommit *commit = self.commits[indexPath.row];
+	NSString *title = self.dateSections[indexPath.section];
+	NSArray *commits = self.commitsOnDateSection[title];
+	
+	GTCommit *commit = commits[indexPath.row];
 	
 	DACommitCell *cell = [tableView dequeueReusableCellWithIdentifier:DACommitCell.className];
 	
@@ -250,6 +274,21 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 	[self.periodPickerCtrl selectPeriodItem:self.periodFilter animated:NO];
 	
 	[self setPeriodOverlayVisible:YES animated:YES];
+}
+
+#pragma mark Properties
+
+#pragma mark Properties
+
+- (NSDateFormatter *)dateSectionTitleFormatter {
+	static NSDateFormatter *formatter = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		formatter = NSDateFormatter.new;
+		formatter.locale = NSLocale.currentLocale;
+		formatter.dateFormat = @"EEEE, MMMM d, yyyy";
+	});
+	return formatter;
 }
 
 @end

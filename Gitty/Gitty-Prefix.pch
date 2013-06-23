@@ -14,17 +14,20 @@
 	#import <QuartzCore/QuartzCore.h>
 
 #import <ObjectiveGit/ObjectiveGit.h>
-#import "GTRepository+Gitty.h"
+#import "LibGit2/LibGit2-Helpers.pch"
 
 #import "UIViewAdditions.h"
 #import "Reachability.h"
+#import "PagerView.h"
+#import "AFNetworking.h"
+
 #import "System.h"
 #import "UI.h"
-#import "PagerView.h"
 
 #import "UIColor+Gitty.h"
 #import "UIButton+Gitty.h"
 #import "NSString+Gitty.h"
+#import "DAGravatar.h"
 
 #import "DAGitManager.h"
 #endif

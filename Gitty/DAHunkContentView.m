@@ -13,7 +13,9 @@ static const NSUInteger AverageSymbolsInLine = 50;
 @implementation DAHunkContentView
 
 - (void)loadHunk:(GTDiffHunk *)hunk {
+#ifdef DEBUG
 	[self colorizeBorderWithColor:UIColor.greenColor];
+#endif
 	
 	__block CGFloat longestLineWidth = .0;
 	

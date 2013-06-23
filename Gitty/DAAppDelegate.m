@@ -11,6 +11,10 @@
 @implementation DAAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	NSURLCache *cache = NSURLCache.sharedURLCache;
+	cache.memoryCapacity = 10 * 1024 * 1024;
+	cache.diskCapacity = 128 * 1024 * 1024;
+	
     return YES;
 }
 

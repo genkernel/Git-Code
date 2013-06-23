@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *committerLabel;
 
 // Content.
+@property (strong, nonatomic) IBOutlet UIImageView *avatar;
 @property (strong, nonatomic) IBOutlet UILabel *authorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *commitLabel;
 @end

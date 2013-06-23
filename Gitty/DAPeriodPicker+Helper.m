@@ -10,18 +10,12 @@
 
 @implementation DAPeriodPicker (Helper)
 
-- (NSTimeInterval)today {
-	NSCalendar *cal = NSCalendar.currentCalendar;
-	
-	// Get the hours, minutes, seconds
-	NSUInteger flags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-	NSDateComponents *components = [cal components:flags fromDate:NSDate.date];
-	
-	NSTimeInterval period = components.hour HOURS;
-	period += components.minute MINUTES;
-	period += components.second SECONDS;
-	
-	return period;
+- (DAPeriod *)noLimit {
+	return [DAPeriod periodWithTitle:NSLocalizedString(@"No limit", nil)];
+}
+
+- (DAPeriod *)today {
+	return [DAPeriod periodWithTitle:NSLocalizedString(@"Today", nil)];
 }
 
 @end

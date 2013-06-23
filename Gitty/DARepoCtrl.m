@@ -30,8 +30,7 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 @property (strong, nonatomic, readonly) GTBranch *currentBranch;
 @property (strong, nonatomic, readonly) NSArray *commits;
 
-@property (strong, nonatomic) NSNumber *commitsPeriod;
-@property (nonatomic) NSUInteger selectedPeriodIdx;
+@property (strong, nonatomic) DAPeriod *periodFilter;
 
 @property (strong, nonatomic, readonly) DABranchPickerCtrl *branchPickerCtrl;
 @property (strong, nonatomic, readonly) DAPeriodPicker *periodPickerCtrl;
@@ -59,13 +58,12 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 		self.periodPickerCtrl.cancelBlock = ^{
 			[ref setPeriodOverlayVisible:NO animated:YES];
 		};
-		self.periodPickerCtrl.completionBlock = ^(NSUInteger idx, NSNumber *period){
+		self.periodPickerCtrl.completionBlock = ^(DAPeriod *period){
 			[ref setPeriodOverlayVisible:NO animated:YES];
 
-			BOOL changed = ref.selectedPeriodIdx != idx;
+			BOOL changed = ref.periodFilter != period;
 			if (changed) {
-				ref.commitsPeriod = period;
-				ref.selectedPeriodIdx = idx;
+				ref.periodFilter = period;
 				
 				[ref reloadCommits];
 			}
@@ -75,8 +73,6 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 		
 		NSIndexPath *ip = sender;
 		BOOL isFirstCommit = ip.row == self.commits.count - 1;
-		
-//		NSUInteger idx = self.commits.count - ip.row - 1;
 		
 		if (isFirstCommit) {
 			NSAssert(NO, @"First commit diff.");
@@ -150,8 +146,7 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 - (void)reloadCommits {
 	[NSObject startMeasurement];
 	{
-		NSDate *date = nil;
-		_commits = [self loadCommitsInBranch:self.currentBranch betweenNowAndDate:date];
+		_commits = [self loadCommitsInBranch:self.currentBranch betweenNowAndDate:self.periodFilter.date];
 	}
 	double period = [NSObject endMeasurement];
 	[Logger info:@"%d commits loaded in %.2f.", self.commits.count, period];
@@ -252,7 +247,7 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 
 - (IBAction)selectPeriodPressed:(UIButton *)sender {
 	// Select previously activated period (if row was changed but canceled).
-	[self.periodPickerCtrl.picker selectRow:self.selectedPeriodIdx inComponent:0 animated:NO];
+	[self.periodPickerCtrl selectPeriodItem:self.periodFilter animated:NO];
 	
 	[self setPeriodOverlayVisible:YES animated:YES];
 }

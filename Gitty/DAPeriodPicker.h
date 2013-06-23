@@ -7,9 +7,12 @@
 //
 
 #import "DABaseCtrl.h"
+#import "DAPeriod.h"
 
 @interface DAPeriodPicker : DABaseCtrl <UIPickerViewDataSource, UIPickerViewDelegate>
-@property (strong, nonatomic) void (^completionBlock)(NSUInteger idx, NSNumber *period);
+- (void)selectPeriodItem:(DAPeriod *)period animated:(BOOL)animated;
+
+@property (strong, nonatomic) void (^completionBlock)(DAPeriod *);
 @property (strong, nonatomic) void (^cancelBlock)();
 
 @property (strong, nonatomic) IBOutlet UIPickerView *picker;

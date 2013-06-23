@@ -33,6 +33,8 @@
 		181240F5175BD21100E6F571 /* DARepoCtrl+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 181240F4175BD21100E6F571 /* DARepoCtrl+Animation.m */; };
 		1816715717763D3300F1DE4D /* DAPeriodPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6255017763BED00FC27AE /* DAPeriodPicker.m */; };
 		1816715E17764B9C00F1DE4D /* DAPeriodPicker+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1816715D1776476D00F1DE4D /* DAPeriodPicker+Helper.m */; };
+		181671611776745200F1DE4D /* DAPeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = 181671601776744F00F1DE4D /* DAPeriod.m */; };
+		181671641776752200F1DE4D /* Periods.plist in Resources */ = {isa = PBXBuildFile; fileRef = 181671631776752200F1DE4D /* Periods.plist */; };
 		18170917175BCBB6002A2D93 /* git-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18170915175BCBB6002A2D93 /* git-black@2x.png */; };
 		1817091E175BCBEA002A2D93 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1817091B175BCBEA002A2D93 /* Default-568h@2x.png */; };
 		1817091F175BCBEA002A2D93 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1817091C175BCBEA002A2D93 /* Default.png */; };
@@ -179,6 +181,9 @@
 		181240F4175BD21100E6F571 /* DARepoCtrl+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DARepoCtrl+Animation.m"; sourceTree = "<group>"; };
 		1816715C1776476D00F1DE4D /* DAPeriodPicker+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DAPeriodPicker+Helper.h"; sourceTree = "<group>"; };
 		1816715D1776476D00F1DE4D /* DAPeriodPicker+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DAPeriodPicker+Helper.m"; sourceTree = "<group>"; };
+		1816715F1776744F00F1DE4D /* DAPeriod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAPeriod.h; sourceTree = "<group>"; };
+		181671601776744F00F1DE4D /* DAPeriod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAPeriod.m; sourceTree = "<group>"; };
+		181671631776752200F1DE4D /* Periods.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Periods.plist; sourceTree = "<group>"; };
 		18170915175BCBB6002A2D93 /* git-black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "git-black@2x.png"; sourceTree = "<group>"; };
 		1817091B175BCBEA002A2D93 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1817091C175BCBEA002A2D93 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -732,6 +737,15 @@
 				1804FAB6176E85790080AB50 /* btn-green.png */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		181671621776749E00F1DE4D /* FilterPeriod */ = {
+			isa = PBXGroup;
+			children = (
+				1816715F1776744F00F1DE4D /* DAPeriod.h */,
+				181671601776744F00F1DE4D /* DAPeriod.m */,
+			);
+			name = FilterPeriod;
 			sourceTree = "<group>";
 		};
 		18170914175BCBB6002A2D93 /* Icons */ = {
@@ -1592,6 +1606,8 @@
 		18A6254E17763BC600FC27AE /* PeriodPicker */ = {
 			isa = PBXGroup;
 			children = (
+				181671631776752200F1DE4D /* Periods.plist */,
+				181671621776749E00F1DE4D /* FilterPeriod */,
 				18A6254F17763BED00FC27AE /* DAPeriodPicker.h */,
 				18A6255017763BED00FC27AE /* DAPeriodPicker.m */,
 				1816715C1776476D00F1DE4D /* DAPeriodPicker+Helper.h */,
@@ -1862,6 +1878,7 @@
 				1804FAB7176E857C0080AB50 /* btn-blue.png in Resources */,
 				18F995D9175FBEDB0033A4A0 /* section_header@2x.png in Resources */,
 				18706EDF1763ECF10046A2A6 /* DADeltaContentCell.xib in Resources */,
+				181671641776752200F1DE4D /* Periods.plist in Resources */,
 				1804FA8F176E2D640080AB50 /* GitHub-Mark-120px-plus.png in Resources */,
 				1804FAC0176EAACD0080AB50 /* btn-red.png in Resources */,
 			);
@@ -1895,6 +1912,7 @@
 				189016C4175ABBDB00F19CE4 /* DAAboutCtrl.m in Sources */,
 				1816715717763D3300F1DE4D /* DAPeriodPicker.m in Sources */,
 				189016C7175ABC0B00F19CE4 /* DASettingsCtrl.m in Sources */,
+				181671611776745200F1DE4D /* DAPeriod.m in Sources */,
 				189016E7175AC46400F19CE4 /* DynamicObject.m in Sources */,
 				189016E8175AC46400F19CE4 /* NSArray+AAV.m in Sources */,
 				1816715E17764B9C00F1DE4D /* DAPeriodPicker+Helper.m in Sources */,

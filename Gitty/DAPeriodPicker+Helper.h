@@ -7,8 +7,10 @@
 //
 
 #import "DAPeriodPicker.h"
+#import "DAPeriod.h"
 
 @interface DAPeriodPicker (Helper)
-- (NSTimeInterval)today;
+- (DAPeriod *)noLimit;
+- (DAPeriod *)today;
 //- (NSTimeInterval)last3Days;
 @end

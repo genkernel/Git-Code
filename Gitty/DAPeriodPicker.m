@@ -11,7 +11,6 @@
 
 @interface DAPeriodPicker ()
 @property (strong, nonatomic, readonly) NSArray *periods;
-@property (strong, nonatomic, readonly) NSArray *periodValues;
 @end
 
 @implementation DAPeriodPicker
@@ -19,19 +18,19 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	_periods = @[NSLocalizedString(@"No limit", nil),
-				 NSLocalizedString(@"Today", nil)/*,
+	_periods = @[self.noLimit,
+				 self.today/*,
 				 NSLocalizedString(@"Yesterday", nil),
 				 NSLocalizedString(@"Last 3 days", nil),
 				 NSLocalizedString(@"Last week", nil),
 				 NSLocalizedString(@"Last month", nil)*/];
-	
-	__weak DAPeriodPicker *ref = self;
-	_periodValues = @[^(){
-		return nil;	// Infinite.
-	}, ^(){
-		return @(ref.today);
-	}];
+}
+
+- (void)selectPeriodItem:(DAPeriod *)period animated:(BOOL)animated {
+	NSUInteger idx = [self.periods indexOfObject:period];
+	if (NSNotFound != idx) {
+		[self.picker selectRow:idx inComponent:0 animated:NO];
+	}
 }
 
 #pragma mark UIPickerViewDataSource, UIPickerViewDelegate
@@ -45,7 +44,8 @@
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-	return self.periods[row];
+	DAPeriod *period = self.periods[row];
+	return period.title;
 }
 
 #pragma mark Actions
@@ -56,8 +56,7 @@
 
 - (IBAction)checkoutPressed:(UIBarButtonItem *)sender {
 	NSInteger row = [self.picker selectedRowInComponent:0];
-	NSNumber *(^block)() = self.periodValues[row];
-	self.completionBlock(row, block());
+	self.completionBlock(self.periods[row]);
 }
 
 @end

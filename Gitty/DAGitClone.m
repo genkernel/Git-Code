@@ -100,11 +100,14 @@ static int cred_acquire_userpass(git_cred **out,
 						void *payload)
 {
 	DAGitUser *user = (__bridge DAGitUser *)(payload);
+	if (!user) {
+		return GIT_EUSER;
+	}
 	
 	return git_cred_userpass_plaintext_new(out, user.username.UTF8String, user.password.UTF8String);
 }
 
-// TODO: Implemente SSH auth method
+// TODO: Implemente SSH auth method.
 static int cred_acquire_ssh(git_cred **out,
 								 const char *url,
 								 const char *username_from_url,
@@ -112,6 +115,9 @@ static int cred_acquire_ssh(git_cred **out,
 								 void *payload)
 {
 	DAGitUser *user = (__bridge DAGitUser *)(payload);
+	if (!user) {
+		return GIT_EUSER;
+	}
 	
 	return git_cred_userpass_plaintext_new(out, user.username.UTF8String, user.password.UTF8String);
 }

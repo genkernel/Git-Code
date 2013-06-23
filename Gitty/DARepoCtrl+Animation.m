@@ -16,10 +16,25 @@
 	}
 	isBranchOverlayVisible = visible;
 	
-	CGFloat offset = visible ? (self.view.height - self.branchOverlay.height) : self.view.height;
+	CGFloat offset = self.branchOverlay.height;
+	offset *= visible ? -1. : 1.;
 	
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
-		self.branchOverlay.y = offset;
+		self.branchOverlay.y += offset;
+	}];
+}
+
+- (void)setPeriodOverlayVisible:(BOOL)visible animated:(BOOL)animated {
+	if (isPeriodOverlayVisible == visible) {
+		return;
+	}
+	isPeriodOverlayVisible = visible;
+	
+	CGFloat offset = self.periodOverlay.height;
+	offset *= visible ? -1. : 1.;
+	
+	[UIView animateWithDuration:StandartAnimationDuration animations:^{
+		self.periodOverlay.y += offset;
 	}];
 }
 

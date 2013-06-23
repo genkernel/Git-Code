@@ -10,15 +10,18 @@
 #import "DARepoCtrl+Animation.h"
 #import "DARepoCtrl+GitFetcher.h"
 #import "DADiffCtrl.h"
+// Filter pickers.
 #import "DABranchPickerCtrl.h"
+#import "DAPeriodPicker.h"
 // Cells.
 #import "DABranchCell.h"
 #import "DACommitCell.h"
 
 static NSString *MasterBranchName = @"master";
 
-static NSString *BranchPickerSegue = @"BranchPickerSegue";
 static NSString *DiffSegue = @"DiffSegue";
+static NSString *BranchPickerSegue = @"BranchPickerSegue";
+static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 
 @interface DARepoCtrl ()
 @property (strong, nonatomic, readonly) NSArray *remoteBranches/*, *localBranches*/;
@@ -27,12 +30,14 @@ static NSString *DiffSegue = @"DiffSegue";
 @property (strong, nonatomic, readonly) GTBranch *currentBranch;
 @property (strong, nonatomic, readonly) NSArray *commits;
 
+@property (strong, nonatomic) NSNumber *commitsPeriod;
+@property (nonatomic) NSUInteger selectedPeriodIdx;
+
 @property (strong, nonatomic, readonly) DABranchPickerCtrl *branchPickerCtrl;
+@property (strong, nonatomic, readonly) DAPeriodPicker *periodPickerCtrl;
 @end
 
-@implementation DARepoCtrl {
-	BOOL isFiltersContainerVisible;
-}
+@implementation DARepoCtrl
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:BranchPickerSegue]) {
@@ -44,6 +49,24 @@ static NSString *DiffSegue = @"DiffSegue";
 			
 			BOOL changed = [ref selectBranch:selectedBranch];
 			if (changed) {
+				[ref reloadCommits];
+			}
+		};
+	} else if ([segue.identifier isEqualToString:PeriodPickerSegue]) {
+		_periodPickerCtrl = segue.destinationViewController;
+		
+		__weak DARepoCtrl *ref = self;
+		self.periodPickerCtrl.cancelBlock = ^{
+			[ref setPeriodOverlayVisible:NO animated:YES];
+		};
+		self.periodPickerCtrl.completionBlock = ^(NSUInteger idx, NSNumber *period){
+			[ref setPeriodOverlayVisible:NO animated:YES];
+
+			BOOL changed = ref.selectedPeriodIdx != idx;
+			if (changed) {
+				ref.commitsPeriod = period;
+				ref.selectedPeriodIdx = idx;
+				
 				[ref reloadCommits];
 			}
 		};
@@ -216,13 +239,22 @@ static NSString *DiffSegue = @"DiffSegue";
 }
 
 - (IBAction)selectBranchPressed:(UIButton *)sender {
+	// Reload as new branches were pulled in (possibly).
 	self.branchPickerCtrl.branches = self.remoteBranches;
 	[self.branchPickerCtrl.picker reloadAllComponents];
 	
+	// Selects default branch (master) on first use.
 	NSUInteger row = [self.remoteBranches indexOfObject:self.currentBranch];
 	[self.branchPickerCtrl.picker selectRow:row inComponent:0 animated:NO];
 	
 	[self setBranchOverlayVisible:YES animated:YES];
+}
+
+- (IBAction)selectPeriodPressed:(UIButton *)sender {
+	// Select previously activated period (if row was changed but canceled).
+	[self.periodPickerCtrl.picker selectRow:self.selectedPeriodIdx inComponent:0 animated:NO];
+	
+	[self setPeriodOverlayVisible:YES animated:YES];
 }
 
 @end

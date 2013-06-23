@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 kernel@realm. All rights reserved.
 //
 
-#import "ViewCtrl.h"
+#import "DABaseCtrl.h"
 
-@interface DABranchPickerCtrl : ViewCtrl <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface DABranchPickerCtrl : DABaseCtrl <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) NSArray *branches;
 @property (strong, nonatomic) void (^completionBlock)(GTBranch *);
 

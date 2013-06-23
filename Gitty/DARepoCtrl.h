@@ -9,7 +9,8 @@
 #import "DABaseCtrl.h"
 
 @interface DARepoCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate> {
-	BOOL isBranchOverlayVisible;
+	BOOL isBranchOverlayVisible, isPeriodOverlayVisible;
+	BOOL isFiltersContainerVisible;
 }
 @property (strong, nonatomic) GTRepository *currentRepo;
 @property (nonatomic) BOOL shouldPull;
@@ -18,7 +19,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *commitsTable;
 
 @property (strong, nonatomic) IBOutlet UIButton *currentBranchButton;
-@property (strong, nonatomic) IBOutlet UIView *branchOverlay;
+@property (strong, nonatomic) IBOutlet UIView *branchOverlay, *periodOverlay;
 
 @property (strong, nonatomic) IBOutlet UIView *grayOverlay;
 @property (strong, nonatomic) IBOutlet UIView *headerContainer;

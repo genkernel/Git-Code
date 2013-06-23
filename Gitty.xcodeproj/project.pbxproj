@@ -31,6 +31,8 @@
 		181240ED175BCD3C00E6F571 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 181240EA175BCD3C00E6F571 /* Icon.png */; };
 		181240EE175BCD3C00E6F571 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181240EB175BCD3C00E6F571 /* Icon@2x.png */; };
 		181240F5175BD21100E6F571 /* DARepoCtrl+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 181240F4175BD21100E6F571 /* DARepoCtrl+Animation.m */; };
+		1816715717763D3300F1DE4D /* DAPeriodPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6255017763BED00FC27AE /* DAPeriodPicker.m */; };
+		1816715E17764B9C00F1DE4D /* DAPeriodPicker+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1816715D1776476D00F1DE4D /* DAPeriodPicker+Helper.m */; };
 		18170917175BCBB6002A2D93 /* git-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18170915175BCBB6002A2D93 /* git-black@2x.png */; };
 		1817091E175BCBEA002A2D93 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1817091B175BCBEA002A2D93 /* Default-568h@2x.png */; };
 		1817091F175BCBEA002A2D93 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1817091C175BCBEA002A2D93 /* Default.png */; };
@@ -175,6 +177,8 @@
 		181240EB175BCD3C00E6F571 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		181240F3175BD21100E6F571 /* DARepoCtrl+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DARepoCtrl+Animation.h"; sourceTree = "<group>"; };
 		181240F4175BD21100E6F571 /* DARepoCtrl+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DARepoCtrl+Animation.m"; sourceTree = "<group>"; };
+		1816715C1776476D00F1DE4D /* DAPeriodPicker+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DAPeriodPicker+Helper.h"; sourceTree = "<group>"; };
+		1816715D1776476D00F1DE4D /* DAPeriodPicker+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DAPeriodPicker+Helper.m"; sourceTree = "<group>"; };
 		18170915175BCBB6002A2D93 /* git-black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "git-black@2x.png"; sourceTree = "<group>"; };
 		1817091B175BCBEA002A2D93 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1817091C175BCBEA002A2D93 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -592,6 +596,8 @@
 		18A625481775D57D00FC27AE /* DAGitPull.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAGitPull.m; sourceTree = "<group>"; };
 		18A625491775D59000FC27AE /* DAGitPullDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAGitPullDelegate.h; sourceTree = "<group>"; };
 		18A6254A1775D59000FC27AE /* DAGitPullDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAGitPullDelegate.m; sourceTree = "<group>"; };
+		18A6254F17763BED00FC27AE /* DAPeriodPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAPeriodPicker.h; sourceTree = "<group>"; };
+		18A6255017763BED00FC27AE /* DAPeriodPicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAPeriodPicker.m; sourceTree = "<group>"; };
 		18BAA85F1758016400154019 /* GitServers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GitServers.plist; sourceTree = "<group>"; };
 		18BAA8601758016400154019 /* DAGitServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGitServer.h; sourceTree = "<group>"; };
 		18BAA8611758016400154019 /* DAGitServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitServer.m; sourceTree = "<group>"; };
@@ -1258,6 +1264,7 @@
 		189A531F175922D100B5BD8D /* Repo */ = {
 			isa = PBXGroup;
 			children = (
+				18A6254E17763BC600FC27AE /* PeriodPicker */,
 				188B2D4F175D3E1C00BD1EEB /* CommitCell */,
 				18C9441C175B6B3E00A4D7CA /* BranchPickerCtrl */,
 				189A5320175922FA00B5BD8D /* DARepoCtrl.h */,
@@ -1582,6 +1589,17 @@
 			name = LibGit2;
 			sourceTree = "<group>";
 		};
+		18A6254E17763BC600FC27AE /* PeriodPicker */ = {
+			isa = PBXGroup;
+			children = (
+				18A6254F17763BED00FC27AE /* DAPeriodPicker.h */,
+				18A6255017763BED00FC27AE /* DAPeriodPicker.m */,
+				1816715C1776476D00F1DE4D /* DAPeriodPicker+Helper.h */,
+				1816715D1776476D00F1DE4D /* DAPeriodPicker+Helper.m */,
+			);
+			name = PeriodPicker;
+			sourceTree = "<group>";
+		};
 		18BAA85E1758016300154019 /* GitServer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1875,9 +1893,11 @@
 				18A6254B1775D59400FC27AE /* DAGitPullDelegate.m in Sources */,
 				189016BE175AAD8200F19CE4 /* DAGitCloneDelegate.m in Sources */,
 				189016C4175ABBDB00F19CE4 /* DAAboutCtrl.m in Sources */,
+				1816715717763D3300F1DE4D /* DAPeriodPicker.m in Sources */,
 				189016C7175ABC0B00F19CE4 /* DASettingsCtrl.m in Sources */,
 				189016E7175AC46400F19CE4 /* DynamicObject.m in Sources */,
 				189016E8175AC46400F19CE4 /* NSArray+AAV.m in Sources */,
+				1816715E17764B9C00F1DE4D /* DAPeriodPicker+Helper.m in Sources */,
 				189016E9175AC46400F19CE4 /* NSDate+InternetDateTime.m in Sources */,
 				189016EA175AC46400F19CE4 /* NSFileManager+Helper.m in Sources */,
 				189016EB175AC46400F19CE4 /* NSNumber+Bits.m in Sources */,

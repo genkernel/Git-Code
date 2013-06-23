@@ -11,7 +11,7 @@
 @implementation NSString (Gitty)
 
 - (BOOL)isUrlSuitable {
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"[0-9a-zA-Z/-/.]*"];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"[0-9a-zA-Z_~/-/.]*"];
 	return [predicate evaluateWithObject:self];
 }
 

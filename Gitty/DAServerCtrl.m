@@ -66,8 +66,7 @@
 #pragma mark UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"[0-9a-zA-Z/-]*"];
-	return [predicate evaluateWithObject:string];
+	return [string isUrlSuitable];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

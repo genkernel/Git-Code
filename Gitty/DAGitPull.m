@@ -24,7 +24,8 @@
 - (void)exec {
 	int code = [self.repo pull];
 	if (GIT_EEXISTS == code) {
-		// Silence.
+		NSDictionary *info = @{NSLocalizedDescriptionKey: @"No data pulled. Repo is up to date."};
+		_completionError = [NSError errorWithDomain:@"libgit2" code:code userInfo:info];
 	} else if (GIT_OK != code) {
 		NSDictionary *info = @{NSLocalizedDescriptionKey: @"Failed to Pull for repo."};
 		_completionError = [NSError errorWithDomain:@"libgit2" code:code userInfo:info];

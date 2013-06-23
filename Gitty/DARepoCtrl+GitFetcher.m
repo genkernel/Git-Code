@@ -75,11 +75,16 @@
 		[self.pullingField setProgress:percent progressColor:UIColor.acceptingGreenColor backgroundColor:UIColor.blackColor];
 	};
 	delegate.finishBlock = ^(DAGitAction *pull, NSError *err){
-		if (err) {
-			[self showErrorAlert:err.localizedDescription];
-		}
-		
 		[self setPullingViewVisible:NO animated:YES];
+		
+		if (err) {
+			if (GIT_EEXISTS == err.code) {
+				// Repo is up to date. Nothing updated.
+			} else {
+				[self showErrorAlert:err.localizedDescription];
+			}
+			return;
+		}
 		
 		[self reloadFilters];
 		[self reloadCommits];

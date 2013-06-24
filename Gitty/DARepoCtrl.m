@@ -74,22 +74,13 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 			}
 		};
 	} else if ([segue.identifier isEqualToString:DiffSegue]) {
+		NSIndexPath *ip = sender;
 		DADiffCtrl *ctrl = segue.destinationViewController;
 		
-		NSIndexPath *ip = sender;
-		// FIXME: hi
-		BOOL isFirstCommit = NO;//ip.row == self.commits.count - 1;
+		NSString *title = self.dateSections[ip.section];
+		NSArray *commits = self.commitsOnDateSection[title];
 		
-		if (isFirstCommit) {
-			NSAssert(NO, @"First commit diff.");
-		} else {
-//			NSDate *date = self.commitsSectionDates[ip.section];
-//			NSArray *commits = self.commitsByDate[date];
-			
-//			ctrl.changeCommit = commits[ip.row];
-			// FIXME: +1 is valid in section? - better diff.
-//			ctrl.previousCommit = commits[ip.row + 1];
-		}
+		ctrl.changeCommit = commits[ip.row];
 	} else {
 		[super prepareForSegue:segue sender:sender];
 	}

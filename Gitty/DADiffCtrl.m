@@ -15,8 +15,8 @@
 static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 
 @interface DADiffCtrl ()
-@property (strong, nonatomic, readonly) NSArray *deltas;
-@property (strong, nonatomic, readonly) NSDictionary *deltasLineNumbers;
+@property (strong, nonatomic, readonly) NSMutableArray *deltas;
+@property (strong, nonatomic, readonly) NSMutableDictionary *deltasLineNumbers;
 
 @property (strong, nonatomic, readonly) NSMutableSet *cachedHeaders, *cachedFooters;
 @end
@@ -41,16 +41,22 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 }
 
 - (void)prepareDiff {
+	_deltas = [NSMutableArray arrayWithCapacity:1024];
+	_deltasLineNumbers = [NSMutableDictionary dictionaryWithCapacity:1024];
+	
+	for (GTCommit *parent in self.changeCommit.parents) {
+		[self compareCommit:self.changeCommit againstParentCommit:parent];
+	}
+}
+
+- (void)compareCommit:(GTCommit *)commit againstParentCommit:(GTCommit *)oldCommit {
 	NSError *err = nil;
 	NSDictionary *opts = @{GTDiffOptionsMaxSizeKey: @(DiffFileMaxSize)};
 	
-	GTDiff *diff = [GTDiff diffOldTree:self.previousCommit.tree withNewTree:self.changeCommit.tree options:opts error:&err];
-	
-	NSMutableArray *deltas = [NSMutableArray arrayWithCapacity:200];
-	NSMutableDictionary *lineNumbers = [NSMutableDictionary dictionaryWithCapacity:200];
+	GTDiff *diff = [GTDiff diffOldTree:oldCommit.tree withNewTree:commit.tree options:opts error:&err];
 	
 	[diff enumerateDeltasUsingBlock:^(GTDiffDelta *delta, BOOL *stop) {
-		[deltas addObject:delta];
+		[self.deltas addObject:delta];
 		
 		[Logger info:@"delta (t:%d-b:%d-hc:%d): a:%d/d:%d/c:%d", delta.type, delta.isBinary, delta.hunkCount, delta.addedLinesCount, delta.deletedLinesCount, delta.contextLinesCount];
 		
@@ -66,11 +72,8 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 			}];
 		}];
 		
-		lineNumbers[@(deltas.count - 1)] = @(linesCount);
+		self.deltasLineNumbers[@(self.deltas.count - 1)] = @(linesCount);
 	}];
-	
-	_deltas = [NSArray arrayWithArray:deltas];
-	_deltasLineNumbers = [NSDictionary dictionaryWithDictionary:lineNumbers];
 }
 
 #pragma mark UITableViewDataSource, UITableViewDelegate

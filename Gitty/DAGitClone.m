@@ -81,7 +81,7 @@ static int cred_acquire_userpass(git_cred **, const char *, const char *, unsign
 	
 	NSError *err = nil;
 	_clonedRepo = [GTRepository cloneFromURL:remoteURL toWorkingDirectory:url
-									  barely:YES withCheckout:YES error:&err
+									  barely:YES withCheckout:NO error:&err
 					   transferProgressBlock:transferProgressBlock checkoutProgressBlock:checkoutProgressBlock
 				   authenticationCallback:cred_acquire_userpass authenticationPayload:(__bridge void *)(user)];
 	
@@ -107,7 +107,7 @@ static int cred_acquire_userpass(git_cred **out,
 	return git_cred_userpass_plaintext_new(out, user.username.UTF8String, user.password.UTF8String);
 }
 
-// TODO: Implemente SSH auth method.
+// TODO: Implement SSH auth method.
 static int cred_acquire_ssh(git_cred **out,
 								 const char *url,
 								 const char *username_from_url,

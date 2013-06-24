@@ -9,7 +9,7 @@
 #import "DABaseCtrl.h"
 
 @interface DADiffCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate>
-@property (strong, nonatomic) GTCommit *previousCommit, *changeCommit;
+@property (strong, nonatomic) GTCommit/* *previousCommit,*/ *changeCommit;
 
 @property (strong, nonatomic) IBOutlet UITableView *table;
 @end

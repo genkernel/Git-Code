@@ -12,6 +12,7 @@
 	#import <UIKit/UIKit.h>
 	#import <Foundation/Foundation.h>
 	#import <QuartzCore/QuartzCore.h>
+	#import <MobileCoreServices/MobileCoreServices.h>
 
 #import <ObjectiveGit/ObjectiveGit.h>
 #import "LibGit2/LibGit2-Helpers.pch"

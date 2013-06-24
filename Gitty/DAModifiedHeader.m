@@ -25,10 +25,12 @@
 }
 
 - (void)loadDelta:(GTDiffDelta *)delta {
+	self.graph.delta = delta;
+	
+	self.filenameLabel.text = delta.newFile.path.lastPathComponent;
+	
 	self.additionsLabel.text = [NSString stringWithFormat:@"%d additions", delta.addedLinesCount];
 	self.deletionsLabel.text = [NSString stringWithFormat:@"%d deletions", delta.deletedLinesCount];
-	
-	self.graph.delta = delta;
 }
 
 @end

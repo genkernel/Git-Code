@@ -60,6 +60,12 @@
 		18438B611777A8CC00943F9F /* DAGravatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B601777A8CC00943F9F /* DAGravatar.m */; };
 		18438B641777AA0600943F9F /* UIImageView+Gravatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B631777AA0600943F9F /* UIImageView+Gravatar.m */; };
 		1861887B176E145F00666DFB /* DAServerCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18618879176E0FF000666DFB /* DAServerCtrl.m */; };
+		186A92D9177848FB00B2EEF3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186A92D8177848FB00B2EEF3 /* MobileCoreServices.framework */; };
+		186A92E21778522C00B2EEF3 /* DAStatusHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 186A92E01778522C00B2EEF3 /* DAStatusHeader.m */; };
+		186A92E31778522C00B2EEF3 /* DAStatusHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186A92E11778522C00B2EEF3 /* DAStatusHeader.xib */; };
+		186A92E61778534F00B2EEF3 /* section_status.png in Resources */ = {isa = PBXBuildFile; fileRef = 186A92E41778534F00B2EEF3 /* section_status.png */; };
+		186A92E71778534F00B2EEF3 /* section_status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 186A92E51778534F00B2EEF3 /* section_status@2x.png */; };
+		186A92EA177864B200B2EEF3 /* DADiffCtrl+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = 186A92E9177864B200B2EEF3 /* DADiffCtrl+UI.m */; };
 		18706EDB1763B3B40046A2A6 /* DADiffDeltaGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18706EDA1763B3B40046A2A6 /* DADiffDeltaGraphView.m */; };
 		18706EDF1763ECF10046A2A6 /* DADeltaContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18706EDE1763ECF10046A2A6 /* DADeltaContentCell.xib */; };
 		18706EE31764075D0046A2A6 /* UIColor+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 18706EE21764075D0046A2A6 /* UIColor+Gitty.m */; };
@@ -254,6 +260,14 @@
 		18618878176E0FF000666DFB /* DAServerCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAServerCtrl.h; sourceTree = "<group>"; };
 		18618879176E0FF000666DFB /* DAServerCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAServerCtrl.m; sourceTree = "<group>"; };
 		1861887A176E0FF000666DFB /* DAServerCtrl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DAServerCtrl.xib; sourceTree = "<group>"; };
+		186A92D8177848FB00B2EEF3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		186A92DF1778522C00B2EEF3 /* DAStatusHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAStatusHeader.h; sourceTree = "<group>"; };
+		186A92E01778522C00B2EEF3 /* DAStatusHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAStatusHeader.m; sourceTree = "<group>"; };
+		186A92E11778522C00B2EEF3 /* DAStatusHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAStatusHeader.xib; sourceTree = "<group>"; };
+		186A92E41778534F00B2EEF3 /* section_status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = section_status.png; sourceTree = "<group>"; };
+		186A92E51778534F00B2EEF3 /* section_status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "section_status@2x.png"; sourceTree = "<group>"; };
+		186A92E8177864B200B2EEF3 /* DADiffCtrl+UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DADiffCtrl+UI.h"; sourceTree = "<group>"; };
+		186A92E9177864B200B2EEF3 /* DADiffCtrl+UI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DADiffCtrl+UI.m"; sourceTree = "<group>"; };
 		18706ED91763B3B40046A2A6 /* DADiffDeltaGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADiffDeltaGraphView.h; sourceTree = "<group>"; };
 		18706EDA1763B3B40046A2A6 /* DADiffDeltaGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADiffDeltaGraphView.m; sourceTree = "<group>"; };
 		18706EDE1763ECF10046A2A6 /* DADeltaContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DADeltaContentCell.xib; sourceTree = "<group>"; };
@@ -695,6 +709,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				186A92D9177848FB00B2EEF3 /* MobileCoreServices.framework in Frameworks */,
 				1804FAB2176E7AF20080AB50 /* SystemConfiguration.framework in Frameworks */,
 				189A532E1759237C00B5BD8D /* QuartzCore.framework in Frameworks */,
 				18184B6717556968001C58D8 /* libz.dylib in Frameworks */,
@@ -938,6 +953,16 @@
 				1861887A176E0FF000666DFB /* DAServerCtrl.xib */,
 			);
 			name = Server;
+			sourceTree = "<group>";
+		};
+		186A92DE177851ED00B2EEF3 /* StatusHeader */ = {
+			isa = PBXGroup;
+			children = (
+				186A92DF1778522C00B2EEF3 /* DAStatusHeader.h */,
+				186A92E01778522C00B2EEF3 /* DAStatusHeader.m */,
+				186A92E11778522C00B2EEF3 /* DAStatusHeader.xib */,
+			);
+			name = StatusHeader;
 			sourceTree = "<group>";
 		};
 		18706ED41763B3030046A2A6 /* DiffDeltaGraph */ = {
@@ -1334,6 +1359,7 @@
 		18933CD61755395D00E92183 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				186A92D8177848FB00B2EEF3 /* MobileCoreServices.framework */,
 				1804FAB1176E7AF20080AB50 /* SystemConfiguration.framework */,
 				1804FAAF176E7AD10080AB50 /* CFNetwork.framework */,
 				189A532D1759237C00B5BD8D /* QuartzCore.framework */,
@@ -1829,6 +1855,8 @@
 				18F995B8175FAE340033A4A0 /* SectionHeaders */,
 				18F995B5175F6EB70033A4A0 /* DADiffCtrl.h */,
 				18F995B6175F6EB70033A4A0 /* DADiffCtrl.m */,
+				186A92E8177864B200B2EEF3 /* DADiffCtrl+UI.h */,
+				186A92E9177864B200B2EEF3 /* DADiffCtrl+UI.m */,
 			);
 			name = Diff;
 			sourceTree = "<group>";
@@ -1836,6 +1864,7 @@
 		18F995B8175FAE340033A4A0 /* SectionHeaders */ = {
 			isa = PBXGroup;
 			children = (
+				186A92DE177851ED00B2EEF3 /* StatusHeader */,
 				18F995B9175FAE4C0033A4A0 /* ModifiedHeader */,
 			);
 			name = SectionHeaders;
@@ -1868,6 +1897,8 @@
 		18F995D1175FBEDB0033A4A0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				186A92E41778534F00B2EEF3 /* section_status.png */,
+				186A92E51778534F00B2EEF3 /* section_status@2x.png */,
 				1804FAB3176E85790080AB50 /* Buttons */,
 				18F995D2175FBEDB0033A4A0 /* section_footer.png */,
 				18F995D3175FBEDB0033A4A0 /* section_footer@2x.png */,
@@ -1994,6 +2025,9 @@
 				181671641776752200F1DE4D /* Periods.plist in Resources */,
 				1804FA8F176E2D640080AB50 /* GitHub-Mark-120px-plus.png in Resources */,
 				1804FAC0176EAACD0080AB50 /* btn-red.png in Resources */,
+				186A92E31778522C00B2EEF3 /* DAStatusHeader.xib in Resources */,
+				186A92E61778534F00B2EEF3 /* section_status.png in Resources */,
+				186A92E71778534F00B2EEF3 /* section_status@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2087,6 +2121,8 @@
 				1804FA7F176E15D80080AB50 /* PagerItemView.m in Sources */,
 				18706EE31764075D0046A2A6 /* UIColor+Gitty.m in Sources */,
 				18438B4B1777A35100943F9F /* AFNetworkActivityIndicatorManager.m in Sources */,
+				186A92E21778522C00B2EEF3 /* DAStatusHeader.m in Sources */,
+				186A92EA177864B200B2EEF3 /* DADiffCtrl+UI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

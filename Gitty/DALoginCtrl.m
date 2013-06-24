@@ -44,6 +44,8 @@ static NSString *SettingsSegue = @"SettingsSegue";
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+	
 	_ctrls = NSMutableArray.new;
 	_createCtrl = [self newServerCreationCtrl];
 	

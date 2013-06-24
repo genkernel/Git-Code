@@ -7,8 +7,10 @@
 //
 
 #import "DADiffCtrl.h"
+#import "DADiffCtrl+UI.h"
 // Section Headers.
 #import "DAModifiedHeader.h"
+#import "DAStatusHeader.h"
 // Cells.
 #import "DADeltaContentCell.h"
 
@@ -18,16 +20,16 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 @property (strong, nonatomic, readonly) NSMutableArray *deltas;
 @property (strong, nonatomic, readonly) NSMutableDictionary *deltasLineNumbers;
 
-@property (strong, nonatomic, readonly) NSMutableSet *cachedHeaders, *cachedFooters;
+@property (strong, nonatomic, readonly) NSMutableDictionary *cachedViews;
 @end
 
 @implementation DADiffCtrl
+@synthesize cachedViews = _cachedViews;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	_cachedHeaders = NSMutableSet.set;
-	_cachedFooters = NSMutableSet.set;
+	_cachedViews = NSMutableDictionary.new;
 	
 	UINib *nib = [UINib nibWithNibName:DADeltaContentCell.className bundle:nil];
 	[self.table registerNib:nib forCellReuseIdentifier:DADeltaContentCell.className];
@@ -87,22 +89,22 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-	DAModifiedHeader *view = nil;
+	GTDiffDelta *delta = self.deltas[section];
 	
-	if (self.cachedHeaders.count) {
-		// Reuse cached view.
-		view = self.cachedHeaders.anyObject;
-		[self.cachedHeaders removeObject:view];
-	} else {
-		view = DAModifiedHeader.new;
+	Class cls = GTDiffFileDeltaModified == delta.type ? DAModifiedHeader.class : DAStatusHeader.class;
+	
+	NSString *identifier = NSStringFromClass(cls);
+	UIView *view = [self cachedViewWithIdentifier:identifier];
+	if (!view) {
+		view = cls.new;
 	}
 	
-	[view loadDelta:self.deltas[section]];
+	[view performSelector:@selector(loadDelta:) withObject:delta];
 	return view;
 }
 
 - (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section {
-	[self.cachedHeaders addObject:view];
+	[self cacheView:view withIdentifier:view.className];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -110,25 +112,20 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-	UIImageView *view = nil;
-	
-	if (self.cachedFooters.count) {
-		// Reuse cached view.
-		view = self.cachedFooters.anyObject;
-		[self.cachedFooters removeObject:view];
-	} else {
+	UIView *view = [self cachedViewWithIdentifier:UIImageView.className];
+	if (!view) {
 		view = [UIImageView.alloc initWithImage:[UIImage imageNamed:@"section_footer.png"]];
 	}
-	
 	return view;
 }
 
 - (void)tableView:(UITableView *)tableView didEndDisplayingFooterView:(UIView *)view forSection:(NSInteger)section {
-	[self.cachedFooters addObject:view];
+	[self cacheView:view withIdentifier:view.className];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 1;
+	GTDiffDelta *delta = self.deltas[section];
+	return GTDiffFileDeltaModified == delta.type ? 1 : 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

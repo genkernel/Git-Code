@@ -8,8 +8,10 @@
 
 #import "DABaseCtrl.h"
 
-@interface DADiffCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate>
-@property (strong, nonatomic) GTCommit/* *previousCommit,*/ *changeCommit;
+@interface DADiffCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate> {
+	NSMutableDictionary *_cachedViews;
+}
+@property (strong, nonatomic) GTCommit *changeCommit;
 
 @property (strong, nonatomic) IBOutlet UITableView *table;
 @end

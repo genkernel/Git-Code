@@ -39,6 +39,8 @@
 
 - (void)applyGeneralStyle {
 	self.layer.cornerRadius = 4.;
+	self.layer.masksToBounds = YES;
+	
 	[self applyShadowOfRadius:2. withColor:UIColor.blackColor];
 	
 	[self setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];

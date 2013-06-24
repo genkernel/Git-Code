@@ -31,6 +31,9 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	self.title = self.changeCommit.author.name;
+	self.navigationItem.prompt = self.changeCommit.messageSummary;
+	
 	_cachedViews = NSMutableDictionary.new;
 	
 	UINib *nib = [UINib nibWithNibName:DADeltaContentCell.className bundle:nil];

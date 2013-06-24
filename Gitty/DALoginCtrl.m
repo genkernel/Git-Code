@@ -168,7 +168,7 @@ static NSString *SettingsSegue = @"SettingsSegue";
 		
 		if (err) {
 			NSString *title = NSLocalizedString(@"Error", nil);
-			NSString *message = NSLocalizedString(@"Error", nil);
+			NSString *message = NSLocalizedString(err.localizedDescription, nil);
 			
 			[self.app showAlert:title message:message delegate:nil];
 			return;

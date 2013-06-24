@@ -22,8 +22,8 @@
 	
 	((PagerItemView *)self.view).identifier = self.className;
 	
-	[self.exploreButton applyBlueStyle];
-	[self.loginButton applyGreenStyle];
+	[self.loginButton applyBlueStyle];
+	[self.exploreButton applyGreenStyle];
 	
 	self.repoField.layer.borderColor = UIColor.lightGrayColor.CGColor;
 	self.repoField.layer.borderWidth = 1.;
@@ -34,6 +34,8 @@
 	[super setEditing:editing animated:animated];
 	
 	self.repoField.enabled = editing;
+	self.userNameField.enabled = editing;
+	self.userPasswordField.enabled = editing;
 }
 
 - (void)loadServer:(DAGitServer *)server {
@@ -70,10 +72,16 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	if (0 == textField.text.length > 0) {
+		return NO;
+	}
+	
 	[textField resignFirstResponder];
 	
-	if (textField.text.length > 0) {
-////		[self testRepoWithUserString:textField.text];
+	if (self.isUsingCredentials && textField == self.repoField) {
+		[self.userNameField becomeFirstResponder];
+	} else if (textField == self.userNameField) {
+		[self.userPasswordField becomeFirstResponder];
 	}
 	
 	return YES;
@@ -113,7 +121,7 @@
 }
 
 - (void)showLoginButton {
-	[self.loginButton applyGreenStyle];
+	[self.loginButton applyBlueStyle];
 	[self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
 }
 

@@ -200,6 +200,7 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 	
 	_currentBranch = branch;
 	
+	self.title = branch.shortName;
 	[self.currentBranchButton setTitle:self.currentBranch.name.lastPathComponent forState:UIControlStateNormal];
 	
 	return YES;

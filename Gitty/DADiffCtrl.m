@@ -48,6 +48,11 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 	return UIInterfaceOrientationMaskAll;
 }
 
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+	BOOL hidden = UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
+	[self.navigationController setNavigationBarHidden:hidden];
+}
+
 - (void)prepareDiff {
 	_deltas = [NSMutableArray arrayWithCapacity:1024];
 	_deltasLineNumbers = [NSMutableDictionary dictionaryWithCapacity:1024];

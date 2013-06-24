@@ -11,6 +11,10 @@
 @implementation DABaseCtrl
 @dynamic git, servers, app;
 
+- (NSUInteger)supportedInterfaceOrientations {
+	return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+}
+
 #pragma mark Properties
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

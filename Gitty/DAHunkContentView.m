@@ -9,25 +9,33 @@
 #import "DAHunkContentView.h"
 
 static const NSUInteger AverageSymbolsInLine = 50;
+static const CGFloat CodeRightMargin = 10.;
 
 @implementation DAHunkContentView
 
-- (void)loadHunk:(GTDiffHunk *)hunk {
+- (void)awakeFromNib {
+	[super awakeFromNib];
+	
 #ifdef DEBUG
 	[self colorizeBorderWithColor:UIColor.greenColor];
 #endif
-	
+}
+
+- (void)loadHunk:(GTDiffHunk *)hunk {
 	__block CGFloat longestLineWidth = .0;
 	
+	NSUInteger lineCount = hunk.lineCount + 1/*header (function context)*/;
+	
 	CGFloat lineHeight = self.codeLabel.font.lineHeight;
-	CGFloat height = hunk.lineCount * lineHeight;
+	CGFloat height = lineCount * lineHeight;
 	
 	CGRect r = CGRectMake(.0, lineHeight/*omit context header*/, self.width, height);
 	UIView *renderImageView = [UIView.alloc initWithFrame:r];
 	
-	NSUInteger capacity = hunk.lineCount * AverageSymbolsInLine;
+	NSUInteger capacity = lineCount * AverageSymbolsInLine;
 	NSMutableString *code = [NSMutableString stringWithCapacity:capacity];
 	
+	// TODO: Function name context (impl via regexpr).
 	[code appendFormat:@"%@", hunk.header];
 	
 	__block NSUInteger lineOffset = 1;
@@ -36,7 +44,7 @@ static const NSUInteger AverageSymbolsInLine = 50;
 		[code appendFormat:@"\n%@", line.content];
 		
 		CGSize s = [line.content sizeWithFont:self.codeLabel.font];
-		longestLineWidth = MAX(longestLineWidth, s.width + 20.);
+		longestLineWidth = MAX(longestLineWidth, s.width);
 		
 		UIView *lineView = [self coloredViewForLine:line];
 		lineView.y = lineOffset * self.codeLabel.font.lineHeight;
@@ -50,7 +58,11 @@ static const NSUInteger AverageSymbolsInLine = 50;
 	
 	if (s.height != height) {
 		[Logger warn:@"Another height calculated."];
+		s.height = height;
 	}
+	
+	longestLineWidth += CodeRightMargin;
+	s.width += CodeRightMargin;
 	
 	self.width = s.width;
 	self.height = s.height;

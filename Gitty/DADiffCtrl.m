@@ -15,6 +15,8 @@
 #import "DADeltaContentCell.h"
 
 static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
+// FIXME: design!
+//static const NSUInteger SectionHeaderShadowOverlayHeight = 30.;
 
 @interface DADiffCtrl ()
 @property (strong, nonatomic, readonly) NSMutableArray *deltas;
@@ -42,6 +44,10 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 	[Logger info:@"Diff created in %.2f.", period];
 }
 
+- (NSUInteger)supportedInterfaceOrientations {
+	return UIInterfaceOrientationMaskAll;
+}
+
 - (void)prepareDiff {
 	_deltas = [NSMutableArray arrayWithCapacity:1024];
 	_deltasLineNumbers = [NSMutableDictionary dictionaryWithCapacity:1024];
@@ -62,12 +68,12 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 		
 		[Logger info:@"delta (t:%d-b:%d-hc:%d): a:%d/d:%d/c:%d", delta.type, delta.isBinary, delta.hunkCount, delta.addedLinesCount, delta.deletedLinesCount, delta.contextLinesCount];
 		
-		__block NSUInteger linesCount = 1;
+		__block NSUInteger linesCount = 0;
 		
 		[delta enumerateHunksWithBlock:^(GTDiffHunk *hunk, BOOL *stop) {
 			[Logger info:@"  hunk (lc:%d) : %@", hunk.lineCount, hunk.header];
 			
-			linesCount += hunk.lineCount;
+			linesCount += hunk.lineCount + 1/*header*/;
 			
 			[hunk enumerateLinesInHunkUsingBlock:^(GTDiffLine *line, BOOL *stop) {
 				[Logger info:@"    line (o:%d %d->%d) : %@", line.origin, line.oldLineNumber, line.newLineNumber, line.content];
@@ -129,8 +135,11 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	// TODO: fetch height directly from cell instance.
+	static const CGFloat lineHeight = 17.;
+	
 	NSUInteger linesNumber = [self.deltasLineNumbers[@(indexPath.section)] unsignedIntValue];
-	return (1 + linesNumber) * 17. + 5.;
+	return linesNumber * lineHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

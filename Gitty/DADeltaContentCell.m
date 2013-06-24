@@ -24,13 +24,13 @@
 		
 		[view loadHunk:hunk];
 		
-		longestLineWidth = MAX(longestLineWidth, view.longestLineWidth + 10.);
+		longestLineWidth = MAX(longestLineWidth, view.longestLineWidth);
 		
 		view.y = vOffset;
 		
 		[self.scroll addSubview:view];
 		
-		vOffset += view.height + 20.;
+		vOffset += view.height;
 	}];
 	
 	self.scroll.contentSize = CGSizeMake(longestLineWidth, vOffset);

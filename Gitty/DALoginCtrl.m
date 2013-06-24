@@ -61,18 +61,6 @@ static NSString *SettingsSegue = @"SettingsSegue";
 	[self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
-	return UIInterfaceOrientationPortrait;
-}
-
-- (BOOL)shouldAutorotate {
-	return YES;
-}
-
-//- (NSUInteger)supportedInterfaceOrientations {
-//	return UIInterfaceOrientationMaskPortrait;
-//}
-
 - (void)testRepoWithUserString:(NSString *)repoName credentialsObject:(DAGitUser *)user {
 	BOOL existent = [self.git isLocalRepoExistent:repoName forServer:self.currentServer];
 	isRepoCloned = !existent;

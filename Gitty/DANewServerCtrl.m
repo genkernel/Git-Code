@@ -17,6 +17,9 @@
     [super viewDidLoad];
 	
 	[self.createButton applyGreenStyle];
+	
+	[self.serverNameField applyThinStyle];
+	[self.serverUrlField applyThinStyle];
 }
 
 - (void)resetFields {

@@ -112,7 +112,7 @@
 							<object class="IBUIView" id="1020255519">
 								<reference key="NSNextResponder" ref="763360860"/>
 								<int key="NSvFlags">1296</int>
-								<string key="NSFrame">{{129, 15}, {1, 40}}</string>
+								<string key="NSFrame">{{129, 15}, {1, 50}}</string>
 								<reference key="NSSuperview" ref="763360860"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
@@ -137,6 +137,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<string key="IBUIText">genkernel/objective-git.git</string>
+								<int key="IBUIBorderStyle">1</int>
 								<string key="IBUIPlaceholder">username/repo</string>
 								<reference key="IBUITextColor" ref="315470396"/>
 								<int key="IBUITextAlignment">1</int>
@@ -174,12 +175,13 @@
 										<reference key="NSSuperview" ref="1044005158"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="160387499"/>
+										<reference key="IBUIBackgroundColor" ref="1033408263"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIContentVerticalAlignment">0</int>
 										<string key="IBUIText">genkernel</string>
-										<int key="IBUIBorderStyle">3</int>
+										<int key="IBUIBorderStyle">1</int>
 										<string key="IBUIPlaceholder">username</string>
 										<reference key="IBUITextColor" ref="315470396"/>
 										<int key="IBUITextAlignment">1</int>
@@ -202,12 +204,13 @@
 										<reference key="NSSuperview" ref="1044005158"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="993817350"/>
+										<reference key="IBUIBackgroundColor" ref="1033408263"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIContentVerticalAlignment">0</int>
 										<string key="IBUIText">dRaz6B4c</string>
-										<int key="IBUIBorderStyle">3</int>
+										<int key="IBUIBorderStyle">1</int>
 										<string key="IBUIPlaceholder">password</string>
 										<reference key="IBUITextColor" ref="315470396"/>
 										<int key="IBUITextAlignment">1</int>
@@ -223,7 +226,7 @@
 										<reference key="IBUIFont" ref="1009242631"/>
 									</object>
 								</array>
-								<string key="NSFrame">{{0, 40}, {260, 80}}</string>
+								<string key="NSFrame">{{0, 50}, {260, 80}}</string>
 								<reference key="NSSuperview" ref="763360860"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1019904685"/>
@@ -307,7 +310,7 @@
 										<reference key="IBUIFont" ref="1009242631"/>
 									</object>
 								</array>
-								<string key="NSFrame">{{0, 40}, {260, 80}}</string>
+								<string key="NSFrame">{{0, 50}, {260, 80}}</string>
 								<reference key="NSSuperview" ref="763360860"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="576819976"/>
@@ -323,7 +326,7 @@
 							</object>
 						</array>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrame">{{30, 220}, {260, 120}}</string>
+						<string key="NSFrame">{{30, 210}, {260, 130}}</string>
 						<reference key="NSSuperview" ref="171443969"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="239397454"/>

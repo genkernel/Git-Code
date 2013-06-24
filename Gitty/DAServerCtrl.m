@@ -25,9 +25,9 @@
 	[self.loginButton applyBlueStyle];
 	[self.exploreButton applyGreenStyle];
 	
-	self.repoField.layer.borderColor = UIColor.lightGrayColor.CGColor;
-	self.repoField.layer.borderWidth = 1.;
-	self.repoField.layer.cornerRadius = 5.;
+	[self.repoField applyThinStyle];
+	[self.userNameField applyThinStyle];
+	[self.userPasswordField applyThinStyle];
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {

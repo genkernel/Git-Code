@@ -15,7 +15,9 @@
 	#import <MobileCoreServices/MobileCoreServices.h>
 
 #import <ObjectiveGit/ObjectiveGit.h>
-#import "LibGit2/LibGit2-Helpers.pch"
+//#import "ObjectiveGit.h"
+//#import <ObjectiveGit.h>
+#import "LibGit2-Helpers.pch"
 
 #import "UIViewAdditions.h"
 #import "Reachability.h"
@@ -28,6 +30,7 @@
 #import "UIColor+Gitty.h"
 #import "UIButton+Gitty.h"
 #import "NSString+Gitty.h"
+#import "UITextField+Gitty.h"
 #import "DAGravatar.h"
 
 #import "DAGitManager.h"

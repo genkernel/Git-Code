@@ -43,7 +43,7 @@
 		18184B6017555AB5001C58D8 /* DABaseCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18184B5F17555AB5001C58D8 /* DABaseCtrl.m */; };
 		18184B6717556968001C58D8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18184B6617556968001C58D8 /* libz.dylib */; };
 		181993D5176D25BE00D4BE1F /* DACreateServerTopMargin.m in Sources */ = {isa = PBXBuildFile; fileRef = 181993D4176D23D900D4BE1F /* DACreateServerTopMargin.m */; };
-		183DA706175549F900140DA8 /* libObjectiveGit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 183DA703175549D100140DA8 /* libObjectiveGit-iOS.a */; };
+		183DA706175549F900140DA8 /* libObjectiveGit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 183DA703175549D100140DA8 /* libObjectiveGit-iOS.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		18438B181777778200943F9F /* GTCommit+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B171777778200943F9F /* GTCommit+Gitty.m */; };
 		18438B471777A35100943F9F /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B351777A35100943F9F /* AFHTTPClient.m */; };
 		18438B481777A35100943F9F /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B371777A35100943F9F /* AFHTTPRequestOperation.m */; };
@@ -66,6 +66,7 @@
 		186A92E61778534F00B2EEF3 /* section_status.png in Resources */ = {isa = PBXBuildFile; fileRef = 186A92E41778534F00B2EEF3 /* section_status.png */; };
 		186A92E71778534F00B2EEF3 /* section_status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 186A92E51778534F00B2EEF3 /* section_status@2x.png */; };
 		186A92EA177864B200B2EEF3 /* DADiffCtrl+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = 186A92E9177864B200B2EEF3 /* DADiffCtrl+UI.m */; };
+		186A92F41778BD4C00B2EEF3 /* UITextField+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 186A92F31778BD4C00B2EEF3 /* UITextField+Gitty.m */; };
 		18706EDB1763B3B40046A2A6 /* DADiffDeltaGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18706EDA1763B3B40046A2A6 /* DADiffDeltaGraphView.m */; };
 		18706EDF1763ECF10046A2A6 /* DADeltaContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18706EDE1763ECF10046A2A6 /* DADeltaContentCell.xib */; };
 		18706EE31764075D0046A2A6 /* UIColor+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 18706EE21764075D0046A2A6 /* UIColor+Gitty.m */; };
@@ -268,6 +269,8 @@
 		186A92E51778534F00B2EEF3 /* section_status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "section_status@2x.png"; sourceTree = "<group>"; };
 		186A92E8177864B200B2EEF3 /* DADiffCtrl+UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DADiffCtrl+UI.h"; sourceTree = "<group>"; };
 		186A92E9177864B200B2EEF3 /* DADiffCtrl+UI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DADiffCtrl+UI.m"; sourceTree = "<group>"; };
+		186A92F21778BD4C00B2EEF3 /* UITextField+Gitty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Gitty.h"; sourceTree = "<group>"; };
+		186A92F31778BD4C00B2EEF3 /* UITextField+Gitty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Gitty.m"; sourceTree = "<group>"; };
 		18706ED91763B3B40046A2A6 /* DADiffDeltaGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADiffDeltaGraphView.h; sourceTree = "<group>"; };
 		18706EDA1763B3B40046A2A6 /* DADiffDeltaGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADiffDeltaGraphView.m; sourceTree = "<group>"; };
 		18706EDE1763ECF10046A2A6 /* DADeltaContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DADeltaContentCell.xib; sourceTree = "<group>"; };
@@ -983,6 +986,8 @@
 				1804FA8A176E2A800080AB50 /* UIButton+Gitty.m */,
 				1804FABA176E87630080AB50 /* NSString+Gitty.h */,
 				1804FABB176E87630080AB50 /* NSString+Gitty.m */,
+				186A92F21778BD4C00B2EEF3 /* UITextField+Gitty.h */,
+				186A92F31778BD4C00B2EEF3 /* UITextField+Gitty.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -2123,6 +2128,7 @@
 				18438B4B1777A35100943F9F /* AFNetworkActivityIndicatorManager.m in Sources */,
 				186A92E21778522C00B2EEF3 /* DAStatusHeader.m in Sources */,
 				186A92EA177864B200B2EEF3 /* DADiffCtrl+UI.m in Sources */,
+				186A92F41778BD4C00B2EEF3 /* UITextField+Gitty.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2219,15 +2225,13 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gitty/Gitty-Prefix.pch";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Gitty/Gitty-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Libs/lib\"",
-				);
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Libs/lib\"";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Submodules/objective-git/libgit2/include $(BUILT_PRODUCTS_DIR)/usr/local/include $(SRCROOT)/Submodules/objective-git/Classes/Categories $(SRCROOT)/Submodules/ConceptScroll/PagerView";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Submodules/objective-git/libgit2/include $(SRCROOT)/Submodules/ConceptScroll/PagerView $(PROJECT_TEMP_DIR)/../UninstalledProducts/include";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2238,15 +2242,13 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gitty/Gitty-Prefix.pch";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Gitty/Gitty-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Libs/lib\"",
-				);
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Libs/lib\"";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Submodules/objective-git/libgit2/include $(BUILT_PRODUCTS_DIR)/usr/local/include $(SRCROOT)/Submodules/objective-git/Classes/Categories $(SRCROOT)/Submodules/ConceptScroll/PagerView";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Submodules/objective-git/libgit2/include $(SRCROOT)/Submodules/ConceptScroll/PagerView $(PROJECT_TEMP_DIR)/../UninstalledProducts/include";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

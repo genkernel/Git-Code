@@ -32,12 +32,11 @@
 	return [self.calendar dateFromComponents:components];*/
 	NSInteger seconds = [self.commitTimeZone secondsFromGMTForDate:self.commitDate];
 	return [self.commitDate dateByAddingTimeInterval:seconds];
-	
-	
-	//	if (14 == components.day) {
-	//		NSLog(@"\ntz: %@", components);
-	//		NSLog(@"date: %@", commitLocalDate);
-	//	}
+}
+
+- (BOOL)isLargeCommit {
+	BOOL isInitialCommit = 0 == self.parents.count;
+	return isInitialCommit || self.parents.count >= 2;
 }
 
 @end

@@ -11,4 +11,6 @@
 @interface GTCommit (Gitty)
 @property (strong, nonatomic, readonly) NSCalendar *calendar;
 @property (strong, nonatomic, readonly) NSDate *authorLocalDate;
+
+- (BOOL)isLargeCommit;
 @end

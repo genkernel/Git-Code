@@ -38,6 +38,35 @@
 	}];
 }
 
+- (void)setDiffLoadingOverlayVisible:(BOOL)visible animated:(BOOL)animated {
+	BOOL isOverlayVisible = !self.diffLoadingOverlay.hidden;
+	if (isOverlayVisible == visible) {
+		return;
+	}
+	
+	if (visible) {
+		self.diffLoadingOverlay.hidden = NO;
+		[self.diffLoadingIndicator startAnimating];
+	}
+	
+	void (^actionBlock)() = ^{
+		self.diffLoadingOverlay.alpha = visible ? .70 : .0;
+	};
+	void (^completionBlock)(BOOL) = ^(BOOL finished){
+		if (!visible) {
+			self.diffLoadingOverlay.hidden = YES;
+			[self.diffLoadingIndicator stopAnimating];
+		}
+	};
+	
+	if (animated) {
+		[UIView animateWithDuration:StandartAnimationDuration animations:actionBlock completion:completionBlock];
+	} else {
+		actionBlock();
+		completionBlock(YES);
+	}
+}
+
 - (void)setPullingViewVisible:(BOOL)visible animated:(BOOL)animated {
 	if (visible) {
 		[self.pullingIndicator startAnimating];

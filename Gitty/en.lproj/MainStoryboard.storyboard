@@ -284,6 +284,18 @@
                                     <segue destination="2ep-8m-MxX" kind="embed" identifier="PeriodPickerSegue" id="xv2-vd-2PT"/>
                                 </connections>
                             </containerView>
+                            <view hidden="YES" alpha="0.0" contentMode="scaleToFill" id="sVN-2v-uHm" userLabel="Diff Loading Overlay">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="dbq-vd-6p3" userLabel="Loading Activity Indicator">
+                                        <rect key="frame" x="141" y="234" width="37" height="37"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -296,6 +308,8 @@
                         <outlet property="commitsContainer" destination="01u-cQ-30S" id="DXz-P4-gzq"/>
                         <outlet property="commitsTable" destination="a4a-3k-Zyy" id="Iyl-TG-lZQ"/>
                         <outlet property="currentBranchButton" destination="Cxt-15-Tyt" id="4bz-tb-Od2"/>
+                        <outlet property="diffLoadingIndicator" destination="dbq-vd-6p3" id="KWF-wg-1WZ"/>
+                        <outlet property="diffLoadingOverlay" destination="sVN-2v-uHm" id="5Yw-in-kCp"/>
                         <outlet property="filtersContainer" destination="56n-kQ-zDQ" id="gY5-9P-8ow"/>
                         <outlet property="grayOverlay" destination="syR-gB-lih" id="cXw-EV-MM1"/>
                         <outlet property="headerContainer" destination="JSV-Rf-GSV" id="KXv-8y-FFk"/>
@@ -453,10 +467,15 @@
         <class className="DARepoCtrl" superclassName="DABaseCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DARepoCtrl.h"/>
             <relationships>
+                <relationship kind="action" name="selectBranchPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="selectPeriodPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="toggleFiltersPressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="branchOverlay" candidateClass="UIView"/>
                 <relationship kind="outlet" name="commitsContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="commitsTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="currentBranchButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="diffLoadingIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="diffLoadingOverlay" candidateClass="UIView"/>
                 <relationship kind="outlet" name="filtersContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="grayOverlay" candidateClass="UIView"/>
                 <relationship kind="outlet" name="headerContainer" candidateClass="UIView"/>

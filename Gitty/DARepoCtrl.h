@@ -21,6 +21,7 @@
 
 @property (strong, nonatomic, readonly) NSDateFormatter *dateSectionTitleFormatter;
 
+@property (strong, nonatomic) IBOutlet UIView *headerContainer;
 @property (strong, nonatomic) IBOutlet UIView *commitsContainer;
 @property (strong, nonatomic) IBOutlet UITableView *commitsTable;
 
@@ -28,7 +29,9 @@
 @property (strong, nonatomic) IBOutlet UIView *branchOverlay, *periodOverlay;
 
 @property (strong, nonatomic) IBOutlet UIView *grayOverlay;
-@property (strong, nonatomic) IBOutlet UIView *headerContainer;
+@property (strong, nonatomic) IBOutlet UIView *diffLoadingOverlay;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *diffLoadingIndicator;
+
 @property (strong, nonatomic) IBOutlet UITextField *pullingField;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *pullingIndicator;
 

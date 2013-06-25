@@ -110,6 +110,12 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 	[self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear:animated];
+	
+	[self setDiffLoadingOverlayVisible:NO animated:NO];
+}
+
 - (void)reloadFilters {
 	[self updateBranchesFilter];
 }
@@ -239,7 +245,26 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
-	[self performSegueWithIdentifier:DiffSegue sender:indexPath];
+	NSString *title = self.dateSections[indexPath.section];
+	NSArray *commits = self.commitsOnDateSection[title];
+	
+	GTCommit *commit = commits[indexPath.row];
+	[self presentDiffCtrlForCommit:commit fromIndexPath:indexPath];
+}
+
+- (void)presentDiffCtrlForCommit:(GTCommit *)commit fromIndexPath:(NSIndexPath *)indexPath {
+	if (!commit.isLargeCommit) {
+		[self performSegueWithIdentifier:DiffSegue sender:indexPath];
+		return;
+	}
+	
+	[UIView animateWithDuration:StandartAnimationDuration animations:^{
+		[self setDiffLoadingOverlayVisible:YES animated:NO];
+	}completion:^(BOOL finished) {
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self performSegueWithIdentifier:DiffSegue sender:indexPath];
+		});
+	}];
 }
 
 #pragma mark Actions

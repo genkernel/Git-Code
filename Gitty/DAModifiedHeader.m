@@ -31,6 +31,10 @@
 	
 	self.additionsLabel.text = [NSString stringWithFormat:@"%d additions", delta.addedLinesCount];
 	self.deletionsLabel.text = [NSString stringWithFormat:@"%d deletions", delta.deletedLinesCount];
+	
+	self.additionsLabel.hidden = delta.isBinary;
+	self.deletionsLabel.hidden = delta.isBinary;
+	self.binaryStatusLabel.hidden = !delta.isBinary;
 }
 
 @end

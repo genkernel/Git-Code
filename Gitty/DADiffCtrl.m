@@ -147,6 +147,7 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 	static const CGFloat lineHeight = 17.;
 	
 	NSUInteger linesNumber = [self.deltasLineNumbers[@(indexPath.section)] unsignedIntValue];
+	linesNumber += 0 == linesNumber ? 1 : 0;
 	return linesNumber * lineHeight;
 }
 

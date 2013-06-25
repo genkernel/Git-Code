@@ -96,7 +96,7 @@
 								<string key="NSFrame">{{0, 2}, {78, 18}}</string>
 								<reference key="NSSuperview" ref="522055936"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
+								<reference key="NSNextKeyView" ref="1050246919"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC45MDE5NjA3ODQzIDAuOTAxOTYwNzg0MyAwLjkwMTk2MDc4NDMAA</bytes>
@@ -144,6 +144,7 @@
 								<string key="NSFrame">{{170, 0}, {80, 20}}</string>
 								<reference key="NSSuperview" ref="522055936"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="265113343"/>
 								<string key="NSHuggingPriority">{251, 251}</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -172,6 +173,46 @@
 							<bytes key="NSWhite">MCAwAA</bytes>
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+					<object class="IBUILabel" id="265113343">
+						<reference key="NSNextResponder" ref="705631421"/>
+						<int key="NSvFlags">-2147482358</int>
+						<object class="NSPSMatrix" key="NSFrameMatrix"/>
+						<string key="NSFrame">{{5, 60}, {310, 20}}</string>
+						<reference key="NSSuperview" ref="705631421"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
+						<string key="NSHuggingPriority">{251, 251}</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<int key="IBUIContentMode">7</int>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<string key="IBUIText">Diff suppressed (filesize)</string>
+						<object class="NSColor" key="IBUITextColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
+						</object>
+						<nil key="IBUIHighlightedColor"/>
+						<object class="NSColor" key="IBUIShadowColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MC4zMzMzMzMzMzMzAA</bytes>
+						</object>
+						<string key="IBUIShadowOffset">{1, 1}</string>
+						<int key="IBUIBaselineAdjustment">0</int>
+						<int key="IBUITextAlignment">1</int>
+						<object class="IBUIFontDescription" key="IBUIFontDescription">
+							<string key="name">Cochin-Bold</string>
+							<string key="family">Cochin</string>
+							<int key="traits">2</int>
+							<double key="pointSize">16</double>
+						</object>
+						<object class="NSFont" key="IBUIFont">
+							<string key="NSName">Cochin-Bold</string>
+							<double key="NSSize">16</double>
+							<int key="NSfFlags">16</int>
+						</object>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
 				</array>
 				<object class="NSPSMatrix" key="NSFrameMatrix"/>
@@ -225,6 +266,14 @@
 					</object>
 					<string key="id">Pt1-bg-icv</string>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">binaryStatusLabel</string>
+						<reference key="source" ref="971060651"/>
+						<reference key="destination" ref="265113343"/>
+					</object>
+					<string key="id">Rp2-65-TWs</string>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -252,6 +301,7 @@
 							<reference ref="1021647130"/>
 							<reference ref="838649389"/>
 							<reference ref="522055936"/>
+							<reference ref="265113343"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -296,6 +346,12 @@
 						<reference key="parent" ref="522055936"/>
 						<string key="objectName">Deletions Label</string>
 					</object>
+					<object class="IBObjectRecord">
+						<string key="id">idB-hT-n2N</string>
+						<reference key="object" ref="265113343"/>
+						<reference key="parent" ref="705631421"/>
+						<string key="objectName">Binary Status Label (No Code Content)</string>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -327,6 +383,9 @@
 				<string key="Ri6-TS-owk.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<reference key="Ri6-TS-owk.IBUserGuides" ref="0"/>
 				<boolean value="NO" key="Ri6-TS-owk.showNotes"/>
+				<string key="idB-hT-n2N.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<reference key="idB-hT-n2N.IBUserGuides" ref="0"/>
+				<boolean value="NO" key="idB-hT-n2N.showNotes"/>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
@@ -348,6 +407,7 @@
 					<string key="superclassName">UIView</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="additionsLabel">UILabel</string>
+						<string key="binaryStatusLabel">UILabel</string>
 						<string key="deletionsLabel">UILabel</string>
 						<string key="filenameLabel">UILabel</string>
 						<string key="graph">DADiffDeltaGraphView</string>
@@ -355,6 +415,10 @@
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="additionsLabel">
 							<string key="name">additionsLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="binaryStatusLabel">
+							<string key="name">binaryStatusLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="deletionsLabel">

@@ -10,6 +10,22 @@
 
 @implementation DADeltaContentCell
 
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+	if (self) {
+		NSArray *views = [NSBundle.mainBundle loadNibNamed:self.className owner:self options:nil];
+		UIView *view = views[0];
+		
+		if (view.height != self.contentView.height) {
+			[Logger error:@"%@.scroll.height != cell.contentView.height", self.className];
+			view.height = self.contentView.height;
+		}
+		
+		[self.contentView addSubview:view];
+	}
+	return self;
+}
+
 - (void)loadDelta:(GTDiffDelta *)delta {
 	__block CGFloat vOffset = .0;
 	__block CGFloat longestLineWidth = .0;

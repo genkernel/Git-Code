@@ -64,7 +64,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="BEU-y7-wg9">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="BEU-y7-wg9">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
@@ -467,9 +467,6 @@
         <class className="DARepoCtrl" superclassName="DABaseCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DARepoCtrl.h"/>
             <relationships>
-                <relationship kind="action" name="selectBranchPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="selectPeriodPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="toggleFiltersPressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="branchOverlay" candidateClass="UIView"/>
                 <relationship kind="outlet" name="commitsContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="commitsTable" candidateClass="UITableView"/>

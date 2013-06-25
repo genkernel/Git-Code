@@ -36,8 +36,9 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 	
 	_cachedViews = NSMutableDictionary.new;
 	
-	UINib *nib = [UINib nibWithNibName:DADeltaContentCell.className bundle:nil];
-	[self.table registerNib:nib forCellReuseIdentifier:DADeltaContentCell.className];
+//	UINib *nib = [UINib nibWithNibName:DADeltaContentCell.className bundle:nil];
+//	[self.table registerNib:nib forCellReuseIdentifier:DADeltaContentCell.className];
+	[self.table registerClass:DADeltaContentCell.class forCellReuseIdentifier:DADeltaContentCell.className];
 	
 	[NSObject startMeasurement];
 	{
@@ -79,18 +80,19 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 	[diff enumerateDeltasUsingBlock:^(GTDiffDelta *delta, BOOL *stop) {
 		[self.deltas addObject:delta];
 		
-		[Logger info:@"delta (t:%d-b:%d-hc:%d): a:%d/d:%d/c:%d", delta.type, delta.isBinary, delta.hunkCount, delta.addedLinesCount, delta.deletedLinesCount, delta.contextLinesCount];
+		//[Logger info:@"delta (t:%d-b:%d-hc:%d): a:%d/d:%d/c:%d", delta.type, delta.isBinary, delta.hunkCount, delta.addedLinesCount, delta.deletedLinesCount, delta.contextLinesCount];
 		
 		__block NSUInteger linesCount = 0;
 		
 		[delta enumerateHunksWithBlock:^(GTDiffHunk *hunk, BOOL *stop) {
-			[Logger info:@"  hunk (lc:%d) : %@", hunk.lineCount, hunk.header];
+			//[Logger info:@"  hunk (lc:%d) : %@", hunk.lineCount, hunk.header];
 			
 			linesCount += hunk.lineCount + 1/*header*/;
 			
+			/*
 			[hunk enumerateLinesInHunkUsingBlock:^(GTDiffLine *line, BOOL *stop) {
-				[Logger info:@"    line (o:%d %d->%d) : %@", line.origin, line.oldLineNumber, line.newLineNumber, line.content];
-			}];
+				//[Logger info:@"    line (o:%d %d->%d) : %@", line.origin, line.oldLineNumber, line.newLineNumber, line.content];
+			}];*/
 		}];
 		
 		self.deltasLineNumbers[@(self.deltas.count - 1)] = @(linesCount);

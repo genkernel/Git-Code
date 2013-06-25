@@ -60,8 +60,13 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 	_deltas = [NSMutableArray arrayWithCapacity:1024];
 	_deltasLineNumbers = [NSMutableDictionary dictionaryWithCapacity:1024];
 	
-	for (GTCommit *parent in self.changeCommit.parents) {
-		[self compareCommit:self.changeCommit againstParentCommit:parent];
+	if (self.changeCommit.parents.count) {
+		for (GTCommit *parent in self.changeCommit.parents) {
+			[self compareCommit:self.changeCommit againstParentCommit:parent];
+		}
+	} else {
+		// First 'initial' commit.
+		[self compareCommit:self.changeCommit againstParentCommit:nil];
 	}
 }
 
@@ -102,7 +107,6 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 	GTDiffDelta *delta = self.deltas[section];
 	
 	BOOL isModified = GTDiffFileDeltaModified == delta.type;
-	BOOL isAdded = GTDiffFileDeltaAdded == delta.type;
 	
 	if (isModified) {
 		// DAModifiedHeader

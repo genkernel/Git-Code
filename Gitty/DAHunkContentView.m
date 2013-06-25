@@ -36,7 +36,7 @@ static const CGFloat CodeRightMargin = 10.;
 	NSMutableString *code = [NSMutableString stringWithCapacity:capacity];
 	
 	// TODO: Function name context (impl via regexpr).
-	[code appendFormat:@"%@", hunk.header];
+//	[code appendString:hunk.header];
 	
 	__block NSUInteger lineOffset = 1;
 	

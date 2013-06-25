@@ -59,9 +59,12 @@
 }
 
 - (void)loadDelta:(GTDiffDelta *)delta {
+	self.statusLabel.hidden = NO;
 	self.statusLabel.text = [self titleForChangeType:delta.type];
 	
 	if (GTDiffFileDeltaAdded == delta.type) {
+		self.statusLabel.hidden = YES;
+		
 		self.anotherFilenameLabel.textColor = UIColor.acceptingGreenColor;
 		
 		self.filenameLabel.text = nil;

@@ -99,7 +99,18 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-	return 50.;	// Original is 80px. Extra 30px overlaps cell as shadow effect.
+	GTDiffDelta *delta = self.deltas[section];
+	
+	BOOL isModified = GTDiffFileDeltaModified == delta.type;
+	BOOL isAdded = GTDiffFileDeltaAdded == delta.type;
+	
+	if (isModified) {
+		// DAModifiedHeader
+		return 50.;	// Original is 80px. Extra 30px overlaps cell as shadow effect.
+	} else {
+		// DAStatusHeader.
+		return 38.;
+	}
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -139,7 +150,11 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	GTDiffDelta *delta = self.deltas[section];
-	return GTDiffFileDeltaModified == delta.type ? 1 : 0;
+	
+	BOOL isModified = GTDiffFileDeltaModified == delta.type;
+	BOOL isAdded = GTDiffFileDeltaAdded == delta.type;
+	
+	return isModified || isAdded ? 1 : 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -147,7 +162,9 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 	static const CGFloat lineHeight = 17.;
 	
 	NSUInteger linesNumber = [self.deltasLineNumbers[@(indexPath.section)] unsignedIntValue];
+	// At least 1 line.
 	linesNumber += 0 == linesNumber ? 1 : 0;
+	
 	return linesNumber * lineHeight;
 }
 

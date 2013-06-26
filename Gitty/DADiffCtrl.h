@@ -7,11 +7,13 @@
 //
 
 #import "DABaseCtrl.h"
+#import "DADiffCtrlDataSource.h"
 
 @interface DADiffCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate> {
 	NSMutableDictionary *_cachedViews;
 }
-@property (strong, nonatomic) GTCommit *changeCommit;
+//+ (DADiffCtrlDataSource *)loadDiffForCommit:(GTCommit *)commit;
+@property (strong, nonatomic) DADiffCtrlDataSource *diff;
 
 @property (strong, nonatomic) IBOutlet UITableView *table;
 @end

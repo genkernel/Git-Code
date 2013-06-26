@@ -36,7 +36,9 @@
 
 - (BOOL)isLargeCommit {
 	BOOL isInitialCommit = 0 == self.parents.count;
-	return isInitialCommit || self.parents.count >= 2;
+	BOOL hasMultipleParents = self.parents.count >= 2;
+	
+	return isInitialCommit || hasMultipleParents;
 }
 
 @end

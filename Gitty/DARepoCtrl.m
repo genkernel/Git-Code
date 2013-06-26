@@ -74,13 +74,8 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 			}
 		};
 	} else if ([segue.identifier isEqualToString:DiffSegue]) {
-		NSIndexPath *ip = sender;
 		DADiffCtrl *ctrl = segue.destinationViewController;
-		
-		NSString *title = self.dateSections[ip.section];
-		NSArray *commits = self.commitsOnDateSection[title];
-		
-		ctrl.changeCommit = commits[ip.row];
+		ctrl.diff = sender;
 	} else {
 		[super prepareForSegue:segue sender:sender];
 	}
@@ -249,22 +244,32 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 	NSArray *commits = self.commitsOnDateSection[title];
 	
 	GTCommit *commit = commits[indexPath.row];
-	[self presentDiffCtrlForCommit:commit fromIndexPath:indexPath];
+	[self presentDiffCtrlForCommit:commit];
 }
 
-- (void)presentDiffCtrlForCommit:(GTCommit *)commit fromIndexPath:(NSIndexPath *)indexPath {
+- (void)presentDiffCtrlForCommit:(GTCommit *)commit {
 	if (!commit.isLargeCommit) {
-		[self performSegueWithIdentifier:DiffSegue sender:indexPath];
+		DADiffCtrlDataSource *diff = [DADiffCtrlDataSource loadDiffForCommit:commit];
+		
+		[self performSegueWithIdentifier:DiffSegue sender:diff];
 		return;
 	}
 	
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
 		[self setDiffLoadingOverlayVisible:YES animated:NO];
 	}completion:^(BOOL finished) {
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[self performSegueWithIdentifier:DiffSegue sender:indexPath];
-		});
+		[self prepareDiffForCommit:commit];
 	}];
+}
+
+- (void)prepareDiffForCommit:(GTCommit *)commit {
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+		DADiffCtrlDataSource *diff = [DADiffCtrlDataSource loadDiffForCommit:commit];
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self performSegueWithIdentifier:DiffSegue sender:diff];
+		});
+	});
 }
 
 #pragma mark Actions

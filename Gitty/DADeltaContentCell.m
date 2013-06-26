@@ -22,38 +22,60 @@
 		}
 		
 		[self.contentView addSubview:view];
+		
+//#ifdef DEBUG
+//		[self.scroll colorizeBorderWithColor:UIColor.blueColor];
+//#endif
 	}
 	return self;
+}
+
+- (void)prepareForReuse {
+	[super prepareForReuse];
+	
+	// TODO: Dont remove and reuse subviews properly.
+	// (Eliminate UINib::instantiateWithOwner: calls)
+	[self.scroll removeAllSubviews];
+	
+	self.scroll.contentOffset = CGPointZero;
 }
 
 - (void)loadDelta:(GTDiffDelta *)delta {
 	__block CGFloat vOffset = .0;
 	__block CGFloat longestLineWidth = .0;
 	
-	[self.scroll removeAllSubviews];
+	// TODO: fetch font directly from corresponding view.
+	UIFont *font = [UIFont fontWithName:@"Courier" size:14.];
+	NSLineBreakMode lineBreakMode = NSLineBreakByClipping;
 	
 	UINib *nib = [UINib nibWithNibName:DAHunkContentView.className bundle:nil];
 	
-	[delta enumerateHunksWithBlock:^(GTDiffHunk *hunk, BOOL *stop) {
+	for (GTDiffHunk *hunk in delta.hunks) {
 		NSArray *views = [nib instantiateWithOwner:self options:nil];
 		DAHunkContentView *view = views[0];
 		
-		[view loadHunk:hunk];
+		CGSize s = CGSizeMake(4096., font.lineHeight);
+		s = [hunk.longestLine.content sizeWithFont:font constrainedToSize:s lineBreakMode:lineBreakMode];
 		
-		longestLineWidth = MAX(longestLineWidth, view.longestLineWidth);
+		CGFloat height = (hunk.lineCount + 1) * font.lineHeight;
 		
-		view.y = vOffset;
+		view.frame = CGRectMake(.0, vOffset, s.width, height);
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[view loadHunk:hunk];
+		});
 		
 		[self.scroll addSubview:view];
 		
-		vOffset += view.height;
-	}];
+		vOffset += height;
+		longestLineWidth = MAX(longestLineWidth, s.width);
+	};
+	
+	for (UIView *v in self.scroll.subviews) {
+		v.width = longestLineWidth;
+	}
 	
 	self.scroll.contentSize = CGSizeMake(longestLineWidth, vOffset);
-	
-#ifdef DEBUG
-	[self.scroll colorizeBorderWithColor:UIColor.blueColor];
-#endif
 }
 
 @end

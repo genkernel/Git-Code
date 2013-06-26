@@ -25,8 +25,6 @@
 		
 		NSDate *commitLocalDate = commit.commitDate;
 		
-		[Logger info:@"%@", commitLocalDate];
-		
 		BOOL isCommitEarlier = NSOrderedAscending == [commitLocalDate compare:date];
 		if (isCommitEarlier) {
 			*stop = YES;

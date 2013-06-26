@@ -120,6 +120,7 @@
 		18A6254B1775D59400FC27AE /* DAGitPullDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6254A1775D59000FC27AE /* DAGitPullDelegate.m */; };
 		18A6254C1775D59700FC27AE /* DAGitPull.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A625481775D57D00FC27AE /* DAGitPull.m */; };
 		18A6254D1776101D00FC27AE /* NavViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1804FABE176E8FEA0080AB50 /* NavViewCtrl.m */; };
+		18A8E20D177B644800DBD973 /* DADiffCtrlDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8E20C177B644800DBD973 /* DADiffCtrlDataSource.m */; };
 		18BAA8641758016400154019 /* GitServers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18BAA85F1758016400154019 /* GitServers.plist */; };
 		18BAA8651758016400154019 /* DAGitServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAA8611758016400154019 /* DAGitServer.m */; };
 		18BAA8661758016400154019 /* DAServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAA8631758016400154019 /* DAServerManager.m */; };
@@ -666,6 +667,8 @@
 		18A6254A1775D59000FC27AE /* DAGitPullDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAGitPullDelegate.m; sourceTree = "<group>"; };
 		18A6254F17763BED00FC27AE /* DAPeriodPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAPeriodPicker.h; sourceTree = "<group>"; };
 		18A6255017763BED00FC27AE /* DAPeriodPicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAPeriodPicker.m; sourceTree = "<group>"; };
+		18A8E20B177B644800DBD973 /* DADiffCtrlDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADiffCtrlDataSource.h; sourceTree = "<group>"; };
+		18A8E20C177B644800DBD973 /* DADiffCtrlDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADiffCtrlDataSource.m; sourceTree = "<group>"; };
 		18BAA85F1758016400154019 /* GitServers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GitServers.plist; sourceTree = "<group>"; };
 		18BAA8601758016400154019 /* DAGitServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGitServer.h; sourceTree = "<group>"; };
 		18BAA8611758016400154019 /* DAGitServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitServer.m; sourceTree = "<group>"; };
@@ -1758,6 +1761,15 @@
 			name = PeriodPicker;
 			sourceTree = "<group>";
 		};
+		18A8E206177B642800DBD973 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				18A8E20B177B644800DBD973 /* DADiffCtrlDataSource.h */,
+				18A8E20C177B644800DBD973 /* DADiffCtrlDataSource.m */,
+			);
+			name = DataSource;
+			sourceTree = "<group>";
+		};
 		18BAA85E1758016300154019 /* GitServer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1856,6 +1868,7 @@
 		18F995B0175F6EA00033A4A0 /* Diff */ = {
 			isa = PBXGroup;
 			children = (
+				18A8E206177B642800DBD973 /* DataSource */,
 				18F995BF175FB1DD0033A4A0 /* Cells */,
 				18F995B8175FAE340033A4A0 /* SectionHeaders */,
 				18F995B5175F6EB70033A4A0 /* DADiffCtrl.h */,
@@ -2129,6 +2142,7 @@
 				186A92E21778522C00B2EEF3 /* DAStatusHeader.m in Sources */,
 				186A92EA177864B200B2EEF3 /* DADiffCtrl+UI.m in Sources */,
 				186A92F41778BD4C00B2EEF3 /* UITextField+Gitty.m in Sources */,
+				18A8E20D177B644800DBD973 /* DADiffCtrlDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

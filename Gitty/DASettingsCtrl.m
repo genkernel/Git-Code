@@ -139,8 +139,9 @@
 	NSString *url = [[protocol concat:self.urlField.text] concat:@"/"];
 	
 	NSDictionary *info = @{ServerName: self.nameField.text,
-						   ServerGitBaseUrl: url,
-						   SaveDirectory: self.nameField.text};
+						ServerGitBaseUrl: url,
+						SaveDirectory: self.nameField.text,
+						LogoIcon: @""};
 	
 	return [DAGitServer serverWithDictionary:info];
 }

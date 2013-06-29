@@ -12,5 +12,4 @@
 - (void)loadHunk:(GTDiffHunk *)hunk;
 
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
-@property (strong, nonatomic) IBOutlet Label *codeLabel;
 @end

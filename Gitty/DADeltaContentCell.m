@@ -61,9 +61,7 @@
 		
 		view.frame = CGRectMake(.0, vOffset, s.width, height);
 		
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[view loadHunk:hunk];
-		});
+		[view loadHunk:hunk];
 		
 		[self.scroll addSubview:view];
 		

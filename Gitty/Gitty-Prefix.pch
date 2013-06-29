@@ -15,8 +15,6 @@
 	#import <MobileCoreServices/MobileCoreServices.h>
 
 #import <ObjectiveGit/ObjectiveGit.h>
-//#import "ObjectiveGit.h"
-//#import <ObjectiveGit.h>
 #import "LibGit2-Helpers.pch"
 
 #import "UIViewAdditions.h"
@@ -26,6 +24,7 @@
 
 #import "System.h"
 #import "UI.h"
+#import "Graphics.h"
 
 #import "UIColor+Gitty.h"
 #import "UIButton+Gitty.h"

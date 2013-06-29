@@ -127,6 +127,8 @@
 		18C94423175B6BA800A4D7CA /* DABranchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C94422175B6BA800A4D7CA /* DABranchCell.m */; };
 		18C94425175B6BBB00A4D7CA /* DABranchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C94424175B6BBB00A4D7CA /* DABranchCell.xib */; };
 		18C94433175B93C400A4D7CA /* DABranchPickerCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C94432175B93C400A4D7CA /* DABranchPickerCtrl.m */; };
+		18CFED93177C317C00365E5A /* code-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CFED8F177C317C00365E5A /* code-green.png */; };
+		18CFED94177C317C00365E5A /* code-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CFED90177C317C00365E5A /* code-red.png */; };
 		18D9EA3D17554EB400454F3C /* DAGitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9EA3C17554EB400454F3C /* DAGitManager.m */; };
 		18EADFE6176F05F6005D0F28 /* DAGitUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EADFE0176F05EA005D0F28 /* DAGitUser.m */; };
 		18F04E3C176FC9F80035C918 /* UITextField+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F04E3B176FC9960035C918 /* UITextField+Helper.m */; };
@@ -140,6 +142,11 @@
 		18F995D7175FBEDB0033A4A0 /* section_footer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F995D3175FBEDB0033A4A0 /* section_footer@2x.png */; };
 		18F995D8175FBEDB0033A4A0 /* section_header.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F995D4175FBEDB0033A4A0 /* section_header.png */; };
 		18F995D9175FBEDB0033A4A0 /* section_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F995D5175FBEDB0033A4A0 /* section_header@2x.png */; };
+		18FD1D0C177F4C8900DE4851 /* UIImage+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F04E34176FC83D0035C918 /* UIImage+Utils.m */; };
+		18FD1D0D177F4C8C00DE4851 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F04E32176FC83D0035C918 /* UIImage+Resize.m */; };
+		18FD1D0E177F4C8F00DE4851 /* UIImage+Masking.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F04E30176FC83D0035C918 /* UIImage+Masking.m */; };
+		18FD1D0F177F4C9100DE4851 /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F04E2E176FC83D0035C918 /* ImageUtils.m */; };
+		18FD1D11177F4CAD00DE4851 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FD1D10177F4CAD00DE4851 /* ImageIO.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -679,6 +686,8 @@
 		18C94424175B6BBB00A4D7CA /* DABranchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABranchCell.xib; sourceTree = "<group>"; };
 		18C94431175B93C400A4D7CA /* DABranchPickerCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABranchPickerCtrl.h; sourceTree = "<group>"; };
 		18C94432175B93C400A4D7CA /* DABranchPickerCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABranchPickerCtrl.m; sourceTree = "<group>"; };
+		18CFED8F177C317C00365E5A /* code-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "code-green.png"; sourceTree = "<group>"; };
+		18CFED90177C317C00365E5A /* code-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "code-red.png"; sourceTree = "<group>"; };
 		18D9EA3B17554EB400454F3C /* DAGitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGitManager.h; sourceTree = "<group>"; };
 		18D9EA3C17554EB400454F3C /* DAGitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitManager.m; sourceTree = "<group>"; };
 		18EADFDF176F05EA005D0F28 /* DAGitUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAGitUser.h; sourceTree = "<group>"; };
@@ -708,6 +717,7 @@
 		18F995D3175FBEDB0033A4A0 /* section_footer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "section_footer@2x.png"; sourceTree = "<group>"; };
 		18F995D4175FBEDB0033A4A0 /* section_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = section_header.png; sourceTree = "<group>"; };
 		18F995D5175FBEDB0033A4A0 /* section_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "section_header@2x.png"; sourceTree = "<group>"; };
+		18FD1D10177F4CAD00DE4851 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -715,6 +725,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18FD1D11177F4CAD00DE4851 /* ImageIO.framework in Frameworks */,
 				186A92D9177848FB00B2EEF3 /* MobileCoreServices.framework in Frameworks */,
 				1804FAB2176E7AF20080AB50 /* SystemConfiguration.framework in Frameworks */,
 				189A532E1759237C00B5BD8D /* QuartzCore.framework in Frameworks */,
@@ -1347,8 +1358,8 @@
 			children = (
 				18A6245E1775D4C800FC27AE /* src */,
 				18933CD61755395D00E92183 /* Frameworks */,
-				18878CAA17629E03008BF232 /* Libs */,
 				18D9EA3917554BEE00454F3C /* Res */,
+				18878CAA17629E03008BF232 /* Libs */,
 				18184B6117555B29001C58D8 /* Shared */,
 				183DA6F3175549BC00140DA8 /* Submodules */,
 				18933CDD1755395D00E92183 /* Gitty */,
@@ -1367,6 +1378,7 @@
 		18933CD61755395D00E92183 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18FD1D10177F4CAD00DE4851 /* ImageIO.framework */,
 				186A92D8177848FB00B2EEF3 /* MobileCoreServices.framework */,
 				1804FAB1176E7AF20080AB50 /* SystemConfiguration.framework */,
 				1804FAAF176E7AD10080AB50 /* CFNetwork.framework */,
@@ -1796,6 +1808,15 @@
 			name = BranchPickerCtrl;
 			sourceTree = "<group>";
 		};
+		18CFED8C177C317C00365E5A /* CodeBackground */ = {
+			isa = PBXGroup;
+			children = (
+				18CFED8F177C317C00365E5A /* code-green.png */,
+				18CFED90177C317C00365E5A /* code-red.png */,
+			);
+			path = CodeBackground;
+			sourceTree = "<group>";
+		};
 		18D9EA3417554BE000454F3C /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1915,6 +1936,7 @@
 		18F995D1175FBEDB0033A4A0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				18CFED8C177C317C00365E5A /* CodeBackground */,
 				186A92E41778534F00B2EEF3 /* section_status.png */,
 				186A92E51778534F00B2EEF3 /* section_status@2x.png */,
 				1804FAB3176E85790080AB50 /* Buttons */,
@@ -2046,6 +2068,8 @@
 				186A92E31778522C00B2EEF3 /* DAStatusHeader.xib in Resources */,
 				186A92E61778534F00B2EEF3 /* section_status.png in Resources */,
 				186A92E71778534F00B2EEF3 /* section_status@2x.png in Resources */,
+				18CFED93177C317C00365E5A /* code-green.png in Resources */,
+				18CFED94177C317C00365E5A /* code-red.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2143,6 +2167,10 @@
 				186A92EA177864B200B2EEF3 /* DADiffCtrl+UI.m in Sources */,
 				186A92F41778BD4C00B2EEF3 /* UITextField+Gitty.m in Sources */,
 				18A8E20D177B644800DBD973 /* DADiffCtrlDataSource.m in Sources */,
+				18FD1D0C177F4C8900DE4851 /* UIImage+Utils.m in Sources */,
+				18FD1D0D177F4C8C00DE4851 /* UIImage+Resize.m in Sources */,
+				18FD1D0E177F4C8F00DE4851 /* UIImage+Masking.m in Sources */,
+				18FD1D0F177F4C9100DE4851 /* ImageUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2243,7 +2271,10 @@
 				INFOPLIST_FILE = "Gitty/Gitty-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Libs/lib\"";
-				OTHER_LDFLAGS = "-all_load";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Submodules/objective-git/libgit2/include $(SRCROOT)/Submodules/ConceptScroll/PagerView $(PROJECT_TEMP_DIR)/../UninstalledProducts/include";
 				WRAPPER_EXTENSION = app;
@@ -2260,7 +2291,10 @@
 				INFOPLIST_FILE = "Gitty/Gitty-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Libs/lib\"";
-				OTHER_LDFLAGS = "-all_load";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Submodules/objective-git/libgit2/include $(SRCROOT)/Submodules/ConceptScroll/PagerView $(PROJECT_TEMP_DIR)/../UninstalledProducts/include";
 				WRAPPER_EXTENSION = app;

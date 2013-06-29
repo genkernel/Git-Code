@@ -76,73 +76,59 @@ static const CGFloat CodeRightMargin = 10.;
 //	renderImageView.width = s.width;
 //	self.backgroundImage.image = renderImageView.screeshotWithCurrentContext;
 	
-	size_t width = self.width;
+	CGFloat fontSize = 14;
+	UIFont *font = [UIFont fontWithName:@"Courier" size:fontSize];
 	
-	const size_t bytesPerPixel = 4;
-	// TODO: Impl retina-quality image:
-	// * 2/*@2x image*/;
-	NSUInteger capacity = self.width * self.height * bytesPerPixel;
+	size_t lineHeight = font.lineHeight;
+	
+//	assert(lineHeight * hunk.lineCount == self.height);
 	
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-		__block NSUInteger lineNumber = 0;
 		
-		NSMutableData *data = [NSMutableData dataWithLength:capacity];
+		[NSObject startMeasurement];
 		
-		[hunk enumerateLinesInHunkUsingBlock:^(GTDiffLine *line, BOOL *stop) {
-			size_t lineOffset = width * bytesPerPixel * lineNumber;
-			void *pixels = &data.mutableBytes[lineOffset];
-			
-			int color = [self colorCodeForDiffLine:line];
-			memset_pattern4(pixels, (const void *)color, width);
-			
-			lineNumber++;
-		}];
+//		CGRect r = CGRectMake(.0, .0, self.width, self.height);
+//		UIView *renderImageView = [UIView.alloc initWithFrame:r];
 		
-		UIImage *img = [self createImageFromRawPixelsData:data];
+		UIEdgeInsets insets = UIEdgeInsetsMake(.0, .0, .0, .0);
+		
+		UIImage *addedImg = [UIImage imageNamed:@"code-green.png"];
+		addedImg = [addedImg resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
+		
+		// Optimize with Opaque - YES.
+		UIGraphicsBeginImageContextWithOptions(self.frame.size, NO, UIScreen.mainScreen.scale);
+		{
+			__block NSUInteger lineNumber = 0;
+			[hunk enumerateLinesInHunkUsingBlock:^(GTDiffLine *line, BOOL *stop) {
+				
+				UIImage *lineImg = nil;
+				if (GTDiffLineOriginAddition == line.origin) {
+					lineImg = addedImg;
+				} else if (GTDiffLineOriginDeletion == line.origin) {
+					lineImg = addedImg;
+				} else {
+					lineImg = addedImg;
+				}
+				
+				CGFloat y = lineNumber * lineHeight;
+				[lineImg drawInRect:CGRectMake(.0, y, self.width, lineHeight)];
+				
+				[line.content drawAtPoint:CGPointMake(.0, y) withFont:font];
+				
+				lineNumber++;
+			}];
+		}
+		UIImage *contextImg = UIGraphicsGetImageFromCurrentImageContext();
+		UIGraphicsEndImageContext();
+		
+		double period = [NSObject endMeasurement];
+		[Logger info:@"Image generated in %.2f", period];
+		
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
-			self.backgroundImage.image = img;
+			self.backgroundImage.image = contextImg;
 		});
 	});
-}
-
-- (int)colorCodeForDiffLine:(GTDiffLine *)line {
-	int code = 0;
-	char *p = (void *)&code;
-	
-	p[0] = (char)255;
-	p[1] = (char)25;
-	p[2] = (char)25;
-	p[1] = (char)255;
-	
-	return code;
-}
-
-- (UIImage *)createImageFromRawPixelsData:(NSData *)pixels {
-//	CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, pixels.bytes, pixels.length, NULL);
-	CGDataProviderRef provider = CGDataProviderCreateWithCFData((__bridge CFDataRef)pixels);
-	
-	size_t bytesPerRow = self.width *  4;
-	CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
-	CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault | kCGImageAlphaLast;
-	CGImageRef img = CGImageCreate(self.width, self.height, 8, 32, bytesPerRow, space, bitmapInfo, provider, NULL, false, kCGRenderingIntentDefault);
-	
-	return [UIImage imageWithCGImage:img];
-}
-
-- (UIView *)coloredViewForLine:(GTDiffLine *)line withPixelsWidth:(NSUInteger)width {
-	CGRect r = CGRectMake(.0, .0, self.width, self.codeLabel.font.lineHeight);
-	UIView *lineView = [UIView.alloc initWithFrame:r];
-	lineView.autoresizingMask = UIView.AutoresizingAll;
-	
-	if (GTDiffLineOriginAddition == line.origin) {
-		lineView.backgroundColor = UIColor.codeAdditionColor;
-	} else if (GTDiffLineOriginDeletion == line.origin) {
-		lineView.backgroundColor = UIColor.codeDeletionColor;
-	} else {
-		lineView.backgroundColor = UIColor.codeContextColor;
-	}
-	return lineView;
 }
 
 @end

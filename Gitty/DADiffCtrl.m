@@ -21,13 +21,14 @@
 @property (strong, nonatomic, readonly) GTCommit *changeCommit;
 @property (strong, nonatomic, readonly) NSArray *deltas;
 @property (strong, nonatomic, readonly) NSDictionary *deltasHeights;
+@property (strong, nonatomic, readonly) NSDictionary *deltasLongestLineWidths;
 
 @property (strong, nonatomic, readonly) NSMutableDictionary *cachedViews;
 @end
 
 @implementation DADiffCtrl
 @synthesize cachedViews = _cachedViews;
-@dynamic changeCommit, deltas, deltasHeights;
+@dynamic changeCommit, deltas, deltasHeights, deltasLongestLineWidths;
 
 #pragma mark Properties
 
@@ -41,6 +42,10 @@
 
 - (NSDictionary *)deltasHeights {
 	return self.diff.deltasHeights;
+}
+
+- (NSDictionary *)deltasLongestLineWidths {
+	return self.diff.deltasLongestLineWidths;
 }
 
 #pragma mark VC lifecircle
@@ -150,7 +155,9 @@
 		
 		cell = [tableView dequeueReusableCellWithIdentifier:DADeltaContentCell.className];
 		
-		[cell loadDelta:delta];
+		CGFloat longestLineWidth = [self.deltasLongestLineWidths[@(indexPath.section)] floatValue];
+		
+		[cell loadDelta:delta withLongestLineOfWidth:longestLineWidth];
 	}
 	//double period = [NSObject endMeasurement];
 	//[Logger info:@"Cell loaded in %.2f", period];

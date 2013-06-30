@@ -8,8 +8,13 @@
 
 #import "DAHunkContentView.h"
 
-@interface DADeltaContentCell : UITableViewCell
-- (void)loadDelta:(GTDiffDelta *)delta;
+@class DADeltaContentScrollView;
 
-@property (strong, nonatomic) IBOutlet UIScrollView *scroll;
+@interface DADeltaContentCell : UITableViewCell
+- (void)loadDelta:(GTDiffDelta *)delta withLongestLineOfWidth:(CGFloat)width;
+
+@property (strong, nonatomic) IBOutlet DADeltaContentScrollView *scroll;
+@end
+
+@interface DADeltaContentScrollView : UIScrollView
 @end

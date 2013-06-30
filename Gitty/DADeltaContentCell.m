@@ -45,13 +45,16 @@
 	self.scroll.contentOffset = CGPointZero;
 }
 
-- (void)loadDelta:(GTDiffDelta *)delta {
+- (void)loadDelta:(GTDiffDelta *)delta withLongestLineOfWidth:(CGFloat)longestLineWidth {
 	__block CGFloat vOffset = .0;
-	__block CGFloat longestLineWidth = .0;
+	
+	CGRect rect = UIScreen.mainScreen.bounds;
+	const CGFloat hunkViewMinWidth = MAX(rect.size.width, rect.size.height);
+	
+	const CGFloat hunkViewWidth = MAX(hunkViewMinWidth, longestLineWidth);
 	
 	// TODO: fetch font directly from corresponding view.
 	UIFont *font = [UIFont fontWithName:@"Courier" size:14.];
-	NSLineBreakMode lineBreakMode = NSLineBreakByClipping;
 	
 	UINib *nib = [UINib nibWithNibName:DAHunkContentView.className bundle:nil];
 	
@@ -60,25 +63,21 @@
 		NSArray *views = [nib instantiateWithOwner:self options:nil];
 		DAHunkContentView *view = views[0];
 		
-		CGSize s = CGSizeMake(4096., font.lineHeight);
-		s = [hunk.longestLine.content sizeWithFont:font constrainedToSize:s lineBreakMode:lineBreakMode];
-		
 		CGFloat height = (hunk.lineCount + 1) * font.lineHeight;
 		
-		view.frame = CGRectMake(.0, vOffset, s.width, height);
+		view.frame = CGRectMake(.0, vOffset, hunkViewWidth, height);
 		
 		[view loadHunk:hunk];
 		
 		[self.scroll addSubview:view];
 		
 		vOffset += height;
-		longestLineWidth = MAX(longestLineWidth, s.width);
 		
 		if (hunkNumber < delta.hunkCount - 1) {
 			UIImage *img = self.separatorImg;
 			
 			UIImageView *separator = [UIImageView.alloc initWithImage:img];
-			separator.frame = CGRectMake(.0, vOffset, s.width, img.size.height);
+			separator.frame = CGRectMake(.0, vOffset, hunkViewWidth, img.size.height);
 			
 			[self.scroll addSubview:separator];
 			vOffset += img.size.height;
@@ -86,10 +85,6 @@
 		
 		hunkNumber++;
 	};
-	
-	for (UIView *v in self.scroll.subviews) {
-		v.width = longestLineWidth;
-	}
 	
 	self.scroll.contentSize = CGSizeMake(longestLineWidth, vOffset);
 }
@@ -106,6 +101,21 @@
 		img = [img resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeTile];
 	});
 	return img;
+}
+
+@end
+
+
+@implementation DADeltaContentScrollView
+
+- (void)layoutSubviews {
+	[super layoutSubviews];
+	
+	for (DAHunkContentView *hunkView in self.subviews) {
+		if (hunkView.width < self.width) {
+			hunkView.width = self.width;
+		}
+	}
 }
 
 @end

@@ -114,6 +114,16 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 		[self.commitsTable deselectRowAtIndexPath:self.selectedCommitIndexPath animated:animated];
 		
 		_selectedCommitIndexPath = nil;
+	} else {
+		NSUInteger section = self.dateSections.count - 1;
+		
+		NSString *title = self.dateSections[section];
+		NSArray *commits = self.commitsOnDateSection[title];
+		
+		NSUInteger row = commits.count - 1;
+		NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:row inSection:section];
+		
+		[self.commitsTable scrollToRowAtIndexPath:lastIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:animated];
 	}
 }
 

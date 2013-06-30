@@ -35,6 +35,7 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 
 - (void)prepareDiff {
 	_deltasHeights = NSMutableDictionary.new;
+	_deltasLongestLineWidths = NSMutableDictionary.new;
 	_deltas = [NSMutableArray arrayWithCapacity:1024];
 	
 	BOOL isFirstInitialCommit = 0 == self.changeCommit.parents.count;
@@ -49,8 +50,11 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 }
 
 - (void)compareCommit:(GTCommit *)commit againstParentCommit:(GTCommit *)oldCommit {
-	// TODO: fetch height directly from cell instance.
-	static const CGFloat lineHeight = 17.;
+	// TODO: fetch font directly from corresponding view.
+	UIFont *font = [UIFont fontWithName:@"Courier" size:14.];
+	NSLineBreakMode lineBreakMode = NSLineBreakByClipping;
+	
+	const CGFloat lineHeight = font.lineHeight;
 	
 	NSError *err = nil;
 	NSDictionary *opts = @{GTDiffOptionsMaxSizeKey: @(DiffFileMaxSize)};
@@ -63,25 +67,36 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 		//[Logger info:@"delta (t:%d-b:%d-hc:%d): a:%d/d:%d/c:%d", delta.type, delta.isBinary, delta.hunkCount, delta.addedLinesCount, delta.deletedLinesCount, delta.contextLinesCount];
 		
 		__block NSUInteger linesCount = 0;
+		__block CGFloat longestLineWidth = .0;
 		
 		NSMutableArray *hunks = [NSMutableArray arrayWithCapacity:delta.hunkCount];
 		
 		[delta enumerateHunksWithBlock:^(GTDiffHunk *hunk, BOOL *stop) {
 			//[Logger info:@"  hunk (lc:%d) : %@", hunk.lineCount, hunk.header];
 			[hunks addObject:hunk];
-			[hunk longestLine];
 			
 			linesCount += hunk.lineCount + 1/*header*/;
+			
+			[hunk enumerateLinesInHunkUsingBlock:^(GTDiffLine *line, BOOL *stop) {
+				CGSize s = [line.content sizeWithFont:font forWidth:4096. lineBreakMode:lineBreakMode];
+				
+				longestLineWidth = MAX(s.width, longestLineWidth);
+			}];
 		}];
 		
 		delta.hunks = hunks;
 		
 		NSUInteger hunkCount = delta.hunkCount > 0 ? delta.hunkCount - 1 : 0;
+		// TODO: get separator view height directly from owning view.
+		CGFloat separatorHeight = 21.;
 		
 		NSUInteger linesNumber = 0 == linesCount ? 1 : linesCount;
-		CGFloat height = linesNumber * lineHeight + hunkCount * 21./*hunk separator image height*/;
+		CGFloat height = linesNumber * lineHeight + hunkCount * separatorHeight;
 		
-		self.deltasHeights[@(self.deltas.count - 1)] = @(height);
+		NSNumber *lineNumber = @(self.deltas.count - 1);
+		
+		self.deltasHeights[lineNumber] = @(height);
+		self.deltasLongestLineWidths[lineNumber] = @(longestLineWidth);
 	}];
 }
 

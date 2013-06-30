@@ -11,7 +11,12 @@
 static const NSUInteger AverageSymbolsInLine = 50;
 static const CGFloat CodeRightMargin = 10.;
 
+@interface DAHunkContentView ()
+@property (strong, nonatomic, readonly) UIImage *addedImg, *deletedImg, *neutralImg;
+@end
+
 @implementation DAHunkContentView
+@dynamic addedImg, deletedImg, neutralImg;
 
 /*
 - (void)awakeFromNib {
@@ -23,59 +28,6 @@ static const CGFloat CodeRightMargin = 10.;
 }*/
 
 - (void)loadHunk:(GTDiffHunk *)hunk {
-	/*
-	__block CGFloat longestLineWidth = .0;
-	
-	NSUInteger lineCount = hunk.lineCount + 1;//header (function context);
-	
-	CGFloat lineHeight = self.codeLabel.font.lineHeight;
-	CGFloat height = lineCount * lineHeight;
-	
-	 //omit context header
-	CGRect r = CGRectMake(.0, lineHeight, self.width, height);
-	UIView *renderImageView = [UIView.alloc initWithFrame:r];
-	
-	// TODO: Function name context (impl via regexpr).
-//	[code appendString:hunk.header];
-	
-	__block NSUInteger lineOffset = 1;
-	
-	[hunk enumerateLinesInHunkUsingBlock:^(GTDiffLine *line, BOOL *stop) {
-		[code appendFormat:@"\n%@", line.content];
-		
-		CGSize s = CGSizeMake(4096., lineHeight);
-		s = [line.content sizeWithFont:self.codeLabel.font constrainedToSize:s lineBreakMode:NSLineBreakByClipping];
-		
-		longestLineWidth = MAX(longestLineWidth, s.width);
-		
-		UIView *lineView = [self coloredViewForLine:line];
-		lineView.y = lineOffset * self.codeLabel.font.lineHeight;
-		[renderImageView addSubview:lineView];
-		
-		lineOffset++;
-	}];
-	
-	CGSize s = CGSizeMake(longestLineWidth, height);
-	s = [code sizeWithFont:self.codeLabel.font constrainedToSize:s lineBreakMode:self.codeLabel.lineBreakMode];
-	
-	if (s.height != height) {
-		[Logger warn:@"Another height calculated."];
-		s.height = height;
-	}
-	
-	longestLineWidth += CodeRightMargin;
-	s.width += CodeRightMargin;
-	
-	self.width = s.width;
-	self.height = s.height;
-	*/
-	 
-//	self.codeLabel.text = hunk.text;
-	
-	// render colored background.
-//	renderImageView.width = s.width;
-//	self.backgroundImage.image = renderImageView.screeshotWithCurrentContext;
-	
 	CGFloat fontSize = 14;
 	UIFont *font = [UIFont fontWithName:@"Courier" size:fontSize];
 	
@@ -87,28 +39,16 @@ static const CGFloat CodeRightMargin = 10.;
 		
 		[NSObject startMeasurement];
 		
-//		CGRect r = CGRectMake(.0, .0, self.width, self.height);
-//		UIView *renderImageView = [UIView.alloc initWithFrame:r];
-		
-		UIEdgeInsets insets = UIEdgeInsetsMake(.0, .0, .0, .0);
-		
-		UIImage *addedImg = [UIImage imageNamed:@"code-green.png"];
-		addedImg = [addedImg resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
-		
-		// Optimize with Opaque - YES.
-		UIGraphicsBeginImageContextWithOptions(self.frame.size, NO, UIScreen.mainScreen.scale);
+		UIGraphicsBeginImageContextWithOptions(self.frame.size, YES, UIScreen.mainScreen.scale);
 		{
 			__block NSUInteger lineNumber = 0;
+			
+			// header (function context line).
+			[self.neutralImg drawInRect:CGRectMake(.0, .0, self.width, lineHeight)];
+			lineNumber++;
+			
 			[hunk enumerateLinesInHunkUsingBlock:^(GTDiffLine *line, BOOL *stop) {
-				
-				UIImage *lineImg = nil;
-				if (GTDiffLineOriginAddition == line.origin) {
-					lineImg = addedImg;
-				} else if (GTDiffLineOriginDeletion == line.origin) {
-					lineImg = addedImg;
-				} else {
-					lineImg = addedImg;
-				}
+				UIImage *lineImg = [self coloredBackgroundImageForLine:line];
 				
 				CGFloat y = lineNumber * lineHeight;
 				[lineImg drawInRect:CGRectMake(.0, y, self.width, lineHeight)];
@@ -129,6 +69,54 @@ static const CGFloat CodeRightMargin = 10.;
 			self.backgroundImage.image = contextImg;
 		});
 	});
+}
+
+- (UIImage *)coloredBackgroundImageForLine:(GTDiffLine *)line {
+	if (GTDiffLineOriginAddition == line.origin) {
+		return self.addedImg;
+	} else if (GTDiffLineOriginDeletion == line.origin) {
+		return self.deletedImg;
+	} else {
+		return self.neutralImg;
+	}
+}
+
+#pragma mark Properties
+
+- (UIImage *)addedImg {
+	static UIImage *img = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		UIEdgeInsets insets = UIEdgeInsetsMake(.0, .0, .0, .0);
+		
+		img = [UIImage imageNamed:@"code-green.png"];
+		img = [img resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
+	});
+	return img;
+}
+
+- (UIImage *)deletedImg {
+	static UIImage *img = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		UIEdgeInsets insets = UIEdgeInsetsMake(.0, .0, .0, .0);
+		
+		img = [UIImage imageNamed:@"code-red.png"];
+		img = [img resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
+	});
+	return img;
+}
+
+- (UIImage *)neutralImg {
+	static UIImage *img = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		UIEdgeInsets insets = UIEdgeInsetsMake(.0, .0, .0, .0);
+		
+		img = [UIImage imageNamed:@"code-ctx.png"];
+		img = [img resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
+	});
+	return img;
 }
 
 @end

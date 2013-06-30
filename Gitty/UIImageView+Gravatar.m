@@ -12,8 +12,13 @@
 @implementation UIImageView (Gravatar)
 
 - (void)setGravatarImageWithEmail:(NSString *)email {
-	NSURL *url =  [DAGravatar.manager getUrlForEmail:email];
+	NSURL *url = [DAGravatar.manager getUrlForEmail:email];
 	[self setImageWithURL:url placeholderImage:[UIImage imageNamed:@"profile.png"]];
+}
+
+- (void)applyAvatarStyle {
+	self.layer.cornerRadius = 4.;
+	self.layer.masksToBounds = YES;
 }
 
 @end

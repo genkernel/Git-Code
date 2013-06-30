@@ -11,11 +11,19 @@
 @implementation DAAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	NSURLCache *cache = NSURLCache.sharedURLCache;
-	cache.memoryCapacity = 10 * 1024 * 1024;
-	cache.diskCapacity = 128 * 1024 * 1024;
+	[self createSharedCacheForApplication:application];
 	
     return YES;
+}
+
+- (void)createSharedCacheForApplication:(UIApplication *)app {
+	NSString *cacheDirectoryName = @"NetworkCache";
+	
+	const NSUInteger memotyCapacity = 4 * 1024 * 1024;
+	const NSUInteger diskCapacity = 16 * 1024 * 1024;
+	NSURLCache *cache = [NSURLCache.alloc initWithMemoryCapacity:memotyCapacity diskCapacity:diskCapacity diskPath:cacheDirectoryName];
+	
+	NSURLCache.sharedURLCache = cache;
 }
 
 @end

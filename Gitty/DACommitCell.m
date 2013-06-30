@@ -18,8 +18,13 @@
 - (void)awakeFromNib {
 	[super awakeFromNib];
 	
-	self.avatar.layer.cornerRadius = 4.;
-	self.avatar.layer.masksToBounds = YES;
+	[self.avatar applyAvatarStyle];
+}
+
+- (void)prepareForReuse {
+	[super prepareForReuse];
+	
+	[self.avatar cancelImageRequestOperation];
 }
 
 - (void)loadCommit:(GTCommit *)commit {

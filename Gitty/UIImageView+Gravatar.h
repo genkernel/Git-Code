@@ -10,4 +10,6 @@
 
 @interface UIImageView (Gravatar)
 - (void)setGravatarImageWithEmail:(NSString *)email;
+
+- (void)applyAvatarStyle;
 @end

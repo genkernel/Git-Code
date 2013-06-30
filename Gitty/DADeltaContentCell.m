@@ -111,6 +111,7 @@
 - (void)layoutSubviews {
 	[super layoutSubviews];
 	
+	// Hunk view occupies 100% width of the screen if it is smaller.
 	for (DAHunkContentView *hunkView in self.subviews) {
 		if (hunkView.width < self.width) {
 			hunkView.width = self.width;

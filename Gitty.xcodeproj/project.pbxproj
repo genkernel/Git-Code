@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1804F4D11780DD3B0040E5D1 /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1804F4D01780DD3B0040E5D1 /* profile@2x.png */; };
 		1804FA7F176E15D80080AB50 /* PagerItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1861886D176E0BBF00666DFB /* PagerItemView.m */; };
 		1804FA84176E15DB0080AB50 /* PagerItemViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1861886F176E0BBF00666DFB /* PagerItemViewContainer.m */; };
 		1804FA85176E15DE0080AB50 /* PagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18618871176E0BBF00666DFB /* PagerView.m */; };
@@ -184,6 +185,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1804F4D01780DD3B0040E5D1 /* profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile@2x.png"; sourceTree = "<group>"; };
 		1804FA89176E2A800080AB50 /* UIButton+Gitty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Gitty.h"; sourceTree = "<group>"; };
 		1804FA8A176E2A800080AB50 /* UIButton+Gitty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Gitty.m"; sourceTree = "<group>"; };
 		1804FA8E176E2D510080AB50 /* GitHub-Mark-120px-plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GitHub-Mark-120px-plus.png"; sourceTree = "<group>"; };
@@ -935,6 +937,7 @@
 		18438B571777A7E100943F9F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				1804F4D01780DD3B0040E5D1 /* profile@2x.png */,
 				18438B591777A7E100943F9F /* profile.png */,
 			);
 			name = Profile;
@@ -2082,6 +2085,7 @@
 				18ECEC7B1780601300740D96 /* code-ctx.png in Resources */,
 				18ECEC811780663800740D96 /* code-separator.png in Resources */,
 				18ECEC831780667200740D96 /* code-separator@2x.png in Resources */,
+				1804F4D11780DD3B0040E5D1 /* profile@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

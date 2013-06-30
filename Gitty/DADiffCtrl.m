@@ -56,9 +56,21 @@
 	self.title = self.changeCommit.author.name;
 	self.navigationItem.prompt = self.changeCommit.messageSummary;
 	
+	[self loadAuthorAvatarImage];
+	
 	_cachedViews = NSMutableDictionary.new;
 	
 	[self.table registerClass:DADeltaContentCell.class forCellReuseIdentifier:DADeltaContentCell.className];
+}
+
+- (void)loadAuthorAvatarImage {
+	UIImageView *avatar = [UIImageView.alloc initWithImage:[UIImage imageNamed:@"profile.png"]];
+	[avatar applyAvatarStyle];
+	
+	[avatar setGravatarImageWithEmail:self.diff.changeCommit.author.email];
+	
+	UIBarButtonItem *rightButton = [UIBarButtonItem.alloc initWithCustomView:avatar];
+	self.navigationItem.rightBarButtonItem = rightButton;
 }
 
 - (NSUInteger)supportedInterfaceOrientations {

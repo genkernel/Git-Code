@@ -12,7 +12,6 @@
 @interface DADiffCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate> {
 	NSMutableDictionary *_cachedViews;
 }
-//+ (DADiffCtrlDataSource *)loadDiffForCommit:(GTCommit *)commit;
 @property (strong, nonatomic) DADiffCtrlDataSource *diff;
 
 @property (strong, nonatomic) IBOutlet UITableView *table;

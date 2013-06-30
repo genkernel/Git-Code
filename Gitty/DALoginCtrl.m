@@ -122,6 +122,8 @@ static NSString *SettingsSegue = @"SettingsSegue";
 }
 
 - (void)pager:(PagerView *)pagerView centerItemDidChange:(NSUInteger)index {
+	self.serverDotsControl.currentPage = index;
+	
 	if (index >= self.servers.list.count) {
 		return;
 	}

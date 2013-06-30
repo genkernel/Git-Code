@@ -34,6 +34,8 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 
 @property (strong, nonatomic) DAPeriod *periodFilter;
 
+@property (strong, nonatomic, readonly) NSIndexPath *selectedCommitIndexPath;
+
 @property (strong, nonatomic, readonly) DABranchPickerCtrl *branchPickerCtrl;
 @property (strong, nonatomic, readonly) DAPeriodPicker *periodPickerCtrl;
 @end
@@ -103,6 +105,16 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 	[super viewWillAppear:animated];
 	
 	[self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	
+	if (self.selectedCommitIndexPath) {
+		[self.commitsTable deselectRowAtIndexPath:self.selectedCommitIndexPath animated:animated];
+		
+		_selectedCommitIndexPath = nil;
+	}
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -238,7 +250,7 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	_selectedCommitIndexPath = indexPath;
 	
 	NSString *title = self.dateSections[indexPath.section];
 	NSArray *commits = self.commitsOnDateSection[title];

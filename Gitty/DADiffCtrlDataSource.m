@@ -34,7 +34,7 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 }
 
 - (void)prepareDiff {
-	_deltasLineNumbers = NSMutableDictionary.new;
+	_deltasHeights = NSMutableDictionary.new;
 	_deltas = [NSMutableArray arrayWithCapacity:1024];
 	
 	BOOL isFirstInitialCommit = 0 == self.changeCommit.parents.count;
@@ -49,6 +49,9 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 }
 
 - (void)compareCommit:(GTCommit *)commit againstParentCommit:(GTCommit *)oldCommit {
+	// TODO: fetch height directly from cell instance.
+	static const CGFloat lineHeight = 17.;
+	
 	NSError *err = nil;
 	NSDictionary *opts = @{GTDiffOptionsMaxSizeKey: @(DiffFileMaxSize)};
 	
@@ -73,7 +76,12 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 		
 		delta.hunks = hunks;
 		
-		self.deltasLineNumbers[@(self.deltas.count - 1)] = @(linesCount);
+		NSUInteger hunkCount = delta.hunkCount > 0 ? delta.hunkCount - 1 : 0;
+		
+		NSUInteger linesNumber = 0 == linesCount ? 1 : linesCount;
+		CGFloat height = linesNumber * lineHeight + hunkCount * 21./*hunk separator image height*/;
+		
+		self.deltasHeights[@(self.deltas.count - 1)] = @(height);
 	}];
 }
 

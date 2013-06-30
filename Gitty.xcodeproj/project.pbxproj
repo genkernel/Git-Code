@@ -132,6 +132,8 @@
 		18D9EA3D17554EB400454F3C /* DAGitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9EA3C17554EB400454F3C /* DAGitManager.m */; };
 		18EADFE6176F05F6005D0F28 /* DAGitUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EADFE0176F05EA005D0F28 /* DAGitUser.m */; };
 		18ECEC7B1780601300740D96 /* code-ctx.png in Resources */ = {isa = PBXBuildFile; fileRef = 18ECEC7A1780601300740D96 /* code-ctx.png */; };
+		18ECEC811780663800740D96 /* code-separator.png in Resources */ = {isa = PBXBuildFile; fileRef = 18ECEC801780663800740D96 /* code-separator.png */; };
+		18ECEC831780667200740D96 /* code-separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18ECEC821780667200740D96 /* code-separator@2x.png */; };
 		18F04E3C176FC9F80035C918 /* UITextField+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F04E3B176FC9960035C918 /* UITextField+Helper.m */; };
 		18F995B7175F6EB70033A4A0 /* DADiffCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F995B6175F6EB70033A4A0 /* DADiffCtrl.m */; };
 		18F995BC175FAE710033A4A0 /* DAModifiedHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F995BB175FAE710033A4A0 /* DAModifiedHeader.m */; };
@@ -694,6 +696,8 @@
 		18EADFDF176F05EA005D0F28 /* DAGitUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAGitUser.h; sourceTree = "<group>"; };
 		18EADFE0176F05EA005D0F28 /* DAGitUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAGitUser.m; sourceTree = "<group>"; };
 		18ECEC7A1780601300740D96 /* code-ctx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "code-ctx.png"; sourceTree = "<group>"; };
+		18ECEC801780663800740D96 /* code-separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "code-separator.png"; sourceTree = "<group>"; };
+		18ECEC821780667200740D96 /* code-separator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "code-separator@2x.png"; sourceTree = "<group>"; };
 		18F04E2C176FC83D0035C918 /* Graphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Graphics.h; sourceTree = "<group>"; };
 		18F04E2D176FC83D0035C918 /* ImageUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
 		18F04E2E176FC83D0035C918 /* ImageUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
@@ -1939,6 +1943,8 @@
 		18F995D1175FBEDB0033A4A0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				18ECEC821780667200740D96 /* code-separator@2x.png */,
+				18ECEC801780663800740D96 /* code-separator.png */,
 				18CFED8C177C317C00365E5A /* CodeBackground */,
 				186A92E41778534F00B2EEF3 /* section_status.png */,
 				186A92E51778534F00B2EEF3 /* section_status@2x.png */,
@@ -2074,6 +2080,8 @@
 				18CFED93177C317C00365E5A /* code-green.png in Resources */,
 				18CFED94177C317C00365E5A /* code-red.png in Resources */,
 				18ECEC7B1780601300740D96 /* code-ctx.png in Resources */,
+				18ECEC811780663800740D96 /* code-separator.png in Resources */,
+				18ECEC831780667200740D96 /* code-separator@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

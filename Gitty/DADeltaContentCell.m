@@ -8,7 +8,12 @@
 
 #import "DADeltaContentCell.h"
 
+@interface DADeltaContentCell ()
+@property (strong, nonatomic, readonly) UIImage *separatorImg;
+@end
+
 @implementation DADeltaContentCell
+@dynamic separatorImg;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -50,6 +55,7 @@
 	
 	UINib *nib = [UINib nibWithNibName:DAHunkContentView.className bundle:nil];
 	
+	__block NSUInteger hunkNumber = 0;
 	for (GTDiffHunk *hunk in delta.hunks) {
 		NSArray *views = [nib instantiateWithOwner:self options:nil];
 		DAHunkContentView *view = views[0];
@@ -67,6 +73,18 @@
 		
 		vOffset += height;
 		longestLineWidth = MAX(longestLineWidth, s.width);
+		
+		if (hunkNumber < delta.hunkCount - 1) {
+			UIImage *img = self.separatorImg;
+			
+			UIImageView *separator = [UIImageView.alloc initWithImage:img];
+			separator.frame = CGRectMake(.0, vOffset, s.width, img.size.height);
+			
+			[self.scroll addSubview:separator];
+			vOffset += img.size.height;
+		}
+		
+		hunkNumber++;
 	};
 	
 	for (UIView *v in self.scroll.subviews) {
@@ -74,6 +92,20 @@
 	}
 	
 	self.scroll.contentSize = CGSizeMake(longestLineWidth, vOffset);
+}
+
+#pragma mark Properties
+
+- (UIImage *)separatorImg {
+	static UIImage *img = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		UIEdgeInsets insets = UIEdgeInsetsZero;
+		
+		img = [UIImage imageNamed:@"code-separator.png"];
+		img = [img resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeTile];
+	});
+	return img;
 }
 
 @end

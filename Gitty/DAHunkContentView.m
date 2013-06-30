@@ -87,7 +87,7 @@ static const CGFloat CodeRightMargin = 10.;
 	static UIImage *img = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		UIEdgeInsets insets = UIEdgeInsetsMake(.0, .0, .0, .0);
+		UIEdgeInsets insets = UIEdgeInsetsZero;
 		
 		img = [UIImage imageNamed:@"code-green.png"];
 		img = [img resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];

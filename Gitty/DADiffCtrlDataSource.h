@@ -13,5 +13,5 @@
 
 @property (strong, nonatomic, readonly) GTCommit *changeCommit;
 @property (strong, nonatomic, readonly) NSMutableArray *deltas;
-@property (strong, nonatomic, readonly) NSMutableDictionary *deltasLineNumbers;
+@property (strong, nonatomic, readonly) NSMutableDictionary *deltasHeights;
 @end

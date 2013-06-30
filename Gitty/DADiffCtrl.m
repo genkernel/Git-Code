@@ -20,14 +20,14 @@
 @interface DADiffCtrl ()
 @property (strong, nonatomic, readonly) GTCommit *changeCommit;
 @property (strong, nonatomic, readonly) NSArray *deltas;
-@property (strong, nonatomic, readonly) NSDictionary *deltasLineNumbers;
+@property (strong, nonatomic, readonly) NSDictionary *deltasHeights;
 
 @property (strong, nonatomic, readonly) NSMutableDictionary *cachedViews;
 @end
 
 @implementation DADiffCtrl
 @synthesize cachedViews = _cachedViews;
-@dynamic changeCommit, deltas, deltasLineNumbers;
+@dynamic changeCommit, deltas, deltasHeights;
 
 #pragma mark Properties
 
@@ -39,8 +39,8 @@
 	return self.diff.deltas;
 }
 
-- (NSDictionary *)deltasLineNumbers {
-	return self.diff.deltasLineNumbers;
+- (NSDictionary *)deltasHeights {
+	return self.diff.deltasHeights;
 }
 
 #pragma mark VC lifecircle
@@ -138,20 +138,13 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	// TODO: fetch height directly from cell instance.
-	static const CGFloat lineHeight = 17.;
-	
-	NSUInteger linesNumber = [self.deltasLineNumbers[@(indexPath.section)] unsignedIntValue];
-	// At least 1 line.
-	linesNumber += 0 == linesNumber ? 1 : 0;
-	
-	return linesNumber * lineHeight;
+	return [self.deltasHeights[@(indexPath.section)] floatValue];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	DADeltaContentCell *cell = nil;
 	
-	[NSObject startMeasurement];
+	//[NSObject startMeasurement];
 	{
 		GTDiffDelta *delta = self.deltas[indexPath.section];
 		
@@ -159,8 +152,8 @@
 		
 		[cell loadDelta:delta];
 	}
-	double period = [NSObject endMeasurement];
-	[Logger info:@"Cell loaded in %.2f", period];
+	//double period = [NSObject endMeasurement];
+	//[Logger info:@"Cell loaded in %.2f", period];
 	
 	return cell;
 }

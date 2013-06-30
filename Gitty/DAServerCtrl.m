@@ -22,8 +22,8 @@
 	
 	((PagerItemView *)self.view).identifier = self.className;
 	
-	[self.loginButton applyBlueStyle];
-	[self.exploreButton applyGreenStyle];
+	self.loginButton.layer.cornerRadius = 40.;
+	self.exploreButton.layer.cornerRadius = 40.;
 	
 	[self.repoField applyThinStyle];
 	[self.userNameField applyThinStyle];
@@ -58,8 +58,16 @@
 	[self.repoField setProgress:progress progressColor:UIColor.acceptingGreenColor backgroundColor:UIColor.whiteColor];
 }
 
+- (void)startProgressing {
+	[self.exploreButton setTitle:nil forState:UIControlStateNormal];
+	[self.exploringIndicator startAnimating];
+}
+
 - (void)resetProgress {
 	progress = .0;
+	
+	[self.exploringIndicator stopAnimating];
+	[self.exploreButton setTitle:NSLocalizedString(@"Explore", nil) forState:UIControlStateNormal];
 	
 	self.repoField.background = nil;
 	self.repoField.disabledBackground = nil;
@@ -116,12 +124,16 @@
 }
 
 - (void)showAnonymousButton {
-	[self.loginButton applyRedStyle];
-	[self.loginButton setTitle:@"Anonymous" forState:UIControlStateNormal];
+	self.loginButton.backgroundColor = UIColor.cancelingRedColor;
+	[self.loginButton setBackgroundImage:[UIImage imageNamed:@"btn-red.png"] forState:UIControlStateNormal];
+	
+	[self.loginButton setTitle:@"Cancel" forState:UIControlStateNormal];
 }
 
 - (void)showLoginButton {
-	[self.loginButton applyBlueStyle];
+	self.loginButton.backgroundColor = UIColor.acceptingBlueColor;
+	[self.loginButton setBackgroundImage:[UIImage imageNamed:@"btn-blue.png"] forState:UIControlStateNormal];
+	
 	[self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
 }
 

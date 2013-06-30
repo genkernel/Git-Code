@@ -68,6 +68,8 @@ static NSString *SettingsSegue = @"SettingsSegue";
 	if (existent) {
 		GTRepository *repo = [self.git localRepoWithName:repoName forServer:self.currentServer];
 		[self performSegueWithIdentifier:RepoSegue sender:repo];
+		
+		[self.currentCtrl resetProgress];
 	} else {
 		[self cloneRemoteRepoWithName:repoName fromServer:self.currentServer authenticationUser:user];
 	}
@@ -188,6 +190,8 @@ static NSString *SettingsSegue = @"SettingsSegue";
 #pragma mark Actions
 
 - (void)exploreDidClick:(UIButton *)sender {
+	[self.currentCtrl startProgressing];
+	
 	DAGitUser *user = nil;
 	if (self.currentCtrl.isUsingCredentials) {
 		user = [DAGitUser userWithName:self.currentCtrl.userNameField.text password:self.currentCtrl.userPasswordField.text];

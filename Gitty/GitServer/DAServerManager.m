@@ -50,6 +50,10 @@ static NSString *StoreFilename = @"GitServers.plist";
 - (void)addNewServer:(DAGitServer *)server {
 	_namedList[server.name] = server;
 	
+	[self save];
+}
+
+- (void)save {
 	NSMutableArray *saveArr = [NSMutableArray arrayWithCapacity:self.namedList.count];
 	for (DAGitServer *saveServer in self.list) {
 		[saveArr addObject:saveServer.saveDict];

@@ -13,7 +13,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *exploreButton, *loginButton;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *exploringIndicator;
 @property (strong, nonatomic) IBOutlet UIImageView *logoIcon;
-@property (strong, nonatomic) IBOutlet UILabel *serverName;
+@property (strong, nonatomic) IBOutlet UILabel *serverName, *serverBaseUrl;
 @property (strong, nonatomic) IBOutlet UIView *exploreContainer, *credentialsContainer;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *protocolButtons;
 
@@ -23,4 +23,5 @@
 - (void)resetProgress;
 
 @property () BOOL isUsingCredentials;
+@property (strong, nonatomic, readonly) NSString *selectedProtocol;
 @end

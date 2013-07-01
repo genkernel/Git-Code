@@ -63,7 +63,7 @@ static NSString *SettingsSegue = @"SettingsSegue";
 	[self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
-- (void)testRepoWithUserString:(NSString *)repoName credentialsObject:(DAGitUser *)user {
+- (void)testRepoWithUserString:(NSString *)repoName {
 	BOOL existent = [self.git isLocalRepoExistent:repoName forServer:self.currentServer];
 	isRepoCloned = !existent;
 	
@@ -73,8 +73,15 @@ static NSString *SettingsSegue = @"SettingsSegue";
 		
 		[self.currentCtrl resetProgress];
 	} else {
+		DAGitUser *user = nil;
+		if (self.currentCtrl.isUsingCredentials) {
+			user = [DAGitUser userWithName:self.currentCtrl.userNameField.text password:self.currentCtrl.userPasswordField.text];
+		}
+		
 		[self cloneRemoteRepoWithName:repoName fromServer:self.currentServer authenticationUser:user];
 	}
+	
+	[self.servers save];
 }
 
 - (DAServerCtrl *)newServerCtrl {
@@ -184,7 +191,7 @@ static NSString *SettingsSegue = @"SettingsSegue";
 		[self performSegueWithIdentifier:RepoSegue sender:clone.clonedRepo];
 	};
 	
-	DAGitClone *clone = [DAGitClone cloneRepoWithName:repoName fromServer:self.currentServer];
+	DAGitClone *clone = [DAGitClone cloneRepoWithName:repoName fromServer:server];
 	clone.authenticationUser = user;
 	clone.delegate = delegate;
 	
@@ -196,12 +203,7 @@ static NSString *SettingsSegue = @"SettingsSegue";
 - (void)exploreDidClick:(UIButton *)sender {
 	[self.currentCtrl startProgressing];
 	
-	DAGitUser *user = nil;
-	if (self.currentCtrl.isUsingCredentials) {
-		user = [DAGitUser userWithName:self.currentCtrl.userNameField.text password:self.currentCtrl.userPasswordField.text];
-	}
-	
-	[self testRepoWithUserString:self.currentCtrl.repoField.text credentialsObject:user];
+	[self testRepoWithUserString:self.currentCtrl.repoField.text];
 }
 
 - (void)createDidClick:(UIButton *)sender {
@@ -214,9 +216,10 @@ static NSString *SettingsSegue = @"SettingsSegue";
 	
 	NSString *url = self.createCtrl.serverUrlField.text;
 	NSDictionary *info = @{ServerName: name,
-						   ServerGitBaseUrl: url,
-						   SaveDirectory: name,
-						   LogoIcon: @""};
+						ServerGitBaseUrl: url,
+						SaveDirectory: name,
+						LogoIcon: @"",
+						TransferProtocol: @"git://"};
 	
 	DAGitServer *server = [DAGitServer serverWithDictionary:info];
 	[self.servers addNewServer:server];

@@ -13,12 +13,15 @@
 @end
 
 @interface DAServerCtrl ()
+@property (weak, nonatomic, readonly) DAGitServer *server;
+
 @property (strong, nonatomic, readonly) UIButton *selectedProtocolButton;
 @end
 
 @implementation DAServerCtrl {
 	CGFloat progress;
 }
+@dynamic selectedProtocol;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,9 +40,6 @@
 	for (UIButton *button in self.protocolButtons) {
 		[button applyProtocolStyle];
 	}
-	
-	_selectedProtocolButton = self.protocolButtons[0];
-	self.selectedProtocolButton.enabled = NO;
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -51,8 +51,36 @@
 }
 
 - (void)loadServer:(DAGitServer *)server {
+	_server = server;
+	
 	self.serverName.text = server.name;
 	self.logoIcon.image = [UIImage imageNamed:server.logoIconName];
+	
+	[self selectProtocol:server.transferProtocol];
+	[self resetBaseUrlLabel];
+}
+
+- (void)resetBaseUrlLabel {
+	self.serverBaseUrl.text = [[self.selectedProtocol concat:self.server.gitBaseUrl] concat:@"/"];
+}
+
+- (void)selectProtocol:(NSString *)protocol {
+	_selectedProtocolButton = nil;
+	
+	for (UIButton *button in self.protocolButtons) {
+		button.enabled = YES;
+		
+		NSString *buttonTitle = [button titleForState:UIControlStateNormal];
+		if ([protocol isEqualToString:buttonTitle]) {
+			_selectedProtocolButton = button;
+		}
+	}
+	
+	if (!self.selectedProtocolButton) {
+		_selectedProtocolButton = self.protocolButtons[0];
+	}
+	
+	self.selectedProtocolButton.enabled = NO;
 }
 
 - (void)setProgress:(CGFloat)updatedProgress {
@@ -154,6 +182,16 @@
 	sender.enabled = NO;
 	
 	_selectedProtocolButton = sender;
+	
+	self.server.transferProtocol = self.selectedProtocol;
+	
+	[self resetBaseUrlLabel];
+}
+
+#pragma mark Properties
+
+- (NSString *)selectedProtocol {
+	return [self.selectedProtocolButton titleForState:UIControlStateNormal];
 }
 
 @end

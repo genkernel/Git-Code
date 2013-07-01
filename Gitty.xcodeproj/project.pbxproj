@@ -43,7 +43,6 @@
 		18170922175BCC1B002A2D93 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18170921175BCC1B002A2D93 /* Icon-72@2x.png */; };
 		18184B6017555AB5001C58D8 /* DABaseCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18184B5F17555AB5001C58D8 /* DABaseCtrl.m */; };
 		18184B6717556968001C58D8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18184B6617556968001C58D8 /* libz.dylib */; };
-		181993D5176D25BE00D4BE1F /* DACreateServerTopMargin.m in Sources */ = {isa = PBXBuildFile; fileRef = 181993D4176D23D900D4BE1F /* DACreateServerTopMargin.m */; };
 		183DA706175549F900140DA8 /* libObjectiveGit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 183DA703175549D100140DA8 /* libObjectiveGit-iOS.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		18438B181777778200943F9F /* GTCommit+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B171777778200943F9F /* GTCommit+Gitty.m */; };
 		18438B471777A35100943F9F /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B351777A35100943F9F /* AFHTTPClient.m */; };
@@ -81,8 +80,6 @@
 		189016B7175AA49300F19CE4 /* DAGitClone.m in Sources */ = {isa = PBXBuildFile; fileRef = 189016B6175AA49300F19CE4 /* DAGitClone.m */; };
 		189016BB175AA6D800F19CE4 /* DAGitManager+ActionsInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 189016BA175AA6D800F19CE4 /* DAGitManager+ActionsInterface.m */; };
 		189016BE175AAD8200F19CE4 /* DAGitCloneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 189016BD175AAD8200F19CE4 /* DAGitCloneDelegate.m */; };
-		189016C4175ABBDB00F19CE4 /* DAAboutCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 189016C3175ABBDB00F19CE4 /* DAAboutCtrl.m */; };
-		189016C7175ABC0B00F19CE4 /* DASettingsCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 189016C6175ABC0B00F19CE4 /* DASettingsCtrl.m */; };
 		189016E7175AC46400F19CE4 /* DynamicObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 189016CF175AC46400F19CE4 /* DynamicObject.m */; };
 		189016E8175AC46400F19CE4 /* NSArray+AAV.m in Sources */ = {isa = PBXBuildFile; fileRef = 189016D1175AC46400F19CE4 /* NSArray+AAV.m */; };
 		189016E9175AC46400F19CE4 /* NSDate+InternetDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 189016D3175AC46400F19CE4 /* NSDate+InternetDateTime.m */; };
@@ -228,8 +225,6 @@
 		18184B5E17555AB5001C58D8 /* DABaseCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABaseCtrl.h; sourceTree = "<group>"; };
 		18184B5F17555AB5001C58D8 /* DABaseCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABaseCtrl.m; sourceTree = "<group>"; };
 		18184B6617556968001C58D8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		181993D3176D23D900D4BE1F /* DACreateServerTopMargin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DACreateServerTopMargin.h; sourceTree = "<group>"; };
-		181993D4176D23D900D4BE1F /* DACreateServerTopMargin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DACreateServerTopMargin.m; sourceTree = "<group>"; };
 		181993D6176D3D1000D4BE1F /* DAGitServer+Creation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DAGitServer+Creation.h"; sourceTree = "<group>"; };
 		181993D7176D3D1000D4BE1F /* DAGitServer+Creation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DAGitServer+Creation.m"; sourceTree = "<group>"; };
 		183DA6F4175549D100140DA8 /* ObjectiveGitFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveGitFramework.xcodeproj; path = "Submodules/objective-git/ObjectiveGitFramework.xcodeproj"; sourceTree = "<group>"; };
@@ -382,10 +377,6 @@
 		189016BC175AAD8200F19CE4 /* DAGitCloneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGitCloneDelegate.h; sourceTree = "<group>"; };
 		189016BD175AAD8200F19CE4 /* DAGitCloneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitCloneDelegate.m; sourceTree = "<group>"; };
 		189016BF175AB42B00F19CE4 /* DAGitAction+ManagerAccess.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DAGitAction+ManagerAccess.h"; sourceTree = "<group>"; };
-		189016C2175ABBDB00F19CE4 /* DAAboutCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAboutCtrl.h; sourceTree = "<group>"; };
-		189016C3175ABBDB00F19CE4 /* DAAboutCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAboutCtrl.m; sourceTree = "<group>"; };
-		189016C5175ABC0B00F19CE4 /* DASettingsCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DASettingsCtrl.h; sourceTree = "<group>"; };
-		189016C6175ABC0B00F19CE4 /* DASettingsCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DASettingsCtrl.m; sourceTree = "<group>"; };
 		189016CE175AC46400F19CE4 /* DynamicObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicObject.h; sourceTree = "<group>"; };
 		189016CF175AC46400F19CE4 /* DynamicObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicObject.m; sourceTree = "<group>"; };
 		189016D0175AC46400F19CE4 /* NSArray+AAV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+AAV.h"; sourceTree = "<group>"; };
@@ -870,15 +861,6 @@
 			name = Shared;
 			sourceTree = "<group>";
 		};
-		181993D2176D23B100D4BE1F /* Layout */ = {
-			isa = PBXGroup;
-			children = (
-				181993D3176D23D900D4BE1F /* DACreateServerTopMargin.h */,
-				181993D4176D23D900D4BE1F /* DACreateServerTopMargin.m */,
-			);
-			name = Layout;
-			sourceTree = "<group>";
-		};
 		183DA6F3175549BC00140DA8 /* Submodules */ = {
 			isa = PBXGroup;
 			children = (
@@ -1159,25 +1141,6 @@
 				189016BD175AAD8200F19CE4 /* DAGitCloneDelegate.m */,
 			);
 			name = Clone;
-			sourceTree = "<group>";
-		};
-		189016C0175ABBC000F19CE4 /* About */ = {
-			isa = PBXGroup;
-			children = (
-				189016C2175ABBDB00F19CE4 /* DAAboutCtrl.h */,
-				189016C3175ABBDB00F19CE4 /* DAAboutCtrl.m */,
-			);
-			name = About;
-			sourceTree = "<group>";
-		};
-		189016C1175ABBC600F19CE4 /* Servers */ = {
-			isa = PBXGroup;
-			children = (
-				181993D2176D23B100D4BE1F /* Layout */,
-				189016C5175ABC0B00F19CE4 /* DASettingsCtrl.h */,
-				189016C6175ABC0B00F19CE4 /* DASettingsCtrl.m */,
-			);
-			name = Servers;
 			sourceTree = "<group>";
 		};
 		189016CB175AC44900F19CE4 /* xlib */ = {
@@ -1839,8 +1802,6 @@
 				189A531E175922BF00B5BD8D /* Login */,
 				189A531F175922D100B5BD8D /* Repo */,
 				18F995B0175F6EA00033A4A0 /* Diff */,
-				189016C1175ABBC600F19CE4 /* Servers */,
-				189016C0175ABBC000F19CE4 /* About */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -2122,10 +2083,8 @@
 				189016BB175AA6D800F19CE4 /* DAGitManager+ActionsInterface.m in Sources */,
 				18A6254B1775D59400FC27AE /* DAGitPullDelegate.m in Sources */,
 				189016BE175AAD8200F19CE4 /* DAGitCloneDelegate.m in Sources */,
-				189016C4175ABBDB00F19CE4 /* DAAboutCtrl.m in Sources */,
 				1816715717763D3300F1DE4D /* DAPeriodPicker.m in Sources */,
 				18438B551777A5AD00943F9F /* Cryptor.m in Sources */,
-				189016C7175ABC0B00F19CE4 /* DASettingsCtrl.m in Sources */,
 				181671611776745200F1DE4D /* DAPeriod.m in Sources */,
 				189016E7175AC46400F19CE4 /* DynamicObject.m in Sources */,
 				189016E8175AC46400F19CE4 /* NSArray+AAV.m in Sources */,
@@ -2148,7 +2107,6 @@
 				18438B481777A35100943F9F /* AFHTTPRequestOperation.m in Sources */,
 				189016F0175AC46400F19CE4 /* UIDevice+Helper.m in Sources */,
 				189016F1175AC46400F19CE4 /* UncaughtExceptionHandler.m in Sources */,
-				181993D5176D25BE00D4BE1F /* DACreateServerTopMargin.m in Sources */,
 				1804FA84176E15DB0080AB50 /* PagerItemViewContainer.m in Sources */,
 				18901726175AC47000F19CE4 /* ActivityIndicatorView.m in Sources */,
 				18901727175AC47000F19CE4 /* AlertView.m in Sources */,

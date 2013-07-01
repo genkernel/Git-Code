@@ -9,5 +9,4 @@
 #import "DAGitServer+Creation.h"
 
 @implementation DAGitServer (Creation)
-
 @end

@@ -15,8 +15,7 @@
 }
 
 - (NSString *)remotePathForRepoWithName:(NSString *)name atServer:(DAGitServer *)server {
-	return [NSString stringWithFormat:@"https://%@/%@", server.gitBaseUrl, name];
-//	return [server.gitBaseUrl stringByAppendingString:name];
+	return [NSString stringWithFormat:@"%@%@/%@", server.transferProtocol, server.gitBaseUrl, name];
 }
 
 @end

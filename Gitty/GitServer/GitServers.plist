@@ -3,6 +3,8 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>TransferProtocol</key>
+		<string>git://</string>
 		<key>LogoIcon</key>
 		<string>GitHub-Mark-120px-plus.png</string>
 		<key>SaveDirectoryName</key>
@@ -13,6 +15,8 @@
 		<string>github.com</string>
 	</dict>
 	<dict>
+		<key>TransferProtocol</key>
+		<string>git://</string>
 		<key>LogoIcon</key>
 		<string>bitbucket.png</string>
 		<key>SaveDirectoryName</key>

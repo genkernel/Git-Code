@@ -51,6 +51,8 @@ static NSString *SettingsSegue = @"SettingsSegue";
 	
 	_currentServer = self.servers.list[0];
 	
+	self.serverDotsControl.numberOfPages = self.servers.list.count + 1;
+	
 	self.pager.looped = YES;
 	[self.pager reloadData];
 }
@@ -223,6 +225,8 @@ static NSString *SettingsSegue = @"SettingsSegue";
 	[self showInfoAlert:message];
 	
 	[self.createCtrl resetFields];
+	
+	self.serverDotsControl.numberOfPages = self.servers.list.count + 1;
 	
 	self.pager.defaultPage = [self.servers.list indexOfObject:server];
 	[self.pager reloadData];

@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *logoIcon;
 @property (strong, nonatomic) IBOutlet UILabel *serverName;
 @property (strong, nonatomic) IBOutlet UIView *exploreContainer, *credentialsContainer;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *protocolButtons;
 
 - (void)loadServer:(DAGitServer *)server;
 - (void)startProgressing;

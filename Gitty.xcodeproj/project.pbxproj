@@ -71,6 +71,7 @@
 		18706EDB1763B3B40046A2A6 /* DADiffDeltaGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18706EDA1763B3B40046A2A6 /* DADiffDeltaGraphView.m */; };
 		18706EDF1763ECF10046A2A6 /* DADeltaContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18706EDE1763ECF10046A2A6 /* DADeltaContentCell.xib */; };
 		18706EE31764075D0046A2A6 /* UIColor+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 18706EE21764075D0046A2A6 /* UIColor+Gitty.m */; };
+		187C86211781F4A800703592 /* btn-lightgray.png in Resources */ = {isa = PBXBuildFile; fileRef = 187C86201781F4A800703592 /* btn-lightgray.png */; };
 		18878CFB17629E03008BF232 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18878CF917629E03008BF232 /* libcrypto.a */; };
 		18878CFC17629E03008BF232 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18878CFA17629E03008BF232 /* libssl.a */; };
 		188B2D56175D3E4900BD1EEB /* DACommitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188B2D55175D3E4900BD1EEB /* DACommitCell.m */; };
@@ -289,6 +290,7 @@
 		18706EDE1763ECF10046A2A6 /* DADeltaContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DADeltaContentCell.xib; sourceTree = "<group>"; };
 		18706EE11764075D0046A2A6 /* UIColor+Gitty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Gitty.h"; sourceTree = "<group>"; };
 		18706EE21764075D0046A2A6 /* UIColor+Gitty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Gitty.m"; sourceTree = "<group>"; };
+		187C86201781F4A800703592 /* btn-lightgray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-lightgray.png"; sourceTree = "<group>"; };
 		18878CAD17629E03008BF232 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
 		18878CAE17629E03008BF232 /* asn1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn1.h; sourceTree = "<group>"; };
 		18878CAF17629E03008BF232 /* asn1_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn1_mac.h; sourceTree = "<group>"; };
@@ -817,6 +819,7 @@
 		1804FAB3176E85790080AB50 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				187C86201781F4A800703592 /* btn-lightgray.png */,
 				1804FABF176EAACA0080AB50 /* btn-red.png */,
 				1804FAB4176E85790080AB50 /* btn-blue.png */,
 				1804FAB5176E85790080AB50 /* btn-gray.png */,
@@ -2086,6 +2089,7 @@
 				18ECEC811780663800740D96 /* code-separator.png in Resources */,
 				18ECEC831780667200740D96 /* code-separator@2x.png in Resources */,
 				1804F4D11780DD3B0040E5D1 /* profile@2x.png in Resources */,
+				187C86211781F4A800703592 /* btn-lightgray.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

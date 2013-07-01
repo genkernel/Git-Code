@@ -8,7 +8,12 @@
 
 #import "DAServerCtrl.h"
 
+@interface UIButton (ServerCtrlLayout)
+- (void)applyProtocolStyle;
+@end
+
 @interface DAServerCtrl ()
+@property (strong, nonatomic, readonly) UIButton *selectedProtocolButton;
 @end
 
 @implementation DAServerCtrl {
@@ -28,6 +33,13 @@
 	[self.repoField applyThinStyle];
 	[self.userNameField applyThinStyle];
 	[self.userPasswordField applyThinStyle];
+	
+	for (UIButton *button in self.protocolButtons) {
+		[button applyProtocolStyle];
+	}
+	
+	_selectedProtocolButton = self.protocolButtons[0];
+	self.selectedProtocolButton.enabled = NO;
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -135,6 +147,32 @@
 	[self.loginButton setBackgroundImage:[UIImage imageNamed:@"btn-blue.png"] forState:UIControlStateNormal];
 	
 	[self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
+}
+
+- (IBAction)protocolSelected:(UIButton *)sender {
+	self.selectedProtocolButton.enabled = YES;
+	sender.enabled = NO;
+	
+	_selectedProtocolButton = sender;
+}
+
+@end
+
+
+@implementation UIButton (ServerCtrlLayout)
+
+- (void)applyProtocolStyle {
+	self.layer.cornerRadius = 3.;
+	self.layer.masksToBounds = YES;
+	
+	UIImage *img = [UIImage imageNamed:@"btn-lightgray.png"];
+	UIImage *selectedImg = [UIImage imageNamed:@"btn-blue.png"];
+	
+	[self setBackgroundImage:img forState:UIControlStateNormal];
+	[self setBackgroundImage:selectedImg forState:UIControlStateDisabled];
+	
+	[self setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+	[self setTitleColor:UIColor.whiteColor forState:UIControlStateDisabled];
 }
 
 @end

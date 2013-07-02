@@ -237,7 +237,7 @@ static NSString *SettingsSegue = @"SettingsSegue";
 	NSDictionary *info = @{ServerName: name,
 						ServerGitBaseUrl: url,
 						SaveDirectory: name,
-						LogoIcon: @"",
+						LogoIcon: @"Git-Icon.png",
 						TransferProtocol: @"git://",
 						SupportedProtocols: @[@"git://", @"https://", @"http://", @"ssh://", @"file://"]};
 	

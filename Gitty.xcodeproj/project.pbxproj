@@ -121,6 +121,8 @@
 		189BCF1D178353E80023F093 /* symbol-plus_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 189BCF1B178353E80023F093 /* symbol-plus_gray.png */; };
 		189BCF1E178353E80023F093 /* symbol-plus_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189BCF1C178353E80023F093 /* symbol-plus_gray@2x.png */; };
 		189BCF2917835D3C0023F093 /* PageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 189BCF2817835D3C0023F093 /* PageControl.m */; };
+		189BCF2C178375280023F093 /* Git-Icon_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 189BCF2A178375280023F093 /* Git-Icon_red.png */; };
+		189BCF2D178375280023F093 /* Git-Icon_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189BCF2B178375280023F093 /* Git-Icon_red@2x.png */; };
 		18A1114D175E2A7000784356 /* DARepoCtrl+GitFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1114C175E2A7000784356 /* DARepoCtrl+GitFetcher.m */; };
 		18A625461775D54900FC27AE /* GTRepository+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A625451775D54600FC27AE /* GTRepository+Gitty.m */; };
 		18A6254B1775D59400FC27AE /* DAGitPullDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6254A1775D59000FC27AE /* DAGitPullDelegate.m */; };
@@ -462,6 +464,8 @@
 		189BCF1C178353E80023F093 /* symbol-plus_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "symbol-plus_gray@2x.png"; sourceTree = "<group>"; };
 		189BCF2717835D3C0023F093 /* PageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControl.h; sourceTree = "<group>"; };
 		189BCF2817835D3C0023F093 /* PageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControl.m; sourceTree = "<group>"; };
+		189BCF2A178375280023F093 /* Git-Icon_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Git-Icon_red.png"; sourceTree = "<group>"; };
+		189BCF2B178375280023F093 /* Git-Icon_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Git-Icon_red@2x.png"; sourceTree = "<group>"; };
 		18A1114B175E2A7000784356 /* DARepoCtrl+GitFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DARepoCtrl+GitFetcher.h"; sourceTree = "<group>"; };
 		18A1114C175E2A7000784356 /* DARepoCtrl+GitFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DARepoCtrl+GitFetcher.m"; sourceTree = "<group>"; };
 		18A624601775D4C800FC27AE /* map.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = map.c; sourceTree = "<group>"; };
@@ -790,6 +794,8 @@
 		1804FA9B176E711C0080AB50 /* Git */ = {
 			isa = PBXGroup;
 			children = (
+				189BCF2A178375280023F093 /* Git-Icon_red.png */,
+				189BCF2B178375280023F093 /* Git-Icon_red@2x.png */,
 				1804FA9C176E711C0080AB50 /* Git-Icon.png */,
 				1804FA9D176E711C0080AB50 /* Git-Icon@2x.png */,
 			);
@@ -2106,6 +2112,8 @@
 				189BCF1A178349AD0023F093 /* symbol-plus.png in Resources */,
 				189BCF1D178353E80023F093 /* symbol-plus_gray.png in Resources */,
 				189BCF1E178353E80023F093 /* symbol-plus_gray@2x.png in Resources */,
+				189BCF2C178375280023F093 /* Git-Icon_red.png in Resources */,
+				189BCF2D178375280023F093 /* Git-Icon_red@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

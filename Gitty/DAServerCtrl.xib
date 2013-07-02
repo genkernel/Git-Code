@@ -41,7 +41,7 @@
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIImageView" id="1014893891">
 						<reference key="NSNextResponder" ref="171443969"/>
-						<int key="NSvFlags">1280</int>
+						<int key="NSvFlags">1312</int>
 						<string key="NSFrame">{{100, 15}, {120, 120}}</string>
 						<reference key="NSSuperview" ref="171443969"/>
 						<reference key="NSWindow"/>
@@ -55,7 +55,7 @@
 					<object class="IBUILabel" id="806508930">
 						<reference key="NSNextResponder" ref="171443969"/>
 						<int key="NSvFlags">1314</int>
-						<string key="NSFrame">{{0, 140}, {320, 26}}</string>
+						<string key="NSFrame">{{0, 140}, {320, 28}}</string>
 						<reference key="NSSuperview" ref="171443969"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="75967763"/>
@@ -83,11 +83,11 @@
 							<string key="name">Cochin</string>
 							<string key="family">Cochin</string>
 							<int key="traits">0</int>
-							<double key="pointSize">24</double>
+							<double key="pointSize">26</double>
 						</object>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Cochin</string>
-							<double key="NSSize">24</double>
+							<double key="NSSize">26</double>
 							<int key="NSfFlags">16</int>
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
@@ -95,7 +95,7 @@
 					<object class="IBUIView" id="75967763">
 						<reference key="NSNextResponder" ref="171443969"/>
 						<int key="NSvFlags">1314</int>
-						<string key="NSFrame">{{0, 240}, {320, 1}}</string>
+						<string key="NSFrame">{{0, 248}, {320, 1}}</string>
 						<reference key="NSSuperview" ref="171443969"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="763360860"/>
@@ -163,6 +163,7 @@
 								<string key="NSFrame">{{129, 62}, {1, 170}}</string>
 								<reference key="NSSuperview" ref="763360860"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<reference key="IBUIBackgroundColor" ref="943591819"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>

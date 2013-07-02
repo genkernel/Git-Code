@@ -13,6 +13,8 @@
 
 #import "DAGitServer+Creation.h"
 
+static const NSUInteger MaximumServersCount = 20;
+
 static NSString *RepoSegue = @"RepoSegue";
 static NSString *SettingsSegue = @"SettingsSegue";
 
@@ -115,6 +117,11 @@ static NSString *SettingsSegue = @"SettingsSegue";
 - (PagerItemView *)pager:(PagerView *)pagerView pageAtIndex:(NSUInteger)index {
 	BOOL isNewServerCreationCtrl = 0 == index;
 	if (isNewServerCreationCtrl) {
+		if (self.servers.list.count >= MaximumServersCount) {
+			NSString *message = NSLocalizedString(@"Maximum servers count reached (20)", nil);
+			[self.createCtrl disableFeatureWithNotice:message];
+		}
+		
 		return (PagerItemView *)self.createCtrl.view;
 	}
 	

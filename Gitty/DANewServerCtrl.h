@@ -10,7 +10,9 @@
 
 @interface DANewServerCtrl : DABaseCtrl <UITextFieldDelegate>
 - (void)resetFields;
+- (void)disableFeatureWithNotice:(NSString *)message;
 
+@property (strong, nonatomic) IBOutlet UILabel *noticeLabel;
 @property (strong, nonatomic) IBOutlet UIButton *createButton;
 @property (strong, nonatomic) IBOutlet UITextField *serverUrlField, *serverNameField;
 @end

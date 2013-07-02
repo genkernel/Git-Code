@@ -16,7 +16,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	[self.createButton applyGreenStyle];
+	self.createButton.layer.cornerRadius = 35.;
 	
 	[self.serverNameField applyThinStyle];
 	[self.serverUrlField applyThinStyle];
@@ -25,6 +25,16 @@
 - (void)resetFields {
 	self.serverNameField.text = nil;
 	self.serverUrlField.text = nil;
+	
+	self.createButton.enabled = NO;
+}
+
+- (void)disableFeatureWithNotice:(NSString *)message {
+	self.noticeLabel.text = message;
+	self.noticeLabel.hidden = NO;
+	
+	self.serverNameField.enabled = NO;
+	self.serverUrlField.enabled = NO;
 }
 
 #pragma mark UITextFieldDelegate

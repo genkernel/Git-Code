@@ -57,6 +57,8 @@ static NSString *SettingsSegue = @"SettingsSegue";
 	self.pager.looped = YES;
 	self.pager.defaultPage = 1;
 	[self.pager reloadData];
+	
+	self.pager.minSwitchDistance = self.view.width / 3.;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -89,7 +91,7 @@ static NSString *SettingsSegue = @"SettingsSegue";
 - (DAServerCtrl *)newServerCtrl {
 	DAServerCtrl *ctrl = DAServerCtrl.viewCtrl;
 	
-	[ctrl view];
+	((PagerItemView *)ctrl.view).identifier = DAServerCtrl.className;
 	[ctrl.exploreButton addTarget:self action:@selector(exploreDidClick:) forControlEvents:UIControlEventTouchUpInside];
 	
 	return ctrl;
@@ -98,7 +100,7 @@ static NSString *SettingsSegue = @"SettingsSegue";
 - (DANewServerCtrl *)newServerCreationCtrl {
 	DANewServerCtrl *ctrl = DANewServerCtrl.viewCtrl;
 	
-	[ctrl view];
+	((PagerItemView *)ctrl.view).identifier = DANewServerCtrl.className;
 	[ctrl.createButton addTarget:self action:@selector(createDidClick:) forControlEvents:UIControlEventTouchUpInside];
 	
 	return ctrl;
@@ -229,7 +231,7 @@ static NSString *SettingsSegue = @"SettingsSegue";
 	NSString *name = self.createCtrl.serverNameField.text;
 	
 	if (self.servers.namedList[name]) {
-		[self showErrorAlert:@"Name is assigned to another Server already."];
+		[self showErrorAlert:@"Server Name is in use already."];
 		return;
 	}
 	

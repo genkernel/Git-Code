@@ -7,7 +7,6 @@
 //
 
 #import "DAServerCtrl.h"
-#import "DAServerCtrl+AutoLayout.h"
 
 @interface UIButton (ServerCtrlLayout)
 - (void)applyProtocolStyle;
@@ -37,6 +36,8 @@
 	[self.repoField applyThinStyle];
 	[self.userNameField applyThinStyle];
 	[self.userPasswordField applyThinStyle];
+	
+	self.protocolsContainer.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -64,12 +65,7 @@
 - (void)loadProtocolsWithServer:(DAGitServer *)server {
 	_selectedProtocolButton = nil;
 	
-	[self.protocolsContainer removeAllSubviews];
-	
-	self.protocolsContainer.translatesAutoresizingMaskIntoConstraints = NO;
-	[self.protocolsContainer removeConstraints:self.protocolsContainer.constraints];
-	
-	[self layoutProtocolsContainer];
+	[self.protocolsContainer removeAllButtonsAndResetLayout];
 	
 	for (NSString *protocol in server.supportedProtocols) {
 		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -80,7 +76,7 @@
 		[button setTitle:protocol forState:UIControlStateNormal];
 		[button sizeToFit];
 		
-		[self insertAndLayoutNextProtocolButton:button];
+		[self.protocolsContainer insertAndLayoutNextProtocolButton:button];
 		
 		if ([server.transferProtocol isEqualToString:protocol]) {
 			_selectedProtocolButton = button;
@@ -91,14 +87,13 @@
 	
 	if (!self.selectedProtocolButton) {
 		[Logger error:@"No transfer protocol selected by default."];
-//		_selectedProtocolButton = self.protocolButtons[0];
+		_selectedProtocolButton = self.protocolsContainer.subviews.anyObject;
 	}
 	
 	self.selectedProtocolButton.enabled = NO;
 	
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[self.protocolsContainer invalidateIntrinsicContentSize];
-		[self.protocolsContainer setNeedsUpdateConstraints];
 	});
 }
 

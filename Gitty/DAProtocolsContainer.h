@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface DAProtocolsContainer : UIView
-
+- (void)removeAllButtonsAndResetLayout;
+- (void)insertAndLayoutNextProtocolButton:(UIButton *)button;
 @end

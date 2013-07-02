@@ -163,7 +163,6 @@
 								<string key="NSFrame">{{129, 62}, {1, 170}}</string>
 								<reference key="NSSuperview" ref="763360860"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<reference key="IBUIBackgroundColor" ref="943591819"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -788,6 +787,20 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">DAServerCtrl</string>
 					<string key="superclassName">DABaseCtrl</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="didClickLogin:">UIButton</string>
+						<string key="protocolSelected:">UIButton</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="didClickLogin:">
+							<string key="name">didClickLogin:</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBActionInfo" key="protocolSelected:">
+							<string key="name">protocolSelected:</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="credentialsContainer">UIView</string>
 						<string key="exploreButton">UIButton</string>
@@ -795,7 +808,7 @@
 						<string key="exploringIndicator">UIActivityIndicatorView</string>
 						<string key="loginButton">UIButton</string>
 						<string key="logoIcon">UIImageView</string>
-						<string key="protocolsContainer">UIView</string>
+						<string key="protocolsContainer">DAProtocolsContainer</string>
 						<string key="repoField">UITextField</string>
 						<string key="serverBaseUrl">UILabel</string>
 						<string key="serverName">UILabel</string>
@@ -829,7 +842,7 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="protocolsContainer">
 							<string key="name">protocolsContainer</string>
-							<string key="candidateClassName">UIView</string>
+							<string key="candidateClassName">DAProtocolsContainer</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="repoField">
 							<string key="name">repoField</string>

@@ -116,6 +116,11 @@
 		189A5322175922FA00B5BD8D /* DARepoCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A5321175922FA00B5BD8D /* DARepoCtrl.m */; };
 		189A532E1759237C00B5BD8D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189A532D1759237C00B5BD8D /* QuartzCore.framework */; };
 		189A535C1759242800B5BD8D /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A53501759242800B5BD8D /* UIViewAdditions.m */; };
+		189BCF14178348F80023F093 /* symbol-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189BCF13178348F80023F093 /* symbol-plus@2x.png */; };
+		189BCF1A178349AD0023F093 /* symbol-plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 189BCF19178349AD0023F093 /* symbol-plus.png */; };
+		189BCF1D178353E80023F093 /* symbol-plus_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 189BCF1B178353E80023F093 /* symbol-plus_gray.png */; };
+		189BCF1E178353E80023F093 /* symbol-plus_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189BCF1C178353E80023F093 /* symbol-plus_gray@2x.png */; };
+		189BCF2917835D3C0023F093 /* PageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 189BCF2817835D3C0023F093 /* PageControl.m */; };
 		18A1114D175E2A7000784356 /* DARepoCtrl+GitFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1114C175E2A7000784356 /* DARepoCtrl+GitFetcher.m */; };
 		18A625461775D54900FC27AE /* GTRepository+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A625451775D54600FC27AE /* GTRepository+Gitty.m */; };
 		18A6254B1775D59400FC27AE /* DAGitPullDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6254A1775D59000FC27AE /* DAGitPullDelegate.m */; };
@@ -451,6 +456,12 @@
 		189A532D1759237C00B5BD8D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		189A534F1759242800B5BD8D /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
 		189A53501759242800B5BD8D /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
+		189BCF13178348F80023F093 /* symbol-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "symbol-plus@2x.png"; sourceTree = "<group>"; };
+		189BCF19178349AD0023F093 /* symbol-plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "symbol-plus.png"; sourceTree = "<group>"; };
+		189BCF1B178353E80023F093 /* symbol-plus_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "symbol-plus_gray.png"; sourceTree = "<group>"; };
+		189BCF1C178353E80023F093 /* symbol-plus_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "symbol-plus_gray@2x.png"; sourceTree = "<group>"; };
+		189BCF2717835D3C0023F093 /* PageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControl.h; sourceTree = "<group>"; };
+		189BCF2817835D3C0023F093 /* PageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControl.m; sourceTree = "<group>"; };
 		18A1114B175E2A7000784356 /* DARepoCtrl+GitFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DARepoCtrl+GitFetcher.h"; sourceTree = "<group>"; };
 		18A1114C175E2A7000784356 /* DARepoCtrl+GitFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DARepoCtrl+GitFetcher.m"; sourceTree = "<group>"; };
 		18A624601775D4C800FC27AE /* map.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = map.c; sourceTree = "<group>"; };
@@ -1222,6 +1233,7 @@
 		189016F2175AC46F00F19CE4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				189BCF1F1783572B0023F093 /* PageControl */,
 				18F04E39176FC96F0035C918 /* UITextField */,
 				189016F8175AC47000F19CE4 /* ActivityIndicator */,
 				189016FB175AC47000F19CE4 /* AlertView */,
@@ -1455,6 +1467,26 @@
 				189A53501759242800B5BD8D /* UIViewAdditions.m */,
 			);
 			path = UIViewAdditions;
+			sourceTree = "<group>";
+		};
+		189BCF12178348F80023F093 /* Symbols */ = {
+			isa = PBXGroup;
+			children = (
+				189BCF1B178353E80023F093 /* symbol-plus_gray.png */,
+				189BCF1C178353E80023F093 /* symbol-plus_gray@2x.png */,
+				189BCF19178349AD0023F093 /* symbol-plus.png */,
+				189BCF13178348F80023F093 /* symbol-plus@2x.png */,
+			);
+			path = Symbols;
+			sourceTree = "<group>";
+		};
+		189BCF1F1783572B0023F093 /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				189BCF2717835D3C0023F093 /* PageControl.h */,
+				189BCF2817835D3C0023F093 /* PageControl.m */,
+			);
+			name = PageControl;
 			sourceTree = "<group>";
 		};
 		18A6245E1775D4C800FC27AE /* src */ = {
@@ -1928,6 +1960,7 @@
 		18F995D1175FBEDB0033A4A0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				189BCF12178348F80023F093 /* Symbols */,
 				18ECEC821780667200740D96 /* code-separator@2x.png */,
 				18ECEC801780663800740D96 /* code-separator.png */,
 				18CFED8C177C317C00365E5A /* CodeBackground */,
@@ -2069,6 +2102,10 @@
 				18ECEC831780667200740D96 /* code-separator@2x.png in Resources */,
 				1804F4D11780DD3B0040E5D1 /* profile@2x.png in Resources */,
 				187C86211781F4A800703592 /* btn-lightgray.png in Resources */,
+				189BCF14178348F80023F093 /* symbol-plus@2x.png in Resources */,
+				189BCF1A178349AD0023F093 /* symbol-plus.png in Resources */,
+				189BCF1D178353E80023F093 /* symbol-plus_gray.png in Resources */,
+				189BCF1E178353E80023F093 /* symbol-plus_gray@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2169,6 +2206,7 @@
 				18FD1D0F177F4C9100DE4851 /* ImageUtils.m in Sources */,
 				187C862817823EAB00703592 /* DAServerCtrl+AutoLayout.m in Sources */,
 				187C862B1782451D00703592 /* DAProtocolsContainer.m in Sources */,
+				189BCF2917835D3C0023F093 /* PageControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

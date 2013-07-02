@@ -8,7 +8,7 @@
 
 #import "DABaseCtrl.h"
 
-@interface DALoginCtrl : DABaseCtrl <PagerViewDataSource, PagerViewDelegate>
+@interface DALoginCtrl : DABaseCtrl <PagerViewDataSource, PagerViewDelegate, PageControlDelegate>
 @property (strong, nonatomic) IBOutlet UIPageControl *serverDotsControl;
 @property (strong, nonatomic) IBOutlet PagerView *pager;
 @end

@@ -23,17 +23,20 @@
                                 </connections>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" id="KAI-yE-VWF" userLabel="Bookmarks Container">
-                                <rect key="frame" x="0.0" y="500" width="320" height="48"/>
+                                <rect key="frame" x="0.0" y="498" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="7Dc-50-UuZ" userLabel="Servers Page Control">
-                                        <rect key="frame" x="0.0" y="-2" width="320" height="36"/>
+                                    <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="7Dc-50-UuZ" userLabel="Servers Page Control" customClass="PageControl">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="pageIndicatorTintColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="2" id="VT0-xE-sDO"/>
+                                        </connections>
                                     </pageControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fyj-w3-0Vn" userLabel="About Button">
-                                        <rect key="frame" x="0.0" y="26" width="320" height="18"/>
+                                        <rect key="frame" x="0.0" y="30" width="320" height="20"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="14"/>
                                         <state key="normal" title="GitUp by kernel@realm">
@@ -493,6 +496,12 @@
         </class>
         <class className="NavViewCtrl" superclassName="UINavigationController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NavViewCtrl.h"/>
+        </class>
+        <class className="PageControl" superclassName="UIPageControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PageControl.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
         </class>
         <class className="PagerView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PagerView.h"/>

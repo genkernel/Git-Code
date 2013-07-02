@@ -52,8 +52,10 @@ static NSString *SettingsSegue = @"SettingsSegue";
 	_currentServer = self.servers.list[0];
 	
 	self.serverDotsControl.numberOfPages = self.servers.list.count + 1;
+	self.serverDotsControl.currentPage = 1;
 	
 	self.pager.looped = YES;
+	self.pager.defaultPage = 1;
 	[self.pager reloadData];
 }
 
@@ -109,10 +111,13 @@ static NSString *SettingsSegue = @"SettingsSegue";
 }
 
 - (PagerItemView *)pager:(PagerView *)pagerView pageAtIndex:(NSUInteger)index {
-	BOOL isNewServerCreationCtrl = index >= self.servers.list.count;
+	BOOL isNewServerCreationCtrl = 0 == index;
 	if (isNewServerCreationCtrl) {
 		return (PagerItemView *)self.createCtrl.view;
 	}
+	
+	// [0] - occupied by CreateNewServerCtrl.
+	NSUInteger serverIndex = index - 1;
 	
 	DAServerCtrl *ctrl = nil;
 	PagerItemView *view = [pagerView dequeueViewWithIdentifier:DAServerCtrl.className];
@@ -126,16 +131,20 @@ static NSString *SettingsSegue = @"SettingsSegue";
 		view = (PagerItemView *)ctrl.view;
 	}
 	
-	[ctrl loadServer:self.servers.list[index]];
+	[ctrl loadServer:self.servers.list[serverIndex]];
 	return view;
 }
 
 - (void)pager:(PagerView *)pagerView centerItemDidChange:(NSUInteger)index {
 	self.serverDotsControl.currentPage = index;
 	
-	if (index >= self.servers.list.count) {
+	if (0 == index) {
+		// CreateNewServerCtrl.
 		return;
 	}
+	
+	// [0] - occupied by CreateNewServerCtrl.
+	NSUInteger serverIndex = index - 1;
 	
 	for (DAServerCtrl *ctrl in self.ctrls) {
 		PagerItemView *view = (PagerItemView *)ctrl.view;
@@ -145,9 +154,19 @@ static NSString *SettingsSegue = @"SettingsSegue";
 		}
 	}
 	
-	_currentServer = self.servers.list[index];
+	_currentServer = self.servers.list[serverIndex];
 	
 	[Logger info:@"Current server (t:%d idx:%d): %@", pagerView.tag, index, self.currentServer];
+}
+
+#pragma mark PageControlDelegate
+
+- (UIImage *)activeImageForIndex:(NSUInteger)index {
+	return 0 == index ? [UIImage imageNamed:@"symbol-plus.png"] : nil;
+}
+
+- (UIImage *)inactiveImageForIndex:(NSUInteger)index {
+	return 0 == index ? [UIImage imageNamed:@"symbol-plus_gray.png"] : nil;
 }
 
 #pragma mark Internals

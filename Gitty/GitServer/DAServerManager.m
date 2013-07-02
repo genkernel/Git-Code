@@ -16,8 +16,9 @@ static NSString *StoreFilename = @"GitServers.plist";
 
 @implementation DAServerManager {
 	NSMutableDictionary *_namedList;
+	NSMutableArray *_list;
 }
-@dynamic list;
+@synthesize list = _list;
 @synthesize namedList = _namedList;
 @dynamic storePath;
 
@@ -37,10 +38,13 @@ static NSString *StoreFilename = @"GitServers.plist";
 		
 		NSArray *servers = [NSArray arrayWithContentsOfFile:self.storePath];
 
+		_list = [NSMutableArray arrayWithCapacity:servers.count];
 		NSMutableDictionary *items = [NSMutableDictionary dictionaryWithCapacity:servers.count];
 		for (NSDictionary *dict in servers) {
 			DAGitServer *server = [DAGitServer serverWithDictionary:dict];
 			items[server.name] = server;
+			
+			[_list addObject:server];
 		}
 		_namedList = [NSMutableDictionary dictionaryWithDictionary:items];
 	}
@@ -48,6 +52,7 @@ static NSString *StoreFilename = @"GitServers.plist";
 }
 
 - (void)addNewServer:(DAGitServer *)server {
+	[_list addObject:server];
 	_namedList[server.name] = server;
 	
 	[self save];
@@ -62,10 +67,6 @@ static NSString *StoreFilename = @"GitServers.plist";
 }
 
 #pragma mark Properties
-
-- (NSArray *)list {
-	return self.namedList.allValues;
-}
 
 - (NSString *)storePath {
 	return [UIApplication.sharedApplication.documentsPath stringByAppendingPathComponent:StoreFilename];

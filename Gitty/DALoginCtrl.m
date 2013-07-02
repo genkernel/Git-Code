@@ -251,7 +251,7 @@ static NSString *SettingsSegue = @"SettingsSegue";
 	
 	self.serverDotsControl.numberOfPages = self.servers.list.count + 1;
 	
-	self.pager.defaultPage = [self.servers.list indexOfObject:server];
+	self.pager.defaultPage = [self.servers.list indexOfObject:server] + 1;
 	[self.pager reloadData];
 }
 

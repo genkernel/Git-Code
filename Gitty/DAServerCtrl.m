@@ -7,6 +7,7 @@
 //
 
 #import "DAServerCtrl.h"
+#import "DAServerCtrl+AutoLayout.h"
 
 @interface UIButton (ServerCtrlLayout)
 - (void)applyProtocolStyle;
@@ -30,16 +31,12 @@
 	
 	((PagerItemView *)self.view).identifier = self.className;
 	
-	self.loginButton.layer.cornerRadius = 40.;
-	self.exploreButton.layer.cornerRadius = 40.;
+	self.loginButton.layer.cornerRadius = 35.;
+	self.exploreButton.layer.cornerRadius = 35.;
 	
 	[self.repoField applyThinStyle];
 	[self.userNameField applyThinStyle];
 	[self.userPasswordField applyThinStyle];
-	
-	for (UIButton *button in self.protocolButtons) {
-		[button applyProtocolStyle];
-	}
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -56,7 +53,7 @@
 	self.serverName.text = server.name;
 	self.logoIcon.image = [UIImage imageNamed:server.logoIconName];
 	
-	[self selectProtocol:server.transferProtocol];
+	[self loadProtocolsWithServer:server];
 	[self resetBaseUrlLabel];
 }
 
@@ -64,23 +61,45 @@
 	self.serverBaseUrl.text = [[self.selectedProtocol concat:self.server.gitBaseUrl] concat:@"/"];
 }
 
-- (void)selectProtocol:(NSString *)protocol {
+- (void)loadProtocolsWithServer:(DAGitServer *)server {
 	_selectedProtocolButton = nil;
 	
-	for (UIButton *button in self.protocolButtons) {
-		button.enabled = YES;
+	[self.protocolsContainer removeAllSubviews];
+	
+	self.protocolsContainer.translatesAutoresizingMaskIntoConstraints = NO;
+	[self.protocolsContainer removeConstraints:self.protocolsContainer.constraints];
+	
+	[self layoutProtocolsContainer];
+	
+	for (NSString *protocol in server.supportedProtocols) {
+		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+		[button applyProtocolStyle];
 		
-		NSString *buttonTitle = [button titleForState:UIControlStateNormal];
-		if ([protocol isEqualToString:buttonTitle]) {
+		button.translatesAutoresizingMaskIntoConstraints = NO;
+		
+		[button setTitle:protocol forState:UIControlStateNormal];
+		[button sizeToFit];
+		
+		[self insertAndLayoutNextProtocolButton:button];
+		
+		if ([server.transferProtocol isEqualToString:protocol]) {
 			_selectedProtocolButton = button;
 		}
+		
+		[button addTarget:self action:@selector(protocolSelected:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	
 	if (!self.selectedProtocolButton) {
-		_selectedProtocolButton = self.protocolButtons[0];
+		[Logger error:@"No transfer protocol selected by default."];
+//		_selectedProtocolButton = self.protocolButtons[0];
 	}
 	
 	self.selectedProtocolButton.enabled = NO;
+	
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[self.protocolsContainer invalidateIntrinsicContentSize];
+		[self.protocolsContainer setNeedsUpdateConstraints];
+	});
 }
 
 - (void)setProgress:(CGFloat)updatedProgress {
@@ -202,6 +221,9 @@
 - (void)applyProtocolStyle {
 	self.layer.cornerRadius = 3.;
 	self.layer.masksToBounds = YES;
+	
+	[self setContentEdgeInsets:UIEdgeInsetsMake(.0, 4., .0, 4.)];
+	self.titleLabel.font = [UIFont fontWithName:@"Cochin-Bold" size:15];
 	
 	UIImage *img = [UIImage imageNamed:@"btn-lightgray.png"];
 	UIImage *selectedImg = [UIImage imageNamed:@"btn-blue.png"];

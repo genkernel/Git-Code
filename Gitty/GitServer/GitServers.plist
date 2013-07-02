@@ -3,8 +3,15 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>SupportedProtocols</key>
+		<array>
+			<string>git://</string>
+			<string>https://</string>
+			<string>http://</string>
+			<string>ssh://</string>
+		</array>
 		<key>TransferProtocol</key>
-		<string>git://</string>
+		<string>https://</string>
 		<key>LogoIcon</key>
 		<string>GitHub-Mark-120px-plus.png</string>
 		<key>SaveDirectoryName</key>
@@ -16,7 +23,13 @@
 	</dict>
 	<dict>
 		<key>TransferProtocol</key>
-		<string>git://</string>
+		<string>https://</string>
+		<key>SupportedProtocols</key>
+		<array>
+			<string>git://</string>
+			<string>https://</string>
+			<string>ssh://</string>
+		</array>
 		<key>LogoIcon</key>
 		<string>bitbucket.png</string>
 		<key>SaveDirectoryName</key>

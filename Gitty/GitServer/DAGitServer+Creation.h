@@ -13,6 +13,7 @@ static NSString *ServerGitBaseUrl = @"GitBaseUrl";
 static NSString *SaveDirectory = @"SaveDirectoryName";
 static NSString *LogoIcon = @"LogoIcon";
 static NSString *TransferProtocol = @"TransferProtocol";
+static NSString *SupportedProtocols = @"SupportedProtocols";
 
 @interface DAGitServer (Creation)
 @end

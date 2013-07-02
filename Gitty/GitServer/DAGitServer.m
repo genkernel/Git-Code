@@ -24,6 +24,7 @@
 		_saveDirectoryName = dict[SaveDirectory];
 		_logoIconName = dict[LogoIcon];
 		_transferProtocol = dict[TransferProtocol];
+		_supportedProtocols = dict[SupportedProtocols];
 	}
 	return self;
 }
@@ -37,7 +38,8 @@
 		  ServerGitBaseUrl: self.gitBaseUrl,
 		  SaveDirectory: self.saveDirectoryName,
 		  LogoIcon: self.logoIconName,
-		  TransferProtocol: self.transferProtocol};
+		  TransferProtocol: self.transferProtocol,
+		  SupportedProtocols: self.supportedProtocols};
 }
 
 @end

@@ -219,7 +219,8 @@ static NSString *SettingsSegue = @"SettingsSegue";
 						ServerGitBaseUrl: url,
 						SaveDirectory: name,
 						LogoIcon: @"",
-						TransferProtocol: @"git://"};
+						TransferProtocol: @"git://",
+						SupportedProtocols: @[@"git://", @"https://", @"http://", @"ssh://", @"file://"]};
 	
 	DAGitServer *server = [DAGitServer serverWithDictionary:info];
 	[self.servers addNewServer:server];

@@ -7,6 +7,7 @@
 //
 
 #import "DABaseCtrl.h"
+#import "DAProtocolsContainer.h"
 
 @interface DAServerCtrl : DABaseCtrl <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *repoField, *userNameField, *userPasswordField;
@@ -15,7 +16,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *logoIcon;
 @property (strong, nonatomic) IBOutlet UILabel *serverName, *serverBaseUrl;
 @property (strong, nonatomic) IBOutlet UIView *exploreContainer, *credentialsContainer;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *protocolButtons;
+@property (strong, nonatomic) IBOutlet UIView *protocolsContainer;
 
 - (void)loadServer:(DAGitServer *)server;
 - (void)startProgressing;

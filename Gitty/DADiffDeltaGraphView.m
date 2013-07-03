@@ -52,7 +52,10 @@ static const CGFloat DefaultSquaresMargin = 3.;
 	NSUInteger totalChangesCount = delta.addedLinesCount + delta.deletedLinesCount;
 	if (totalChangesCount > 0) {
 		additionSquaresCount = delta.addedLinesCount * count / totalChangesCount;
+		additionSquaresCount = MIN(additionSquaresCount, delta.addedLinesCount);
+		
 		deletionSquaresCount = delta.deletedLinesCount * count / totalChangesCount;
+		deletionSquaresCount = MIN(deletionSquaresCount, delta.deletedLinesCount);
 	} else {
 		[Logger error:@"Zero total changed in Diff Delta specified."];
 	}

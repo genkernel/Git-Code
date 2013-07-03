@@ -37,7 +37,6 @@ static int cred_acquire_userpass(git_cred **, const char *, const char *, unsign
 	NSURL *remoteURL = [NSURL URLWithString:remotePath];
 	
 //	remoteURL = [NSURL URLWithString:@"https://github.com/genkernel/TreeView.git"];
-//	remoteURL = [NSURL URLWithString:@"https://bitbucket.org/genkernel/emptydisk.git"];
 	
 	// Local.
 	NSString *path = [self.manager localPathForRepoWithName:repoFullName atServer:server];

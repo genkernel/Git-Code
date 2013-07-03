@@ -10,7 +10,6 @@
 			<string>git://</string>
 			<string>https://</string>
 			<string>http://</string>
-			<string>ssh://</string>
 		</array>
 		<key>TransferProtocol</key>
 		<string>https://</string>
@@ -30,9 +29,7 @@
 		<string>https://</string>
 		<key>SupportedProtocols</key>
 		<array>
-			<string>git://</string>
 			<string>https://</string>
-			<string>ssh://</string>
 		</array>
 		<key>LogoIcon</key>
 		<string>bitbucket.png</string>

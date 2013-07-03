@@ -37,6 +37,8 @@
 	[self.userNameField applyThinStyle];
 	[self.userPasswordField applyThinStyle];
 	
+	self.repoField.inputAccessoryView = self.repoAccessoryView;
+	
 	self.protocolsContainer.translatesAutoresizingMaskIntoConstraints = NO;
 }
 

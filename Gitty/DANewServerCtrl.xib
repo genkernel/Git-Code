@@ -183,6 +183,7 @@
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 									<int key="IBUIAutocorrectionType">1</int>
 									<int key="IBUIKeyboardType">3</int>
+									<int key="IBUIKeyboardAppearance">1</int>
 									<int key="IBUIReturnKeyType">4</int>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
@@ -213,6 +214,7 @@
 									<int key="IBUIAutocapitalizationType">2</int>
 									<int key="IBUIAutocorrectionType">1</int>
 									<int key="IBUIKeyboardType">1</int>
+									<int key="IBUIKeyboardAppearance">1</int>
 									<int key="IBUIReturnKeyType">9</int>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
@@ -509,6 +511,7 @@
 					<string key="superclassName">DABaseCtrl</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="createButton">UIButton</string>
+						<string key="noticeLabel">UILabel</string>
 						<string key="serverNameField">UITextField</string>
 						<string key="serverUrlField">UITextField</string>
 					</dictionary>
@@ -516,6 +519,10 @@
 						<object class="IBToOneOutletInfo" key="createButton">
 							<string key="name">createButton</string>
 							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="noticeLabel">
+							<string key="name">noticeLabel</string>
+							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="serverNameField">
 							<string key="name">serverNameField</string>
@@ -551,10 +558,6 @@
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
-			<real value="1552" key="NS.object.0"/>
-		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.InterfaceBuilder3</string>
 			<integer value="4600" key="NS.object.0"/>

@@ -13,10 +13,12 @@
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
 			<string>IBUIActivityIndicatorView</string>
+			<string>IBUIBarButtonItem</string>
 			<string>IBUIButton</string>
 			<string>IBUIImageView</string>
 			<string>IBUILabel</string>
 			<string>IBUITextField</string>
+			<string>IBUIToolbar</string>
 			<string>IBUIView</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
@@ -190,6 +192,7 @@
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 									<int key="IBUIAutocorrectionType">1</int>
 									<int key="IBUIKeyboardType">3</int>
+									<int key="IBUIKeyboardAppearance">1</int>
 									<int key="IBUIReturnKeyType">1</int>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
@@ -234,7 +237,8 @@
 										<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 											<int key="IBUIAutocorrectionType">1</int>
 											<int key="IBUIKeyboardType">7</int>
-											<int key="IBUIReturnKeyType">1</int>
+											<int key="IBUIKeyboardAppearance">1</int>
+											<int key="IBUIReturnKeyType">4</int>
 											<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										</object>
 										<reference key="IBUIFontDescription" ref="488578789"/>
@@ -262,6 +266,7 @@
 										<float key="IBUIMinimumFontSize">17</float>
 										<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 											<int key="IBUIAutocorrectionType">1</int>
+											<int key="IBUIKeyboardAppearance">1</int>
 											<int key="IBUIReturnKeyType">1</int>
 											<bool key="IBUISecureTextEntry">YES</bool>
 											<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -421,6 +426,27 @@
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
+			<object class="IBUIToolbar" id="977745618">
+				<reference key="NSNextResponder"/>
+				<int key="NSvFlags">266</int>
+				<string key="NSFrameSize">{320, 44}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
+				<string key="NSReuseIdentifierKey">_NS:9</string>
+				<bool key="IBUIOpaque">NO</bool>
+				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<int key="IBUIBarStyle">1</int>
+				<array class="NSMutableArray" key="IBUIItems">
+					<object class="IBUIBarButtonItem" id="128920521">
+						<string key="IBUITitle">reponame.git != RepoName.git</string>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<reference key="IBUIToolbar" ref="977745618"/>
+						<reference key="IBUITintColor" ref="1033408263"/>
+					</object>
+				</array>
+				<reference key="IBUITintColor" ref="315470396"/>
+			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<bool key="usesAutoincrementingIDs">NO</bool>
@@ -528,6 +554,14 @@
 						<reference key="destination" ref="270864211"/>
 					</object>
 					<string key="id">o6k-Ng-1iS</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">repoAccessoryView</string>
+						<reference key="source" ref="1029505013"/>
+						<reference key="destination" ref="977745618"/>
+					</object>
+					<string key="id">HnC-4E-LAL</string>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -715,6 +749,20 @@
 						<reference key="parent" ref="763360860"/>
 						<string key="objectName">Protocols Container</string>
 					</object>
+					<object class="IBObjectRecord">
+						<string key="id">8i8-kC-bmq</string>
+						<reference key="object" ref="977745618"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="128920521"/>
+						</array>
+						<reference key="parent" ref="0"/>
+						<string key="objectName">Repo Accesssory Toolbar</string>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">Vsz-Lj-AFa</string>
+						<reference key="object" ref="128920521"/>
+						<reference key="parent" ref="977745618"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -732,6 +780,7 @@
 				<real value="0.0" key="3xT-nI-Roo.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<reference key="3xT-nI-Roo.IBUserGuides" ref="0"/>
 				<boolean value="NO" key="3xT-nI-Roo.showNotes"/>
+				<string key="8i8-kC-bmq.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="Gmn-wL-fSA.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="I0i-W7-5oO.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="KF5-TT-I0g.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -747,6 +796,7 @@
 				<boolean value="NO" key="MJ0-0T-XtO.showNotes"/>
 				<string key="ROW-yS-uE7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="TMd-tf-rZ9.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="Vsz-Lj-AFa.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="Wcl-uo-OaZ.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="ZH1-XP-7za.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<reference key="ZH1-XP-7za.IBUserGuides" ref="0"/>
@@ -787,20 +837,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">DAServerCtrl</string>
 					<string key="superclassName">DABaseCtrl</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="didClickLogin:">UIButton</string>
-						<string key="protocolSelected:">UIButton</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="didClickLogin:">
-							<string key="name">didClickLogin:</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBActionInfo" key="protocolSelected:">
-							<string key="name">protocolSelected:</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="credentialsContainer">UIView</string>
 						<string key="exploreButton">UIButton</string>
@@ -809,6 +845,7 @@
 						<string key="loginButton">UIButton</string>
 						<string key="logoIcon">UIImageView</string>
 						<string key="protocolsContainer">DAProtocolsContainer</string>
+						<string key="repoAccessoryView">UIToolbar</string>
 						<string key="repoField">UITextField</string>
 						<string key="serverBaseUrl">UILabel</string>
 						<string key="serverName">UILabel</string>
@@ -843,6 +880,10 @@
 						<object class="IBToOneOutletInfo" key="protocolsContainer">
 							<string key="name">protocolsContainer</string>
 							<string key="candidateClassName">DAProtocolsContainer</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="repoAccessoryView">
+							<string key="name">repoAccessoryView</string>
+							<string key="candidateClassName">UIToolbar</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="repoField">
 							<string key="name">repoField</string>

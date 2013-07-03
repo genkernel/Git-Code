@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *serverName, *serverBaseUrl;
 @property (strong, nonatomic) IBOutlet UIView *exploreContainer, *credentialsContainer;
 @property (strong, nonatomic) IBOutlet DAProtocolsContainer *protocolsContainer;
+@property (strong, nonatomic) IBOutlet UIToolbar *repoAccessoryView;
 
 - (void)loadServer:(DAGitServer *)server;
 - (void)startProgressing;

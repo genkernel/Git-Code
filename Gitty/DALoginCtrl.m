@@ -18,6 +18,8 @@ static const NSUInteger MaximumServersCount = 20;
 static NSString *RepoSegue = @"RepoSegue";
 static NSString *SettingsSegue = @"SettingsSegue";
 
+static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
+
 @interface DALoginCtrl ()
 @property (strong, nonatomic, readonly) DAGitServer *currentServer;
 
@@ -51,13 +53,25 @@ static NSString *SettingsSegue = @"SettingsSegue";
 	_ctrls = NSMutableArray.new;
 	_createCtrl = [self newServerCreationCtrl];
 	
-	_currentServer = self.servers.list[0];
+	const NSUInteger pagesCount = self.servers.list.count + 1;
 	
-	self.serverDotsControl.numberOfPages = self.servers.list.count + 1;
-	self.serverDotsControl.currentPage = 1;
+	NSNumber *index = [[NSUserDefaults standardUserDefaults] objectForKey:LastSessionActivePageIndex];
+	NSUInteger lastActivePageIdx = index ? index.unsignedIntegerValue : 1;
+	
+	if (lastActivePageIdx >= pagesCount) {
+		lastActivePageIdx = 1;
+	}
+	
+	BOOL isCreateNewServerDefaultPage = 0 == lastActivePageIdx;
+	if (!isCreateNewServerDefaultPage) {
+		_currentServer = self.servers.list[lastActivePageIdx - 1];
+	}
+	
+	self.serverDotsControl.numberOfPages = pagesCount;
+	self.serverDotsControl.currentPage = lastActivePageIdx;
 	
 	self.pager.looped = YES;
-	self.pager.defaultPage = 1;
+	self.pager.defaultPage = lastActivePageIdx;
 	[self.pager reloadData];
 	
 	self.pager.minSwitchDistance = self.view.width / 3.;
@@ -146,6 +160,8 @@ static NSString *SettingsSegue = @"SettingsSegue";
 
 - (void)pager:(PagerView *)pagerView centerItemDidChange:(NSUInteger)index {
 	self.serverDotsControl.currentPage = index;
+	
+	[[NSUserDefaults standardUserDefaults] setValue:@(index) forKey:LastSessionActivePageIndex];
 	
 	if (0 == index) {
 		// CreateNewServerCtrl.

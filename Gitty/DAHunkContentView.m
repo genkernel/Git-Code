@@ -31,6 +31,8 @@ static const CGFloat CodeRightMargin = 10.;
 	CGFloat fontSize = 14;
 	UIFont *font = [UIFont fontWithName:@"Courier" size:fontSize];
 	
+	UIImage *noNewLineImg = [UIImage imageNamed:@"nonewline.png"];
+	
 	size_t lineHeight = font.lineHeight;
 	
 //	assert(lineHeight * hunk.lineCount == self.height);
@@ -53,7 +55,12 @@ static const CGFloat CodeRightMargin = 10.;
 				CGFloat y = lineNumber * lineHeight;
 				[lineImg drawInRect:CGRectMake(.0, y, self.width, lineHeight)];
 				
-				[line.content drawAtPoint:CGPointMake(.0, y) withFont:font];
+				BOOL isEOFNewLineStuff = GTDiffLineOriginDeleteEOFNewLine == line.origin || GTDiffLineOriginAddEOFNewLine == line.origin || GTDiffLineOriginNoEOFNewlineContext == line.origin;
+				if (isEOFNewLineStuff) {
+					[noNewLineImg drawAtPoint:CGPointMake(.0, y)];
+				} else {
+					[line.content drawAtPoint:CGPointMake(.0, y) withFont:font];
+				}
 				
 				lineNumber++;
 			}];

@@ -3,6 +3,8 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>RecentRepoPath</key>
+		<string>github/GitPad.git</string>
 		<key>SupportedProtocols</key>
 		<array>
 			<string>git://</string>
@@ -22,6 +24,8 @@
 		<string>github.com</string>
 	</dict>
 	<dict>
+		<key>RecentRepoPath</key>
+		<string>jamm/love.git</string>
 		<key>TransferProtocol</key>
 		<string>https://</string>
 		<key>SupportedProtocols</key>

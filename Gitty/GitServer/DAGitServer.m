@@ -25,6 +25,7 @@
 		_logoIconName = dict[LogoIcon];
 		_transferProtocol = dict[TransferProtocol];
 		_supportedProtocols = dict[SupportedProtocols];
+		_recentRepoPath = dict[RecentRepoPath];
 	}
 	return self;
 }
@@ -39,7 +40,8 @@
 		  SaveDirectory: self.saveDirectoryName,
 		  LogoIcon: self.logoIconName,
 		  TransferProtocol: self.transferProtocol,
-		  SupportedProtocols: self.supportedProtocols};
+		  SupportedProtocols: self.supportedProtocols,
+		  RecentRepoPath: self.recentRepoPath};
 }
 
 @end

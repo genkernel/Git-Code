@@ -14,6 +14,7 @@ static NSString *SaveDirectory = @"SaveDirectoryName";
 static NSString *LogoIcon = @"LogoIcon";
 static NSString *TransferProtocol = @"TransferProtocol";
 static NSString *SupportedProtocols = @"SupportedProtocols";
+static NSString *RecentRepoPath = @"RecentRepoPath";
 
 @interface DAGitServer (Creation)
 @end

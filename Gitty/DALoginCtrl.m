@@ -78,6 +78,8 @@ static NSString *SettingsSegue = @"SettingsSegue";
 		[self performSegueWithIdentifier:RepoSegue sender:repo];
 		
 		[self.currentCtrl resetProgress];
+		
+		[self.servers save];
 	} else {
 		DAGitUser *user = nil;
 		if (self.currentCtrl.isUsingCredentials) {
@@ -86,8 +88,6 @@ static NSString *SettingsSegue = @"SettingsSegue";
 		
 		[self cloneRemoteRepoWithName:repoName fromServer:self.currentServer authenticationUser:user];
 	}
-	
-	[self.servers save];
 }
 
 - (DAServerCtrl *)newServerCtrl {
@@ -217,6 +217,9 @@ static NSString *SettingsSegue = @"SettingsSegue";
 		
 		DAGitClone *clone = (DAGitClone *)action;
 		[self performSegueWithIdentifier:RepoSegue sender:clone.clonedRepo];
+		
+		self.currentServer.recentRepoPath = repoName;
+		[self.servers save];
 	};
 	
 	DAGitClone *clone = [DAGitClone cloneRepoWithName:repoName fromServer:server];
@@ -248,7 +251,8 @@ static NSString *SettingsSegue = @"SettingsSegue";
 						SaveDirectory: name,
 						LogoIcon: @"Git-Icon.png",
 						TransferProtocol: @"git://",
-						SupportedProtocols: @[@"git://", @"https://", @"http://", @"ssh://", @"file://"]};
+						SupportedProtocols: @[@"git://", @"https://", @"http://", @"ssh://", @"file://"],
+						RecentRepoPath: @""};
 	
 	DAGitServer *server = [DAGitServer serverWithDictionary:info];
 	[self.servers addNewServer:server];

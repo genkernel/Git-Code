@@ -52,6 +52,7 @@
 	_server = server;
 	
 	self.serverName.text = server.name;
+	self.repoField.text = server.recentRepoPath;
 	self.logoIcon.image = [UIImage imageNamed:server.logoIconName];
 	
 	[self loadProtocolsWithServer:server];

@@ -39,6 +39,8 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		DARepoCtrl *ctrl = segue.destinationViewController;
 		ctrl.currentRepo = sender;
 		ctrl.shouldPull = !isRepoCloned;
+		
+		ctrl.repoServer = self.currentServer;
 	} else if ([segue.identifier isEqualToString:SettingsSegue]) {
 	} else {
 		[super prepareForSegue:segue sender:sender];
@@ -93,6 +95,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		
 		[self.currentCtrl resetProgress];
 		
+		self.currentServer.recentRepoPath = repoName;
 		[self.servers save];
 	} else {
 		DAGitUser *user = nil;
@@ -257,7 +260,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	NSString *name = self.createCtrl.serverNameField.text;
 	
 	if (self.servers.namedList[name]) {
-		[self showErrorAlert:@"Server Name is in use already."];
+		[self showErrorMessage:@"Server Name is in use already."];
 		return;
 	}
 	
@@ -274,7 +277,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	[self.servers addNewServer:server];
 	
 	NSString *message = [NSString stringWithFormat:@"'%@' has been created.", name];
-	[self showInfoAlert:message];
+	[self showInfoMessage:message];
 	
 	[self.createCtrl resetFields];
 	

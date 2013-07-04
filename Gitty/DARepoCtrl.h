@@ -19,6 +19,8 @@
 @property (strong, nonatomic) GTRepository *currentRepo;
 @property (nonatomic) BOOL shouldPull;
 
+@property (strong, nonatomic) DAGitServer *repoServer;
+
 @property (strong, nonatomic, readonly) NSDateFormatter *dateSectionTitleFormatter;
 
 @property (strong, nonatomic) IBOutlet UIView *headerContainer;
@@ -38,7 +40,12 @@
 @property (strong, nonatomic) IBOutlet UIView *filtersContainer, *innerFiltersContainer;
 @property (strong, nonatomic) IBOutlet UIButton *toggleFiltersButton;
 
+@property (strong, nonatomic) IBOutlet UIView *alertViewOverlayContainer;
+@property (strong, nonatomic) IBOutlet UIImageView *alertViewOverlay, *alertViewSmallOverlay;
+
+
 // Private. Category-visible methods.
 - (void)reloadFilters;
 - (void)reloadCommits;
+- (void)addForgetButton;
 @end

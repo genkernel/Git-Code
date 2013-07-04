@@ -30,6 +30,9 @@
 		1804FAC0176EAACD0080AB50 /* btn-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 1804FABF176EAACA0080AB50 /* btn-red.png */; };
 		181226661784C3ED00628C2F /* nonewline.png in Resources */ = {isa = PBXBuildFile; fileRef = 181226641784C3ED00628C2F /* nonewline.png */; };
 		181226671784C3ED00628C2F /* nonewline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181226651784C3ED00628C2F /* nonewline@2x.png */; };
+		1812266D1784CE2D00628C2F /* bitbucket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1812266C1784CE2D00628C2F /* bitbucket@2x.png */; };
+		181226741784D0BA00628C2F /* repo-forget.png in Resources */ = {isa = PBXBuildFile; fileRef = 181226711784D0BA00628C2F /* repo-forget.png */; };
+		181226761784D48500628C2F /* repo-forget@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181226751784D48500628C2F /* repo-forget@2x.png */; };
 		181240EC175BCD3C00E6F571 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 181240E9175BCD3C00E6F571 /* Icon-72.png */; };
 		181240ED175BCD3C00E6F571 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 181240EA175BCD3C00E6F571 /* Icon.png */; };
 		181240EE175BCD3C00E6F571 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181240EB175BCD3C00E6F571 /* Icon@2x.png */; };
@@ -219,6 +222,9 @@
 		1804FABF176EAACA0080AB50 /* btn-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-red.png"; sourceTree = "<group>"; };
 		181226641784C3ED00628C2F /* nonewline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nonewline.png; sourceTree = "<group>"; };
 		181226651784C3ED00628C2F /* nonewline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nonewline@2x.png"; sourceTree = "<group>"; };
+		1812266C1784CE2D00628C2F /* bitbucket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bitbucket@2x.png"; sourceTree = "<group>"; };
+		181226711784D0BA00628C2F /* repo-forget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "repo-forget.png"; sourceTree = "<group>"; };
+		181226751784D48500628C2F /* repo-forget@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "repo-forget@2x.png"; sourceTree = "<group>"; };
 		181240E9175BCD3C00E6F571 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		181240EA175BCD3C00E6F571 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		181240EB175BCD3C00E6F571 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
@@ -787,6 +793,7 @@
 		1804FA92176E44400080AB50 /* BitBucket */ = {
 			isa = PBXGroup;
 			children = (
+				1812266C1784CE2D00628C2F /* bitbucket@2x.png */,
 				1804FA93176E44400080AB50 /* bitbucket.png */,
 			);
 			path = BitBucket;
@@ -834,6 +841,7 @@
 		1804FAB3176E85790080AB50 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				1812266E1784D0BA00628C2F /* Forget */,
 				187C86201781F4A800703592 /* btn-lightgray.png */,
 				1804FABF176EAACA0080AB50 /* btn-red.png */,
 				1804FAB4176E85790080AB50 /* btn-blue.png */,
@@ -841,6 +849,15 @@
 				1804FAB6176E85790080AB50 /* btn-green.png */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		1812266E1784D0BA00628C2F /* Forget */ = {
+			isa = PBXGroup;
+			children = (
+				181226751784D48500628C2F /* repo-forget@2x.png */,
+				181226711784D0BA00628C2F /* repo-forget.png */,
+			);
+			path = Forget;
 			sourceTree = "<group>";
 		};
 		181671621776749E00F1DE4D /* FilterPeriod */ = {
@@ -2117,6 +2134,9 @@
 				189BCF2D178375280023F093 /* Git-Icon_red@2x.png in Resources */,
 				181226661784C3ED00628C2F /* nonewline.png in Resources */,
 				181226671784C3ED00628C2F /* nonewline@2x.png in Resources */,
+				1812266D1784CE2D00628C2F /* bitbucket@2x.png in Resources */,
+				181226741784D0BA00628C2F /* repo-forget.png in Resources */,
+				181226761784D48500628C2F /* repo-forget@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

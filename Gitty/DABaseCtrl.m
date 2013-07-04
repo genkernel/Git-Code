@@ -35,18 +35,4 @@
 	return UIApplication.sharedApplication;
 }
 
-#pragma mark Alert methods
-
-- (void)showAlert:(NSString *)message withTitle:(NSString *)title {
-	[self showMessage:message withTitle:title];
-}
-
-- (void)showErrorAlert:(NSString *)message {
-	[self showErrorMessage:message];
-}
-
-- (void)showInfoAlert:(NSString *)message {
-	[self showInfoMessage:message];
-}
-
 @end

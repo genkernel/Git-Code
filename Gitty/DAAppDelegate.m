@@ -13,6 +13,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[self createSharedCacheForApplication:application];
 	
+	[DAGitManager.manager scanAllDeletableLocalReposAndDelete];
+	
     return YES;
 }
 

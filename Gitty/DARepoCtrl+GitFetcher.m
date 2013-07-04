@@ -74,12 +74,13 @@
 	};
 	delegate.finishBlock = ^(DAGitAction *pull, NSError *err){
 		[self setPullingViewVisible:NO animated:YES];
+		[self addForgetButton];
 		
 		if (err) {
 			if (GIT_EEXISTS == err.code) {
 				// Repo is up to date. Nothing updated.
 			} else {
-				[self showErrorAlert:err.localizedDescription];
+				[self showErrorMessage:err.localizedDescription];
 			}
 			return;
 		}

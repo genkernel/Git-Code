@@ -25,4 +25,7 @@ typedef void (^GitAction)();
 
 - (BOOL)isLocalRepoExistent:(NSString *)repoFullName forServer:(DAGitServer *)server;
 - (GTRepository *)localRepoWithName:(NSString *)repoFullName forServer:(DAGitServer *)server;
+
+- (void)removeExistingRepo:(NSString *)repoName forServer:(DAGitServer *)server;
+- (void)scanAllDeletableLocalReposAndDelete;
 @end

@@ -12,6 +12,7 @@
 
 static id sharedInstance = nil;
 static NSString *RepoRootFolderName = @"Repos";
+static NSString *DeletableFolderSuffix = @"md";
 
 @implementation DAGitManager
 @dynamic app;
@@ -55,7 +56,15 @@ static NSString *RepoRootFolderName = @"Repos";
 	});
 }
 
-#pragma mark Magics
+- (void)requestRecursiveDeleteBackgroundOperationPath:(NSString *)path {
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		[self.app.fs deleteDirectoryAndItsContents:path];
+		
+		[Logger info:@"Repo deleted: %@", path];
+	});
+}
+
+#pragma mark Public
 
 - (BOOL)isLocalRepoExistent:(NSString *)repoFullName forServer:(DAGitServer *)server {
 	NSString *path = [self localPathForRepoWithName:repoFullName atServer:server];
@@ -71,6 +80,48 @@ static NSString *RepoRootFolderName = @"Repos";
 	NSURL *url = [NSURL fileURLWithPath:path isDirectory:YES];
 	
 	return [GTRepository repositoryWithURL:url error:nil];
+}
+
+- (void)removeExistingRepo:(NSString *)repoName forServer:(DAGitServer *)server {
+	NSString *path = [self localPathForRepoWithName:repoName atServer:server];
+	if ([self.app.fs isDirectoryExistent:path]) {
+		NSString *deletePath = [path stringByAppendingPathExtension:DeletableFolderSuffix];
+		[self.app.fs moveFrom:path to:deletePath];
+		
+		[self requestRecursiveDeleteBackgroundOperationPath:deletePath];
+	}
+}
+
+- (void)scanAllDeletableLocalReposAndDelete {
+	NSArray *servers = [self.app.fs contentsOfDirectoryAtPath:self.repoRootPath error:nil];
+	for (NSString *serverName in servers) {
+		NSString *serverPath = [self.repoRootPath stringByAppendingPathComponent:serverName];
+		if (![self.app.fs isDirectoryExistent:serverPath]) {
+			continue;
+		}
+		
+		NSArray *users = [self.app.fs contentsOfDirectoryAtPath:serverPath error:nil];
+		for (NSString *userName in users) {
+			NSString *userPath = [serverPath stringByAppendingPathComponent:userName];
+			if (![self.app.fs isDirectoryExistent:userPath]) {
+				continue;
+			}
+			
+			NSArray *repos = [self.app.fs contentsOfDirectoryAtPath:userPath error:nil];
+			for (NSString *repoName in repos) {
+				NSString *repoPath = [userPath stringByAppendingPathComponent:repoName];
+				if (![self.app.fs isDirectoryExistent:repoPath]) {
+					continue;
+				}
+				
+				if (![repoPath.pathExtension isEqualToString:DeletableFolderSuffix]) {
+					continue;
+				}
+				
+				[self requestRecursiveDeleteBackgroundOperationPath:repoPath];
+			}
+		}
+	}
 }
 
 #pragma mark Properties

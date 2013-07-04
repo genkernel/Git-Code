@@ -450,18 +450,6 @@
         <class className="DABaseCtrl" superclassName="ViewCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DABaseCtrl.h"/>
         </class>
-        <class className="DABranchPickerCtrl" superclassName="DABaseCtrl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DABranchPickerCtrl.h"/>
-            <relationships>
-                <relationship kind="outlet" name="picker" candidateClass="UIPickerView"/>
-            </relationships>
-        </class>
-        <class className="DADiffCtrl" superclassName="DABaseCtrl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DADiffCtrl.h"/>
-            <relationships>
-                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
-            </relationships>
-        </class>
         <class className="DALoginCtrl" superclassName="DABaseCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DALoginCtrl.h"/>
             <relationships>
@@ -478,6 +466,12 @@
         <class className="DARepoCtrl" superclassName="DABaseCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DARepoCtrl.h"/>
             <relationships>
+                <relationship kind="action" name="selectBranchPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="selectPeriodPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="toggleFiltersPressed:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="alertViewOverlay" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="alertViewOverlayContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="alertViewSmallOverlay" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="branchOverlay" candidateClass="UIView"/>
                 <relationship kind="outlet" name="commitsContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="commitsTable" candidateClass="UITableView"/>
@@ -507,9 +501,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PagerView.h"/>
             <relationships>
                 <relationship kind="outlet" name="backgroundView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="dataSource"/>
-                <relationship kind="outlet" name="delegate"/>
-                <relationship kind="outlet" name="viewsContainer" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="ViewCtrl" superclassName="UIViewController">

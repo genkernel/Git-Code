@@ -12,8 +12,4 @@
 @property (strong, nonatomic, readonly) DAGitManager *git;
 @property (strong, nonatomic, readonly) DAServerManager *servers;
 @property (strong, nonatomic, readonly) UIApplication *app;
-
-- (void)showAlert:(NSString *)message withTitle:(NSString *)title;
-- (void)showErrorAlert:(NSString *)message;
-- (void)showInfoAlert:(NSString *)message;
 @end

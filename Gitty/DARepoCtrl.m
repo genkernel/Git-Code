@@ -40,7 +40,9 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 @property (strong, nonatomic, readonly) DAPeriodPicker *periodPickerCtrl;
 @end
 
-@implementation DARepoCtrl
+@implementation DARepoCtrl {
+	NSUInteger forgetActionTag;
+}
 @synthesize commitsOnDateSection = _commitsOnDateSection;
 @synthesize authorsOnDateSection = _authorsOnDateSection;
 @synthesize dateSections = _dateSections;
@@ -86,6 +88,8 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	[self useCorrectDeviceAlertViewOverlayImage];
+	
 	UINib *nib = [UINib nibWithNibName:DACommitCell.className bundle:nil];
 	[self.commitsTable registerNib:nib forCellReuseIdentifier:DACommitCell.className];
 	
@@ -96,6 +100,7 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 	
 	if (!self.shouldPull) {
 		[self setPullingViewVisible:NO animated:NO];
+		[self addForgetButton];
 	} else {
 		[self pull];
 	}
@@ -121,6 +126,26 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 	[super viewDidDisappear:animated];
 	
 	[self setDiffLoadingOverlayVisible:NO animated:NO];
+}
+
+- (void)useCorrectDeviceAlertViewOverlayImage {
+	if (IS_IPHONE_5) {
+		[self.alertViewSmallOverlay removeFromSuperview];
+		_alertViewSmallOverlay = nil;
+	} else {
+		[self.alertViewOverlay removeFromSuperview];
+		_alertViewOverlay = nil;
+	}
+}
+
+- (void)addForgetButton {
+	UIButton *forgetButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[forgetButton setImage:[UIImage imageNamed:@"repo-forget.png"] forState:UIControlStateNormal];
+	[forgetButton sizeToFit];
+	
+	[forgetButton addTarget:self action:@selector(forgetPressed) forControlEvents:UIControlEventTouchUpInside];
+	
+	self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:forgetButton];
 }
 
 - (void)reloadFilters {
@@ -219,6 +244,12 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 	return YES;
 }
 
+- (void)forgetRepo {
+	[self.navigationController popViewControllerAnimated:YES];
+	
+	[self.git removeExistingRepo:self.repoServer.recentRepoPath forServer:self.repoServer];
+}
+
 #pragma mark UITableViewDataSource, UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -284,6 +315,17 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 	});
 }
 
+#pragma mark UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (alertView.tag == forgetActionTag) {
+		
+		if (1 == buttonIndex) {
+			[self forgetRepo];
+		}
+	}
+}
+
 #pragma mark Actions
 
 - (IBAction)toggleFiltersPressed:(UIButton *)sender {
@@ -310,7 +352,12 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 	[self setPeriodOverlayVisible:YES animated:YES];
 }
 
-#pragma mark Properties
+- (void)forgetPressed {
+	NSString *title = NSLocalizedString(@"Forget repo", nil);
+	NSString *message = NSLocalizedString(@"Forgetting this repo will delete all its files from disk.", nil);
+	
+	forgetActionTag = [self showYesNoMessage:message withTitle:title];
+}
 
 #pragma mark Properties
 

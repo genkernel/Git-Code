@@ -140,6 +140,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="fader-bottom.png" id="5FE-g9-Ql5" userLabel="Commits Fading Effect">
+                                <rect key="frame" x="0.0" y="484" width="320" height="20"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            </imageView>
                             <view hidden="YES" alpha="0.0" contentMode="scaleToFill" id="syR-gB-lih" userLabel="Fullscreen Gray Overlay">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -280,6 +284,7 @@
     </scenes>
     <resources>
         <image name="branch-selector.png" width="24" height="128"/>
+        <image name="fader-bottom.png" width="2" height="20"/>
     </resources>
     <classes>
         <class className="DABaseCtrl" superclassName="ViewCtrl">

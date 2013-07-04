@@ -13,7 +13,7 @@
 
 #import "DAGitServer+Creation.h"
 
-static const NSUInteger MaximumServersCount = 20;
+static const NSUInteger MaximumServersCount = 10;
 
 static NSString *RepoSegue = @"RepoSegue";
 static NSString *SettingsSegue = @"SettingsSegue";
@@ -135,7 +135,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	BOOL isNewServerCreationCtrl = 0 == index;
 	if (isNewServerCreationCtrl) {
 		if (self.servers.list.count >= MaximumServersCount) {
-			NSString *message = NSLocalizedString(@"Maximum servers count reached (20)", nil);
+			NSString *message = NSLocalizedString(@"Maximum servers count of 10 reached", nil);
 			[self.createCtrl disableFeatureWithNotice:message];
 		}
 		

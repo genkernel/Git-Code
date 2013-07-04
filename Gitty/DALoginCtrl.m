@@ -205,6 +205,8 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	self.pager.userInteractionEnabled = NO;
 	[serverCtrl setEditing:NO animated:YES];
 	
+	self.app.idleTimerDisabled = YES;
+	
 	DAGitCloneDelegate *delegate = DAGitCloneDelegate.new;
 	delegate.transferProgressBlock = ^(const git_transfer_progress *progress){
 		if (0 == progress->total_objects) {
@@ -223,6 +225,8 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	delegate.finishBlock = ^(DAGitAction *action, NSError *err){
 		self.pager.userInteractionEnabled = YES;
 		[serverCtrl setEditing:YES animated:YES];
+		
+		self.app.idleTimerDisabled = NO;
 		
 		[serverCtrl resetProgress];
 		

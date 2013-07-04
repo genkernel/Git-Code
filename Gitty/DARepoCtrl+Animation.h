@@ -10,9 +10,8 @@
 
 @interface DARepoCtrl (Animation)
 - (void)setBranchOverlayVisible:(BOOL)visible animated:(BOOL)animated;
-- (void)setPeriodOverlayVisible:(BOOL)visible animated:(BOOL)animated;
 - (void)setDiffLoadingOverlayVisible:(BOOL)visible animated:(BOOL)animated;
 
 - (void)setPullingViewVisible:(BOOL)visible animated:(BOOL)animated;
-- (void)setFiltersViewVisible:(BOOL)visible animated:(BOOL)animated;
+//- (void)setFiltersViewVisible:(BOOL)visible animated:(BOOL)animated;
 @end

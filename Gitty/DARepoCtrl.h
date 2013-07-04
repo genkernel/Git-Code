@@ -9,8 +9,8 @@
 #import "DABaseCtrl.h"
 
 @interface DARepoCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate> {
-	BOOL isBranchOverlayVisible, isPeriodOverlayVisible;
-	BOOL isFiltersContainerVisible;
+	BOOL isBranchOverlayVisible;
+//	BOOL isFiltersContainerVisible;
 	
 	NSDictionary *_commitsOnDateSection;
 	NSDictionary *_authorsOnDateSection;
@@ -28,7 +28,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *commitsTable;
 
 @property (strong, nonatomic) IBOutlet UIButton *currentBranchButton;
-@property (strong, nonatomic) IBOutlet UIView *branchOverlay, *periodOverlay;
 
 @property (strong, nonatomic) IBOutlet UIView *grayOverlay;
 @property (strong, nonatomic) IBOutlet UIView *diffLoadingOverlay;
@@ -37,12 +36,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *pullingField;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *pullingIndicator;
 
-@property (strong, nonatomic) IBOutlet UIView *filtersContainer, *innerFiltersContainer;
-@property (strong, nonatomic) IBOutlet UIButton *toggleFiltersButton;
-
-@property (strong, nonatomic) IBOutlet UIView *alertViewOverlayContainer;
-@property (strong, nonatomic) IBOutlet UIImageView *alertViewOverlay, *alertViewSmallOverlay;
-
+@property (strong, nonatomic) IBOutlet UIView *branchOverlay, *branchCtrlContainer;
+@property (strong, nonatomic) IBOutlet UIButton *revealBranchOverlayButton;
 
 // Private. Category-visible methods.
 - (void)reloadFilters;

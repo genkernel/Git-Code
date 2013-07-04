@@ -16,25 +16,11 @@
 	}
 	isBranchOverlayVisible = visible;
 	
-	CGFloat offset = self.branchOverlay.height;
+	CGFloat offset = self.branchCtrlContainer.width;
 	offset *= visible ? -1. : 1.;
 	
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
-		self.branchOverlay.y += offset;
-	}];
-}
-
-- (void)setPeriodOverlayVisible:(BOOL)visible animated:(BOOL)animated {
-	if (isPeriodOverlayVisible == visible) {
-		return;
-	}
-	isPeriodOverlayVisible = visible;
-	
-	CGFloat offset = self.periodOverlay.height;
-	offset *= visible ? -1. : 1.;
-	
-	[UIView animateWithDuration:StandartAnimationDuration animations:^{
-		self.periodOverlay.y += offset;
+		self.branchOverlay.x += offset;
 	}];
 }
 
@@ -87,7 +73,7 @@
 		}
 	}];
 }
-
+/*
 - (void)setFiltersViewVisible:(BOOL)visible animated:(BOOL)animated {
 	CGFloat offset =  self.innerFiltersContainer.height;
 	offset *= visible ? -1. : 1.;
@@ -107,6 +93,6 @@
 			}
 		}];
 	}];
-}
+}*/
 
 @end

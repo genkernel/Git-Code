@@ -37,10 +37,6 @@
 		181240ED175BCD3C00E6F571 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 181240EA175BCD3C00E6F571 /* Icon.png */; };
 		181240EE175BCD3C00E6F571 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181240EB175BCD3C00E6F571 /* Icon@2x.png */; };
 		181240F5175BD21100E6F571 /* DARepoCtrl+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 181240F4175BD21100E6F571 /* DARepoCtrl+Animation.m */; };
-		1816715717763D3300F1DE4D /* DAPeriodPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6255017763BED00FC27AE /* DAPeriodPicker.m */; };
-		1816715E17764B9C00F1DE4D /* DAPeriodPicker+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1816715D1776476D00F1DE4D /* DAPeriodPicker+Helper.m */; };
-		181671611776745200F1DE4D /* DAPeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = 181671601776744F00F1DE4D /* DAPeriod.m */; };
-		181671641776752200F1DE4D /* Periods.plist in Resources */ = {isa = PBXBuildFile; fileRef = 181671631776752200F1DE4D /* Periods.plist */; };
 		18170917175BCBB6002A2D93 /* git-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18170915175BCBB6002A2D93 /* git-black@2x.png */; };
 		1817091E175BCBEA002A2D93 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1817091B175BCBEA002A2D93 /* Default-568h@2x.png */; };
 		1817091F175BCBEA002A2D93 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1817091C175BCBEA002A2D93 /* Default.png */; };
@@ -64,6 +60,8 @@
 		18438B5C1777A7E100943F9F /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 18438B591777A7E100943F9F /* profile.png */; };
 		18438B611777A8CC00943F9F /* DAGravatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B601777A8CC00943F9F /* DAGravatar.m */; };
 		18438B641777AA0600943F9F /* UIImageView+Gravatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B631777AA0600943F9F /* UIImageView+Gravatar.m */; };
+		1852A6251785EFF800B44D81 /* branch-selector.png in Resources */ = {isa = PBXBuildFile; fileRef = 1852A6231785EFF800B44D81 /* branch-selector.png */; };
+		1852A6261785EFF800B44D81 /* branch-selector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1852A6241785EFF800B44D81 /* branch-selector@2x.png */; };
 		1861887B176E145F00666DFB /* DAServerCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18618879176E0FF000666DFB /* DAServerCtrl.m */; };
 		186A92D9177848FB00B2EEF3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186A92D8177848FB00B2EEF3 /* MobileCoreServices.framework */; };
 		186A92E21778522C00B2EEF3 /* DAStatusHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 186A92E01778522C00B2EEF3 /* DAStatusHeader.m */; };
@@ -230,11 +228,6 @@
 		181240EB175BCD3C00E6F571 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		181240F3175BD21100E6F571 /* DARepoCtrl+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DARepoCtrl+Animation.h"; sourceTree = "<group>"; };
 		181240F4175BD21100E6F571 /* DARepoCtrl+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DARepoCtrl+Animation.m"; sourceTree = "<group>"; };
-		1816715C1776476D00F1DE4D /* DAPeriodPicker+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DAPeriodPicker+Helper.h"; sourceTree = "<group>"; };
-		1816715D1776476D00F1DE4D /* DAPeriodPicker+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DAPeriodPicker+Helper.m"; sourceTree = "<group>"; };
-		1816715F1776744F00F1DE4D /* DAPeriod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAPeriod.h; sourceTree = "<group>"; };
-		181671601776744F00F1DE4D /* DAPeriod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAPeriod.m; sourceTree = "<group>"; };
-		181671631776752200F1DE4D /* Periods.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Periods.plist; sourceTree = "<group>"; };
 		18170915175BCBB6002A2D93 /* git-black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "git-black@2x.png"; sourceTree = "<group>"; };
 		1817091B175BCBEA002A2D93 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1817091C175BCBEA002A2D93 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -277,6 +270,8 @@
 		18438B601777A8CC00943F9F /* DAGravatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGravatar.m; sourceTree = "<group>"; };
 		18438B621777AA0600943F9F /* UIImageView+Gravatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Gravatar.h"; sourceTree = "<group>"; };
 		18438B631777AA0600943F9F /* UIImageView+Gravatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Gravatar.m"; sourceTree = "<group>"; };
+		1852A6231785EFF800B44D81 /* branch-selector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "branch-selector.png"; sourceTree = "<group>"; };
+		1852A6241785EFF800B44D81 /* branch-selector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "branch-selector@2x.png"; sourceTree = "<group>"; };
 		1861886B176E0BBF00666DFB /* PagerItemView+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PagerItemView+Internal.h"; sourceTree = "<group>"; };
 		1861886C176E0BBF00666DFB /* PagerItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagerItemView.h; sourceTree = "<group>"; };
 		1861886D176E0BBF00666DFB /* PagerItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagerItemView.m; sourceTree = "<group>"; };
@@ -698,8 +693,6 @@
 		18A625481775D57D00FC27AE /* DAGitPull.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAGitPull.m; sourceTree = "<group>"; };
 		18A625491775D59000FC27AE /* DAGitPullDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAGitPullDelegate.h; sourceTree = "<group>"; };
 		18A6254A1775D59000FC27AE /* DAGitPullDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAGitPullDelegate.m; sourceTree = "<group>"; };
-		18A6254F17763BED00FC27AE /* DAPeriodPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAPeriodPicker.h; sourceTree = "<group>"; };
-		18A6255017763BED00FC27AE /* DAPeriodPicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAPeriodPicker.m; sourceTree = "<group>"; };
 		18A8E20B177B644800DBD973 /* DADiffCtrlDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADiffCtrlDataSource.h; sourceTree = "<group>"; };
 		18A8E20C177B644800DBD973 /* DADiffCtrlDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADiffCtrlDataSource.m; sourceTree = "<group>"; };
 		18BAA85F1758016400154019 /* GitServers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GitServers.plist; sourceTree = "<group>"; };
@@ -841,6 +834,8 @@
 		1804FAB3176E85790080AB50 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				1852A6231785EFF800B44D81 /* branch-selector.png */,
+				1852A6241785EFF800B44D81 /* branch-selector@2x.png */,
 				1812266E1784D0BA00628C2F /* Forget */,
 				187C86201781F4A800703592 /* btn-lightgray.png */,
 				1804FABF176EAACA0080AB50 /* btn-red.png */,
@@ -858,15 +853,6 @@
 				181226711784D0BA00628C2F /* repo-forget.png */,
 			);
 			path = Forget;
-			sourceTree = "<group>";
-		};
-		181671621776749E00F1DE4D /* FilterPeriod */ = {
-			isa = PBXGroup;
-			children = (
-				1816715F1776744F00F1DE4D /* DAPeriod.h */,
-				181671601776744F00F1DE4D /* DAPeriod.m */,
-			);
-			name = FilterPeriod;
 			sourceTree = "<group>";
 		};
 		18167C52178343E8004C58BD /* ProtocolsContainer */ = {
@@ -1459,7 +1445,6 @@
 			isa = PBXGroup;
 			children = (
 				188B2D4F175D3E1C00BD1EEB /* CommitCell */,
-				18A6254E17763BC600FC27AE /* PeriodPicker */,
 				18C9441C175B6B3E00A4D7CA /* BranchPickerCtrl */,
 				189A5320175922FA00B5BD8D /* DARepoCtrl.h */,
 				189A5321175922FA00B5BD8D /* DARepoCtrl.m */,
@@ -1809,19 +1794,6 @@
 			name = LibGit2;
 			sourceTree = "<group>";
 		};
-		18A6254E17763BC600FC27AE /* PeriodPicker */ = {
-			isa = PBXGroup;
-			children = (
-				181671631776752200F1DE4D /* Periods.plist */,
-				181671621776749E00F1DE4D /* FilterPeriod */,
-				18A6254F17763BED00FC27AE /* DAPeriodPicker.h */,
-				18A6255017763BED00FC27AE /* DAPeriodPicker.m */,
-				1816715C1776476D00F1DE4D /* DAPeriodPicker+Helper.h */,
-				1816715D1776476D00F1DE4D /* DAPeriodPicker+Helper.m */,
-			);
-			name = PeriodPicker;
-			sourceTree = "<group>";
-		};
 		18A8E206177B642800DBD973 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -2113,7 +2085,6 @@
 				1804FAB7176E857C0080AB50 /* btn-blue.png in Resources */,
 				18F995D9175FBEDB0033A4A0 /* section_header@2x.png in Resources */,
 				18706EDF1763ECF10046A2A6 /* DADeltaContentCell.xib in Resources */,
-				181671641776752200F1DE4D /* Periods.plist in Resources */,
 				1804FA8F176E2D640080AB50 /* GitHub-Mark-120px-plus.png in Resources */,
 				1804FAC0176EAACD0080AB50 /* btn-red.png in Resources */,
 				186A92E31778522C00B2EEF3 /* DAStatusHeader.xib in Resources */,
@@ -2137,6 +2108,8 @@
 				1812266D1784CE2D00628C2F /* bitbucket@2x.png in Resources */,
 				181226741784D0BA00628C2F /* repo-forget.png in Resources */,
 				181226761784D48500628C2F /* repo-forget@2x.png in Resources */,
+				1852A6251785EFF800B44D81 /* branch-selector.png in Resources */,
+				1852A6261785EFF800B44D81 /* branch-selector@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2169,12 +2142,9 @@
 				189016BB175AA6D800F19CE4 /* DAGitManager+ActionsInterface.m in Sources */,
 				18A6254B1775D59400FC27AE /* DAGitPullDelegate.m in Sources */,
 				189016BE175AAD8200F19CE4 /* DAGitCloneDelegate.m in Sources */,
-				1816715717763D3300F1DE4D /* DAPeriodPicker.m in Sources */,
 				18438B551777A5AD00943F9F /* Cryptor.m in Sources */,
-				181671611776745200F1DE4D /* DAPeriod.m in Sources */,
 				189016E7175AC46400F19CE4 /* DynamicObject.m in Sources */,
 				189016E8175AC46400F19CE4 /* NSArray+AAV.m in Sources */,
-				1816715E17764B9C00F1DE4D /* DAPeriodPicker+Helper.m in Sources */,
 				189016E9175AC46400F19CE4 /* NSDate+InternetDateTime.m in Sources */,
 				189016EA175AC46400F19CE4 /* NSFileManager+Helper.m in Sources */,
 				189016EB175AC46400F19CE4 /* NSNumber+Bits.m in Sources */,

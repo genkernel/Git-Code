@@ -12,7 +12,6 @@
 #import "DADiffCtrl.h"
 // Filter pickers.
 #import "DABranchPickerCtrl.h"
-#import "DAPeriodPicker.h"
 // Cells.
 #import "DABranchCell.h"
 #import "DACommitCell.h"
@@ -21,7 +20,6 @@ static NSString *MasterBranchName = @"master";
 
 static NSString *DiffSegue = @"DiffSegue";
 static NSString *BranchPickerSegue = @"BranchPickerSegue";
-static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 
 @interface DARepoCtrl ()
 @property (strong, nonatomic, readonly) NSArray *remoteBranches/*, *localBranches*/;
@@ -32,12 +30,9 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 @property (strong, nonatomic, readonly) NSDictionary *authorsOnDateSection;
 @property (strong, nonatomic, readonly) NSArray *dateSections;
 
-@property (strong, nonatomic) DAPeriod *periodFilter;
-
 @property (strong, nonatomic, readonly) NSIndexPath *selectedCommitIndexPath;
 
 @property (strong, nonatomic, readonly) DABranchPickerCtrl *branchPickerCtrl;
-@property (strong, nonatomic, readonly) DAPeriodPicker *periodPickerCtrl;
 @end
 
 @implementation DARepoCtrl {
@@ -60,23 +55,6 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 				[ref reloadCommits];
 			}
 		};
-	} else if ([segue.identifier isEqualToString:PeriodPickerSegue]) {
-		_periodPickerCtrl = segue.destinationViewController;
-		
-		__weak DARepoCtrl *ref = self;
-		self.periodPickerCtrl.cancelBlock = ^{
-			[ref setPeriodOverlayVisible:NO animated:YES];
-		};
-		self.periodPickerCtrl.completionBlock = ^(DAPeriod *period){
-			[ref setPeriodOverlayVisible:NO animated:YES];
-
-			BOOL changed = ref.periodFilter != period;
-			if (changed) {
-				ref.periodFilter = period;
-				
-				[ref reloadCommits];
-			}
-		};
 	} else if ([segue.identifier isEqualToString:DiffSegue]) {
 		DADiffCtrl *ctrl = segue.destinationViewController;
 		ctrl.diff = sender;
@@ -88,12 +66,11 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	[self useCorrectDeviceAlertViewOverlayImage];
-	
 	UINib *nib = [UINib nibWithNibName:DACommitCell.className bundle:nil];
 	[self.commitsTable registerNib:nib forCellReuseIdentifier:DACommitCell.className];
 	
-	[self.toggleFiltersButton applyGreenStyle];
+	self.revealBranchOverlayButton.layer.cornerRadius = 7.;
+	self.revealBranchOverlayButton.layer.masksToBounds = YES;
 	
 	[self reloadFilters];
 	[self reloadCommits];
@@ -126,16 +103,6 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 	[super viewDidDisappear:animated];
 	
 	[self setDiffLoadingOverlayVisible:NO animated:NO];
-}
-
-- (void)useCorrectDeviceAlertViewOverlayImage {
-	if (IS_IPHONE_5) {
-		[self.alertViewSmallOverlay removeFromSuperview];
-		_alertViewSmallOverlay = nil;
-	} else {
-		[self.alertViewOverlay removeFromSuperview];
-		_alertViewOverlay = nil;
-	}
 }
 
 - (void)addForgetButton {
@@ -185,7 +152,7 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 - (void)reloadCommits {
 	[NSObject startMeasurement];
 	{
-		[self loadCommitsInBranch:self.currentBranch betweenNowAndDate:self.periodFilter.date];
+		[self loadCommitsInBranch:self.currentBranch betweenNowAndDate:nil];
 	}
 	double period = [NSObject endMeasurement];
 	[Logger info:@"Commits of %d days loaded in %.2f.", self.dateSections.count, period];
@@ -328,12 +295,7 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 
 #pragma mark Actions
 
-- (IBAction)toggleFiltersPressed:(UIButton *)sender {
-	isFiltersContainerVisible = !isFiltersContainerVisible;
-	[self setFiltersViewVisible:isFiltersContainerVisible animated:YES];
-}
-
-- (IBAction)selectBranchPressed:(UIButton *)sender {
+- (IBAction)revealBranchPressed:(UIButton *)sender {
 	// Reload as new branches were pulled in (possibly).
 	self.branchPickerCtrl.branches = self.remoteBranches;
 	[self.branchPickerCtrl.picker reloadAllComponents];
@@ -343,13 +305,6 @@ static NSString *PeriodPickerSegue = @"PeriodPickerSegue";
 	[self.branchPickerCtrl.picker selectRow:row inComponent:0 animated:NO];
 	
 	[self setBranchOverlayVisible:YES animated:YES];
-}
-
-- (IBAction)selectPeriodPressed:(UIButton *)sender {
-	// Select previously activated period (if row was changed but canceled).
-	[self.periodPickerCtrl selectPeriodItem:self.periodFilter animated:NO];
-	
-	[self setPeriodOverlayVisible:YES animated:YES];
 }
 
 - (void)forgetPressed {

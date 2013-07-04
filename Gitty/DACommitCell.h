@@ -6,18 +6,13 @@
 //  Copyright (c) 2013 kernel@realm. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DACommitMessageCell.h"
 
-@interface DACommitCell : UITableViewCell
+@interface DACommitCell : DACommitMessageCell
+- (CGFloat)heightForCommit:(GTCommit *)commit;
 - (void)loadCommit:(GTCommit *)commit;
 
-// Headline.
-@property (strong, nonatomic) IBOutlet UILabel *shortShaLabel;
-@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
-@property (strong, nonatomic) IBOutlet UILabel *committerLabel;
-
-// Content.
+// Author Headline.
 @property (strong, nonatomic) IBOutlet UIImageView *avatar;
 @property (strong, nonatomic) IBOutlet UILabel *authorLabel;
-@property (strong, nonatomic) IBOutlet UILabel *commitLabel;
 @end

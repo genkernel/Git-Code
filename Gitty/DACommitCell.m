@@ -8,15 +8,18 @@
 
 #import "DACommitCell.h"
 
-@interface DACommitCell ()
-@property (strong, nonatomic, readonly) NSDateFormatter *dateFormatter;
-@end
+static CGFloat InitialCellHeight = .0;
+static CGFloat CommitMessageMaxHeight = 120.;
 
-@implementation DACommitCell
-@dynamic dateFormatter;
+@implementation DACommitCell {
+	CGFloat commitMessageSingleLineHeight;
+}
 
 - (void)awakeFromNib {
 	[super awakeFromNib];
+	
+	InitialCellHeight = self.height;
+	commitMessageSingleLineHeight = self.commitLabel.font.lineHeight;
 	
 	[self.avatar applyAvatarStyle];
 }
@@ -27,33 +30,25 @@
 	[self.avatar cancelImageRequestOperation];
 }
 
-- (void)loadCommit:(GTCommit *)commit {
-	self.shortShaLabel.text = [NSString stringWithFormat:@"#%@", commit.shortSha];
+- (CGFloat)heightForCommit:(GTCommit *)commit {
+	CGSize s = CGSizeMake(self.commitLabel.width, CommitMessageMaxHeight);
+	s = [commit.message sizeWithFont:self.commitLabel.font constrainedToSize:s lineBreakMode:self.commitLabel.lineBreakMode];
 	
-	self.committerLabel.hidden = commit.author == commit.committer;
-	self.committerLabel.text = [NSString stringWithFormat:@"by %@<%@>", commit.committer.name, commit.committer.email];
+	CGFloat height = InitialCellHeight;
 	
-	NSString *date = [self.dateFormatter stringFromDate:commit.commitDate];
-	self.dateLabel.text = [NSString stringWithFormat:@"on %@", date];
+	BOOL isMultiline = s.height > commitMessageSingleLineHeight;
+	if (isMultiline) {
+		height += s.height - commitMessageSingleLineHeight;
+	}
 	
-	self.authorLabel.text = [NSString stringWithFormat:@"%@<%@>", commit.author.name, commit.author.email];
-	
-	self.commitLabel.text = [NSString stringWithFormat:@"%@", commit.messageSummary];
-	
-	[self.avatar setGravatarImageWithEmail:commit.author.email];
+	return height;
 }
 
-#pragma mark Properties
-
-- (NSDateFormatter *)dateFormatter {
-	static NSDateFormatter *formatter = nil;
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		formatter = NSDateFormatter.new;
-		formatter.locale = NSLocale.currentLocale;
-		formatter.dateFormat = @"HH:mm dd/MM/yy";
-	});
-	return formatter;
+- (void)loadCommit:(GTCommit *)commit {
+	[super loadCommit:commit];
+	
+	[self.avatar setGravatarImageWithEmail:commit.author.email];
+	self.authorLabel.text = [NSString stringWithFormat:@"%@", commit.author.name];
 }
 
 @end

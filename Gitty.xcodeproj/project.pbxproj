@@ -136,8 +136,6 @@
 		18BAA8641758016400154019 /* GitServers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18BAA85F1758016400154019 /* GitServers.plist */; };
 		18BAA8651758016400154019 /* DAGitServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAA8611758016400154019 /* DAGitServer.m */; };
 		18BAA8661758016400154019 /* DAServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAA8631758016400154019 /* DAServerManager.m */; };
-		18C94423175B6BA800A4D7CA /* DABranchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C94422175B6BA800A4D7CA /* DABranchCell.m */; };
-		18C94425175B6BBB00A4D7CA /* DABranchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C94424175B6BBB00A4D7CA /* DABranchCell.xib */; };
 		18C94433175B93C400A4D7CA /* DABranchPickerCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C94432175B93C400A4D7CA /* DABranchPickerCtrl.m */; };
 		18CFED93177C317C00365E5A /* code-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CFED8F177C317C00365E5A /* code-green.png */; };
 		18CFED94177C317C00365E5A /* code-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CFED90177C317C00365E5A /* code-red.png */; };
@@ -147,6 +145,8 @@
 		18ECEC811780663800740D96 /* code-separator.png in Resources */ = {isa = PBXBuildFile; fileRef = 18ECEC801780663800740D96 /* code-separator.png */; };
 		18ECEC831780667200740D96 /* code-separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18ECEC821780667200740D96 /* code-separator@2x.png */; };
 		18F04E3C176FC9F80035C918 /* UITextField+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F04E3B176FC9960035C918 /* UITextField+Helper.m */; };
+		18F15474178622C200322369 /* DACommitMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F15473178622C200322369 /* DACommitMessageCell.m */; };
+		18F1547A178622E400322369 /* DACommitMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F15479178622E400322369 /* DACommitMessageCell.xib */; };
 		18F995B7175F6EB70033A4A0 /* DADiffCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F995B6175F6EB70033A4A0 /* DADiffCtrl.m */; };
 		18F995BC175FAE710033A4A0 /* DAModifiedHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F995BB175FAE710033A4A0 /* DAModifiedHeader.m */; };
 		18F995BE175FAF2E0033A4A0 /* DAModifiedHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F995BD175FAF2E0033A4A0 /* DAModifiedHeader.xib */; };
@@ -704,9 +704,6 @@
 		18BAA8611758016400154019 /* DAGitServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitServer.m; sourceTree = "<group>"; };
 		18BAA8621758016400154019 /* DAServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAServerManager.h; sourceTree = "<group>"; };
 		18BAA8631758016400154019 /* DAServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAServerManager.m; sourceTree = "<group>"; };
-		18C94421175B6BA800A4D7CA /* DABranchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABranchCell.h; sourceTree = "<group>"; };
-		18C94422175B6BA800A4D7CA /* DABranchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABranchCell.m; sourceTree = "<group>"; };
-		18C94424175B6BBB00A4D7CA /* DABranchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABranchCell.xib; sourceTree = "<group>"; };
 		18C94431175B93C400A4D7CA /* DABranchPickerCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABranchPickerCtrl.h; sourceTree = "<group>"; };
 		18C94432175B93C400A4D7CA /* DABranchPickerCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABranchPickerCtrl.m; sourceTree = "<group>"; };
 		18CFED8F177C317C00365E5A /* code-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "code-green.png"; sourceTree = "<group>"; };
@@ -729,6 +726,9 @@
 		18F04E34176FC83D0035C918 /* UIImage+Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Utils.m"; sourceTree = "<group>"; };
 		18F04E3A176FC9960035C918 /* UITextField+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UITextField+Helper.h"; path = "UITextField/UITextField+Helper.h"; sourceTree = "<group>"; };
 		18F04E3B176FC9960035C918 /* UITextField+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UITextField+Helper.m"; path = "UITextField/UITextField+Helper.m"; sourceTree = "<group>"; };
+		18F15472178622C200322369 /* DACommitMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACommitMessageCell.h; sourceTree = "<group>"; };
+		18F15473178622C200322369 /* DACommitMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACommitMessageCell.m; sourceTree = "<group>"; };
+		18F15479178622E400322369 /* DACommitMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DACommitMessageCell.xib; sourceTree = "<group>"; };
 		18F995B5175F6EB70033A4A0 /* DADiffCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADiffCtrl.h; sourceTree = "<group>"; };
 		18F995B6175F6EB70033A4A0 /* DADiffCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADiffCtrl.m; sourceTree = "<group>"; };
 		18F995BA175FAE710033A4A0 /* DAModifiedHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAModifiedHeader.h; sourceTree = "<group>"; };
@@ -1155,6 +1155,9 @@
 				188B2D54175D3E4900BD1EEB /* DACommitCell.h */,
 				188B2D55175D3E4900BD1EEB /* DACommitCell.m */,
 				188B2D57175D3E5C00BD1EEB /* DACommitCell.xib */,
+				18F15472178622C200322369 /* DACommitMessageCell.h */,
+				18F15473178622C200322369 /* DACommitMessageCell.m */,
+				18F15479178622E400322369 /* DACommitMessageCell.xib */,
 			);
 			name = CommitCell;
 			sourceTree = "<group>";
@@ -1826,9 +1829,6 @@
 			children = (
 				18C94431175B93C400A4D7CA /* DABranchPickerCtrl.h */,
 				18C94432175B93C400A4D7CA /* DABranchPickerCtrl.m */,
-				18C94421175B6BA800A4D7CA /* DABranchCell.h */,
-				18C94422175B6BA800A4D7CA /* DABranchCell.m */,
-				18C94424175B6BBB00A4D7CA /* DABranchCell.xib */,
 			);
 			name = BranchPickerCtrl;
 			sourceTree = "<group>";
@@ -2068,7 +2068,6 @@
 				18933CF11755395D00E92183 /* MainStoryboard.storyboard in Resources */,
 				18BAA8641758016400154019 /* GitServers.plist in Resources */,
 				1804FAA5176E768F0080AB50 /* Git-Icon.png in Resources */,
-				18C94425175B6BBB00A4D7CA /* DABranchCell.xib in Resources */,
 				18170917175BCBB6002A2D93 /* git-black@2x.png in Resources */,
 				1804FAA3176E71500080AB50 /* DANewServerCtrl.xib in Resources */,
 				1817091E175BCBEA002A2D93 /* Default-568h@2x.png in Resources */,
@@ -2118,6 +2117,7 @@
 				1852A6261785EFF800B44D81 /* branch-selector@2x.png in Resources */,
 				1852A6291785F9BC00B44D81 /* fader-bottom.png in Resources */,
 				1852A62A1785F9BC00B44D81 /* fader-bottom@2x.png in Resources */,
+				18F1547A178622E400322369 /* DACommitMessageCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2189,7 +2189,6 @@
 				18901739175AC4C700F19CE4 /* Logger.m in Sources */,
 				1890173C175AC54000F19CE4 /* UIView+Helper.m in Sources */,
 				18438B181777778200943F9F /* GTCommit+Gitty.m in Sources */,
-				18C94423175B6BA800A4D7CA /* DABranchCell.m in Sources */,
 				18C94433175B93C400A4D7CA /* DABranchPickerCtrl.m in Sources */,
 				181240F5175BD21100E6F571 /* DARepoCtrl+Animation.m in Sources */,
 				188B2D56175D3E4900BD1EEB /* DACommitCell.m in Sources */,
@@ -2215,6 +2214,7 @@
 				18FD1D0F177F4C9100DE4851 /* ImageUtils.m in Sources */,
 				187C862B1782451D00703592 /* DAProtocolsContainer.m in Sources */,
 				189BCF2917835D3C0023F093 /* PageControl.m in Sources */,
+				18F15474178622C200322369 /* DACommitMessageCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

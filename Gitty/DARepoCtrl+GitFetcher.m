@@ -23,16 +23,14 @@
 	[self.currentRepo enumerateCommitsBeginningAtSha:branch.sha sortOptions:opts error:&err usingBlock:^(GTCommit *commit, BOOL *stop) {
 		[zones addObject:commit.commitTimeZone];
 		
-		NSDate *commitLocalDate = commit.commitDate;
-		
-		BOOL isCommitEarlier = NSOrderedAscending == [commitLocalDate compare:date];
+		BOOL isCommitEarlier = NSOrderedAscending == [commit.commitDate compare:date];
 		if (isCommitEarlier) {
 			*stop = YES;
 			return;
 		}
 		
 		self.dateSectionTitleFormatter.timeZone = commit.commitTimeZone;
-		NSString *title = [self.dateSectionTitleFormatter stringFromDate:commitLocalDate];
+		NSString *title = [self.dateSectionTitleFormatter stringFromDate:commit.commitDate];
 		
 		if (![sections containsObject:title]) {
 			[sections addObject:title];

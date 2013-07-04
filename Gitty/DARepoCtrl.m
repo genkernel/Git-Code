@@ -13,8 +13,8 @@
 // Filter pickers.
 #import "DABranchPickerCtrl.h"
 // Cells.
-#import "DABranchCell.h"
 #import "DACommitCell.h"
+#import "DACommitMessageCell.h"
 
 static NSString *MasterBranchName = @"master";
 
@@ -33,6 +33,9 @@ static NSString *BranchPickerSegue = @"BranchPickerSegue";
 @property (strong, nonatomic, readonly) NSIndexPath *selectedCommitIndexPath;
 
 @property (strong, nonatomic, readonly) DABranchPickerCtrl *branchPickerCtrl;
+
+@property (strong, nonatomic, readonly) DACommitCell *reuseCell;
+@property (strong, nonatomic, readonly) DACommitMessageCell *reuseSimpleCell;
 @end
 
 @implementation DARepoCtrl {
@@ -66,8 +69,18 @@ static NSString *BranchPickerSegue = @"BranchPickerSegue";
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	UINib *nib = [UINib nibWithNibName:DACommitCell.className bundle:nil];
-	[self.commitsTable registerNib:nib forCellReuseIdentifier:DACommitCell.className];
+	{
+		UINib *nib = [UINib nibWithNibName:DACommitCell.className bundle:nil];
+		[self.commitsTable registerNib:nib forCellReuseIdentifier:DACommitCell.className];
+		
+		_reuseCell = [self.commitsTable dequeueReusableCellWithIdentifier:DACommitCell.className];
+	}
+	{
+		UINib *nib = [UINib nibWithNibName:DACommitMessageCell.className bundle:nil];
+		[self.commitsTable registerNib:nib forCellReuseIdentifier:DACommitMessageCell.className];
+		
+		_reuseSimpleCell = [self.commitsTable dequeueReusableCellWithIdentifier:DACommitMessageCell.className];
+	}
 	
 	self.revealBranchOverlayButton.layer.cornerRadius = 7.;
 	self.revealBranchOverlayButton.layer.masksToBounds = YES;
@@ -180,23 +193,6 @@ static NSString *BranchPickerSegue = @"BranchPickerSegue";
 	}
 	return NO;
 }*/
-/*
-#pragma mark UICollectionViewDataSource, UICollectionViewDelegate
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-	return self.remoteBranches.count;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-	GTBranch *branch = self.remoteBranches[indexPath.row];
-	
-	DABranchCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DABranchCell.className forIndexPath:indexPath];
-	
-	cell.nameLabel.text = branch.name.lastPathComponent;
-	[Logger info:@"branchCell: %@", branch.name];
-	
-	return cell;
-}*/
 
 - (BOOL)selectBranch:(GTBranch *)branch {
 	if (!branch || self.currentBranch == branch) {
@@ -217,6 +213,35 @@ static NSString *BranchPickerSegue = @"BranchPickerSegue";
 	[self.git removeExistingRepo:self.repoServer.recentRepoPath forServer:self.repoServer];
 }
 
+#pragma mark UITableViewDataSource helpers
+
+- (GTCommit *)commitForIndexPath:(NSIndexPath *)indexPath {
+	NSString *title = self.dateSections[indexPath.section];
+	NSArray *commits = self.commitsOnDateSection[title];
+	
+	return commits[indexPath.row];
+}
+
+// Commit is Subsequent when its previous commit is prepared by the same Author in the very same Day.
+- (BOOL)isSubsequentCommitAtIndexPath:(NSIndexPath *)indexPath {
+	NSString *title = self.dateSections[indexPath.section];
+	NSArray *commits = self.commitsOnDateSection[title];
+	
+	NSUInteger idx = indexPath.row;
+	GTCommit *commit = commits[idx];
+	
+	BOOL previousCommitHasSameAuthor = NO;
+	
+	BOOL hasPreviousCommitInSection = idx > 0;
+	if (hasPreviousCommitInSection) {
+		GTCommit *prevCommit = commits[idx - 1];
+		
+		previousCommitHasSameAuthor = [commit.author.name isEqualToString:prevCommit.author.name] && [commit.author.email isEqualToString:prevCommit.author.email];
+	}
+	
+	return previousCommitHasSameAuthor;
+}
+
 #pragma mark UITableViewDataSource, UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -234,15 +259,25 @@ static NSString *BranchPickerSegue = @"BranchPickerSegue";
 	return commits.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	BOOL previousCommitHasSameAuthor = [self isSubsequentCommitAtIndexPath:indexPath];
+	
+	DACommitMessageCell *cell = previousCommitHasSameAuthor ? self.reuseSimpleCell : self.reuseCell;
+	
+	GTCommit *commit = [self commitForIndexPath:indexPath];
+	return [cell heightForCommit:commit];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSString *title = self.dateSections[indexPath.section];
-	NSArray *commits = self.commitsOnDateSection[title];
+	GTCommit *commit = [self commitForIndexPath:indexPath];
 	
-	GTCommit *commit = commits[indexPath.row];
+	BOOL previousCommitHasSameAuthor = [self isSubsequentCommitAtIndexPath:indexPath];
+	Class cls = previousCommitHasSameAuthor ? DACommitMessageCell.class : DACommitCell.class;
 	
-	DACommitCell *cell = [tableView dequeueReusableCellWithIdentifier:DACommitCell.className];
+	DACommitCell *cell = [tableView dequeueReusableCellWithIdentifier:cls.className];
 	
 	[cell loadCommit:commit];
+	[cell setShowsTopCellSeparator:indexPath.row > 0];
 	
 	return cell;
 }

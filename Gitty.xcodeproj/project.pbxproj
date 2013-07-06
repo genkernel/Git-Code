@@ -77,6 +77,7 @@
 		18706EE31764075D0046A2A6 /* UIColor+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 18706EE21764075D0046A2A6 /* UIColor+Gitty.m */; };
 		187C86211781F4A800703592 /* btn-lightgray.png in Resources */ = {isa = PBXBuildFile; fileRef = 187C86201781F4A800703592 /* btn-lightgray.png */; };
 		187C862B1782451D00703592 /* DAProtocolsContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C862A1782451C00703592 /* DAProtocolsContainer.m */; };
+		187D2D751788529000F9126E /* DAServerCtrl+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 187D2D741788529000F9126E /* DAServerCtrl+Animation.m */; };
 		18878CFB17629E03008BF232 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18878CF917629E03008BF232 /* libcrypto.a */; };
 		18878CFC17629E03008BF232 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18878CFA17629E03008BF232 /* libssl.a */; };
 		188B2D56175D3E4900BD1EEB /* DACommitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188B2D55175D3E4900BD1EEB /* DACommitCell.m */; };
@@ -305,6 +306,8 @@
 		187C86201781F4A800703592 /* btn-lightgray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-lightgray.png"; sourceTree = "<group>"; };
 		187C86291782451C00703592 /* DAProtocolsContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAProtocolsContainer.h; sourceTree = "<group>"; };
 		187C862A1782451C00703592 /* DAProtocolsContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAProtocolsContainer.m; sourceTree = "<group>"; };
+		187D2D731788529000F9126E /* DAServerCtrl+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DAServerCtrl+Animation.h"; sourceTree = "<group>"; };
+		187D2D741788529000F9126E /* DAServerCtrl+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DAServerCtrl+Animation.m"; sourceTree = "<group>"; };
 		18878CAD17629E03008BF232 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
 		18878CAE17629E03008BF232 /* asn1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn1.h; sourceTree = "<group>"; };
 		18878CAF17629E03008BF232 /* asn1_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn1_mac.h; sourceTree = "<group>"; };
@@ -1003,6 +1006,8 @@
 				18618878176E0FF000666DFB /* DAServerCtrl.h */,
 				18618879176E0FF000666DFB /* DAServerCtrl.m */,
 				1861887A176E0FF000666DFB /* DAServerCtrl.xib */,
+				187D2D731788529000F9126E /* DAServerCtrl+Animation.h */,
+				187D2D741788529000F9126E /* DAServerCtrl+Animation.m */,
 			);
 			name = Server;
 			sourceTree = "<group>";
@@ -2215,6 +2220,7 @@
 				187C862B1782451D00703592 /* DAProtocolsContainer.m in Sources */,
 				189BCF2917835D3C0023F093 /* PageControl.m in Sources */,
 				18F15474178622C200322369 /* DACommitMessageCell.m in Sources */,
+				187D2D751788529000F9126E /* DAServerCtrl+Animation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

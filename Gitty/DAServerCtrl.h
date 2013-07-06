@@ -9,7 +9,9 @@
 #import "DABaseCtrl.h"
 #import "DAProtocolsContainer.h"
 
-@interface DAServerCtrl : DABaseCtrl <UITextFieldDelegate>
+@interface DAServerCtrl : DABaseCtrl <UITextFieldDelegate> {
+	BOOL isCredentialsVisible;
+}
 @property (strong, nonatomic) IBOutlet UITextField *repoField, *userNameField, *userPasswordField;
 @property (strong, nonatomic) IBOutlet UIButton *exploreButton, *loginButton;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *exploringIndicator;
@@ -23,7 +25,8 @@
 - (void)startProgressing;
 - (void)setProgress:(CGFloat)progress;
 - (void)resetProgress;
+- (void)resetCredentials;
 
-@property () BOOL isUsingCredentials;
+@property (readonly) BOOL isUsingCredentials;
 @property (strong, nonatomic, readonly) NSString *selectedProtocol;
 @end

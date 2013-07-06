@@ -85,6 +85,8 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	[self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
+#pragma mark Internals
+
 - (void)testRepoWithUserString:(NSString *)repoName {
 	BOOL existent = [self.git isLocalRepoExistent:repoName forServer:self.currentServer];
 	isRepoCloned = !existent;
@@ -97,6 +99,8 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		
 		self.currentServer.recentRepoPath = repoName;
 		[self.servers save];
+		
+		[self.currentCtrl resetCredentials];
 	} else {
 		DAGitUser *user = nil;
 		if (self.currentCtrl.isUsingCredentials) {
@@ -105,6 +109,61 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		
 		[self cloneRemoteRepoWithName:repoName fromServer:self.currentServer authenticationUser:user];
 	}
+}
+
+- (void)cloneRemoteRepoWithName:(NSString *)repoName fromServer:(DAGitServer *)server authenticationUser:(DAGitUser *)user {
+	DAServerCtrl *serverCtrl = self.currentCtrl;
+	
+	self.pager.userInteractionEnabled = NO;
+	[serverCtrl setEditing:NO animated:YES];
+	
+	self.app.idleTimerDisabled = YES;
+	
+	DAGitCloneDelegate *delegate = DAGitCloneDelegate.new;
+	delegate.transferProgressBlock = ^(const git_transfer_progress *progress){
+		if (0 == progress->total_objects) {
+			[Logger warn:@"0 total_objects specified during repo cloning."];
+			return;
+		}
+		CGFloat percent = (CGFloat)progress->received_objects / progress->total_objects;
+		[Logger info:@"clone.transfer transter percent: %d", percent];
+		
+		[serverCtrl setProgress:percent];
+	};
+	delegate.checkoutProgressBlock = ^(NSString *path, NSUInteger completedSteps, NSUInteger totalSteps){
+		// 'Bare' repo is not checked out.
+		[Logger info:@"clone.checkout.checkout %d/%d", completedSteps, totalSteps];
+	};
+	delegate.finishBlock = ^(DAGitAction *action, NSError *err){
+		self.pager.userInteractionEnabled = YES;
+		[serverCtrl setEditing:YES animated:YES];
+		
+		self.app.idleTimerDisabled = NO;
+		
+		[serverCtrl resetProgress];
+		
+		if (err) {
+			NSString *title = NSLocalizedString(@"Error", nil);
+			NSString *message = NSLocalizedString(err.localizedDescription, nil);
+			
+			[self.app showAlert:title message:message delegate:nil];
+			return;
+		}
+		
+		DAGitClone *clone = (DAGitClone *)action;
+		[self performSegueWithIdentifier:RepoSegue sender:clone.clonedRepo];
+		
+		self.currentServer.recentRepoPath = repoName;
+		[self.servers save];
+		
+		[self.currentCtrl resetCredentials];
+	};
+	
+	DAGitClone *clone = [DAGitClone cloneRepoWithName:repoName fromServer:server];
+	clone.authenticationUser = user;
+	clone.delegate = delegate;
+	
+	[self.git request:clone];
 }
 
 - (DAServerCtrl *)newServerCtrl {
@@ -195,61 +254,6 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 
 - (UIImage *)inactiveImageForIndex:(NSUInteger)index {
 	return 0 == index ? [UIImage imageNamed:@"symbol-plus_gray.png"] : nil;
-}
-
-#pragma mark Internals
-
-- (void)cloneRemoteRepoWithName:(NSString *)repoName fromServer:(DAGitServer *)server authenticationUser:(DAGitUser *)user {
-	DAServerCtrl *serverCtrl = self.currentCtrl;
-	
-	self.pager.userInteractionEnabled = NO;
-	[serverCtrl setEditing:NO animated:YES];
-	
-	self.app.idleTimerDisabled = YES;
-	
-	DAGitCloneDelegate *delegate = DAGitCloneDelegate.new;
-	delegate.transferProgressBlock = ^(const git_transfer_progress *progress){
-		if (0 == progress->total_objects) {
-			[Logger warn:@"0 total_objects specified during repo cloning."];
-			return;
-		}
-		CGFloat percent = (CGFloat)progress->received_objects / progress->total_objects;
-		[Logger info:@"clone.transfer transter percent: %d", percent];
-		
-		[serverCtrl setProgress:percent];
-	};
-	delegate.checkoutProgressBlock = ^(NSString *path, NSUInteger completedSteps, NSUInteger totalSteps){
-		// 'Bare' repo is not checked out.
-		[Logger info:@"clone.checkout.checkout %d/%d", completedSteps, totalSteps];
-	};
-	delegate.finishBlock = ^(DAGitAction *action, NSError *err){
-		self.pager.userInteractionEnabled = YES;
-		[serverCtrl setEditing:YES animated:YES];
-		
-		self.app.idleTimerDisabled = NO;
-		
-		[serverCtrl resetProgress];
-		
-		if (err) {
-			NSString *title = NSLocalizedString(@"Error", nil);
-			NSString *message = NSLocalizedString(err.localizedDescription, nil);
-			
-			[self.app showAlert:title message:message delegate:nil];
-			return;
-		}
-		
-		DAGitClone *clone = (DAGitClone *)action;
-		[self performSegueWithIdentifier:RepoSegue sender:clone.clonedRepo];
-		
-		self.currentServer.recentRepoPath = repoName;
-		[self.servers save];
-	};
-	
-	DAGitClone *clone = [DAGitClone cloneRepoWithName:repoName fromServer:server];
-	clone.authenticationUser = user;
-	clone.delegate = delegate;
-	
-	[self.git request:clone];
 }
 
 #pragma mark Actions

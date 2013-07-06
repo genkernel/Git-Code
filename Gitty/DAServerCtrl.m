@@ -7,6 +7,7 @@
 //
 
 #import "DAServerCtrl.h"
+#import "DAServerCtrl+Animation.h"
 
 @interface UIButton (ServerCtrlLayout)
 - (void)applyProtocolStyle;
@@ -21,6 +22,7 @@
 @implementation DAServerCtrl {
 	CGFloat progress;
 }
+@synthesize isUsingCredentials = isCredentialsVisible;
 @dynamic selectedProtocol;
 
 - (void)viewDidLoad {
@@ -130,10 +132,20 @@
 	self.repoField.disabledBackground = nil;
 }
 
+- (void)resetCredentials {
+	self.userNameField.text = nil;
+	self.userPasswordField.text = nil;
+	
+	[self setCredentialsVisible:NO animated:NO];
+}
+
 #pragma mark UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-	return [string isUrlSuitable];
+	if (textField == self.repoField) {
+		return [string isUrlSuitable];
+	}
+	return YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -149,49 +161,15 @@
 		[self.userPasswordField becomeFirstResponder];
 	}
 	
+	[self updateControlButtonsState];
+	
 	return YES;
 }
 
 #pragma mark Actions
 
 - (IBAction)didClickLogin:(UIButton *)sender {
-	_isUsingCredentials = !self.isUsingCredentials;
-	
-	[UIView animateWithDuration:StandartAnimationDuration animations:^{
-		CGFloat offset = self.credentialsContainer.height;
-		if (self.isUsingCredentials) {
-			[self showAnonymousButton];
-		} else {
-			[self showLoginButton];
-			offset *= -1;
-		}
-		self.exploreContainer.height += offset;
-	} completion:^(BOOL finished) {
-		[self updateControlButtonsState];
-	}];
-}
-
-- (void)updateControlButtonsState {
-	if (self.isUsingCredentials) {
-		BOOL isCredentialsSupplied = self.userNameField.text.length && self.userPasswordField.text.length;
-		self.exploreButton.enabled = self.repoField.text.length && isCredentialsSupplied;
-	} else {
-		self.exploreButton.enabled = self.repoField.text.length;
-	}
-}
-
-- (void)showAnonymousButton {
-	self.loginButton.backgroundColor = UIColor.cancelingRedColor;
-	[self.loginButton setBackgroundImage:[UIImage imageNamed:@"btn-red.png"] forState:UIControlStateNormal];
-	
-	[self.loginButton setTitle:@"Cancel" forState:UIControlStateNormal];
-}
-
-- (void)showLoginButton {
-	self.loginButton.backgroundColor = UIColor.acceptingBlueColor;
-	[self.loginButton setBackgroundImage:[UIImage imageNamed:@"btn-blue.png"] forState:UIControlStateNormal];
-	
-	[self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
+	[self setCredentialsVisible:!self.isUsingCredentials animated:YES];
 }
 
 - (IBAction)protocolSelected:(UIButton *)sender {

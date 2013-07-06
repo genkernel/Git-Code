@@ -29,8 +29,11 @@
 	
 	self.filenameLabel.text = delta.newFile.path.lastPathComponent;
 	
-	self.additionsLabel.text = [NSString stringWithFormat:@"%d additions", delta.addedLinesCount];
-	self.deletionsLabel.text = [NSString stringWithFormat:@"%d deletions", delta.deletedLinesCount];
+	NSString *fmt = 1 == delta.addedLinesCount ? @"%d addition" : @"%d additions";
+	self.additionsLabel.text = [NSString stringWithFormat:fmt, delta.addedLinesCount];
+	
+	fmt = 1 == delta.deletedLinesCount ? @"%d deletion" : @"%d deletions";
+	self.deletionsLabel.text = [NSString stringWithFormat:fmt, delta.deletedLinesCount];
 	
 	self.additionsLabel.hidden = delta.isBinary;
 	self.deletionsLabel.hidden = delta.isBinary;

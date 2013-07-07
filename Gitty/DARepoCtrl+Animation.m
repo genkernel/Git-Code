@@ -107,7 +107,8 @@
 	CGFloat y = offsets[mode];
 	
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
-		self.mainContainer.y = y;
+		CGRect r = CGRectMake(.0, y, self.view.width, self.view.height);
+		self.mainContainer.frame = r;
 	}];
 }
 

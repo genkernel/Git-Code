@@ -14,6 +14,7 @@
 
 - (void)setPullingViewVisible:(BOOL)visible animated:(BOOL)animated;
 - (void)setStatsHeadlineViewVisible:(BOOL)visible animated:(BOOL)animated;
+- (void)setStatsContainerViewVisible:(BOOL)visible animated:(BOOL)animated;
 
 - (void)loadStatsHeadline;
 @end

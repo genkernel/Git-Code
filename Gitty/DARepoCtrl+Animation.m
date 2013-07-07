@@ -87,7 +87,21 @@
 		self.statsHeaderContainer.y += offset;
 		
 		CGFloat y = self.statsHeaderContainer.y + self.statsHeaderContainer.height;
-		self.commitsContainer.frame = CGRectMake(.0, y, self.view.width, self.view.height - y);
+		self.mainContainer.frame = CGRectMake(.0, y, self.view.width, self.view.height - y);
+	}];
+}
+
+- (void)setStatsContainerViewVisible:(BOOL)visible animated:(BOOL)animated {
+	if (isStatsContainerVisible == visible) {
+		return;
+	}
+	isStatsContainerVisible = visible;
+	
+	CGFloat offset = self.commitsContainer.height;
+	offset *= visible ? 1. : -1.;
+	
+	[UIView animateWithDuration:StandartAnimationDuration animations:^{
+		self.mainContainer.y += offset;
 	}];
 }
 

@@ -13,6 +13,7 @@
 	#import <Foundation/Foundation.h>
 	#import <QuartzCore/QuartzCore.h>
 	#import <MobileCoreServices/MobileCoreServices.h>
+	#import <MessageUI/MessageUI.h>
 
 #import <ObjectiveGit/ObjectiveGit.h>
 #import "LibGit2-Helpers.pch"

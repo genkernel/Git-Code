@@ -108,20 +108,60 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="dYR-5T-Tpk" userLabel="Header Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" id="ben-cx-Yuj" userLabel="DT Headline Rich Label" customClass="DTAttributedLabel">
-                                                <rect key="frame" x="10" y="0.0" width="216" height="40"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="stats_header.png" id="lUu-Tz-zwm" userLabel="Background Image">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" id="ben-cx-Yuj" userLabel="DT Headline Rich Label" customClass="DTAttributedLabel">
+                                                <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oLJ-bO-vPD">
-                                                <rect key="frame" x="232" y="8" width="80" height="24"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                                <rect key="contentStretch" x="0.5" y="0.5" width="0.10000000000000001" height="0.10000000000000001"/>
-                                                <fontDescription key="fontDescription" name="Cochin-Bold" family="Cochin" pointSize="16"/>
-                                                <state key="normal" title="Got it" backgroundImage="btn-blue.png">
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="4lu-SX-On5" userLabel="Main Content Container">
+                                <rect key="frame" x="0.0" y="42" width="320" height="463"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="01u-cQ-30S" userLabel="Commits Container">
+                                        <rect key="frame" x="0.0" y="32" width="320" height="431"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="a4a-3k-Zyy">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <sections/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="Vzr-74-RmI" id="wIs-ky-qFQ"/>
+                                                    <outlet property="delegate" destination="Vzr-74-RmI" id="0KQ-2g-aiC"/>
+                                                </connections>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="fader-bottom.png" id="5FE-g9-Ql5" userLabel="Commits Fading Effect">
+                                        <rect key="frame" x="0.0" y="442" width="320" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" id="56n-kQ-zDQ" userLabel="Filters Container">
+                                        <rect key="frame" x="296" y="256" width="350" height="206"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zgp-Ui-0vb" userLabel="Select Branch Button">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <rect key="contentStretch" x="0.94999999999999996" y="0.0" width="0.01" height="1"/>
+                                                <fontDescription key="fontDescription" name="Cochin-Bold" family="Cochin" pointSize="18"/>
+                                                <state key="normal" backgroundImage="branch-selector.png">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -129,21 +169,50 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="gotItPressed:" destination="Vzr-74-RmI" eventType="touchUpInside" id="TMc-QP-MZT"/>
+                                                    <action selector="revealBranchPressed:" destination="Vzr-74-RmI" eventType="touchUpInside" id="EVQ-5j-SAq"/>
                                                 </connections>
                                             </button>
+                                            <containerView contentMode="scaleToFill" id="2Lq-hv-Jqk" userLabel="Select Branch Overlay">
+                                                <rect key="frame" x="24" y="0.0" width="320" height="206"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <segue destination="ALf-gj-3jW" kind="embed" identifier="BranchPickerSegue" id="omU-eA-MPn"/>
+                                                </connections>
+                                            </containerView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="stats_footer.png" id="G3P-6a-zbF" userLabel="Grab Button Merging Image">
+                                        <rect key="frame" x="0.0" y="-30" width="320" height="62"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="Fhn-vh-KF9" userLabel="Grab Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="Grabber.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="statsDidClick:" destination="Vzr-74-RmI" eventType="touchUpInside" id="cVa-cS-1Xb"/>
+                                            <outletCollection property="gestureRecognizers" destination="nQg-SP-kER" appends="YES" id="hoX-0V-LgH"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="JSV-Rf-GSV" userLabel="Pulling Popup Container">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Pulling..." textAlignment="center" minimumFontSize="17" id="nqj-Uv-VZl" userLabel="Pulling Action Text Field">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -151,70 +220,17 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" id="3Td-bB-6re">
-                                        <rect key="frame" x="100" y="10" width="20" height="20"/>
+                                        <rect key="frame" x="100" y="19" width="20" height="20"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" id="01u-cQ-30S" userLabel="Commits Container">
-                                <rect key="frame" x="0.0" y="40" width="320" height="465"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="a4a-3k-Zyy">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="465"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <sections/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="Vzr-74-RmI" id="wIs-ky-qFQ"/>
-                                            <outlet property="delegate" destination="Vzr-74-RmI" id="0KQ-2g-aiC"/>
-                                        </connections>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="fader-bottom.png" id="5FE-g9-Ql5" userLabel="Commits Fading Effect">
-                                <rect key="frame" x="0.0" y="484" width="320" height="20"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            </imageView>
                             <view hidden="YES" alpha="0.0" contentMode="scaleToFill" id="syR-gB-lih" userLabel="Fullscreen Gray Overlay">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="56n-kQ-zDQ" userLabel="Filters Container">
-                                <rect key="frame" x="296" y="298" width="350" height="206"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zgp-Ui-0vb" userLabel="Select Branch Button">
-                                        <rect key="frame" x="0.0" y="0.0" width="30" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <rect key="contentStretch" x="0.94999999999999996" y="0.0" width="0.01" height="1"/>
-                                        <fontDescription key="fontDescription" name="Cochin-Bold" family="Cochin" pointSize="18"/>
-                                        <state key="normal" backgroundImage="branch-selector.png">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="revealBranchPressed:" destination="Vzr-74-RmI" eventType="touchUpInside" id="EVQ-5j-SAq"/>
-                                        </connections>
-                                    </button>
-                                    <containerView contentMode="scaleToFill" id="2Lq-hv-Jqk" userLabel="Select Branch Overlay">
-                                        <rect key="frame" x="24" y="0.0" width="320" height="206"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="ALf-gj-3jW" kind="embed" identifier="BranchPickerSegue" id="omU-eA-MPn"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view hidden="YES" alpha="0.0" contentMode="scaleToFill" id="sVN-2v-uHm" userLabel="Diff Loading Overlay">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
@@ -242,19 +258,26 @@
                         <outlet property="commitsTable" destination="a4a-3k-Zyy" id="Iyl-TG-lZQ"/>
                         <outlet property="diffLoadingIndicator" destination="dbq-vd-6p3" id="KWF-wg-1WZ"/>
                         <outlet property="diffLoadingOverlay" destination="sVN-2v-uHm" id="5Yw-in-kCp"/>
+                        <outlet property="grabButton" destination="Fhn-vh-KF9" id="Se9-sA-9eh"/>
                         <outlet property="grayOverlay" destination="syR-gB-lih" id="cXw-EV-MM1"/>
                         <outlet property="headerContainer" destination="JSV-Rf-GSV" id="KXv-8y-FFk"/>
+                        <outlet property="mainContainer" destination="4lu-SX-On5" id="RCo-b7-yus"/>
                         <outlet property="pullingField" destination="nqj-Uv-VZl" id="40X-QR-KzJ"/>
                         <outlet property="pullingIndicator" destination="3Td-bB-6re" id="9fi-6w-Mcv"/>
                         <outlet property="revealBranchOverlayButton" destination="zgp-Ui-0vb" id="u2r-ht-yl0"/>
                         <outlet property="statsContainer" destination="5al-59-bSE" id="Tgi-tm-bAO"/>
-                        <outlet property="statsGotItButton" destination="oLJ-bO-vPD" id="s8n-mw-DLc"/>
                         <outlet property="statsHeaderContainer" destination="dYR-5T-Tpk" id="Tjn-C9-0lx"/>
                         <outlet property="statsHeadlineLabel" destination="ben-cx-Yuj" id="Aj0-oo-WDf"/>
                         <segue destination="HaY-FQ-1Aa" kind="push" identifier="DiffSegue" id="Y9V-9u-clg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1R-XF-xY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="nQg-SP-kER">
+                    <connections>
+                        <action selector="statsDidDrag:" destination="Vzr-74-RmI" id="XGe-qG-JSF"/>
+                        <outlet property="delegate" destination="Vzr-74-RmI" id="N36-46-bEf"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1201" y="-53"/>
         </scene>
@@ -322,9 +345,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Grabber.png" width="45" height="17"/>
         <image name="branch-selector.png" width="24" height="128"/>
-        <image name="btn-blue.png" width="5" height="5"/>
         <image name="fader-bottom.png" width="2" height="20"/>
+        <image name="stats_footer.png" width="320" height="62"/>
+        <image name="stats_header.png" width="320" height="80"/>
     </resources>
     <classes>
         <class className="DABaseCtrl" superclassName="ViewCtrl">
@@ -359,13 +384,14 @@
                 <relationship kind="outlet" name="currentBranchButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="diffLoadingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="diffLoadingOverlay" candidateClass="UIView"/>
+                <relationship kind="outlet" name="grabButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="grayOverlay" candidateClass="UIView"/>
                 <relationship kind="outlet" name="headerContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mainContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="pullingField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="pullingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="revealBranchOverlayButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="statsContainer" candidateClass="UIView"/>
-                <relationship kind="outlet" name="statsGotItButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="statsHeaderContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="statsHeadlineLabel" candidateClass="DTAttributedLabel"/>
             </relationships>

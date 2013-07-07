@@ -10,7 +10,7 @@
 
 @interface DARepoCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate> {
 	BOOL isBranchOverlayVisible;
-	BOOL isStatsHeadlineVisible;
+	BOOL isStatsHeadlineVisible, isStatsContainerVisible;
 	
 	NSDictionary *_commitsOnDateSection;
 	NSDictionary *_authorsOnDateSection;
@@ -25,8 +25,8 @@
 
 @property (strong, nonatomic) IBOutlet UIView *statsContainer, *statsHeaderContainer;
 @property (strong, nonatomic) IBOutlet DTAttributedLabel *statsHeadlineLabel;
-@property (strong, nonatomic) IBOutlet UIButton *statsGotItButton;
 
+@property (strong, nonatomic) IBOutlet UIView *mainContainer;
 @property (strong, nonatomic) IBOutlet UIView *headerContainer;
 @property (strong, nonatomic) IBOutlet UIView *commitsContainer;
 @property (strong, nonatomic) IBOutlet UITableView *commitsTable;
@@ -42,6 +42,8 @@
 
 @property (strong, nonatomic) IBOutlet UIView *branchOverlay, *branchCtrlContainer;
 @property (strong, nonatomic) IBOutlet UIButton *revealBranchOverlayButton;
+
+@property (strong, nonatomic) IBOutlet UIButton *grabButton;
 
 // Private. Category-visible methods.
 - (void)reloadFilters;

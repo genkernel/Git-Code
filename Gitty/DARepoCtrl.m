@@ -21,6 +21,8 @@ static NSString *MasterBranchName = @"master";
 static NSString *DiffSegue = @"DiffSegue";
 static NSString *BranchPickerSegue = @"BranchPickerSegue";
 
+static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
+
 @interface DARepoCtrl ()
 @property (strong, nonatomic, readonly) NSArray *remoteBranches/*, *localBranches*/;
 @property (strong, nonatomic, readonly) NSDictionary *namedBranches;
@@ -40,6 +42,7 @@ static NSString *BranchPickerSegue = @"BranchPickerSegue";
 
 @implementation DARepoCtrl {
 	NSUInteger forgetActionTag;
+	CGFloat statsContainerOffsetBeforeDragging;
 }
 @synthesize commitsOnDateSection = _commitsOnDateSection;
 @synthesize authorsOnDateSection = _authorsOnDateSection;
@@ -86,7 +89,6 @@ static NSString *BranchPickerSegue = @"BranchPickerSegue";
 	self.revealBranchOverlayButton.layer.masksToBounds = YES;
 	
 	isStatsHeadlineVisible = YES;
-	[self.statsGotItButton applyBlueStyle];
 	
 	[self reloadFilters];
 	[self reloadCommits];
@@ -351,8 +353,36 @@ static NSString *BranchPickerSegue = @"BranchPickerSegue";
 	forgetActionTag = [self showYesNoMessage:message withTitle:title];
 }
 
-- (IBAction)gotItPressed:(UIButton *)sender {
-	[self setStatsHeadlineViewVisible:NO animated:YES];
+- (IBAction)statsDidClick:(UIButton *)sender {
+	[self setStatsContainerViewVisible:!isStatsContainerVisible animated:YES];
+}
+
+- (IBAction)statsDidDrag:(UIPanGestureRecognizer *)gr {
+	CGPoint p = [gr translationInView:self.view];
+	[Logger info:@"%@", NSStringFromCGPoint(p)];
+	
+	if (UIGestureRecognizerStateBegan == gr.state) {
+		statsContainerOffsetBeforeDragging = self.mainContainer.y;
+	} else if (UIGestureRecognizerStateChanged == gr.state) {
+		CGFloat offset = p.y;
+		
+		BOOL isClonsedAndMovingDown = !isStatsContainerVisible && offset >= .0;
+		BOOL isOpenedAndMovingUp = isStatsContainerVisible && offset < .0;
+		
+		if (isClonsedAndMovingDown || isOpenedAndMovingUp) {
+			self.mainContainer.y = statsContainerOffsetBeforeDragging + offset;
+		}
+	} else if (UIGestureRecognizerStateEnded == gr.state) {
+		CGFloat offset = fabsf(p.y);
+		
+		if (offset >= StatsContainerMinDraggingOffsetToSwitchState) {
+			[self setStatsContainerViewVisible:!isStatsContainerVisible animated:YES];
+		} else {
+			[UIView animateWithDuration:StandartAnimationDuration animations:^{
+				self.mainContainer.y = statsContainerOffsetBeforeDragging;
+			}];
+		}
+	}
 }
 
 #pragma mark Properties

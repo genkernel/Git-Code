@@ -116,7 +116,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" id="ben-cx-Yuj" userLabel="DT Headline Rich Label" customClass="DTAttributedLabel">
-                                                <rect key="frame" x="10" y="0.0" width="300" height="42"/>
+                                                <rect key="frame" x="10" y="0.0" width="300" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
@@ -127,7 +127,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="4lu-SX-On5" userLabel="Main Content Container">
-                                <rect key="frame" x="0.0" y="42" width="320" height="463"/>
+                                <rect key="frame" x="0.0" y="40" width="320" height="463"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="01u-cQ-30S" userLabel="Commits Container">
@@ -183,16 +183,12 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="stats_footer.png" id="G3P-6a-zbF" userLabel="Grab Button Merging Image">
+                                    <button opaque="NO" contentMode="top" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="Fhn-vh-KF9" userLabel="Grab Button">
                                         <rect key="frame" x="0.0" y="-30" width="320" height="62"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="Fhn-vh-KF9" userLabel="Grab Button">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="17"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" image="Grabber.png">
+                                        <state key="normal" backgroundImage="stats_footer.png">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -208,24 +204,24 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="JSV-Rf-GSV" userLabel="Pulling Popup Container">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Pulling..." textAlignment="center" minimumFontSize="17" id="nqj-Uv-VZl" userLabel="Pulling Action Text Field">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" id="3Td-bB-6re">
-                                        <rect key="frame" x="100" y="19" width="20" height="20"/>
+                                        <rect key="frame" x="100" y="26" width="20" height="20"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view hidden="YES" alpha="0.0" contentMode="scaleToFill" id="syR-gB-lih" userLabel="Fullscreen Gray Overlay">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
@@ -259,7 +255,6 @@
                         <outlet property="diffLoadingIndicator" destination="dbq-vd-6p3" id="KWF-wg-1WZ"/>
                         <outlet property="diffLoadingOverlay" destination="sVN-2v-uHm" id="5Yw-in-kCp"/>
                         <outlet property="grabButton" destination="Fhn-vh-KF9" id="Se9-sA-9eh"/>
-                        <outlet property="grabFooterImage" destination="G3P-6a-zbF" id="xrO-V3-Rex"/>
                         <outlet property="grayOverlay" destination="syR-gB-lih" id="cXw-EV-MM1"/>
                         <outlet property="headerContainer" destination="JSV-Rf-GSV" id="KXv-8y-FFk"/>
                         <outlet property="mainContainer" destination="4lu-SX-On5" id="RCo-b7-yus"/>
@@ -346,7 +341,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Grabber.png" width="45" height="17"/>
         <image name="branch-selector.png" width="24" height="128"/>
         <image name="fader-bottom.png" width="2" height="20"/>
         <image name="stats_footer.png" width="320" height="62"/>
@@ -378,9 +372,6 @@
         <class className="DARepoCtrl" superclassName="DABaseCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DARepoCtrl.h"/>
             <relationships>
-                <relationship kind="action" name="revealBranchPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="statsDidClick:" candidateClass="UIButton"/>
-                <relationship kind="action" name="statsDidDrag:" candidateClass="UIPanGestureRecognizer"/>
                 <relationship kind="outlet" name="branchCtrlContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="branchOverlay" candidateClass="UIView"/>
                 <relationship kind="outlet" name="commitsContainer" candidateClass="UIView"/>
@@ -389,7 +380,6 @@
                 <relationship kind="outlet" name="diffLoadingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="diffLoadingOverlay" candidateClass="UIView"/>
                 <relationship kind="outlet" name="grabButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="grabFooterImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="grayOverlay" candidateClass="UIView"/>
                 <relationship kind="outlet" name="headerContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="mainContainer" candidateClass="UIView"/>

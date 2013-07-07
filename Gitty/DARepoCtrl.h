@@ -37,7 +37,6 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UIView *headerContainer;
 @property (strong, nonatomic) IBOutlet UIView *commitsContainer;
 @property (strong, nonatomic) IBOutlet UITableView *commitsTable;
-@property (strong, nonatomic) IBOutlet UIImageView *grabFooterImage;
 
 @property (strong, nonatomic) IBOutlet UIButton *currentBranchButton;
 

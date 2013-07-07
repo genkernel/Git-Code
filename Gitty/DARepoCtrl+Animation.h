@@ -13,7 +13,6 @@
 - (void)setDiffLoadingOverlayVisible:(BOOL)visible animated:(BOOL)animated;
 
 - (void)setPullingViewVisible:(BOOL)visible animated:(BOOL)animated;
-//- (void)setStatsHeadlineViewVisible:(BOOL)visible animated:(BOOL)animated;
 - (void)setStatsContainerMode:(DAStatsContainerModes)mode animated:(BOOL)animated;
 
 - (void)loadStatsHeadline;

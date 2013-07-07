@@ -63,8 +63,6 @@
 	
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
 		self.headerContainer.y += offset;
-		
-//		self.commitsContainer.frame = CGRectInset(self.commitsContainer.frame, .0, offset / 2);
 	}completion:^(BOOL finished) {
 		self.headerContainer.hidden = !visible;
 		
@@ -73,23 +71,6 @@
 		}
 	}];
 }
-/*
-- (void)setStatsHeadlineViewVisible:(BOOL)visible animated:(BOOL)animated {
-	if (isStatsHeadlineVisible == visible) {
-		return;
-	}
-	isStatsHeadlineVisible = visible;
-	
-	CGFloat offset = self.statsHeaderContainer.height;
-	offset *= visible ? 1. : -1.;
-	
-	[UIView animateWithDuration:StandartAnimationDuration animations:^{
-		self.statsHeaderContainer.y += offset;
-		
-		CGFloat y = self.statsHeaderContainer.y + self.statsHeaderContainer.height;
-		self.mainContainer.frame = CGRectMake(.0, y, self.view.width, self.view.height - y);
-	}];
-}*/
 
 - (void)setStatsContainerMode:(DAStatsContainerModes)mode animated:(BOOL)animated {
 	if (statsContainerMode == mode) {
@@ -101,7 +82,7 @@
 	CGFloat offsets[] = {
 		self.statsHeadlineLabel.height,
 		.0,
-		self.view.height - self.grabFooterImage.height
+		self.view.height - (self.grabButton.height - 30./*Out-of-bounds part of image*/)
 	};
 	
 	CGFloat y = offsets[mode];

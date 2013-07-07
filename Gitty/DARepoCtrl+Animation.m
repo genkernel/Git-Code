@@ -64,7 +64,7 @@
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
 		self.headerContainer.y += offset;
 		
-		self.commitsContainer.frame = CGRectInset(self.commitsContainer.frame, .0, offset / 2);
+//		self.commitsContainer.frame = CGRectInset(self.commitsContainer.frame, .0, offset / 2);
 	}completion:^(BOOL finished) {
 		self.headerContainer.hidden = !visible;
 		
@@ -73,26 +73,40 @@
 		}
 	}];
 }
-/*
-- (void)setFiltersViewVisible:(BOOL)visible animated:(BOOL)animated {
-	CGFloat offset =  self.innerFiltersContainer.height;
-	offset *= visible ? -1. : 1.;
+
+- (void)setStatsHeadlineViewVisible:(BOOL)visible animated:(BOOL)animated {
+	if (isStatsHeadlineVisible == visible) {
+		return;
+	}
+	isStatsHeadlineVisible = visible;
+	
+	CGFloat offset = self.statsHeaderContainer.height;
+	offset *= visible ? 1. : -1.;
 	
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
-		self.filtersContainer.y += offset;
-	}completion:^(BOOL finished) {
-		if (visible) {
-			self.grayOverlay.hidden = NO;
-		}
+		self.statsHeaderContainer.y += offset;
 		
-		[UIView animateWithDuration:SmoothAnimationDuration animations:^{
-			self.grayOverlay.alpha = visible ? .5 : .0;
-		}completion:^(BOOL finished) {
-			if (!visible) {
-				self.grayOverlay.hidden = YES;
-			}
-		}];
+		CGFloat y = self.statsHeaderContainer.y + self.statsHeaderContainer.height;
+		self.commitsContainer.frame = CGRectMake(.0, y, self.view.width, self.view.height - y);
 	}];
-}*/
+}
+
+- (void)loadStatsHeadline {
+	NSDictionary *opts = @{DTDefaultFontFamily: @"Cochin", DTDefaultFontSize: @15, DTDefaultTextColor: UIColor.whiteColor};
+	
+	NSString* path = [NSBundle.mainBundle pathForResource:@"StatsHeadline" ofType:@"html"];
+	NSString *html = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+	{
+		html = [html stringByReplacingOccurrencesOfString:@"%branches%" withString:@"5"];
+		html = [html stringByReplacingOccurrencesOfString:@"%commits%" withString:@"15"];
+		html = [html stringByReplacingOccurrencesOfString:@"%authors%" withString:@"3"];
+	}
+	
+	NSData *data = [NSData dataWithBytes:html.UTF8String length:html.length];
+	
+	DTHTMLAttributedStringBuilder *builder = [DTHTMLAttributedStringBuilder.alloc initWithHTML:data options:opts documentAttributes:nil];
+	
+	self.statsHeadlineLabel.attributedString = builder.generatedAttributedString;
+}
 
 @end

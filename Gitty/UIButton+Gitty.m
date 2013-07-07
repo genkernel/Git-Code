@@ -39,6 +39,7 @@
 
 - (void)applyGeneralStyle {
 	self.layer.cornerRadius = 5.;
+	self.layer.masksToBounds = YES;
 	
 	[self applyShadowOfRadius:2. withColor:UIColor.blackColor];
 	

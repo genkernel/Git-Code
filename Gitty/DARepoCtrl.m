@@ -85,12 +85,14 @@ static NSString *BranchPickerSegue = @"BranchPickerSegue";
 	self.revealBranchOverlayButton.layer.cornerRadius = 7.;
 	self.revealBranchOverlayButton.layer.masksToBounds = YES;
 	
+	isStatsHeadlineVisible = YES;
+	[self.statsGotItButton applyBlueStyle];
+	
 	[self reloadFilters];
 	[self reloadCommits];
 	
 	if (!self.shouldPull) {
-		[self setPullingViewVisible:NO animated:NO];
-		[self addForgetButton];
+		[self loadStats];
 	} else {
 		[self pull];
 	}
@@ -344,9 +346,13 @@ static NSString *BranchPickerSegue = @"BranchPickerSegue";
 
 - (void)forgetPressed {
 	NSString *title = NSLocalizedString(@"Forget repo", nil);
-	NSString *message = NSLocalizedString(@"Forgetting this repo will delete all its files from disk.", nil);
+	NSString *message = NSLocalizedString(@"Forgetting this repo will delete all its fetched data from disk.", nil);
 	
 	forgetActionTag = [self showYesNoMessage:message withTitle:title];
+}
+
+- (IBAction)gotItPressed:(UIButton *)sender {
+	[self setStatsHeadlineViewVisible:NO animated:YES];
 }
 
 #pragma mark Properties

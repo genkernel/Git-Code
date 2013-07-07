@@ -17,20 +17,23 @@
 #import <ObjectiveGit/ObjectiveGit.h>
 #import "LibGit2-Helpers.pch"
 
-#import "UIViewAdditions.h"
-#import "Reachability.h"
-#import "PagerView.h"
-#import "AFNetworking.h"
-
+// xlib.
 #import "System.h"
 #import "UI.h"
 #import "Graphics.h"
+// shared.
+#import "UIViewAdditions.h"
+#import "Reachability.h"
+#import "AFNetworking.h"
+// Submodules.
+#import "PagerView.h"
+#import "DTCoreText.h"
 
 #import "UIColor+Gitty.h"
 #import "UIButton+Gitty.h"
 #import "NSString+Gitty.h"
 #import "UITextField+Gitty.h"
-#import "DAGravatar.h"
 
+#import "DAGravatar.h"
 #import "DAGitManager.h"
 #endif

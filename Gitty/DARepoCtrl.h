@@ -10,7 +10,7 @@
 
 @interface DARepoCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate> {
 	BOOL isBranchOverlayVisible;
-//	BOOL isFiltersContainerVisible;
+	BOOL isStatsHeadlineVisible;
 	
 	NSDictionary *_commitsOnDateSection;
 	NSDictionary *_authorsOnDateSection;
@@ -22,6 +22,10 @@
 @property (strong, nonatomic) DAGitServer *repoServer;
 
 @property (strong, nonatomic, readonly) NSDateFormatter *dateSectionTitleFormatter;
+
+@property (strong, nonatomic) IBOutlet UIView *statsContainer, *statsHeaderContainer;
+@property (strong, nonatomic) IBOutlet DTAttributedLabel *statsHeadlineLabel;
+@property (strong, nonatomic) IBOutlet UIButton *statsGotItButton;
 
 @property (strong, nonatomic) IBOutlet UIView *headerContainer;
 @property (strong, nonatomic) IBOutlet UIView *commitsContainer;

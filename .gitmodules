@@ -7,3 +7,6 @@
 [submodule "Submodules/ConceptScroll"]
 	path = Submodules/ConceptScroll
 	url = https://github.com/genkernel/ConceptScroll.git
+[submodule "Submodules/DTCoreText"]
+	path = Submodules/DTCoreText
+	url = https://github.com/Cocoanetics/DTCoreText.git

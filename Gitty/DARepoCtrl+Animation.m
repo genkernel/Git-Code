@@ -73,7 +73,7 @@
 		}
 	}];
 }
-
+/*
 - (void)setStatsHeadlineViewVisible:(BOOL)visible animated:(BOOL)animated {
 	if (isStatsHeadlineVisible == visible) {
 		return;
@@ -89,19 +89,25 @@
 		CGFloat y = self.statsHeaderContainer.y + self.statsHeaderContainer.height;
 		self.mainContainer.frame = CGRectMake(.0, y, self.view.width, self.view.height - y);
 	}];
-}
+}*/
 
-- (void)setStatsContainerViewVisible:(BOOL)visible animated:(BOOL)animated {
-	if (isStatsContainerVisible == visible) {
+- (void)setStatsContainerMode:(DAStatsContainerModes)mode animated:(BOOL)animated {
+	if (statsContainerMode == mode) {
 		return;
 	}
-	isStatsContainerVisible = visible;
+	statsContainerMode = mode;
 	
-	CGFloat offset = self.commitsContainer.height;
-	offset *= visible ? 1. : -1.;
+	// Elements strict DAStatsContainerModes ordering.
+	CGFloat offsets[] = {
+		self.statsHeadlineLabel.height,
+		.0,
+		self.view.height - self.grabFooterImage.height
+	};
+	
+	CGFloat y = offsets[mode];
 	
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
-		self.mainContainer.y += offset;
+		self.mainContainer.y = y;
 	}];
 }
 

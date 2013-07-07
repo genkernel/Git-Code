@@ -8,9 +8,16 @@
 
 #import "DABaseCtrl.h"
 
+typedef enum {
+	DAStatsHeadlineMode,
+	DAStatsHiddenMode,
+	DAStatsFullscreenMode
+} DAStatsContainerModes;
+
 @interface DARepoCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate> {
 	BOOL isBranchOverlayVisible;
-	BOOL isStatsHeadlineVisible, isStatsContainerVisible;
+//	BOOL isStatsHeadlineVisible, isStatsContainerVisible;
+	DAStatsContainerModes statsContainerMode;
 	
 	NSDictionary *_commitsOnDateSection;
 	NSDictionary *_authorsOnDateSection;
@@ -30,6 +37,7 @@
 @property (strong, nonatomic) IBOutlet UIView *headerContainer;
 @property (strong, nonatomic) IBOutlet UIView *commitsContainer;
 @property (strong, nonatomic) IBOutlet UITableView *commitsTable;
+@property (strong, nonatomic) IBOutlet UIImageView *grabFooterImage;
 
 @property (strong, nonatomic) IBOutlet UIButton *currentBranchButton;
 

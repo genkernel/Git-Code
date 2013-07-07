@@ -88,8 +88,6 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	self.revealBranchOverlayButton.layer.cornerRadius = 7.;
 	self.revealBranchOverlayButton.layer.masksToBounds = YES;
 	
-	isStatsHeadlineVisible = YES;
-	
 	[self reloadFilters];
 	[self reloadCommits];
 	
@@ -354,30 +352,43 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 }
 
 - (IBAction)statsDidClick:(UIButton *)sender {
-	[self setStatsContainerViewVisible:!isStatsContainerVisible animated:YES];
+	statsContainerOffsetBeforeDragging = .0;
+	
+	[self toggleStatsContainerMode];
+}
+
+- (void)toggleStatsContainerMode {
+	DAStatsContainerModes mode = DAStatsFullscreenMode == statsContainerMode ? DAStatsHiddenMode : DAStatsFullscreenMode;
+	[self setStatsContainerMode:mode animated:YES];
 }
 
 - (IBAction)statsDidDrag:(UIPanGestureRecognizer *)gr {
 	CGPoint p = [gr translationInView:self.view];
-	[Logger info:@"%@", NSStringFromCGPoint(p)];
 	
 	if (UIGestureRecognizerStateBegan == gr.state) {
 		statsContainerOffsetBeforeDragging = self.mainContainer.y;
 	} else if (UIGestureRecognizerStateChanged == gr.state) {
-		CGFloat offset = p.y;
+		CGFloat y = statsContainerOffsetBeforeDragging + p.y;
 		
-		BOOL isClonsedAndMovingDown = !isStatsContainerVisible && offset >= .0;
-		BOOL isOpenedAndMovingUp = isStatsContainerVisible && offset < .0;
-		
-		if (isClonsedAndMovingDown || isOpenedAndMovingUp) {
-			self.mainContainer.y = statsContainerOffsetBeforeDragging + offset;
+		if (y >= .0 && y <= self.view.height) {
+			self.mainContainer.y = y;
 		}
 	} else if (UIGestureRecognizerStateEnded == gr.state) {
+		if (DAStatsHeadlineMode == statsContainerMode) {
+			statsContainerOffsetBeforeDragging = .0;
+			
+			DAStatsContainerModes mode = p.y > .0 ? DAStatsFullscreenMode : DAStatsHiddenMode;
+			[self setStatsContainerMode:mode animated:YES];
+			
+			return;
+		}
+		
 		CGFloat offset = fabsf(p.y);
 		
 		if (offset >= StatsContainerMinDraggingOffsetToSwitchState) {
-			[self setStatsContainerViewVisible:!isStatsContainerVisible animated:YES];
+			[self toggleStatsContainerMode];
 		} else {
+			// Decelerate back to original position (before dragging).
 			[UIView animateWithDuration:StandartAnimationDuration animations:^{
 				self.mainContainer.y = statsContainerOffsetBeforeDragging;
 			}];

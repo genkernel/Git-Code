@@ -116,7 +116,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" id="ben-cx-Yuj" userLabel="DT Headline Rich Label" customClass="DTAttributedLabel">
-                                                <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                                <rect key="frame" x="10" y="0.0" width="300" height="42"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
@@ -259,6 +259,7 @@
                         <outlet property="diffLoadingIndicator" destination="dbq-vd-6p3" id="KWF-wg-1WZ"/>
                         <outlet property="diffLoadingOverlay" destination="sVN-2v-uHm" id="5Yw-in-kCp"/>
                         <outlet property="grabButton" destination="Fhn-vh-KF9" id="Se9-sA-9eh"/>
+                        <outlet property="grabFooterImage" destination="G3P-6a-zbF" id="xrO-V3-Rex"/>
                         <outlet property="grayOverlay" destination="syR-gB-lih" id="cXw-EV-MM1"/>
                         <outlet property="headerContainer" destination="JSV-Rf-GSV" id="KXv-8y-FFk"/>
                         <outlet property="mainContainer" destination="4lu-SX-On5" id="RCo-b7-yus"/>
@@ -377,6 +378,9 @@
         <class className="DARepoCtrl" superclassName="DABaseCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DARepoCtrl.h"/>
             <relationships>
+                <relationship kind="action" name="revealBranchPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="statsDidClick:" candidateClass="UIButton"/>
+                <relationship kind="action" name="statsDidDrag:" candidateClass="UIPanGestureRecognizer"/>
                 <relationship kind="outlet" name="branchCtrlContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="branchOverlay" candidateClass="UIView"/>
                 <relationship kind="outlet" name="commitsContainer" candidateClass="UIView"/>
@@ -385,6 +389,7 @@
                 <relationship kind="outlet" name="diffLoadingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="diffLoadingOverlay" candidateClass="UIView"/>
                 <relationship kind="outlet" name="grabButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="grabFooterImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="grayOverlay" candidateClass="UIView"/>
                 <relationship kind="outlet" name="headerContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="mainContainer" candidateClass="UIView"/>

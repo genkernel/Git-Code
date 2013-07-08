@@ -11,12 +11,12 @@
 @implementation NSString (Gitty)
 
 - (BOOL)isUrlSuitable {
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"[0-9a-zA-Z_\\-~/.]*"];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"[0-9a-zA-Z@_\\-/.]*"];
 	return [predicate evaluateWithObject:self];
 }
 
 - (BOOL)isServerNameSuitable {
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"[0-9a-zA-Z-]*"];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"[0-9a-zA-Z-@]*"];
 	return [predicate evaluateWithObject:self];
 }
 

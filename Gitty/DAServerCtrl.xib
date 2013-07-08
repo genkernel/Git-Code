@@ -165,6 +165,7 @@
 								<string key="NSFrame">{{129, 62}, {1, 170}}</string>
 								<reference key="NSSuperview" ref="763360860"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<reference key="IBUIBackgroundColor" ref="943591819"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -227,7 +228,7 @@
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIContentVerticalAlignment">0</int>
-										<string key="IBUIText">genkernel</string>
+										<string key="IBUIText">apple</string>
 										<int key="IBUIBorderStyle">1</int>
 										<string key="IBUIPlaceholder">username</string>
 										<reference key="IBUITextColor" ref="315470396"/>
@@ -257,7 +258,7 @@
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIContentVerticalAlignment">0</int>
-										<string key="IBUIText">dRaz6B4c</string>
+										<string key="IBUIText">_0xmac</string>
 										<int key="IBUIBorderStyle">1</int>
 										<string key="IBUIPlaceholder">password</string>
 										<reference key="IBUITextColor" ref="315470396"/>
@@ -432,6 +433,7 @@
 				<string key="NSFrameSize">{320, 44}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<bool key="IBUIOpaque">NO</bool>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>

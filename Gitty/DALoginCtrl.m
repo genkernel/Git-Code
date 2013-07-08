@@ -278,7 +278,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 						SaveDirectory: name,
 						LogoIcon: @"Git-Icon.png",
 						TransferProtocol: @"git://",
-						SupportedProtocols: @[@"git://", @"https://", @"http://", @"file://"],
+						SupportedProtocols: @[@"git://", @"https://", @"http://", @"ssh://"],
 						RecentRepoPath: @""};
 	
 	DAGitServer *server = [DAGitServer serverWithDictionary:info];

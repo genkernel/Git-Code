@@ -39,8 +39,6 @@
 	[self.userNameField applyThinStyle];
 	[self.userPasswordField applyThinStyle];
 	
-	self.repoField.inputAccessoryView = self.repoAccessoryView;
-	
 	self.protocolsContainer.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
@@ -54,6 +52,9 @@
 
 - (void)loadServer:(DAGitServer *)server {
 	_server = server;
+	
+	BOOL isGithubServer = 0 == [self.servers.list indexOfObject:server];
+	self.repoField.inputAccessoryView = isGithubServer ? self.repoAccessoryView : nil;
 	
 	self.serverName.text = server.name;
 	self.repoField.text = server.recentRepoPath;

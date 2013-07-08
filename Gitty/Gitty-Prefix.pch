@@ -8,6 +8,8 @@
 #warning "This project uses features only available in iOS SDK 6.0 and later."
 #endif
 
+#define GIT_SSH
+
 #ifdef __OBJC__
 	#import <UIKit/UIKit.h>
 	#import <Foundation/Foundation.h>
@@ -37,4 +39,5 @@
 
 #import "DAGravatar.h"
 #import "DAGitManager.h"
+#import "DASshCredentials.h"
 #endif

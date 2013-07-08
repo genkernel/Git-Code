@@ -3,42 +3,65 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>GitBaseUrl</key>
+		<string>git@github.com</string>
+		<key>LogoIcon</key>
+		<string>GitHub-Mark-120px-plus.png</string>
+		<key>Name</key>
+		<string>Github</string>
 		<key>RecentRepoPath</key>
-		<string>github/markup.git</string>
+		<string>genkernel/TreeView.git</string>
+		<key>SaveDirectoryName</key>
+		<string>git@github.com</string>
 		<key>SupportedProtocols</key>
 		<array>
+			<string>ssh://</string>
 			<string>git://</string>
 			<string>https://</string>
 			<string>http://</string>
 		</array>
 		<key>TransferProtocol</key>
-		<string>https://</string>
-		<key>LogoIcon</key>
-		<string>GitHub-Mark-120px-plus.png</string>
-		<key>SaveDirectoryName</key>
-		<string>github.com</string>
-		<key>Name</key>
-		<string>Github</string>
-		<key>GitBaseUrl</key>
-		<string>github.com</string>
+		<string>ssh://</string>
 	</dict>
 	<dict>
-		<key>RecentRepoPath</key>
-		<string>LaNMaSteR53/recon-ng.git</string>
-		<key>TransferProtocol</key>
-		<string>https://</string>
-		<key>SupportedProtocols</key>
-		<array>
-			<string>https://</string>
-		</array>
-		<key>LogoIcon</key>
-		<string>bitbucket.png</string>
-		<key>SaveDirectoryName</key>
-		<string>bitbucket.org</string>
-		<key>Name</key>
-		<string>BitBucket</string>
 		<key>GitBaseUrl</key>
 		<string>bitbucket.org</string>
+		<key>LogoIcon</key>
+		<string>bitbucket.png</string>
+		<key>Name</key>
+		<string>BitBucket</string>
+		<key>RecentRepoPath</key>
+		<string>LaNMaSteR53/recon-ng.git</string>
+		<key>SaveDirectoryName</key>
+		<string>bitbucket.org</string>
+		<key>SupportedProtocols</key>
+		<array>
+			<string>ssh://</string>
+			<string>https://</string>
+		</array>
+		<key>TransferProtocol</key>
+		<string>https://</string>
+	</dict>
+	<dict>
+		<key>GitBaseUrl</key>
+		<string>mikie@192.168.1.10</string>
+		<key>LogoIcon</key>
+		<string>Git-Icon.png</string>
+		<key>Name</key>
+		<string>mikie@realm</string>
+		<key>RecentRepoPath</key>
+		<string>~/Repos/GitUp.git</string>
+		<key>SaveDirectoryName</key>
+		<string>mikie@realm</string>
+		<key>SupportedProtocols</key>
+		<array>
+			<string>git://</string>
+			<string>https://</string>
+			<string>http://</string>
+			<string>ssh://</string>
+		</array>
+		<key>TransferProtocol</key>
+		<string>ssh://</string>
 	</dict>
 </array>
 </plist>

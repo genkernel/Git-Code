@@ -28,6 +28,7 @@
 		1804FAB9176E85820080AB50 /* btn-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 1804FAB6176E85790080AB50 /* btn-green.png */; };
 		1804FABC176E87780080AB50 /* NSString+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1804FABB176E87630080AB50 /* NSString+Gitty.m */; };
 		1804FAC0176EAACD0080AB50 /* btn-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 1804FABF176EAACA0080AB50 /* btn-red.png */; };
+		1805AC1F178B322900789D45 /* DAGitServer+Creation.m in Sources */ = {isa = PBXBuildFile; fileRef = 181993D7176D3D1000D4BE1F /* DAGitServer+Creation.m */; };
 		181226661784C3ED00628C2F /* nonewline.png in Resources */ = {isa = PBXBuildFile; fileRef = 181226641784C3ED00628C2F /* nonewline.png */; };
 		181226671784C3ED00628C2F /* nonewline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181226651784C3ED00628C2F /* nonewline@2x.png */; };
 		1812266D1784CE2D00628C2F /* bitbucket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1812266C1784CE2D00628C2F /* bitbucket@2x.png */; };
@@ -45,6 +46,7 @@
 		18170922175BCC1B002A2D93 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18170921175BCC1B002A2D93 /* Icon-72@2x.png */; };
 		18184B6017555AB5001C58D8 /* DABaseCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18184B5F17555AB5001C58D8 /* DABaseCtrl.m */; };
 		18184B6717556968001C58D8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18184B6617556968001C58D8 /* libz.dylib */; };
+		181A6F59178B696D002CA3BE /* DASshCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A6F58178B696D002CA3BE /* DASshCredentials.m */; };
 		1839316F178993E1002E6A82 /* BulletinListLockScreenGrabber@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1839316C178993E1002E6A82 /* BulletinListLockScreenGrabber@2x.png */; };
 		18393170178993E1002E6A82 /* Grabber@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1839316D178993E1002E6A82 /* Grabber@2x.png */; };
 		18393171178993E1002E6A82 /* UITableGrabber@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1839316E178993E1002E6A82 /* UITableGrabber@2x.png */; };
@@ -135,6 +137,7 @@
 		189BCF2917835D3C0023F093 /* PageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 189BCF2817835D3C0023F093 /* PageControl.m */; };
 		189BCF2C178375280023F093 /* Git-Icon_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 189BCF2A178375280023F093 /* Git-Icon_red.png */; };
 		189BCF2D178375280023F093 /* Git-Icon_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189BCF2B178375280023F093 /* Git-Icon_red@2x.png */; };
+		189FB5D1178AF4EC0095FE8C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 189FB5D0178AF4EC0095FE8C /* LICENSE */; };
 		18A1114D175E2A7000784356 /* DARepoCtrl+GitFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1114C175E2A7000784356 /* DARepoCtrl+GitFetcher.m */; };
 		18A625461775D54900FC27AE /* GTRepository+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A625451775D54600FC27AE /* GTRepository+Gitty.m */; };
 		18A6254B1775D59400FC27AE /* DAGitPullDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6254A1775D59000FC27AE /* DAGitPullDelegate.m */; };
@@ -314,6 +317,8 @@
 		18184B6617556968001C58D8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		181993D6176D3D1000D4BE1F /* DAGitServer+Creation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DAGitServer+Creation.h"; sourceTree = "<group>"; };
 		181993D7176D3D1000D4BE1F /* DAGitServer+Creation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DAGitServer+Creation.m"; sourceTree = "<group>"; };
+		181A6F57178B696D002CA3BE /* DASshCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DASshCredentials.h; sourceTree = "<group>"; };
+		181A6F58178B696D002CA3BE /* DASshCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DASshCredentials.m; sourceTree = "<group>"; };
 		1839316C178993E1002E6A82 /* BulletinListLockScreenGrabber@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BulletinListLockScreenGrabber@2x.png"; sourceTree = "<group>"; };
 		1839316D178993E1002E6A82 /* Grabber@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Grabber@2x.png"; sourceTree = "<group>"; };
 		1839316E178993E1002E6A82 /* UITableGrabber@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UITableGrabber@2x.png"; sourceTree = "<group>"; };
@@ -479,6 +484,11 @@
 		189BCF2817835D3C0023F093 /* PageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControl.m; sourceTree = "<group>"; };
 		189BCF2A178375280023F093 /* Git-Icon_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Git-Icon_red.png"; sourceTree = "<group>"; };
 		189BCF2B178375280023F093 /* Git-Icon_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Git-Icon_red@2x.png"; sourceTree = "<group>"; };
+		189FB5CC178AF4EC0095FE8C /* libssh2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libssh2.h; sourceTree = "<group>"; };
+		189FB5CD178AF4EC0095FE8C /* libssh2_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libssh2_config.h; sourceTree = "<group>"; };
+		189FB5CE178AF4EC0095FE8C /* libssh2_publickey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libssh2_publickey.h; sourceTree = "<group>"; };
+		189FB5CF178AF4EC0095FE8C /* libssh2_sftp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libssh2_sftp.h; sourceTree = "<group>"; };
+		189FB5D0178AF4EC0095FE8C /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		18A1114B175E2A7000784356 /* DARepoCtrl+GitFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DARepoCtrl+GitFetcher.h"; sourceTree = "<group>"; };
 		18A1114C175E2A7000784356 /* DARepoCtrl+GitFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DARepoCtrl+GitFetcher.m"; sourceTree = "<group>"; };
 		18A624601775D4C800FC27AE /* map.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = map.c; sourceTree = "<group>"; };
@@ -924,6 +934,15 @@
 			name = Shared;
 			sourceTree = "<group>";
 		};
+		181A6F4B178B694E002CA3BE /* SSHCredentials */ = {
+			isa = PBXGroup;
+			children = (
+				181A6F57178B696D002CA3BE /* DASshCredentials.h */,
+				181A6F58178B696D002CA3BE /* DASshCredentials.m */,
+			);
+			name = SSHCredentials;
+			sourceTree = "<group>";
+		};
 		1839316B178993E1002E6A82 /* Grabber */ = {
 			isa = PBXGroup;
 			children = (
@@ -1090,6 +1109,7 @@
 		18878CAB17629E03008BF232 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				189FB5CB178AF4EC0095FE8C /* libssh2 */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -1391,6 +1411,7 @@
 				18A625431775D52500FC27AE /* LibGit2 */,
 				1804FAAB176E78EC0080AB50 /* Reachability */,
 				18706EE0176407430046A2A6 /* Helpers */,
+				181A6F4B178B694E002CA3BE /* SSHCredentials */,
 				18BAA85E1758016300154019 /* GitServer */,
 				18D9EA3A17554E9E00454F3C /* Git */,
 			);
@@ -1463,6 +1484,18 @@
 				189BCF2817835D3C0023F093 /* PageControl.m */,
 			);
 			name = PageControl;
+			sourceTree = "<group>";
+		};
+		189FB5CB178AF4EC0095FE8C /* libssh2 */ = {
+			isa = PBXGroup;
+			children = (
+				189FB5CC178AF4EC0095FE8C /* libssh2.h */,
+				189FB5CD178AF4EC0095FE8C /* libssh2_config.h */,
+				189FB5CE178AF4EC0095FE8C /* libssh2_publickey.h */,
+				189FB5CF178AF4EC0095FE8C /* libssh2_sftp.h */,
+				189FB5D0178AF4EC0095FE8C /* LICENSE */,
+			);
+			path = libssh2;
 			sourceTree = "<group>";
 		};
 		18A6245E1775D4C800FC27AE /* src */ = {
@@ -2169,6 +2202,7 @@
 				188F67F7178A1DC8004E3E07 /* stats_header@2x.png in Resources */,
 				188F6805178A1FA5004E3E07 /* stats_footer.png in Resources */,
 				188F6806178A1FA5004E3E07 /* stats_footer@2x.png in Resources */,
+				189FB5D1178AF4EC0095FE8C /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2267,6 +2301,8 @@
 				189BCF2917835D3C0023F093 /* PageControl.m in Sources */,
 				18F15474178622C200322369 /* DACommitMessageCell.m in Sources */,
 				187D2D751788529000F9126E /* DAServerCtrl+Animation.m in Sources */,
+				1805AC1F178B322900789D45 /* DAGitServer+Creation.m in Sources */,
+				181A6F59178B696D002CA3BE /* DASshCredentials.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

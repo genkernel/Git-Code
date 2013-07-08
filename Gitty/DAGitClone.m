@@ -8,8 +8,12 @@
 
 #import "DAGitClone.h"
 #import "DAGitManager+ActionsInterface.h"
+#import "DAGitServer+Creation.h"
+
+static NSString *sshTransferProtocol = @"ssh://";
 
 static int cred_acquire_userpass(git_cred **, const char *, const char *, unsigned int, void *);
+static int cred_acquire_ssh(git_cred **out, const char *url, const char *username_from_url, unsigned int allowed_types, void *payload);
 
 @interface DAGitClone ()
 @property (strong, nonatomic) NSString *repoFullName;
@@ -78,11 +82,15 @@ static int cred_acquire_userpass(git_cred **, const char *, const char *, unsign
 		}
 	}
 	
+	BOOL isSSH = [server.transferProtocol isEqualToString:sshTransferProtocol];
+	id payloadObject = isSSH ? server : user;
+	git_cred_acquire_cb auth_cb = isSSH ? cred_acquire_ssh : cred_acquire_userpass;
+	
 	NSError *err = nil;
 	_clonedRepo = [GTRepository cloneFromURL:remoteURL toWorkingDirectory:url
 									  barely:YES withCheckout:NO error:&err
 					   transferProgressBlock:transferProgressBlock checkoutProgressBlock:checkoutProgressBlock
-				   authenticationCallback:cred_acquire_userpass authenticationPayload:(__bridge void *)(user)];
+				   authenticationCallback:auth_cb authenticationPayload:(__bridge void *)payloadObject];
 	
 	_completionError = err;
 	
@@ -91,6 +99,7 @@ static int cred_acquire_userpass(git_cred **, const char *, const char *, unsign
 
 @end
 
+#pragma mark Static auth_cb helpers
 
 static int cred_acquire_userpass(git_cred **out,
 						const char *url,
@@ -106,17 +115,26 @@ static int cred_acquire_userpass(git_cred **out,
 	return git_cred_userpass_plaintext_new(out, user.username.UTF8String, user.password.UTF8String);
 }
 
-// TODO: Implement SSH auth method.
 static int cred_acquire_ssh(git_cred **out,
-								 const char *url,
-								 const char *username_from_url,
-								 unsigned int allowed_types,
-								 void *payload)
+							const char *url,
+							const char *username_from_url,
+							unsigned int allowed_types,
+							void *payload)
 {
-	DAGitUser *user = (__bridge DAGitUser *)(payload);
-	if (!user) {
-		return GIT_EUSER;
+	DAGitServer *server = (__bridge DAGitServer *)(payload);
+	if (!server) {
+		return GIT_ENOTFOUND;
 	}
 	
-	return git_cred_userpass_plaintext_new(out, user.username.UTF8String, user.password.UTF8String);
+#ifdef GIT_SSH
+	NSString *passphrase = DASshCredentials.manager.passphrase;
+	
+	NSString *publicKeyPath = DASshCredentials.manager.publicKeyPath;
+	NSString *privateKeyPath = DASshCredentials.manager.privateKeyPath;
+	
+	return git_cred_ssh_keyfile_passphrase_new(out, publicKeyPath.UTF8String, privateKeyPath.UTF8String, passphrase.UTF8String);
+#else
+#warning GIT_SSH is not implemented.
+	return GIT_ERROR;
+#endif
 }

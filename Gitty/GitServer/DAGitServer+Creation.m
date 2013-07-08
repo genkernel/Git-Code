@@ -8,5 +8,13 @@
 
 #import "DAGitServer+Creation.h"
 
+NSString *ServerName = @"Name";
+NSString *ServerGitBaseUrl = @"GitBaseUrl";
+NSString *SaveDirectory = @"SaveDirectoryName";
+NSString *LogoIcon = @"LogoIcon";
+NSString *TransferProtocol = @"TransferProtocol";
+NSString *SupportedProtocols = @"SupportedProtocols";
+NSString *RecentRepoPath = @"RecentRepoPath";
+
 @implementation DAGitServer (Creation)
 @end

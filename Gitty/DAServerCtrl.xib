@@ -183,7 +183,7 @@
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentVerticalAlignment">0</int>
-								<string key="IBUIText">genkernel/objective-git.git</string>
+								<string key="IBUIText">LaNMaSteR53/recon-ng.git</string>
 								<int key="IBUIBorderStyle">1</int>
 								<string key="IBUIPlaceholder">username/repo</string>
 								<reference key="IBUITextColor" ref="315470396"/>
@@ -228,7 +228,7 @@
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIContentVerticalAlignment">0</int>
-										<string key="IBUIText">apple</string>
+										<string key="IBUIText">genkernel</string>
 										<int key="IBUIBorderStyle">1</int>
 										<string key="IBUIPlaceholder">username</string>
 										<reference key="IBUITextColor" ref="315470396"/>
@@ -258,7 +258,7 @@
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIContentVerticalAlignment">0</int>
-										<string key="IBUIText">_0xmac</string>
+										<string key="IBUIText">fenaT9ab</string>
 										<int key="IBUIBorderStyle">1</int>
 										<string key="IBUIPlaceholder">password</string>
 										<reference key="IBUITextColor" ref="315470396"/>
@@ -758,7 +758,7 @@
 							<reference ref="128920521"/>
 						</array>
 						<reference key="parent" ref="0"/>
-						<string key="objectName">Repo Accesssory Toolbar</string>
+						<string key="objectName">LetterCase Tip Accesssory Toolbar</string>
 					</object>
 					<object class="IBObjectRecord">
 						<string key="id">Vsz-Lj-AFa</string>

@@ -7,13 +7,13 @@
 //
 
 #import "DARepoCtrl+GitFetcher.h"
+#import "DARepoCtrl+StatsLoader.h"
 #import "DARepoCtrl+Animation.h"
 
 @implementation DARepoCtrl (GitFetcher)
 
-- (void)loadCommitsInBranch:(GTBranch *)branch betweenNowAndDate:(NSDate *)date {
+- (void)loadCommitsInBranch:(GTBranch *)branch {
 	NSError *err = nil;
-	NSMutableSet *zones = NSMutableSet.new;
 	
 	NSMutableArray *sections = NSMutableArray.new;
 	NSMutableDictionary *commitsOnDate = NSMutableDictionary.new;
@@ -21,13 +21,6 @@
 	
 	GTEnumeratorOptions opts = GTEnumeratorOptionsTimeSort;
 	[self.currentRepo enumerateCommitsBeginningAtSha:branch.sha sortOptions:opts error:&err usingBlock:^(GTCommit *commit, BOOL *stop) {
-		[zones addObject:commit.commitTimeZone];
-		
-		BOOL isCommitEarlier = NSOrderedAscending == [commit.commitDate compare:date];
-		if (isCommitEarlier) {
-			*stop = YES;
-			return;
-		}
 		
 		self.dateSectionTitleFormatter.timeZone = commit.commitTimeZone;
 		NSString *title = [self.dateSectionTitleFormatter stringFromDate:commit.commitDate];
@@ -58,19 +51,6 @@
 	_dateSections = [NSArray arrayWithArray:sections];
 }
 
-- (void)loadStats {
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-		
-		
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[self loadStatsHeadline];
-			
-			[self setPullingViewVisible:NO animated:YES];
-			[self addForgetButton];
-		});
-	});
-}
-
 - (void)pull {
 	DAGitPullDelegate *delegate = DAGitPullDelegate.new;
 	delegate.transferProgressBlock = ^(const git_transfer_progress *progress){
@@ -84,9 +64,10 @@
 		[self.pullingField setProgress:percent progressColor:UIColor.acceptingGreenColor backgroundColor:UIColor.blackColor];
 	};
 	delegate.finishBlock = ^(DAGitAction *pull, NSError *err){
-		[self loadStats];
-		
 		if (err) {
+			// Load stats anyway if there is data to show.
+			[self loadStats];
+			
 			if (GIT_EEXISTS == err.code) {
 				// Repo is up to date. No updates fetched.
 			} else {
@@ -97,9 +78,11 @@
 		
 		[self reloadFilters];
 		[self reloadCommits];
+		
+		[self loadStats];
 	};
 	
-	DAGitPull *pull = [DAGitPull pullForRepository:self.currentRepo];
+	DAGitPull *pull = [DAGitPull pullForRepository:self.currentRepo fromServer:self.repoServer];
 	pull.delegate = delegate;
 	
 	[self.git request:pull];

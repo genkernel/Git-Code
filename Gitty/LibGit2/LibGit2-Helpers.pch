@@ -9,10 +9,6 @@
 #ifndef Gitty_LibGit2_Helpers_pch
 #define Gitty_LibGit2_Helpers_pch
 
-// Include any system framework and library headers here that should be included in all compilation units.
-// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
-
-#import "GTRepository+Gitty.h"
 #import "GTCommit+Gitty.h"
 
 #endif

@@ -9,5 +9,4 @@
 #import "DAGitPullDelegate.h"
 
 @implementation DAGitPullDelegate
-
 @end

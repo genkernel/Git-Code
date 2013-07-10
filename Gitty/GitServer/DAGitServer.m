@@ -9,6 +9,8 @@
 #import "DAGitServer.h"
 #import "DAGitServer+Creation.h"
 
+NSString *SshTransferProtocol = @"ssh://";
+
 @implementation DAGitServer
 @dynamic saveDict;
 

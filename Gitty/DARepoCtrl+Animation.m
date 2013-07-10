@@ -80,7 +80,8 @@
 	
 	// Elements strict DAStatsContainerModes ordering.
 	CGFloat offsets[] = {
-		self.statsHeadlineLabel.height,
+		_statsCtrl.headlineLabel.height,
+//		self.statsHeadlineLabel.height,
 		.0,
 		self.view.height - (self.grabButton.height - 30./*Out-of-bounds part of image*/)
 	};
@@ -108,7 +109,7 @@
 	
 	DTHTMLAttributedStringBuilder *builder = [DTHTMLAttributedStringBuilder.alloc initWithHTML:data options:opts documentAttributes:nil];
 	
-	self.statsHeadlineLabel.attributedString = builder.generatedAttributedString;
+	_statsCtrl.headlineLabel.attributedString = builder.generatedAttributedString;
 }
 
 @end

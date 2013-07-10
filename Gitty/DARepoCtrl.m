@@ -7,9 +7,10 @@
 //
 
 #import "DARepoCtrl.h"
+#import "DARepoCtrl+Private.h"
 #import "DARepoCtrl+Animation.h"
 #import "DARepoCtrl+GitFetcher.h"
-#import "DADiffCtrl.h"
+#import "DARepoCtrl+StatsLoader.h"
 // Filter pickers.
 #import "DABranchPickerCtrl.h"
 // Cells.
@@ -19,21 +20,25 @@
 static NSString *MasterBranchName = @"master";
 
 static NSString *DiffSegue = @"DiffSegue";
+static NSString *StatsSegue = @"StatsSegue";
 static NSString *BranchPickerSegue = @"BranchPickerSegue";
 
 static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 
 @interface DARepoCtrl ()
-@property (strong, nonatomic, readonly) NSArray *remoteBranches/*, *localBranches*/;
-@property (strong, nonatomic, readonly) NSDictionary *namedBranches;
-
 @property (strong, nonatomic, readonly) GTBranch *currentBranch;
 @property (strong, nonatomic, readonly) NSDictionary *commitsOnDateSection;
 @property (strong, nonatomic, readonly) NSDictionary *authorsOnDateSection;
 @property (strong, nonatomic, readonly) NSArray *dateSections;
 
+// Format: author.name  =>  <NSArray of commits>
+@property (strong, nonatomic, readonly) NSMutableDictionary *statsCommitsByAuthor;
+// Format: branch.name  =>  <NSArray of commits>
+@property (strong, nonatomic, readonly) NSMutableDictionary *statsCommitsByBranch;
+
 @property (strong, nonatomic, readonly) NSIndexPath *selectedCommitIndexPath;
 
+@property (strong, nonatomic, readonly) DAStatsCtrl *statsCtrl;
 @property (strong, nonatomic, readonly) DABranchPickerCtrl *branchPickerCtrl;
 
 @property (strong, nonatomic, readonly) DACommitCell *reuseCell;
@@ -43,10 +48,17 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 @implementation DARepoCtrl {
 	NSUInteger forgetActionTag;
 	CGFloat statsContainerOffsetBeforeDragging;
+	NSArray *_remoteBranches;
 }
 @synthesize commitsOnDateSection = _commitsOnDateSection;
 @synthesize authorsOnDateSection = _authorsOnDateSection;
 @synthesize dateSections = _dateSections;
+@synthesize statsCtrl = _statsCtrl;
+@synthesize statsCommitsByAuthor = _statsCommitsByAuthor;
+@synthesize statsCommitsByBranch = _statsCommitsByBranch;
+// Category-defined ivars synthesized explicitly.
+@synthesize remoteBranches = _remoteBranches;
+@synthesize namedBranches;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:BranchPickerSegue]) {
@@ -64,6 +76,8 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	} else if ([segue.identifier isEqualToString:DiffSegue]) {
 		DADiffCtrl *ctrl = segue.destinationViewController;
 		ctrl.diff = sender;
+	} else if ([segue.identifier isEqualToString:StatsSegue]) {
+		_statsCtrl = segue.destinationViewController;
 	} else {
 		[super prepareForSegue:segue sender:sender];
 	}
@@ -139,7 +153,6 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	
 	[NSObject startMeasurement];
 	{
-		//_localBranches = [self.currentRepo localBranchesWithError:&err];
 		_remoteBranches = [self.currentRepo remoteBranchesWithError:&err];
 	}
 	double period = [NSObject endMeasurement];
@@ -167,7 +180,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 - (void)reloadCommits {
 	[NSObject startMeasurement];
 	{
-		[self loadCommitsInBranch:self.currentBranch betweenNowAndDate:nil];
+		[self loadCommitsInBranch:self.currentBranch];
 	}
 	double period = [NSObject endMeasurement];
 	[Logger info:@"Commits of %d days loaded in %.2f.", self.dateSections.count, period];

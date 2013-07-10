@@ -50,9 +50,31 @@
 		<key>Name</key>
 		<string>mikie@realm</string>
 		<key>RecentRepoPath</key>
-		<string>~/Repos/GitUp.git</string>
+		<string>Users/mikie/Repos/GitUp.git</string>
 		<key>SaveDirectoryName</key>
 		<string>mikie@realm</string>
+		<key>SupportedProtocols</key>
+		<array>
+			<string>git://</string>
+			<string>https://</string>
+			<string>http://</string>
+			<string>ssh://</string>
+		</array>
+		<key>TransferProtocol</key>
+		<string>ssh://</string>
+	</dict>
+	
+	<dict>
+		<key>GitBaseUrl</key>
+		<string>git@bitbucket.org</string>
+		<key>LogoIcon</key>
+		<string>Git-Icon.png</string>
+		<key>Name</key>
+		<string>livetell-ssh</string>
+		<key>RecentRepoPath</key>
+		<string>livetell/aeva_ios.git</string>
+		<key>SaveDirectoryName</key>
+		<string>livetell</string>
 		<key>SupportedProtocols</key>
 		<array>
 			<string>git://</string>

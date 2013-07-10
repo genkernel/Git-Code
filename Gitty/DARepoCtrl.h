@@ -7,6 +7,8 @@
 //
 
 #import "DABaseCtrl.h"
+#import "DADiffCtrl.h"
+#import "DAStatsCtrl.h"
 
 typedef enum {
 	DAStatsHeadlineMode,
@@ -22,6 +24,11 @@ typedef enum {
 	NSDictionary *_commitsOnDateSection;
 	NSDictionary *_authorsOnDateSection;
 	NSArray *_dateSections;
+	
+	NSMutableDictionary *_statsCommitsByAuthor;
+	NSMutableDictionary *_statsCommitsByBranch;
+	
+	DAStatsCtrl *_statsCtrl;
 }
 @property (strong, nonatomic) GTRepository *currentRepo;
 @property (nonatomic) BOOL shouldPull;
@@ -30,8 +37,7 @@ typedef enum {
 
 @property (strong, nonatomic, readonly) NSDateFormatter *dateSectionTitleFormatter;
 
-@property (strong, nonatomic) IBOutlet UIView *statsContainer, *statsHeaderContainer;
-@property (strong, nonatomic) IBOutlet DTAttributedLabel *statsHeadlineLabel;
+@property (strong, nonatomic) IBOutlet UIView *statsContainer;
 
 @property (strong, nonatomic) IBOutlet UIView *mainContainer;
 @property (strong, nonatomic) IBOutlet UIView *headerContainer;

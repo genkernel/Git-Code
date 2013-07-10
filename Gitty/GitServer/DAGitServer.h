@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *SshTransferProtocol;
+
 @interface DAGitServer : NSObject
 + (instancetype)serverWithDictionary:(NSDictionary *)dict;
 

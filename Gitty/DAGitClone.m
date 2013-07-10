@@ -10,11 +10,6 @@
 #import "DAGitManager+ActionsInterface.h"
 #import "DAGitServer+Creation.h"
 
-static NSString *sshTransferProtocol = @"ssh://";
-
-static int cred_acquire_userpass(git_cred **, const char *, const char *, unsigned int, void *);
-static int cred_acquire_ssh(git_cred **out, const char *url, const char *username_from_url, unsigned int allowed_types, void *payload);
-
 @interface DAGitClone ()
 @property (strong, nonatomic) NSString *repoFullName;
 @property (strong, nonatomic) DAGitServer *server;
@@ -82,7 +77,7 @@ static int cred_acquire_ssh(git_cred **out, const char *url, const char *usernam
 		}
 	}
 	
-	BOOL isSSH = [server.transferProtocol isEqualToString:sshTransferProtocol];
+	BOOL isSSH = [server.transferProtocol isEqualToString:SshTransferProtocol];
 	id payloadObject = isSSH ? server : user;
 	git_cred_acquire_cb auth_cb = isSSH ? cred_acquire_ssh : cred_acquire_userpass;
 	
@@ -98,43 +93,3 @@ static int cred_acquire_ssh(git_cred **out, const char *url, const char *usernam
 }
 
 @end
-
-#pragma mark Static auth_cb helpers
-
-static int cred_acquire_userpass(git_cred **out,
-						const char *url,
-						const char *username_from_url,
-						unsigned int allowed_types,
-						void *payload)
-{
-	DAGitUser *user = (__bridge DAGitUser *)(payload);
-	if (!user) {
-		return GIT_EUSER;
-	}
-	
-	return git_cred_userpass_plaintext_new(out, user.username.UTF8String, user.password.UTF8String);
-}
-
-static int cred_acquire_ssh(git_cred **out,
-							const char *url,
-							const char *username_from_url,
-							unsigned int allowed_types,
-							void *payload)
-{
-	DAGitServer *server = (__bridge DAGitServer *)(payload);
-	if (!server) {
-		return GIT_ENOTFOUND;
-	}
-	
-#ifdef GIT_SSH
-	NSString *passphrase = DASshCredentials.manager.passphrase;
-	
-	NSString *publicKeyPath = DASshCredentials.manager.publicKeyPath;
-	NSString *privateKeyPath = DASshCredentials.manager.privateKeyPath;
-	
-	return git_cred_ssh_keyfile_passphrase_new(out, publicKeyPath.UTF8String, privateKeyPath.UTF8String, passphrase.UTF8String);
-#else
-#warning GIT_SSH is not implemented.
-	return GIT_ERROR;
-#endif
-}

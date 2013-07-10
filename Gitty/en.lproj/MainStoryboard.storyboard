@@ -402,9 +402,6 @@
         <class className="DARepoCtrl" superclassName="DABaseCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DARepoCtrl.h"/>
             <relationships>
-                <relationship kind="action" name="revealBranchPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="statsDidClick:" candidateClass="UIButton"/>
-                <relationship kind="action" name="statsDidDrag:" candidateClass="UIPanGestureRecognizer"/>
                 <relationship kind="outlet" name="branchCtrlContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="branchOverlay" candidateClass="UIView"/>
                 <relationship kind="outlet" name="commitsContainer" candidateClass="UIView"/>
@@ -425,6 +422,7 @@
         <class className="DAStatsCtrl" superclassName="DABaseCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DAStatsCtrl.h"/>
             <relationships>
+                <relationship kind="outlet" name="commitsTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="headerContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="headlineLabel" candidateClass="DTAttributedLabel"/>
             </relationships>

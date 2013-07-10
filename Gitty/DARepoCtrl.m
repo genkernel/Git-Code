@@ -50,6 +50,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	CGFloat statsContainerOffsetBeforeDragging;
 	NSArray *_remoteBranches;
 }
+@synthesize currentBranch = _currentBranch;
 @synthesize commitsOnDateSection = _commitsOnDateSection;
 @synthesize authorsOnDateSection = _authorsOnDateSection;
 @synthesize dateSections = _dateSections;
@@ -142,6 +143,15 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	[forgetButton addTarget:self action:@selector(forgetPressed) forControlEvents:UIControlEventTouchUpInside];
 	
 	self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:forgetButton];
+}
+
+- (void)reloadStatsCommitsWithMode:(DACommitsListModes)mode {
+	statsListMode = mode;
+	
+	NSDictionary *dataSource = DACommitsListByAuthorMode == mode ? self.statsCommitsByAuthor : self.statsCommitsByBranch;
+	
+	[self.statsCtrl loadCommitsDataSource:dataSource];
+	[self.statsCtrl.commitsTable reloadData];
 }
 
 - (void)reloadFilters {

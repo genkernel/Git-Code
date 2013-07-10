@@ -11,6 +11,11 @@
 #import "DAStatsCtrl.h"
 
 typedef enum {
+	DACommitsListByAuthorMode,
+	DACommitsListByBranchMode
+} DACommitsListModes;
+
+typedef enum {
 	DAStatsHeadlineMode,
 	DAStatsHiddenMode,
 	DAStatsFullscreenMode
@@ -28,7 +33,10 @@ typedef enum {
 	NSMutableDictionary *_statsCommitsByAuthor;
 	NSMutableDictionary *_statsCommitsByBranch;
 	
+	GTBranch *_currentBranch;
+	
 	DAStatsCtrl *_statsCtrl;
+	DACommitsListModes statsListMode;
 }
 @property (strong, nonatomic) GTRepository *currentRepo;
 @property (nonatomic) BOOL shouldPull;
@@ -62,4 +70,5 @@ typedef enum {
 - (void)reloadFilters;
 - (void)reloadCommits;
 - (void)addForgetButton;
+- (void)reloadStatsCommitsWithMode:(DACommitsListModes)mode;
 @end

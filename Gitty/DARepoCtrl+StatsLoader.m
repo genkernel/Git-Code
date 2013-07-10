@@ -30,7 +30,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[self loadStatsHeadline];
 			
-			[_statsCtrl.commitsTable reloadData];
+			[self reloadStatsCommitsWithMode:DACommitsListByBranchMode];
 			
 			[self setPullingViewVisible:NO animated:YES];
 			[self addForgetButton];
@@ -44,22 +44,24 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 //	NSDate *yesteray = [NSDate dateWithTimeIntervalSinceNow:DayInterval];
 	
 //	NSCalendar *calendar = NSCalendar.autoupdatingCurrentCalendar;
-	NSDate *yesterayDate = [NSDate dateWithTimeIntervalSinceNow:-DayInterval];
+	NSDate *yesterdayDate = [NSDate dateWithTimeIntervalSinceNow:-DayInterval];
 	/*
 	NSCalendarUnit parts = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
 	NSDateComponents *yesterdayComponents = [calendar components:parts fromDate:yesterayDate];
 	*/
 	self.yearMonthDayFormatter.timeZone = NSTimeZone.localTimeZone;
-	NSString *dateString = [self.yearMonthDayFormatter stringFromDate:yesterayDate];
+	NSString *dateString = [self.yearMonthDayFormatter stringFromDate:yesterdayDate];
 	int yesterday = [dateString intValue];
 	
-	BOOL (^isYesterdaysCommit)(GTCommit *) = ^(GTCommit *commit){
+	NSComparisonResult (^isYesterdaysCommit)(GTCommit *) = ^(GTCommit *commit){
 		self.yearMonthDayFormatter.timeZone = commit.commitTimeZone;
 		NSString *dateString = [self.yearMonthDayFormatter stringFromDate:commit.commitDate];
 		
 		int day = [dateString intValue];
 		
-		return (BOOL)(day >= yesterday);
+		[Logger info:@"%d - %d = %d", day, yesterday, day - yesterday];
+		
+		return day - yesterday;
 	};
 	
 	__block NSUInteger threshold = 0;
@@ -70,13 +72,16 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 	GTEnumeratorOptions opts = GTEnumeratorOptionsTimeSort;
 	[self.currentRepo enumerateCommitsBeginningAtSha:branch.sha sortOptions:opts error:&err usingBlock:^(GTCommit *commit, BOOL *stop) {
 		
-		BOOL isGoodCommit = isYesterdaysCommit(commit);
-		if (!isGoodCommit) {
+		NSComparisonResult result = isYesterdaysCommit(commit);
+		if (NSOrderedAscending == result) {
 			threshold++;
 			
 			if (threshold >= CommitsExtraCheckingThreshold) {
 				*stop = YES;
 			}
+			return;
+		} else if (NSOrderedSame != result) {
+			// != Yesterday.
 			return;
 		}
 		
@@ -90,7 +95,9 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 		[commitsByAuthor addObject:commit];
 	}];
 	
-	_statsCommitsByBranch[branchName] = commitsByBranch;
+	if (commitsByBranch.count) {
+		_statsCommitsByBranch[branchName] = commitsByBranch;
+	}
 }
 
 #pragma mark Properties
@@ -101,7 +108,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 	dispatch_once(&onceToken, ^{
 		formatter = NSDateFormatter.new;
 		formatter.locale = NSLocale.currentLocale;
-		formatter.dateFormat = @"yyyyMMMMd";
+		formatter.dateFormat = @"yyyyMd";
 	});
 	return formatter;
 }

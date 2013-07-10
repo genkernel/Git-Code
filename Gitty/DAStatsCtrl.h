@@ -9,6 +9,8 @@
 #import "DABaseCtrl.h"
 
 @interface DAStatsCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate>
+- (void)loadCommitsDataSource:(NSDictionary *)commits;
+
 // Header.
 @property (strong, nonatomic) IBOutlet UIView *headerContainer;
 @property (strong, nonatomic) IBOutlet DTAttributedLabel *headlineLabel;

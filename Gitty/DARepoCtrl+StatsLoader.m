@@ -30,7 +30,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[self loadStatsHeadline];
 			
-			[self reloadStatsCommitsWithMode:DACommitsListByBranchMode];
+			[self reloadStatsCommitsWithMode:DACommitsListByAuthorMode];
 			
 			[self setPullingViewVisible:NO animated:YES];
 			[self addForgetButton];

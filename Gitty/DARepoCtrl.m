@@ -136,13 +136,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 }
 
 - (void)addForgetButton {
-	UIButton *forgetButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	[forgetButton setImage:[UIImage imageNamed:@"repo-forget.png"] forState:UIControlStateNormal];
-	[forgetButton sizeToFit];
-	
-	[forgetButton addTarget:self action:@selector(forgetPressed) forControlEvents:UIControlEventTouchUpInside];
-	
-	self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:forgetButton];
+	self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.rightBarView];
 }
 
 - (void)reloadStatsCommitsWithMode:(DACommitsListModes)mode {
@@ -152,6 +146,12 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	
 	[self.statsCtrl loadCommitsDataSource:dataSource];
 	[self.statsCtrl.commitsTable reloadData];
+}
+
+- (void)toggleStatsCommitsMode {
+	DACommitsListModes mode = DACommitsListByAuthorMode == statsListMode ? DACommitsListByBranchMode : DACommitsListByAuthorMode;
+	
+	[self reloadStatsCommitsWithMode:mode];
 }
 
 - (void)reloadFilters {
@@ -367,11 +367,34 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	[self setBranchOverlayVisible:YES animated:YES];
 }
 
-- (void)forgetPressed {
+- (IBAction)forgetPressed:(UIButton *)button {
 	NSString *title = NSLocalizedString(@"Forget repo", nil);
 	NSString *message = NSLocalizedString(@"Forgetting this repo will delete all its fetched data from disk.", nil);
 	
 	forgetActionTag = [self showYesNoMessage:message withTitle:title];
+}
+
+- (IBAction)statsModeChanged:(UISegmentedControl *)sender {
+	[Logger info:@"%s", __PRETTY_FUNCTION__];
+	
+	static NSString *selectedPostfix = @"white";
+	NSArray *images = @[@"authors", @"branches"];
+	
+	assert(images.count == sender.numberOfSegments);
+	
+	for (NSUInteger i = 0; i < sender.numberOfSegments; i++) {
+		NSString *name = nil;
+		
+		if (i == sender.selectedSegmentIndex) {
+			name = [NSString stringWithFormat:@"%@-%@.png", images[i], selectedPostfix];
+		} else {
+			name = [NSString stringWithFormat:@"%@.png", images[i]];
+		}
+		
+		[sender setImage:[UIImage imageNamed:name] forSegmentAtIndex:i];
+	}
+	
+	[self toggleStatsCommitsMode];
 }
 
 - (IBAction)statsDidClick:(UIButton *)sender {

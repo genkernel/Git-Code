@@ -91,10 +91,10 @@
 		CGRect r = CGRectMake(.0, y, self.view.width, self.view.height);
 		self.mainContainer.frame = r;
 	} completion:^(BOOL finished) {
-		NSString *yesterday = NSLocalizedString(@"Yesterday", nil);
-		NSString *branchName = _currentBranch.name.lastPathComponent;
+		self.title = DAStatsFullscreenMode == mode ? NSLocalizedString(@"Yesterday", nil) : _currentBranch.name.lastPathComponent;
 		
-		self.title = DAStatsFullscreenMode == mode ? yesterday : branchName;
+		self.statsModeSelector.hidden = DAStatsFullscreenMode != mode;
+		self.forgetButton.hidden = DAStatsFullscreenMode == mode;
 	}];
 }
 

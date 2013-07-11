@@ -246,6 +246,7 @@
                         <outlet property="commitsTable" destination="a4a-3k-Zyy" id="Iyl-TG-lZQ"/>
                         <outlet property="diffLoadingIndicator" destination="dbq-vd-6p3" id="KWF-wg-1WZ"/>
                         <outlet property="diffLoadingOverlay" destination="sVN-2v-uHm" id="5Yw-in-kCp"/>
+                        <outlet property="forgetButton" destination="wF1-lh-4Te" id="pfZ-y8-eRe"/>
                         <outlet property="grabButton" destination="Fhn-vh-KF9" id="Se9-sA-9eh"/>
                         <outlet property="grayOverlay" destination="syR-gB-lih" id="cXw-EV-MM1"/>
                         <outlet property="headerContainer" destination="JSV-Rf-GSV" id="KXv-8y-FFk"/>
@@ -253,11 +254,47 @@
                         <outlet property="pullingField" destination="nqj-Uv-VZl" id="40X-QR-KzJ"/>
                         <outlet property="pullingIndicator" destination="3Td-bB-6re" id="9fi-6w-Mcv"/>
                         <outlet property="revealBranchOverlayButton" destination="zgp-Ui-0vb" id="u2r-ht-yl0"/>
+                        <outlet property="rightBarView" destination="7KH-zB-8tK" id="gwP-gt-rZ3"/>
                         <outlet property="statsContainer" destination="5al-59-bSE" id="Tgi-tm-bAO"/>
+                        <outlet property="statsModeSelector" destination="yxl-cf-aa2" id="b2D-Fz-vVF"/>
                         <segue destination="HaY-FQ-1Aa" kind="push" identifier="DiffSegue" id="Y9V-9u-clg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1R-XF-xY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="7KH-zB-8tK" userLabel="Custom Right Bar View">
+                    <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="yxl-cf-aa2">
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="" image="authors-white.png"/>
+                                <segment title="" image="branches.png"/>
+                            </segments>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="statsModeChanged:" destination="Vzr-74-RmI" eventType="valueChanged" id="95V-2P-gdw"/>
+                            </connections>
+                        </segmentedControl>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wF1-lh-4Te" userLabel="Forget Button">
+                            <rect key="frame" x="64" y="0.0" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" image="repo-forget.png">
+                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="forgetPressed:" destination="Vzr-74-RmI" eventType="touchUpInside" id="k8q-1v-0sZ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="nQg-SP-kER">
                     <connections>
                         <action selector="statsDidDrag:" destination="Vzr-74-RmI" id="XGe-qG-JSF"/>
@@ -371,8 +408,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="authors-white.png" width="35" height="21"/>
         <image name="branch-selector.png" width="24" height="128"/>
+        <image name="branches.png" width="29" height="7"/>
         <image name="fader-bottom.png" width="2" height="20"/>
+        <image name="repo-forget.png" width="30" height="29"/>
         <image name="stats_footer.png" width="320" height="62"/>
         <image name="stats_header.png" width="320" height="80"/>
     </resources>
@@ -409,6 +449,7 @@
                 <relationship kind="outlet" name="currentBranchButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="diffLoadingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="diffLoadingOverlay" candidateClass="UIView"/>
+                <relationship kind="outlet" name="forgetButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="grabButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="grayOverlay" candidateClass="UIView"/>
                 <relationship kind="outlet" name="headerContainer" candidateClass="UIView"/>
@@ -416,7 +457,9 @@
                 <relationship kind="outlet" name="pullingField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="pullingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="revealBranchOverlayButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rightBarView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="statsContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="statsModeSelector" candidateClass="UISegmentedControl"/>
             </relationships>
         </class>
         <class className="DAStatsCtrl" superclassName="DABaseCtrl">

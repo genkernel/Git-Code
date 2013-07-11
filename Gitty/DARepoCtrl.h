@@ -66,6 +66,10 @@ typedef enum {
 
 @property (strong, nonatomic) IBOutlet UIButton *grabButton;
 
+@property (strong, nonatomic) IBOutlet UIView *rightBarView;
+@property (strong, nonatomic) IBOutlet UIButton *forgetButton;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *statsModeSelector;
+
 // Private. Category-visible methods.
 - (void)reloadFilters;
 - (void)reloadCommits;

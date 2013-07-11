@@ -81,7 +81,6 @@
 	// Elements strict DAStatsContainerModes ordering.
 	CGFloat offsets[] = {
 		_statsCtrl.headlineLabel.height,
-//		self.statsHeadlineLabel.height,
 		.0,
 		self.view.height - (self.grabButton.height - 30./*Out-of-bounds part of image*/)
 	};
@@ -91,6 +90,11 @@
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
 		CGRect r = CGRectMake(.0, y, self.view.width, self.view.height);
 		self.mainContainer.frame = r;
+	} completion:^(BOOL finished) {
+		NSString *yesterday = NSLocalizedString(@"Yesterday", nil);
+		NSString *branchName = _currentBranch.name.lastPathComponent;
+		
+		self.title = DAStatsFullscreenMode == mode ? yesterday : branchName;
 	}];
 }
 

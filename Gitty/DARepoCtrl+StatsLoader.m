@@ -10,7 +10,7 @@
 #import "DARepoCtrl+Private.h"
 #import "DARepoCtrl+Animation.h"
 
-static NSTimeInterval DayInterval = 1 DAYS;
+static NSTimeInterval DayInterval = 17 DAYS;
 static NSUInteger CommitsExtraCheckingThreshold = 5;
 
 @implementation DARepoCtrl (StatsLoader)
@@ -93,6 +93,9 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 			_statsCommitsByAuthor[commit.author.name] = commitsByAuthor;
 		}
 		[commitsByAuthor addObject:commit];
+		
+		_branches[commit.shortSha] = branch;
+		_authors[commit.author.name] = commit.author;
 	}];
 	
 	if (commitsByBranch.count) {

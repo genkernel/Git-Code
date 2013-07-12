@@ -7,13 +7,27 @@
 //
 
 #import "DAStatsCtrl.h"
+#import "DARepoCtrl.h"
+
+#import "DAAuthorHeader.h"
+#import "DABranchHeader.h"
+
 #import "DACommitCell.h"
+#import "DACommitBranchCell.h"
+#import "DACommitMessageCell.h"
 
 @interface DAStatsCtrl ()
 @property (strong, nonatomic, readonly) NSDictionary *dataSource;
+@property (strong, nonatomic, readonly) DARepoCtrl *repoCtrl;
+
+@property (strong, nonatomic, readonly) DACommitBranchCell *reusableBranchCell;
+@property (strong, nonatomic, readonly) DACommitCell *reusableAuthorCell;
 @end
 
-@implementation DAStatsCtrl
+@implementation DAStatsCtrl {
+	CGFloat authorHeaderHeight, branchHeaderHeight;
+}
+@dynamic repoCtrl;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -21,11 +35,42 @@
 	{
 		UINib *nib = [UINib nibWithNibName:DACommitCell.className bundle:nil];
 		[self.commitsTable registerNib:nib forCellReuseIdentifier:DACommitCell.className];
+		
+		_reusableAuthorCell = [self.commitsTable dequeueReusableCellWithIdentifier:DACommitCell.className];
+	}
+	{
+		UINib *nib = [UINib nibWithNibName:DACommitBranchCell.className bundle:nil];
+		[self.commitsTable registerNib:nib forCellReuseIdentifier:DACommitBranchCell.className];
+		
+		_reusableBranchCell = [self.commitsTable dequeueReusableCellWithIdentifier:DACommitBranchCell.className];
+	}
+	
+	{
+		DAAuthorHeader *header = DAAuthorHeader.new;
+		authorHeaderHeight = header.height;
+		[self cacheView:header withIdentifier:DAAuthorHeader.className];
+	}
+	{
+		DABranchHeader *header = DABranchHeader.new;
+		branchHeaderHeight = header.height;
+		[self cacheView:header withIdentifier:DABranchHeader.className];
 	}
 }
 
-- (void)loadCommitsDataSource:(NSDictionary *)commits {
+- (void)loadCommitsDataSource:(NSDictionary *)commits withListMode:(DACommitsListModes)mode {
+	_listMode = mode;
 	_dataSource = commits;
+	
+	[self.commitsTable reloadData];
+}
+
+#pragma mark UITableViewDataSource helpers
+
+- (GTCommit *)commitForIndexPath:(NSIndexPath *)indexPath {
+	NSString *key = self.dataSource.allKeys[indexPath.section];
+	NSArray *commits = self.dataSource[key];
+	
+	return commits[indexPath.row];
 }
 
 #pragma mark UITableViewDataSource, UITableViewDelegate
@@ -34,8 +79,36 @@
 	return self.dataSource.count;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	return self.dataSource.allKeys[section];
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+	BOOL isAuthorMode = DACommitsListByAuthorMode == self.listMode;
+	return isAuthorMode ? authorHeaderHeight : branchHeaderHeight;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+	NSString *title = self.dataSource.allKeys[section];
+	
+	BOOL isAuthorMode = DACommitsListByAuthorMode == self.listMode;
+	Class cls = isAuthorMode ? DAAuthorHeader.class : DABranchHeader.class;
+	
+	NSString *identifier = NSStringFromClass(cls);
+	UIView *view = [self cachedViewWithIdentifier:identifier];
+	if (!view) {
+		view = cls.new;
+	}
+	
+	if (isAuthorMode) {
+		GTSignature *author = self.repoCtrl.authors[title];
+		[((DAAuthorHeader *)view) loadAuthor:author];
+	} else {
+		DABranchHeader *header = (DABranchHeader *)view;
+		header.nameLabel.text = title;
+	}
+	
+	return view;
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section {
+	[self cacheView:view withIdentifier:view.className];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -44,17 +117,40 @@
 	return commits.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSString *key = self.dataSource.allKeys[indexPath.section];
-	NSArray *commits = self.dataSource[key];
-	GTCommit *commit = commits[indexPath.row];
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	GTCommit *commit = [self commitForIndexPath:indexPath];
 	
-	DACommitCell *cell = [tableView dequeueReusableCellWithIdentifier:DACommitCell.className];
+	BOOL isAuthorMode = DACommitsListByAuthorMode == self.listMode;
+	
+	id<DADynamicCommitCell> cell = isAuthorMode ? self.reusableBranchCell : self.reusableAuthorCell;
+	
+	return [cell heightForCommit:commit];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	GTCommit *commit = [self commitForIndexPath:indexPath];
+	
+	BOOL isAuthorMode = DACommitsListByAuthorMode == self.listMode;
+	
+	NSString *identifier = isAuthorMode ? DACommitBranchCell.className : DACommitCell.className;
+	
+	UITableViewCell<DADynamicCommitCell> *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
 	
 	[cell loadCommit:commit];
 	[cell setShowsTopCellSeparator:indexPath.row > 0];
 	
+	if (isAuthorMode) {
+		GTBranch *branch = self.repoCtrl.branches[commit.shortSha];
+		[((DACommitBranchCell *)cell) loadBranch:branch];
+	}
+	
 	return cell;
+}
+
+#pragma mark Properties
+
+- (DARepoCtrl *)repoCtrl {
+	return (DARepoCtrl *)self.parentViewController;
 }
 
 @end

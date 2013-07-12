@@ -29,6 +29,12 @@
 		1804FABC176E87780080AB50 /* NSString+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1804FABB176E87630080AB50 /* NSString+Gitty.m */; };
 		1804FAC0176EAACD0080AB50 /* btn-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 1804FABF176EAACA0080AB50 /* btn-red.png */; };
 		1805AC1F178B322900789D45 /* DAGitServer+Creation.m in Sources */ = {isa = PBXBuildFile; fileRef = 181993D7176D3D1000D4BE1F /* DAGitServer+Creation.m */; };
+		1810993C179074540018AAB4 /* DAAuthorHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810993B179074540018AAB4 /* DAAuthorHeader.m */; };
+		1810993E1790746C0018AAB4 /* DAAuthorHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1810993D1790746C0018AAB4 /* DAAuthorHeader.xib */; };
+		1810994217909BFB0018AAB4 /* DACommitBranchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810994117909BFA0018AAB4 /* DACommitBranchCell.m */; };
+		1810994417909C140018AAB4 /* DACommitBranchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1810994317909C140018AAB4 /* DACommitBranchCell.xib */; };
+		181099491790A6B20018AAB4 /* DABranchHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 181099481790A6B20018AAB4 /* DABranchHeader.m */; };
+		1810994B1790A6CA0018AAB4 /* DABranchHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1810994A1790A6CA0018AAB4 /* DABranchHeader.xib */; };
 		181226661784C3ED00628C2F /* nonewline.png in Resources */ = {isa = PBXBuildFile; fileRef = 181226641784C3ED00628C2F /* nonewline.png */; };
 		181226671784C3ED00628C2F /* nonewline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181226651784C3ED00628C2F /* nonewline@2x.png */; };
 		1812266D1784CE2D00628C2F /* bitbucket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1812266C1784CE2D00628C2F /* bitbucket@2x.png */; };
@@ -87,7 +93,6 @@
 		186A92E31778522C00B2EEF3 /* DAStatusHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186A92E11778522C00B2EEF3 /* DAStatusHeader.xib */; };
 		186A92E61778534F00B2EEF3 /* section_status.png in Resources */ = {isa = PBXBuildFile; fileRef = 186A92E41778534F00B2EEF3 /* section_status.png */; };
 		186A92E71778534F00B2EEF3 /* section_status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 186A92E51778534F00B2EEF3 /* section_status@2x.png */; };
-		186A92EA177864B200B2EEF3 /* DADiffCtrl+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = 186A92E9177864B200B2EEF3 /* DADiffCtrl+UI.m */; };
 		186A92F41778BD4C00B2EEF3 /* UITextField+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 186A92F31778BD4C00B2EEF3 /* UITextField+Gitty.m */; };
 		18706EDB1763B3B40046A2A6 /* DADiffDeltaGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18706EDA1763B3B40046A2A6 /* DADiffDeltaGraphView.m */; };
 		18706EDF1763ECF10046A2A6 /* DADeltaContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18706EDE1763ECF10046A2A6 /* DADeltaContentCell.xib */; };
@@ -305,6 +310,16 @@
 		1804FABD176E8FEA0080AB50 /* NavViewCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavViewCtrl.h; sourceTree = "<group>"; };
 		1804FABE176E8FEA0080AB50 /* NavViewCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavViewCtrl.m; sourceTree = "<group>"; };
 		1804FABF176EAACA0080AB50 /* btn-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-red.png"; sourceTree = "<group>"; };
+		1810993A179074540018AAB4 /* DAAuthorHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAuthorHeader.h; sourceTree = "<group>"; };
+		1810993B179074540018AAB4 /* DAAuthorHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAuthorHeader.m; sourceTree = "<group>"; };
+		1810993D1790746C0018AAB4 /* DAAuthorHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAAuthorHeader.xib; sourceTree = "<group>"; };
+		1810994017909BFA0018AAB4 /* DACommitBranchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACommitBranchCell.h; sourceTree = "<group>"; };
+		1810994117909BFA0018AAB4 /* DACommitBranchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACommitBranchCell.m; sourceTree = "<group>"; };
+		1810994317909C140018AAB4 /* DACommitBranchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DACommitBranchCell.xib; sourceTree = "<group>"; };
+		181099451790A1660018AAB4 /* DADynamicCommitCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DADynamicCommitCell.h; sourceTree = "<group>"; };
+		181099471790A6B20018AAB4 /* DABranchHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABranchHeader.h; sourceTree = "<group>"; };
+		181099481790A6B20018AAB4 /* DABranchHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABranchHeader.m; sourceTree = "<group>"; };
+		1810994A1790A6CA0018AAB4 /* DABranchHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABranchHeader.xib; sourceTree = "<group>"; };
 		181226641784C3ED00628C2F /* nonewline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nonewline.png; sourceTree = "<group>"; };
 		181226651784C3ED00628C2F /* nonewline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nonewline@2x.png"; sourceTree = "<group>"; };
 		1812266C1784CE2D00628C2F /* bitbucket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bitbucket@2x.png"; sourceTree = "<group>"; };
@@ -398,8 +413,6 @@
 		186A92E11778522C00B2EEF3 /* DAStatusHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAStatusHeader.xib; sourceTree = "<group>"; };
 		186A92E41778534F00B2EEF3 /* section_status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = section_status.png; sourceTree = "<group>"; };
 		186A92E51778534F00B2EEF3 /* section_status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "section_status@2x.png"; sourceTree = "<group>"; };
-		186A92E8177864B200B2EEF3 /* DADiffCtrl+UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DADiffCtrl+UI.h"; sourceTree = "<group>"; };
-		186A92E9177864B200B2EEF3 /* DADiffCtrl+UI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DADiffCtrl+UI.m"; sourceTree = "<group>"; };
 		186A92F21778BD4C00B2EEF3 /* UITextField+Gitty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Gitty.h"; sourceTree = "<group>"; };
 		186A92F31778BD4C00B2EEF3 /* UITextField+Gitty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Gitty.m"; sourceTree = "<group>"; };
 		18706ED91763B3B40046A2A6 /* DADiffDeltaGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADiffDeltaGraphView.h; sourceTree = "<group>"; };
@@ -903,6 +916,36 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		1810992E179074290018AAB4 /* AuthorHeader */ = {
+			isa = PBXGroup;
+			children = (
+				1810993A179074540018AAB4 /* DAAuthorHeader.h */,
+				1810993B179074540018AAB4 /* DAAuthorHeader.m */,
+				1810993D1790746C0018AAB4 /* DAAuthorHeader.xib */,
+			);
+			name = AuthorHeader;
+			sourceTree = "<group>";
+		};
+		1810993F17909BC10018AAB4 /* BranchCommitCell */ = {
+			isa = PBXGroup;
+			children = (
+				1810994017909BFA0018AAB4 /* DACommitBranchCell.h */,
+				1810994117909BFA0018AAB4 /* DACommitBranchCell.m */,
+				1810994317909C140018AAB4 /* DACommitBranchCell.xib */,
+			);
+			name = BranchCommitCell;
+			sourceTree = "<group>";
+		};
+		181099461790A6900018AAB4 /* BranchHeader */ = {
+			isa = PBXGroup;
+			children = (
+				181099471790A6B20018AAB4 /* DABranchHeader.h */,
+				181099481790A6B20018AAB4 /* DABranchHeader.m */,
+				1810994A1790A6CA0018AAB4 /* DABranchHeader.xib */,
+			);
+			name = BranchHeader;
+			sourceTree = "<group>";
+		};
 		1812266E1784D0BA00628C2F /* Forget */ = {
 			isa = PBXGroup;
 			children = (
@@ -1012,6 +1055,9 @@
 		183F7E41178C54ED0051D689 /* StatsCtrl */ = {
 			isa = PBXGroup;
 			children = (
+				1810993F17909BC10018AAB4 /* BranchCommitCell */,
+				181099461790A6900018AAB4 /* BranchHeader */,
+				1810992E179074290018AAB4 /* AuthorHeader */,
 				183F7E42178C550B0051D689 /* DAStatsCtrl.h */,
 				183F7E43178C550B0051D689 /* DAStatsCtrl.m */,
 			);
@@ -1171,6 +1217,7 @@
 		188B2D4F175D3E1C00BD1EEB /* CommitCell */ = {
 			isa = PBXGroup;
 			children = (
+				181099451790A1660018AAB4 /* DADynamicCommitCell.h */,
 				188B2D54175D3E4900BD1EEB /* DACommitCell.h */,
 				188B2D55175D3E4900BD1EEB /* DACommitCell.m */,
 				188B2D57175D3E5C00BD1EEB /* DACommitCell.xib */,
@@ -1980,8 +2027,6 @@
 				18F995B8175FAE340033A4A0 /* SectionHeaders */,
 				18F995B5175F6EB70033A4A0 /* DADiffCtrl.h */,
 				18F995B6175F6EB70033A4A0 /* DADiffCtrl.m */,
-				186A92E8177864B200B2EEF3 /* DADiffCtrl+UI.h */,
-				186A92E9177864B200B2EEF3 /* DADiffCtrl+UI.m */,
 			);
 			name = Diff;
 			sourceTree = "<group>";
@@ -2258,6 +2303,9 @@
 				1833605A178EE1B7000C1E52 /* branches-white@2x.png in Resources */,
 				1833605D178EECC7000C1E52 /* authors-white.png in Resources */,
 				1833605E178EECC7000C1E52 /* branches-white.png in Resources */,
+				1810993E1790746C0018AAB4 /* DAAuthorHeader.xib in Resources */,
+				1810994417909C140018AAB4 /* DACommitBranchCell.xib in Resources */,
+				1810994B1790A6CA0018AAB4 /* DABranchHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2344,7 +2392,6 @@
 				18706EE31764075D0046A2A6 /* UIColor+Gitty.m in Sources */,
 				18438B4B1777A35100943F9F /* AFNetworkActivityIndicatorManager.m in Sources */,
 				186A92E21778522C00B2EEF3 /* DAStatusHeader.m in Sources */,
-				186A92EA177864B200B2EEF3 /* DADiffCtrl+UI.m in Sources */,
 				186A92F41778BD4C00B2EEF3 /* UITextField+Gitty.m in Sources */,
 				18A8E20D177B644800DBD973 /* DADiffCtrlDataSource.m in Sources */,
 				18FD1D0C177F4C8900DE4851 /* UIImage+Utils.m in Sources */,
@@ -2359,6 +2406,9 @@
 				181A6F59178B696D002CA3BE /* DASshCredentials.m in Sources */,
 				183F7E44178C550B0051D689 /* DAStatsCtrl.m in Sources */,
 				183F7E47178C554E0051D689 /* DARepoCtrl+StatsLoader.m in Sources */,
+				1810993C179074540018AAB4 /* DAAuthorHeader.m in Sources */,
+				1810994217909BFB0018AAB4 /* DACommitBranchCell.m in Sources */,
+				181099491790A6B20018AAB4 /* DABranchHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

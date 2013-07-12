@@ -12,4 +12,7 @@
 @property (strong, nonatomic, readonly) DAGitManager *git;
 @property (strong, nonatomic, readonly) DAServerManager *servers;
 @property (strong, nonatomic, readonly) UIApplication *app;
+
+- (UIView *)cachedViewWithIdentifier:(NSString *)identifier;
+- (void)cacheView:(UIView *)view withIdentifier:(NSString *)identifier;
 @end

@@ -7,15 +7,11 @@
 //
 
 #import "DADiffCtrl.h"
-#import "DADiffCtrl+UI.h"
 // Section Headers.
 #import "DAModifiedHeader.h"
 #import "DAStatusHeader.h"
 // Cells.
 #import "DADeltaContentCell.h"
-
-// FIXME: design!
-//static const NSUInteger SectionHeaderShadowOverlayHeight = 30.;
 
 @interface DADiffCtrl ()
 @property (strong, nonatomic, readonly) GTCommit *changeCommit;
@@ -27,7 +23,6 @@
 @end
 
 @implementation DADiffCtrl
-@synthesize cachedViews = _cachedViews;
 @dynamic changeCommit, deltas, deltasHeights, deltasLongestLineWidths;
 
 #pragma mark Properties
@@ -57,8 +52,6 @@
 	self.navigationItem.prompt = self.changeCommit.messageSummary;
 	
 	[self loadAuthorAvatarImage];
-	
-	_cachedViews = NSMutableDictionary.new;
 	
 	[self.table registerClass:DADeltaContentCell.class forCellReuseIdentifier:DADeltaContentCell.className];
 }

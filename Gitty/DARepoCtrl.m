@@ -50,6 +50,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	CGFloat statsContainerOffsetBeforeDragging;
 	NSArray *_remoteBranches;
 }
+@synthesize authors = _authors, branches = _branches;
 @synthesize currentBranch = _currentBranch;
 @synthesize commitsOnDateSection = _commitsOnDateSection;
 @synthesize authorsOnDateSection = _authorsOnDateSection;
@@ -87,6 +88,9 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	self.revealBranchOverlayButton.layer.cornerRadius = 7.;
+	self.revealBranchOverlayButton.layer.masksToBounds = YES;
+	
 	{
 		UINib *nib = [UINib nibWithNibName:DACommitCell.className bundle:nil];
 		[self.commitsTable registerNib:nib forCellReuseIdentifier:DACommitCell.className];
@@ -100,8 +104,8 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 		_reuseSimpleCell = [self.commitsTable dequeueReusableCellWithIdentifier:DACommitMessageCell.className];
 	}
 	
-	self.revealBranchOverlayButton.layer.cornerRadius = 7.;
-	self.revealBranchOverlayButton.layer.masksToBounds = YES;
+	_authors = NSMutableDictionary.new;
+	_branches = [NSMutableDictionary dictionaryWithCapacity:4000];
 	
 	[self reloadFilters];
 	[self reloadCommits];
@@ -140,16 +144,13 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 }
 
 - (void)reloadStatsCommitsWithMode:(DACommitsListModes)mode {
-	statsListMode = mode;
-	
 	NSDictionary *dataSource = DACommitsListByAuthorMode == mode ? self.statsCommitsByAuthor : self.statsCommitsByBranch;
 	
-	[self.statsCtrl loadCommitsDataSource:dataSource];
-	[self.statsCtrl.commitsTable reloadData];
+	[self.statsCtrl loadCommitsDataSource:dataSource withListMode:mode];
 }
 
 - (void)toggleStatsCommitsMode {
-	DACommitsListModes mode = DACommitsListByAuthorMode == statsListMode ? DACommitsListByBranchMode : DACommitsListByAuthorMode;
+	DACommitsListModes mode = DACommitsListByAuthorMode == self.statsCtrl.listMode ? DACommitsListByBranchMode : DACommitsListByAuthorMode;
 	
 	[self reloadStatsCommitsWithMode:mode];
 }

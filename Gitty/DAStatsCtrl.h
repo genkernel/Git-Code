@@ -8,8 +8,15 @@
 
 #import "DABaseCtrl.h"
 
+typedef enum {
+	DACommitsListByAuthorMode,
+	DACommitsListByBranchMode
+} DACommitsListModes;
+
 @interface DAStatsCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate>
-- (void)loadCommitsDataSource:(NSDictionary *)commits;
+- (void)loadCommitsDataSource:(NSDictionary *)commits withListMode:(DACommitsListModes)mode;
+
+@property (readonly) DACommitsListModes listMode;
 
 // Header.
 @property (strong, nonatomic) IBOutlet UIView *headerContainer;

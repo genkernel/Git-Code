@@ -29,6 +29,9 @@
 			[sections addObject:title];
 		}
 		
+		_branches[commit.shortSha] = branch;
+		_authors[commit.author.name] = commit.author;
+		
 		NSMutableArray *commits = commitsOnDate[title];
 		if (!commits) {
 			commits = NSMutableArray.new;
@@ -65,7 +68,7 @@
 	};
 	delegate.finishBlock = ^(DAGitAction *pull, NSError *err){
 		if (err) {
-			// Load stats anyway if there is data to show.
+			// Load stats anyway if nothing was updated.
 			[self loadStats];
 			
 			if (GIT_EEXISTS == err.code) {

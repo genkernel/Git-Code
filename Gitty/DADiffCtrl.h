@@ -9,9 +9,7 @@
 #import "DABaseCtrl.h"
 #import "DADiffCtrlDataSource.h"
 
-@interface DADiffCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate> {
-	NSMutableDictionary *_cachedViews;
-}
+@interface DADiffCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) DADiffCtrlDataSource *diff;
 
 @property (strong, nonatomic) IBOutlet UITableView *table;

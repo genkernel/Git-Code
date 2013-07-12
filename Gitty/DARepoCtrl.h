@@ -11,11 +11,6 @@
 #import "DAStatsCtrl.h"
 
 typedef enum {
-	DACommitsListByAuthorMode,
-	DACommitsListByBranchMode
-} DACommitsListModes;
-
-typedef enum {
 	DAStatsHeadlineMode,
 	DAStatsHiddenMode,
 	DAStatsFullscreenMode
@@ -23,7 +18,6 @@ typedef enum {
 
 @interface DARepoCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate> {
 	BOOL isBranchOverlayVisible;
-//	BOOL isStatsHeadlineVisible, isStatsContainerVisible;
 	DAStatsContainerModes statsContainerMode;
 	
 	NSDictionary *_commitsOnDateSection;
@@ -34,14 +28,16 @@ typedef enum {
 	NSMutableDictionary *_statsCommitsByBranch;
 	
 	GTBranch *_currentBranch;
+	NSMutableDictionary *_authors, *_branches;
 	
 	DAStatsCtrl *_statsCtrl;
-	DACommitsListModes statsListMode;
 }
 @property (strong, nonatomic) GTRepository *currentRepo;
 @property (nonatomic) BOOL shouldPull;
 
 @property (strong, nonatomic) DAGitServer *repoServer;
+
+@property (strong, nonatomic, readonly) NSMutableDictionary *authors, *branches;
 
 @property (strong, nonatomic, readonly) NSDateFormatter *dateSectionTitleFormatter;
 

@@ -8,11 +8,46 @@
 
 #import "DABaseCtrl.h"
 
+@interface DABaseCtrl ()
+@property (strong, nonatomic, readonly) NSMutableDictionary *cachedViews;
+@end
+
 @implementation DABaseCtrl
 @dynamic git, servers, app;
 
 - (NSUInteger)supportedInterfaceOrientations {
 	return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+}
+
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	
+	_cachedViews = NSMutableDictionary.new;
+}
+
+#pragma mark Public
+
+- (void)cacheView:(UIView *)view withIdentifier:(NSString *)identifier {
+	NSMutableSet *views = _cachedViews[identifier];
+	if (!views) {
+		views = NSMutableSet.new;
+		_cachedViews[identifier] = views;
+	}
+	
+	[views addObject:view];
+}
+
+- (UIView *)cachedViewWithIdentifier:(NSString *)identifier {
+	NSMutableSet *views = _cachedViews[identifier];
+	if (!views) {
+		return nil;
+	}
+	
+	UIView *v = views.anyObject;
+	if (v) {
+		[views removeObject:v];
+	}
+	return v;
 }
 
 #pragma mark Properties

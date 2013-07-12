@@ -1,18 +1,21 @@
 //
-//  DACommitMessageCell.h
+//  DACommitBranchCell.h
 //  Gitty
 //
-//  Created by kernel on 5/07/13.
+//  Created by kernel on 12/07/13.
 //  Copyright (c) 2013 kernel@realm. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "DADynamicCommitCell.h"
 
-@interface DACommitMessageCell : UITableViewCell <DADynamicCommitCell>
+@interface DACommitBranchCell : UITableViewCell <DADynamicCommitCell>
+- (void)loadBranch:(GTBranch *)branch;
+
 @property (strong, nonatomic) IBOutlet UIView *separatorLine;
 
 @property (strong, nonatomic) IBOutlet UILabel *shortShaLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *branchLabel;
 @property (strong, nonatomic) IBOutlet UILabel *commitLabel;
 @end

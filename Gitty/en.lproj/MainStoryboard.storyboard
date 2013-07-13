@@ -257,10 +257,34 @@
                         <outlet property="rightBarView" destination="7KH-zB-8tK" id="gwP-gt-rZ3"/>
                         <outlet property="statsContainer" destination="5al-59-bSE" id="Tgi-tm-bAO"/>
                         <outlet property="statsModeSelector" destination="yxl-cf-aa2" id="b2D-Fz-vVF"/>
+                        <outlet property="statsTitleWeekdayLabel" destination="rIb-gL-nZp" id="0WK-ax-9Rb"/>
+                        <outlet property="statsTitleWeekendHintLabel" destination="J2U-1b-5s0" id="5pp-aK-qBR"/>
+                        <outlet property="weekendTitleView" destination="x4T-hp-lDC" id="VZx-G8-tAi"/>
                         <segue destination="HaY-FQ-1Aa" kind="push" identifier="DiffSegue" id="Y9V-9u-clg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1R-XF-xY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="x4T-hp-lDC" userLabel="Weekend Custom Title View">
+                    <rect key="frame" x="0.0" y="0.0" width="110" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Saturday" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rIb-gL-nZp">
+                            <rect key="frame" x="0.0" y="0.0" width="110" height="26"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="+ weekend" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="J2U-1b-5s0">
+                            <rect key="frame" x="0.0" y="26" width="110" height="18"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="16"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" id="7KH-zB-8tK" userLabel="Custom Right Bar View">
                     <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -460,6 +484,9 @@
                 <relationship kind="outlet" name="rightBarView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="statsContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="statsModeSelector" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="statsTitleWeekdayLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="statsTitleWeekendHintLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="weekendTitleView" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="DAStatsCtrl" superclassName="DABaseCtrl">

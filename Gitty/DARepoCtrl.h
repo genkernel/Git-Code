@@ -63,6 +63,10 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UIButton *grabButton;
 
 @property (strong, nonatomic) IBOutlet UIView *rightBarView;
+@property (strong, nonatomic) IBOutlet UIView *weekendTitleView;
+@property (strong, nonatomic) IBOutlet UILabel *statsTitleWeekdayLabel;
+@property (strong, nonatomic) IBOutlet UILabel *statsTitleWeekendHintLabel;
+
 @property (strong, nonatomic) IBOutlet UIButton *forgetButton;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *statsModeSelector;
 

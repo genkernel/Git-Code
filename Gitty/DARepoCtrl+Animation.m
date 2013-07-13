@@ -95,8 +95,9 @@
 		
 		self.title = isStatsShown ? NSLocalizedString(@"Yesterday", nil) : _currentBranch.name.lastPathComponent;
 		
-		self.statsModeSelector.hidden = DAStatsFullscreenMode != mode;
-		self.forgetButton.hidden = DAStatsFullscreenMode == mode;
+		self.statsModeSelector.hidden = !isStatsShown;
+		self.forgetButton.hidden = isStatsShown;
+		self.navigationItem.titleView = isStatsShown ? self.weekendTitleView : nil;
 		
 		self.commitsTable.scrollsToTop = !isStatsShown;
 		_statsCtrl.commitsTable.scrollsToTop = isStatsShown;

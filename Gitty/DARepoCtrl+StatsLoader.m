@@ -10,11 +10,11 @@
 #import "DARepoCtrl+Private.h"
 #import "DARepoCtrl+Animation.h"
 
-static NSTimeInterval DayInterval = 17 DAYS;
+static NSTimeInterval DayInterval = 5 DAYS;
 static NSUInteger CommitsExtraCheckingThreshold = 5;
 
 @implementation DARepoCtrl (StatsLoader)
-@dynamic yearMonthDayFormatter;
+@dynamic yearMonthDayFormatter, dayOfWeekFormatter;
 
 - (void)loadStats {
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
@@ -112,6 +112,17 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 		formatter = NSDateFormatter.new;
 		formatter.locale = NSLocale.currentLocale;
 		formatter.dateFormat = @"yyyyMd";
+	});
+	return formatter;
+}
+
+- (NSDateFormatter *)dayOfWeekFormatter {
+	static NSDateFormatter *formatter = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		formatter = NSDateFormatter.new;
+		formatter.locale = NSLocale.currentLocale;
+		formatter.dateFormat = @"e";
 	});
 	return formatter;
 }

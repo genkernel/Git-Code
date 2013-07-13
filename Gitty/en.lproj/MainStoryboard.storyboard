@@ -467,6 +467,7 @@
             <relationships>
                 <relationship kind="outlet" name="commitsTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="headerContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="headlineLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="NavViewCtrl" superclassName="UINavigationController">

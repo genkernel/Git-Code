@@ -91,10 +91,15 @@
 		CGRect r = CGRectMake(.0, y, self.view.width, self.view.height);
 		self.mainContainer.frame = r;
 	} completion:^(BOOL finished) {
-		self.title = DAStatsFullscreenMode == mode ? NSLocalizedString(@"Yesterday", nil) : _currentBranch.name.lastPathComponent;
+		BOOL isStatsShown = DAStatsFullscreenMode == mode;
+		
+		self.title = isStatsShown ? NSLocalizedString(@"Yesterday", nil) : _currentBranch.name.lastPathComponent;
 		
 		self.statsModeSelector.hidden = DAStatsFullscreenMode != mode;
 		self.forgetButton.hidden = DAStatsFullscreenMode == mode;
+		
+		self.commitsTable.scrollsToTop = !isStatsShown;
+		_statsCtrl.commitsTable.scrollsToTop = isStatsShown;
 	}];
 }
 

@@ -35,6 +35,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	self.commitsTable.scrollsToTop = NO;
+	
 	{
 		UINib *nib = [UINib nibWithNibName:DACommitCell.className bundle:nil];
 		[self.commitsTable registerNib:nib forCellReuseIdentifier:DACommitCell.className];
@@ -195,8 +197,6 @@
 	if (isAuthorMode) {
 		GTBranch *branch = self.repoCtrl.branches[commit.shortSha];
 		[((DACommitBranchCell *)cell) loadBranch:branch];
-	} else {
-		
 	}
 	
 	return cell;

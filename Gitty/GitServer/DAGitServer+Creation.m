@@ -15,6 +15,7 @@ NSString *LogoIcon = @"LogoIcon";
 NSString *TransferProtocol = @"TransferProtocol";
 NSString *SupportedProtocols = @"SupportedProtocols";
 NSString *RecentRepoPath = @"RecentRepoPath";
+NSString *RecentBranchName = @"RecentBranchName";
 
 @implementation DAGitServer (Creation)
 @end

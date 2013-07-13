@@ -28,6 +28,7 @@ NSString *SshTransferProtocol = @"ssh://";
 		_transferProtocol = dict[TransferProtocol];
 		_supportedProtocols = dict[SupportedProtocols];
 		_recentRepoPath = dict[RecentRepoPath];
+		_recentBranchName = dict[RecentBranchName];
 	}
 	return self;
 }
@@ -43,7 +44,8 @@ NSString *SshTransferProtocol = @"ssh://";
 		  LogoIcon: self.logoIconName,
 		  TransferProtocol: self.transferProtocol,
 		  SupportedProtocols: self.supportedProtocols,
-		  RecentRepoPath: self.recentRepoPath};
+		  RecentRepoPath: self.recentRepoPath,
+		  RecentBranchName: self.recentBranchName};
 }
 
 @end

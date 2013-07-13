@@ -74,7 +74,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 	
 	__block NSUInteger threshold = 0;
 	
-	NSString *branchName = branch.name.lastPathComponent;
+	NSString *branchName = branch.shortName;
 	NSMutableArray *commitsByBranch = [NSMutableArray arrayWithCapacity:30];
 	NSMutableDictionary *commitsByAuthor = NSMutableDictionary.new;
 	

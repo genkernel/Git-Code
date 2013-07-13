@@ -181,19 +181,23 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	[Logger info:@"Branches: %d. Counted in %.2f", /*self.localBranches.count, */self.remoteBranches.count, period];
 	
 	GTBranch *defaultBranch = nil;
+	NSString *recentBranchName = self.repoServer.recentBranchName;
 	
 	NSMutableDictionary *branches = [NSMutableDictionary dictionaryWithCapacity:self.remoteBranches.count];
 	for (GTBranch *branch in self.remoteBranches) {
-		NSString *name = branch.name.lastPathComponent;
+		NSString *name = branch.shortName;
 		branches[name] = branch;
 		
-		if ([name isEqualToString:MasterBranchName]) {
+		if ([name isEqualToString:recentBranchName]) {
 			defaultBranch = branch;
 		}
 	}
 	
 	if (!defaultBranch) {
-		defaultBranch = self.remoteBranches.anyObject;
+		defaultBranch = branches[MasterBranchName];
+		if (!defaultBranch) {
+			defaultBranch = self.remoteBranches.anyObject;
+		}
 	}
 	[self selectBranch:defaultBranch];
 }
@@ -219,10 +223,10 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 		return YES;
 	}
 	
-	NSString *branchName = branch.name.lastPathComponent;
+	NSString *branchName = branch.shortName;
 	
 	for (GTBranch *localBranch in self.localBranches) {
-		NSString *name = localBranch.name.lastPathComponent;
+		NSString *name = localBranch.shortName;
 		if ([name isEqualToString:branchName]) {
 			return YES;
 		}
@@ -237,8 +241,11 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	
 	_currentBranch = branch;
 	
+	self.repoServer.recentBranchName = branch.shortName;
+	[self.servers save];
+	
 	self.title = branch.shortName;
-	[self.currentBranchButton setTitle:self.currentBranch.name.lastPathComponent forState:UIControlStateNormal];
+	[self.currentBranchButton setTitle:self.currentBranch.shortName forState:UIControlStateNormal];
 	
 	return YES;
 }

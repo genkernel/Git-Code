@@ -15,6 +15,7 @@ extern NSString *LogoIcon;
 extern NSString *TransferProtocol;
 extern NSString *SupportedProtocols;
 extern NSString *RecentRepoPath;
+extern NSString *RecentBranchName;
 
 @interface DAGitServer (Creation)
 @end

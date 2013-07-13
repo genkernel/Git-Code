@@ -52,7 +52,7 @@ static CGFloat CommitMessageMaxHeight = 120.;
 }
 
 - (void)loadBranch:(GTBranch *)branch {
-	self.branchLabel.text = branch.name.lastPathComponent;
+	self.branchLabel.text = branch.shortName;
 }
 
 - (void)setShowsTopCellSeparator:(BOOL)shows {

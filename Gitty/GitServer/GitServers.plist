@@ -11,6 +11,8 @@
 		<string>Github</string>
 		<key>RecentRepoPath</key>
 		<string>github/developer.github.com</string>
+		<key>RecentBranchName</key>
+		<string>master</string>
 		<key>SaveDirectoryName</key>
 		<string>git@github.com</string>
 		<key>SupportedProtocols</key>
@@ -32,6 +34,8 @@
 		<string>BitBucket</string>
 		<key>RecentRepoPath</key>
 		<string>LaNMaSteR53/recon-ng.git</string>
+		<key>RecentBranchName</key>
+		<string>master</string>
 		<key>SaveDirectoryName</key>
 		<string>bitbucket.org</string>
 		<key>SupportedProtocols</key>
@@ -51,6 +55,8 @@
 		<string>mikie@realm</string>
 		<key>RecentRepoPath</key>
 		<string>Users/mikie/Repos/GitUp.git</string>
+		<key>RecentBranchName</key>
+		<string>master</string>
 		<key>SaveDirectoryName</key>
 		<string>mikie@realm</string>
 		<key>SupportedProtocols</key>
@@ -72,6 +78,8 @@
 		<string>livetell-ssh</string>
 		<key>RecentRepoPath</key>
 		<string>livetell/aeva_ios.git</string>
+		<key>RecentBranchName</key>
+		<string>develop</string>
 		<key>SaveDirectoryName</key>
 		<string>livetell</string>
 		<key>SupportedProtocols</key>

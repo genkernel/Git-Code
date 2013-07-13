@@ -22,7 +22,7 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
 	GTBranch *branch = self.branches[row];
-	return branch.name.lastPathComponent;
+	return branch.shortName;
 }
 
 #pragma mark Actions

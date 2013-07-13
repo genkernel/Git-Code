@@ -16,7 +16,7 @@ extern NSString *SshTransferProtocol;
 @property (strong, nonatomic, readonly) NSDictionary *saveDict;
 
 @property (strong, nonatomic, readonly) NSString *gitBaseUrl;
-@property (strong, nonatomic) NSString *recentRepoPath;
+@property (strong, nonatomic) NSString *recentRepoPath, *recentBranchName;
 
 @property (strong, nonatomic) NSString *transferProtocol;
 @property (strong, nonatomic, readonly) NSArray *supportedProtocols;

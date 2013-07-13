@@ -93,7 +93,7 @@
 	} completion:^(BOOL finished) {
 		BOOL isStatsShown = DAStatsFullscreenMode == mode;
 		
-		self.title = isStatsShown ? NSLocalizedString(@"Yesterday", nil) : _currentBranch.name.lastPathComponent;
+		self.title = isStatsShown ? NSLocalizedString(@"Yesterday", nil) : _currentBranch.shortName;
 		
 		self.statsModeSelector.hidden = !isStatsShown;
 		self.forgetButton.hidden = isStatsShown;

@@ -10,11 +10,12 @@
 #import "DARepoCtrl+Private.h"
 #import "DARepoCtrl+Animation.h"
 
-static NSTimeInterval DayInterval = 5 DAYS;
+static NSTimeInterval OneDayInterval = 1 DAYS;
 static NSUInteger CommitsExtraCheckingThreshold = 5;
 
 @implementation DARepoCtrl (StatsLoader)
 @dynamic yearMonthDayFormatter, dayOfWeekFormatter;
+@dynamic dayOfWeekTitleFormatter, dayOfMonthTitleFormatter;
 
 - (void)loadStats {
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
@@ -39,20 +40,33 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 }
 
 - (void)loadStatsForBranch:(GTBranch *)branch {
-	NSError *err = nil;
+	NSDate *todayDate = NSDate.date;
 	
-//	NSDate *yesteray = [NSDate dateWithTimeIntervalSinceNow:DayInterval];
+	NSString *dateString = [self.dayOfWeekFormatter stringFromDate:todayDate];
+	int today = dateString.intValue;
+	[Logger info:@"Today.dayOfWeek: %d", today];
 	
-//	NSCalendar *calendar = NSCalendar.autoupdatingCurrentCalendar;
-	NSDate *yesterdayDate = [NSDate dateWithTimeIntervalSinceNow:-DayInterval];
+	BOOL isFirstDayOfWeek = 2 == today;
+	NSTimeInterval interval = isFirstDayOfWeek ? -2 * OneDayInterval : -OneDayInterval;
+	
+	NSDate *yesterdayDate = [NSDate dateWithTimeIntervalSinceNow:interval];
 	/*
 	NSCalendarUnit parts = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
 	NSDateComponents *yesterdayComponents = [calendar components:parts fromDate:yesterayDate];
 	*/
 	self.yearMonthDayFormatter.timeZone = NSTimeZone.localTimeZone;
-	NSString *dateString = [self.yearMonthDayFormatter stringFromDate:yesterdayDate];
+	dateString = [self.yearMonthDayFormatter stringFromDate:yesterdayDate];
 	int yesterday = [dateString intValue];
 	
+	if (isFirstDayOfWeek) {
+		_statsCustomTitle = [self.dayOfWeekTitleFormatter stringFromDate:yesterdayDate];
+		_statsCustomHint = NSLocalizedString(@"+ weekend", nil);
+	} else {
+		_statsCustomTitle = NSLocalizedString(@"Yesterday", nil);
+		_statsCustomHint = [self.dayOfMonthTitleFormatter stringFromDate:yesterdayDate];
+	}
+	
+	NSError *err = nil;
 	NSComparisonResult (^isYesterdaysCommit)(GTCommit *) = ^(GTCommit *commit){
 		self.yearMonthDayFormatter.timeZone = commit.commitTimeZone;
 		NSString *dateString = [self.yearMonthDayFormatter stringFromDate:commit.commitDate];
@@ -121,8 +135,33 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		formatter = NSDateFormatter.new;
-		formatter.locale = NSLocale.currentLocale;
+		formatter.locale = NSLocale.systemLocale;
+		formatter.timeZone = NSTimeZone.localTimeZone;
 		formatter.dateFormat = @"e";
+	});
+	return formatter;
+}
+
+- (NSDateFormatter *)dayOfWeekTitleFormatter {
+	static NSDateFormatter *formatter = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		formatter = NSDateFormatter.new;
+		formatter.locale = NSLocale.systemLocale;
+		formatter.timeZone = NSTimeZone.localTimeZone;
+		formatter.dateFormat = @"EEEE";
+	});
+	return formatter;
+}
+
+- (NSDateFormatter *)dayOfMonthTitleFormatter {
+	static NSDateFormatter *formatter = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		formatter = NSDateFormatter.new;
+		formatter.locale = NSLocale.systemLocale;
+		formatter.timeZone = NSTimeZone.localTimeZone;
+		formatter.dateFormat = @"d MMM yy";
 	});
 	return formatter;
 }

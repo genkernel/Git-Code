@@ -97,7 +97,12 @@
 		
 		self.statsModeSelector.hidden = !isStatsShown;
 		self.forgetButton.hidden = isStatsShown;
-		self.navigationItem.titleView = isStatsShown ? self.weekendTitleView : nil;
+		
+		{
+			self.statsTitleWeekdayLabel.text = _statsCustomTitle;
+			self.statsTitleWeekendHintLabel.text = _statsCustomHint;
+			self.navigationItem.titleView = isStatsShown ? self.weekendTitleView : nil;
+		}
 		
 		self.commitsTable.scrollsToTop = !isStatsShown;
 		_statsCtrl.commitsTable.scrollsToTop = isStatsShown;

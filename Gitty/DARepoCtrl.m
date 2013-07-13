@@ -477,7 +477,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	dispatch_once(&onceToken, ^{
 		formatter = NSDateFormatter.new;
 		formatter.locale = NSLocale.currentLocale;
-		formatter.dateFormat = @"EEEE, MMM d, yyyy";
+		formatter.dateFormat = @"EEEE, d MMM, yyyy";
 	});
 	return formatter;
 }

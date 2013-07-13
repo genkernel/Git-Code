@@ -30,6 +30,8 @@ typedef enum {
 	GTBranch *_currentBranch;
 	NSMutableDictionary *_authors, *_branches;
 	
+	NSString *_statsCustomTitle, *_statsCustomHint;
+	
 	DAStatsCtrl *_statsCtrl;
 }
 @property (strong, nonatomic) GTRepository *currentRepo;

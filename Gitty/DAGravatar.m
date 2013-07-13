@@ -8,7 +8,7 @@
 
 #import "DAGravatar.h"
 
-static NSString *baseUrl = @"https://secure.gravatar.com/avatar/";
+static NSString *baseUrl = @"http://secure.gravatar.com/avatar/";
 
 @implementation DAGravatar
 
@@ -23,7 +23,10 @@ static NSString *baseUrl = @"https://secure.gravatar.com/avatar/";
 
 - (NSURL *)getUrlForEmail:(NSString *)email {
 	NSString *hash = [Cryptor md5ForString:email];
+	
 	NSString *str = [baseUrl stringByAppendingString:hash];
+	str = [str stringByAppendingString:@"?d=404"];
+	
 	return [NSURL URLWithString:str];
 }
 

@@ -71,4 +71,6 @@ typedef enum {
 - (void)reloadCommits;
 - (void)addForgetButton;
 - (void)reloadStatsCommitsWithMode:(DACommitsListModes)mode;
+
+- (void)presentDiffCtrlForCommit:(GTCommit *)commit;
 @end

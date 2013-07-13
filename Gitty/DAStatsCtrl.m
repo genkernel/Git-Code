@@ -23,6 +23,8 @@
 @property (strong, nonatomic, readonly) DACommitCell *reusableAuthorCell;
 @property (strong, nonatomic, readonly) DACommitBranchCell *reusableBranchCell;
 @property (strong, nonatomic, readonly) DACommitMessageCell *reusableMessageCell;
+
+@property (strong, nonatomic, readonly) NSIndexPath *selectedCommitIndexPath;
 @end
 
 @implementation DAStatsCtrl {
@@ -61,6 +63,16 @@
 		DATitleHeader *header = DATitleHeader.new;
 		branchHeaderHeight = header.height;
 		[self cacheView:header withIdentifier:DATitleHeader.className];
+	}
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	
+	if (self.selectedCommitIndexPath) {
+		[self.commitsTable deselectRowAtIndexPath:self.selectedCommitIndexPath animated:animated];
+		
+		_selectedCommitIndexPath = nil;
 	}
 }
 
@@ -188,6 +200,13 @@
 	}
 	
 	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	_selectedCommitIndexPath = indexPath;
+	
+	GTCommit *commit = [self commitForIndexPath:indexPath];
+	[self.repoCtrl presentDiffCtrlForCommit:commit];
 }
 
 #pragma mark Properties

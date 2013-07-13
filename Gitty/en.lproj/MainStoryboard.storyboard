@@ -409,6 +409,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No commits recently" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YD7-4m-HGD" userLabel="No Commits Label">
+                                <rect key="frame" x="10" y="200" width="300" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <fontDescription key="fontDescription" name="Cochin-Bold" family="Cochin" pointSize="24"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gnU-QP-WVX">
                                 <rect key="frame" x="0.0" y="50" width="320" height="424"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -424,6 +431,7 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="commitsTable" destination="gnU-QP-WVX" id="xbd-YN-EnT"/>
+                        <outlet property="noCommitsLabel" destination="YD7-4m-HGD" id="6pi-CE-L4I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSF-xZ-zWT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -495,6 +503,7 @@
                 <relationship kind="outlet" name="commitsTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="headerContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="headlineLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="noCommitsLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="NavViewCtrl" superclassName="UINavigationController">

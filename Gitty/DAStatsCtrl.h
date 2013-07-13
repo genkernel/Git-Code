@@ -22,5 +22,6 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UIView *headerContainer;
 @property (strong, nonatomic) IBOutlet UILabel *headlineLabel;
 @property (strong, nonatomic) IBOutlet UITableView *commitsTable;
+@property (strong, nonatomic) IBOutlet UILabel *noCommitsLabel;
 
 @end

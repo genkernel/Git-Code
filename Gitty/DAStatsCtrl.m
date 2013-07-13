@@ -83,6 +83,10 @@
 	_dataSource = commits;
 	
 	[self.commitsTable reloadData];
+	
+	BOOL hasNoCommitsToShow = 0 == commits.count;
+	self.commitsTable.hidden = hasNoCommitsToShow;
+	self.noCommitsLabel.hidden = !hasNoCommitsToShow;
 }
 
 #pragma mark UITableViewDataSource helpers

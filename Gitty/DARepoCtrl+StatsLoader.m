@@ -10,7 +10,7 @@
 #import "DARepoCtrl+Private.h"
 #import "DARepoCtrl+Animation.h"
 
-static NSTimeInterval OneDayInterval = 1 DAYS;
+static NSTimeInterval OneDayInterval = 25 DAYS;
 static NSUInteger CommitsExtraCheckingThreshold = 5;
 
 @implementation DARepoCtrl (StatsLoader)
@@ -50,10 +50,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 	NSTimeInterval interval = isFirstDayOfWeek ? -2 * OneDayInterval : -OneDayInterval;
 	
 	NSDate *yesterdayDate = [NSDate dateWithTimeIntervalSinceNow:interval];
-	/*
-	NSCalendarUnit parts = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
-	NSDateComponents *yesterdayComponents = [calendar components:parts fromDate:yesterayDate];
-	*/
+	
 	self.yearMonthDayFormatter.timeZone = NSTimeZone.localTimeZone;
 	dateString = [self.yearMonthDayFormatter stringFromDate:yesterdayDate];
 	int yesterday = [dateString intValue];
@@ -72,9 +69,6 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 		NSString *dateString = [self.yearMonthDayFormatter stringFromDate:commit.commitDate];
 		
 		int day = [dateString intValue];
-		
-		[Logger info:@"%d - %d = %d", day, yesterday, day - yesterday];
-		
 		return day - yesterday;
 	};
 	
@@ -82,6 +76,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 	
 	NSString *branchName = branch.name.lastPathComponent;
 	NSMutableArray *commitsByBranch = [NSMutableArray arrayWithCapacity:30];
+	NSMutableDictionary *commitsByAuthor = NSMutableDictionary.new;
 	
 	GTEnumeratorOptions opts = GTEnumeratorOptionsTimeSort;
 	[self.currentRepo enumerateCommitsBeginningAtSha:branch.sha sortOptions:opts error:&err usingBlock:^(GTCommit *commit, BOOL *stop) {
@@ -101,12 +96,12 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 		
 		[commitsByBranch addObject:commit];
 		
-		NSMutableArray *commitsByAuthor = _statsCommitsByAuthor[commit.author.name];
-		if (!commitsByAuthor) {
-			commitsByAuthor = [NSMutableArray arrayWithCapacity:30];
-			_statsCommitsByAuthor[commit.author.name] = commitsByAuthor;
+		NSMutableArray *commits = commitsByAuthor[commit.author.name];
+		if (!commits) {
+			commits = [NSMutableArray arrayWithCapacity:30];
+			commitsByAuthor[commit.author.name] = commits;
 		}
-		[commitsByAuthor addObject:commit];
+		[commits addObject:commit];
 		
 		_branches[commit.shortSha] = branch;
 		_authors[commit.author.name] = commit.author;
@@ -114,6 +109,46 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 	
 	if (commitsByBranch.count) {
 		_statsCommitsByBranch[branchName] = commitsByBranch;
+	}
+	
+	for (NSString *author in commitsByAuthor.allKeys) {
+		NSMutableArray *localCommits = commitsByAuthor[author];
+		
+		NSMutableArray *allCommits = _statsCommitsByAuthor[author];
+		if (allCommits) {
+			[self mergeNewBranchCommits:localCommits intoArray:allCommits];
+		} else {
+			_statsCommitsByAuthor[author] = localCommits;
+		}
+	}
+}
+
+- (void)mergeNewBranchCommits:(NSArray *)commits intoArray:(NSMutableArray *)branch {
+	if (branch.count == 0) {
+		[branch addObjectsFromArray:commits];
+		return;
+	}
+	
+	NSUInteger headIdx = 0, insertIdx = 0;
+	NSArray *sourceBranch = [NSArray arrayWithArray:branch];
+	
+	for (GTCommit *commit in commits) {
+		if (headIdx == sourceBranch.count) {
+			[branch addObject:commit];
+			continue;
+		}
+		
+		GTCommit *head = sourceBranch[headIdx];
+		
+		NSComparisonResult result = [commit.commitDate compare:head.commitDate];
+		if (NSOrderedAscending == result) {
+			[Logger info:@"%@ < %@", commit.shortSha, head.shortSha];
+			headIdx++;
+		} else {
+			[Logger info:@"%@ >= %@", commit.shortSha, head.shortSha];
+			[branch insertObject:commit atIndex:insertIdx];
+			insertIdx++;
+		}
 	}
 }
 

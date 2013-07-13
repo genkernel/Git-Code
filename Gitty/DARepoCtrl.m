@@ -17,6 +17,9 @@
 #import "DACommitCell.h"
 #import "DACommitMessageCell.h"
 
+#import "DATitleHeader.h"
+
+
 static NSString *MasterBranchName = @"master";
 
 static NSString *DiffSegue = @"DiffSegue";
@@ -49,6 +52,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	NSUInteger forgetActionTag;
 	CGFloat statsContainerOffsetBeforeDragging;
 	NSArray *_remoteBranches;
+	CGFloat headerHeight;
 }
 @synthesize authors = _authors, branches = _branches;
 @synthesize currentBranch = _currentBranch;
@@ -104,8 +108,14 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 		_reuseSimpleCell = [self.commitsTable dequeueReusableCellWithIdentifier:DACommitMessageCell.className];
 	}
 	
+	{
+		DATitleHeader *header = DATitleHeader.new;
+		headerHeight = header.height;
+		[self cacheView:header withIdentifier:DATitleHeader.className];
+	}
+	
 	_authors = NSMutableDictionary.new;
-	_branches = [NSMutableDictionary dictionaryWithCapacity:4000];
+	_branches = NSMutableDictionary.new;
 	
 	[self reloadFilters];
 	[self reloadCommits];
@@ -274,8 +284,24 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	return self.dateSections.count;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	return self.dateSections[section];
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+	return headerHeight;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+	DATitleHeader *header = (DATitleHeader *)[self cachedViewWithIdentifier:DATitleHeader.className];
+	if (!header) {
+		header = DATitleHeader.new;
+		header.nameLabel.textColor = UIColor.acceptingGreenColor;
+	}
+	
+	header.nameLabel.text = self.dateSections[section];
+	
+	return header;
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section {
+	[self cacheView:view withIdentifier:view.className];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -451,7 +477,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	dispatch_once(&onceToken, ^{
 		formatter = NSDateFormatter.new;
 		formatter.locale = NSLocale.currentLocale;
-		formatter.dateFormat = @"EEEE, MMMM d, yyyy";
+		formatter.dateFormat = @"EEEE, MMM d, yyyy";
 	});
 	return formatter;
 }

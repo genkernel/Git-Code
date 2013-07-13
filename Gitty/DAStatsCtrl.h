@@ -20,7 +20,7 @@ typedef enum {
 
 // Header.
 @property (strong, nonatomic) IBOutlet UIView *headerContainer;
-@property (strong, nonatomic) IBOutlet DTAttributedLabel *headlineLabel;
+@property (strong, nonatomic) IBOutlet UILabel *headlineLabel;
 @property (strong, nonatomic) IBOutlet UITableView *commitsTable;
 
 @end

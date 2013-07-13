@@ -46,8 +46,7 @@ static CGFloat CommitMessageMaxHeight = 120.;
 	self.shortShaLabel.text = [NSString stringWithFormat:@"#%@", commit.shortSha];
 	
 	self.dateFormatter.timeZone = commit.commitTimeZone;
-	NSString *date = [self.dateFormatter stringFromDate:commit.commitDate];
-	self.dateLabel.text = [NSString stringWithFormat:@"on %@", date];
+	self.dateLabel.text = [self.dateFormatter stringFromDate:commit.commitDate];
 	
 	self.commitLabel.text = [NSString stringWithFormat:@"%@", commit.message];
 }
@@ -68,7 +67,7 @@ static CGFloat CommitMessageMaxHeight = 120.;
 	dispatch_once(&onceToken, ^{
 		formatter = NSDateFormatter.new;
 		formatter.locale = NSLocale.currentLocale;
-		formatter.dateFormat = @"HH:mm";
+		formatter.dateFormat = @"E, h:mm a";
 	});
 	return formatter;
 }

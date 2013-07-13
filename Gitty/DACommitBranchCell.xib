@@ -61,7 +61,7 @@
 									<object class="IBUILabel" id="86319327">
 										<reference key="NSNextResponder" ref="224062339"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{50, 0}, {68, 18}}</string>
+										<string key="NSFrame">{{50, 0}, {66, 18}}</string>
 										<reference key="NSSuperview" ref="224062339"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="413496283"/>
@@ -94,7 +94,7 @@
 									<object class="IBUILabel" id="413496283">
 										<reference key="NSNextResponder" ref="224062339"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{120, 0}, {20, 18}}</string>
+										<string key="NSFrame">{{115, 1}, {20, 18}}</string>
 										<reference key="NSSuperview" ref="224062339"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="1027661449"/>
@@ -129,7 +129,7 @@
 									<object class="IBUILabel" id="1027661449">
 										<reference key="NSNextResponder" ref="224062339"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{140, 0}, {80, 18}}</string>
+										<string key="NSFrame">{{136, 0}, {64, 18}}</string>
 										<reference key="NSSuperview" ref="224062339"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="118516899"/>
@@ -152,8 +152,8 @@
 									</object>
 									<object class="IBUILabel" id="118516899">
 										<reference key="NSNextResponder" ref="224062339"/>
-										<int key="NSvFlags">-2147483356</int>
-										<string key="NSFrame">{{170, 0}, {130, 18}}</string>
+										<int key="NSvFlags">292</int>
+										<string key="NSFrame">{{200, 0}, {100, 18}}</string>
 										<reference key="NSSuperview" ref="224062339"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="531635060"/>
@@ -163,7 +163,7 @@
 										<int key="IBUIContentMode">7</int>
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-										<string key="IBUIText">on 19:35 13.07.13</string>
+										<string key="IBUIText">Mon, 7:35 PM</string>
 										<reference key="IBUITextColor" ref="328162350"/>
 										<nil key="IBUIHighlightedColor"/>
 										<int key="IBUIBaselineAdjustment">0</int>
@@ -242,6 +242,7 @@
 				<reference key="NSNextKeyView" ref="127688135"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<int key="IBUISelectionStyle">2</int>
 				<reference key="IBUIContentView" ref="127688135"/>
 			</object>
 		</array>

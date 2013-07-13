@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 kernel@realm. All rights reserved.
 //
 
-#import "DABranchHeader.h"
+#import "DATitleHeader.h"
 
-@implementation DABranchHeader
+@implementation DATitleHeader
 
 - (id)init
 {

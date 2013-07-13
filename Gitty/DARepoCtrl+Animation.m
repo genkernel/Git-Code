@@ -99,6 +99,9 @@
 }
 
 - (void)loadStatsHeadline {
+}
+/*
+- (void)loadStatsHeadline {
 	NSDictionary *opts = @{DTDefaultFontFamily: @"Cochin", DTDefaultFontSize: @15, DTDefaultTextColor: UIColor.whiteColor};
 	
 	NSString* path = [NSBundle.mainBundle pathForResource:@"StatsHeadline" ofType:@"html"];
@@ -114,6 +117,6 @@
 	DTHTMLAttributedStringBuilder *builder = [DTHTMLAttributedStringBuilder.alloc initWithHTML:data options:opts documentAttributes:nil];
 	
 	_statsCtrl.headlineLabel.attributedString = builder.generatedAttributedString;
-}
+}*/
 
 @end

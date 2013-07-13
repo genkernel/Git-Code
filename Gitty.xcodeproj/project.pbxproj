@@ -33,8 +33,8 @@
 		1810993E1790746C0018AAB4 /* DAAuthorHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1810993D1790746C0018AAB4 /* DAAuthorHeader.xib */; };
 		1810994217909BFB0018AAB4 /* DACommitBranchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810994117909BFA0018AAB4 /* DACommitBranchCell.m */; };
 		1810994417909C140018AAB4 /* DACommitBranchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1810994317909C140018AAB4 /* DACommitBranchCell.xib */; };
-		181099491790A6B20018AAB4 /* DABranchHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 181099481790A6B20018AAB4 /* DABranchHeader.m */; };
-		1810994B1790A6CA0018AAB4 /* DABranchHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1810994A1790A6CA0018AAB4 /* DABranchHeader.xib */; };
+		181099491790A6B20018AAB4 /* DATitleHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 181099481790A6B20018AAB4 /* DATitleHeader.m */; };
+		1810994B1790A6CA0018AAB4 /* DATitleHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1810994A1790A6CA0018AAB4 /* DATitleHeader.xib */; };
 		181226661784C3ED00628C2F /* nonewline.png in Resources */ = {isa = PBXBuildFile; fileRef = 181226641784C3ED00628C2F /* nonewline.png */; };
 		181226671784C3ED00628C2F /* nonewline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181226651784C3ED00628C2F /* nonewline@2x.png */; };
 		1812266D1784CE2D00628C2F /* bitbucket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1812266C1784CE2D00628C2F /* bitbucket@2x.png */; };
@@ -163,7 +163,6 @@
 		18BAA8661758016400154019 /* DAServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAA8631758016400154019 /* DAServerManager.m */; };
 		18C94433175B93C400A4D7CA /* DABranchPickerCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C94432175B93C400A4D7CA /* DABranchPickerCtrl.m */; };
 		18CF75A91788E71200209141 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CF75A81788E71200209141 /* CoreText.framework */; };
-		18CF75B11788E81000209141 /* libDTCoreText_no_DTFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CF75741788DF7C00209141 /* libDTCoreText_no_DTFoundation.a */; };
 		18CF75B51788E89F00209141 /* libDTFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CF75B41788E89F00209141 /* libDTFoundation.a */; };
 		18CF75B71788E8CA00209141 /* libDTHTMLParser_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CF75B61788E8CA00209141 /* libDTHTMLParser_iOS.a */; };
 		18CF75B91788E8EE00209141 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CF75B81788E8EE00209141 /* libxml2.2.dylib */; };
@@ -227,62 +226,6 @@
 			remoteGlobalIDString = 04DB4644133AB57600D9C624;
 			remoteInfo = "ObjectiveGit-iOS";
 		};
-		18CF75691788DF7C00209141 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18CF755D1788DF7B00209141 /* DTCoreText.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1D6058910D05DD3D006BFB54;
-			remoteInfo = DemoApp;
-		};
-		18CF756B1788DF7C00209141 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18CF755D1788DF7B00209141 /* DTCoreText.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A70F119B14863198009202BF;
-			remoteInfo = "Static Framework";
-		};
-		18CF756D1788DF7C00209141 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18CF755D1788DF7B00209141 /* DTCoreText.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A70F11DE148632CD009202BF;
-			remoteInfo = "Static Library";
-		};
-		18CF756F1788DF7C00209141 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18CF755D1788DF7B00209141 /* DTCoreText.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A788CA681486456100E1AFD9;
-			remoteInfo = UnitTest;
-		};
-		18CF75711788DF7C00209141 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18CF755D1788DF7B00209141 /* DTCoreText.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A7949A5814CC456000A8CCDE;
-			remoteInfo = MacUnitTest;
-		};
-		18CF75731788DF7C00209141 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18CF755D1788DF7B00209141 /* DTCoreText.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A7F7EFCD1573603100F5A4D0;
-			remoteInfo = "Static Library (no DTFoundation)";
-		};
-		18CF75751788DF7C00209141 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18CF755D1788DF7B00209141 /* DTCoreText.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E2262DC61638331500BFDAD7;
-			remoteInfo = "Mac Framework";
-		};
-		18CF75B21788E85400209141 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18CF755D1788DF7B00209141 /* DTCoreText.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = A70F11DD148632CD009202BF;
-			remoteInfo = "Static Library";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -317,9 +260,9 @@
 		1810994117909BFA0018AAB4 /* DACommitBranchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACommitBranchCell.m; sourceTree = "<group>"; };
 		1810994317909C140018AAB4 /* DACommitBranchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DACommitBranchCell.xib; sourceTree = "<group>"; };
 		181099451790A1660018AAB4 /* DADynamicCommitCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DADynamicCommitCell.h; sourceTree = "<group>"; };
-		181099471790A6B20018AAB4 /* DABranchHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABranchHeader.h; sourceTree = "<group>"; };
-		181099481790A6B20018AAB4 /* DABranchHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABranchHeader.m; sourceTree = "<group>"; };
-		1810994A1790A6CA0018AAB4 /* DABranchHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABranchHeader.xib; sourceTree = "<group>"; };
+		181099471790A6B20018AAB4 /* DATitleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DATitleHeader.h; sourceTree = "<group>"; };
+		181099481790A6B20018AAB4 /* DATitleHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DATitleHeader.m; sourceTree = "<group>"; };
+		1810994A1790A6CA0018AAB4 /* DATitleHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DATitleHeader.xib; sourceTree = "<group>"; };
 		181226641784C3ED00628C2F /* nonewline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nonewline.png; sourceTree = "<group>"; };
 		181226651784C3ED00628C2F /* nonewline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nonewline@2x.png"; sourceTree = "<group>"; };
 		1812266C1784CE2D00628C2F /* bitbucket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bitbucket@2x.png"; sourceTree = "<group>"; };
@@ -756,7 +699,6 @@
 		18BAA8631758016400154019 /* DAServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAServerManager.m; sourceTree = "<group>"; };
 		18C94431175B93C400A4D7CA /* DABranchPickerCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABranchPickerCtrl.h; sourceTree = "<group>"; };
 		18C94432175B93C400A4D7CA /* DABranchPickerCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABranchPickerCtrl.m; sourceTree = "<group>"; };
-		18CF755D1788DF7B00209141 /* DTCoreText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DTCoreText.xcodeproj; path = Submodules/DTCoreText/DTCoreText.xcodeproj; sourceTree = "<group>"; };
 		18CF75A81788E71200209141 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		18CF75B41788E89F00209141 /* libDTFoundation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDTFoundation.a; path = "Submodules/DTCoreText/Core/Externals/DTFoundation/build/Release-iphoneos/libDTFoundation.a"; sourceTree = "<group>"; };
 		18CF75B61788E8CA00209141 /* libDTHTMLParser_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDTHTMLParser_iOS.a; path = "Submodules/DTCoreText/Core/Externals/DTFoundation/build/Release-iphoneos/libDTHTMLParser_iOS.a"; sourceTree = "<group>"; };
@@ -814,7 +756,6 @@
 				18184B6717556968001C58D8 /* libz.dylib in Frameworks */,
 				18CF75B71788E8CA00209141 /* libDTHTMLParser_iOS.a in Frameworks */,
 				18CF75B51788E89F00209141 /* libDTFoundation.a in Frameworks */,
-				18CF75B11788E81000209141 /* libDTCoreText_no_DTFoundation.a in Frameworks */,
 				183DA706175549F900140DA8 /* libObjectiveGit-iOS.a in Frameworks */,
 				18CF75A91788E71200209141 /* CoreText.framework in Frameworks */,
 				181429DC178901E100347E1B /* MessageUI.framework in Frameworks */,
@@ -936,14 +877,14 @@
 			name = BranchCommitCell;
 			sourceTree = "<group>";
 		};
-		181099461790A6900018AAB4 /* BranchHeader */ = {
+		181099461790A6900018AAB4 /* TitleHeader */ = {
 			isa = PBXGroup;
 			children = (
-				181099471790A6B20018AAB4 /* DABranchHeader.h */,
-				181099481790A6B20018AAB4 /* DABranchHeader.m */,
-				1810994A1790A6CA0018AAB4 /* DABranchHeader.xib */,
+				181099471790A6B20018AAB4 /* DATitleHeader.h */,
+				181099481790A6B20018AAB4 /* DATitleHeader.m */,
+				1810994A1790A6CA0018AAB4 /* DATitleHeader.xib */,
 			);
-			name = BranchHeader;
+			name = TitleHeader;
 			sourceTree = "<group>";
 		};
 		1812266E1784D0BA00628C2F /* Forget */ = {
@@ -1035,7 +976,6 @@
 		183DA6F3175549BC00140DA8 /* Submodules */ = {
 			isa = PBXGroup;
 			children = (
-				18CF755D1788DF7B00209141 /* DTCoreText.xcodeproj */,
 				1861886A176E0BBF00666DFB /* PagerView */,
 				183DA6F4175549D100140DA8 /* ObjectiveGitFramework.xcodeproj */,
 			);
@@ -1056,7 +996,6 @@
 			isa = PBXGroup;
 			children = (
 				1810993F17909BC10018AAB4 /* BranchCommitCell */,
-				181099461790A6900018AAB4 /* BranchHeader */,
 				1810992E179074290018AAB4 /* AuthorHeader */,
 				183F7E42178C550B0051D689 /* DAStatsCtrl.h */,
 				183F7E43178C550B0051D689 /* DAStatsCtrl.m */,
@@ -1525,6 +1464,7 @@
 			children = (
 				183F7E41178C54ED0051D689 /* StatsCtrl */,
 				188B2D4F175D3E1C00BD1EEB /* CommitCell */,
+				181099461790A6900018AAB4 /* TitleHeader */,
 				18C9441C175B6B3E00A4D7CA /* BranchPickerCtrl */,
 				189A5320175922FA00B5BD8D /* DARepoCtrl.h */,
 				189A5321175922FA00B5BD8D /* DARepoCtrl.m */,
@@ -1919,20 +1859,6 @@
 			name = BranchPickerCtrl;
 			sourceTree = "<group>";
 		};
-		18CF755E1788DF7B00209141 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				18CF756A1788DF7C00209141 /* RTDemoApp.app */,
-				18CF756C1788DF7C00209141 /* DTCoreText.framework */,
-				18CF756E1788DF7C00209141 /* libDTCoreText.a */,
-				18CF75701788DF7C00209141 /* UnitTest.octest */,
-				18CF75721788DF7C00209141 /* MacUnitTest.octest */,
-				18CF75741788DF7C00209141 /* libDTCoreText_no_DTFoundation.a */,
-				18CF75761788DF7C00209141 /* DTCoreText.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		18CF75BA1788EB3C00209141 /* Html */ = {
 			isa = PBXGroup;
 			children = (
@@ -2105,7 +2031,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				18CF75B31788E85400209141 /* PBXTargetDependency */,
 				183DA705175549EF00140DA8 /* PBXTargetDependency */,
 			);
 			name = Gitty;
@@ -2134,10 +2059,6 @@
 			productRefGroup = 18933CD51755395D00E92183 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
-				{
-					ProductGroup = 18CF755E1788DF7B00209141 /* Products */;
-					ProjectRef = 18CF755D1788DF7B00209141 /* DTCoreText.xcodeproj */;
-				},
 				{
 					ProductGroup = 183DA6F5175549D100140DA8 /* Products */;
 					ProjectRef = 183DA6F4175549D100140DA8 /* ObjectiveGitFramework.xcodeproj */;
@@ -2170,55 +2091,6 @@
 			fileType = archive.ar;
 			path = "libObjectiveGit-iOS.a";
 			remoteRef = 183DA702175549D100140DA8 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		18CF756A1788DF7C00209141 /* RTDemoApp.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = RTDemoApp.app;
-			remoteRef = 18CF75691788DF7C00209141 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		18CF756C1788DF7C00209141 /* DTCoreText.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = DTCoreText.framework;
-			remoteRef = 18CF756B1788DF7C00209141 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		18CF756E1788DF7C00209141 /* libDTCoreText.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libDTCoreText.a;
-			remoteRef = 18CF756D1788DF7C00209141 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		18CF75701788DF7C00209141 /* UnitTest.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = UnitTest.octest;
-			remoteRef = 18CF756F1788DF7C00209141 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		18CF75721788DF7C00209141 /* MacUnitTest.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = MacUnitTest.octest;
-			remoteRef = 18CF75711788DF7C00209141 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		18CF75741788DF7C00209141 /* libDTCoreText_no_DTFoundation.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libDTCoreText_no_DTFoundation.a;
-			remoteRef = 18CF75731788DF7C00209141 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		18CF75761788DF7C00209141 /* DTCoreText.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = DTCoreText.framework;
-			remoteRef = 18CF75751788DF7C00209141 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -2305,7 +2177,7 @@
 				1833605E178EECC7000C1E52 /* branches-white.png in Resources */,
 				1810993E1790746C0018AAB4 /* DAAuthorHeader.xib in Resources */,
 				1810994417909C140018AAB4 /* DACommitBranchCell.xib in Resources */,
-				1810994B1790A6CA0018AAB4 /* DABranchHeader.xib in Resources */,
+				1810994B1790A6CA0018AAB4 /* DATitleHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2408,7 +2280,7 @@
 				183F7E47178C554E0051D689 /* DARepoCtrl+StatsLoader.m in Sources */,
 				1810993C179074540018AAB4 /* DAAuthorHeader.m in Sources */,
 				1810994217909BFB0018AAB4 /* DACommitBranchCell.m in Sources */,
-				181099491790A6B20018AAB4 /* DABranchHeader.m in Sources */,
+				181099491790A6B20018AAB4 /* DATitleHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2419,11 +2291,6 @@
 			isa = PBXTargetDependency;
 			name = "ObjectiveGit-iOS";
 			targetProxy = 183DA704175549EF00140DA8 /* PBXContainerItemProxy */;
-		};
-		18CF75B31788E85400209141 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Static Library";
-			targetProxy = 18CF75B21788E85400209141 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

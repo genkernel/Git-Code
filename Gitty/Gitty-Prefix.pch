@@ -30,7 +30,6 @@
 #import "AFNetworking.h"
 // Submodules.
 #import "PagerView.h"
-#import "DTCoreText.h"
 
 #import "UIColor+Gitty.h"
 #import "UIButton+Gitty.h"

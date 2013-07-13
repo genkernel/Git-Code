@@ -10,7 +10,7 @@
 		<key>Name</key>
 		<string>Github</string>
 		<key>RecentRepoPath</key>
-		<string>genkernel/TreeView.git</string>
+		<string>github/developer.github.com</string>
 		<key>SaveDirectoryName</key>
 		<string>git@github.com</string>
 		<key>SupportedProtocols</key>
@@ -63,7 +63,6 @@
 		<key>TransferProtocol</key>
 		<string>ssh://</string>
 	</dict>
-	
 	<dict>
 		<key>GitBaseUrl</key>
 		<string>git@bitbucket.org</string>

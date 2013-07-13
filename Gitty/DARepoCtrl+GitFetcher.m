@@ -29,7 +29,6 @@
 			[sections addObject:title];
 		}
 		
-		_branches[commit.shortSha] = branch;
 		_authors[commit.author.name] = commit.author;
 		
 		NSMutableArray *commits = commitsOnDate[title];

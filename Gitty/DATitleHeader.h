@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DABranchHeader : UIView
+@interface DATitleHeader : UIView
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @end

@@ -10,7 +10,7 @@
 #import "DARepoCtrl.h"
 
 #import "DAAuthorHeader.h"
-#import "DABranchHeader.h"
+#import "DATitleHeader.h"
 
 #import "DACommitCell.h"
 #import "DACommitBranchCell.h"
@@ -51,9 +51,9 @@
 		[self cacheView:header withIdentifier:DAAuthorHeader.className];
 	}
 	{
-		DABranchHeader *header = DABranchHeader.new;
+		DATitleHeader *header = DATitleHeader.new;
 		branchHeaderHeight = header.height;
-		[self cacheView:header withIdentifier:DABranchHeader.className];
+		[self cacheView:header withIdentifier:DATitleHeader.className];
 	}
 }
 
@@ -88,7 +88,7 @@
 	NSString *title = self.dataSource.allKeys[section];
 	
 	BOOL isAuthorMode = DACommitsListByAuthorMode == self.listMode;
-	Class cls = isAuthorMode ? DAAuthorHeader.class : DABranchHeader.class;
+	Class cls = isAuthorMode ? DAAuthorHeader.class : DATitleHeader.class;
 	
 	NSString *identifier = NSStringFromClass(cls);
 	UIView *view = [self cachedViewWithIdentifier:identifier];
@@ -100,7 +100,7 @@
 		GTSignature *author = self.repoCtrl.authors[title];
 		[((DAAuthorHeader *)view) loadAuthor:author];
 	} else {
-		DABranchHeader *header = (DABranchHeader *)view;
+		DATitleHeader *header = (DATitleHeader *)view;
 		header.nameLabel.text = title;
 	}
 	

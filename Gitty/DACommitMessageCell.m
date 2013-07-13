@@ -63,7 +63,7 @@ static CGFloat CommitMessageMaxHeight = 120.;
 	dispatch_once(&onceToken, ^{
 		formatter = NSDateFormatter.new;
 		formatter.locale = NSLocale.currentLocale;
-		formatter.dateFormat = @"HH:mm";
+		formatter.dateFormat = @"h:mm a";
 	});
 	return formatter;
 }

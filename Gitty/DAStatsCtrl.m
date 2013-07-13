@@ -20,8 +20,9 @@
 @property (strong, nonatomic, readonly) NSDictionary *dataSource;
 @property (strong, nonatomic, readonly) DARepoCtrl *repoCtrl;
 
-@property (strong, nonatomic, readonly) DACommitBranchCell *reusableBranchCell;
 @property (strong, nonatomic, readonly) DACommitCell *reusableAuthorCell;
+@property (strong, nonatomic, readonly) DACommitBranchCell *reusableBranchCell;
+@property (strong, nonatomic, readonly) DACommitMessageCell *reusableMessageCell;
 @end
 
 @implementation DAStatsCtrl {
@@ -37,6 +38,12 @@
 		[self.commitsTable registerNib:nib forCellReuseIdentifier:DACommitCell.className];
 		
 		_reusableAuthorCell = [self.commitsTable dequeueReusableCellWithIdentifier:DACommitCell.className];
+	}
+	{
+		UINib *nib = [UINib nibWithNibName:DACommitMessageCell.className bundle:nil];
+		[self.commitsTable registerNib:nib forCellReuseIdentifier:DACommitMessageCell.className];
+		
+		_reusableMessageCell = [self.commitsTable dequeueReusableCellWithIdentifier:DACommitMessageCell.className];
 	}
 	{
 		UINib *nib = [UINib nibWithNibName:DACommitBranchCell.className bundle:nil];
@@ -71,6 +78,26 @@
 	NSArray *commits = self.dataSource[key];
 	
 	return commits[indexPath.row];
+}
+
+// Commit is Subsequent when its previous commit is prepared by the same Author in the very same Day.
+- (BOOL)isSubsequentCommitAtIndexPath:(NSIndexPath *)indexPath {
+	NSString *key = self.dataSource.allKeys[indexPath.section];
+	NSArray *commits = self.dataSource[key];
+	
+	NSUInteger idx = indexPath.row;
+	GTCommit *commit = commits[idx];
+	
+	BOOL previousCommitHasSameAuthor = NO;
+	
+	BOOL hasPreviousCommitInSection = idx > 0;
+	if (hasPreviousCommitInSection) {
+		GTCommit *prevCommit = commits[idx - 1];
+		
+		previousCommitHasSameAuthor = [commit.author.name isEqualToString:prevCommit.author.name] && [commit.author.email isEqualToString:prevCommit.author.email];
+	}
+	
+	return previousCommitHasSameAuthor;
 }
 
 #pragma mark UITableViewDataSource, UITableViewDelegate
@@ -122,7 +149,13 @@
 	
 	BOOL isAuthorMode = DACommitsListByAuthorMode == self.listMode;
 	
-	id<DADynamicCommitCell> cell = isAuthorMode ? self.reusableBranchCell : self.reusableAuthorCell;
+	id<DADynamicCommitCell> cell = nil;
+	if (isAuthorMode) {
+		cell = self.reusableBranchCell;
+	} else {
+		BOOL previousCommitHasSameAuthor = [self isSubsequentCommitAtIndexPath:indexPath];
+		cell = previousCommitHasSameAuthor ? self.reusableMessageCell : self.reusableAuthorCell;
+	}
 	
 	return [cell heightForCommit:commit];
 }
@@ -132,7 +165,15 @@
 	
 	BOOL isAuthorMode = DACommitsListByAuthorMode == self.listMode;
 	
-	NSString *identifier = isAuthorMode ? DACommitBranchCell.className : DACommitCell.className;
+	Class cls = nil;
+	if (isAuthorMode) {
+		cls = DACommitBranchCell.class;
+	} else {
+		BOOL previousCommitHasSameAuthor = [self isSubsequentCommitAtIndexPath:indexPath];
+		cls = previousCommitHasSameAuthor ? DACommitMessageCell.class : DACommitCell.class;
+	}
+	
+	NSString *identifier = NSStringFromClass(cls);
 	
 	UITableViewCell<DADynamicCommitCell> *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
 	
@@ -142,6 +183,8 @@
 	if (isAuthorMode) {
 		GTBranch *branch = self.repoCtrl.branches[commit.shortSha];
 		[((DACommitBranchCell *)cell) loadBranch:branch];
+	} else {
+		
 	}
 	
 	return cell;

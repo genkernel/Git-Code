@@ -57,7 +57,7 @@ static NSString *DeletableFolderSuffix = @"md";
 }
 
 - (void)requestRecursiveDeleteBackgroundOperationPath:(NSString *)path {
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
 		[self.app.fs deleteDirectoryAndItsContents:path];
 		
 		[Logger info:@"Repo deleted: %@", path];

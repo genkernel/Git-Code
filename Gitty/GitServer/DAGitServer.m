@@ -29,6 +29,8 @@ NSString *SshTransferProtocol = @"ssh://";
 		_supportedProtocols = dict[SupportedProtocols];
 		_recentRepoPath = dict[RecentRepoPath];
 		_recentBranchName = dict[RecentBranchName];
+		
+		[self createSettingsFolderIfNeeded];
 	}
 	return self;
 }

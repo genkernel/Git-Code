@@ -18,4 +18,8 @@ extern NSString *RecentRepoPath;
 extern NSString *RecentBranchName;
 
 @interface DAGitServer (Creation)
+- (void)createSettingsFolderIfNeeded;
+
+// Private.
+@property (strong, nonatomic, readonly) NSString *docsPath, *settingsPath;
 @end

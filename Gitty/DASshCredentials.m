@@ -8,16 +8,14 @@
 
 #import "DASshCredentials.h"
 
-static NSString *PrivateKeyFileName = @"id_rsa";
-static NSString *PublicKeyFileName = @"id_rsa.pub";
+static NSString *ZipExtension = @"zip";
 
 @interface DASshCredentials ()
-@property (strong, nonatomic, readonly) NSString *docsPath;
+@property (strong, nonatomic, readonly) UIApplication *app;
 @end
 
 @implementation DASshCredentials
-@dynamic docsPath;
-@dynamic publicKeyPath, privateKeyPath, passphrase;
+@dynamic app;
 
 + (instancetype)manager {
 	static id instance = nil;
@@ -28,21 +26,71 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 	return instance;
 }
 
-- (NSString *)docsPath {
-	return UIApplication.sharedApplication.documentsPath;
+- (BOOL)hasSshKeypairGlobalSupport {
+	BOOL isPublicKeyExistent = [self.app.fs isFileExistent:DASshKeyInfo.globalKeysInfo.publicKeyPath];
+	BOOL isPrivateKeyExistent = [self.app.fs isFileExistent:DASshKeyInfo.globalKeysInfo.publicKeyPath];
+	
+	// TODO: Check passphrase eixsts for global keys.
+	return isPublicKeyExistent && isPrivateKeyExistent;
 }
 
-- (NSString *)publicKeyPath {
-	return [self.docsPath stringByAppendingPathComponent:PublicKeyFileName];
+- (BOOL)hasSshKeypairSupportForServer:(DAGitServer *)server {
+	return NO;
 }
 
-- (NSString *)privateKeyPath {
-	return [self.docsPath stringByAppendingPathComponent:PrivateKeyFileName];
+- (DASshKeyInfo *)globalKeys {
+	return DASshKeyInfo.globalKeysInfo;
 }
 
-- (NSString *)passphrase {
-	// TODO: impl passphrase.
-	return @"superuser!";
+- (DASshKeyInfo *)keysForServer:(DAGitServer *)server {
+	// TODO: impl keysForServer:
+	return self.globalKeys;
+}
+
+- (void)scanNewKeyArchives {
+	NSArray *files = [self.app.fs contentsOfDirectoryAtPath:self.app.documentsPath error:nil];
+	for (NSString *fileName in files) {
+		NSString *path = [self.app.documentsPath stringByAppendingPathComponent:fileName];
+		
+		BOOL isFile = [self.app.fs isFileExistent:path];
+		if (!isFile || ![path.pathExtension isEqualToString:ZipExtension]) {
+			continue;
+		}
+		
+		NSString *name = fileName.stringByDeletingPathExtension;
+		
+		DAGitServer *server = DAServerManager.manager.namedList[name];
+		if (!server) {
+			[Logger error:@"Found archive '%@' but no Server with the same name exists.", fileName];
+			continue;
+		}
+		
+		[Logger info:@"Found new SSH keys archive for server: %@", name];
+		
+		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+			[self unzipServerArchiveAtPath:path];
+		});
+	}
+}
+
+- (void)unzipServerArchiveAtPath:(NSString *)path {
+	ZipArchive *arch = [ZipArchive.alloc initWithFileManager:self.app.fs];
+	
+	[arch UnzipOpenFile:path];
+	[arch UnzipFileTo:path.stringByDeletingPathExtension overWrite:YES];
+	[arch UnzipCloseFile];
+	
+	if (arch.unzippedFiles.count < 2) {
+		[Logger error:@"Failed to unzip keys from path: %@", path];
+	}
+	
+	[self.app.fs removeItemAtPath:path error:nil];
+}
+
+#pragma mark Properties
+
+- (UIApplication *)app {
+	return UIApplication.sharedApplication;
 }
 
 @end

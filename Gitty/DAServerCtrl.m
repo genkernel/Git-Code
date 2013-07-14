@@ -73,7 +73,12 @@
 	
 	[self.protocolsContainer removeAllButtonsAndResetLayout];
 	
-	for (NSString *protocol in server.supportedProtocols) {
+	NSMutableSet *protocols = [NSMutableSet setWithArray:server.supportedProtocols];
+	if (DASshCredentials.manager.hasSshKeypairGlobalSupport) {
+		[protocols addObject:SshTransferProtocol];
+	}
+	
+	for (NSString *protocol in protocols) {
 		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
 		[button applyProtocolStyle];
 		

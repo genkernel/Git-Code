@@ -80,10 +80,16 @@ int cred_acquire_ssh(git_cred **out,
 	}
 	
 #ifdef GIT_SSH
-	NSString *passphrase = DASshCredentials.manager.passphrase;
+	DASshKeyInfo *keysInfo = [DASshCredentials.manager keysForServer:server];
+	if (!keysInfo) {
+		[Logger error:@"Invalid ssh keys info specified. %s", __PRETTY_FUNCTION__];
+		return GIT_ERROR;
+	}
 	
-	NSString *publicKeyPath = DASshCredentials.manager.publicKeyPath;
-	NSString *privateKeyPath = DASshCredentials.manager.privateKeyPath;
+	NSString *passphrase = keysInfo.passphrase;
+	
+	NSString *publicKeyPath = keysInfo.publicKeyPath;
+	NSString *privateKeyPath = keysInfo.privateKeyPath;
 	
 	return git_cred_ssh_keyfile_passphrase_new(out, publicKeyPath.UTF8String, privateKeyPath.UTF8String, passphrase.UTF8String);
 #else

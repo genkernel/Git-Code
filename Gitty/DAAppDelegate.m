@@ -13,10 +13,20 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[self createSharedCacheForApplication:application];
 	
-	[DAGitManager.manager scanAllDeletableLocalReposAndDelete];
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		[DAGitManager.manager scanAllDeletableLocalReposAndDelete];
+	});
 	
     return YES;
 }
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		[DASshCredentials.manager scanNewKeyArchives];
+	});
+}
+
+#pragma mark Helper methods
 
 - (void)createSharedCacheForApplication:(UIApplication *)app {
 	NSString *cacheDirectoryName = @"NetworkCache";

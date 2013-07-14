@@ -6,10 +6,15 @@
 //  Copyright (c) 2013 kernel@realm. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "DASshKeyInfo.h"
 
 @interface DASshCredentials : NSObject
 + (instancetype)manager;
+- (void)scanNewKeyArchives;
 
-@property (strong, nonatomic, readonly) NSString *publicKeyPath, *privateKeyPath, *passphrase;
+- (BOOL)hasSshKeypairGlobalSupport;
+- (BOOL)hasSshKeypairSupportForServer:(DAGitServer *)server;
+
+- (DASshKeyInfo *)globalKeys;
+- (DASshKeyInfo *)keysForServer:(DAGitServer *)server;
 @end

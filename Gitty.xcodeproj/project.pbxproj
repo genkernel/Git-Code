@@ -174,6 +174,8 @@
 		18F04E3C176FC9F80035C918 /* UITextField+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F04E3B176FC9960035C918 /* UITextField+Helper.m */; };
 		18F15474178622C200322369 /* DACommitMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F15473178622C200322369 /* DACommitMessageCell.m */; };
 		18F1547A178622E400322369 /* DACommitMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F15479178622E400322369 /* DACommitMessageCell.xib */; };
+		18F86F18179318120055900C /* libZipArchive-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F86F11179318000055900C /* libZipArchive-ios.a */; };
+		18F86F1B17931A4E0055900C /* DASshKeyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F86F1A17931A4D0055900C /* DASshKeyInfo.m */; };
 		18F995B7175F6EB70033A4A0 /* DADiffCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F995B6175F6EB70033A4A0 /* DADiffCtrl.m */; };
 		18F995BC175FAE710033A4A0 /* DAModifiedHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F995BB175FAE710033A4A0 /* DAModifiedHeader.m */; };
 		18F995BE175FAF2E0033A4A0 /* DAModifiedHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F995BD175FAF2E0033A4A0 /* DAModifiedHeader.xib */; };
@@ -222,6 +224,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = 04DB4644133AB57600D9C624;
 			remoteInfo = "ObjectiveGit-iOS";
+		};
+		18F86F10179318000055900C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18F86F09179317FF0055900C /* ZipArchive.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = "ZipArchive ios";
+		};
+		18F86F12179318000055900C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18F86F09179317FF0055900C /* ZipArchive.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C908A96F160AC26D000395DB;
+			remoteInfo = "ZipArchive mac";
+		};
+		18F86F14179318000055900C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18F86F09179317FF0055900C /* ZipArchive.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C99D6903164BCC7E00B6A7C3;
+			remoteInfo = tests;
+		};
+		18F86F16179318050055900C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18F86F09179317FF0055900C /* ZipArchive.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = "ZipArchive ios";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -723,6 +753,9 @@
 		18F15472178622C200322369 /* DACommitMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACommitMessageCell.h; sourceTree = "<group>"; };
 		18F15473178622C200322369 /* DACommitMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACommitMessageCell.m; sourceTree = "<group>"; };
 		18F15479178622E400322369 /* DACommitMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DACommitMessageCell.xib; sourceTree = "<group>"; };
+		18F86F09179317FF0055900C /* ZipArchive.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZipArchive.xcodeproj; path = ZipArchive/ZipArchive.xcodeproj; sourceTree = "<group>"; };
+		18F86F1917931A4D0055900C /* DASshKeyInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DASshKeyInfo.h; sourceTree = "<group>"; };
+		18F86F1A17931A4D0055900C /* DASshKeyInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DASshKeyInfo.m; sourceTree = "<group>"; };
 		18F995B5175F6EB70033A4A0 /* DADiffCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADiffCtrl.h; sourceTree = "<group>"; };
 		18F995B6175F6EB70033A4A0 /* DADiffCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADiffCtrl.m; sourceTree = "<group>"; };
 		18F995BA175FAE710033A4A0 /* DAModifiedHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAModifiedHeader.h; sourceTree = "<group>"; };
@@ -748,6 +781,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F86F18179318120055900C /* libZipArchive-ios.a in Frameworks */,
 				18CF75B91788E8EE00209141 /* libxml2.2.dylib in Frameworks */,
 				18184B6717556968001C58D8 /* libz.dylib in Frameworks */,
 				183DA706175549F900140DA8 /* libObjectiveGit-iOS.a in Frameworks */,
@@ -937,6 +971,8 @@
 			children = (
 				181A6F57178B696D002CA3BE /* DASshCredentials.h */,
 				181A6F58178B696D002CA3BE /* DASshCredentials.m */,
+				18F86F1917931A4D0055900C /* DASshKeyInfo.h */,
+				18F86F1A17931A4D0055900C /* DASshKeyInfo.m */,
 			);
 			name = SSHCredentials;
 			sourceTree = "<group>";
@@ -970,6 +1006,7 @@
 		183DA6F3175549BC00140DA8 /* Submodules */ = {
 			isa = PBXGroup;
 			children = (
+				18F86ECA1793179E0055900C /* ZipArchive */,
 				1861886A176E0BBF00666DFB /* PagerView */,
 				183DA6F4175549D100140DA8 /* ObjectiveGitFramework.xcodeproj */,
 			);
@@ -1930,6 +1967,25 @@
 			name = UITextField;
 			sourceTree = "<group>";
 		};
+		18F86ECA1793179E0055900C /* ZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				18F86F09179317FF0055900C /* ZipArchive.xcodeproj */,
+			);
+			name = ZipArchive;
+			path = Submodules/ZipArchive;
+			sourceTree = "<group>";
+		};
+		18F86F0A179317FF0055900C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				18F86F11179318000055900C /* libZipArchive-ios.a */,
+				18F86F13179318000055900C /* libZipArchive-mac.a */,
+				18F86F15179318000055900C /* tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		18F995B0175F6EA00033A4A0 /* Diff */ = {
 			isa = PBXGroup;
 			children = (
@@ -2016,6 +2072,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				18F86F17179318050055900C /* PBXTargetDependency */,
 				183DA705175549EF00140DA8 /* PBXTargetDependency */,
 			);
 			name = Gitty;
@@ -2048,6 +2105,10 @@
 					ProductGroup = 183DA6F5175549D100140DA8 /* Products */;
 					ProjectRef = 183DA6F4175549D100140DA8 /* ObjectiveGitFramework.xcodeproj */;
 				},
+				{
+					ProductGroup = 18F86F0A179317FF0055900C /* Products */;
+					ProjectRef = 18F86F09179317FF0055900C /* ZipArchive.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -2076,6 +2137,27 @@
 			fileType = archive.ar;
 			path = "libObjectiveGit-iOS.a";
 			remoteRef = 183DA702175549D100140DA8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		18F86F11179318000055900C /* libZipArchive-ios.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libZipArchive-ios.a";
+			remoteRef = 18F86F10179318000055900C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		18F86F13179318000055900C /* libZipArchive-mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libZipArchive-mac.a";
+			remoteRef = 18F86F12179318000055900C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		18F86F15179318000055900C /* tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = tests.octest;
+			remoteRef = 18F86F14179318000055900C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -2265,6 +2347,7 @@
 				1810993C179074540018AAB4 /* DAAuthorHeader.m in Sources */,
 				1810994217909BFB0018AAB4 /* DACommitBranchCell.m in Sources */,
 				181099491790A6B20018AAB4 /* DATitleHeader.m in Sources */,
+				18F86F1B17931A4E0055900C /* DASshKeyInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2275,6 +2358,11 @@
 			isa = PBXTargetDependency;
 			name = "ObjectiveGit-iOS";
 			targetProxy = 183DA704175549EF00140DA8 /* PBXContainerItemProxy */;
+		};
+		18F86F17179318050055900C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ZipArchive ios";
+			targetProxy = 18F86F16179318050055900C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2370,7 +2458,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Submodules/objective-git/libgit2/include $(SRCROOT)/Submodules/ConceptScroll/PagerView $(PROJECT_TEMP_DIR)/../UninstalledProducts/include $(PROJECT_DIR)/Submodules/DTCoreText/Core/Source $(PROJECT_DIR)/Submodules/DTCoreText/Core/Externals/**";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Submodules/objective-git/libgit2/include $(SRCROOT)/Submodules/ConceptScroll/PagerView $(PROJECT_TEMP_DIR)/../UninstalledProducts/include $(SRCROOT)/Submodules/ZipArchive/";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2390,7 +2478,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Submodules/objective-git/libgit2/include $(SRCROOT)/Submodules/ConceptScroll/PagerView $(PROJECT_TEMP_DIR)/../UninstalledProducts/include $(PROJECT_DIR)/Submodules/DTCoreText/Core/Source";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Submodules/objective-git/libgit2/include $(SRCROOT)/Submodules/ConceptScroll/PagerView $(PROJECT_TEMP_DIR)/../UninstalledProducts/include $(SRCROOT)/Submodules/ZipArchive/";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

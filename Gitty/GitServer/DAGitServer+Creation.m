@@ -18,4 +18,18 @@ NSString *RecentRepoPath = @"RecentRepoPath";
 NSString *RecentBranchName = @"RecentBranchName";
 
 @implementation DAGitServer (Creation)
+@dynamic docsPath, settingsPath;
+
+- (void)createSettingsFolderIfNeeded {
+	[UIApplication.sharedApplication.fs createDirectoryIfNotExists:self.settingsPath];
+}
+
+- (NSString *)docsPath {
+	return UIApplication.sharedApplication.documentsPath;
+}
+
+- (NSString *)settingsPath {
+	return [self.docsPath stringByAppendingPathComponent:self.name];
+}
+
 @end

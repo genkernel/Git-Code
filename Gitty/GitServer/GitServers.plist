@@ -17,7 +17,6 @@
 		<string>git@github.com</string>
 		<key>SupportedProtocols</key>
 		<array>
-			<string>ssh://</string>
 			<string>git://</string>
 			<string>https://</string>
 			<string>http://</string>
@@ -40,7 +39,6 @@
 		<string>bitbucket.org</string>
 		<key>SupportedProtocols</key>
 		<array>
-			<string>ssh://</string>
 			<string>https://</string>
 		</array>
 		<key>TransferProtocol</key>
@@ -64,7 +62,6 @@
 			<string>git://</string>
 			<string>https://</string>
 			<string>http://</string>
-			<string>ssh://</string>
 		</array>
 		<key>TransferProtocol</key>
 		<string>ssh://</string>
@@ -87,7 +84,6 @@
 			<string>git://</string>
 			<string>https://</string>
 			<string>http://</string>
-			<string>ssh://</string>
 		</array>
 		<key>TransferProtocol</key>
 		<string>ssh://</string>

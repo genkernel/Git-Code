@@ -10,3 +10,6 @@
 [submodule "Submodules/DTCoreText"]
 	path = Submodules/DTCoreText
 	url = https://github.com/Cocoanetics/DTCoreText.git
+[submodule "Submodules/ZipArchive"]
+	path = Submodules/ZipArchive
+	url = https://github.com/mattconnolly/ZipArchive.git

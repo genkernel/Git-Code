@@ -29,6 +29,7 @@ typedef enum {
 	
 	GTBranch *_currentBranch;
 	NSMutableDictionary *_authors, *_branches;
+	NSUInteger _statsCommitsCount;
 	
 	NSString *_statsCustomTitle, *_statsCustomHint;
 	

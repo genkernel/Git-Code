@@ -110,24 +110,34 @@
 }
 
 - (void)loadStatsHeadline {
-}
-/*
-- (void)loadStatsHeadline {
-	NSDictionary *opts = @{DTDefaultFontFamily: @"Cochin", DTDefaultFontSize: @15, DTDefaultTextColor: UIColor.whiteColor};
+	UIFont *font = _statsCtrl.headlineLabel.font;
 	
-	NSString* path = [NSBundle.mainBundle pathForResource:@"StatsHeadline" ofType:@"html"];
-	NSString *html = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-	{
-		html = [html stringByReplacingOccurrencesOfString:@"%branches%" withString:@"5"];
-		html = [html stringByReplacingOccurrencesOfString:@"%commits%" withString:@"15"];
-		html = [html stringByReplacingOccurrencesOfString:@"%authors%" withString:@"3"];
+	// Unique number string - space delimeter at the end.
+	NSString *branchesCount = [NSString stringWithFormat:@"%d ", _statsCommitsByBranch.count];
+	// String uniqueness - 2 spaces.
+	NSString *commitsCount = [NSString stringWithFormat:@" %d ", _statsCommitsCount];
+	// String uniqueness - leading space delimeter.
+	NSString *authorsCount = [NSString stringWithFormat:@" %d", _statsCommitsByAuthor.count];
+	
+	NSArray *keys = @[branchesCount, @"Branches updated with", commitsCount, @"Commits by\n", authorsCount, @" Authors recently."];
+	
+	NSDictionary *info = @{keys[0]: @{NSForegroundColorAttributeName: UIColor.acceptingGreenColor, NSFontAttributeName: font},
+						keys[1]: @{NSForegroundColorAttributeName: UIColor.whiteColor, NSFontAttributeName: font},
+						keys[2]: @{NSForegroundColorAttributeName: UIColor.acceptingBlueColor, NSFontAttributeName: font},
+						keys[3]: @{NSForegroundColorAttributeName: UIColor.whiteColor, NSFontAttributeName: font},
+						keys[4]: @{NSForegroundColorAttributeName: UIColor.cancelingRedColor, NSFontAttributeName: font},
+						keys[5]: @{NSForegroundColorAttributeName: UIColor.whiteColor, NSFontAttributeName: font}};
+	
+	NSMutableAttributedString *desc = NSMutableAttributedString.new;
+	
+	for (NSString *text in keys) {
+		NSDictionary *opts = info[text];
+		
+		NSAttributedString *str = [NSAttributedString.alloc initWithString:text attributes:opts];
+		[desc appendAttributedString:str];
 	}
 	
-	NSData *data = [NSData dataWithBytes:html.UTF8String length:html.length];
-	
-	DTHTMLAttributedStringBuilder *builder = [DTHTMLAttributedStringBuilder.alloc initWithHTML:data options:opts documentAttributes:nil];
-	
-	_statsCtrl.headlineLabel.attributedString = builder.generatedAttributedString;
-}*/
+	_statsCtrl.headlineLabel.attributedText = desc;
+}
 
 @end

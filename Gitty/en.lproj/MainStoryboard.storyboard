@@ -406,6 +406,15 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hlC-Gf-Gjv" userLabel="Headline Label">
+                                        <rect key="frame" x="10" y="0.0" width="300" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <string key="text">5 Branches updated with 15 Commits
+by 3 Authors</string>
+                                        <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="16"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -431,6 +440,7 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="commitsTable" destination="gnU-QP-WVX" id="xbd-YN-EnT"/>
+                        <outlet property="headlineLabel" destination="hlC-Gf-Gjv" id="2dn-TW-qHO"/>
                         <outlet property="noCommitsLabel" destination="YD7-4m-HGD" id="6pi-CE-L4I"/>
                     </connections>
                 </viewController>
@@ -474,6 +484,11 @@
         <class className="DARepoCtrl" superclassName="DABaseCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DARepoCtrl.h"/>
             <relationships>
+                <relationship kind="action" name="forgetPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="revealBranchPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="statsDidClick:" candidateClass="UIButton"/>
+                <relationship kind="action" name="statsDidDrag:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="action" name="statsModeChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="branchCtrlContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="branchOverlay" candidateClass="UIView"/>
                 <relationship kind="outlet" name="commitsContainer" candidateClass="UIView"/>

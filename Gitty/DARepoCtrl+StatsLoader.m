@@ -19,6 +19,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 
 - (void)loadStats {
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+		_statsCommitsCount = 0;
 		
 		_statsCommitsByAuthor = NSMutableDictionary.new;
 		_statsCommitsByBranch = NSMutableDictionary.new;
@@ -44,7 +45,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 	
 	NSString *dateString = [self.dayOfWeekFormatter stringFromDate:todayDate];
 	int today = dateString.intValue;
-	[Logger info:@"Today.dayOfWeek: %d", today];
+//	[Logger info:@"Today.dayOfWeek: %d", today];
 	
 	BOOL isFirstDayOfWeek = 2 == today;
 	NSTimeInterval interval = isFirstDayOfWeek ? -2 * OneDayInterval : -OneDayInterval;
@@ -93,6 +94,8 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 			// != Yesterday.
 			return;
 		}
+		
+		_statsCommitsCount++;
 		
 		[commitsByBranch addObject:commit];
 		

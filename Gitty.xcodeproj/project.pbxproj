@@ -166,7 +166,6 @@
 		18CF75B51788E89F00209141 /* libDTFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CF75B41788E89F00209141 /* libDTFoundation.a */; };
 		18CF75B71788E8CA00209141 /* libDTHTMLParser_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CF75B61788E8CA00209141 /* libDTHTMLParser_iOS.a */; };
 		18CF75B91788E8EE00209141 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CF75B81788E8EE00209141 /* libxml2.2.dylib */; };
-		18CF75BC1788EB5A00209141 /* StatsHeadline.html in Resources */ = {isa = PBXBuildFile; fileRef = 18CF75BB1788EB5A00209141 /* StatsHeadline.html */; };
 		18CFED93177C317C00365E5A /* code-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CFED8F177C317C00365E5A /* code-green.png */; };
 		18CFED94177C317C00365E5A /* code-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CFED90177C317C00365E5A /* code-red.png */; };
 		18D9EA3D17554EB400454F3C /* DAGitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9EA3C17554EB400454F3C /* DAGitManager.m */; };
@@ -703,7 +702,6 @@
 		18CF75B41788E89F00209141 /* libDTFoundation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDTFoundation.a; path = "Submodules/DTCoreText/Core/Externals/DTFoundation/build/Release-iphoneos/libDTFoundation.a"; sourceTree = "<group>"; };
 		18CF75B61788E8CA00209141 /* libDTHTMLParser_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDTHTMLParser_iOS.a; path = "Submodules/DTCoreText/Core/Externals/DTFoundation/build/Release-iphoneos/libDTHTMLParser_iOS.a"; sourceTree = "<group>"; };
 		18CF75B81788E8EE00209141 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
-		18CF75BB1788EB5A00209141 /* StatsHeadline.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = StatsHeadline.html; path = Res/Html/StatsHeadline.html; sourceTree = "<group>"; };
 		18CFED8F177C317C00365E5A /* code-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "code-green.png"; sourceTree = "<group>"; };
 		18CFED90177C317C00365E5A /* code-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "code-red.png"; sourceTree = "<group>"; };
 		18D9EA3B17554EB400454F3C /* DAGitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGitManager.h; sourceTree = "<group>"; };
@@ -1859,14 +1857,6 @@
 			name = BranchPickerCtrl;
 			sourceTree = "<group>";
 		};
-		18CF75BA1788EB3C00209141 /* Html */ = {
-			isa = PBXGroup;
-			children = (
-				18CF75BB1788EB5A00209141 /* StatsHeadline.html */,
-			);
-			name = Html;
-			sourceTree = "<group>";
-		};
 		18CFED8C177C317C00365E5A /* CodeBackground */ = {
 			isa = PBXGroup;
 			children = (
@@ -1893,7 +1883,6 @@
 		18D9EA3917554BEE00454F3C /* Res */ = {
 			isa = PBXGroup;
 			children = (
-				18CF75BA1788EB3C00209141 /* Html */,
 				18438B571777A7E100943F9F /* Profile */,
 				1804FA8C176E2D510080AB50 /* Logos */,
 				1817091A175BCBEA002A2D93 /* Backgrounds */,
@@ -2157,7 +2146,6 @@
 				1852A6291785F9BC00B44D81 /* fader-bottom.png in Resources */,
 				1852A62A1785F9BC00B44D81 /* fader-bottom@2x.png in Resources */,
 				18F1547A178622E400322369 /* DACommitMessageCell.xib in Resources */,
-				18CF75BC1788EB5A00209141 /* StatsHeadline.html in Resources */,
 				1839316F178993E1002E6A82 /* BulletinListLockScreenGrabber@2x.png in Resources */,
 				18393170178993E1002E6A82 /* Grabber@2x.png in Resources */,
 				18393171178993E1002E6A82 /* UITableGrabber@2x.png in Resources */,

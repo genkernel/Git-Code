@@ -119,7 +119,11 @@
 	// String uniqueness - leading space delimeter.
 	NSString *authorsCount = [NSString stringWithFormat:@" %d", _statsCommitsByAuthor.count];
 	
-	NSArray *keys = @[branchesCount, @"Branches updated with", commitsCount, @"Commits by\n", authorsCount, @" Authors recently."];
+	NSString *branchesLiteral = _statsCommitsByBranch.count > 1 ? @"Branches updated with" : @"Branch updated with";
+	NSString *commitsLiteral = _statsCommitsCount > 1 ? @"Commits by\n" : @"Commit by\n";
+	NSString *authorsLiteral = _statsCommitsByAuthor.count > 1 ? @" Authors recently." : @" Author recently.";
+	
+	NSArray *keys = @[branchesCount, branchesLiteral, commitsCount, commitsLiteral, authorsCount, authorsLiteral];
 	
 	NSDictionary *info = @{keys[0]: @{NSForegroundColorAttributeName: UIColor.acceptingGreenColor, NSFontAttributeName: font},
 						keys[1]: @{NSForegroundColorAttributeName: UIColor.whiteColor, NSFontAttributeName: font},

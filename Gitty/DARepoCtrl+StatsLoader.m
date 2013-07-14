@@ -10,7 +10,7 @@
 #import "DARepoCtrl+Private.h"
 #import "DARepoCtrl+Animation.h"
 
-static NSTimeInterval OneDayInterval = 25 DAYS;
+static NSTimeInterval OneDayInterval = 1 DAYS;
 static NSUInteger CommitsExtraCheckingThreshold = 5;
 
 @implementation DARepoCtrl (StatsLoader)
@@ -49,11 +49,21 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 	NSDate *todayDate = NSDate.date;
 	
 	NSString *dateString = [self.dayOfWeekFormatter stringFromDate:todayDate];
-	int today = dateString.intValue;
-	[Logger info:@"Today.dayOfWeek: %d", today];
+	int todayDayOfWeek = dateString.intValue;
+	[Logger info:@"Today.dayOfWeek: %d", todayDayOfWeek];
 	
-	BOOL isFirstDayOfWeek = 2 == today;
-	NSTimeInterval interval = isFirstDayOfWeek ? -2 * OneDayInterval : -OneDayInterval;
+	BOOL isCollectingWeekendStats = NO;
+	
+	NSTimeInterval interval = -OneDayInterval;
+	if (1 == todayDayOfWeek) {
+		// Sunday. Collect Stats for Fri + Sat.
+		interval *= 2;
+		isCollectingWeekendStats = YES;
+	} else if (2 == todayDayOfWeek) {
+		// Monday. Collect Stats for Fri + weekend.
+		interval *= 3;
+		isCollectingWeekendStats = YES;
+	}
 	
 	NSDate *yesterdayDate = [NSDate dateWithTimeIntervalSinceNow:interval];
 	
@@ -61,7 +71,10 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 	dateString = [self.yearMonthDayFormatter stringFromDate:yesterdayDate];
 	int yesterday = [dateString intValue];
 	
-	if (isFirstDayOfWeek) {
+	dateString = [self.yearMonthDayFormatter stringFromDate:todayDate];
+	int today = [dateString intValue];
+	
+	if (isCollectingWeekendStats) {
 		_statsCustomTitle = [self.dayOfWeekTitleFormatter stringFromDate:yesterdayDate];
 		_statsCustomHint = NSLocalizedString(@"+ weekend", nil);
 	} else {
@@ -75,7 +88,13 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 		NSString *dateString = [self.yearMonthDayFormatter stringFromDate:commit.commitDate];
 		
 		int day = [dateString intValue];
-		return day - yesterday;
+		
+		BOOL isWeekend = day >= yesterday && day < today;
+		if (day == yesterday || isWeekend) {
+			return NSOrderedSame;
+		}
+		
+		return day < yesterday ? NSOrderedAscending : NSOrderedDescending;
 	};
 	
 	__block NSUInteger threshold = 0;
@@ -178,6 +197,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		formatter = NSDateFormatter.new;
+		// Using .systemLocal ensures that firstDayOfWeek is Sunday (always, as opposite to user's locale).
 		formatter.locale = NSLocale.systemLocale;
 		formatter.timeZone = NSTimeZone.localTimeZone;
 		formatter.dateFormat = @"e";
@@ -190,8 +210,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		formatter = NSDateFormatter.new;
-		// Using .systemLocal ensures that firstDayOfWeek is Sunday.
-		formatter.locale = NSLocale.systemLocale;
+		formatter.locale = NSLocale.currentLocale;
 		formatter.timeZone = NSTimeZone.localTimeZone;
 		formatter.dateFormat = @"EEEE";
 	});

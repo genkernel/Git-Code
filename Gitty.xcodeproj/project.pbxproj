@@ -163,8 +163,6 @@
 		18BAA8661758016400154019 /* DAServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAA8631758016400154019 /* DAServerManager.m */; };
 		18C94433175B93C400A4D7CA /* DABranchPickerCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C94432175B93C400A4D7CA /* DABranchPickerCtrl.m */; };
 		18CF75A91788E71200209141 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CF75A81788E71200209141 /* CoreText.framework */; };
-		18CF75B51788E89F00209141 /* libDTFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CF75B41788E89F00209141 /* libDTFoundation.a */; };
-		18CF75B71788E8CA00209141 /* libDTHTMLParser_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CF75B61788E8CA00209141 /* libDTHTMLParser_iOS.a */; };
 		18CF75B91788E8EE00209141 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CF75B81788E8EE00209141 /* libxml2.2.dylib */; };
 		18CFED93177C317C00365E5A /* code-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CFED8F177C317C00365E5A /* code-green.png */; };
 		18CFED94177C317C00365E5A /* code-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CFED90177C317C00365E5A /* code-red.png */; };
@@ -752,8 +750,6 @@
 			files = (
 				18CF75B91788E8EE00209141 /* libxml2.2.dylib in Frameworks */,
 				18184B6717556968001C58D8 /* libz.dylib in Frameworks */,
-				18CF75B71788E8CA00209141 /* libDTHTMLParser_iOS.a in Frameworks */,
-				18CF75B51788E89F00209141 /* libDTFoundation.a in Frameworks */,
 				183DA706175549F900140DA8 /* libObjectiveGit-iOS.a in Frameworks */,
 				18CF75A91788E71200209141 /* CoreText.framework in Frameworks */,
 				181429DC178901E100347E1B /* MessageUI.framework in Frameworks */,

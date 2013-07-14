@@ -190,6 +190,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		formatter = NSDateFormatter.new;
+		// Using .systemLocal ensures that firstDayOfWeek is Sunday.
 		formatter.locale = NSLocale.systemLocale;
 		formatter.timeZone = NSTimeZone.localTimeZone;
 		formatter.dateFormat = @"EEEE";
@@ -202,9 +203,9 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		formatter = NSDateFormatter.new;
-		formatter.locale = NSLocale.systemLocale;
+		formatter.locale = NSLocale.currentLocale;
 		formatter.timeZone = NSTimeZone.localTimeZone;
-		formatter.dateFormat = @"d MMM yy";
+		formatter.dateFormat = @"d MMM ''yy";
 	});
 	return formatter;
 }

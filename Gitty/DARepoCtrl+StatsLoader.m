@@ -142,10 +142,10 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 		
 		NSComparisonResult result = [commit.commitDate compare:head.commitDate];
 		if (NSOrderedAscending == result) {
-			[Logger info:@"%@ < %@", commit.shortSha, head.shortSha];
+//			[Logger info:@"%@ < %@", commit.shortSha, head.shortSha];
 			headIdx++;
 		} else {
-			[Logger info:@"%@ >= %@", commit.shortSha, head.shortSha];
+//			[Logger info:@"%@ >= %@", commit.shortSha, head.shortSha];
 			[branch insertObject:commit atIndex:insertIdx];
 			insertIdx++;
 		}

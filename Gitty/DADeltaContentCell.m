@@ -28,6 +28,7 @@
 		
 		[self.contentView addSubview:view];
 		
+		self.scroll.scrollsToTop = NO;
 //#ifdef DEBUG
 //		[self.scroll colorizeBorderWithColor:UIColor.blueColor];
 //#endif

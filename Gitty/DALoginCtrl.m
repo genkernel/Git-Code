@@ -126,8 +126,6 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 			return;
 		}
 		CGFloat percent = (CGFloat)progress->received_objects / progress->total_objects;
-		[Logger info:@"clone.transfer transter percent: %d", percent];
-		
 		[serverCtrl setProgress:percent];
 	};
 	delegate.checkoutProgressBlock = ^(NSString *path, NSUInteger completedSteps, NSUInteger totalSteps){

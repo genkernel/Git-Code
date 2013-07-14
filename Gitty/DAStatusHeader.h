@@ -12,5 +12,6 @@
 - (void)loadDelta:(GTDiffDelta *)delta;
 
 @property (strong, nonatomic) IBOutlet UILabel *filenameLabel, *anotherFilenameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *symbolLabel, *anotherSymbolLabel;
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;
 @end

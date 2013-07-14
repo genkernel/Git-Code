@@ -36,28 +36,6 @@
 	return self.titles[type];
 }
 
-- (NSString *)shortFilePathFromFullPath:(NSString *)fullPath {
-	static const int PathMaxCharactersCount = 22;
-	NSString *path = fullPath.lastPathComponent;
-	
-	NSArray *components = fullPath.pathComponents;
-	int i = components.count - 2;
-	for (; i >= 0 && i < components.count; i--) {
-		NSString *part = components[i];
-		if (part.length + path.length + 1 > PathMaxCharactersCount) {
-			break;
-		}
-		path = [part stringByAppendingPathComponent:path];
-	}
-	
-	BOOL hasMoreComponents = i > 0;
-	if (components.count > 1 && hasMoreComponents) {
-		return [NSString stringWithFormat:@".../%@", path];
-	} else {
-		return path;
-	}
-}
-
 - (void)loadDelta:(GTDiffDelta *)delta {
 	self.statusLabel.hidden = NO;
 	self.statusLabel.text = [self titleForChangeType:delta.type];
@@ -65,44 +43,62 @@
 	if (GTDiffFileDeltaAdded == delta.type) {
 		self.statusLabel.hidden = YES;
 		
-		self.anotherFilenameLabel.textColor = UIColor.acceptingGreenColor;
-		
+		self.symbolLabel.text = nil;
 		self.filenameLabel.text = nil;
 		
-		NSString *path = [self shortFilePathFromFullPath:delta.newFile.path];
-		self.anotherFilenameLabel.text = [NSString stringWithFormat:@"+ %@", path];
+		self.anotherSymbolLabel.textColor = UIColor.acceptingGreenColor;
+		self.anotherFilenameLabel.textColor = UIColor.acceptingGreenColor;
+		
+		self.anotherSymbolLabel.text = @"+";
+		self.anotherFilenameLabel.text = delta.newFile.path;
 		
 	} else if (GTDiffFileDeltaDeleted == delta.type) {
+		self.symbolLabel.textColor = UIColor.cancelingRedColor;
 		self.filenameLabel.textColor = UIColor.cancelingRedColor;
 		
-		NSString *path = [self shortFilePathFromFullPath:delta.oldFile.path];
-		self.filenameLabel.text = [NSString stringWithFormat:@"- %@", path];
+		self.symbolLabel.text = @"-";
+		self.filenameLabel.text = delta.oldFile.path;
 		
+		self.anotherSymbolLabel.text = nil;
 		self.anotherFilenameLabel.text = nil;
 	} else if (GTDiffFileDeltaRenamed == delta.type) {
+		self.symbolLabel.textColor = UIColor.lightGrayColor;
 		self.filenameLabel.textColor = UIColor.lightGrayColor;
+		
+		self.anotherSymbolLabel.textColor = UIColor.whiteColor;
 		self.anotherFilenameLabel.textColor = UIColor.whiteColor;
 		
-		self.filenameLabel.text = [self shortFilePathFromFullPath:delta.oldFile.path];
+		self.symbolLabel.text = nil;
+		self.filenameLabel.text = delta.oldFile.path;
 		
-		NSString *path = [self shortFilePathFromFullPath:delta.newFile.path];
-		self.anotherFilenameLabel.text = [NSString stringWithFormat:@"➟ %@", path];
+		self.anotherSymbolLabel.text = @"➟";
+		self.anotherFilenameLabel.text = delta.newFile.path;
 		
 	} else if (GTDiffFileDeltaCopied == delta.type) {
+		self.symbolLabel.textColor = UIColor.whiteColor;
 		self.filenameLabel.textColor = UIColor.whiteColor;
-		self.filenameLabel.textColor = UIColor.acceptingGreenColor;
 		
-		self.filenameLabel.text = [self shortFilePathFromFullPath:delta.oldFile.path];
+		self.anotherSymbolLabel.textColor = UIColor.acceptingGreenColor;
+		self.anotherFilenameLabel.textColor = UIColor.acceptingGreenColor;
 		
-		NSString *path = [self shortFilePathFromFullPath:delta.newFile.path];
-		self.anotherFilenameLabel.text = [NSString stringWithFormat:@"+ %@", path];
+		self.symbolLabel.text = nil;
+		self.filenameLabel.text = delta.oldFile.path;
+		
+		self.anotherSymbolLabel.text = @"+";
+		self.anotherFilenameLabel.text = delta.newFile.path;
 		
 	} else {
+		self.symbolLabel.textColor = UIColor.whiteColor;
 		self.filenameLabel.textColor = UIColor.whiteColor;
+		
+		self.anotherSymbolLabel.textColor = UIColor.lightGrayColor;
 		self.anotherFilenameLabel.textColor = UIColor.lightGrayColor;
 		
-		self.filenameLabel.text = [self shortFilePathFromFullPath:delta.oldFile.path];
-		self.anotherFilenameLabel.text = [self shortFilePathFromFullPath:delta.newFile.path];
+		self.symbolLabel.text = nil;
+		self.filenameLabel.text = delta.oldFile.path;
+		
+		self.anotherSymbolLabel.text = nil;
+		self.anotherFilenameLabel.text = delta.newFile.path;
 	}
 }
 

@@ -27,7 +27,7 @@
 - (void)loadDelta:(GTDiffDelta *)delta {
 	self.graph.delta = delta;
 	
-	self.filenameLabel.text = delta.newFile.path.lastPathComponent;
+	self.filenameLabel.text = delta.newFile.path;
 	
 	NSString *fmt = 1 == delta.addedLinesCount ? @"%d addition" : @"%d additions";
 	self.additionsLabel.text = [NSString stringWithFormat:fmt, delta.addedLinesCount];

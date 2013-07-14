@@ -30,9 +30,14 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 		}
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[self loadStatsHeadline];
+			BOOL hasStatsToShow = _statsCommitsCount > 0;
 			
-			[self reloadStatsCommitsWithMode:DACommitsListByAuthorMode];
+			if (hasStatsToShow) {
+				[self loadStatsHeadline];
+				[self reloadStatsCommitsWithMode:DACommitsListByAuthorMode];
+			} else {
+				[self setStatsContainerMode:DAStatsHiddenMode animated:NO];
+			}
 			
 			[self setPullingViewVisible:NO animated:YES];
 			[self addForgetButton];

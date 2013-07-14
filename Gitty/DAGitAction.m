@@ -73,19 +73,16 @@ int cred_acquire_ssh(git_cred **out,
 					 unsigned int allowed_types,
 					 void *payload)
 {
+	DASshKeyInfo *keysInfo = nil;
+	
 	DAGitServer *server = (__bridge DAGitServer *)(payload);
-	if (!server) {
-		[Logger error:@"nil authentication server specified."];
-		return GIT_ENOTFOUND;
+	if (server) {
+		keysInfo = [DASshCredentials.manager keysForServer:server];
+	} else {
+		keysInfo = DASshCredentials.manager.globalKeys;
 	}
 	
 #ifdef GIT_SSH
-	DASshKeyInfo *keysInfo = [DASshCredentials.manager keysForServer:server];
-	if (!keysInfo) {
-		[Logger error:@"Invalid ssh keys info specified. %s", __PRETTY_FUNCTION__];
-		return GIT_ERROR;
-	}
-	
 	NSString *passphrase = keysInfo.passphrase;
 	
 	NSString *publicKeyPath = keysInfo.publicKeyPath;

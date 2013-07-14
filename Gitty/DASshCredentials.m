@@ -27,15 +27,23 @@ static NSString *ZipExtension = @"zip";
 }
 
 - (BOOL)hasSshKeypairGlobalSupport {
-	BOOL isPublicKeyExistent = [self.app.fs isFileExistent:DASshKeyInfo.globalKeysInfo.publicKeyPath];
-	BOOL isPrivateKeyExistent = [self.app.fs isFileExistent:DASshKeyInfo.globalKeysInfo.publicKeyPath];
+	DASshKeyInfo *info = DASshKeyInfo.globalKeysInfo;
 	
-	// TODO: Check passphrase eixsts for global keys.
+	BOOL isPublicKeyExistent = [self.app.fs isFileExistent:info.publicKeyPath];
+	BOOL isPrivateKeyExistent = [self.app.fs isFileExistent:info.publicKeyPath];
+	
+	// TODO: Check passphrase exists for global keys.
 	return isPublicKeyExistent && isPrivateKeyExistent;
 }
 
 - (BOOL)hasSshKeypairSupportForServer:(DAGitServer *)server {
-	return NO;
+	DASshKeyInfo *info = [DASshKeyInfo keysInfoForServer:server];
+
+	BOOL isPublicKeyExistent = [self.app.fs isFileExistent:info.publicKeyPath];
+	BOOL isPrivateKeyExistent = [self.app.fs isFileExistent:info.publicKeyPath];
+	
+	// TODO: Check passphrase exists for global keys.
+	return isPublicKeyExistent && isPrivateKeyExistent;
 }
 
 - (DASshKeyInfo *)globalKeys {
@@ -43,8 +51,7 @@ static NSString *ZipExtension = @"zip";
 }
 
 - (DASshKeyInfo *)keysForServer:(DAGitServer *)server {
-	// TODO: impl keysForServer:
-	return self.globalKeys;
+	return [DASshKeyInfo keysInfoForServer:server];
 }
 
 - (void)scanNewKeyArchives {

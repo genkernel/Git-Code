@@ -78,8 +78,13 @@
 	}
 	
 	BOOL isSSH = [server.transferProtocol isEqualToString:SshTransferProtocol];
-	id payloadObject = isSSH ? server : user;
 	git_cred_acquire_cb auth_cb = isSSH ? cred_acquire_ssh : cred_acquire_userpass;
+	
+	id payloadObject = user;
+	if (isSSH) {
+		BOOL hasServerKeys = [DASshCredentials.manager hasSshKeypairSupportForServer:server];
+		payloadObject = hasServerKeys ? server : nil;
+	}
 	
 	NSError *err = nil;
 	_clonedRepo = [GTRepository cloneFromURL:remoteURL toWorkingDirectory:url

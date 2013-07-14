@@ -50,7 +50,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 	
 	NSString *dateString = [self.dayOfWeekFormatter stringFromDate:todayDate];
 	int today = dateString.intValue;
-//	[Logger info:@"Today.dayOfWeek: %d", today];
+	[Logger info:@"Today.dayOfWeek: %d", today];
 	
 	BOOL isFirstDayOfWeek = 2 == today;
 	NSTimeInterval interval = isFirstDayOfWeek ? -2 * OneDayInterval : -OneDayInterval;

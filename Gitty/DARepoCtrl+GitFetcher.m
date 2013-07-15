@@ -66,7 +66,7 @@
 		[self.pullingField setProgress:percent progressColor:UIColor.acceptingGreenColor backgroundColor:UIColor.blackColor];
 	};
 	delegate.finishBlock = ^(DAGitAction *pull, NSError *err){
-		if (err) {
+		if (err && GIT_EEXISTS != err.code) {
 			// Load stats anyway if nothing was updated.
 			[self loadStats];
 			

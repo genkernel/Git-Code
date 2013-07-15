@@ -199,7 +199,8 @@
 	[cell setShowsTopCellSeparator:indexPath.row > 0];
 	
 	if (isAuthorMode) {
-		GTBranch *branch = self.repoCtrl.branches[commit.shortSha];
+		NSString *addr = [NSString stringWithFormat:@"0x%X", (int)commit];
+		GTBranch *branch = self.repoCtrl.branches[addr];
 		[((DACommitBranchCell *)cell) loadBranch:branch];
 	}
 	

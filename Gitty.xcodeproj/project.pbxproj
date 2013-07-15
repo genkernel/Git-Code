@@ -53,6 +53,8 @@
 		18184B6017555AB5001C58D8 /* DABaseCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18184B5F17555AB5001C58D8 /* DABaseCtrl.m */; };
 		18184B6717556968001C58D8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18184B6617556968001C58D8 /* libz.dylib */; };
 		181A6F59178B696D002CA3BE /* DASshCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A6F58178B696D002CA3BE /* DASshCredentials.m */; };
+		1825DC9517947F9B00FE5193 /* DAAlertQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1825DC9417947F9B00FE5193 /* DAAlertQueue.m */; };
+		1825DC981794808A00FE5193 /* DAAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 1825DC971794808A00FE5193 /* DAAlert.m */; };
 		18336051178EBD75000C1E52 /* authors.png in Resources */ = {isa = PBXBuildFile; fileRef = 1833604F178EBD75000C1E52 /* authors.png */; };
 		18336052178EBD75000C1E52 /* authors@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18336050178EBD75000C1E52 /* authors@2x.png */; };
 		18336055178ECFEC000C1E52 /* branches.png in Resources */ = {isa = PBXBuildFile; fileRef = 18336053178ECFEC000C1E52 /* branches.png */; };
@@ -313,6 +315,10 @@
 		181993D7176D3D1000D4BE1F /* DAGitServer+Creation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DAGitServer+Creation.m"; sourceTree = "<group>"; };
 		181A6F57178B696D002CA3BE /* DASshCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DASshCredentials.h; sourceTree = "<group>"; };
 		181A6F58178B696D002CA3BE /* DASshCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DASshCredentials.m; sourceTree = "<group>"; };
+		1825DC9317947F9B00FE5193 /* DAAlertQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAlertQueue.h; sourceTree = "<group>"; };
+		1825DC9417947F9B00FE5193 /* DAAlertQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAlertQueue.m; sourceTree = "<group>"; };
+		1825DC961794808A00FE5193 /* DAAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAlert.h; sourceTree = "<group>"; };
+		1825DC971794808A00FE5193 /* DAAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAlert.m; sourceTree = "<group>"; };
 		1833604F178EBD75000C1E52 /* authors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = authors.png; path = Stats/authors.png; sourceTree = "<group>"; };
 		18336050178EBD75000C1E52 /* authors@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "authors@2x.png"; path = "Stats/authors@2x.png"; sourceTree = "<group>"; };
 		18336053178ECFEC000C1E52 /* branches.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = branches.png; path = Stats/branches.png; sourceTree = "<group>"; };
@@ -975,6 +981,17 @@
 				18F86F1A17931A4D0055900C /* DASshKeyInfo.m */,
 			);
 			name = SSHCredentials;
+			sourceTree = "<group>";
+		};
+		1825DC8B17947F6300FE5193 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				1825DC9317947F9B00FE5193 /* DAAlertQueue.h */,
+				1825DC9417947F9B00FE5193 /* DAAlertQueue.m */,
+				1825DC961794808A00FE5193 /* DAAlert.h */,
+				1825DC971794808A00FE5193 /* DAAlert.m */,
+			);
+			name = Alert;
 			sourceTree = "<group>";
 		};
 		18336043178EBD6A000C1E52 /* Stats */ = {
@@ -1903,6 +1920,7 @@
 		18D9EA3417554BE000454F3C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1825DC8B17947F6300FE5193 /* Alert */,
 				18184B5E17555AB5001C58D8 /* DABaseCtrl.h */,
 				18184B5F17555AB5001C58D8 /* DABaseCtrl.m */,
 				18933CEF1755395D00E92183 /* MainStoryboard.storyboard */,
@@ -2348,6 +2366,8 @@
 				1810994217909BFB0018AAB4 /* DACommitBranchCell.m in Sources */,
 				181099491790A6B20018AAB4 /* DATitleHeader.m in Sources */,
 				18F86F1B17931A4E0055900C /* DASshKeyInfo.m in Sources */,
+				1825DC9517947F9B00FE5193 /* DAAlertQueue.m in Sources */,
+				1825DC981794808A00FE5193 /* DAAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -130,7 +130,8 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 		}
 		[commits addObject:commit];
 		
-		_branches[commit.shortSha] = branch;
+		NSString *addr = [NSString stringWithFormat:@"0x%X", (int)commit];
+		_branches[addr] = branch;
 		_authors[commit.author.name] = commit.author;
 	}];
 	
@@ -159,6 +160,8 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 	NSUInteger headIdx = 0, insertIdx = 0;
 	NSArray *sourceBranch = [NSArray arrayWithArray:branch];
 	
+	NSMutableArray *tailCommits = [NSMutableArray arrayWithCapacity:commits.count];
+	
 	for (GTCommit *commit in commits) {
 		if (headIdx == sourceBranch.count) {
 			[branch addObject:commit];
@@ -170,6 +173,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 		NSComparisonResult result = [commit.commitDate compare:head.commitDate];
 		if (NSOrderedAscending == result) {
 //			[Logger info:@"%@ < %@", commit.shortSha, head.shortSha];
+			[tailCommits addObject:commit];
 			headIdx++;
 		} else {
 //			[Logger info:@"%@ >= %@", commit.shortSha, head.shortSha];
@@ -177,6 +181,8 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 			insertIdx++;
 		}
 	}
+	
+	[branch addObjectsFromArray:tailCommits];
 }
 
 #pragma mark Properties

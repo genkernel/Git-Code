@@ -58,7 +58,7 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 
 - (NSString *)passphrase {
 	// TODO: impl passphrase.
-	return @"superuser!";
+	return @"livetell";
 }
 
 @end

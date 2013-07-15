@@ -8,6 +8,10 @@
 
 #import "DAAlertQueue.h"
 
+@interface DAAlertQueue ()
+@property (strong, nonatomic, readonly) NSOperationQueue *queue;
+@end
+
 @implementation DAAlertQueue
 
 + (instancetype)manager {
@@ -19,8 +23,17 @@
 	return instance;
 }
 
+- (id)init {
+	self = [super init];
+	if (self) {
+		_queue = NSOperationQueue.new;
+		self.queue.maxConcurrentOperationCount = 1;
+	}
+	return self;
+}
+
 - (void)enqueueAlert:(DAAlert *)alert {
-	
+	[self.queue addOperation:alert];
 }
 
 @end

@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-//	DAMessageAlert,
+	DAMessageAlert,
 	DAPasswordAlert
 } DAAlertTypes;
 
-@interface DAAlert : NSObject
-//+ (instancetype)alertWithTitle:(NSString *)title message:(NSString *)message;
+@interface DAAlert : NSOperation <UIAlertViewDelegate>
++ (instancetype)alertWithTitle:(NSString *)title message:(NSString *)message;
++ (instancetype)errorAlertWithMessage:(NSString *)message;
+
 + (instancetype)passwordAlertWithTitle:(NSString *)title message:(NSString *)message;
 
 @property (readonly) DAAlertTypes type;

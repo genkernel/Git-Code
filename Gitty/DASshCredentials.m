@@ -12,10 +12,11 @@ static NSString *ZipExtension = @"zip";
 
 @interface DASshCredentials ()
 @property (strong, nonatomic, readonly) UIApplication *app;
+@property (strong, nonatomic, readonly) DAAlertQueue *alert;
 @end
 
 @implementation DASshCredentials
-@dynamic app;
+@dynamic app, alert;
 
 + (instancetype)manager {
 	static id instance = nil;
@@ -68,7 +69,9 @@ static NSString *ZipExtension = @"zip";
 		
 		DAGitServer *server = DAServerManager.manager.namedList[name];
 		if (!server) {
-			[Logger error:@"Found archive '%@' but no Server with the same name exists.", fileName];
+			NSString *fmt = NSLocalizedString(@"Found ssh archive '%@' but no Server with the same name exists.", nil);
+			
+			[self showErrorMessage:[NSString stringWithFormat:fmt, fileName]];
 			continue;
 		}
 		
@@ -87,17 +90,30 @@ static NSString *ZipExtension = @"zip";
 	[arch UnzipFileTo:path.stringByDeletingPathExtension overWrite:YES];
 	[arch UnzipCloseFile];
 	
-	if (arch.unzippedFiles.count < 2) {
+	if (YES || arch.unzippedFiles.count < 2) {
 		[Logger error:@"Failed to unzip keys from path: %@", path];
+		
+		NSString *fmt = NSLocalizedString(@"Failed to unzip & install SSH keys from archive: %@", nil);
+		NSString *message = [NSString stringWithFormat:fmt, path.lastPathComponent];
+		[self showErrorMessage:message];
 	}
 	
 	[self.app.fs removeItemAtPath:path error:nil];
+}
+
+- (void)showErrorMessage:(NSString *)message {
+	DAAlert *alert = [DAAlert errorAlertWithMessage:message];
+	[self.alert enqueueAlert:alert];
 }
 
 #pragma mark Properties
 
 - (UIApplication *)app {
 	return UIApplication.sharedApplication;
+}
+
+- (DAAlertQueue *)alert {
+	return DAAlertQueue.manager;
 }
 
 @end

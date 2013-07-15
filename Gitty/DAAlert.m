@@ -8,11 +8,97 @@
 
 #import "DAAlert.h"
 
-@implementation DAAlert
-//+ (instancetype)alertWithTitle:(NSString *)title message:(NSString *)message;
+@interface DAAlert ()
+@property (strong, nonatomic) NSString *title, *message;
+
+@property () BOOL isExecuting, isFinished;
+@end
+
+@implementation DAAlert {
+	BOOL _isExecuting, _isFinished;
+}
+@synthesize isFinished = _isFinished;
+@synthesize isExecuting = _isExecuting;
+
+- (id)initWithType:(DAAlertTypes)type {
+	self = [self init];
+	if (self) {
+		_type = type;
+	}
+	return self;
+}
+
++ (instancetype)alertWithTitle:(NSString *)title message:(NSString *)message {
+	DAAlert *alert = [DAAlert.alloc initWithType:DAMessageAlert];
+	
+	alert.title = title;
+	alert.message = message;
+	
+	return alert;
+}
+
++ (instancetype)errorAlertWithMessage:(NSString *)message {
+	return [self alertWithTitle:NSLocalizedString(@"Error", nil) message:message];
+}
 
 + (instancetype)passwordAlertWithTitle:(NSString *)title message:(NSString *)message {
 	return self.new;
+}
+
+#pragma mark Concurrent operation
+
+- (void)start {
+	dispatch_async(dispatch_get_main_queue(), ^{
+		_isExecuting = YES;
+		[self showAlert];
+	});
+}
+
+- (BOOL)isConcurrent {
+	return YES;
+}
+
+- (BOOL)isExecuting {
+	return _isExecuting;
+}
+
+- (void)setIsExecuting:(BOOL)executing {
+	[self willChangeValueForKey:isExecutingKeyPath];
+	_isExecuting = executing;
+	[self didChangeValueForKey:isExecutingKeyPath];
+}
+
+- (BOOL)isFinished {
+	return _isFinished;
+}
+
+- (void)setIsFinished:(BOOL)finished {
+	[self willChangeValueForKey:isFinishedKeyPath];
+	_isFinished = finished;
+	[self didChangeValueForKey:isFinishedKeyPath];
+}
+
+#pragma mark Presenting alerts
+
+- (void)showAlert {
+	if (DAMessageAlert == self.type) {
+		[self showMessageAlert];
+	} else {
+		[Logger error:@"Failed to present Alert of Unknown type: %d", self.type];
+	}
+}
+
+- (void)showMessageAlert {
+	UIAlertView *alert = [UIAlertView.alloc initWithTitle:self.title message:self.message delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil];
+	[alert show];
+}
+
+#pragma mark UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+//	[self setValue:@(YES) forKey:isFinishedKeyPath];
+	self.isExecuting = NO;
+	self.isFinished = YES;
 }
 
 @end

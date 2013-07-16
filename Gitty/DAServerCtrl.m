@@ -53,14 +53,18 @@
 - (void)loadServer:(DAGitServer *)server {
 	_server = server;
 	
-	BOOL isGithubServer = 0 == [self.servers.list indexOfObject:server];
+	[self reloadCurrentServer];
+}
+
+- (void)reloadCurrentServer {
+	BOOL isGithubServer = 0 == [self.servers.list indexOfObject:self.server];
 	self.repoField.inputAccessoryView = isGithubServer ? self.repoAccessoryView : nil;
 	
-	self.serverName.text = server.name;
-	self.repoField.text = server.recentRepoPath;
-	self.logoIcon.image = [UIImage imageNamed:server.logoIconName];
+	self.serverName.text = self.server.name;
+	self.repoField.text = self.server.recentRepoPath;
+	self.logoIcon.image = [UIImage imageNamed:self.server.logoIconName];
 	
-	[self loadProtocolsWithServer:server];
+	[self loadProtocolsWithServer:self.server];
 	[self resetBaseUrlLabel];
 }
 

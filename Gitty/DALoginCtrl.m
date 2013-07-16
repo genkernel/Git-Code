@@ -77,6 +77,13 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	[self.pager reloadData];
 	
 	self.pager.minSwitchDistance = self.view.width / 3.;
+	
+	__weak DALoginCtrl *ref = self;
+	[NSNotificationCenter.defaultCenter addObserverForName:DASSHKeysStateChanged object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification *note) {
+		for (DAServerCtrl *ctrl in ref.ctrls) {
+			[ctrl reloadCurrentServer];
+		}
+	}];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

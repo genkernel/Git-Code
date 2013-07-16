@@ -9,6 +9,8 @@
 #import "DASshKeyInfo.h"
 #import "STKeychain.h"
 
+NSString *DASSHKeysStateChanged = @"DASSHKeysStateChanged";
+
 static NSString *PrivateKeyFileName = @"id_rsa";
 static NSString *PublicKeyFileName = @"id_rsa.pub";
 
@@ -99,6 +101,8 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 		[Logger info:@"SSH passphrase editing skiped with buttonIndex: %d", buttonIndex];
 		[self deleteKeyFiles];
 	}
+	
+	[NSNotificationCenter.defaultCenter postNotificationName:DASSHKeysStateChanged object:self];
 }
 
 @end

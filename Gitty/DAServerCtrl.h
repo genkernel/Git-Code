@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UIToolbar *repoAccessoryView;
 
 - (void)loadServer:(DAGitServer *)server;
+- (void)reloadCurrentServer;
 - (void)startProgressing;
 - (void)setProgress:(CGFloat)progress;
 - (void)resetProgress;

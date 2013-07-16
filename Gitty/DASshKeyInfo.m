@@ -84,6 +84,7 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 		[self saveNewPassphrase:textField.text];
 	} else {
 		[Logger info:@"SSH passphrase editing skiped with buttonIndex: %d", buttonIndex];
+		// TODO: delete key files as passphrase editing canceled.
 	}
 }
 

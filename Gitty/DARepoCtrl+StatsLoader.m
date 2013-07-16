@@ -230,7 +230,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 		formatter = NSDateFormatter.new;
 		formatter.locale = NSLocale.currentLocale;
 		formatter.timeZone = NSTimeZone.localTimeZone;
-		formatter.dateFormat = @"d MMM ''yy";
+		formatter.dateFormat = @"d MMM";
 	});
 	return formatter;
 }

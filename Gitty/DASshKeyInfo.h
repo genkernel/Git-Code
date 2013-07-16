@@ -9,7 +9,7 @@
 #import "DAGitServer.h"
 
 @interface DASshKeyInfo : NSObject <UIAlertViewDelegate>
-+ (instancetype)globalKeysInfo;
+//+ (instancetype)globalKeysInfo;
 + (instancetype)keysInfoForServer:(DAGitServer *)server;
 
 @property (strong, nonatomic, readonly) NSString *publicKeyPath, *privateKeyPath, *passphrase;

@@ -79,7 +79,8 @@ int cred_acquire_ssh(git_cred **out,
 	if (server) {
 		keysInfo = [DASshCredentials.manager keysForServer:server];
 	} else {
-		keysInfo = DASshCredentials.manager.globalKeys;
+		return GIT_ENOTFOUND;
+//		keysInfo = DASshCredentials.manager.globalKeys;
 	}
 	
 #ifdef GIT_SSH

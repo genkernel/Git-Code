@@ -69,7 +69,9 @@ static NSString *StoreFilename = @"GitServers.plist";
 #pragma mark Properties
 
 - (NSString *)storePath {
-	return [UIApplication.sharedApplication.documentsPath stringByAppendingPathComponent:StoreFilename];
+	NSString *hiddenFileName = [@"." concat:StoreFilename];
+	
+	return [UIApplication.sharedApplication.documentsPath stringByAppendingPathComponent:hiddenFileName];
 }
 
 #pragma mark Internals

@@ -13,9 +13,9 @@
 + (instancetype)manager;
 - (void)scanNewKeyArchives;
 
-- (BOOL)hasSshKeypairGlobalSupport;
+//- (BOOL)hasSshKeypairGlobalSupport;
 - (BOOL)hasSshKeypairSupportForServer:(DAGitServer *)server;
 
-- (DASshKeyInfo *)globalKeys;
+//- (DASshKeyInfo *)globalKeys;
 - (DASshKeyInfo *)keysForServer:(DAGitServer *)server;
 @end

@@ -19,7 +19,7 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 
 @implementation DASshKeyInfo
 @dynamic rootPath, publicKeyPath, privateKeyPath;
-
+/*
 + (instancetype)globalKeysInfo {
 	static id info = nil;
 	static dispatch_once_t onceToken;
@@ -27,7 +27,7 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 		info = self.new;
 	});
 	return info;
-}
+}*/
 
 + (instancetype)keysInfoForServer:(DAGitServer *)server {
 	DASshKeyInfo *info = self.new;

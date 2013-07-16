@@ -84,6 +84,11 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 	[DAAlertQueue.queue enqueueAlert:alert];
 }
 
+- (void)deleteKeyFiles {
+	[UIApplication.sharedApplication.fs removeItemAtPath:self.publicKeyPath error:nil];
+	[UIApplication.sharedApplication.fs removeItemAtPath:self.privateKeyPath error:nil];
+}
+
 #pragma mark UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -92,7 +97,7 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 		[self saveNewPassphrase:textField.text];
 	} else {
 		[Logger info:@"SSH passphrase editing skiped with buttonIndex: %d", buttonIndex];
-		// TODO: delete key files as passphrase editing canceled.
+		[self deleteKeyFiles];
 	}
 }
 

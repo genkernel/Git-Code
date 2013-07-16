@@ -40,12 +40,10 @@
 		1812266D1784CE2D00628C2F /* bitbucket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1812266C1784CE2D00628C2F /* bitbucket@2x.png */; };
 		181226741784D0BA00628C2F /* repo-forget.png in Resources */ = {isa = PBXBuildFile; fileRef = 181226711784D0BA00628C2F /* repo-forget.png */; };
 		181226761784D48500628C2F /* repo-forget@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181226751784D48500628C2F /* repo-forget@2x.png */; };
-		181240EC175BCD3C00E6F571 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 181240E9175BCD3C00E6F571 /* Icon-72.png */; };
 		181240ED175BCD3C00E6F571 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 181240EA175BCD3C00E6F571 /* Icon.png */; };
 		181240EE175BCD3C00E6F571 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181240EB175BCD3C00E6F571 /* Icon@2x.png */; };
 		181240F5175BD21100E6F571 /* DARepoCtrl+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 181240F4175BD21100E6F571 /* DARepoCtrl+Animation.m */; };
 		181429DC178901E100347E1B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181429DB178901E100347E1B /* MessageUI.framework */; };
-		18170917175BCBB6002A2D93 /* git-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18170915175BCBB6002A2D93 /* git-black@2x.png */; };
 		1817091E175BCBEA002A2D93 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1817091B175BCBEA002A2D93 /* Default-568h@2x.png */; };
 		1817091F175BCBEA002A2D93 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1817091C175BCBEA002A2D93 /* Default.png */; };
 		18170920175BCBEA002A2D93 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1817091D175BCBEA002A2D93 /* Default@2x.png */; };
@@ -99,6 +97,9 @@
 		18706EDB1763B3B40046A2A6 /* DADiffDeltaGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18706EDA1763B3B40046A2A6 /* DADiffDeltaGraphView.m */; };
 		18706EDF1763ECF10046A2A6 /* DADeltaContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18706EDE1763ECF10046A2A6 /* DADeltaContentCell.xib */; };
 		18706EE31764075D0046A2A6 /* UIColor+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 18706EE21764075D0046A2A6 /* UIColor+Gitty.m */; };
+		187A29D11795BEC700FE9F19 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 187A29D01795BEC700FE9F19 /* Icon-72.png */; };
+		187A29DF1795DFD400FE9F19 /* STKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 187A29DE1795DFD400FE9F19 /* STKeychain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		187A29E21795E05500FE9F19 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187A29E11795E05500FE9F19 /* Security.framework */; };
 		187C86211781F4A800703592 /* btn-lightgray.png in Resources */ = {isa = PBXBuildFile; fileRef = 187C86201781F4A800703592 /* btn-lightgray.png */; };
 		187C862B1782451D00703592 /* DAProtocolsContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C862A1782451C00703592 /* DAProtocolsContainer.m */; };
 		187D2D751788529000F9126E /* DAServerCtrl+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 187D2D741788529000F9126E /* DAServerCtrl+Animation.m */; };
@@ -131,7 +132,6 @@
 		1890172A175AC47000F19CE4 /* DismissPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18901708175AC47000F19CE4 /* DismissPopupView.m */; };
 		1890172B175AC47000F19CE4 /* Label.m in Sources */ = {isa = PBXBuildFile; fileRef = 1890170B175AC47000F19CE4 /* Label.m */; };
 		18901730175AC47000F19CE4 /* TabBarCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18901717175AC47000F19CE4 /* TabBarCtrl.m */; };
-		18901731175AC47000F19CE4 /* TreeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1890171B175AC47000F19CE4 /* TreeTableView.m */; };
 		18901732175AC47000F19CE4 /* UIApplication+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1890171E175AC47000F19CE4 /* UIApplication+UI.m */; };
 		18901734175AC47000F19CE4 /* ViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18901723175AC47000F19CE4 /* ViewCtrl.m */; };
 		18901739175AC4C700F19CE4 /* Logger.m in Sources */ = {isa = PBXBuildFile; fileRef = 18901738175AC4C700F19CE4 /* Logger.m */; };
@@ -297,13 +297,11 @@
 		1812266C1784CE2D00628C2F /* bitbucket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bitbucket@2x.png"; sourceTree = "<group>"; };
 		181226711784D0BA00628C2F /* repo-forget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "repo-forget.png"; sourceTree = "<group>"; };
 		181226751784D48500628C2F /* repo-forget@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "repo-forget@2x.png"; sourceTree = "<group>"; };
-		181240E9175BCD3C00E6F571 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		181240EA175BCD3C00E6F571 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		181240EB175BCD3C00E6F571 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		181240F3175BD21100E6F571 /* DARepoCtrl+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DARepoCtrl+Animation.h"; sourceTree = "<group>"; };
 		181240F4175BD21100E6F571 /* DARepoCtrl+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DARepoCtrl+Animation.m"; sourceTree = "<group>"; };
 		181429DB178901E100347E1B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		18170915175BCBB6002A2D93 /* git-black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "git-black@2x.png"; sourceTree = "<group>"; };
 		1817091B175BCBEA002A2D93 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1817091C175BCBEA002A2D93 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		1817091D175BCBEA002A2D93 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -396,6 +394,10 @@
 		18706EDE1763ECF10046A2A6 /* DADeltaContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DADeltaContentCell.xib; sourceTree = "<group>"; };
 		18706EE11764075D0046A2A6 /* UIColor+Gitty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Gitty.h"; sourceTree = "<group>"; };
 		18706EE21764075D0046A2A6 /* UIColor+Gitty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Gitty.m"; sourceTree = "<group>"; };
+		187A29D01795BEC700FE9F19 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		187A29DD1795DFD400FE9F19 /* STKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKeychain.h; sourceTree = "<group>"; };
+		187A29DE1795DFD400FE9F19 /* STKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKeychain.m; sourceTree = "<group>"; };
+		187A29E11795E05500FE9F19 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		187C86201781F4A800703592 /* btn-lightgray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-lightgray.png"; sourceTree = "<group>"; };
 		187C86291782451C00703592 /* DAProtocolsContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAProtocolsContainer.h; sourceTree = "<group>"; };
 		187C862A1782451C00703592 /* DAProtocolsContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAProtocolsContainer.m; sourceTree = "<group>"; };
@@ -458,8 +460,6 @@
 		1890170B175AC47000F19CE4 /* Label.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Label.m; sourceTree = "<group>"; };
 		18901716175AC47000F19CE4 /* TabBarCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarCtrl.h; sourceTree = "<group>"; };
 		18901717175AC47000F19CE4 /* TabBarCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarCtrl.m; sourceTree = "<group>"; };
-		1890171A175AC47000F19CE4 /* TreeTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeTableView.h; sourceTree = "<group>"; };
-		1890171B175AC47000F19CE4 /* TreeTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeTableView.m; sourceTree = "<group>"; };
 		1890171C175AC47000F19CE4 /* UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UI.h; sourceTree = "<group>"; };
 		1890171D175AC47000F19CE4 /* UIApplication+UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+UI.h"; sourceTree = "<group>"; };
 		1890171E175AC47000F19CE4 /* UIApplication+UI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+UI.m"; sourceTree = "<group>"; };
@@ -787,6 +787,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187A29E21795E05500FE9F19 /* Security.framework in Frameworks */,
 				18F86F18179318120055900C /* libZipArchive-ios.a in Frameworks */,
 				18CF75B91788E8EE00209141 /* libxml2.2.dylib in Frameworks */,
 				18184B6717556968001C58D8 /* libz.dylib in Frameworks */,
@@ -942,11 +943,10 @@
 		18170914175BCBB6002A2D93 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				181240E9175BCD3C00E6F571 /* Icon-72.png */,
+				187A29D01795BEC700FE9F19 /* Icon-72.png */,
 				181240EA175BCD3C00E6F571 /* Icon.png */,
 				181240EB175BCD3C00E6F571 /* Icon@2x.png */,
 				18170921175BCC1B002A2D93 /* Icon-72@2x.png */,
-				18170915175BCBB6002A2D93 /* git-black@2x.png */,
 			);
 			name = Icons;
 			path = Res/Icons;
@@ -1023,6 +1023,7 @@
 		183DA6F3175549BC00140DA8 /* Submodules */ = {
 			isa = PBXGroup;
 			children = (
+				187A29DC1795DFD400FE9F19 /* STUtils */,
 				18F86ECA1793179E0055900C /* ZipArchive */,
 				1861886A176E0BBF00666DFB /* PagerView */,
 				183DA6F4175549D100140DA8 /* ObjectiveGitFramework.xcodeproj */,
@@ -1174,6 +1175,24 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		187A29DC1795DFD400FE9F19 /* STUtils */ = {
+			isa = PBXGroup;
+			children = (
+				187A29E01795DFE400FE9F19 /* Security */,
+			);
+			name = STUtils;
+			path = Submodules/STUtils/Security;
+			sourceTree = "<group>";
+		};
+		187A29E01795DFE400FE9F19 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				187A29DD1795DFD400FE9F19 /* STKeychain.h */,
+				187A29DE1795DFD400FE9F19 /* STKeychain.m */,
+			);
+			name = Security;
+			sourceTree = "<group>";
+		};
 		18878CAA17629E03008BF232 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1310,8 +1329,6 @@
 				18901706175AC47000F19CE4 /* DismissPopup */,
 				18901709175AC47000F19CE4 /* Label */,
 				18901715175AC47000F19CE4 /* TabBarCtrl */,
-				18901718175AC47000F19CE4 /* TableView */,
-				18901719175AC47000F19CE4 /* TreeTableView */,
 				1890171C175AC47000F19CE4 /* UI.h */,
 				1890173A175AC54000F19CE4 /* UIView+Helper.h */,
 				1890173B175AC54000F19CE4 /* UIView+Helper.m */,
@@ -1391,22 +1408,6 @@
 			path = TabBarCtrl;
 			sourceTree = "<group>";
 		};
-		18901718175AC47000F19CE4 /* TableView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TableView;
-			sourceTree = "<group>";
-		};
-		18901719175AC47000F19CE4 /* TreeTableView */ = {
-			isa = PBXGroup;
-			children = (
-				1890171A175AC47000F19CE4 /* TreeTableView.h */,
-				1890171B175AC47000F19CE4 /* TreeTableView.m */,
-			);
-			path = TreeTableView;
-			sourceTree = "<group>";
-		};
 		18901735175AC4BA00F19CE4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -1451,6 +1452,7 @@
 		18933CD61755395D00E92183 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				187A29E11795E05500FE9F19 /* Security.framework */,
 				181429DB178901E100347E1B /* MessageUI.framework */,
 				18CF75B81788E8EE00209141 /* libxml2.2.dylib */,
 				18CF75B61788E8CA00209141 /* libDTHTMLParser_iOS.a */,
@@ -2192,14 +2194,12 @@
 				18933CF11755395D00E92183 /* MainStoryboard.storyboard in Resources */,
 				18BAA8641758016400154019 /* GitServers.plist in Resources */,
 				1804FAA5176E768F0080AB50 /* Git-Icon.png in Resources */,
-				18170917175BCBB6002A2D93 /* git-black@2x.png in Resources */,
 				1804FAA3176E71500080AB50 /* DANewServerCtrl.xib in Resources */,
 				1817091E175BCBEA002A2D93 /* Default-568h@2x.png in Resources */,
 				1817091F175BCBEA002A2D93 /* Default.png in Resources */,
 				1804FAA4176E768D0080AB50 /* Git-Icon@2x.png in Resources */,
 				18170920175BCBEA002A2D93 /* Default@2x.png in Resources */,
 				18170922175BCC1B002A2D93 /* Icon-72@2x.png in Resources */,
-				181240EC175BCD3C00E6F571 /* Icon-72.png in Resources */,
 				1804FA87176E16210080AB50 /* DAServerCtrl.xib in Resources */,
 				181240ED175BCD3C00E6F571 /* Icon.png in Resources */,
 				181240EE175BCD3C00E6F571 /* Icon@2x.png in Resources */,
@@ -2262,6 +2262,7 @@
 				1810993E1790746C0018AAB4 /* DAAuthorHeader.xib in Resources */,
 				1810994417909C140018AAB4 /* DACommitBranchCell.xib in Resources */,
 				1810994B1790A6CA0018AAB4 /* DATitleHeader.xib in Resources */,
+				187A29D11795BEC700FE9F19 /* Icon-72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2326,7 +2327,6 @@
 				1890172B175AC47000F19CE4 /* Label.m in Sources */,
 				18901730175AC47000F19CE4 /* TabBarCtrl.m in Sources */,
 				1804FAAE176E79160080AB50 /* DAReachabilityManager.m in Sources */,
-				18901731175AC47000F19CE4 /* TreeTableView.m in Sources */,
 				18901732175AC47000F19CE4 /* UIApplication+UI.m in Sources */,
 				18901734175AC47000F19CE4 /* ViewCtrl.m in Sources */,
 				18901739175AC4C700F19CE4 /* Logger.m in Sources */,
@@ -2368,6 +2368,7 @@
 				18F86F1B17931A4E0055900C /* DASshKeyInfo.m in Sources */,
 				1825DC9517947F9B00FE5193 /* DAAlertQueue.m in Sources */,
 				1825DC981794808A00FE5193 /* DAAlert.m in Sources */,
+				187A29DF1795DFD400FE9F19 /* STKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -42,7 +42,12 @@
 }
 
 + (instancetype)passwordAlertWithTitle:(NSString *)title message:(NSString *)message {
-	return self.new;
+	DAAlert *alert = [DAAlert.alloc initWithType:DAPasswordAlert];
+	
+	alert.title = title;
+	alert.message = message;
+	
+	return alert;
 }
 
 #pragma mark Concurrent operation
@@ -83,6 +88,8 @@
 - (void)showAlert {
 	if (DAMessageAlert == self.type) {
 		[self showMessageAlert];
+	} else if (DAPasswordAlert == self.type) {
+		[self showPasswordAlert];
 	} else {
 		[Logger error:@"Failed to present Alert of Unknown type: %d", self.type];
 	}
@@ -90,15 +97,39 @@
 
 - (void)showMessageAlert {
 	UIAlertView *alert = [UIAlertView.alloc initWithTitle:self.title message:self.message delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil];
+	
+	alert.alertViewStyle = UIAlertViewStyleSecureTextInput;
+	
+	[alert show];
+}
+
+- (void)showPasswordAlert {
+	UIAlertView *alert = [UIAlertView.alloc initWithTitle:self.title message:self.message delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Ok", nil), nil];
+	alert.alertViewStyle = UIAlertViewStyleSecureTextInput;
+	
 	[alert show];
 }
 
 #pragma mark UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-//	[self setValue:@(YES) forKey:isFinishedKeyPath];
 	self.isExecuting = NO;
 	self.isFinished = YES;
+}
+
+#pragma mark Forwarding UIAlertViewDelegate
+
+- (BOOL)respondsToSelector:(SEL)sel {
+	if (@selector(alertView:didDismissWithButtonIndex:) == sel) {
+		[Logger info:@"alertView:didDismissWithButtonIndex: catched."];
+		return YES;
+	}
+	[Logger info:@"forwarding_test: %@", NSStringFromSelector(sel)];
+	return [self.delegate respondsToSelector:sel];
+}
+
+- (id)forwardingTargetForSelector:(SEL)sel {
+	return [self.delegate respondsToSelector:sel] ? self.delegate : nil;
 }
 
 @end

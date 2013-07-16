@@ -74,7 +74,10 @@
 	[self.protocolsContainer removeAllButtonsAndResetLayout];
 	
 	NSMutableSet *protocols = [NSMutableSet setWithArray:server.supportedProtocols];
-	if (DASshCredentials.manager.hasSshKeypairGlobalSupport) {
+	
+	BOOL isSshSupportedByServer = [DASshCredentials.manager hasSshKeypairSupportForServer:server];
+	BOOL isSshGloballySupported = DASshCredentials.manager.hasSshKeypairGlobalSupport;
+	if (isSshSupportedByServer || isSshGloballySupported) {
 		[protocols addObject:SshTransferProtocol];
 	}
 	

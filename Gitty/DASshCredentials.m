@@ -13,6 +13,8 @@ static NSString *ZipExtension = @"zip";
 @interface DASshCredentials ()
 @property (strong, nonatomic, readonly) UIApplication *app;
 @property (strong, nonatomic, readonly) DAAlertQueue *alert;
+
+@property (strong, nonatomic, readonly) NSMutableDictionary *cachedServerKeys;
 @end
 
 @implementation DASshCredentials
@@ -27,6 +29,14 @@ static NSString *ZipExtension = @"zip";
 	return instance;
 }
 
+- (id)init {
+	self = [super init];
+	if (self) {
+		_cachedServerKeys = NSMutableDictionary.new;
+	}
+	return self;
+}
+
 - (BOOL)hasSshKeypairGlobalSupport {
 	DASshKeyInfo *info = DASshKeyInfo.globalKeysInfo;
 	
@@ -38,7 +48,7 @@ static NSString *ZipExtension = @"zip";
 }
 
 - (BOOL)hasSshKeypairSupportForServer:(DAGitServer *)server {
-	DASshKeyInfo *info = [DASshKeyInfo keysInfoForServer:server];
+	DASshKeyInfo *info = [self keysForServer:server];
 
 	BOOL isPublicKeyExistent = [self.app.fs isFileExistent:info.publicKeyPath];
 	BOOL isPrivateKeyExistent = [self.app.fs isFileExistent:info.publicKeyPath];
@@ -52,7 +62,12 @@ static NSString *ZipExtension = @"zip";
 }
 
 - (DASshKeyInfo *)keysForServer:(DAGitServer *)server {
-	return [DASshKeyInfo keysInfoForServer:server];
+	DASshKeyInfo *key = self.cachedServerKeys[server.name];
+	if (!key) {
+		key = [DASshKeyInfo keysInfoForServer:server];
+		self.cachedServerKeys[server.name] = key;
+	}
+	return key;
 }
 
 - (void)scanNewKeyArchives {
@@ -84,21 +99,43 @@ static NSString *ZipExtension = @"zip";
 }
 
 - (void)unzipServerArchiveAtPath:(NSString *)path {
+	NSString *fileName = path.lastPathComponent;
+	NSString *serverName = fileName.stringByDeletingPathExtension;
+	
+	DAGitServer *server = DAServerManager.manager.namedList[serverName];
+	if (!server) {
+		NSString *fmt = NSLocalizedString(@"Found %@ archive but no server with %@ name exists.", nil);
+		[self showErrorMessage:[NSString stringWithFormat:fmt, fileName, serverName]];
+		return;
+	}
+	
 	ZipArchive *arch = [ZipArchive.alloc initWithFileManager:self.app.fs];
 	
 	[arch UnzipOpenFile:path];
 	[arch UnzipFileTo:path.stringByDeletingPathExtension overWrite:YES];
 	[arch UnzipCloseFile];
 	
-	if (YES || arch.unzippedFiles.count < 2) {
+	if (arch.unzippedFiles.count < 2) {
 		[Logger error:@"Failed to unzip keys from path: %@", path];
 		
 		NSString *fmt = NSLocalizedString(@"Failed to unzip & install SSH keys from archive: %@", nil);
-		NSString *message = [NSString stringWithFormat:fmt, path.lastPathComponent];
+		NSString *message = [NSString stringWithFormat:fmt, fileName];
 		[self showErrorMessage:message];
+	} else {
+		[self requestCredentialsForServer:server];
 	}
 	
 	[self.app.fs removeItemAtPath:path error:nil];
+}
+
+- (void)requestCredentialsForServer:(DAGitServer *)server {
+	DASshKeyInfo *item = [self keysForServer:server];
+	
+	NSString *message = NSLocalizedString(@"Passphrase required to install\nnew SSH keys.", nil);
+	
+	DAAlert *alert = [DAAlert passwordAlertWithTitle:server.name message:message];
+	alert.delegate = item;
+	[self.alert enqueueAlert:alert];
 }
 
 - (void)showErrorMessage:(NSString *)message {

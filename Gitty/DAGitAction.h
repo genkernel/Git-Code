@@ -19,7 +19,7 @@ extern int cred_acquire_ssh(git_cred **out, const char *url, const char *usernam
 @property (weak, nonatomic, readonly) DAGitManager *manager;
 
 @property (strong, nonatomic) DAGitActionDelegate *delegate;
-@property (nonatomic) dispatch_queue_t delegateQueue;
+@property (assign, nonatomic) dispatch_queue_t delegateQueue;
 
 @property (weak, nonatomic, readonly) UIApplication *app;
 

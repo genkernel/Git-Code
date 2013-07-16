@@ -7,6 +7,7 @@
 //
 
 #import "DASshKeyInfo.h"
+#import "STKeychain.h"
 
 static NSString *PrivateKeyFileName = @"id_rsa";
 static NSString *PublicKeyFileName = @"id_rsa.pub";
@@ -17,8 +18,7 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 @end
 
 @implementation DASshKeyInfo
-@dynamic rootPath;
-@dynamic publicKeyPath, privateKeyPath, passphrase;
+@dynamic rootPath, publicKeyPath, privateKeyPath;
 
 + (instancetype)globalKeysInfo {
 	static id info = nil;
@@ -31,9 +31,20 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 
 + (instancetype)keysInfoForServer:(DAGitServer *)server {
 	DASshKeyInfo *info = self.new;
+	
 	info.server = server;
+	[info loadPassphraseFromKeychain];
 	
 	return info;
+}
+
+- (void)loadPassphraseFromKeychain {
+	NSError *err = nil;
+	_passphrase = [STKeychain getPasswordForUsername:self.server.name andServiceName:SshTransferProtocol error:&err];
+	
+	if (err) {
+		[Logger error:@"Failed to load existing passphrase from secure keychain for server: %@", self.server.name];
+	}
 }
 
 #pragma mark Properties
@@ -56,9 +67,24 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 	return [self.rootPath stringByAppendingPathComponent:PrivateKeyFileName];
 }
 
-- (NSString *)passphrase {
-	// TODO: impl passphrase.
-	return @"livetell";
+- (void)saveNewPassphrase:(NSString *)passphrase {
+	NSError *err = nil;
+	BOOL saved = [STKeychain storeUsername:self.server.name andPassword:passphrase forServiceName:SshTransferProtocol updateExisting:YES error:&err];
+	
+	if (!saved || err) {
+		[Logger error:@"Failed to save new passphrase securely for server: %@", self.server.name];
+	}
+}
+
+#pragma mark UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (1 == buttonIndex) {
+		UITextField *textField = [alertView textFieldAtIndex:0];
+		[self saveNewPassphrase:textField.text];
+	} else {
+		[Logger info:@"SSH passphrase editing skiped with buttonIndex: %d", buttonIndex];
+	}
 }
 
 @end

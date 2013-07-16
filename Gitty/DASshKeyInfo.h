@@ -8,7 +8,7 @@
 
 #import "DAGitServer.h"
 
-@interface DASshKeyInfo : NSObject
+@interface DASshKeyInfo : NSObject <UIAlertViewDelegate>
 + (instancetype)globalKeysInfo;
 + (instancetype)keysInfoForServer:(DAGitServer *)server;
 

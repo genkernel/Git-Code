@@ -9,7 +9,7 @@
 #import "DAAlert.h"
 
 @interface DAAlertQueue : NSObject
-+ (instancetype)manager;
++ (instancetype)queue;
 
 - (void)enqueueAlert:(DAAlert *)alert;
 @end

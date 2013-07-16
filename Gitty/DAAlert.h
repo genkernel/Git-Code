@@ -15,6 +15,7 @@ typedef enum {
 
 @interface DAAlert : NSOperation <UIAlertViewDelegate>
 + (instancetype)alertWithTitle:(NSString *)title message:(NSString *)message;
++ (instancetype)infoAlertWithMessage:(NSString *)message;
 + (instancetype)errorAlertWithMessage:(NSString *)message;
 + (instancetype)passwordAlertWithTitle:(NSString *)title message:(NSString *)message;
 

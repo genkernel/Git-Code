@@ -150,7 +150,7 @@ static NSString *ZipExtension = @"zip";
 }
 
 - (DAAlertQueue *)alert {
-	return DAAlertQueue.manager;
+	return DAAlertQueue.queue;
 }
 
 @end

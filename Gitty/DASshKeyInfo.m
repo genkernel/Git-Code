@@ -68,12 +68,20 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 }
 
 - (void)saveNewPassphrase:(NSString *)passphrase {
+	_passphrase = passphrase;
+	
 	NSError *err = nil;
 	BOOL saved = [STKeychain storeUsername:self.server.name andPassword:passphrase forServiceName:SshTransferProtocol updateExisting:YES error:&err];
 	
+	DAAlert *alert = nil;
 	if (!saved || err) {
-		[Logger error:@"Failed to save new passphrase securely for server: %@", self.server.name];
+		NSString *fmt = NSLocalizedString(@"Failed to save new passphrase securely for server: %@", nil);
+		alert = [DAAlert errorAlertWithMessage:[NSString stringWithFormat:fmt, self.server.name]];
+	} else {
+		alert = [DAAlert infoAlertWithMessage:NSLocalizedString(@"New SSH keys have been succesfully saved.", nil)];
 	}
+	
+	[DAAlertQueue.queue enqueueAlert:alert];
 }
 
 #pragma mark UIAlertViewDelegate

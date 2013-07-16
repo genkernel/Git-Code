@@ -37,6 +37,10 @@
 	return alert;
 }
 
++ (instancetype)infoAlertWithMessage:(NSString *)message {
+	return [self alertWithTitle:NSLocalizedString(@"Info", nil) message:message];
+}
+
 + (instancetype)errorAlertWithMessage:(NSString *)message {
 	return [self alertWithTitle:NSLocalizedString(@"Error", nil) message:message];
 }
@@ -97,8 +101,6 @@
 
 - (void)showMessageAlert {
 	UIAlertView *alert = [UIAlertView.alloc initWithTitle:self.title message:self.message delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil];
-	
-	alert.alertViewStyle = UIAlertViewStyleSecureTextInput;
 	
 	[alert show];
 }

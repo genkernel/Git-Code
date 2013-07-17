@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="xze-n8-Hho">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="4471.1" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" initialViewController="xze-n8-Hho">
     <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <development version="4600" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3697.3"/>
     </dependencies>
     <scenes>
         <!--Login Ctrl-->
@@ -14,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="kU8-2w-rFv" customClass="PagerView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="508"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -23,11 +24,11 @@
                                 </connections>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" id="KAI-yE-VWF" userLabel="Bookmarks Container">
-                                <rect key="frame" x="0.0" y="498" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="508" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="7Dc-50-UuZ" userLabel="Servers Page Control" customClass="PageControl">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="24"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="pageIndicatorTintColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -36,8 +37,8 @@
                                         </connections>
                                     </pageControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fyj-w3-0Vn" userLabel="About Button">
-                                        <rect key="frame" x="0.0" y="30" width="320" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                        <rect key="frame" x="0.0" y="24" width="320" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="14"/>
                                         <state key="normal" title="GitUp by kernel@realm">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -72,7 +73,7 @@
                 <viewController id="HaY-FQ-1Aa" userLabel="Diff Ctrl" customClass="DADiffCtrl" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4ff-iA-Sct">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="BEU-y7-wg9">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
@@ -87,6 +88,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Diff" id="WDB-7T-fRo"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="table" destination="BEU-y7-wg9" id="CqW-uO-Txe"/>
                     </connections>
@@ -101,14 +103,14 @@
                 <viewController id="Vzr-74-RmI" customClass="DARepoCtrl" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="kRZ-3g-9ce">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="5al-59-bSE" userLabel="Stats Container">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="474"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <containerView contentMode="scaleToFill" id="0cc-kG-6L5">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="474"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="484"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <connections>
@@ -120,7 +122,7 @@
                             </view>
                             <view contentMode="scaleToFill" id="4lu-SX-On5" userLabel="Main Content Container">
                                 <rect key="frame" x="0.0" y="40" width="320" height="464"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="01u-cQ-30S" userLabel="Commits Container">
                                         <rect key="frame" x="0.0" y="32" width="320" height="432"/>
@@ -166,7 +168,7 @@
                                             </button>
                                             <containerView contentMode="scaleToFill" id="2Lq-hv-Jqk" userLabel="Select Branch Overlay">
                                                 <rect key="frame" x="24" y="0.0" width="320" height="206"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <connections>
                                                     <segue destination="ALf-gj-3jW" kind="embed" identifier="BranchPickerSegue" id="omU-eA-MPn"/>
@@ -207,7 +209,7 @@
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" id="3Td-bB-6re">
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" id="3Td-bB-6re" userLabel="Pulling Activity Indicator">
                                         <rect key="frame" x="100" y="26" width="20" height="20"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -225,7 +227,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="dbq-vd-6p3" userLabel="Loading Activity Indicator">
-                                        <rect key="frame" x="141" y="234" width="37" height="37"/>
+                                        <rect key="frame" x="141" y="233" width="37" height="37"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </activityIndicatorView>
@@ -237,8 +239,9 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Repo" id="JAg-dA-87A"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="branchCtrlContainer" destination="2Lq-hv-Jqk" id="abT-Vt-PYx"/>
                         <outlet property="branchOverlay" destination="56n-kQ-zDQ" id="cDB-gw-Nwj"/>
@@ -292,6 +295,7 @@
                         <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="yxl-cf-aa2">
                             <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <segments>
                                 <segment title="" image="authors-white.png"/>
                                 <segment title="" image="branches.png"/>
@@ -395,7 +399,7 @@
             <objects>
                 <viewController id="5ae-qc-YmD" customClass="DAStatsCtrl" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MEQ-w2-z7R">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="474"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="484"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="p68-Os-XZM" userLabel="Header Container">
@@ -424,7 +428,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gnU-QP-WVX">
-                                <rect key="frame" x="0.0" y="50" width="320" height="424"/>
+                                <rect key="frame" x="0.0" y="50" width="320" height="434"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -456,86 +460,6 @@
         <image name="stats_footer.png" width="320" height="62"/>
         <image name="stats_header.png" width="320" height="80"/>
     </resources>
-    <classes>
-        <class className="DABaseCtrl" superclassName="ViewCtrl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DABaseCtrl.h"/>
-        </class>
-        <class className="DABranchPickerCtrl" superclassName="DABaseCtrl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DABranchPickerCtrl.h"/>
-            <relationships>
-                <relationship kind="outlet" name="picker" candidateClass="UIPickerView"/>
-            </relationships>
-        </class>
-        <class className="DADiffCtrl" superclassName="DABaseCtrl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DADiffCtrl.h"/>
-            <relationships>
-                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DALoginCtrl" superclassName="DABaseCtrl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DALoginCtrl.h"/>
-            <relationships>
-                <relationship kind="outlet" name="pager" candidateClass="PagerView"/>
-                <relationship kind="outlet" name="serverDotsControl" candidateClass="UIPageControl"/>
-            </relationships>
-        </class>
-        <class className="DARepoCtrl" superclassName="DABaseCtrl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DARepoCtrl.h"/>
-            <relationships>
-                <relationship kind="outlet" name="branchCtrlContainer" candidateClass="UIView"/>
-                <relationship kind="outlet" name="branchOverlay" candidateClass="UIView"/>
-                <relationship kind="outlet" name="commitsContainer" candidateClass="UIView"/>
-                <relationship kind="outlet" name="commitsTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="currentBranchButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="diffLoadingIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="diffLoadingOverlay" candidateClass="UIView"/>
-                <relationship kind="outlet" name="forgetButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="grabButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="grayOverlay" candidateClass="UIView"/>
-                <relationship kind="outlet" name="headerContainer" candidateClass="UIView"/>
-                <relationship kind="outlet" name="mainContainer" candidateClass="UIView"/>
-                <relationship kind="outlet" name="pullingField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="pullingIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="revealBranchOverlayButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rightBarView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="statsContainer" candidateClass="UIView"/>
-                <relationship kind="outlet" name="statsModeSelector" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="statsTitleWeekdayLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="statsTitleWeekendHintLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="weekendTitleView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="DAStatsCtrl" superclassName="DABaseCtrl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAStatsCtrl.h"/>
-            <relationships>
-                <relationship kind="outlet" name="commitsTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="headerContainer" candidateClass="UIView"/>
-                <relationship kind="outlet" name="headlineLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="noCommitsLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="NavViewCtrl" superclassName="UINavigationController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NavViewCtrl.h"/>
-        </class>
-        <class className="PageControl" superclassName="UIPageControl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PageControl.h"/>
-            <relationships>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
-        <class className="PagerView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PagerView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="backgroundView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="dataSource"/>
-                <relationship kind="outlet" name="delegate"/>
-                <relationship kind="outlet" name="viewsContainer" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="ViewCtrl" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewCtrl.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

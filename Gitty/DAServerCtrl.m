@@ -38,8 +38,6 @@
 	[self.repoField applyThinStyle];
 	[self.userNameField applyThinStyle];
 	[self.userPasswordField applyThinStyle];
-	
-	self.protocolsContainer.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -75,7 +73,13 @@
 - (void)loadProtocolsWithServer:(DAGitServer *)server {
 	_selectedProtocolButton = nil;
 	
-	[self.protocolsContainer removeAllButtonsAndResetLayout];
+	[self.protocolsContainer removeAllSubviews];
+	
+	DAProtocolsContainer *container = [DAProtocolsContainer.alloc initWithFrame:self.protocolsContainer.bounds];
+	container.translatesAutoresizingMaskIntoConstraints = NO;
+	[container removeAllButtonsAndResetLayout];
+	
+	[self.protocolsContainer addSubview:container];
 	
 	NSMutableSet *protocols = [NSMutableSet setWithArray:server.supportedProtocols];
 	
@@ -95,7 +99,7 @@
 		[button setTitle:protocol forState:UIControlStateNormal];
 		[button sizeToFit];
 		
-		[self.protocolsContainer insertAndLayoutNextProtocolButton:button];
+		[container insertAndLayoutNextProtocolButton:button];
 		
 		if ([server.transferProtocol isEqualToString:protocol]) {
 			_selectedProtocolButton = button;
@@ -106,14 +110,10 @@
 	
 	if (!self.selectedProtocolButton) {
 		[Logger error:@"No transfer protocol selected by default."];
-		_selectedProtocolButton = self.protocolsContainer.subviews.anyObject;
+		_selectedProtocolButton = container.subviews.anyObject;
 	}
 	
 	self.selectedProtocolButton.enabled = NO;
-	
-	dispatch_async(dispatch_get_main_queue(), ^{
-		[self.protocolsContainer invalidateIntrinsicContentSize];
-	});
 }
 
 - (void)setProgress:(CGFloat)updatedProgress {

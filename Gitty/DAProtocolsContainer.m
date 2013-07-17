@@ -34,16 +34,16 @@ static const CGFloat MarginBetweenButtons = 6.;
 	
 	[self removeConstraints:self.constraints];
 	
-	UIView *protocols = self;
-	NSDictionary *views = NSDictionaryOfVariableBindings(protocols);
+	UIView *view = self;
+	NSDictionary *views = NSDictionaryOfVariableBindings(view);
 	
 	//(>=50)
-	NSArray *width = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[protocols]" options:NSLayoutFormatAlignAllCenterX metrics:nil views:views];
-	[self addConstraints:width];
+	NSArray *width = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[view]" options:NSLayoutFormatAlignAllCenterX metrics:nil views:views];
+	[self.superview addConstraints:width];
 	
 	//(20)
-	NSArray *height = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[protocols]" options:NSLayoutFormatAlignAllTop metrics:nil views:views];
-	[self addConstraints:height];
+	NSArray *height = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[view]" options:NSLayoutFormatAlignAllTop metrics:nil views:views];
+	[self.superview addConstraints:height];
 }
 
 // Aligns buttons in line followed one-by-one.

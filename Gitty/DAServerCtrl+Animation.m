@@ -16,20 +16,34 @@
 	}
 	isCredentialsVisible = visible;
 	
+	if (visible) {
+		[self showAnonymousButton];
+	} else {
+		[self showLoginButton];
+	}
+	
+	CGFloat offset = self.credentialsContainer.height;
+	offset *= visible ? 1 : -1;
+	
+	self.exploreContainerHeightRule.constant += offset;
+	
+	[UIView animateWithDuration:StandartAnimationDuration animations:^{
+		[self.view layoutIfNeeded];
+	} completion:^(BOOL finished) {
+		[self updateControlButtonsState];
+	}];
+	
+	/*
 	CGFloat offset = self.credentialsContainer.height;
 	offset *= visible ? 1 : -1;
 	
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
 		self.exploreContainer.height += offset;
 		
-		if (visible) {
-			[self showAnonymousButton];
-		} else {
-			[self showLoginButton];
-		}
+		
 	} completion:^(BOOL finished) {
 		[self updateControlButtonsState];
-	}];
+	}];*/
 }
 
 - (void)showAnonymousButton {

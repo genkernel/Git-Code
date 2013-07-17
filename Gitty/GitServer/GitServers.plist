@@ -4,13 +4,13 @@
 <array>
 	<dict>
 		<key>GitBaseUrl</key>
-		<string>git@github.com</string>
+		<string>github.com</string>
 		<key>LogoIcon</key>
 		<string>GitHub-Mark-120px-plus.png</string>
 		<key>Name</key>
 		<string>Github</string>
 		<key>RecentRepoPath</key>
-		<string>github/developer.github.com</string>
+		<string>github/developer.github.com.git</string>
 		<key>RecentBranchName</key>
 		<string>master</string>
 		<key>SaveDirectoryName</key>

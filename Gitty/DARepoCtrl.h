@@ -48,12 +48,10 @@ typedef enum {
 
 @property (strong, nonatomic) IBOutlet UIView *mainContainer;
 @property (strong, nonatomic) IBOutlet UIView *headerContainer;
-@property (strong, nonatomic) IBOutlet UIView *commitsContainer;
 @property (strong, nonatomic) IBOutlet UITableView *commitsTable;
 
 @property (strong, nonatomic) IBOutlet UIButton *currentBranchButton;
 
-@property (strong, nonatomic) IBOutlet UIView *grayOverlay;
 @property (strong, nonatomic) IBOutlet UIView *diffLoadingOverlay;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *diffLoadingIndicator;
 

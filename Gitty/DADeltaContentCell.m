@@ -39,7 +39,7 @@
 - (void)prepareForReuse {
 	[super prepareForReuse];
 	
-	// TODO: Dont remove and reuse subviews properly.
+	// TODO: Dont remove and add new subviews - reuse existing.
 	// (Eliminate UINib::instantiateWithOwner: calls)
 	[self.scroll removeAllSubviews];
 	
@@ -78,6 +78,7 @@
 			UIImage *img = self.separatorImg;
 			
 			UIImageView *separator = [UIImageView.alloc initWithImage:img];
+			separator.backgroundColor = UIColor.codeContextColor;
 			separator.frame = CGRectMake(.0, vOffset, hunkViewWidth, img.size.height);
 			
 			[self.scroll addSubview:separator];

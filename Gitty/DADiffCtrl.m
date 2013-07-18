@@ -91,7 +91,7 @@
 		return 50.;	// Original is 80px. Extra 30px overlaps cell as shadow effect.
 	} else {
 		// DAStatusHeader.
-		return 38.;
+		return 64.;
 	}
 }
 
@@ -130,6 +130,8 @@
 	UIView *view = [self cachedViewWithIdentifier:UIImageView.className];
 	if (!view) {
 		view = [UIImageView.alloc initWithImage:[UIImage imageNamed:@"section_footer.png"]];
+		view.backgroundColor = UIColor.clearColor;
+//		[view colorizeBorderWithColor:UIColor.redColor];
 	}
 	return view;
 }

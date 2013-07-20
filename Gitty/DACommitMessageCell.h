@@ -12,7 +12,6 @@
 @interface DACommitMessageCell : UITableViewCell <DADynamicCommitCell>
 @property (strong, nonatomic) IBOutlet UIView *separatorLine;
 
-@property (strong, nonatomic) IBOutlet UILabel *shortShaLabel;
-@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *infoLabel;
 @property (strong, nonatomic) IBOutlet UILabel *commitLabel;
 @end

@@ -35,6 +35,7 @@
 #import "UIColor+Gitty.h"
 #import "UIButton+Gitty.h"
 #import "NSString+Gitty.h"
+#import "NSAttributedString+Gitty.h"
 #import "UITextField+Gitty.h"
 
 #import "DAGravatar.h"

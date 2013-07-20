@@ -123,10 +123,8 @@
 
 - (BOOL)respondsToSelector:(SEL)sel {
 	if (@selector(alertView:didDismissWithButtonIndex:) == sel) {
-		[Logger info:@"alertView:didDismissWithButtonIndex: catched."];
 		return YES;
 	}
-	[Logger info:@"forwarding_test: %@", NSStringFromSelector(sel)];
 	return [self.delegate respondsToSelector:sel];
 }
 

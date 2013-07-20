@@ -10,8 +10,8 @@
 #import "DARepoCtrl+Private.h"
 #import "DARepoCtrl+Animation.h"
 
-static NSTimeInterval OneDayInterval = 1 DAYS;
-static NSUInteger CommitsExtraCheckingThreshold = 5;
+static NSTimeInterval OneDayInterval = 3 DAYS;
+static NSUInteger CommitsExtraCheckingThreshold = 10;
 
 @implementation DARepoCtrl (StatsLoader)
 @dynamic yearMonthDayFormatter, dayOfWeekFormatter;
@@ -36,10 +36,11 @@ static NSUInteger CommitsExtraCheckingThreshold = 5;
 				[self loadStatsHeadline];
 				[self reloadStatsCommitsWithMode:DACommitsListByAuthorMode];
 			} else {
+				[self resetStatsHeadline];
 				[self setStatsContainerMode:DAStatsHiddenMode animated:NO];
 			}
 			
-			[self setPullingViewVisible:NO animated:YES];
+			[self setPullingVisible:NO animated:YES];
 			[self addForgetButton];
 		});
 	});

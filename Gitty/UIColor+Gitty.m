@@ -50,4 +50,16 @@
 	return [UIColor colorWithRed:1. green:51./255. blue:51./255. alpha:1.];
 }
 
++ (UIColor *)branchNameTintColor {
+	return [UIColor colorWithRed:1. green:51./255. blue:51./255. alpha:1.];
+}
+
++ (UIColor *)authorNameTintColor {
+	return [UIColor colorWithRed:75./255. green:217./255. blue:99./255. alpha:1.];
+}
+
++ (UIColor *)commitNameTintColor {
+	return [UIColor colorWithRed:51./255. green:153./255. blue:1. alpha:1.];
+}
+
 @end

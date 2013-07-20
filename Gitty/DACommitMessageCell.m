@@ -42,17 +42,37 @@ static CGFloat CommitMessageMaxHeight = 120.;
 }
 
 - (void)loadCommit:(GTCommit *)commit {
-	self.shortShaLabel.text = [NSString stringWithFormat:@"#%@", commit.shortSha];
-	
-	self.dateFormatter.timeZone = commit.commitTimeZone;
-	NSString *date = [self.dateFormatter stringFromDate:commit.commitDate];
-	self.dateLabel.text = [NSString stringWithFormat:@"on %@", date];
+	[self generateInfoStringForCommit:commit];
 	
 	self.commitLabel.text = [NSString stringWithFormat:@"%@", commit.message];
 }
 
 - (void)setShowsTopCellSeparator:(BOOL)shows {
 	self.separatorLine.hidden = !shows;
+}
+
+- (void)generateInfoStringForCommit:(GTCommit *)commit {
+	NSArray *strings = nil;
+	{
+		NSString *sha = [NSString stringWithFormat:@"#%@", commit.shortSha];
+		
+		self.dateFormatter.timeZone = commit.commitTimeZone;
+		NSString *timestamp = [self.dateFormatter stringFromDate:commit.commitDate];
+		
+		strings = @[sha, [NSString stringWithFormat:@"on %@", timestamp]];
+	}
+	
+	NSArray *attributes = nil;
+	{
+		UIFont *font = self.infoLabel.font;
+		
+		NSDictionary *shaAttr = [NSAttributedString attributesWithTextColor:UIColor.commitNameTintColor font:font alignment:NSTextAlignmentNatural];
+		NSDictionary *dateAttr = [NSAttributedString attributesWithTextColor:UIColor.lightGrayColor font:font alignment:NSTextAlignmentNatural];
+		
+		attributes = @[shaAttr, dateAttr];
+	}
+	
+	self.infoLabel.attributedText = [NSAttributedString stringByJoiningSimpleStrings:strings applyingAttributes:attributes joinString:@" "];
 }
 
 #pragma mark Properties

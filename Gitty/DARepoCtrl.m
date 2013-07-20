@@ -42,6 +42,8 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 @property (strong, nonatomic, readonly) NSIndexPath *selectedCommitIndexPath;
 
 @property (strong, nonatomic, readonly) DAStatsCtrl *statsCtrl;
+@property (strong, nonatomic, readonly) UIButton *statsSelectedModeButton;
+
 @property (strong, nonatomic, readonly) DABranchPickerCtrl *branchPickerCtrl;
 
 @property (strong, nonatomic, readonly) DACommitCell *reuseCell;
@@ -92,6 +94,8 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	_statsSelectedModeButton = self.statsSwitchModeButtons[0];
+	
 	self.revealBranchOverlayButton.layer.cornerRadius = 7.;
 	self.revealBranchOverlayButton.layer.masksToBounds = YES;
 	
@@ -130,7 +134,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-//	[self.navigationController setNavigationBarHidden:NO animated:animated];
+	[self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -141,12 +145,6 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 		
 		_selectedCommitIndexPath = nil;
 	}
-	
-	double delayInSeconds = 5.0;
-	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-		[self.navigationController setNavigationBarHidden:NO animated:animated];
-	});
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -156,7 +154,8 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 }
 
 - (void)addForgetButton {
-	self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.rightBarView];
+	self.navigationItem.titleView = self.branchCustomTitleContainer;
+	self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.forgetButton];
 }
 
 - (void)reloadStatsCommitsWithMode:(DACommitsListModes)mode {
@@ -250,7 +249,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	self.repoServer.recentBranchName = branch.shortName;
 	[self.servers save];
 	
-	self.title = branch.shortName;
+	self.branchCustomTitleLabel.text = branch.shortName;
 	[self.currentBranchButton setTitle:self.currentBranch.shortName forState:UIControlStateNormal];
 	
 	return YES;
@@ -414,25 +413,10 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	forgetActionTag = [self showYesNoMessage:message withTitle:title];
 }
 
-- (IBAction)statsModeChanged:(UISegmentedControl *)sender {
-	[Logger info:@"%s", __PRETTY_FUNCTION__];
-	
-	static NSString *selectedPostfix = @"white";
-	NSArray *images = @[@"authors", @"branches"];
-	
-	assert(images.count == sender.numberOfSegments);
-	
-	for (NSUInteger i = 0; i < sender.numberOfSegments; i++) {
-		NSString *name = nil;
-		
-		if (i == sender.selectedSegmentIndex) {
-			name = [NSString stringWithFormat:@"%@-%@.png", images[i], selectedPostfix];
-		} else {
-			name = [NSString stringWithFormat:@"%@.png", images[i]];
-		}
-		
-		[sender setImage:[UIImage imageNamed:name] forSegmentAtIndex:i];
-	}
+- (IBAction)statsModeChanged:(UIButton *)sender {
+	self.statsSelectedModeButton.enabled = YES;
+	_statsSelectedModeButton = sender;
+	self.statsSelectedModeButton.enabled = NO;
 	
 	[self toggleStatsCommitsMode];
 }
@@ -452,12 +436,12 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	CGPoint p = [gr translationInView:self.view];
 	
 	if (UIGestureRecognizerStateBegan == gr.state) {
-		statsContainerOffsetBeforeDragging = self.mainContainer.y;
+		statsContainerOffsetBeforeDragging = self.mainContainerTop.constant;
 	} else if (UIGestureRecognizerStateChanged == gr.state) {
 		CGFloat y = statsContainerOffsetBeforeDragging + p.y;
 		
 		if (y >= .0 && y <= self.view.height) {
-			self.mainContainer.y = y;
+			self.mainContainerTop.constant = y;
 		}
 	} else if (UIGestureRecognizerStateEnded == gr.state) {
 		if (DAStatsHeadlineMode == statsContainerMode) {
@@ -475,8 +459,10 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 			[self toggleStatsContainerMode];
 		} else {
 			// Decelerate back to original position (before dragging).
+			self.mainContainerTop.constant = statsContainerOffsetBeforeDragging;
+			
 			[UIView animateWithDuration:StandartAnimationDuration animations:^{
-				self.mainContainer.y = statsContainerOffsetBeforeDragging;
+				[self.mainContainer.superview layoutIfNeeded];
 			}];
 		}
 	}

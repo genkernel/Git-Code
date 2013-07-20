@@ -19,8 +19,10 @@
 	CGFloat offset = self.branchCtrlContainer.width;
 	offset *= visible ? -1. : 1.;
 	
+	self.branchOverlayLeft.constant += offset;
+	
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
-		self.branchOverlay.x += offset;
+		[self.branchOverlay.superview layoutIfNeeded];
 	}];
 }
 
@@ -53,18 +55,17 @@
 	}
 }
 
-- (void)setPullingViewVisible:(BOOL)visible animated:(BOOL)animated {
+- (void)setPullingVisible:(BOOL)visible animated:(BOOL)animated {
 	if (visible) {
 		[self.pullingIndicator startAnimating];
 	}
 	
-	CGFloat offset = self.headerContainer.height;
-	offset *= visible ? 1. : -1.;
+	self.pullingContainerTop.constant = visible ? .0 : -self.pullingContainer.height;
 	
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
-		self.headerContainer.y += offset;
+		[self.pullingContainer.superview layoutIfNeeded];
 	}completion:^(BOOL finished) {
-		self.headerContainer.hidden = !visible;
+		self.pullingContainer.hidden = !visible;
 		
 		if (!visible) {
 			[self.pullingIndicator stopAnimating];
@@ -80,28 +81,35 @@
 	
 	// Elements strict DAStatsContainerModes ordering.
 	CGFloat offsets[] = {
-		_statsCtrl.headlineLabel.height,
-		.0,
-		self.view.height - (self.grabButton.height - 30./*Out-of-bounds part of image*/)
+		50./*stats header img black part height*/ - self.grabButton.height,
+		-self.grabButton.height,
+		self.view.height - self.grabButton.height
 	};
 	
 	CGFloat y = offsets[mode];
+	self.mainContainerTop.constant = y;
+	
+	if (DAStatsFullscreenMode != mode) {
+		self.mainContainerHeight.constant = self.view.height - y;
+	}
 	
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
-		CGRect r = CGRectMake(.0, y, self.view.width, self.view.height);
-		self.mainContainer.frame = r;
+		[self.mainContainer.superview layoutIfNeeded];
 	} completion:^(BOOL finished) {
 		BOOL isStatsShown = DAStatsFullscreenMode == mode;
 		
-		self.title = isStatsShown ? NSLocalizedString(@"Yesterday", nil) : _currentBranch.shortName;
+		self.branchCustomTitleButton.hidden = DAStatsHiddenMode != mode;
 		
-		self.statsModeSelector.hidden = !isStatsShown;
-		self.forgetButton.hidden = isStatsShown;
+		if (isStatsShown) {
+			self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.statsCustomRightView];
+		} else {
+			self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.forgetButton];
+		}
 		
 		{
 			self.statsTitleWeekdayLabel.text = _statsCustomTitle;
 			self.statsTitleWeekendHintLabel.text = _statsCustomHint;
-			self.navigationItem.titleView = isStatsShown ? self.weekendTitleView : nil;
+			self.navigationItem.titleView = isStatsShown ? self.weekendTitleView : self.branchCustomTitleContainer;
 		}
 		
 		self.commitsTable.scrollsToTop = !isStatsShown;
@@ -109,9 +117,11 @@
 	}];
 }
 
+- (void)resetStatsHeadline {
+	_statsCtrl.headlineLabel.attributedText = NSAttributedString.new;
+}
+
 - (void)loadStatsHeadline {
-	UIFont *font = _statsCtrl.headlineLabel.font;
-	
 	// Unique number string - space delimeter at the end.
 	NSString *branchesCount = [NSString stringWithFormat:@"%d ", _statsCommitsByBranch.count];
 	// String uniqueness - 2 spaces.
@@ -120,28 +130,36 @@
 	NSString *authorsCount = [NSString stringWithFormat:@" %d", _statsCommitsByAuthor.count];
 	
 	NSString *branchesLiteral = _statsCommitsByBranch.count > 1 ? @"Branches updated with" : @"Branch updated with";
-	NSString *commitsLiteral = _statsCommitsCount > 1 ? @"Commits by\n" : @"Commit by\n";
+	NSString *commitsLiteral = _statsCommitsCount > 1 ? @"Commits\nby" : @"Commit\nby";
 	NSString *authorsLiteral = _statsCommitsByAuthor.count > 1 ? @" Authors recently." : @" Author recently.";
 	
-	NSArray *keys = @[branchesCount, branchesLiteral, commitsCount, commitsLiteral, authorsCount, authorsLiteral];
+	NSArray *strings = @[branchesCount, branchesLiteral, commitsCount, commitsLiteral, authorsCount, authorsLiteral];
 	
-	NSDictionary *info = @{keys[0]: @{NSForegroundColorAttributeName: UIColor.acceptingGreenColor, NSFontAttributeName: font},
-						keys[1]: @{NSForegroundColorAttributeName: UIColor.whiteColor, NSFontAttributeName: font},
-						keys[2]: @{NSForegroundColorAttributeName: UIColor.acceptingBlueColor, NSFontAttributeName: font},
-						keys[3]: @{NSForegroundColorAttributeName: UIColor.whiteColor, NSFontAttributeName: font},
-						keys[4]: @{NSForegroundColorAttributeName: UIColor.cancelingRedColor, NSFontAttributeName: font},
-						keys[5]: @{NSForegroundColorAttributeName: UIColor.whiteColor, NSFontAttributeName: font}};
+	NSArray *attributes = @[
+							[self attributesWithForegroundColor:UIColor.acceptingGreenColor],
+							[self attributesWithForegroundColor:UIColor.whiteColor],
+							[self attributesWithForegroundColor:UIColor.acceptingBlueColor],
+							[self attributesWithForegroundColor:UIColor.whiteColor],
+							[self attributesWithForegroundColor:UIColor.cancelingRedColor],
+							[self attributesWithForegroundColor:UIColor.whiteColor]];
 	
-	NSMutableAttributedString *desc = NSMutableAttributedString.new;
-	
-	for (NSString *text in keys) {
-		NSDictionary *opts = info[text];
+	_statsCtrl.headlineLabel.attributedText = [NSAttributedString stringByJoiningSimpleStrings:strings applyingAttributes:attributes joinString:nil];
+}
+
+- (NSDictionary *)attributesWithForegroundColor:(UIColor *)color {
+	static NSMutableDictionary *attributes = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		NSMutableParagraphStyle *paragraph = NSMutableParagraphStyle.new;
+		paragraph.alignment = NSTextAlignmentCenter;
 		
-		NSAttributedString *str = [NSAttributedString.alloc initWithString:text attributes:opts];
-		[desc appendAttributedString:str];
-	}
+		attributes = NSMutableDictionary.new;
+		attributes[NSFontAttributeName] = _statsCtrl.headlineLabel.font;
+		attributes[NSParagraphStyleAttributeName] = paragraph;
+	});
 	
-	_statsCtrl.headlineLabel.attributedText = desc;
+	attributes[NSForegroundColorAttributeName] = color;
+	return attributes.copy;
 }
 
 @end

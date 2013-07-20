@@ -21,4 +21,8 @@
 + (UIColor *)acceptingBlueColor;
 + (UIColor *)inactiveGrayColor;
 + (UIColor *)cancelingRedColor;
+
++ (UIColor *)branchNameTintColor;
++ (UIColor *)authorNameTintColor;
++ (UIColor *)commitNameTintColor;
 @end

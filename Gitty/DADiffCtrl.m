@@ -98,7 +98,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 	UIView *view = nil;
 	
-	[NSObject startMeasurement];
+//	[NSObject startMeasurement];
 	{
 		GTDiffDelta *delta = self.deltas[section];
 		
@@ -112,8 +112,8 @@
 		
 		[view performSelector:@selector(loadDelta:) withObject:delta];
 	}
-	double period = [NSObject endMeasurement];
-	[Logger info:@"Header loaded in %.2f", period];
+//	double period = [NSObject endMeasurement];
+//	[Logger info:@"Header loaded in %.2f", period];
 	
 	return view;
 }

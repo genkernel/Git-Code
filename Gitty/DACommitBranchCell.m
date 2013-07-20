@@ -12,6 +12,7 @@ static CGFloat InitialCellHeight = .0;
 static CGFloat CommitMessageMaxHeight = 120.;
 
 @interface DACommitBranchCell ()
+@property (weak, nonatomic, readonly) GTCommit *commit;
 @property (strong, nonatomic, readonly) NSDateFormatter *dateFormatter;
 @end
 
@@ -42,21 +43,44 @@ static CGFloat CommitMessageMaxHeight = 120.;
 }
 
 - (void)loadCommit:(GTCommit *)commit {
-	self.branchLabel.text = @"";
-	self.shortShaLabel.text = [NSString stringWithFormat:@"#%@", commit.shortSha];
-	
-	self.dateFormatter.timeZone = commit.commitTimeZone;
-	self.dateLabel.text = [self.dateFormatter stringFromDate:commit.commitDate];
+	_commit = commit;
 	
 	self.commitLabel.text = [NSString stringWithFormat:@"%@", commit.message];
 }
 
 - (void)loadBranch:(GTBranch *)branch {
-	self.branchLabel.text = branch.shortName;
+	[self generateInfoStringForCommit:self.commit inBranch:branch];
 }
 
 - (void)setShowsTopCellSeparator:(BOOL)shows {
 	self.separatorLine.hidden = !shows;
+}
+
+- (void)generateInfoStringForCommit:(GTCommit *)commit inBranch:(GTBranch *)branch {
+	
+	NSArray *strings = nil;
+	{
+		NSString *sha = [NSString stringWithFormat:@"#%@", commit.shortSha];
+		
+		self.dateFormatter.timeZone = commit.commitTimeZone;
+		NSString *timestamp = [self.dateFormatter stringFromDate:commit.commitDate];
+		
+		strings = @[sha, @"→", branch.shortName, timestamp];
+	}
+	
+	NSArray *attributes = nil;
+	{
+		UIFont *font = self.infoLabel.font;
+		
+		NSDictionary *shaAttr = [NSAttributedString attributesWithTextColor:UIColor.commitNameTintColor font:font alignment:NSTextAlignmentNatural];
+		NSDictionary *arrowAttr = [NSAttributedString attributesWithTextColor:UIColor.lightGrayColor font:font alignment:NSTextAlignmentNatural];
+		NSDictionary *branchAttr = [NSAttributedString attributesWithTextColor:UIColor.branchNameTintColor font:font alignment:NSTextAlignmentNatural];
+		NSDictionary *dateAttr = [NSAttributedString attributesWithTextColor:UIColor.lightGrayColor font:font alignment:NSTextAlignmentNatural];
+		
+		attributes = @[shaAttr, arrowAttr, branchAttr, dateAttr];
+	}
+	
+	self.infoLabel.attributedText = [NSAttributedString stringByJoiningSimpleStrings:strings applyingAttributes:attributes joinString:@" "];
 }
 
 #pragma mark Properties

@@ -47,29 +47,37 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UIView *statsContainer;
 
 @property (strong, nonatomic) IBOutlet UIView *mainContainer;
-@property (strong, nonatomic) IBOutlet UIView *headerContainer;
 @property (strong, nonatomic) IBOutlet UITableView *commitsTable;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *mainContainerTop, *mainContainerHeight;
 
 @property (strong, nonatomic) IBOutlet UIButton *currentBranchButton;
 
 @property (strong, nonatomic) IBOutlet UIView *diffLoadingOverlay;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *diffLoadingIndicator;
 
+@property (strong, nonatomic) IBOutlet UIView *branchCustomTitleContainer;
+@property (strong, nonatomic) IBOutlet UILabel *branchCustomTitleLabel;
+@property (strong, nonatomic) IBOutlet UIButton *branchCustomTitleButton;
+
+
+@property (strong, nonatomic) IBOutlet UIView *pullingContainer;
 @property (strong, nonatomic) IBOutlet UITextField *pullingField;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *pullingIndicator;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *pullingContainerTop;
 
 @property (strong, nonatomic) IBOutlet UIView *branchOverlay, *branchCtrlContainer;
 @property (strong, nonatomic) IBOutlet UIButton *revealBranchOverlayButton;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *branchOverlayLeft;
 
 @property (strong, nonatomic) IBOutlet UIButton *grabButton;
 
-@property (strong, nonatomic) IBOutlet UIView *rightBarView;
 @property (strong, nonatomic) IBOutlet UIView *weekendTitleView;
 @property (strong, nonatomic) IBOutlet UILabel *statsTitleWeekdayLabel;
 @property (strong, nonatomic) IBOutlet UILabel *statsTitleWeekendHintLabel;
 
 @property (strong, nonatomic) IBOutlet UIButton *forgetButton;
-@property (strong, nonatomic) IBOutlet UISegmentedControl *statsModeSelector;
+@property (strong, nonatomic) IBOutlet UIView *statsCustomRightView;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *statsSwitchModeButtons;
 
 // Private. Category-visible methods.
 - (void)reloadFilters;

@@ -72,9 +72,11 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	self.serverDotsControl.numberOfPages = pagesCount;
 	self.serverDotsControl.currentPage = lastActivePageIdx;
 	
-	self.pager.looped = YES;
-	self.pager.defaultPage = lastActivePageIdx;
-	[self.pager reloadData];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		self.pager.looped = YES;
+		self.pager.defaultPage = lastActivePageIdx;
+		[self.pager reloadData];
+	});
 	
 	self.pager.minSwitchDistance = self.view.width / 3.;
 	

@@ -51,6 +51,10 @@
 		18170922175BCC1B002A2D93 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18170921175BCC1B002A2D93 /* Icon-72@2x.png */; };
 		18184B6017555AB5001C58D8 /* DABaseCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18184B5F17555AB5001C58D8 /* DABaseCtrl.m */; };
 		18184B6717556968001C58D8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18184B6617556968001C58D8 /* libz.dylib */; };
+		181873AF179BED8A002FE1A3 /* DAServerCtrl-3.5inches.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181873AE179BED8A002FE1A3 /* DAServerCtrl-3.5inches.xib */; };
+		181873B9179C0175002FE1A3 /* overlay-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181873B8179C0175002FE1A3 /* overlay-black@2x.png */; };
+		181873BB179C019A002FE1A3 /* overlay-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 181873BA179C019A002FE1A3 /* overlay-black.png */; };
+		181873BD179C08C5002FE1A3 /* DANewServerCtrl-3.5inches.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181873BC179C08C5002FE1A3 /* DANewServerCtrl-3.5inches.xib */; };
 		181A6F59178B696D002CA3BE /* DASshCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A6F58178B696D002CA3BE /* DASshCredentials.m */; };
 		1825DC9517947F9B00FE5193 /* DAAlertQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1825DC9417947F9B00FE5193 /* DAAlertQueue.m */; };
 		1825DC981794808A00FE5193 /* DAAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 1825DC971794808A00FE5193 /* DAAlert.m */; };
@@ -317,6 +321,10 @@
 		18184B5E17555AB5001C58D8 /* DABaseCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABaseCtrl.h; sourceTree = "<group>"; };
 		18184B5F17555AB5001C58D8 /* DABaseCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABaseCtrl.m; sourceTree = "<group>"; };
 		18184B6617556968001C58D8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		181873AE179BED8A002FE1A3 /* DAServerCtrl-3.5inches.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DAServerCtrl-3.5inches.xib"; sourceTree = "<group>"; };
+		181873B8179C0175002FE1A3 /* overlay-black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay-black@2x.png"; sourceTree = "<group>"; };
+		181873BA179C019A002FE1A3 /* overlay-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay-black.png"; sourceTree = "<group>"; };
+		181873BC179C08C5002FE1A3 /* DANewServerCtrl-3.5inches.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DANewServerCtrl-3.5inches.xib"; sourceTree = "<group>"; };
 		181993D6176D3D1000D4BE1F /* DAGitServer+Creation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DAGitServer+Creation.h"; sourceTree = "<group>"; };
 		181993D7176D3D1000D4BE1F /* DAGitServer+Creation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DAGitServer+Creation.m"; sourceTree = "<group>"; };
 		181A6F57178B696D002CA3BE /* DASshCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DASshCredentials.h; sourceTree = "<group>"; };
@@ -868,6 +876,7 @@
 				1804FA9F176E71440080AB50 /* DANewServerCtrl.h */,
 				1804FAA0176E71440080AB50 /* DANewServerCtrl.m */,
 				1804FAA1176E71440080AB50 /* DANewServerCtrl.xib */,
+				181873BC179C08C5002FE1A3 /* DANewServerCtrl-3.5inches.xib */,
 			);
 			name = NewServer;
 			sourceTree = "<group>";
@@ -983,6 +992,15 @@
 				189A53331759242800B5BD8D /* shared */,
 			);
 			name = Shared;
+			sourceTree = "<group>";
+		};
+		181873B7179C0175002FE1A3 /* AccessoryHint */ = {
+			isa = PBXGroup;
+			children = (
+				181873BA179C019A002FE1A3 /* overlay-black.png */,
+				181873B8179C0175002FE1A3 /* overlay-black@2x.png */,
+			);
+			path = AccessoryHint;
 			sourceTree = "<group>";
 		};
 		181A6F4B178B694E002CA3BE /* SSHCredentials */ = {
@@ -1153,6 +1171,7 @@
 				18618878176E0FF000666DFB /* DAServerCtrl.h */,
 				18618879176E0FF000666DFB /* DAServerCtrl.m */,
 				1861887A176E0FF000666DFB /* DAServerCtrl.xib */,
+				181873AE179BED8A002FE1A3 /* DAServerCtrl-3.5inches.xib */,
 				187D2D731788529000F9126E /* DAServerCtrl+Animation.h */,
 				187D2D741788529000F9126E /* DAServerCtrl+Animation.m */,
 			);
@@ -2074,6 +2093,7 @@
 		18F995D1175FBEDB0033A4A0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				181873B7179C0175002FE1A3 /* AccessoryHint */,
 				18336043178EBD6A000C1E52 /* Stats */,
 				188F6803178A1FA5004E3E07 /* stats_footer.png */,
 				188F6804178A1FA5004E3E07 /* stats_footer@2x.png */,
@@ -2288,6 +2308,10 @@
 				1810994417909C140018AAB4 /* DACommitBranchCell.xib in Resources */,
 				1810994B1790A6CA0018AAB4 /* DATitleHeader.xib in Resources */,
 				187A29D11795BEC700FE9F19 /* Icon-72.png in Resources */,
+				181873AF179BED8A002FE1A3 /* DAServerCtrl-3.5inches.xib in Resources */,
+				181873B9179C0175002FE1A3 /* overlay-black@2x.png in Resources */,
+				181873BB179C019A002FE1A3 /* overlay-black.png in Resources */,
+				181873BD179C08C5002FE1A3 /* DANewServerCtrl-3.5inches.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

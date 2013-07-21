@@ -11,6 +11,10 @@
 @implementation DAAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	if (!IS_IPHONE_5) {
+		[ViewCtrl setDevicePostfix:@"-3.5inches"];
+	}
+	
 	[self createSharedCacheForApplication:application];
 	
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{

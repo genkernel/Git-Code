@@ -3,6 +3,23 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>RecentRepos</key>
+		<dict>
+			<key>user/repo1.git</key>
+			<dict>
+				<key>lastAccessDate</key>
+				<date>2013-07-21T15:14:56Z</date>
+				<key>relativePath</key>
+				<string>user/repo.git</string>
+			</dict>
+			<key>user/repo2.git</key>
+			<dict>
+				<key>lastAccessDate</key>
+				<date>2013-05-21T15:14:56Z</date>
+				<key>relativePath</key>
+				<string>user/repo2.git</string>
+			</dict>
+		</dict>
 		<key>GitBaseUrl</key>
 		<string>github.com</string>
 		<key>LogoIcon</key>

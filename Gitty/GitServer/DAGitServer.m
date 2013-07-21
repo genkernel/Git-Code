@@ -11,8 +11,15 @@
 
 NSString *SshTransferProtocol = @"ssh://";
 
+@interface DAGitServer ()
+@property (strong, nonatomic, readonly) NSMutableDictionary *recentReposDict;
+@end
+
 @implementation DAGitServer
 @dynamic saveDict;
+@dynamic reposByAccessTime;
+// Synthesize for explicitly-defined ivar.
+@synthesize recentReposDict = _recentReposDict;
 
 + (instancetype)serverWithDictionary:(NSDictionary *)dict {
 	return [self.alloc initWithDictionary:dict];
@@ -31,6 +38,7 @@ NSString *SshTransferProtocol = @"ssh://";
 		_recentBranchName = dict[RecentBranchName];
 		
 		[self createSettingsFolderIfNeeded];
+		[self loadRecentReposFromDict:dict[RecentRepos]];
 	}
 	return self;
 }
@@ -41,13 +49,19 @@ NSString *SshTransferProtocol = @"ssh://";
 
 - (NSDictionary *)saveDict {
 	return @{ServerName: self.name,
-		  ServerGitBaseUrl: self.gitBaseUrl,
-		  SaveDirectory: self.saveDirectoryName,
-		  LogoIcon: self.logoIconName,
-		  TransferProtocol: self.transferProtocol,
-		  SupportedProtocols: self.supportedProtocols,
-		  RecentRepoPath: self.recentRepoPath,
-		  RecentBranchName: self.recentBranchName};
+			 ServerGitBaseUrl: self.gitBaseUrl,
+			 SaveDirectory: self.saveDirectoryName,
+			 LogoIcon: self.logoIconName,
+			 TransferProtocol: self.transferProtocol,
+			 SupportedProtocols: self.supportedProtocols,
+			 RecentRepoPath: self.recentRepoPath,
+			 RecentRepos: self.recentReposDict.copy,
+			 RecentBranchName: self.recentBranchName};
+}
+
+- (NSArray *)reposByAccessTime {
+	NSArray *items = [self.recentReposDict.allValues sortedArrayUsingSelector:@selector(compare:)];
+	return items.reverseObjectEnumerator.allObjects;
 }
 
 @end

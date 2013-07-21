@@ -10,6 +10,7 @@
 #import "DARepoCtrl.h"
 #import "DAServerCtrl.h"
 #import "DANewServerCtrl.h"
+#import "DARecentReposCtrl.h"
 
 #import "DAGitServer+Creation.h"
 
@@ -17,6 +18,7 @@ static const NSUInteger MaximumServersCount = 10;
 
 static NSString *RepoSegue = @"RepoSegue";
 static NSString *SettingsSegue = @"SettingsSegue";
+static NSString *RecentReposSegue = @"RecentReposSegue";
 
 static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 
@@ -42,6 +44,21 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		
 		ctrl.repoServer = self.currentServer;
 	} else if ([segue.identifier isEqualToString:SettingsSegue]) {
+	} else if ([segue.identifier isEqualToString:RecentReposSegue]) {
+		DARecentReposCtrl *ctrl = segue.destinationViewController;
+		ctrl.server = self.currentServer;
+		
+		__weak DALoginCtrl *ref = self;
+		ctrl.cancelAction = ^{
+			[ref dismissViewControllerAnimated:YES completion:nil];
+		};
+		ctrl.selectAction = ^(DAGitRepo *repo){
+			// TODO: update when accessed - 'Explore' clicked.
+//			repo.lastAccessDate = NSDate.date;
+			ref.currentCtrl.repoField.text = repo.relativePath;
+			
+			[ref dismissViewControllerAnimated:YES completion:nil];
+		};
 	} else {
 		[super prepareForSegue:segue sender:sender];
 	}
@@ -50,6 +67,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	self.title = NSLocalizedString(@"Back", nil);
 	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 	
 	_ctrls = NSMutableArray.new;
@@ -185,7 +203,9 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	DAServerCtrl *ctrl = DAServerCtrl.viewCtrl;
 	
 	((PagerItemView *)ctrl.view).identifier = DAServerCtrl.className;
+	
 	[ctrl.exploreButton addTarget:self action:@selector(exploreDidClick:) forControlEvents:UIControlEventTouchUpInside];
+	[ctrl.recentReposButton addTarget:self action:@selector(recentReposDidClick:) forControlEvents:UIControlEventTouchUpInside];
 	
 	return ctrl;
 }
@@ -194,6 +214,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	DANewServerCtrl *ctrl = DANewServerCtrl.viewCtrl;
 	
 	((PagerItemView *)ctrl.view).identifier = DANewServerCtrl.className;
+	
 	[ctrl.createButton addTarget:self action:@selector(createDidClick:) forControlEvents:UIControlEventTouchUpInside];
 	
 	return ctrl;
@@ -279,6 +300,10 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	[self testRepoWithUserString:self.currentCtrl.repoField.text];
 }
 
+- (void)recentReposDidClick:(UIButton *)sender {
+	[self performSegueWithIdentifier:RecentReposSegue sender:nil];
+}
+
 - (void)createDidClick:(UIButton *)sender {
 	NSString *name = self.createCtrl.serverNameField.text;
 	
@@ -289,13 +314,14 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	
 	NSString *url = self.createCtrl.serverUrlField.text;
 	NSDictionary *info = @{ServerName: name,
-						ServerGitBaseUrl: url,
-						SaveDirectory: name,
-						LogoIcon: @"Git-Icon.png",
-						TransferProtocol: @"git://",
-						SupportedProtocols: @[@"git://", @"https://", @"http://", @"ssh://"],
-						RecentRepoPath: @"",
-						RecentBranchName: @"master"};
+						   ServerGitBaseUrl: url,
+						   SaveDirectory: name,
+						   LogoIcon: @"Git-Icon.png",
+						   TransferProtocol: @"git://",
+						   SupportedProtocols: @[@"git://", @"https://", @"http://", @"ssh://"],
+						   RecentRepoPath: @"",
+						   RecentRepos: @{},
+						   RecentBranchName: @"master"};
 	
 	DAGitServer *server = [DAGitServer serverWithDictionary:info];
 	[self.servers addNewServer:server];

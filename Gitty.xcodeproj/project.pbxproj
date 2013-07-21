@@ -55,9 +55,12 @@
 		181873B9179C0175002FE1A3 /* overlay-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181873B8179C0175002FE1A3 /* overlay-black@2x.png */; };
 		181873BB179C019A002FE1A3 /* overlay-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 181873BA179C019A002FE1A3 /* overlay-black.png */; };
 		181873BD179C08C5002FE1A3 /* DANewServerCtrl-3.5inches.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181873BC179C08C5002FE1A3 /* DANewServerCtrl-3.5inches.xib */; };
+		181873C0179C1409002FE1A3 /* RecentRepos.png in Resources */ = {isa = PBXBuildFile; fileRef = 181873BE179C1409002FE1A3 /* RecentRepos.png */; };
+		181873C1179C1409002FE1A3 /* RecentRepos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181873BF179C1409002FE1A3 /* RecentRepos@2x.png */; };
 		181A6F59178B696D002CA3BE /* DASshCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A6F58178B696D002CA3BE /* DASshCredentials.m */; };
 		1825DC9517947F9B00FE5193 /* DAAlertQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1825DC9417947F9B00FE5193 /* DAAlertQueue.m */; };
 		1825DC981794808A00FE5193 /* DAAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 1825DC971794808A00FE5193 /* DAAlert.m */; };
+		1829551C179C77C6002D888A /* DAGitRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829551B179C77C6002D888A /* DAGitRepo.m */; };
 		18336051178EBD75000C1E52 /* authors.png in Resources */ = {isa = PBXBuildFile; fileRef = 1833604F178EBD75000C1E52 /* authors.png */; };
 		18336052178EBD75000C1E52 /* authors@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18336050178EBD75000C1E52 /* authors@2x.png */; };
 		18336055178ECFEC000C1E52 /* branches.png in Resources */ = {isa = PBXBuildFile; fileRef = 18336053178ECFEC000C1E52 /* branches.png */; };
@@ -74,7 +77,6 @@
 		18352A351799D362000DCF07 /* Grabber2_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18352A331799D362000DCF07 /* Grabber2_top@2x.png */; };
 		18352A381799D6BC000DCF07 /* Grabber2_wide_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 18352A361799D6BC000DCF07 /* Grabber2_wide_top.png */; };
 		18352A391799D6BC000DCF07 /* Grabber2_wide_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18352A371799D6BC000DCF07 /* Grabber2_wide_top@2x.png */; };
-		18393171178993E1002E6A82 /* UITableGrabber@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1839316E178993E1002E6A82 /* UITableGrabber@2x.png */; };
 		183DA706175549F900140DA8 /* libObjectiveGit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 183DA703175549D100140DA8 /* libObjectiveGit-iOS.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		183F7E44178C550B0051D689 /* DAStatsCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 183F7E43178C550B0051D689 /* DAStatsCtrl.m */; };
 		183F7E47178C554E0051D689 /* DARepoCtrl+StatsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 183F7E46178C554E0051D689 /* DARepoCtrl+StatsLoader.m */; };
@@ -107,6 +109,9 @@
 		18706EDB1763B3B40046A2A6 /* DADiffDeltaGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18706EDA1763B3B40046A2A6 /* DADiffDeltaGraphView.m */; };
 		18706EDF1763ECF10046A2A6 /* DADeltaContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18706EDE1763ECF10046A2A6 /* DADeltaContentCell.xib */; };
 		18706EE31764075D0046A2A6 /* UIColor+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 18706EE21764075D0046A2A6 /* UIColor+Gitty.m */; };
+		1871D77A179C19B200F1D928 /* DARecentReposCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1871D779179C19B200F1D928 /* DARecentReposCtrl.m */; };
+		1871D77E179C1B2F00F1D928 /* DARepoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1871D77D179C1B2F00F1D928 /* DARepoCell.m */; };
+		1871D780179C1B3F00F1D928 /* DARepoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1871D77F179C1B3F00F1D928 /* DARepoCell.xib */; };
 		187A29D11795BEC700FE9F19 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 187A29D01795BEC700FE9F19 /* Icon-72.png */; };
 		187A29DF1795DFD400FE9F19 /* STKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 187A29DE1795DFD400FE9F19 /* STKeychain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		187A29E21795E05500FE9F19 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187A29E11795E05500FE9F19 /* Security.framework */; };
@@ -325,6 +330,8 @@
 		181873B8179C0175002FE1A3 /* overlay-black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay-black@2x.png"; sourceTree = "<group>"; };
 		181873BA179C019A002FE1A3 /* overlay-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay-black.png"; sourceTree = "<group>"; };
 		181873BC179C08C5002FE1A3 /* DANewServerCtrl-3.5inches.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DANewServerCtrl-3.5inches.xib"; sourceTree = "<group>"; };
+		181873BE179C1409002FE1A3 /* RecentRepos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RecentRepos.png; sourceTree = "<group>"; };
+		181873BF179C1409002FE1A3 /* RecentRepos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecentRepos@2x.png"; sourceTree = "<group>"; };
 		181993D6176D3D1000D4BE1F /* DAGitServer+Creation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DAGitServer+Creation.h"; sourceTree = "<group>"; };
 		181993D7176D3D1000D4BE1F /* DAGitServer+Creation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DAGitServer+Creation.m"; sourceTree = "<group>"; };
 		181A6F57178B696D002CA3BE /* DASshCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DASshCredentials.h; sourceTree = "<group>"; };
@@ -333,6 +340,8 @@
 		1825DC9417947F9B00FE5193 /* DAAlertQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAlertQueue.m; sourceTree = "<group>"; };
 		1825DC961794808A00FE5193 /* DAAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAlert.h; sourceTree = "<group>"; };
 		1825DC971794808A00FE5193 /* DAAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAlert.m; sourceTree = "<group>"; };
+		1829551A179C77C6002D888A /* DAGitRepo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGitRepo.h; sourceTree = "<group>"; };
+		1829551B179C77C6002D888A /* DAGitRepo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitRepo.m; sourceTree = "<group>"; };
 		1833604F178EBD75000C1E52 /* authors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = authors.png; path = Stats/authors.png; sourceTree = "<group>"; };
 		18336050178EBD75000C1E52 /* authors@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "authors@2x.png"; path = "Stats/authors@2x.png"; sourceTree = "<group>"; };
 		18336053178ECFEC000C1E52 /* branches.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = branches.png; path = Stats/branches.png; sourceTree = "<group>"; };
@@ -349,7 +358,6 @@
 		18352A331799D362000DCF07 /* Grabber2_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Grabber2_top@2x.png"; sourceTree = "<group>"; };
 		18352A361799D6BC000DCF07 /* Grabber2_wide_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Grabber2_wide_top.png; sourceTree = "<group>"; };
 		18352A371799D6BC000DCF07 /* Grabber2_wide_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Grabber2_wide_top@2x.png"; sourceTree = "<group>"; };
-		1839316E178993E1002E6A82 /* UITableGrabber@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UITableGrabber@2x.png"; sourceTree = "<group>"; };
 		183DA6F4175549D100140DA8 /* ObjectiveGitFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveGitFramework.xcodeproj; path = "Submodules/objective-git/ObjectiveGitFramework.xcodeproj"; sourceTree = "<group>"; };
 		183F7E35178C52A60051D689 /* DARepoCtrl+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DARepoCtrl+Private.h"; sourceTree = "<group>"; };
 		183F7E42178C550B0051D689 /* DAStatsCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAStatsCtrl.h; sourceTree = "<group>"; };
@@ -415,6 +423,11 @@
 		18706EDE1763ECF10046A2A6 /* DADeltaContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DADeltaContentCell.xib; sourceTree = "<group>"; };
 		18706EE11764075D0046A2A6 /* UIColor+Gitty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Gitty.h"; sourceTree = "<group>"; };
 		18706EE21764075D0046A2A6 /* UIColor+Gitty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Gitty.m"; sourceTree = "<group>"; };
+		1871D778179C19B200F1D928 /* DARecentReposCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARecentReposCtrl.h; sourceTree = "<group>"; };
+		1871D779179C19B200F1D928 /* DARecentReposCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARecentReposCtrl.m; sourceTree = "<group>"; };
+		1871D77C179C1B2F00F1D928 /* DARepoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARepoCell.h; sourceTree = "<group>"; };
+		1871D77D179C1B2F00F1D928 /* DARepoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARepoCell.m; sourceTree = "<group>"; };
+		1871D77F179C1B3F00F1D928 /* DARepoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DARepoCell.xib; sourceTree = "<group>"; };
 		187A29D01795BEC700FE9F19 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		187A29DD1795DFD400FE9F19 /* STKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKeychain.h; sourceTree = "<group>"; };
 		187A29DE1795DFD400FE9F19 /* STKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKeychain.m; sourceTree = "<group>"; };
@@ -1025,6 +1038,15 @@
 			name = Alert;
 			sourceTree = "<group>";
 		};
+		18295512179C77B0002D888A /* GitRepo */ = {
+			isa = PBXGroup;
+			children = (
+				1829551A179C77C6002D888A /* DAGitRepo.h */,
+				1829551B179C77C6002D888A /* DAGitRepo.m */,
+			);
+			name = GitRepo;
+			sourceTree = "<group>";
+		};
 		18336043178EBD6A000C1E52 /* Stats */ = {
 			isa = PBXGroup;
 			children = (
@@ -1043,6 +1065,8 @@
 		1839316B178993E1002E6A82 /* Grabber */ = {
 			isa = PBXGroup;
 			children = (
+				181873BE179C1409002FE1A3 /* RecentRepos.png */,
+				181873BF179C1409002FE1A3 /* RecentRepos@2x.png */,
 				18352A361799D6BC000DCF07 /* Grabber2_wide_top.png */,
 				18352A371799D6BC000DCF07 /* Grabber2_wide_top@2x.png */,
 				18352A321799D362000DCF07 /* Grabber2_top.png */,
@@ -1051,7 +1075,6 @@
 				18352A2B1799CD3D000DCF07 /* Grabber_bottom@2x.png */,
 				18352A2C1799CD3D000DCF07 /* Grabber_top.png */,
 				18352A2D1799CD3D000DCF07 /* Grabber_top@2x.png */,
-				1839316E178993E1002E6A82 /* UITableGrabber@2x.png */,
 			);
 			path = Grabber;
 			sourceTree = "<group>";
@@ -1212,6 +1235,26 @@
 				186A92F31778BD4C00B2EEF3 /* UITextField+Gitty.m */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		1871D770179C198500F1D928 /* RecentRepos List */ = {
+			isa = PBXGroup;
+			children = (
+				1871D77B179C1B1700F1D928 /* RepoCell */,
+				1871D778179C19B200F1D928 /* DARecentReposCtrl.h */,
+				1871D779179C19B200F1D928 /* DARecentReposCtrl.m */,
+			);
+			name = "RecentRepos List";
+			sourceTree = "<group>";
+		};
+		1871D77B179C1B1700F1D928 /* RepoCell */ = {
+			isa = PBXGroup;
+			children = (
+				1871D77C179C1B2F00F1D928 /* DARepoCell.h */,
+				1871D77D179C1B2F00F1D928 /* DARepoCell.m */,
+				1871D77F179C1B3F00F1D928 /* DARepoCell.xib */,
+			);
+			name = RepoCell;
 			sourceTree = "<group>";
 		};
 		187A29DC1795DFD400FE9F19 /* STUtils */ = {
@@ -1540,6 +1583,7 @@
 		189A531E175922BF00B5BD8D /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				1871D770179C198500F1D928 /* RecentRepos List */,
 				1804FA9E176E712B0080AB50 /* NewServer */,
 				18618877176E0FD300666DFB /* Server */,
 				18933CF21755395D00E92183 /* DALoginCtrl.h */,
@@ -1928,6 +1972,7 @@
 		18BAA85E1758016300154019 /* GitServer */ = {
 			isa = PBXGroup;
 			children = (
+				18295512179C77B0002D888A /* GitRepo */,
 				18BAA85F1758016400154019 /* GitServers.plist */,
 				18BAA8601758016400154019 /* DAGitServer.h */,
 				18BAA8611758016400154019 /* DAGitServer.m */,
@@ -2248,6 +2293,7 @@
 				181240EE175BCD3C00E6F571 /* Icon@2x.png in Resources */,
 				1804FA94176E44450080AB50 /* bitbucket.png in Resources */,
 				188B2D58175D3E5C00BD1EEB /* DACommitCell.xib in Resources */,
+				1871D780179C1B3F00F1D928 /* DARepoCell.xib in Resources */,
 				18F995BE175FAF2E0033A4A0 /* DAModifiedHeader.xib in Resources */,
 				18F995C7175FB31A0033A4A0 /* DAHunkContentView.xib in Resources */,
 				1804FA86176E15E10080AB50 /* PagerView.xib in Resources */,
@@ -2288,7 +2334,6 @@
 				1852A6291785F9BC00B44D81 /* fader-bottom.png in Resources */,
 				1852A62A1785F9BC00B44D81 /* fader-bottom@2x.png in Resources */,
 				18F1547A178622E400322369 /* DACommitMessageCell.xib in Resources */,
-				18393171178993E1002E6A82 /* UITableGrabber@2x.png in Resources */,
 				188F67F6178A1DC8004E3E07 /* stats_header.png in Resources */,
 				18352A351799D362000DCF07 /* Grabber2_top@2x.png in Resources */,
 				188F67F7178A1DC8004E3E07 /* stats_header@2x.png in Resources */,
@@ -2312,6 +2357,8 @@
 				181873B9179C0175002FE1A3 /* overlay-black@2x.png in Resources */,
 				181873BB179C019A002FE1A3 /* overlay-black.png in Resources */,
 				181873BD179C08C5002FE1A3 /* DANewServerCtrl-3.5inches.xib in Resources */,
+				181873C0179C1409002FE1A3 /* RecentRepos.png in Resources */,
+				181873C1179C1409002FE1A3 /* RecentRepos@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2337,6 +2384,7 @@
 				189A535C1759242800B5BD8D /* UIViewAdditions.m in Sources */,
 				189016B0175AA36D00F19CE4 /* DAGitActionDelegate.m in Sources */,
 				189016B4175AA39A00F19CE4 /* DAGitAction.m in Sources */,
+				1871D77E179C1B2F00F1D928 /* DARepoCell.m in Sources */,
 				189016B7175AA49300F19CE4 /* DAGitClone.m in Sources */,
 				18438B4E1777A35100943F9F /* AFXMLRequestOperation.m in Sources */,
 				18EADFE6176F05F6005D0F28 /* DAGitUser.m in Sources */,
@@ -2344,6 +2392,7 @@
 				18A6254B1775D59400FC27AE /* DAGitPullDelegate.m in Sources */,
 				189016BE175AAD8200F19CE4 /* DAGitCloneDelegate.m in Sources */,
 				18438B551777A5AD00943F9F /* Cryptor.m in Sources */,
+				1871D77A179C19B200F1D928 /* DARecentReposCtrl.m in Sources */,
 				189016E7175AC46400F19CE4 /* DynamicObject.m in Sources */,
 				189016E8175AC46400F19CE4 /* NSArray+AAV.m in Sources */,
 				189016E9175AC46400F19CE4 /* NSDate+InternetDateTime.m in Sources */,
@@ -2353,6 +2402,7 @@
 				189016EC175AC46400F19CE4 /* NSObject+Runtime.m in Sources */,
 				18438B491777A35100943F9F /* AFImageRequestOperation.m in Sources */,
 				18A6254C1775D59700FC27AE /* DAGitPull.m in Sources */,
+				1829551C179C77C6002D888A /* DAGitRepo.m in Sources */,
 				189016ED175AC46400F19CE4 /* NSString+Helper.m in Sources */,
 				18438B4A1777A35100943F9F /* AFJSONRequestOperation.m in Sources */,
 				18438B611777A8CC00943F9F /* DAGravatar.m in Sources */,

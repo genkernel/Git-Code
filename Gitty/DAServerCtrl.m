@@ -38,6 +38,9 @@
 	[self.repoField applyThinStyle];
 	[self.userNameField applyThinStyle];
 	[self.userPasswordField applyThinStyle];
+	
+	self.repoField.rightView = self.recentReposButton;
+	self.repoField.rightViewMode = UITextFieldViewModeUnlessEditing;
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {

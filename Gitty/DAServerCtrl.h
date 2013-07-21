@@ -13,6 +13,9 @@
 	BOOL isCredentialsVisible;
 }
 @property (strong, nonatomic) IBOutlet UITextField *repoField, *userNameField, *userPasswordField;
+@property (strong, nonatomic) IBOutlet UIButton *recentReposButton;
+
+
 @property (strong, nonatomic) IBOutlet UIButton *exploreButton, *loginButton;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *exploringIndicator;
 @property (strong, nonatomic) IBOutlet UIImageView *logoIcon;

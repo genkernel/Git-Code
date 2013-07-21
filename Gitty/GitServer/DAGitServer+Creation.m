@@ -15,6 +15,7 @@ NSString *LogoIcon = @"LogoIcon";
 NSString *TransferProtocol = @"TransferProtocol";
 NSString *SupportedProtocols = @"SupportedProtocols";
 NSString *RecentRepoPath = @"RecentRepoPath";
+NSString *RecentRepos = @"RecentRepos";
 NSString *RecentBranchName = @"RecentBranchName";
 
 @implementation DAGitServer (Creation)
@@ -30,6 +31,15 @@ NSString *RecentBranchName = @"RecentBranchName";
 
 - (NSString *)settingsPath {
 	return [self.docsPath stringByAppendingPathComponent:self.name];
+}
+
+- (void)loadRecentReposFromDict:(NSDictionary *)repos {
+	_recentReposDict = [NSMutableDictionary dictionaryWithCapacity:repos.count + 10];
+	
+	for (NSDictionary *info in repos.allValues) {
+		DAGitRepo *repo = [DAGitRepo storageWithInitialProperties:info];
+		_recentReposDict[repo.relativePath] = repo;
+	}
 }
 
 @end

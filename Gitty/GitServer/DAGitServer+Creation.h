@@ -15,10 +15,12 @@ extern NSString *LogoIcon;
 extern NSString *TransferProtocol;
 extern NSString *SupportedProtocols;
 extern NSString *RecentRepoPath;
+extern NSString *RecentRepos;
 extern NSString *RecentBranchName;
 
 @interface DAGitServer (Creation)
 - (void)createSettingsFolderIfNeeded;
+- (void)loadRecentReposFromDict:(NSDictionary *)repos;
 
 // Private.
 @property (strong, nonatomic, readonly) NSString *docsPath, *settingsPath;

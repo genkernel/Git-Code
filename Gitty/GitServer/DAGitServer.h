@@ -6,17 +6,20 @@
 //  Copyright (c) 2012 kernel@realm. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "DAGitRepo.h"
 
 extern NSString *SshTransferProtocol;
 
-@interface DAGitServer : NSObject
+@interface DAGitServer : NSObject {
+	NSMutableDictionary *_recentReposDict;
+}
 + (instancetype)serverWithDictionary:(NSDictionary *)dict;
 
 @property (strong, nonatomic, readonly) NSDictionary *saveDict;
 
 @property (strong, nonatomic, readonly) NSString *gitBaseUrl;
 @property (strong, nonatomic) NSString *recentRepoPath, *recentBranchName;
+@property (strong, nonatomic, readonly) NSArray *reposByAccessTime;
 
 @property (strong, nonatomic) NSString *transferProtocol;
 @property (strong, nonatomic, readonly) NSArray *supportedProtocols;

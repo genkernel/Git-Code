@@ -424,7 +424,7 @@
                         <constraint firstAttribute="trailing" secondItem="vac-Hg-17Q" secondAttribute="trailing" type="user" id="QtU-Uc-SQQ"/>
                         <constraint firstItem="M72-wh-dq2" firstAttribute="leading" secondItem="aGc-Wh-uk7" secondAttribute="leading" type="user" id="TQ4-De-Fcd"/>
                         <constraint firstItem="vac-Hg-17Q" firstAttribute="leading" secondItem="aGc-Wh-uk7" secondAttribute="leading" type="user" id="X56-qB-tNe"/>
-                        <constraint firstAttribute="bottom" secondItem="vac-Hg-17Q" secondAttribute="bottom" type="user" id="fnP-2h-biB"/>
+                        <constraint firstAttribute="bottom" secondItem="vac-Hg-17Q" secondAttribute="bottom" constant="10" type="user" id="fnP-2h-biB"/>
                         <constraint firstAttribute="trailing" secondItem="M72-wh-dq2" secondAttribute="trailing" type="user" id="vM1-Ev-Ehn"/>
                         <constraint firstAttribute="bottom" secondItem="M72-wh-dq2" secondAttribute="bottom" type="user" id="z1w-Kq-GAv"/>
                     </constraints>
@@ -635,7 +635,7 @@ yet.</string>
             <objects>
                 <viewController id="5ae-qc-YmD" customClass="DAStatsCtrl" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MEQ-w2-z7R">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="505"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p68-Os-XZM" userLabel="Header">

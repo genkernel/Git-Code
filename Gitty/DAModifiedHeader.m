@@ -10,17 +10,13 @@
 
 @implementation DAModifiedHeader
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
-		self.backgroundColor = UIColor.redColor;
-		
 		NSArray *views = [NSBundle.mainBundle loadNibNamed:self.className owner:self options:nil];
 		
 		UIView *view = views[0];
 		self.frame = view.bounds;
-		view.backgroundColor = UIColor.greenColor;
 		
 		[self addSubview:view];
 		

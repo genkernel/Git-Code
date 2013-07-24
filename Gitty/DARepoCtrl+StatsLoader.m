@@ -10,7 +10,7 @@
 #import "DARepoCtrl+Private.h"
 #import "DARepoCtrl+Animation.h"
 
-static NSTimeInterval OneDayInterval = 3 DAYS;
+static NSTimeInterval OneDayInterval = 1 DAYS;
 static NSUInteger CommitsExtraCheckingThreshold = 10;
 
 @implementation DARepoCtrl (StatsLoader)

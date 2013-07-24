@@ -54,9 +54,12 @@
 }
 
 - (void)pull {
+	DARepoCtrl *ctrl = self;
+	self.app.idleTimerDisabled = YES;
+	
 	DAGitPullDelegate *delegate = DAGitPullDelegate.new;
 	delegate.transferProgressBlock = ^(const git_transfer_progress *progress){
-		[Logger info:@"pull progress: %d/%d", progress->received_objects, progress->total_objects];
+		[Logger info:@"repo.pull progress: %d/%d", progress->received_objects, progress->total_objects];
 		
 		if (0 == progress->total_objects) {
 			[Logger warn:@"0 total_objects specified during pulling."];
@@ -66,6 +69,8 @@
 		[self.pullingField setProgress:percent progressColor:UIColor.acceptingGreenColor backgroundColor:UIColor.blackColor];
 	};
 	delegate.finishBlock = ^(DAGitAction *pull, NSError *err){
+		ctrl.app.idleTimerDisabled = NO;
+		
 		if (err && GIT_EEXISTS != err.code) {
 			// Load stats anyway if nothing was updated.
 			[self loadStats];

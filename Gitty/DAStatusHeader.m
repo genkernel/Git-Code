@@ -41,7 +41,7 @@
 	self.statusLabel.text = [self titleForChangeType:delta.type];
 	
 	if (GTDiffFileDeltaAdded == delta.type) {
-		self.statusLabel.hidden = YES;
+		self.statusLabel.hidden = !delta.isBinary;
 		
 		self.symbolLabel.text = nil;
 		self.filenameLabel.text = nil;

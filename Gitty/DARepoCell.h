@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface DARepoCell : UITableViewCell
-- (void)loadRepo:(DAGitRepo *)repo;
+- (void)loadRepo:(NSDictionary *)repo;
 
 @property (strong, nonatomic) IBOutlet UIImageView *logo;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;

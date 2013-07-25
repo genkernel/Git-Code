@@ -52,7 +52,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		ctrl.cancelAction = ^{
 			[ref dismissViewControllerAnimated:YES completion:nil];
 		};
-		ctrl.selectAction = ^(DAGitRepo *repo){
+		ctrl.selectAction = ^(NSDictionary *repo){
 			// TODO: update when accessed - 'Explore' clicked.
 //			repo.lastAccessDate = NSDate.date;
 			ref.currentCtrl.repoField.text = repo.relativePath;
@@ -124,6 +124,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		
 		[self.currentCtrl resetProgress];
 		
+		[self.currentServer addOrUpdateRecentRepoWithRelativePath:repoName];
 		self.currentServer.recentRepoPath = repoName;
 		[self.servers save];
 		
@@ -186,6 +187,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		DAGitClone *clone = (DAGitClone *)action;
 		[self performSegueWithIdentifier:RepoSegue sender:clone.clonedRepo];
 		
+		[self.currentServer addOrUpdateRecentRepoWithRelativePath:repoName];
 		self.currentServer.recentRepoPath = repoName;
 		[self.servers save];
 		

@@ -8,6 +8,9 @@
 
 #import "DAGitServer.h"
 
+typedef AlertQueue DAAlertQueue;
+typedef Alert DAAlert;
+
 extern NSString *DASSHKeysStateChanged;
 
 @interface DASshKeyInfo : NSObject <UIAlertViewDelegate>

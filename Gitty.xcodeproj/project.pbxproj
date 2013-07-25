@@ -58,9 +58,13 @@
 		181873C0179C1409002FE1A3 /* RecentRepos.png in Resources */ = {isa = PBXBuildFile; fileRef = 181873BE179C1409002FE1A3 /* RecentRepos.png */; };
 		181873C1179C1409002FE1A3 /* RecentRepos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181873BF179C1409002FE1A3 /* RecentRepos@2x.png */; };
 		181A6F59178B696D002CA3BE /* DASshCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A6F58178B696D002CA3BE /* DASshCredentials.m */; };
-		1825DC9517947F9B00FE5193 /* DAAlertQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1825DC9417947F9B00FE5193 /* DAAlertQueue.m */; };
-		1825DC981794808A00FE5193 /* DAAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 1825DC971794808A00FE5193 /* DAAlert.m */; };
-		1829551C179C77C6002D888A /* DAGitRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829551B179C77C6002D888A /* DAGitRepo.m */; };
+		182B820517A1A26500D02F73 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B820217A1A26500D02F73 /* Alert.m */; };
+		182B820617A1A26500D02F73 /* AlertQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B820417A1A26500D02F73 /* AlertQueue.m */; };
+		182B820917A1A8B300D02F73 /* NSDictionary+RecentRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B820817A1A8B300D02F73 /* NSDictionary+RecentRepo.m */; };
+		182B821317A1B0E800D02F73 /* fader-bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 182B820F17A1B0E800D02F73 /* fader-bottom.png */; };
+		182B821417A1B0E800D02F73 /* fader-bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 182B821017A1B0E800D02F73 /* fader-bottom@2x.png */; };
+		182B821517A1B0E800D02F73 /* fader-top.png in Resources */ = {isa = PBXBuildFile; fileRef = 182B821117A1B0E800D02F73 /* fader-top.png */; };
+		182B821617A1B0E800D02F73 /* fader-top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 182B821217A1B0E800D02F73 /* fader-top@2x.png */; };
 		18336051178EBD75000C1E52 /* authors.png in Resources */ = {isa = PBXBuildFile; fileRef = 1833604F178EBD75000C1E52 /* authors.png */; };
 		18336052178EBD75000C1E52 /* authors@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18336050178EBD75000C1E52 /* authors@2x.png */; };
 		18336055178ECFEC000C1E52 /* branches.png in Resources */ = {isa = PBXBuildFile; fileRef = 18336053178ECFEC000C1E52 /* branches.png */; };
@@ -99,8 +103,6 @@
 		18438B641777AA0600943F9F /* UIImageView+Gravatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B631777AA0600943F9F /* UIImageView+Gravatar.m */; };
 		1852A6251785EFF800B44D81 /* branch-selector.png in Resources */ = {isa = PBXBuildFile; fileRef = 1852A6231785EFF800B44D81 /* branch-selector.png */; };
 		1852A6261785EFF800B44D81 /* branch-selector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1852A6241785EFF800B44D81 /* branch-selector@2x.png */; };
-		1852A6291785F9BC00B44D81 /* fader-bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 1852A6271785F9BC00B44D81 /* fader-bottom.png */; };
-		1852A62A1785F9BC00B44D81 /* fader-bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1852A6281785F9BC00B44D81 /* fader-bottom@2x.png */; };
 		1861887B176E145F00666DFB /* DAServerCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18618879176E0FF000666DFB /* DAServerCtrl.m */; };
 		186A92D9177848FB00B2EEF3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186A92D8177848FB00B2EEF3 /* MobileCoreServices.framework */; };
 		186A92E21778522C00B2EEF3 /* DAStatusHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 186A92E01778522C00B2EEF3 /* DAStatusHeader.m */; };
@@ -338,12 +340,16 @@
 		181993D7176D3D1000D4BE1F /* DAGitServer+Creation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DAGitServer+Creation.m"; sourceTree = "<group>"; };
 		181A6F57178B696D002CA3BE /* DASshCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DASshCredentials.h; sourceTree = "<group>"; };
 		181A6F58178B696D002CA3BE /* DASshCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DASshCredentials.m; sourceTree = "<group>"; };
-		1825DC9317947F9B00FE5193 /* DAAlertQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAlertQueue.h; sourceTree = "<group>"; };
-		1825DC9417947F9B00FE5193 /* DAAlertQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAlertQueue.m; sourceTree = "<group>"; };
-		1825DC961794808A00FE5193 /* DAAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAlert.h; sourceTree = "<group>"; };
-		1825DC971794808A00FE5193 /* DAAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAlert.m; sourceTree = "<group>"; };
-		1829551A179C77C6002D888A /* DAGitRepo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGitRepo.h; sourceTree = "<group>"; };
-		1829551B179C77C6002D888A /* DAGitRepo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitRepo.m; sourceTree = "<group>"; };
+		182B820117A1A26500D02F73 /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
+		182B820217A1A26500D02F73 /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
+		182B820317A1A26500D02F73 /* AlertQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertQueue.h; sourceTree = "<group>"; };
+		182B820417A1A26500D02F73 /* AlertQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertQueue.m; sourceTree = "<group>"; };
+		182B820717A1A8B300D02F73 /* NSDictionary+RecentRepo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+RecentRepo.h"; sourceTree = "<group>"; };
+		182B820817A1A8B300D02F73 /* NSDictionary+RecentRepo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+RecentRepo.m"; sourceTree = "<group>"; };
+		182B820F17A1B0E800D02F73 /* fader-bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fader-bottom.png"; sourceTree = "<group>"; };
+		182B821017A1B0E800D02F73 /* fader-bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fader-bottom@2x.png"; sourceTree = "<group>"; };
+		182B821117A1B0E800D02F73 /* fader-top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fader-top.png"; sourceTree = "<group>"; };
+		182B821217A1B0E800D02F73 /* fader-top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fader-top@2x.png"; sourceTree = "<group>"; };
 		1833604F178EBD75000C1E52 /* authors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = authors.png; path = Stats/authors.png; sourceTree = "<group>"; };
 		18336050178EBD75000C1E52 /* authors@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "authors@2x.png"; path = "Stats/authors@2x.png"; sourceTree = "<group>"; };
 		18336053178ECFEC000C1E52 /* branches.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = branches.png; path = Stats/branches.png; sourceTree = "<group>"; };
@@ -401,8 +407,6 @@
 		18438B631777AA0600943F9F /* UIImageView+Gravatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Gravatar.m"; sourceTree = "<group>"; };
 		1852A6231785EFF800B44D81 /* branch-selector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "branch-selector.png"; sourceTree = "<group>"; };
 		1852A6241785EFF800B44D81 /* branch-selector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "branch-selector@2x.png"; sourceTree = "<group>"; };
-		1852A6271785F9BC00B44D81 /* fader-bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fader-bottom.png"; sourceTree = "<group>"; };
-		1852A6281785F9BC00B44D81 /* fader-bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fader-bottom@2x.png"; sourceTree = "<group>"; };
 		1861886B176E0BBF00666DFB /* PagerItemView+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PagerItemView+Internal.h"; sourceTree = "<group>"; };
 		1861886C176E0BBF00666DFB /* PagerItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagerItemView.h; sourceTree = "<group>"; };
 		1861886D176E0BBF00666DFB /* PagerItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagerItemView.m; sourceTree = "<group>"; };
@@ -1031,24 +1035,35 @@
 			name = SSHCredentials;
 			sourceTree = "<group>";
 		};
-		1825DC8B17947F6300FE5193 /* Alert */ = {
-			isa = PBXGroup;
-			children = (
-				1825DC9317947F9B00FE5193 /* DAAlertQueue.h */,
-				1825DC9417947F9B00FE5193 /* DAAlertQueue.m */,
-				1825DC961794808A00FE5193 /* DAAlert.h */,
-				1825DC971794808A00FE5193 /* DAAlert.m */,
-			);
-			name = Alert;
-			sourceTree = "<group>";
-		};
 		18295512179C77B0002D888A /* GitRepo */ = {
 			isa = PBXGroup;
 			children = (
-				1829551A179C77C6002D888A /* DAGitRepo.h */,
-				1829551B179C77C6002D888A /* DAGitRepo.m */,
+				182B820717A1A8B300D02F73 /* NSDictionary+RecentRepo.h */,
+				182B820817A1A8B300D02F73 /* NSDictionary+RecentRepo.m */,
 			);
 			name = GitRepo;
+			sourceTree = "<group>";
+		};
+		182B820017A1A26500D02F73 /* AlertManager */ = {
+			isa = PBXGroup;
+			children = (
+				182B820117A1A26500D02F73 /* Alert.h */,
+				182B820217A1A26500D02F73 /* Alert.m */,
+				182B820317A1A26500D02F73 /* AlertQueue.h */,
+				182B820417A1A26500D02F73 /* AlertQueue.m */,
+			);
+			path = AlertManager;
+			sourceTree = "<group>";
+		};
+		182B820E17A1B0E800D02F73 /* Faders */ = {
+			isa = PBXGroup;
+			children = (
+				182B820F17A1B0E800D02F73 /* fader-bottom.png */,
+				182B821017A1B0E800D02F73 /* fader-bottom@2x.png */,
+				182B821117A1B0E800D02F73 /* fader-top.png */,
+				182B821217A1B0E800D02F73 /* fader-top@2x.png */,
+			);
+			path = Faders;
 			sourceTree = "<group>";
 		};
 		18336043178EBD6A000C1E52 /* Stats */ = {
@@ -1406,6 +1421,7 @@
 		189016F2175AC46F00F19CE4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				182B820017A1A26500D02F73 /* AlertManager */,
 				189BCF1F1783572B0023F093 /* PageControl */,
 				18F04E39176FC96F0035C918 /* UITextField */,
 				189016F8175AC47000F19CE4 /* ActivityIndicator */,
@@ -2010,7 +2026,6 @@
 		18D9EA3417554BE000454F3C /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				1825DC8B17947F6300FE5193 /* Alert */,
 				18184B5E17555AB5001C58D8 /* DABaseCtrl.h */,
 				18184B5F17555AB5001C58D8 /* DABaseCtrl.m */,
 				18933CEF1755395D00E92183 /* MainStoryboard.storyboard */,
@@ -2142,6 +2157,7 @@
 		18F995D1175FBEDB0033A4A0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				182B820E17A1B0E800D02F73 /* Faders */,
 				183C1FD9179FEB080079AD2E /* section_header-alpha.png */,
 				183C1FDA179FEB080079AD2E /* section_header-alpha@2x.png */,
 				181873B7179C0175002FE1A3 /* AccessoryHint */,
@@ -2151,8 +2167,6 @@
 				188F67F4178A1DC8004E3E07 /* stats_header.png */,
 				188F67F5178A1DC8004E3E07 /* stats_header@2x.png */,
 				1839316B178993E1002E6A82 /* Grabber */,
-				1852A6271785F9BC00B44D81 /* fader-bottom.png */,
-				1852A6281785F9BC00B44D81 /* fader-bottom@2x.png */,
 				189BCF12178348F80023F093 /* Symbols */,
 				18ECEC821780667200740D96 /* code-separator@2x.png */,
 				18ECEC801780663800740D96 /* code-separator.png */,
@@ -2337,8 +2351,6 @@
 				181226761784D48500628C2F /* repo-forget@2x.png in Resources */,
 				1852A6251785EFF800B44D81 /* branch-selector.png in Resources */,
 				1852A6261785EFF800B44D81 /* branch-selector@2x.png in Resources */,
-				1852A6291785F9BC00B44D81 /* fader-bottom.png in Resources */,
-				1852A62A1785F9BC00B44D81 /* fader-bottom@2x.png in Resources */,
 				18F1547A178622E400322369 /* DACommitMessageCell.xib in Resources */,
 				188F67F6178A1DC8004E3E07 /* stats_header.png in Resources */,
 				18352A351799D362000DCF07 /* Grabber2_top@2x.png in Resources */,
@@ -2367,6 +2379,10 @@
 				181873C1179C1409002FE1A3 /* RecentRepos@2x.png in Resources */,
 				183C1FDB179FEB080079AD2E /* section_header-alpha.png in Resources */,
 				183C1FDC179FEB080079AD2E /* section_header-alpha@2x.png in Resources */,
+				182B821317A1B0E800D02F73 /* fader-bottom.png in Resources */,
+				182B821417A1B0E800D02F73 /* fader-bottom@2x.png in Resources */,
+				182B821517A1B0E800D02F73 /* fader-top.png in Resources */,
+				182B821617A1B0E800D02F73 /* fader-top@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2410,7 +2426,6 @@
 				189016EC175AC46400F19CE4 /* NSObject+Runtime.m in Sources */,
 				18438B491777A35100943F9F /* AFImageRequestOperation.m in Sources */,
 				18A6254C1775D59700FC27AE /* DAGitPull.m in Sources */,
-				1829551C179C77C6002D888A /* DAGitRepo.m in Sources */,
 				189016ED175AC46400F19CE4 /* NSString+Helper.m in Sources */,
 				18438B4A1777A35100943F9F /* AFJSONRequestOperation.m in Sources */,
 				18438B611777A8CC00943F9F /* DAGravatar.m in Sources */,
@@ -2474,9 +2489,10 @@
 				1810994217909BFB0018AAB4 /* DACommitBranchCell.m in Sources */,
 				181099491790A6B20018AAB4 /* DATitleHeader.m in Sources */,
 				18F86F1B17931A4E0055900C /* DASshKeyInfo.m in Sources */,
-				1825DC9517947F9B00FE5193 /* DAAlertQueue.m in Sources */,
-				1825DC981794808A00FE5193 /* DAAlert.m in Sources */,
 				187A29DF1795DFD400FE9F19 /* STKeychain.m in Sources */,
+				182B820517A1A26500D02F73 /* Alert.m in Sources */,
+				182B820617A1A26500D02F73 /* AlertQueue.m in Sources */,
+				182B820917A1A8B300D02F73 /* NSDictionary+RecentRepo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

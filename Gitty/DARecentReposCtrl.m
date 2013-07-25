@@ -13,12 +13,14 @@
 @property (strong, nonatomic, readonly) NSArray *repos;
 @end
 
-@implementation DARecentReposCtrl
+@implementation DARecentReposCtrl {
+	NSUInteger forgetAllActionTag;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	_repos = self.server.reposByAccessTime.copy;
+	[self reloadReposFromCurrentServer];
 	
 	BOOL shouldShowEmptyMessage = self.repos.count == 0;
 	self.emptyLabel.hidden = !shouldShowEmptyMessage;
@@ -28,15 +30,29 @@
 	UINib *nib = [UINib nibWithNibName:identifier bundle:nil];
 	[self.reposTable registerNib:nib forCellReuseIdentifier:identifier];
 	
-//	[self loadServerLogoImage];
+	if (self.repos.count) {
+		self.customNavigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.forgetButton];
+	}
 }
 
-- (void)loadServerLogoImage {
-	[self.customLogo applyAvatarStyle];
-	self.customLogo.image = [UIImage imageNamed:self.server.logoIconName];
+- (void)reloadReposFromCurrentServer {
+	_repos = self.server.reposByAccessTime.copy;
+}
+
+- (void)forgetAllRepos {
+	[Logger info:@"Forgeting all repos."];
 	
-	UIBarButtonItem *rightButton = [UIBarButtonItem.alloc initWithCustomView:self.customLogo];
-	self.customNavigationItem.rightBarButtonItem = rightButton;
+	for (NSDictionary *repo in self.repos) {
+		[self.server removeRecentRepoByRelativePath:repo.relativePath];
+		[self.git removeExistingRepo:repo.relativePath forServer:self.server];
+	}
+	
+	[self reloadReposFromCurrentServer];
+	
+	[self.reposTable reloadData];
+	self.customNavigationItem.rightBarButtonItem.enabled = NO;
+	
+	[self.servers save];
 }
 
 #pragma mark UITableViewDataSource, UITableViewDelegate
@@ -62,10 +78,29 @@
 	self.selectAction(self.repos[indexPath.row]);
 }
 
+#pragma mark UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (alertView.tag == forgetAllActionTag) {
+		if (0 == buttonIndex) {
+			return;
+		}
+		
+		[self forgetAllRepos];
+	}
+}
+
 #pragma mark Actions
 
 - (IBAction)cancelDidClicked:(UIBarButtonItem *)sender {
 	self.cancelAction();
+}
+
+- (IBAction)forgetPressed:(UIButton *)button {
+	NSString *title = NSLocalizedString(@"Forget all repos", nil);
+	NSString *message = NSLocalizedString(@"This operation will forget all repos and delete its fetched data from your disk.\nContinue?", nil);
+	
+	forgetAllActionTag = [self showYesNoMessage:message withTitle:title];
 }
 
 @end

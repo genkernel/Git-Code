@@ -15,7 +15,7 @@
 @implementation DARepoCell
 @dynamic formatter;
 
-- (void)loadRepo:(DAGitRepo *)repo {
+- (void)loadRepo:(NSDictionary *)repo {
 	self.nameLabel.text = repo.relativePath;
 	
 	[self loadLastAccessDate:repo.lastAccessDate];

@@ -18,9 +18,13 @@ extern NSString *RecentRepoPath;
 extern NSString *RecentRepos;
 extern NSString *RecentBranchName;
 
+// Recent repo.
+extern NSString *RecentRepoRelativePath;
+extern NSString *RecentRepoLastAccessDate;
+
 @interface DAGitServer (Creation)
 - (void)createSettingsFolderIfNeeded;
-- (void)loadRecentReposFromDict:(NSDictionary *)repos;
+- (NSDictionary *)createRecentRepoWithRelativePath:(NSString *)path;
 
 // Private.
 @property (strong, nonatomic, readonly) NSString *docsPath, *settingsPath;

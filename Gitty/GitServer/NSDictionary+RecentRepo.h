@@ -1,14 +1,14 @@
 //
-//  DAGitRepo.h
+//  NSDictionary+RecentRepo.h
 //  Gitty
 //
-//  Created by kernel on 21/07/13.
+//  Created by kernel on 25/07/13.
 //  Copyright (c) 2013 kernel@realm. All rights reserved.
 //
 
-#import "DynamicObject.h"
+#import <Foundation/Foundation.h>
 
-@interface DAGitRepo : DynamicObject
+@interface NSDictionary (RecentRepo)
 @property (strong, nonatomic, readonly) NSString *relativePath;
 @property (strong, nonatomic) NSDate *lastAccessDate;
 @end

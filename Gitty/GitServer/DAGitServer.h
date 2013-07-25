@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 kernel@realm. All rights reserved.
 //
 
-#import "DAGitRepo.h"
+#import "NSDictionary+RecentRepo.h"
 
 extern NSString *SshTransferProtocol;
 
@@ -14,6 +14,9 @@ extern NSString *SshTransferProtocol;
 	NSMutableDictionary *_recentReposDict;
 }
 + (instancetype)serverWithDictionary:(NSDictionary *)dict;
+
+- (void)addOrUpdateRecentRepoWithRelativePath:(NSString *)path;
+- (void)removeRecentRepoByRelativePath:(NSString *)path;
 
 @property (strong, nonatomic, readonly) NSDictionary *saveDict;
 

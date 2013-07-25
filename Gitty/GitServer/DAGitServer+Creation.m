@@ -18,6 +18,10 @@ NSString *RecentRepoPath = @"RecentRepoPath";
 NSString *RecentRepos = @"RecentRepos";
 NSString *RecentBranchName = @"RecentBranchName";
 
+// Recent repo.
+NSString *RecentRepoRelativePath = @"relativePath";
+NSString *RecentRepoLastAccessDate = @"lastAccessDate";
+
 @implementation DAGitServer (Creation)
 @dynamic docsPath, settingsPath;
 
@@ -33,13 +37,8 @@ NSString *RecentBranchName = @"RecentBranchName";
 	return [self.docsPath stringByAppendingPathComponent:self.name];
 }
 
-- (void)loadRecentReposFromDict:(NSDictionary *)repos {
-	_recentReposDict = [NSMutableDictionary dictionaryWithCapacity:repos.count + 10];
-	
-	for (NSDictionary *info in repos.allValues) {
-		DAGitRepo *repo = [DAGitRepo storageWithInitialProperties:info];
-		_recentReposDict[repo.relativePath] = repo;
-	}
+- (NSDictionary *)createRecentRepoWithRelativePath:(NSString *)path {
+	return @{RecentRepoRelativePath: path, RecentRepoLastAccessDate: NSDate.date};
 }
 
 @end

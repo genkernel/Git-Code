@@ -132,7 +132,7 @@ static NSString *ZipExtension = @"zip";
 	
 	NSString *message = NSLocalizedString(@"Passphrase required to install\nnew SSH keys.", nil);
 	
-	DAAlert *alert = [DAAlert passwordAlertWithTitle:server.name message:message];
+	DAAlert *alert = [DAAlert plainTextAlertWithTitle:server.name message:message];
 	alert.delegate = item;
 	[self.alert enqueueAlert:alert];
 }
@@ -149,7 +149,7 @@ static NSString *ZipExtension = @"zip";
 }
 
 - (DAAlertQueue *)alert {
-	return DAAlertQueue.queue;
+	return AlertQueue.queue;
 }
 
 @end

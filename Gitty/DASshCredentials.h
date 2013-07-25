@@ -7,7 +7,6 @@
 //
 
 #import "DASshKeyInfo.h"
-#import "DAAlertQueue.h"
 
 @interface DASshCredentials : NSObject
 + (instancetype)manager;

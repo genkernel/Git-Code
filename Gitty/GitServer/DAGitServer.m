@@ -38,7 +38,8 @@ NSString *SshTransferProtocol = @"ssh://";
 		_recentBranchName = dict[RecentBranchName];
 		
 		[self createSettingsFolderIfNeeded];
-		[self loadRecentReposFromDict:dict[RecentRepos]];
+		
+		_recentReposDict = [NSMutableDictionary dictionaryWithDictionary:dict[RecentRepos]];
 	}
 	return self;
 }
@@ -58,6 +59,18 @@ NSString *SshTransferProtocol = @"ssh://";
 			 RecentRepos: self.recentReposDict.copy,
 			 RecentBranchName: self.recentBranchName};
 }
+
+- (void)addOrUpdateRecentRepoWithRelativePath:(NSString *)path {
+	NSDictionary *repo = [self createRecentRepoWithRelativePath:path];
+	
+	self.recentReposDict[path] = repo;
+}
+
+- (void)removeRecentRepoByRelativePath:(NSString *)path {
+	[self.recentReposDict removeObjectForKey:path];
+}
+
+#pragma mark Properties
 
 - (NSArray *)reposByAccessTime {
 	NSArray *items = [self.recentReposDict.allValues sortedArrayUsingSelector:@selector(compare:)];

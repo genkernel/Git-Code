@@ -83,7 +83,7 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 		alert = [DAAlert infoAlertWithMessage:NSLocalizedString(@"New SSH keys have been succesfully saved.", nil)];
 	}
 	
-	[DAAlertQueue.queue enqueueAlert:alert];
+	[AlertQueue.queue enqueueAlert:alert];
 }
 
 - (void)deleteKeyFiles {

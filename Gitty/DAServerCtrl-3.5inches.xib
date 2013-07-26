@@ -165,6 +165,7 @@
 								<string key="NSFrame">{{150, 60}, {1, 182}}</string>
 								<reference key="NSSuperview" ref="793769138"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<reference key="IBUIBackgroundColor" ref="940618581"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
@@ -404,14 +405,16 @@
 						<string key="NSFrameSize">{320, 44}</string>
 						<reference key="NSSuperview" ref="700434012"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIBarStyle">1</int>
 						<array class="NSMutableArray" key="IBUIItems">
 							<object class="IBUIBarButtonItem" id="854774051">
-								<string key="IBUITitle">reponame.git != RepoName.git</string>
+								<string key="IBUITitle">reponame != RepoName</string>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<float key="IBUIWidth">291</float>
 								<reference key="IBUIToolbar" ref="68108816"/>
 								<reference key="IBUITintColor" ref="888793698"/>
 							</object>
@@ -437,6 +440,7 @@
 				<string key="NSFrameSize">{26, 17}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<bool key="IBUIOpaque">NO</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>

@@ -453,13 +453,17 @@
 				<int key="IBUIBarStyle">1</int>
 				<array class="NSMutableArray" key="IBUIItems">
 					<object class="IBUIBarButtonItem" id="854774051">
-						<string key="IBUITitle">reponame.git != RepoName.git</string>
+						<string key="IBUITitle">reponame != RepoName</string>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<float key="IBUIWidth">296</float>
 						<reference key="IBUIToolbar" ref="68108816"/>
 						<reference key="IBUITintColor" ref="888793698"/>
 					</object>
 				</array>
-				<reference key="IBUITintColor" ref="514857265"/>
+				<object class="NSColor" key="IBUITintColor">
+					<int key="NSColorSpace">1</int>
+					<bytes key="NSRGB">MSAwLjIgMC4yAA</bytes>
+				</object>
 			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -2496,20 +2500,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">DAServerCtrl</string>
 					<string key="superclassName">DABaseCtrl</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="didClickLogin:">UIButton</string>
-						<string key="protocolSelected:">UIButton</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="didClickLogin:">
-							<string key="name">didClickLogin:</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBActionInfo" key="protocolSelected:">
-							<string key="name">protocolSelected:</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="credentialsContainer">UIView</string>
 						<string key="exploreButton">UIButton</string>

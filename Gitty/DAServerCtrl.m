@@ -67,10 +67,20 @@
 	
 	[self loadProtocolsWithServer:self.server];
 	[self resetBaseUrlLabel];
+	
+	[self resetCredentials];
+	[self updateControlButtonsState];
 }
 
 - (void)resetBaseUrlLabel {
 	self.serverBaseUrl.text = [[self.selectedProtocol concat:self.server.gitBaseUrl] concat:@"/"];
+}
+
+- (void)resetCredentials {
+	self.userNameField.text = nil;
+	self.userPasswordField.text = nil;
+	
+	[self setCredentialsVisible:NO animated:NO];
 }
 
 - (void)loadProtocolsWithServer:(DAGitServer *)server {
@@ -149,13 +159,6 @@
 	self.repoField.disabledBackground = nil;
 }
 
-- (void)resetCredentials {
-	self.userNameField.text = nil;
-	self.userPasswordField.text = nil;
-	
-	[self setCredentialsVisible:NO animated:NO];
-}
-
 #pragma mark UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -166,7 +169,7 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	if (0 == textField.text.length > 0) {
+	if (0 == textField.text.length) {
 		return NO;
 	}
 	

@@ -22,12 +22,12 @@
 				<key>relativePath</key>
 				<string>github/GitPad</string>
 			</dict>
-			<key>github/developer.github.com.git</key>
+			<key>github/developer.github.com</key>
 			<dict>
 				<key>lastAccessDate</key>
 				<date>2013-07-26T12:00:08Z</date>
 				<key>relativePath</key>
-				<string>github/developer.github.com.git</string>
+				<string>github/developer.github.com</string>
 			</dict>
 		</dict>
 		<key>SaveDirectoryName</key>
@@ -51,7 +51,7 @@
 		<key>RecentBranchName</key>
 		<string>master</string>
 		<key>RecentRepoPath</key>
-		<string>LaNMaSteR53/recon-ng.git</string>
+		<string>LaNMaSteR53/recon-ng</string>
 		<key>RecentRepos</key>
 		<dict/>
 		<key>SaveDirectoryName</key>
@@ -73,7 +73,7 @@
 		<key>RecentBranchName</key>
 		<string>master</string>
 		<key>RecentRepoPath</key>
-		<string>Users/mikie/Repos/GitUp.git</string>
+		<string>Users/mikie/Repos/GitUp</string>
 		<key>RecentRepos</key>
 		<dict>
 			<key>Users/mikie/Repos/GitUp.git</key>
@@ -105,7 +105,7 @@
 		<key>RecentBranchName</key>
 		<string>develop</string>
 		<key>RecentRepoPath</key>
-		<string>livetell/aeva_ios.git</string>
+		<string>livetell/aeva_ios</string>
 		<key>RecentRepos</key>
 		<dict/>
 		<key>SaveDirectoryName</key>

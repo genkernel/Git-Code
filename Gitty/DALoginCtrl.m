@@ -55,8 +55,6 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 			[ref dismissViewControllerAnimated:YES completion:nil];
 		};
 		ctrl.selectAction = ^(NSDictionary *repo){
-			// TODO: update when accessed - 'Explore' clicked.
-//			repo.lastAccessDate = NSDate.date;
 			ref.currentCtrl.repoField.text = repo.relativePath;
 			
 			[ref dismissViewControllerAnimated:YES completion:nil];
@@ -267,6 +265,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	
 	if (0 == index) {
 		// CreateNewServerCtrl.
+		self.sshButton.hidden = YES;
 		return;
 	}
 	
@@ -282,6 +281,8 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	}
 	
 	_currentServer = self.servers.list[serverIndex];
+	
+	self.sshButton.hidden = [DASshCredentials.manager hasSshKeypairSupportForServer:self.currentServer];
 	
 	[Logger info:@"Current server (t:%d idx:%d): %@", pagerView.tag, index, self.currentServer];
 }

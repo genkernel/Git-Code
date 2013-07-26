@@ -97,6 +97,7 @@
                     <connections>
                         <outlet property="pager" destination="kU8-2w-rFv" id="u9d-dF-ala"/>
                         <outlet property="serverDotsControl" destination="7Dc-50-UuZ" id="ki0-JE-RGk"/>
+                        <outlet property="sshButton" destination="z6o-Y7-frk" id="M3f-fG-n1N"/>
                         <segue destination="Vzr-74-RmI" kind="push" identifier="RepoSegue" id="dvk-bn-HuB"/>
                         <segue destination="cx3-mP-d80" kind="modal" identifier="RecentReposSegue" modalTransitionStyle="coverVertical" id="pPu-LA-9aS"/>
                     </connections>
@@ -925,6 +926,7 @@ by </string>
         <class className="DASshInfoCtrl" superclassName="DABaseCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DASshInfoCtrl.h"/>
             <relationships>
+                <relationship kind="action" name="closePressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>

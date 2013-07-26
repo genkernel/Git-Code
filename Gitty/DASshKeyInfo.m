@@ -80,7 +80,7 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 		NSString *fmt = NSLocalizedString(@"Failed to save new passphrase securely for server: %@", nil);
 		alert = [DAAlert errorAlertWithMessage:[NSString stringWithFormat:fmt, self.server.name]];
 	} else {
-		alert = [DAAlert infoAlertWithMessage:NSLocalizedString(@"New SSH keys have been succesfully saved.", nil)];
+		alert = [DAAlert infoAlertWithMessage:NSLocalizedString(@"New SSH keys have been succesfully installed.", nil)];
 	}
 	
 	[AlertQueue.queue enqueueAlert:alert];

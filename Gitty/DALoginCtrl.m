@@ -320,7 +320,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 						   SaveDirectory: name,
 						   LogoIcon: @"Git-Icon.png",
 						   TransferProtocol: @"git://",
-						   SupportedProtocols: @[@"git://", @"https://", @"http://", @"ssh://"],
+						   SupportedProtocols: @[@"https://", @"git://", @"http://"],
 						   RecentRepoPath: @"",
 						   RecentRepos: @{},
 						   RecentBranchName: @"master"};

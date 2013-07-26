@@ -163,6 +163,8 @@
 		18933CE81755395D00E92183 /* DAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18933CE71755395D00E92183 /* DAAppDelegate.m */; };
 		18933CF11755395D00E92183 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18933CEF1755395D00E92183 /* MainStoryboard.storyboard */; };
 		18933CF41755395D00E92183 /* DALoginCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18933CF31755395D00E92183 /* DALoginCtrl.m */; };
+		1893852417A3101E00168FDB /* DASshInfoCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1893852317A3101E00168FDB /* DASshInfoCtrl.m */; };
+		1893852B17A319B000168FDB /* SSH-Howto.html in Resources */ = {isa = PBXBuildFile; fileRef = 1893852A17A319B000168FDB /* SSH-Howto.html */; };
 		189A5322175922FA00B5BD8D /* DARepoCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A5321175922FA00B5BD8D /* DARepoCtrl.m */; };
 		189A532E1759237C00B5BD8D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189A532D1759237C00B5BD8D /* QuartzCore.framework */; };
 		189A535C1759242800B5BD8D /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A53501759242800B5BD8D /* UIViewAdditions.m */; };
@@ -524,6 +526,9 @@
 		18933CF01755395D00E92183 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		18933CF21755395D00E92183 /* DALoginCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DALoginCtrl.h; sourceTree = "<group>"; };
 		18933CF31755395D00E92183 /* DALoginCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DALoginCtrl.m; sourceTree = "<group>"; };
+		1893852217A3101E00168FDB /* DASshInfoCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DASshInfoCtrl.h; sourceTree = "<group>"; };
+		1893852317A3101E00168FDB /* DASshInfoCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DASshInfoCtrl.m; sourceTree = "<group>"; };
+		1893852A17A319B000168FDB /* SSH-Howto.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "SSH-Howto.html"; sourceTree = "<group>"; };
 		189A5320175922FA00B5BD8D /* DARepoCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARepoCtrl.h; sourceTree = "<group>"; };
 		189A5321175922FA00B5BD8D /* DARepoCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARepoCtrl.m; sourceTree = "<group>"; };
 		189A532D1759237C00B5BD8D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1600,9 +1605,36 @@
 			name = Service;
 			sourceTree = "<group>";
 		};
+		1893851A17A30D8600168FDB /* SshInfo */ = {
+			isa = PBXGroup;
+			children = (
+				1893852217A3101E00168FDB /* DASshInfoCtrl.h */,
+				1893852317A3101E00168FDB /* DASshInfoCtrl.m */,
+			);
+			name = SshInfo;
+			sourceTree = "<group>";
+		};
+		1893852817A3184700168FDB /* Html */ = {
+			isa = PBXGroup;
+			children = (
+				1893852917A319B000168FDB /* Guides */,
+			);
+			name = Html;
+			sourceTree = "<group>";
+		};
+		1893852917A319B000168FDB /* Guides */ = {
+			isa = PBXGroup;
+			children = (
+				1893852A17A319B000168FDB /* SSH-Howto.html */,
+			);
+			name = Guides;
+			path = Res/Html/Guides;
+			sourceTree = "<group>";
+		};
 		189A531E175922BF00B5BD8D /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				1893851A17A30D8600168FDB /* SshInfo */,
 				1871D770179C198500F1D928 /* RecentRepos List */,
 				1804FA9E176E712B0080AB50 /* NewServer */,
 				18618877176E0FD300666DFB /* Server */,
@@ -2039,6 +2071,7 @@
 		18D9EA3917554BEE00454F3C /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				1893852817A3184700168FDB /* Html */,
 				18438B571777A7E100943F9F /* Profile */,
 				1804FA8C176E2D510080AB50 /* Logos */,
 				1817091A175BCBEA002A2D93 /* Backgrounds */,
@@ -2383,6 +2416,7 @@
 				182B821417A1B0E800D02F73 /* fader-bottom@2x.png in Resources */,
 				182B821517A1B0E800D02F73 /* fader-top.png in Resources */,
 				182B821617A1B0E800D02F73 /* fader-top@2x.png in Resources */,
+				1893852B17A319B000168FDB /* SSH-Howto.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2493,6 +2527,7 @@
 				182B820517A1A26500D02F73 /* Alert.m in Sources */,
 				182B820617A1A26500D02F73 /* AlertQueue.m in Sources */,
 				182B820917A1A8B300D02F73 /* NSDictionary+RecentRepo.m in Sources */,
+				1893852417A3101E00168FDB /* DASshInfoCtrl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

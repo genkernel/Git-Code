@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>SSH Transport</title>
+        <style>
+            ::-moz-selection {
+                background: #b3d4fc;
+                text-shadow: none;
+            }
+
+            ::selection {
+                background: #b3d4fc;
+                text-shadow: none;
+            }
+
+            html {
+                padding: 10px;
+                font-size: 16px;
+                line-height: 1.4;
+                color: #737373;
+                background: #f0f0f0;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+            }
+
+            html,
+            input {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            }
+
+            body {
+                max-width: 500px;
+                _width: 500px;
+                padding: 20px 10px;
+                border: 1px solid #b3b3b3;
+                border-radius: 4px;
+                margin: 0 auto;
+                box-shadow: 0 1px 10px #a7a7a7, inset 0 1px 0 #fff;
+                background: #fcfcfc;
+            }
+
+            h1 {
+                margin: 0 10px;
+                font-size: 20px;
+                text-align: center;
+            }
+
+            h1 span {
+                color: #bbb;
+            }
+
+            h3 {
+                margin: 1.5em 0 0.5em;
+            }
+
+            p {
+                margin: 1em 0;
+            }
+
+            ul {
+                padding: 0 0 0 40px;
+                margin: 1em 0;
+            }
+
+            .container {
+                max-width: 380px;
+                _width: 380px;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Connecting to private repos via SSH</h1>
+			
+            <p>GitUp allows you to connect to a server via ssh:// protocol and use its benefits like secured connection and user authorization without username and password sharing.</p>
+            <p>In order to connect to git server you will need to provide ssh keys that you've generated to GitUp application.</p>
+			
+			<p style="color: #333">(This guide assumes that your keys are generated and installed on server already)</p>
+			
+			<p>Follow the step below to install your ssh keys into GitUp:</p>
+			
+            <ul>
+                <li>Archive your id_rsa and id_rsa.pub files into ZIP archive</li>
+                <li>Name archive after server name the keys were generated for (e.g. Github.zip)</li>
+				<li>Connect your iPhone to computer and open iTunes</li>
+				<li>In iTunes navigate to iPhone -> Apps -> File Sharing</li>
+				<li>Select GitUp app from the list below and drag ZIP archive into GitUp Documents folder</li>
+            </ul>
+			<p>That's it. ZIP archive has been copied into application.</p>
+			<p>Next time you fire GitUp it will detect new keys archive and ask you for passphrase (password that was set during keys generation).</p>
+			<p>Make sure you set correct password. GitUp stores it securely within local keychain so no one except GitUp can read it.</p>
+			
+			<p>ssh:// protocol will appear right next to other protocols list.</p>
+			
+			<center><p><b>Happy SSH-ing! :)</b></p></center>
+        </div>
+    </body>
+</html>

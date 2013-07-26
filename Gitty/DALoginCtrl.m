@@ -17,6 +17,7 @@
 static const NSUInteger MaximumServersCount = 10;
 
 static NSString *RepoSegue = @"RepoSegue";
+static NSString *SshInfoSegue = @"SshInfoSegue";
 static NSString *SettingsSegue = @"SettingsSegue";
 static NSString *RecentReposSegue = @"RecentReposSegue";
 
@@ -44,6 +45,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		
 		ctrl.repoServer = self.currentServer;
 	} else if ([segue.identifier isEqualToString:SettingsSegue]) {
+	} else if ([segue.identifier isEqualToString:SshInfoSegue]) {
 	} else if ([segue.identifier isEqualToString:RecentReposSegue]) {
 		DARecentReposCtrl *ctrl = segue.destinationViewController;
 		ctrl.server = self.currentServer;

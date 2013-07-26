@@ -44,7 +44,25 @@
                                         </state>
                                         <state key="highlighted">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6o-Y7-frk" userLabel="SSH Button">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" type="user" id="AQC-lK-orT"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Cochin-Bold" family="Cochin" pointSize="15"/>
+                                        <size key="titleShadowOffset" width="0.0" height="-1"/>
+                                        <state key="normal" title="SSH?">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="1" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="p14-Ia-9Q6" kind="modal" identifier="SshInfoSegue" id="krX-eK-mY3"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -54,7 +72,10 @@
                                     <constraint firstItem="fyj-w3-0Vn" firstAttribute="leading" secondItem="KAI-yE-VWF" secondAttribute="leading" type="user" id="I4C-gh-sx7"/>
                                     <constraint firstItem="7Dc-50-UuZ" firstAttribute="leading" secondItem="KAI-yE-VWF" secondAttribute="leading" type="user" id="W7F-Cw-zm1"/>
                                     <constraint firstItem="7Dc-50-UuZ" firstAttribute="top" secondItem="KAI-yE-VWF" secondAttribute="top" type="user" id="a7A-Sh-3Dp"/>
+                                    <constraint firstAttribute="bottom" secondItem="z6o-Y7-frk" secondAttribute="bottom" type="user" id="aFR-9s-3HF"/>
+                                    <constraint firstItem="z6o-Y7-frk" firstAttribute="leading" secondItem="KAI-yE-VWF" secondAttribute="leading" type="user" id="lqt-8I-4Lv"/>
                                     <constraint firstAttribute="trailing" secondItem="fyj-w3-0Vn" secondAttribute="trailing" type="user" id="q83-Rq-2eq"/>
+                                    <constraint firstItem="z6o-Y7-frk" firstAttribute="top" secondItem="KAI-yE-VWF" secondAttribute="top" type="user" id="zUT-ka-dll"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -83,6 +104,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="565" y="-53"/>
+        </scene>
+        <!--Ssh Info Ctrl-->
+        <scene sceneID="y3Z-Ka-Bfz">
+            <objects>
+                <viewController id="p14-Ia-9Q6" customClass="DASshInfoCtrl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2x8-A6-BMt">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="zLD-B8-9oW">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <navigationItem title="SSH Transfer" id="lPL-eK-Slm">
+                                        <barButtonItem key="backBarButtonItem" title="Got it" id="LdX-0p-6rd">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="closePressed:" destination="p14-Ia-9Q6" id="2Zf-7a-nco"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <connections>
+                                            <outlet property="rightBarButtonItem" destination="LdX-0p-6rd" id="J2D-eV-ihY"/>
+                                        </connections>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xgk-OS-QGy">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="p14-Ia-9Q6" id="dM3-iS-P6y"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="xgk-OS-QGy" secondAttribute="bottom" type="user" id="6tC-UM-mnT"/>
+                            <constraint firstItem="xgk-OS-QGy" firstAttribute="top" secondItem="zLD-B8-9oW" secondAttribute="bottom" type="user" id="77N-7m-afi"/>
+                            <constraint firstItem="xgk-OS-QGy" firstAttribute="trailing" secondItem="2x8-A6-BMt" secondAttribute="trailing" type="default" id="Jc3-FS-9gW"/>
+                            <constraint firstItem="zLD-B8-9oW" firstAttribute="top" secondItem="2x8-A6-BMt" secondAttribute="top" type="user" id="UwN-QR-pNJ"/>
+                            <constraint firstItem="zLD-B8-9oW" firstAttribute="trailing" secondItem="2x8-A6-BMt" secondAttribute="trailing" type="default" id="eL5-Wq-yKS"/>
+                            <constraint firstItem="zLD-B8-9oW" firstAttribute="leading" secondItem="2x8-A6-BMt" secondAttribute="leading" type="user" id="n9H-Hi-69d"/>
+                            <constraint firstItem="xgk-OS-QGy" firstAttribute="leading" secondItem="2x8-A6-BMt" secondAttribute="leading" type="default" id="ygi-Fd-XxX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="xgk-OS-QGy" id="lZa-Om-NV1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rBT-f9-b5q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="565" y="632"/>
         </scene>
         <!--Diff Ctrl-->
         <scene sceneID="BHY-Le-xif">
@@ -812,8 +884,6 @@ by </string>
         <class className="DARecentReposCtrl" superclassName="DABaseCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DARecentReposCtrl.h"/>
             <relationships>
-                <relationship kind="action" name="cancelDidClicked:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="forgetPressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="customLogo" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="customNavigationItem" candidateClass="UINavigationItem"/>
                 <relationship kind="outlet" name="emptyLabel" candidateClass="UILabel"/>
@@ -850,6 +920,12 @@ by </string>
                 <relationship kind="outlet" name="statsTitleWeekendHintLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="weekendTitleView" candidateClass="UIView"/>
                 <relationship kind="outletCollection" name="statsSwitchModeButtons" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="DASshInfoCtrl" superclassName="DABaseCtrl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DASshInfoCtrl.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>
         <class className="DAStatsCtrl" superclassName="DABaseCtrl">

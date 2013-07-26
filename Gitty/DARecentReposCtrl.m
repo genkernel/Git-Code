@@ -10,7 +10,7 @@
 #import "DARepoCell.h"
 
 @interface DARecentReposCtrl ()
-@property (strong, nonatomic, readonly) NSArray *repos;
+@property (strong, nonatomic, readonly) NSMutableArray *repos;
 @end
 
 @implementation DARecentReposCtrl {
@@ -20,39 +20,46 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	[self reloadReposFromCurrentServer];
-	
-	BOOL shouldShowEmptyMessage = self.repos.count == 0;
-	self.emptyLabel.hidden = !shouldShowEmptyMessage;
-	self.reposTable.hidden = shouldShowEmptyMessage;
+	self.customNavigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.forgetButton];
 	
 	NSString *identifier = DARepoCell.className;
 	UINib *nib = [UINib nibWithNibName:identifier bundle:nil];
 	[self.reposTable registerNib:nib forCellReuseIdentifier:identifier];
 	
-	if (self.repos.count) {
-		self.customNavigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.forgetButton];
-	}
+	[self reloadReposFromCurrentServer];
 }
 
 - (void)reloadReposFromCurrentServer {
-	_repos = self.server.reposByAccessTime.copy;
+	_repos = [NSMutableArray arrayWithArray:self.server.reposByAccessTime];
+	
+	[self reloadControlsAccordingToCurrentRepos];
+}
+
+- (void)reloadControlsAccordingToCurrentRepos {
+	self.customNavigationItem.rightBarButtonItem.enabled = self.repos.count > 0;
+	
+	BOOL shouldShowEmptyMessage = self.repos.count == 0;
+	self.emptyLabel.hidden = !shouldShowEmptyMessage;
+	self.reposTable.hidden = shouldShowEmptyMessage;
 }
 
 - (void)forgetAllRepos {
 	[Logger info:@"Forgeting all repos."];
 	
 	for (NSDictionary *repo in self.repos) {
-		[self.server removeRecentRepoByRelativePath:repo.relativePath];
-		[self.git removeExistingRepo:repo.relativePath forServer:self.server];
+		[self forgetRepo:repo];
 	}
 	
 	[self reloadReposFromCurrentServer];
 	
 	[self.reposTable reloadData];
-	self.customNavigationItem.rightBarButtonItem.enabled = NO;
 	
 	[self.servers save];
+}
+
+- (void)forgetRepo:(NSDictionary *)repo {
+	[self.server removeRecentRepoByRelativePath:repo.relativePath];
+	[self.git removeExistingRepo:repo.relativePath forServer:self.server];
 }
 
 #pragma mark UITableViewDataSource, UITableViewDelegate
@@ -76,6 +83,19 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
 	self.selectAction(self.repos[indexPath.row]);
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+		NSDictionary *repo = self.repos[indexPath.row];
+		
+		[self forgetRepo:repo];
+		[self.repos removeObject:repo];
+		
+		[self.reposTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+		
+		[self reloadControlsAccordingToCurrentRepos];
+    }
 }
 
 #pragma mark UIAlertViewDelegate

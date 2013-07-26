@@ -3,18 +3,33 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>RecentRepos</key>
-		<dict/>
 		<key>GitBaseUrl</key>
 		<string>github.com</string>
 		<key>LogoIcon</key>
 		<string>GitHub-Mark-120px-plus.png</string>
 		<key>Name</key>
 		<string>Github</string>
-		<key>RecentRepoPath</key>
-		<string>github/developer.github.com.git</string>
 		<key>RecentBranchName</key>
 		<string>master</string>
+		<key>RecentRepoPath</key>
+		<string>github/GitPad</string>
+		<key>RecentRepos</key>
+		<dict>
+			<key>github/GitPad</key>
+			<dict>
+				<key>lastAccessDate</key>
+				<date>2013-07-26T12:01:10Z</date>
+				<key>relativePath</key>
+				<string>github/GitPad</string>
+			</dict>
+			<key>github/developer.github.com.git</key>
+			<dict>
+				<key>lastAccessDate</key>
+				<date>2013-07-26T12:00:08Z</date>
+				<key>relativePath</key>
+				<string>github/developer.github.com.git</string>
+			</dict>
+		</dict>
 		<key>SaveDirectoryName</key>
 		<string>git@github.com</string>
 		<key>SupportedProtocols</key>
@@ -33,10 +48,12 @@
 		<string>bitbucket.png</string>
 		<key>Name</key>
 		<string>BitBucket</string>
-		<key>RecentRepoPath</key>
-		<string>LaNMaSteR53/recon-ng.git</string>
 		<key>RecentBranchName</key>
 		<string>master</string>
+		<key>RecentRepoPath</key>
+		<string>LaNMaSteR53/recon-ng.git</string>
+		<key>RecentRepos</key>
+		<dict/>
 		<key>SaveDirectoryName</key>
 		<string>bitbucket.org</string>
 		<key>SupportedProtocols</key>
@@ -53,10 +70,20 @@
 		<string>Git-Icon.png</string>
 		<key>Name</key>
 		<string>mikie@realm</string>
-		<key>RecentRepoPath</key>
-		<string>Users/mikie/Repos/GitUp.git</string>
 		<key>RecentBranchName</key>
 		<string>master</string>
+		<key>RecentRepoPath</key>
+		<string>Users/mikie/Repos/GitUp.git</string>
+		<key>RecentRepos</key>
+		<dict>
+			<key>Users/mikie/Repos/GitUp.git</key>
+			<dict>
+				<key>lastAccessDate</key>
+				<date>2013-07-25T18:48:09Z</date>
+				<key>relativePath</key>
+				<string>Users/mikie/Repos/GitUp.git</string>
+			</dict>
+		</dict>
 		<key>SaveDirectoryName</key>
 		<string>mikie@realm</string>
 		<key>SupportedProtocols</key>
@@ -75,10 +102,12 @@
 		<string>Git-Icon.png</string>
 		<key>Name</key>
 		<string>livetell-ssh</string>
-		<key>RecentRepoPath</key>
-		<string>livetell/aeva_ios.git</string>
 		<key>RecentBranchName</key>
 		<string>develop</string>
+		<key>RecentRepoPath</key>
+		<string>livetell/aeva_ios.git</string>
+		<key>RecentRepos</key>
+		<dict/>
 		<key>SaveDirectoryName</key>
 		<string>livetell</string>
 		<key>SupportedProtocols</key>

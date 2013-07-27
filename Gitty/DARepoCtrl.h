@@ -41,6 +41,10 @@ typedef enum {
 @property (strong, nonatomic) DAGitServer *repoServer;
 
 @property (strong, nonatomic, readonly) NSMutableDictionary *authors, *branches;
+// Format: author.name  =>  <NSArray of commits>
+@property (strong, nonatomic, readonly) NSDictionary *statsCommitsByAuthor;
+// Format: branch.name  =>  <NSArray of commits>
+@property (strong, nonatomic, readonly) NSDictionary *statsCommitsByBranch;
 
 @property (strong, nonatomic, readonly) NSDateFormatter *dateSectionTitleFormatter;
 
@@ -83,7 +87,6 @@ typedef enum {
 - (void)reloadFilters;
 - (void)reloadCommits;
 - (void)addForgetButton;
-- (void)reloadStatsCommitsWithMode:(DACommitsListModes)mode;
 
 - (void)presentDiffCtrlForCommit:(GTCommit *)commit;
 @end

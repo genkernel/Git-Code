@@ -7,20 +7,25 @@
 //
 
 #import "DABaseCtrl.h"
+#import "DAByAuthorDataSource.h"
+#import "DAByBranchDataSource.h"
 
-typedef enum {
-	DACommitsListByAuthorMode,
-	DACommitsListByBranchMode
-} DACommitsListModes;
-
-@interface DAStatsCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate>
-- (void)loadCommitsDataSource:(NSDictionary *)commits withListMode:(DACommitsListModes)mode;
+@interface DAStatsCtrl : DABaseCtrl {
+	BOOL isByBranchTableVisible;
+}
+- (void)reloadData;
 
 @property () BOOL isShowingCommitsOfMultipleDays;
-@property (readonly) DACommitsListModes listMode;
 
 // Header.
 @property (strong, nonatomic) IBOutlet UIView *headerContainer;
-@property (strong, nonatomic) IBOutlet UITableView *commitsTable;
 @property (strong, nonatomic) IBOutlet UILabel *headlineLabel, *noCommitsLabel;
+
+// commitsTable is @dynamic and points to visible table: byAuthorTable or byBranchTable.
+@property (strong, nonatomic, readonly) UITableView *commitsTable;
+@property (strong, nonatomic) IBOutlet UITableView *byAuthorTable, *byBranchTable;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *byAuthorTableLeft;
+
+@property (strong, nonatomic) IBOutlet DAByAuthorDataSource *byAuthorDataSource;
+@property (strong, nonatomic) IBOutlet DAByBranchDataSource *byBranchDataSource;
 @end

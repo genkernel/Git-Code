@@ -34,7 +34,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 10;
 			
 			if (hasStatsToShow) {
 				[self loadStatsHeadline];
-				[self reloadStatsCommitsWithMode:DACommitsListByAuthorMode];
+				[_statsCtrl reloadData];
 			} else {
 				[self resetStatsHeadline];
 				[self setStatsContainerMode:DAStatsHiddenMode animated:NO];

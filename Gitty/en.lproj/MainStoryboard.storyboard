@@ -781,7 +781,7 @@ yet.</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="505"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No commits recently" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YD7-4m-HGD" userLabel="No Commits Label">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No commits recently" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YD7-4m-HGD" userLabel="No Commits Label">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" type="user" id="QH1-9a-Rx8"/>
                                 </constraints>
@@ -789,12 +789,35 @@ yet.</string>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView hidden="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gnU-QP-WVX" userLabel="Main Table">
-                                <connections>
-                                    <outlet property="dataSource" destination="5ae-qc-YmD" id="H1K-3Z-Of8"/>
-                                    <outlet property="delegate" destination="5ae-qc-YmD" id="cxh-b9-m1B"/>
-                                </connections>
-                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nyk-WL-JSo" userLabel="Commits Container">
+                                <subviews>
+                                    <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gnU-QP-WVX" userLabel="byAuthor Table">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="320" type="user" id="OOu-iR-ijt"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dataSource" destination="NwV-q3-KOu" id="21o-eK-loX"/>
+                                            <outlet property="delegate" destination="NwV-q3-KOu" id="Jey-2q-m3n"/>
+                                        </connections>
+                                    </tableView>
+                                    <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="41d-5k-6sM" userLabel="byBranch Table">
+                                        <connections>
+                                            <outlet property="dataSource" destination="0qf-km-88k" id="GHU-yj-xnp"/>
+                                            <outlet property="delegate" destination="0qf-km-88k" id="z5g-pm-ihE"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="gnU-QP-WVX" firstAttribute="bottom" secondItem="nyk-WL-JSo" secondAttribute="bottom" type="user" id="3JA-LX-AVA"/>
+                                    <constraint firstItem="gnU-QP-WVX" firstAttribute="leading" secondItem="nyk-WL-JSo" secondAttribute="leading" type="user" id="AOg-oI-OBn"/>
+                                    <constraint firstItem="41d-5k-6sM" firstAttribute="top" secondItem="nyk-WL-JSo" secondAttribute="top" type="user" id="ESD-Xu-XHw"/>
+                                    <constraint firstItem="gnU-QP-WVX" firstAttribute="width" secondItem="41d-5k-6sM" secondAttribute="width" type="user" id="Ffc-DN-8Ba"/>
+                                    <constraint firstItem="41d-5k-6sM" firstAttribute="leading" secondItem="gnU-QP-WVX" secondAttribute="trailing" type="user" id="iaP-br-45c"/>
+                                    <constraint firstItem="gnU-QP-WVX" firstAttribute="top" secondItem="nyk-WL-JSo" secondAttribute="top" type="default" id="u7u-L7-WgQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="41d-5k-6sM" secondAttribute="bottom" type="user" id="yot-lU-EWi"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p68-Os-XZM" userLabel="Header">
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="stats_header.png" translatesAutoresizingMaskIntoConstraints="NO" id="iFz-Y0-zqm" userLabel="Background">
@@ -875,26 +898,32 @@ by </string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="gnU-QP-WVX" secondAttribute="bottom" type="user" id="1Rs-Y8-H6C"/>
                             <constraint firstItem="p68-Os-XZM" firstAttribute="top" secondItem="MEQ-w2-z7R" secondAttribute="top" type="user" id="61W-Uy-Jeg"/>
                             <constraint firstItem="YD7-4m-HGD" firstAttribute="leading" secondItem="MEQ-w2-z7R" secondAttribute="leading" type="user" id="6pH-DS-RWG"/>
                             <constraint firstAttribute="trailing" secondItem="p68-Os-XZM" secondAttribute="trailing" type="user" id="KTR-SS-41Y"/>
-                            <constraint firstItem="gnU-QP-WVX" firstAttribute="top" secondItem="MEQ-w2-z7R" secondAttribute="top" constant="50" type="user" id="Nap-A0-8Ku"/>
-                            <constraint firstAttribute="centerY" secondItem="YD7-4m-HGD" secondAttribute="centerY" type="user" id="O9s-ho-Cti"/>
-                            <constraint firstAttribute="trailing" secondItem="gnU-QP-WVX" secondAttribute="trailing" type="user" id="Rjz-J9-HPY"/>
-                            <constraint firstItem="gnU-QP-WVX" firstAttribute="leading" secondItem="MEQ-w2-z7R" secondAttribute="leading" type="user" id="aId-ue-jn0"/>
+                            <constraint firstAttribute="bottom" secondItem="nyk-WL-JSo" secondAttribute="bottom" type="user" id="NDP-ec-bsq"/>
+                            <constraint firstAttribute="bottom" secondItem="YD7-4m-HGD" secondAttribute="bottom" constant="214" id="QbH-aK-mYU"/>
                             <constraint firstAttribute="trailing" secondItem="YD7-4m-HGD" secondAttribute="trailing" type="user" id="bWZ-NX-PdK"/>
+                            <constraint firstItem="nyk-WL-JSo" firstAttribute="trailing" secondItem="MEQ-w2-z7R" secondAttribute="trailing" type="user" id="iN3-Jt-Gzi"/>
                             <constraint firstItem="p68-Os-XZM" firstAttribute="leading" secondItem="MEQ-w2-z7R" secondAttribute="leading" type="user" id="rmv-Ou-WZF"/>
+                            <constraint firstItem="nyk-WL-JSo" firstAttribute="leading" secondItem="MEQ-w2-z7R" secondAttribute="leading" type="user" id="s6s-82-KIV"/>
+                            <constraint firstItem="nyk-WL-JSo" firstAttribute="top" secondItem="MEQ-w2-z7R" secondAttribute="top" constant="50" type="user" id="th9-ie-BTL"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <connections>
-                        <outlet property="commitsTable" destination="gnU-QP-WVX" id="xbd-YN-EnT"/>
+                        <outlet property="byAuthorDataSource" destination="NwV-q3-KOu" id="yoz-C2-Otz"/>
+                        <outlet property="byAuthorTable" destination="gnU-QP-WVX" id="xDV-cq-TIb"/>
+                        <outlet property="byAuthorTableLeft" destination="AOg-oI-OBn" id="yKu-zp-y63"/>
+                        <outlet property="byBranchDataSource" destination="0qf-km-88k" id="fff-Jd-tCV"/>
+                        <outlet property="byBranchTable" destination="41d-5k-6sM" id="Mhc-Xc-eKN"/>
                         <outlet property="headlineLabel" destination="hlC-Gf-Gjv" id="2dn-TW-qHO"/>
                         <outlet property="noCommitsLabel" destination="YD7-4m-HGD" id="6pi-CE-L4I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSF-xZ-zWT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="NwV-q3-KOu" userLabel="byAuthor DataSource" customClass="DAByAuthorDataSource"/>
+                <customObject id="0qf-km-88k" userLabel="byBranch DataSource" customClass="DAByBranchDataSource"/>
             </objects>
             <point key="canvasLocation" x="1731" y="-817"/>
         </scene>
@@ -919,6 +948,12 @@ by </string>
             <relationships>
                 <relationship kind="outlet" name="picker" candidateClass="UIPickerView"/>
             </relationships>
+        </class>
+        <class className="DAByAuthorDataSource" superclassName="DAStatsDataSource">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAByAuthorDataSource.h"/>
+        </class>
+        <class className="DAByBranchDataSource" superclassName="DAStatsDataSource">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAByBranchDataSource.h"/>
         </class>
         <class className="DADiffCtrl" superclassName="DABaseCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DADiffCtrl.h"/>
@@ -990,11 +1025,18 @@ by </string>
         <class className="DAStatsCtrl" superclassName="DABaseCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DAStatsCtrl.h"/>
             <relationships>
-                <relationship kind="outlet" name="commitsTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="byAuthorDataSource" candidateClass="DAByAuthorDataSource"/>
+                <relationship kind="outlet" name="byAuthorTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="byAuthorTableLeft" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="byBranchDataSource" candidateClass="DAByBranchDataSource"/>
+                <relationship kind="outlet" name="byBranchTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="headerContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="headlineLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="noCommitsLabel" candidateClass="UILabel"/>
             </relationships>
+        </class>
+        <class className="DAStatsDataSource" superclassName="DABaseCtrl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DAStatsDataSource.h"/>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>

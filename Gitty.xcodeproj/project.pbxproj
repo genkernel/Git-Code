@@ -179,6 +179,10 @@
 		189BCF2D178375280023F093 /* Git-Icon_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189BCF2B178375280023F093 /* Git-Icon_red@2x.png */; };
 		189FB5D1178AF4EC0095FE8C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 189FB5D0178AF4EC0095FE8C /* LICENSE */; };
 		18A1114D175E2A7000784356 /* DARepoCtrl+GitFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1114C175E2A7000784356 /* DARepoCtrl+GitFetcher.m */; };
+		18A3D67317A4137500B38FA8 /* DAStatsCtrl+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A3D67217A4137400B38FA8 /* DAStatsCtrl+Animation.m */; };
+		18A3D67617A41F6600B38FA8 /* DAByAuthorDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A3D67517A41F6600B38FA8 /* DAByAuthorDataSource.m */; };
+		18A3D67B17A4258A00B38FA8 /* DAByBranchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A3D67A17A4258A00B38FA8 /* DAByBranchDataSource.m */; };
+		18A3D67E17A4265900B38FA8 /* DAStatsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A3D67D17A4265800B38FA8 /* DAStatsDataSource.m */; };
 		18A6254B1775D59400FC27AE /* DAGitPullDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6254A1775D59000FC27AE /* DAGitPullDelegate.m */; };
 		18A6254C1775D59700FC27AE /* DAGitPull.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A625481775D57D00FC27AE /* DAGitPull.m */; };
 		18A6254D1776101D00FC27AE /* NavViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1804FABE176E8FEA0080AB50 /* NavViewCtrl.m */; };
@@ -554,6 +558,14 @@
 		189FB5D0178AF4EC0095FE8C /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		18A1114B175E2A7000784356 /* DARepoCtrl+GitFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DARepoCtrl+GitFetcher.h"; sourceTree = "<group>"; };
 		18A1114C175E2A7000784356 /* DARepoCtrl+GitFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DARepoCtrl+GitFetcher.m"; sourceTree = "<group>"; };
+		18A3D67117A4137400B38FA8 /* DAStatsCtrl+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DAStatsCtrl+Animation.h"; sourceTree = "<group>"; };
+		18A3D67217A4137400B38FA8 /* DAStatsCtrl+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DAStatsCtrl+Animation.m"; sourceTree = "<group>"; };
+		18A3D67417A41F6600B38FA8 /* DAByAuthorDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAByAuthorDataSource.h; sourceTree = "<group>"; };
+		18A3D67517A41F6600B38FA8 /* DAByAuthorDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAByAuthorDataSource.m; sourceTree = "<group>"; };
+		18A3D67917A4258A00B38FA8 /* DAByBranchDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAByBranchDataSource.h; sourceTree = "<group>"; };
+		18A3D67A17A4258A00B38FA8 /* DAByBranchDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAByBranchDataSource.m; sourceTree = "<group>"; };
+		18A3D67C17A4265800B38FA8 /* DAStatsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAStatsDataSource.h; sourceTree = "<group>"; };
+		18A3D67D17A4265800B38FA8 /* DAStatsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAStatsDataSource.m; sourceTree = "<group>"; };
 		18A624601775D4C800FC27AE /* map.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = map.c; sourceTree = "<group>"; };
 		18A624611775D4C800FC27AE /* array.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = array.h; sourceTree = "<group>"; };
 		18A624621775D4C800FC27AE /* attr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = attr.c; sourceTree = "<group>"; };
@@ -1132,10 +1144,13 @@
 		183F7E41178C54ED0051D689 /* StatsCtrl */ = {
 			isa = PBXGroup;
 			children = (
+				18A3D67F17A4265D00B38FA8 /* DataSource */,
 				1810993F17909BC10018AAB4 /* BranchCommitCell */,
 				1810992E179074290018AAB4 /* AuthorHeader */,
 				183F7E42178C550B0051D689 /* DAStatsCtrl.h */,
 				183F7E43178C550B0051D689 /* DAStatsCtrl.m */,
+				18A3D67117A4137400B38FA8 /* DAStatsCtrl+Animation.h */,
+				18A3D67217A4137400B38FA8 /* DAStatsCtrl+Animation.m */,
 			);
 			name = StatsCtrl;
 			sourceTree = "<group>";
@@ -1732,6 +1747,35 @@
 				189FB5D0178AF4EC0095FE8C /* LICENSE */,
 			);
 			path = libssh2;
+			sourceTree = "<group>";
+		};
+		18A3D67717A41F6F00B38FA8 /* ByAuthorDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				18A3D67417A41F6600B38FA8 /* DAByAuthorDataSource.h */,
+				18A3D67517A41F6600B38FA8 /* DAByAuthorDataSource.m */,
+			);
+			name = ByAuthorDataSource;
+			sourceTree = "<group>";
+		};
+		18A3D67817A4255500B38FA8 /* ByBranchDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				18A3D67917A4258A00B38FA8 /* DAByBranchDataSource.h */,
+				18A3D67A17A4258A00B38FA8 /* DAByBranchDataSource.m */,
+			);
+			name = ByBranchDataSource;
+			sourceTree = "<group>";
+		};
+		18A3D67F17A4265D00B38FA8 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				18A3D67817A4255500B38FA8 /* ByBranchDataSource */,
+				18A3D67717A41F6F00B38FA8 /* ByAuthorDataSource */,
+				18A3D67C17A4265800B38FA8 /* DAStatsDataSource.h */,
+				18A3D67D17A4265800B38FA8 /* DAStatsDataSource.m */,
+			);
+			name = DataSource;
 			sourceTree = "<group>";
 		};
 		18A6245E1775D4C800FC27AE /* src */ = {
@@ -2546,6 +2590,10 @@
 				182B820917A1A8B300D02F73 /* NSDictionary+RecentRepo.m in Sources */,
 				1893852417A3101E00168FDB /* DASshInfoCtrl.m in Sources */,
 				1893853117A32CD400168FDB /* DAFeedbackCtrl.m in Sources */,
+				18A3D67317A4137500B38FA8 /* DAStatsCtrl+Animation.m in Sources */,
+				18A3D67617A41F6600B38FA8 /* DAByAuthorDataSource.m in Sources */,
+				18A3D67B17A4258A00B38FA8 /* DAByBranchDataSource.m in Sources */,
+				18A3D67E17A4265900B38FA8 /* DAStatsDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

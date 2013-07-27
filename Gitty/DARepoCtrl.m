@@ -11,6 +11,9 @@
 #import "DARepoCtrl+Animation.h"
 #import "DARepoCtrl+GitFetcher.h"
 #import "DARepoCtrl+StatsLoader.h"
+
+#import "DAStatsCtrl+Animation.h"
+
 // Filter pickers.
 #import "DABranchPickerCtrl.h"
 // Cells.
@@ -33,11 +36,6 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 @property (strong, nonatomic, readonly) NSDictionary *commitsOnDateSection;
 @property (strong, nonatomic, readonly) NSDictionary *authorsOnDateSection;
 @property (strong, nonatomic, readonly) NSArray *dateSections;
-
-// Format: author.name  =>  <NSArray of commits>
-@property (strong, nonatomic, readonly) NSMutableDictionary *statsCommitsByAuthor;
-// Format: branch.name  =>  <NSArray of commits>
-@property (strong, nonatomic, readonly) NSMutableDictionary *statsCommitsByBranch;
 
 @property (strong, nonatomic, readonly) NSIndexPath *selectedCommitIndexPath;
 
@@ -156,18 +154,6 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 - (void)addForgetButton {
 	self.navigationItem.titleView = self.branchCustomTitleContainer;
 	self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.forgetButton];
-}
-
-- (void)reloadStatsCommitsWithMode:(DACommitsListModes)mode {
-	NSDictionary *dataSource = DACommitsListByAuthorMode == mode ? self.statsCommitsByAuthor : self.statsCommitsByBranch;
-	
-	[self.statsCtrl loadCommitsDataSource:dataSource withListMode:mode];
-}
-
-- (void)toggleStatsCommitsMode {
-	DACommitsListModes mode = DACommitsListByAuthorMode == self.statsCtrl.listMode ? DACommitsListByBranchMode : DACommitsListByAuthorMode;
-	
-	[self reloadStatsCommitsWithMode:mode];
 }
 
 - (void)reloadFilters {
@@ -418,7 +404,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	_statsSelectedModeButton = sender;
 	self.statsSelectedModeButton.enabled = NO;
 	
-	[self toggleStatsCommitsMode];
+	[self.statsCtrl toggleCommitsTablesAnimated:YES];
 }
 
 - (IBAction)statsDidClick:(UIButton *)sender {

@@ -19,6 +19,7 @@ static const NSUInteger MaximumServersCount = 10;
 static NSString *RepoSegue = @"RepoSegue";
 static NSString *SshInfoSegue = @"SshInfoSegue";
 static NSString *SettingsSegue = @"SettingsSegue";
+static NSString *FeedbackSegue = @"FeedbackSegue";
 static NSString *RecentReposSegue = @"RecentReposSegue";
 
 static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
@@ -44,8 +45,9 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		ctrl.shouldPull = !isRepoCloned;
 		
 		ctrl.repoServer = self.currentServer;
-	} else if ([segue.identifier isEqualToString:SettingsSegue]) {
 	} else if ([segue.identifier isEqualToString:SshInfoSegue]) {
+	} else if ([segue.identifier isEqualToString:SettingsSegue]) {
+	} else if ([segue.identifier isEqualToString:FeedbackSegue]) {
 	} else if ([segue.identifier isEqualToString:RecentReposSegue]) {
 		DARecentReposCtrl *ctrl = segue.destinationViewController;
 		ctrl.server = self.currentServer;

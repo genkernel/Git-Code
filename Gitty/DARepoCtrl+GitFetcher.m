@@ -54,7 +54,7 @@
 }
 
 - (void)pull {
-	DARepoCtrl *ctrl = self;
+	__weak DARepoCtrl *ctrl = self;
 	self.app.idleTimerDisabled = YES;
 	
 	DAGitPullDelegate *delegate = DAGitPullDelegate.new;
@@ -66,27 +66,27 @@
 			return;
 		}
 		CGFloat percent = (CGFloat)progress->received_objects / progress->total_objects;
-		[self.pullingField setProgress:percent progressColor:UIColor.acceptingGreenColor backgroundColor:UIColor.blackColor];
+		[ctrl.pullingField setProgress:percent progressColor:UIColor.acceptingGreenColor backgroundColor:UIColor.blackColor];
 	};
 	delegate.finishBlock = ^(DAGitAction *pull, NSError *err){
 		ctrl.app.idleTimerDisabled = NO;
 		
 		if (err && GIT_EEXISTS != err.code) {
 			// Load stats anyway if nothing was updated.
-			[self loadStats];
+			[ctrl loadStats];
 			
 			if (GIT_EEXISTS == err.code) {
 				// Repo is up to date. No updates fetched.
 			} else {
-				[self showErrorMessage:err.localizedDescription];
+				[ctrl showErrorMessage:err.localizedDescription];
 			}
 			return;
 		}
 		
-		[self reloadFilters];
-		[self reloadCommits];
+		[ctrl reloadFilters];
+		[ctrl reloadCommits];
 		
-		[self loadStats];
+		[ctrl loadStats];
 	};
 	
 	DAGitPull *pull = [DAGitPull pullForRepository:self.currentRepo fromServer:self.repoServer];

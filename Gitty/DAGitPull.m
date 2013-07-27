@@ -32,7 +32,7 @@ static int transferProgressCallback(const git_transfer_progress *progress, void 
 		NSDictionary *info = @{NSLocalizedDescriptionKey: @"No data pulled. Repo is up to date."};
 		_completionError = [NSError errorWithDomain:@"libgit2" code:code userInfo:info];
 	} else if (GIT_OK != code) {
-		NSDictionary *info = @{NSLocalizedDescriptionKey: @"Failed to Pull for repo."};
+		NSDictionary *info = @{NSLocalizedDescriptionKey: @"Failed to Pull repo.\n\nCheck your internet connection"};
 		_completionError = [NSError errorWithDomain:@"libgit2" code:code userInfo:info];
 	}
 }

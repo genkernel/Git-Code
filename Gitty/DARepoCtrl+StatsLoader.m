@@ -75,6 +75,8 @@ static NSUInteger CommitsExtraCheckingThreshold = 10;
 	dateString = [self.yearMonthDayFormatter stringFromDate:todayDate];
 	int today = [dateString intValue];
 	
+	_statsCtrl.isShowingCommitsOfMultipleDays = isCollectingWeekendStats;
+	
 	if (isCollectingWeekendStats) {
 		_statsCustomTitle = [self.dayOfWeekTitleFormatter stringFromDate:yesterdayDate];
 		_statsCustomHint = NSLocalizedString(@"+ weekend", nil);

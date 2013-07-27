@@ -75,6 +75,10 @@ static CGFloat CommitMessageMaxHeight = 120.;
 	self.infoLabel.attributedText = [NSAttributedString stringByJoiningSimpleStrings:strings applyingAttributes:attributes joinString:@" "];
 }
 
+- (void)setShowsDayName:(BOOL)showsDayName {
+	self.dateFormatter.dateFormat = showsDayName ? @"E, h:mm a" : @"h:mm a";
+}
+
 #pragma mark Properties
 
 - (NSDateFormatter *)dateFormatter {

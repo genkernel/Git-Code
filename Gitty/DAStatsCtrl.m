@@ -195,8 +195,11 @@
 	
 	UITableViewCell<DADynamicCommitCell> *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
 	
-	[cell loadCommit:commit];
+	[cell setShowsDayName:self.isShowingCommitsOfMultipleDays];
 	[cell setShowsTopCellSeparator:indexPath.row > 0];
+	
+	[cell loadCommit:commit];
+	
 	
 	if (isAuthorMode) {
 		NSString *addr = [NSString stringWithFormat:@"0x%X", (int)commit];

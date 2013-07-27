@@ -16,6 +16,7 @@ typedef enum {
 @interface DAStatsCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate>
 - (void)loadCommitsDataSource:(NSDictionary *)commits withListMode:(DACommitsListModes)mode;
 
+@property () BOOL isShowingCommitsOfMultipleDays;
 @property (readonly) DACommitsListModes listMode;
 
 // Header.

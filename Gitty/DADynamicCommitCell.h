@@ -13,7 +13,9 @@
 @required
 - (CGFloat)heightForCommit:(GTCommit *)commit;
 - (void)loadCommit:(GTCommit *)commit;
+
 - (void)setShowsTopCellSeparator:(BOOL)shows;
+- (void)setShowsDayName:(BOOL)showsDayName;
 @end
 
 #endif

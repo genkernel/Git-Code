@@ -64,8 +64,9 @@ static CGFloat CommitMessageMaxHeight = 120.;
 		
 		self.dateFormatter.timeZone = commit.commitTimeZone;
 		NSString *timestamp = [self.dateFormatter stringFromDate:commit.commitDate];
+		NSString *date = [NSString stringWithFormat:@"on %@", timestamp];
 		
-		strings = @[sha, @"→", branch.shortName, timestamp];
+		strings = @[sha, @"→", branch.shortName, date];
 	}
 	
 	NSArray *attributes = nil;
@@ -94,6 +95,10 @@ static CGFloat CommitMessageMaxHeight = 120.;
 		formatter.dateFormat = @"E, h:mm a";
 	});
 	return formatter;
+}
+
+- (void)setShowsDayName:(BOOL)showsDayName {
+	self.dateFormatter.dateFormat = showsDayName ? @"E, h:mm a" : @"h:mm a";
 }
 
 @end

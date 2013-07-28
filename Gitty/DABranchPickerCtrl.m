@@ -8,32 +8,90 @@
 
 #import "DABranchPickerCtrl.h"
 
+@interface DABranchPickerCtrl ()
+@property (strong, nonatomic) NSArray *allBranches;
+@property (strong, nonatomic, readonly) NSArray *visibleBranches;
+@end
+
 @implementation DABranchPickerCtrl
 
-#pragma mark UIPickerViewDataSource, UIPickerViewDelegate
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-	return 1;
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	
+	[self.searchBar enableAllControlButtons];
+	
+	[self.mainTable registerClass:UITableViewCell.class forCellReuseIdentifier:UITableViewCell.className];
 }
 
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-	return self.branches.count;
+- (void)resetWithBranches:(NSArray *)branches {
+	self.searchBar.text = nil;
+	
+	_allBranches = branches.copy;
+	_visibleBranches = branches.copy;
+	
+	[self.mainTable reloadData];
+	[self.searchBar enableAllControlButtons];
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-	GTBranch *branch = self.branches[row];
-	return branch.shortName;
+- (void)filterBranchListWithSearchText:(NSString *)text {
+	if (text.length == 0) {
+		_visibleBranches = self.allBranches;
+		
+	} else if (text.length < 3) {
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"shortName beginswith[cd] %@", text];
+		
+		_visibleBranches = [self.allBranches filteredArrayUsingPredicate:predicate];
+		
+	} else {
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"shortName contains[cd] %@", text];
+		
+		_visibleBranches = [self.allBranches filteredArrayUsingPredicate:predicate];
+	}
+	
+	[self.mainTable reloadData];
 }
 
-#pragma mark Actions
+#pragma mark UITableViewDataSource, UITableViewDelegate
 
-- (IBAction)cancelPressed:(UIBarButtonItem *)sender {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return self.visibleBranches.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	GTBranch *branch = self.visibleBranches[indexPath.row];
+	
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:UITableViewCell.className];
+	cell.selectionStyle = UITableViewCellSelectionStyleGray;
+	
+	cell.textLabel.text = branch.shortName;
+	
+	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	
+	[self.searchBar resignFirstResponder];
+	[self.searchBar enableAllControlButtons];
+	
+	self.completionBlock(self.visibleBranches[indexPath.row]);
+}
+
+#pragma mark UISearchBarDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+	[self filterBranchListWithSearchText:searchBar.text];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+	[searchBar resignFirstResponder];
+	[self.searchBar enableAllControlButtons];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+	[searchBar resignFirstResponder];
+	
 	self.completionBlock(nil);
-}
-
-- (IBAction)checkoutPressed:(UIBarButtonItem *)sender {
-	NSInteger row = [self.picker selectedRowInComponent:0];
-	self.completionBlock(self.branches[row]);
 }
 
 @end

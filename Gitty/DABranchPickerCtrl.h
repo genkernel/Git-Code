@@ -8,9 +8,11 @@
 
 #import "DABaseCtrl.h"
 
-@interface DABranchPickerCtrl : DABaseCtrl <UIPickerViewDataSource, UIPickerViewDelegate>
-@property (strong, nonatomic) NSArray *branches;
+@interface DABranchPickerCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+- (void)resetWithBranches:(NSArray *)branches;
+
 @property (strong, nonatomic) void (^completionBlock)(GTBranch *);
 
-@property (strong, nonatomic) IBOutlet UIPickerView *picker;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UITableView *mainTable;
 @end

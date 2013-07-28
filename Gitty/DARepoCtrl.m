@@ -127,6 +127,12 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	} else {
 		[self pull];
 	}
+	
+	// FIXME: come up with better solution.
+	dispatch_async(dispatch_get_main_queue(), ^{
+		self.mainContainerHeight.constant = self.view.height - self.mainContainerTop.constant;
+		[self.mainContainer.superview layoutIfNeeded];
+	});
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -236,7 +242,6 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	[self.servers save];
 	
 	self.branchCustomTitleLabel.text = branch.shortName;
-	[self.currentBranchButton setTitle:self.currentBranch.shortName forState:UIControlStateNormal];
 	
 	return YES;
 }
@@ -384,12 +389,11 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 
 - (IBAction)revealBranchPressed:(UIButton *)sender {
 	// Reload as new branches were pulled in (possibly).
-	self.branchPickerCtrl.branches = self.remoteBranches;
-	[self.branchPickerCtrl.picker reloadAllComponents];
+	[self.branchPickerCtrl resetWithBranches:self.remoteBranches];
 	
 	// Selects default branch (master) on first use.
-	NSUInteger row = [self.remoteBranches indexOfObject:self.currentBranch];
-	[self.branchPickerCtrl.picker selectRow:row inComponent:0 animated:NO];
+//	NSUInteger row = [self.remoteBranches indexOfObject:self.currentBranch];
+//	[self.branchPickerCtrl.picker selectRow:row inComponent:0 animated:NO];
 	
 	[self setBranchOverlayVisible:YES animated:YES];
 }

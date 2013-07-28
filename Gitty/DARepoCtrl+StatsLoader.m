@@ -51,7 +51,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 10;
 	
 	NSString *dateString = [self.dayOfWeekFormatter stringFromDate:todayDate];
 	int todayDayOfWeek = dateString.intValue;
-	[Logger info:@"Today.dayOfWeek: %d", todayDayOfWeek];
+//	[Logger info:@"Today.dayOfWeek: %d", todayDayOfWeek];
 	
 	BOOL isCollectingWeekendStats = NO;
 	

@@ -319,10 +319,9 @@
                                             <constraint firstAttribute="width" constant="344" type="user" id="3Tc-Hc-chD"/>
                                             <constraint firstItem="2Lq-hv-Jqk" firstAttribute="top" secondItem="56n-kQ-zDQ" secondAttribute="top" type="user" id="B9t-mV-Qz6"/>
                                             <constraint firstItem="2Lq-hv-Jqk" firstAttribute="leading" secondItem="zgp-Ui-0vb" secondAttribute="trailing" constant="-6" type="user" id="By8-5W-Vc4"/>
-                                            <constraint firstAttribute="height" constant="260" type="user" id="jtz-A8-Dms"/>
+                                            <constraint firstAttribute="bottom" secondItem="zgp-Ui-0vb" secondAttribute="bottom" constant="100" type="user" id="Ewq-My-tFp"/>
                                             <constraint firstAttribute="trailing" secondItem="2Lq-hv-Jqk" secondAttribute="trailing" type="user" id="jyn-zE-qfC"/>
                                             <constraint firstAttribute="bottom" secondItem="2Lq-hv-Jqk" secondAttribute="bottom" type="user" id="kQk-W3-IKl"/>
-                                            <constraint firstItem="zgp-Ui-0vb" firstAttribute="top" secondItem="56n-kQ-zDQ" secondAttribute="top" type="user" id="skd-Gn-Jc4"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Dq-DG-G51" userLabel="Grabber">
@@ -351,10 +350,12 @@
                                     <constraint firstAttribute="bottom" secondItem="a4a-3k-Zyy" secondAttribute="bottom" type="user" id="Ho8-9N-3hL"/>
                                     <constraint firstAttribute="trailing" secondItem="9Dq-DG-G51" secondAttribute="trailing" type="user" id="Ixg-16-O7G"/>
                                     <constraint firstItem="56n-kQ-zDQ" firstAttribute="leading" secondItem="4lu-SX-On5" secondAttribute="leading" constant="296" type="user" id="LEH-sI-EMs"/>
-                                    <constraint firstAttribute="height" constant="484" type="user" id="V9S-q3-lW1"/>
+                                    <constraint firstItem="56n-kQ-zDQ" firstAttribute="top" secondItem="4lu-SX-On5" secondAttribute="top" constant="30" type="user" id="NLp-aZ-NO6"/>
+                                    <constraint firstAttribute="height" constant="484" type="user" id="Pkg-d0-TPP"/>
                                     <constraint firstItem="5FE-g9-Ql5" firstAttribute="leading" secondItem="4lu-SX-On5" secondAttribute="leading" type="user" id="Ywa-gZ-fNq"/>
                                     <constraint firstAttribute="trailing" secondItem="5FE-g9-Ql5" secondAttribute="trailing" type="user" id="ZMX-uT-s0Q"/>
                                     <constraint firstItem="a4a-3k-Zyy" firstAttribute="top" secondItem="4lu-SX-On5" secondAttribute="top" constant="30" type="user" id="b7P-9A-3GU"/>
+                                    <constraint firstItem="56n-kQ-zDQ" firstAttribute="bottom" secondItem="4lu-SX-On5" secondAttribute="bottom" type="user" id="ed7-P0-0Jv"/>
                                     <constraint firstItem="9Dq-DG-G51" firstAttribute="top" secondItem="4lu-SX-On5" secondAttribute="top" type="user" id="ibn-y2-Yzz"/>
                                     <constraint firstItem="9Dq-DG-G51" firstAttribute="leading" secondItem="4lu-SX-On5" secondAttribute="leading" type="user" id="ny2-NK-aBG"/>
                                     <constraint firstAttribute="bottom" secondItem="5FE-g9-Ql5" secondAttribute="bottom" type="user" id="qid-XW-hVe"/>
@@ -446,7 +447,7 @@
                         <outlet property="forgetButton" destination="wF1-lh-4Te" id="pfZ-y8-eRe"/>
                         <outlet property="grabButton" destination="9Dq-DG-G51" id="2HI-yV-liZ"/>
                         <outlet property="mainContainer" destination="4lu-SX-On5" id="RCo-b7-yus"/>
-                        <outlet property="mainContainerHeight" destination="V9S-q3-lW1" id="GOX-SP-bZn"/>
+                        <outlet property="mainContainerHeight" destination="Pkg-d0-TPP" id="T0f-rR-sHG"/>
                         <outlet property="mainContainerTop" destination="JDI-UP-m3V" id="z88-Lb-EZg"/>
                         <outlet property="pullingContainer" destination="JSV-Rf-GSV" id="dQG-rb-wfR"/>
                         <outlet property="pullingContainerTop" destination="cJs-OY-wTR" id="ASB-48-HL5"/>
@@ -706,49 +707,41 @@ yet.</string>
             <objects>
                 <viewController id="ALf-gj-3jW" customClass="DABranchPickerCtrl" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dvG-Hk-BYD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="454"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="TLd-6i-4Ib">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" type="user" id="4Iy-Kc-2g5"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem systemItem="cancel" id="Gbl-Qh-kva" userLabel="Cancel Bar Button">
-                                        <connections>
-                                            <action selector="cancelPressed:" destination="ALf-gj-3jW" id="Rgh-Y7-eKq"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ffI-z3-ppY"/>
-                                    <barButtonItem tag="1" title="Checkout" id="HUF-wC-bQW">
-                                        <connections>
-                                            <action selector="checkoutPressed:" destination="ALf-gj-3jW" id="KzJ-NA-cfe"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XaW-Yl-brV">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="216" type="user" id="dkL-Xy-uhH"/>
-                                </constraints>
+                            <searchBar contentMode="redraw" barStyle="blackOpaque" placeholder="master" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47U-I9-wod">
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                                 <connections>
-                                    <outlet property="dataSource" destination="ALf-gj-3jW" id="FGY-sK-ZXc"/>
-                                    <outlet property="delegate" destination="ALf-gj-3jW" id="h5B-zs-B9x"/>
+                                    <outlet property="delegate" destination="ALf-gj-3jW" id="DNQ-lp-A2i"/>
                                 </connections>
-                            </pickerView>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Nvk-ce-TBf">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ALf-gj-3jW" id="Vmo-I8-K99"/>
+                                    <outlet property="delegate" destination="ALf-gj-3jW" id="F7Y-Tr-EVp"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="XaW-Yl-brV" firstAttribute="leading" secondItem="dvG-Hk-BYD" secondAttribute="leading" type="user" id="0eo-DY-jd3"/>
-                            <constraint firstItem="TLd-6i-4Ib" firstAttribute="leading" secondItem="dvG-Hk-BYD" secondAttribute="leading" type="user" id="1El-Z3-lNS"/>
-                            <constraint firstAttribute="trailing" secondItem="XaW-Yl-brV" secondAttribute="trailing" type="user" id="5Pg-XM-BtZ"/>
-                            <constraint firstItem="TLd-6i-4Ib" firstAttribute="top" secondItem="dvG-Hk-BYD" secondAttribute="top" type="user" id="A9F-43-oUf"/>
-                            <constraint firstAttribute="bottom" secondItem="XaW-Yl-brV" secondAttribute="bottom" type="user" id="jJx-Vl-qeo"/>
-                            <constraint firstAttribute="trailing" secondItem="TLd-6i-4Ib" secondAttribute="trailing" type="user" id="rZB-8s-9Gb"/>
+                            <constraint firstItem="Nvk-ce-TBf" firstAttribute="top" secondItem="47U-I9-wod" secondAttribute="bottom" type="user" id="Rbs-cl-4aD"/>
+                            <constraint firstItem="47U-I9-wod" firstAttribute="leading" secondItem="dvG-Hk-BYD" secondAttribute="leading" type="default" id="aSG-F8-roY"/>
+                            <constraint firstItem="Nvk-ce-TBf" firstAttribute="trailing" secondItem="dvG-Hk-BYD" secondAttribute="trailing" type="default" id="edO-uR-CmX"/>
+                            <constraint firstAttribute="bottom" secondItem="Nvk-ce-TBf" secondAttribute="bottom" type="user" id="nHm-ex-bhR"/>
+                            <constraint firstItem="Nvk-ce-TBf" firstAttribute="leading" secondItem="dvG-Hk-BYD" secondAttribute="leading" type="default" id="uQ3-qt-Ghb"/>
+                            <constraint firstItem="47U-I9-wod" firstAttribute="top" secondItem="dvG-Hk-BYD" secondAttribute="top" type="user" id="wYn-yO-dCM"/>
+                            <constraint firstItem="47U-I9-wod" firstAttribute="trailing" secondItem="dvG-Hk-BYD" secondAttribute="trailing" type="default" id="wpY-sR-JNS"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="picker" destination="XaW-Yl-brV" id="Qjh-du-nYk"/>
+                        <outlet property="mainTable" destination="Nvk-ce-TBf" id="VXs-rQ-euT"/>
+                        <outlet property="searchBar" destination="47U-I9-wod" id="e0N-7c-RK5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sVo-Pr-CKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -946,7 +939,8 @@ by </string>
         <class className="DABranchPickerCtrl" superclassName="DABaseCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DABranchPickerCtrl.h"/>
             <relationships>
-                <relationship kind="outlet" name="picker" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="mainTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
             </relationships>
         </class>
         <class className="DAByAuthorDataSource" superclassName="DAStatsDataSource">
@@ -988,6 +982,11 @@ by </string>
         <class className="DARepoCtrl" superclassName="DABaseCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DARepoCtrl.h"/>
             <relationships>
+                <relationship kind="action" name="forgetPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="revealBranchPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="statsDidClick:" candidateClass="UIButton"/>
+                <relationship kind="action" name="statsDidDrag:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="action" name="statsModeChanged:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="branchCtrlContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="branchCustomTitleButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="branchCustomTitleContainer" candidateClass="UIView"/>
@@ -995,7 +994,6 @@ by </string>
                 <relationship kind="outlet" name="branchOverlay" candidateClass="UIView"/>
                 <relationship kind="outlet" name="branchOverlayLeft" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="commitsTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="currentBranchButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="diffLoadingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="diffLoadingOverlay" candidateClass="UIView"/>
                 <relationship kind="outlet" name="forgetButton" candidateClass="UIButton"/>

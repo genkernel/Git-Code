@@ -54,8 +54,6 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UITableView *commitsTable;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *mainContainerTop, *mainContainerHeight;
 
-@property (strong, nonatomic) IBOutlet UIButton *currentBranchButton;
-
 @property (strong, nonatomic) IBOutlet UIView *diffLoadingOverlay;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *diffLoadingIndicator;
 

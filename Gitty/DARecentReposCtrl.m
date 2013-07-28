@@ -118,7 +118,7 @@
 
 - (IBAction)forgetPressed:(UIButton *)button {
 	NSString *title = NSLocalizedString(@"Forget all repos", nil);
-	NSString *message = NSLocalizedString(@"This operation will forget all repos and delete its fetched data from your disk.\nContinue?", nil);
+	NSString *message = NSLocalizedString(@"This operation will forget all repos and delete its fetched data from disk.\n\nContinue?", nil);
 	
 	forgetAllActionTag = [self showYesNoMessage:message withTitle:title];
 }

@@ -17,7 +17,7 @@
 	#import <MobileCoreServices/MobileCoreServices.h>
 	#import <MessageUI/MessageUI.h>
 
-#import <ObjectiveGit/ObjectiveGit.h>
+#import "ObjectiveGit.h"
 #import "LibGit2-Helpers.pch"
 
 // xlib.

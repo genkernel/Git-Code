@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 kernel@realm. All rights reserved.
 //
 
-#import <ObjectiveGit/ObjectiveGit.h>
 #import "DAServerManager.h"
 // Actions (+ its Delegates).
 #import "DAGitClone.h"

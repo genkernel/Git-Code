@@ -22,13 +22,6 @@
 				<key>relativePath</key>
 				<string>libgit2/objective-git</string>
 			</dict>
-			<key>x2on/libssh2-for-iOS</key>
-			<dict>
-				<key>lastAccessDate</key>
-				<date>2013-07-26T12:05:10Z</date>
-				<key>relativePath</key>
-				<string>x2on/libssh2-for-iOS</string>
-			</dict>
 			<key>genkernel/ConceptScroll</key>
 			<dict>
 				<key>lastAccessDate</key>
@@ -59,7 +52,7 @@
 			</dict>
 		</dict>
 		<key>SaveDirectoryName</key>
-		<string>git@github.com</string>
+		<string>github.com</string>
 		<key>SupportedProtocols</key>
 		<array>
 			<string>git://</string>

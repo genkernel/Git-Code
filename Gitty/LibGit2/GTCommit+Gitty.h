@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 kernel@realm. All rights reserved.
 //
 
-#import <ObjectiveGit/ObjectiveGit.h>
+#import "ObjectiveGit.h"
 
 @interface GTCommit (Gitty)
 @property (strong, nonatomic, readonly) NSCalendar *calendar;

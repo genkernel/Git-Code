@@ -800,7 +800,7 @@ yet.</string>
                                             <outlet property="delegate" destination="NwV-q3-KOu" id="Jey-2q-m3n"/>
                                         </connections>
                                     </tableView>
-                                    <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="41d-5k-6sM" userLabel="byBranch Table">
+                                    <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="41d-5k-6sM" userLabel="byBranch Table">
                                         <connections>
                                             <outlet property="dataSource" destination="0qf-km-88k" id="GHU-yj-xnp"/>
                                             <outlet property="delegate" destination="0qf-km-88k" id="z5g-pm-ihE"/>

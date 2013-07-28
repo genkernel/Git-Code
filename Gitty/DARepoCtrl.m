@@ -324,10 +324,12 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	BOOL previousCommitHasSameAuthor = [self isSubsequentCommitAtIndexPath:indexPath];
 	Class cls = previousCommitHasSameAuthor ? DACommitMessageCell.class : DACommitCell.class;
 	
-	DACommitCell *cell = [tableView dequeueReusableCellWithIdentifier:cls.className];
+	UITableViewCell<DADynamicCommitCell> *cell = [tableView dequeueReusableCellWithIdentifier:cls.className];
+	
+	[cell setShowsDayName:NO];
+	[cell setShowsTopCellSeparator:indexPath.row > 0];
 	
 	[cell loadCommit:commit];
-	[cell setShowsTopCellSeparator:indexPath.row > 0];
 	
 	return cell;
 }

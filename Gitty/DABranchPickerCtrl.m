@@ -28,10 +28,14 @@
 - (void)resetWithBranches:(NSArray *)branches {
 	self.searchBar.text = nil;
 	
+	[self reloadWithBranches:branches];
+}
+
+- (void)reloadWithBranches:(NSArray *)branches {
 	_allBranches = branches.copy;
-	_visibleBranches = branches.copy;
 	
-	[self.mainTable reloadData];
+	[self filterBranchListWithSearchText:self.searchBar.text];
+	
 	[self.searchBar enableAllControlButtons];
 }
 

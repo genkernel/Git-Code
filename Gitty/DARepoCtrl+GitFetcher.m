@@ -7,8 +7,9 @@
 //
 
 #import "DARepoCtrl+GitFetcher.h"
-#import "DARepoCtrl+StatsLoader.h"
+#import "DARepoCtrl+Private.h"
 #import "DARepoCtrl+Animation.h"
+#import "DARepoCtrl+StatsLoader.h"
 
 @implementation DARepoCtrl (GitFetcher)
 
@@ -85,6 +86,10 @@
 		
 		[ctrl reloadFilters];
 		[ctrl reloadCommits];
+		
+		if (isBranchOverlayVisible) {
+			[self.branchPickerCtrl reloadWithBranches:self.remoteBranches];
+		}
 		
 		[ctrl loadStats];
 	};

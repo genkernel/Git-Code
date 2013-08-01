@@ -14,8 +14,6 @@
 
 #import "DAStatsCtrl+Animation.h"
 
-// Filter pickers.
-#import "DABranchPickerCtrl.h"
 // Cells.
 #import "DACommitCell.h"
 #import "DACommitMessageCell.h"

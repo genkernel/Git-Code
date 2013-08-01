@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
+	self.mainTable.scrollsToTop = NO;
+	
 	[self.searchBar enableAllControlButtons];
 	
 	[self.mainTable registerClass:UITableViewCell.class forCellReuseIdentifier:UITableViewCell.className];

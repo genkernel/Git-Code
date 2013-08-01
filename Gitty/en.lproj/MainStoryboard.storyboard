@@ -215,7 +215,7 @@
             <objects>
                 <viewController id="HaY-FQ-1Aa" userLabel="Diff Ctrl" customClass="DADiffCtrl" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4ff-iA-Sct">
-                        <rect key="frame" x="0.0" y="94" width="320" height="474"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BEU-y7-wg9" userLabel="Table">
@@ -235,7 +235,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Diff" id="WDB-7T-fRo"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackTranslucent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="table" destination="BEU-y7-wg9" id="CqW-uO-Txe"/>
@@ -771,7 +771,7 @@ yet.</string>
             <objects>
                 <viewController id="5ae-qc-YmD" customClass="DAStatsCtrl" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MEQ-w2-z7R">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="505"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No commits recently" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YD7-4m-HGD" userLabel="No Commits Label">
@@ -982,11 +982,6 @@ by </string>
         <class className="DARepoCtrl" superclassName="DABaseCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DARepoCtrl.h"/>
             <relationships>
-                <relationship kind="action" name="forgetPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="revealBranchPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="statsDidClick:" candidateClass="UIButton"/>
-                <relationship kind="action" name="statsDidDrag:" candidateClass="UIPanGestureRecognizer"/>
-                <relationship kind="action" name="statsModeChanged:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="branchCtrlContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="branchCustomTitleButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="branchCustomTitleContainer" candidateClass="UIView"/>

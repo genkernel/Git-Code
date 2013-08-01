@@ -42,8 +42,6 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 @property (strong, nonatomic, readonly) DAStatsCtrl *statsCtrl;
 @property (strong, nonatomic, readonly) UIButton *statsSelectedModeButton;
 
-@property (strong, nonatomic, readonly) DABranchPickerCtrl *branchPickerCtrl;
-
 @property (strong, nonatomic, readonly) DACommitCell *reuseCell;
 @property (strong, nonatomic, readonly) DACommitMessageCell *reuseSimpleCell;
 @end
@@ -390,10 +388,6 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 - (IBAction)revealBranchPressed:(UIButton *)sender {
 	// Reload as new branches were pulled in (possibly).
 	[self.branchPickerCtrl resetWithBranches:self.remoteBranches];
-	
-	// Selects default branch (master) on first use.
-//	NSUInteger row = [self.remoteBranches indexOfObject:self.currentBranch];
-//	[self.branchPickerCtrl.picker selectRow:row inComponent:0 animated:NO];
 	
 	[self setBranchOverlayVisible:YES animated:YES];
 }

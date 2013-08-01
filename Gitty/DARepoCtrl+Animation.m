@@ -7,6 +7,7 @@
 //
 
 #import "DARepoCtrl+Animation.h"
+#import "DARepoCtrl+Private.h"
 
 @implementation DARepoCtrl (Animation)
 
@@ -23,6 +24,9 @@
 	
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
 		[self.branchOverlay.superview layoutIfNeeded];
+		
+		self.commitsTable.scrollsToTop = !visible;
+		self.branchPickerCtrl.mainTable.scrollsToTop = visible;
 	}];
 }
 

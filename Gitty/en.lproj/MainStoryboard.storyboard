@@ -208,7 +208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Eo-4K-YnM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="927" y="632"/>
+            <point key="canvasLocation" x="912" y="712"/>
         </scene>
         <!--Diff Ctrl-->
         <scene sceneID="BHY-Le-xif">
@@ -272,7 +272,7 @@
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4lu-SX-On5" userLabel="Main Container">
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="a4a-3k-Zyy" userLabel="Commits Table">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="a4a-3k-Zyy" userLabel="Commits Table">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <sections/>
                                         <connections>
@@ -287,12 +287,16 @@
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56n-kQ-zDQ" userLabel="Filters">
                                         <subviews>
-                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgp-Ui-0vb" userLabel="Select Branch Button">
-                                                <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <rect key="contentStretch" x="0.94999999999999996" y="0.0" width="0.01" height="1"/>
+                                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Lq-hv-Jqk" userLabel="Select Branch Overlay">
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <segue destination="ALf-gj-3jW" kind="embed" identifier="BranchPickerSegue" id="omU-eA-MPn"/>
+                                                </connections>
+                                            </containerView>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgp-Ui-0vb" userLabel="Select Branch Button">
+                                                <rect key="contentStretch" x="0.94999999999999996" y="0.01" width="0.01" height="0.01"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="30" type="user" id="Ds4-Va-vhL"/>
-                                                    <constraint firstAttribute="height" constant="128" type="user" id="dkr-Cb-Dxc"/>
+                                                    <constraint firstAttribute="width" constant="60" id="8O0-Mg-drk"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Cochin-Bold" family="Cochin" pointSize="18"/>
                                                 <state key="normal" backgroundImage="branch-selector.png">
@@ -304,24 +308,20 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="revealBranchPressed:" destination="Vzr-74-RmI" eventType="touchUpInside" id="EVQ-5j-SAq"/>
+                                                    <outletCollection property="gestureRecognizers" destination="2BV-GF-X4j" appends="YES" id="OTf-3u-T0w"/>
                                                 </connections>
                                             </button>
-                                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Lq-hv-Jqk" userLabel="Select Branch Overlay">
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <connections>
-                                                    <segue destination="ALf-gj-3jW" kind="embed" identifier="BranchPickerSegue" id="omU-eA-MPn"/>
-                                                </connections>
-                                            </containerView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="zgp-Ui-0vb" firstAttribute="leading" secondItem="56n-kQ-zDQ" secondAttribute="leading" type="user" id="2tu-os-YZk"/>
+                                            <constraint firstItem="zgp-Ui-0vb" firstAttribute="top" secondItem="56n-kQ-zDQ" secondAttribute="top" type="user" id="11p-i7-54Z"/>
                                             <constraint firstAttribute="width" constant="344" type="user" id="3Tc-Hc-chD"/>
                                             <constraint firstItem="2Lq-hv-Jqk" firstAttribute="top" secondItem="56n-kQ-zDQ" secondAttribute="top" type="user" id="B9t-mV-Qz6"/>
-                                            <constraint firstItem="2Lq-hv-Jqk" firstAttribute="leading" secondItem="zgp-Ui-0vb" secondAttribute="trailing" constant="-6" type="user" id="By8-5W-Vc4"/>
-                                            <constraint firstAttribute="bottom" secondItem="zgp-Ui-0vb" secondAttribute="bottom" constant="100" type="user" id="Ewq-My-tFp"/>
+                                            <constraint firstItem="zgp-Ui-0vb" firstAttribute="leading" secondItem="56n-kQ-zDQ" secondAttribute="leading" type="default" id="Qnd-GQ-Nhl"/>
                                             <constraint firstAttribute="trailing" secondItem="2Lq-hv-Jqk" secondAttribute="trailing" type="user" id="jyn-zE-qfC"/>
+                                            <constraint firstItem="zgp-Ui-0vb" firstAttribute="bottom" secondItem="56n-kQ-zDQ" secondAttribute="bottom" type="default" id="kKk-OT-x09"/>
                                             <constraint firstAttribute="bottom" secondItem="2Lq-hv-Jqk" secondAttribute="bottom" type="user" id="kQk-W3-IKl"/>
+                                            <constraint firstItem="2Lq-hv-Jqk" firstAttribute="leading" secondItem="56n-kQ-zDQ" secondAttribute="leading" constant="24" id="ssJ-Fg-HbA"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Dq-DG-G51" userLabel="Grabber">
@@ -600,14 +600,20 @@
                         <action selector="forgetPressed:" destination="Vzr-74-RmI" eventType="touchUpInside" id="k8q-1v-0sZ"/>
                     </connections>
                 </button>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="nQg-SP-kER">
+                <panGestureRecognizer minimumNumberOfTouches="1" id="nQg-SP-kER" userLabel="Stats Pan Gesture">
                     <connections>
                         <action selector="statsDidDrag:" destination="Vzr-74-RmI" id="XGe-qG-JSF"/>
                         <outlet property="delegate" destination="Vzr-74-RmI" id="N36-46-bEf"/>
                     </connections>
                 </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="2BV-GF-X4j" userLabel="Branch Pan Gesture">
+                    <connections>
+                        <action selector="branchDidDrag:" destination="Vzr-74-RmI" id="fDc-QJ-pRI"/>
+                        <outlet property="delegate" destination="Vzr-74-RmI" id="qIC-ZU-XgM"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1201" y="-53"/>
+            <point key="canvasLocation" x="1191" y="65"/>
         </scene>
         <!--Recent Repos Ctrl-->
         <scene sceneID="zxu-4g-7hl">
@@ -771,7 +777,7 @@ yet.</string>
             <objects>
                 <viewController id="5ae-qc-YmD" customClass="DAStatsCtrl" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MEQ-w2-z7R">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="505"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No commits recently" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YD7-4m-HGD" userLabel="No Commits Label">
@@ -784,7 +790,7 @@ yet.</string>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nyk-WL-JSo" userLabel="Commits Container">
                                 <subviews>
-                                    <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gnU-QP-WVX" userLabel="byAuthor Table">
+                                    <tableView contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gnU-QP-WVX" userLabel="byAuthor Table">
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" type="user" id="OOu-iR-ijt"/>
                                         </constraints>
@@ -793,7 +799,7 @@ yet.</string>
                                             <outlet property="delegate" destination="NwV-q3-KOu" id="Jey-2q-m3n"/>
                                         </connections>
                                     </tableView>
-                                    <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="41d-5k-6sM" userLabel="byBranch Table">
+                                    <tableView contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="41d-5k-6sM" userLabel="byBranch Table">
                                         <connections>
                                             <outlet property="dataSource" destination="0qf-km-88k" id="GHU-yj-xnp"/>
                                             <outlet property="delegate" destination="0qf-km-88k" id="z5g-pm-ihE"/>
@@ -925,7 +931,7 @@ by </string>
         <image name="Grabber2_wide_top.png" width="90" height="11"/>
         <image name="authors-white.png" width="35" height="21"/>
         <image name="authors.png" width="35" height="21"/>
-        <image name="branch-selector.png" width="24" height="128"/>
+        <image name="branch-selector.png" width="30" height="328"/>
         <image name="branches-white.png" width="29" height="7"/>
         <image name="branches.png" width="29" height="7"/>
         <image name="fader-bottom.png" width="2" height="20"/>

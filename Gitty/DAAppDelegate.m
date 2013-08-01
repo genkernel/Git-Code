@@ -10,7 +10,22 @@
 
 @implementation DAAppDelegate
 
+- (void)genRoundedImage:(UIApplication *)app {
+	UIView *v = [UIView.alloc initWithFrame:CGRectMake(0, 0, 88, 256)];
+	v.layer.masksToBounds = YES;
+	v.layer.cornerRadius = 7;
+	
+	v.backgroundColor = UIColor.acceptingGreenColor;
+	
+	UIImage *img = v.screeshotWithCurrentContext;
+	
+	NSData *data = UIImagePNGRepresentation(img);
+	[data writeToFile:[app.documentsPath concat:@"/123.png"] atomically:YES];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+//	[self genRoundedImage:application];
+	
 	if (!IS_IPHONE_5) {
 		[ViewCtrl setDevicePostfix:@"-3.5inches"];
 	}

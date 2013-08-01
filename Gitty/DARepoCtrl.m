@@ -28,6 +28,7 @@ static NSString *StatsSegue = @"StatsSegue";
 static NSString *BranchPickerSegue = @"BranchPickerSegue";
 
 static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
+static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 
 @interface DARepoCtrl ()
 @property (strong, nonatomic, readonly) GTBranch *currentBranch;
@@ -47,6 +48,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 @implementation DARepoCtrl {
 	NSUInteger forgetActionTag;
 	CGFloat statsContainerOffsetBeforeDragging;
+	CGFloat branchContainerOffsetBeforeDragging;
 	NSArray *_remoteBranches;
 	CGFloat headerHeight;
 }
@@ -88,10 +90,11 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	_statsSelectedModeButton = self.statsSwitchModeButtons[0];
+	UIImage *img = [UIImage imageNamed:@"branch-selector.png"];
+	img = [img resizableImageWithCapInsets:UIEdgeInsetsMake(0, 24, img.size.height - 100, 0)];
+	[self.revealBranchOverlayButton setBackgroundImage:img forState:UIControlStateNormal];
 	
-	self.revealBranchOverlayButton.layer.cornerRadius = 7.;
-	self.revealBranchOverlayButton.layer.masksToBounds = YES;
+	_statsSelectedModeButton = self.statsSwitchModeButtons[0];
 	
 	{
 		UINib *nib = [UINib nibWithNibName:DACommitCell.className bundle:nil];
@@ -123,6 +126,9 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	} else {
 		[self pull];
 	}
+	
+	// Initial loading. Required as of long-time pulling + open via swipe case.
+	[self.branchPickerCtrl resetWithBranches:self.remoteBranches];
 	
 	// FIXME: come up with better solution.
 	dispatch_async(dispatch_get_main_queue(), ^{
@@ -384,10 +390,13 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 #pragma mark Actions
 
 - (IBAction)revealBranchPressed:(UIButton *)sender {
-	// Reload as new branches were pulled in (possibly).
-	[self.branchPickerCtrl resetWithBranches:self.remoteBranches];
+	BOOL shouldRevealOverlay = !isBranchOverlayVisible;
+	if (shouldRevealOverlay) {
+		// Reload as new branches were pulled in (possibly).
+		[self.branchPickerCtrl resetWithBranches:self.remoteBranches];
+	}
 	
-	[self setBranchOverlayVisible:YES animated:YES];
+	[self setBranchOverlayVisible:shouldRevealOverlay animated:YES];
 }
 
 - (IBAction)forgetPressed:(UIButton *)button {
@@ -447,6 +456,39 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 			
 			[UIView animateWithDuration:StandartAnimationDuration animations:^{
 				[self.mainContainer.superview layoutIfNeeded];
+			}];
+		}
+	}
+}
+
+- (void)toggleBranchOverlayMode {
+	[self setBranchOverlayVisible:!isBranchOverlayVisible animated:YES];
+}
+
+- (IBAction)branchDidDrag:(UIPanGestureRecognizer *)gr {
+	CGPoint p = [gr translationInView:self.view];
+	
+	if (UIGestureRecognizerStateBegan == gr.state) {
+		branchContainerOffsetBeforeDragging = self.branchOverlayLeft.constant;
+		
+	} else if (UIGestureRecognizerStateChanged == gr.state) {
+		CGFloat x = branchContainerOffsetBeforeDragging + p.x;
+		
+		if (x >= .0 && x < self.view.width) {
+			self.branchOverlayLeft.constant = x;
+		}
+		
+	} else if (UIGestureRecognizerStateEnded == gr.state) {
+		CGFloat offset = fabsf(p.x);
+		
+		if (offset >= BranchOverlyMinDraggingOffsetToSwitchState) {
+			[self toggleBranchOverlayMode];
+		} else {
+			// Decelerate back to original position (before dragging).
+			self.branchOverlayLeft.constant = branchContainerOffsetBeforeDragging;
+			
+			[UIView animateWithDuration:StandartAnimationDuration animations:^{
+				[self.branchOverlay.superview layoutIfNeeded];
 			}];
 		}
 	}

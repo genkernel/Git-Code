@@ -17,10 +17,10 @@
 	}
 	isBranchOverlayVisible = visible;
 	
-	CGFloat offset = self.branchCtrlContainer.width;
-	offset *= visible ? -1. : 1.;
+	CGFloat start = visible ? .0 : self.view.width;
+	CGFloat offset = start - self.branchCtrlContainer.x;
 	
-	self.branchOverlayLeft.constant += offset;
+	self.branchOverlayLeft.constant = offset;
 	
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
 		[self.branchOverlay.superview layoutIfNeeded];

@@ -21,6 +21,7 @@
 	self.mainTable.scrollsToTop = NO;
 	
 	[self.searchBar enableAllControlButtons];
+	[self.searchBar setKeyboardAppearance:UIKeyboardAppearanceAlert];
 	
 	[self.mainTable registerClass:UITableViewCell.class forCellReuseIdentifier:UITableViewCell.className];
 }

@@ -26,19 +26,19 @@
 }
 
 - (void)logEvent:(DAFlurryEvent *)event {
-	[Logger info:@"%@: %@", event.name, event.params];
+//	[Logger info:@"%@: %@", event.name, event.params];
 	
 	[Flurry logEvent:event.name withParameters:event.params];
 }
 
 - (void)startTimedEvent:(DAFlurryEvent *)event {
-	[Logger info:@" ->  %@", event.params];
+//	[Logger info:@" ->  %@", event.params];
 	
 	[Flurry logEvent:event.name withParameters:event.params timed:YES];
 }
 
 - (void)endTimedEvent:(DAFlurryEvent *)event {
-	[Logger info:@" <-  %@", event.params];
+//	[Logger info:@" <-  %@", event.params];
 	
 	[Flurry logEvent:event.name withParameters:event.params];
 }

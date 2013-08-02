@@ -2772,7 +2772,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "61189AFE-F322-4009-BB32-7CD5AE915CAF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "94763375-9CE5-48D0-BB74-C849076C8DFC";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Submodules/objective-git/libgit2/include $(SRCROOT)/Submodules/ConceptScroll/PagerView $(SRCROOT)/Submodules/ZipArchive/ $(SRCROOT)/Submodules/objective-git/Classes $(SRCROOT)/Submodules/objective-git/Classes/Categories/";
 				WRAPPER_EXTENSION = app;
 			};

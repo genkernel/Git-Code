@@ -26,6 +26,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 //	[self genRoundedImage:application];
 	
+	[DAFlurry.analytics start];
+	
 	if (!IS_IPHONE_5) {
 		[ViewCtrl setDevicePostfix:@"-3.5inches"];
 	}

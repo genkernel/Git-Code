@@ -110,8 +110,24 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
+	[DAFlurry logScreenAppear:self.className];
 	
 	[self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	[DAFlurry logScreenDisappear:self.className];
+}
+
+- (NSString *)analyticsCurrentServerName {
+	if (1 == self.serverDotsControl.currentPage) {
+		return GitServerGithub;
+	} else if (2 == self.serverDotsControl.currentPage) {
+		return GitServerBitbucket;
+	} else {
+		return GitServerCustom;
+	}
 }
 
 #pragma mark Internals
@@ -121,6 +137,8 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	isRepoCloned = !existent;
 	
 	if (existent) {
+		[DAFlurry logSuccessServer:self.analyticsCurrentServerName];
+		
 		GTRepository *repo = [self.git localRepoWithName:repoName forServer:self.currentServer];
 		[self performSegueWithIdentifier:RepoSegue sender:repo];
 		
@@ -135,6 +153,8 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		DAGitUser *user = nil;
 		if (self.currentCtrl.isUsingCredentials) {
 			user = [DAGitUser userWithName:self.currentCtrl.userNameField.text password:self.currentCtrl.userPasswordField.text];
+			
+			[DAFlurry logWorkflowAction:WorkflowActionLoginUsingCredentials];
 		}
 		
 		[self cloneRemoteRepoWithName:repoName fromServer:self.currentServer authenticationUser:user];
@@ -183,8 +203,15 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 			}
 			
 			[self.app showAlert:title message:message delegate:nil];
+			
+			[DAFlurry logGitAction:GitActionCloneFailed];
+			[DAFlurry logInvalidServer:self.analyticsCurrentServerName];
+			
 			return;
 		}
+		
+		[DAFlurry logGitAction:GitActionCloneSuccess];
+		[DAFlurry logSuccessServer:self.analyticsCurrentServerName];
 		
 		DAGitClone *clone = (DAGitClone *)action;
 		[self performSegueWithIdentifier:RepoSegue sender:clone.clonedRepo];
@@ -342,6 +369,8 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	
 	self.pager.defaultPage = [self.servers.list indexOfObject:server] + 1;
 	[self.pager reloadData];
+	
+	[DAFlurry logWorkflowAction:WorkflowActionCustomServerCreated];
 }
 
 @end

@@ -28,6 +28,9 @@
 		self.commitsTable.scrollsToTop = !visible;
 		self.branchPickerCtrl.mainTable.scrollsToTop = visible;
 	}];
+	
+	NSString *action = visible ? WorkflowActionBranchListShown : WorkflowActionBranchListHidden;
+	[DAFlurry logWorkflowAction:action];
 }
 
 - (void)setDiffLoadingOverlayVisible:(BOOL)visible animated:(BOOL)animated {
@@ -119,6 +122,13 @@
 		self.commitsTable.scrollsToTop = !isStatsShown;
 		_statsCtrl.commitsTable.scrollsToTop = isStatsShown;
 	}];
+	
+	NSString *name = DAStatsCtrl.className;
+	if (DAStatsFullscreenMode == mode) {
+		[DAFlurry logScreenAppear:name];
+	} else {
+		[DAFlurry logScreenDisappear:name];
+	}
 }
 
 - (void)resetStatsHeadline {

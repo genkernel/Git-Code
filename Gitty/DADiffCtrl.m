@@ -56,6 +56,16 @@
 	[self.table registerClass:DADeltaContentCell.class forCellReuseIdentifier:DADeltaContentCell.className];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[DAFlurry logScreenAppear:self.className];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	[DAFlurry logScreenDisappear:self.className];
+}
+
 - (void)loadAuthorAvatarImage {
 	UIImageView *avatar = [UIImageView.alloc initWithImage:[UIImage imageNamed:@"profile.png"]];
 	[avatar applyAvatarStyle];
@@ -73,6 +83,9 @@
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
 	BOOL hidden = UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
 	[self.navigationController setNavigationBarHidden:hidden];
+	
+	NSString *orintation = UIInterfaceOrientationIsPortrait(toInterfaceOrientation) ? WorkflowActionDiffPortrait : WorkflowActionDiffLandscape;
+	[DAFlurry logWorkflowAction:orintation];
 }
 
 #pragma mark UITableViewDataSource, UITableViewDelegate

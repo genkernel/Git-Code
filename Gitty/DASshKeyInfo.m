@@ -81,6 +81,8 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 		alert = [DAAlert errorAlertWithMessage:[NSString stringWithFormat:fmt, self.server.name]];
 	} else {
 		alert = [DAAlert infoAlertWithMessage:NSLocalizedString(@"New SSH keys have been succesfully installed.", nil)];
+		
+		[DAFlurry logWorkflowAction:WorkflowActionSSHKeysAdded];
 	}
 	
 	[AlertQueue.queue enqueueAlert:alert];

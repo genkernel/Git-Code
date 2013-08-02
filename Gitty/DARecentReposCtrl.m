@@ -29,6 +29,16 @@
 	[self reloadReposFromCurrentServer];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[DAFlurry logScreenAppear:self.className];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	[DAFlurry logScreenDisappear:self.className];
+}
+
 - (void)reloadReposFromCurrentServer {
 	_repos = [NSMutableArray arrayWithArray:self.server.reposByAccessTime];
 	
@@ -55,6 +65,8 @@
 	[self.reposTable reloadData];
 	
 	[self.servers save];
+	
+	[DAFlurry logWorkflowAction:WorkflowActionRepoAllRemoved];
 }
 
 - (void)forgetRepo:(NSDictionary *)repo {
@@ -95,6 +107,8 @@
 		[self.reposTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 		
 		[self reloadControlsAccordingToCurrentRepos];
+		
+		[DAFlurry logWorkflowAction:WorkflowActionRepoRemoved];
     }
 }
 

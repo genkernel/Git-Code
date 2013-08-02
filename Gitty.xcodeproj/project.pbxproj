@@ -187,6 +187,9 @@
 		18A6254C1775D59700FC27AE /* DAGitPull.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A625481775D57D00FC27AE /* DAGitPull.m */; };
 		18A6254D1776101D00FC27AE /* NavViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1804FABE176E8FEA0080AB50 /* NavViewCtrl.m */; };
 		18A8E20D177B644800DBD973 /* DADiffCtrlDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8E20C177B644800DBD973 /* DADiffCtrlDataSource.m */; };
+		18B8751A17ABDB86004AF69D /* libFlurry_4.2.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B8751917ABDB86004AF69D /* libFlurry_4.2.2.a */; };
+		18B8751E17ABDBAB004AF69D /* DAFlurry.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8751D17ABDBAB004AF69D /* DAFlurry.m */; };
+		18B8752117ABDF77004AF69D /* DAFlurryEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8752017ABDF77004AF69D /* DAFlurryEvent.m */; };
 		18BAA8641758016400154019 /* GitServers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18BAA85F1758016400154019 /* GitServers.plist */; };
 		18BAA8651758016400154019 /* DAGitServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAA8611758016400154019 /* DAGitServer.m */; };
 		18BAA8661758016400154019 /* DAServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAA8631758016400154019 /* DAServerManager.m */; };
@@ -789,6 +792,12 @@
 		18A6254A1775D59000FC27AE /* DAGitPullDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAGitPullDelegate.m; sourceTree = "<group>"; };
 		18A8E20B177B644800DBD973 /* DADiffCtrlDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADiffCtrlDataSource.h; sourceTree = "<group>"; };
 		18A8E20C177B644800DBD973 /* DADiffCtrlDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADiffCtrlDataSource.m; sourceTree = "<group>"; };
+		18B8751817ABDB86004AF69D /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		18B8751917ABDB86004AF69D /* libFlurry_4.2.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.2.a; sourceTree = "<group>"; };
+		18B8751C17ABDBAB004AF69D /* DAFlurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFlurry.h; sourceTree = "<group>"; };
+		18B8751D17ABDBAB004AF69D /* DAFlurry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAFlurry.m; sourceTree = "<group>"; };
+		18B8751F17ABDF77004AF69D /* DAFlurryEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFlurryEvent.h; sourceTree = "<group>"; };
+		18B8752017ABDF77004AF69D /* DAFlurryEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAFlurryEvent.m; sourceTree = "<group>"; };
 		18BAA85F1758016400154019 /* GitServers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GitServers.plist; sourceTree = "<group>"; };
 		18BAA8601758016400154019 /* DAGitServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGitServer.h; sourceTree = "<group>"; };
 		18BAA8611758016400154019 /* DAGitServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitServer.m; sourceTree = "<group>"; };
@@ -868,6 +877,7 @@
 				18FB1311178AEC5A00F844E4 /* libcrypto.a in Frameworks */,
 				18FB1312178AEC5A00F844E4 /* libssh2.a in Frameworks */,
 				18FB1313178AEC5A00F844E4 /* libssl.a in Frameworks */,
+				18B8751A17ABDB86004AF69D /* libFlurry_4.2.2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1322,6 +1332,7 @@
 		18878CAA17629E03008BF232 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				18B8751717ABDB86004AF69D /* Flurry */,
 				18878CAB17629E03008BF232 /* include */,
 				18878CF817629E03008BF232 /* lib */,
 			);
@@ -1614,6 +1625,7 @@
 		18933CDE1755395D00E92183 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				18B8751B17ABDB93004AF69D /* Flurry */,
 				18438B5E1777A8BB00943F9F /* Gravatar */,
 				18A625431775D52500FC27AE /* LibGit2 */,
 				1804FAAB176E78EC0080AB50 /* Reachability */,
@@ -2079,6 +2091,26 @@
 				18A8E20C177B644800DBD973 /* DADiffCtrlDataSource.m */,
 			);
 			name = DataSource;
+			sourceTree = "<group>";
+		};
+		18B8751717ABDB86004AF69D /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				18B8751817ABDB86004AF69D /* Flurry.h */,
+				18B8751917ABDB86004AF69D /* libFlurry_4.2.2.a */,
+			);
+			path = Flurry;
+			sourceTree = "<group>";
+		};
+		18B8751B17ABDB93004AF69D /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				18B8751C17ABDBAB004AF69D /* DAFlurry.h */,
+				18B8751D17ABDBAB004AF69D /* DAFlurry.m */,
+				18B8751F17ABDF77004AF69D /* DAFlurryEvent.h */,
+				18B8752017ABDF77004AF69D /* DAFlurryEvent.m */,
+			);
+			name = Flurry;
 			sourceTree = "<group>";
 		};
 		18BAA85E1758016300154019 /* GitServer */ = {
@@ -2594,6 +2626,8 @@
 				18A3D67617A41F6600B38FA8 /* DAByAuthorDataSource.m in Sources */,
 				18A3D67B17A4258A00B38FA8 /* DAByBranchDataSource.m in Sources */,
 				18A3D67E17A4265900B38FA8 /* DAStatsDataSource.m in Sources */,
+				18B8751E17ABDBAB004AF69D /* DAFlurry.m in Sources */,
+				18B8752117ABDF77004AF69D /* DAFlurryEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2703,7 +2737,10 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Gitty/Gitty-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Libs/lib\"";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Libs/lib\"",
+					"\"$(SRCROOT)/Libs/Flurry\"",
+				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -2726,7 +2763,10 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Gitty/Gitty-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Libs/lib\"";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Libs/lib\"",
+					"\"$(SRCROOT)/Libs/Flurry\"",
+				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",

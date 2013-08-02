@@ -83,30 +83,25 @@ static NSString *ZipExtension = @"zip";
 		
 		DAGitServer *server = DAServerManager.manager.namedList[name];
 		if (!server) {
-			NSString *fmt = NSLocalizedString(@"Found ssh archive '%@' but no Server with the same name exists.", nil);
+			NSString *fmt = NSLocalizedString(@"Found ssh archive '%@' but no Server with %@ name exists.", nil);
+			[self showErrorMessage:[NSString stringWithFormat:fmt, fileName, name]];
 			
-			[self showErrorMessage:[NSString stringWithFormat:fmt, fileName]];
+			[self.app.fs removeItemAtPath:path error:nil];
+			
+			[DAFlurry logWorkflowAction:WorkflowActionUnboundSSHKeysFound];
 			continue;
 		}
 		
 		[Logger info:@"Found new SSH keys archive for server: %@", name];
 		
 		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-			[self unzipServerArchiveAtPath:path];
+			[self unzipServerArchiveAtPath:path server:server];
 		});
 	}
 }
 
-- (void)unzipServerArchiveAtPath:(NSString *)path {
+- (void)unzipServerArchiveAtPath:(NSString *)path server:(DAGitServer *)server {
 	NSString *fileName = path.lastPathComponent;
-	NSString *serverName = fileName.stringByDeletingPathExtension;
-	
-	DAGitServer *server = DAServerManager.manager.namedList[serverName];
-	if (!server) {
-		NSString *fmt = NSLocalizedString(@"Found %@ archive but no server with %@ name exists.", nil);
-		[self showErrorMessage:[NSString stringWithFormat:fmt, fileName, serverName]];
-		return;
-	}
 	
 	ZipArchive *arch = [ZipArchive.alloc initWithFileManager:self.app.fs];
 	
@@ -120,6 +115,8 @@ static NSString *ZipExtension = @"zip";
 		NSString *fmt = NSLocalizedString(@"Failed to unzip & install SSH keys from archive: %@", nil);
 		NSString *message = [NSString stringWithFormat:fmt, fileName];
 		[self showErrorMessage:message];
+		
+		[DAFlurry logWorkflowAction:WorkflowActionBadSSHKeysFound];
 	} else {
 		[self requestCredentialsForServer:server];
 	}

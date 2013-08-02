@@ -11,18 +11,21 @@
 @implementation DAStatsCtrl (Animation)
 
 - (void)toggleCommitsTablesAnimated:(BOOL)animated {
-	isByBranchTableVisible = !isByBranchTableVisible;
+	_isByBranchTableVisible = !self.isByBranchTableVisible;
 	
-	CGFloat offset = isByBranchTableVisible ? -self.commitsTable.superview.width : .0;
+	CGFloat offset = self.isByBranchTableVisible ? -self.commitsTable.superview.width : .0;
 	
 	self.byAuthorTableLeft.constant = offset;
 	
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
 		[self.commitsTable.superview layoutIfNeeded];
 	} completion:^(BOOL finished) {
-		self.byAuthorTable.scrollsToTop = !isByBranchTableVisible;
-		self.byBranchTable.scrollsToTop = isByBranchTableVisible;
+		self.byAuthorTable.scrollsToTop = !self.isByBranchTableVisible;
+		self.byBranchTable.scrollsToTop = self.isByBranchTableVisible;
 	}];
+	
+	NSString *action = self.isByBranchTableVisible ? WorkflowActionByBranchRevealed : WorkflowActionByAuthorRevealed;
+	[DAFlurry logWorkflowAction:action];
 }
 
 @end

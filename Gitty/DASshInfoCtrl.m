@@ -21,6 +21,16 @@
 	[self loadHtmlGuide];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[DAFlurry logScreenAppear:self.className];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	[DAFlurry logScreenDisappear:self.className];
+}
+
 - (void)loadHtmlGuide {
 	NSURL *url = [NSBundle.mainBundle URLForResource:@"SSH-Howto" withExtension:@"html"];
 	[self.webView loadRequest:[NSURLRequest requestWithURL:url]];

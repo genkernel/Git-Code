@@ -75,6 +75,8 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 			BOOL changed = [ref selectBranch:selectedBranch];
 			if (changed) {
 				[ref reloadCommits];
+				
+				[DAFlurry logWorkflowAction:WorkflowActionBranchSwitched];
 			}
 		};
 	} else if ([segue.identifier isEqualToString:DiffSegue]) {
@@ -135,12 +137,20 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 		self.mainContainerHeight.constant = self.view.height - self.mainContainerTop.constant;
 		[self.mainContainer.superview layoutIfNeeded];
 	});
+	
+	[DAFlurry logProtocol:self.repoServer.transferProtocol];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
+	[DAFlurry logScreenAppear:self.className];
 	
 	[self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	[DAFlurry logScreenDisappear:self.className];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -252,6 +262,8 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	[self.navigationController popViewControllerAnimated:YES];
 	
 	[self.git removeExistingRepo:self.repoServer.recentRepoPath forServer:self.repoServer];
+	
+	[DAFlurry logWorkflowAction:WorkflowActionRepoForgotten];
 }
 
 #pragma mark UITableViewDataSource helpers
@@ -370,6 +382,8 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
 		DADiffCtrlDataSource *diff = [DADiffCtrlDataSource loadDiffForCommit:commit];
 		
+		[DAFlurry logGitAction:GitActionDiff];
+		
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[self performSegueWithIdentifier:DiffSegue sender:diff];
 		});
@@ -397,6 +411,8 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	}
 	
 	[self setBranchOverlayVisible:shouldRevealOverlay animated:YES];
+	
+	[DAFlurry logWorkflowAction:WorkflowActionBranchListTouch];
 }
 
 - (IBAction)forgetPressed:(UIButton *)button {
@@ -483,6 +499,7 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 		
 		if (offset >= BranchOverlyMinDraggingOffsetToSwitchState) {
 			[self toggleBranchOverlayMode];
+			[DAFlurry logWorkflowAction:WorkflowActionBranchListDrag];
 		} else {
 			// Decelerate back to original position (before dragging).
 			self.branchOverlayLeft.constant = branchContainerOffsetBeforeDragging;

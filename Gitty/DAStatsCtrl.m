@@ -24,6 +24,7 @@
 @implementation DAStatsCtrl
 @dynamic repoCtrl;
 @dynamic commitsTable;
+@synthesize isByBranchTableVisible = _isByBranchTableVisible;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -98,7 +99,7 @@
 }
 
 - (UITableView *)commitsTable {
-	return isByBranchTableVisible ? self.byBranchTable : self.byAuthorTable;
+	return self.isByBranchTableVisible ? self.byBranchTable : self.byAuthorTable;
 }
 
 @end

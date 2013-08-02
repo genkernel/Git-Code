@@ -11,10 +11,11 @@
 #import "DAByBranchDataSource.h"
 
 @interface DAStatsCtrl : DABaseCtrl {
-	BOOL isByBranchTableVisible;
+	BOOL _isByBranchTableVisible;
 }
 - (void)reloadData;
 
+@property (nonatomic, readonly) BOOL isByBranchTableVisible;
 @property () BOOL isShowingCommitsOfMultipleDays;
 
 // Header.

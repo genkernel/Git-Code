@@ -80,7 +80,10 @@
 				// Repo is up to date. No updates fetched.
 			} else {
 				[ctrl showErrorMessage:err.localizedDescription];
+				
+				[DAFlurry logGitAction:GitActionPullFailed];
 			}
+			
 			return;
 		}
 		
@@ -92,6 +95,8 @@
 		}
 		
 		[ctrl loadStats];
+		
+		[DAFlurry logGitAction:GitActionPullSuccess];
 	};
 	
 	DAGitPull *pull = [DAGitPull pullForRepository:self.currentRepo fromServer:self.repoServer];

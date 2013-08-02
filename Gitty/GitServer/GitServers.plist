@@ -22,34 +22,6 @@
 				<key>relativePath</key>
 				<string>libgit2/objective-git</string>
 			</dict>
-			<key>genkernel/ConceptScroll</key>
-			<dict>
-				<key>lastAccessDate</key>
-				<date>2013-07-26T12:04:10Z</date>
-				<key>relativePath</key>
-				<string>genkernel/ConceptScroll</string>
-			</dict>
-			<key>mattconnolly/ZipArchive</key>
-			<dict>
-				<key>lastAccessDate</key>
-				<date>2013-07-26T12:03:10Z</date>
-				<key>relativePath</key>
-				<string>mattconnolly/ZipArchive</string>
-			</dict>
-			<key>h5bp/mobile-boilerplate</key>
-			<dict>
-				<key>lastAccessDate</key>
-				<date>2013-07-26T12:02:10Z</date>
-				<key>relativePath</key>
-				<string>h5bp/mobile-boilerplate</string>
-			</dict>
-			<key>ldandersen/STUtils</key>
-			<dict>
-				<key>lastAccessDate</key>
-				<date>2013-07-26T12:01:10Z</date>
-				<key>relativePath</key>
-				<string>ldandersen/STUtils</string>
-			</dict>
 		</dict>
 		<key>SaveDirectoryName</key>
 		<string>github.com</string>
@@ -83,62 +55,6 @@
 		</array>
 		<key>TransferProtocol</key>
 		<string>https://</string>
-	</dict>
-	<dict>
-		<key>GitBaseUrl</key>
-		<string>mikie@192.168.1.10</string>
-		<key>LogoIcon</key>
-		<string>Git-Icon.png</string>
-		<key>Name</key>
-		<string>mikie@realm</string>
-		<key>RecentBranchName</key>
-		<string>master</string>
-		<key>RecentRepoPath</key>
-		<string>Users/mikie/Repos/GitUp</string>
-		<key>RecentRepos</key>
-		<dict>
-			<key>Users/mikie/Repos/GitUp.git</key>
-			<dict>
-				<key>lastAccessDate</key>
-				<date>2013-07-25T18:48:09Z</date>
-				<key>relativePath</key>
-				<string>Users/mikie/Repos/GitUp.git</string>
-			</dict>
-		</dict>
-		<key>SaveDirectoryName</key>
-		<string>mikie@realm</string>
-		<key>SupportedProtocols</key>
-		<array>
-			<string>git://</string>
-			<string>https://</string>
-			<string>http://</string>
-		</array>
-		<key>TransferProtocol</key>
-		<string>ssh://</string>
-	</dict>
-	<dict>
-		<key>GitBaseUrl</key>
-		<string>git@bitbucket.org</string>
-		<key>LogoIcon</key>
-		<string>Git-Icon.png</string>
-		<key>Name</key>
-		<string>livetell-ssh</string>
-		<key>RecentBranchName</key>
-		<string>develop</string>
-		<key>RecentRepoPath</key>
-		<string>livetell/aeva_ios</string>
-		<key>RecentRepos</key>
-		<dict/>
-		<key>SaveDirectoryName</key>
-		<string>livetell</string>
-		<key>SupportedProtocols</key>
-		<array>
-			<string>git://</string>
-			<string>https://</string>
-			<string>http://</string>
-		</array>
-		<key>TransferProtocol</key>
-		<string>ssh://</string>
 	</dict>
 </array>
 </plist>

@@ -777,10 +777,10 @@ yet.</string>
             <objects>
                 <viewController id="5ae-qc-YmD" customClass="DAStatsCtrl" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MEQ-w2-z7R">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="505"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No commits recently" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YD7-4m-HGD" userLabel="No Commits Label">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No new commits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YD7-4m-HGD" userLabel="No Commits Label">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" type="user" id="QH1-9a-Rx8"/>
                                 </constraints>
@@ -788,7 +788,7 @@ yet.</string>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nyk-WL-JSo" userLabel="Commits Container">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nyk-WL-JSo" userLabel="Commits Container">
                                 <subviews>
                                     <tableView contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gnU-QP-WVX" userLabel="byAuthor Table">
                                         <constraints>
@@ -901,11 +901,11 @@ by </string>
                             <constraint firstItem="YD7-4m-HGD" firstAttribute="leading" secondItem="MEQ-w2-z7R" secondAttribute="leading" type="user" id="6pH-DS-RWG"/>
                             <constraint firstAttribute="trailing" secondItem="p68-Os-XZM" secondAttribute="trailing" type="user" id="KTR-SS-41Y"/>
                             <constraint firstAttribute="bottom" secondItem="nyk-WL-JSo" secondAttribute="bottom" type="user" id="NDP-ec-bsq"/>
-                            <constraint firstAttribute="bottom" secondItem="YD7-4m-HGD" secondAttribute="bottom" constant="214" id="QbH-aK-mYU"/>
                             <constraint firstAttribute="trailing" secondItem="YD7-4m-HGD" secondAttribute="trailing" type="user" id="bWZ-NX-PdK"/>
                             <constraint firstItem="nyk-WL-JSo" firstAttribute="trailing" secondItem="MEQ-w2-z7R" secondAttribute="trailing" type="user" id="iN3-Jt-Gzi"/>
                             <constraint firstItem="p68-Os-XZM" firstAttribute="leading" secondItem="MEQ-w2-z7R" secondAttribute="leading" type="user" id="rmv-Ou-WZF"/>
                             <constraint firstItem="nyk-WL-JSo" firstAttribute="leading" secondItem="MEQ-w2-z7R" secondAttribute="leading" type="user" id="s6s-82-KIV"/>
+                            <constraint firstItem="YD7-4m-HGD" firstAttribute="top" secondItem="MEQ-w2-z7R" secondAttribute="top" constant="220" type="user" id="t5q-Q5-t6L"/>
                             <constraint firstItem="nyk-WL-JSo" firstAttribute="top" secondItem="MEQ-w2-z7R" secondAttribute="top" constant="50" type="user" id="th9-ie-BTL"/>
                         </constraints>
                     </view>
@@ -916,6 +916,7 @@ by </string>
                         <outlet property="byAuthorTableLeft" destination="AOg-oI-OBn" id="yKu-zp-y63"/>
                         <outlet property="byBranchDataSource" destination="0qf-km-88k" id="fff-Jd-tCV"/>
                         <outlet property="byBranchTable" destination="41d-5k-6sM" id="Mhc-Xc-eKN"/>
+                        <outlet property="commitsContainer" destination="nyk-WL-JSo" id="MRp-Df-hzG"/>
                         <outlet property="headlineLabel" destination="hlC-Gf-Gjv" id="2dn-TW-qHO"/>
                         <outlet property="noCommitsLabel" destination="YD7-4m-HGD" id="6pi-CE-L4I"/>
                     </connections>
@@ -1029,6 +1030,7 @@ by </string>
                 <relationship kind="outlet" name="byAuthorTableLeft" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="byBranchDataSource" candidateClass="DAByBranchDataSource"/>
                 <relationship kind="outlet" name="byBranchTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="commitsContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="headerContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="headlineLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="noCommitsLabel" candidateClass="UILabel"/>

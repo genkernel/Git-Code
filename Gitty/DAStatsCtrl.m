@@ -88,7 +88,7 @@
 - (void)reloadStatusView {
 	BOOL hasNoCommitsToShow = 0 == self.byAuthorDataSource.commits.count;
 	
-	self.commitsTable.superview.hidden = hasNoCommitsToShow;
+	self.commitsContainer.hidden = hasNoCommitsToShow;
 	self.noCommitsLabel.hidden = !hasNoCommitsToShow;
 }
 

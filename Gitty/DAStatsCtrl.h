@@ -27,6 +27,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *byAuthorTable, *byBranchTable;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *byAuthorTableLeft;
 
+@property (strong, nonatomic) IBOutlet UIView *commitsContainer;
+
 @property (strong, nonatomic) IBOutlet DAByAuthorDataSource *byAuthorDataSource;
 @property (strong, nonatomic) IBOutlet DAByBranchDataSource *byBranchDataSource;
 @end

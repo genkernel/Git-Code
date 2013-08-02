@@ -212,12 +212,14 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 }
 
 - (void)reloadCommits {
+	NSUInteger commitsCount = 0;
+	
 	[NSObject startMeasurement];
 	{
-		[self loadCommitsInBranch:self.currentBranch];
+		commitsCount = [self loadCommitsInBranch:self.currentBranch];
 	}
 	double period = [NSObject endMeasurement];
-	[Logger info:@"Commits of %d days loaded in %.2f.", self.dateSections.count, period];
+	[Logger info:@"%d Commits of %d days loaded in %.2f.", commitsCount, self.dateSections.count, period];
 	
 	[self.commitsTable reloadData];
 }

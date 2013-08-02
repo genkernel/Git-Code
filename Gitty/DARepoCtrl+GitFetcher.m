@@ -13,8 +13,10 @@
 
 @implementation DARepoCtrl (GitFetcher)
 
-- (void)loadCommitsInBranch:(GTBranch *)branch {
+- (NSUInteger)loadCommitsInBranch:(GTBranch *)branch {
 	NSError *err = nil;
+	
+	__block NSUInteger totalCommitsCount = 0;
 	
 	NSMutableArray *sections = NSMutableArray.new;
 	NSMutableDictionary *commitsOnDate = NSMutableDictionary.new;
@@ -47,11 +49,15 @@
 		if (![authors containsObject:commit.author]) {
 			[authors addObject:commit.author];
 		}
+		
+		totalCommitsCount++;
 	}];
 	
 	_commitsOnDateSection = [NSDictionary dictionaryWithDictionary:commitsOnDate];
 	_authorsOnDateSection = [NSDictionary dictionaryWithDictionary:authorsOnDate];
 	_dateSections = [NSArray arrayWithArray:sections];
+	
+	return totalCommitsCount;
 }
 
 - (void)pull {

@@ -29,10 +29,12 @@ static int transferProgressCallback(const git_transfer_progress *progress, void 
 	int code = [self pullFromServer:self.server];
 	
 	if (GIT_EEXISTS == code) {
-		NSDictionary *info = @{NSLocalizedDescriptionKey: @"No data pulled. Repo is up to date."};
+		NSDictionary *info = @{NSLocalizedDescriptionKey: @"Repo is up to date."};
 		_completionError = [NSError errorWithDomain:@"libgit2" code:code userInfo:info];
 	} else if (GIT_OK != code) {
-		NSDictionary *info = @{NSLocalizedDescriptionKey: @"Failed to Pull repo.\n\nCheck your internet connection"};
+		NSString *desc = [NSString stringWithFormat:@"Pull failed for %@ server.\n\nCheck your network connection.", self.server.name];
+		
+		NSDictionary *info = @{NSLocalizedDescriptionKey: desc};
 		_completionError = [NSError errorWithDomain:@"libgit2" code:code userInfo:info];
 	}
 }

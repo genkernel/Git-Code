@@ -85,7 +85,8 @@
 			if (GIT_EEXISTS == err.code) {
 				// Repo is up to date. No updates fetched.
 			} else {
-				[ctrl showErrorMessage:err.localizedDescription];
+				Alert *alert = [Alert errorAlertWithMessage:err.localizedDescription];
+				[AlertQueue.queue enqueueAlert:alert];
 				
 				[DAFlurry logGitAction:GitActionPullFailed];
 			}

@@ -106,20 +106,31 @@ static NSUInteger CommitsExtraCheckingThreshold = 10;
 	NSMutableArray *commitsByBranch = [NSMutableArray arrayWithCapacity:30];
 	NSMutableDictionary *commitsByAuthor = NSMutableDictionary.new;
 	
-	GTEnumeratorOptions opts = GTEnumeratorOptionsTimeSort;
-	[self.currentRepo enumerateCommitsBeginningAtSha:branch.sha sortOptions:opts error:&err usingBlock:^(GTCommit *commit, BOOL *stop) {
+	GTEnumerator *iter = [GTEnumerator.alloc initWithRepository:branch.repository error:&err];
+	
+	if (![iter pushSHA:branch.SHA error:&err]) {
+		[Logger error:@"Failed to pushSHA while enumarating commits."];
+	}
+	
+	[iter resetWithOptions:GTEnumeratorOptionsTimeSort];
+	
+	BOOL success = NO;
+	GTCommit *commit = nil;
+	
+	while (nil != (commit = [iter nextObjectWithSuccess:&success error:&err])) {
 		
 		NSComparisonResult result = isYesterdaysCommit(commit);
 		if (NSOrderedAscending == result) {
 			threshold++;
 			
 			if (threshold >= CommitsExtraCheckingThreshold) {
-				*stop = YES;
+				break;
+//				*stop = YES;
 			}
-			return;
+			continue;
 		} else if (NSOrderedSame != result) {
 			// != Yesterday.
-			return;
+			continue;
 		}
 		
 		_statsCommitsCount++;
@@ -136,7 +147,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 10;
 		NSString *addr = [NSString stringWithFormat:@"0x%X", (int)commit];
 		_branches[addr] = branch;
 		_authors[commit.author.name] = commit.author;
-	}];
+	}
 	
 	if (commitsByBranch.count) {
 		_statsCommitsByBranch[branchName] = commitsByBranch;

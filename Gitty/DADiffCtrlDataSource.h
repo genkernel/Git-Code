@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface DADiffCtrlDataSource : NSObject
-+ (instancetype)loadDiffForCommit:(GTCommit *)commit;
++ (instancetype)loadDiffForCommit:(GTCommit *)commit inRepo:(GTRepository *)repo;
 
 @property (strong, nonatomic, readonly) GTCommit *changeCommit;
 @property (strong, nonatomic, readonly) NSMutableArray *deltas;

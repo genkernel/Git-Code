@@ -12,13 +12,17 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 
 @interface DADiffCtrlDataSource ()
 @property (strong, nonatomic, readwrite) GTCommit *changeCommit;
+@property (strong, nonatomic, readwrite) GTRepository *repo;
 @end
 
 @implementation DADiffCtrlDataSource
 
-+ (instancetype)loadDiffForCommit:(GTCommit *)commit {
++ (instancetype)loadDiffForCommit:(GTCommit *)commit inRepo:(GTRepository *)repo {
 	DADiffCtrlDataSource *diff = self.new;
+	diff.repo = repo;
+	
 	[diff loadDiffForCommit:commit];
+	
 	return diff;
 }
 
@@ -59,7 +63,7 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 	NSError *err = nil;
 	NSDictionary *opts = @{GTDiffOptionsMaxSizeKey: @(DiffFileMaxSize)};
 	
-	GTDiff *diff = [GTDiff diffOldTree:oldCommit.tree withNewTree:commit.tree options:opts error:&err];
+	GTDiff *diff = [GTDiff diffOldTree:oldCommit.tree withNewTree:commit.tree inRepository:self.repo options:opts error:&err];
 	
 	[diff enumerateDeltasUsingBlock:^(GTDiffDelta *delta, BOOL *stop) {
 		[self.deltas addObject:delta];

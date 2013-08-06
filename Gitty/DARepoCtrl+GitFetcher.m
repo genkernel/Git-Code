@@ -22,8 +22,17 @@
 	NSMutableDictionary *commitsOnDate = NSMutableDictionary.new;
 	NSMutableDictionary *authorsOnDate = NSMutableDictionary.new;
 	
-	GTEnumeratorOptions opts = GTEnumeratorOptionsTimeSort;
-	[self.currentRepo enumerateCommitsBeginningAtSha:branch.sha sortOptions:opts error:&err usingBlock:^(GTCommit *commit, BOOL *stop) {
+	GTEnumerator *iter = [GTEnumerator.alloc initWithRepository:branch.repository error:&err];
+	
+	if (![iter pushSHA:branch.SHA error:&err]) {
+		[Logger error:@"Failed to pushSHA while enumarating commits."];
+	}
+	
+	[iter resetWithOptions:GTEnumeratorOptionsTimeSort];
+	
+	NSArray *all = [iter allObjectsWithError:&err];
+	
+	for (GTCommit *commit in all) {
 		
 		self.dateSectionTitleFormatter.timeZone = commit.commitTimeZone;
 		NSString *title = [self.dateSectionTitleFormatter stringFromDate:commit.commitDate];
@@ -51,7 +60,8 @@
 		}
 		
 		totalCommitsCount++;
-	}];
+	}
+//	}];
 	
 	_commitsOnDateSection = [NSDictionary dictionaryWithDictionary:commitsOnDate];
 	_authorsOnDateSection = [NSDictionary dictionaryWithDictionary:authorsOnDate];

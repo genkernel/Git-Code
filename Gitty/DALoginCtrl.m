@@ -191,18 +191,15 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		[serverCtrl resetProgress];
 		
 		if (err) {
-			NSString *title = nil;
 			NSString *message = nil;
 			
 			if (GIT_EUSER == err.code) {
-				title = NSLocalizedString(@"Error", nil);
 				message = NSLocalizedString(@"Invalid user credentials specified.", nil);
 			} else {
-				title = NSLocalizedString(@"Error", nil);
 				message = NSLocalizedString(err.localizedDescription, nil);
 			}
 			
-			[self.app showAlert:title message:message delegate:nil];
+			[self showErrorMessage:message];
 			
 			[DAFlurry logGitAction:GitActionCloneFailed];
 			[DAFlurry logInvalidServer:self.analyticsCurrentServerName];

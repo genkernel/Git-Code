@@ -54,7 +54,7 @@ static CGFloat CommitMessageMaxHeight = 120.;
 - (void)generateInfoStringForCommit:(GTCommit *)commit {
 	NSArray *strings = nil;
 	{
-		NSString *sha = [NSString stringWithFormat:@"#%@", commit.shortSha];
+		NSString *sha = [NSString stringWithFormat:@"#%@", commit.shortSHA];
 		
 		self.dateFormatter.timeZone = commit.commitTimeZone;
 		NSString *timestamp = [self.dateFormatter stringFromDate:commit.commitDate];

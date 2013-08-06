@@ -129,7 +129,7 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 		[self pull];
 	}
 	
-	// Initial loading. Required as of long-time pulling + open via swipe case.
+	// Initial loading. Required as of long-time pulling + open via swipe case (so list is not empty).
 	[self.branchPickerCtrl resetWithBranches:self.remoteBranches];
 	
 	// FIXME: come up with better solution.
@@ -367,7 +367,7 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 
 - (void)presentDiffCtrlForCommit:(GTCommit *)commit {
 	if (!commit.isLargeCommit) {
-		DADiffCtrlDataSource *diff = [DADiffCtrlDataSource loadDiffForCommit:commit];
+		DADiffCtrlDataSource *diff = [DADiffCtrlDataSource loadDiffForCommit:commit inRepo:self.currentRepo];
 		
 		[self performSegueWithIdentifier:DiffSegue sender:diff];
 		return;
@@ -382,7 +382,7 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 
 - (void)prepareDiffForCommit:(GTCommit *)commit {
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-		DADiffCtrlDataSource *diff = [DADiffCtrlDataSource loadDiffForCommit:commit];
+		DADiffCtrlDataSource *diff = [DADiffCtrlDataSource loadDiffForCommit:commit inRepo:self.currentRepo];
 		
 		[DAFlurry logGitAction:GitActionDiff];
 		

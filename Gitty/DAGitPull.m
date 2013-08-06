@@ -40,7 +40,14 @@ static int transferProgressCallback(const git_transfer_progress *progress, void 
 }
 
 - (int)pullFromServer:(DAGitServer *)server {
-	GTRemote *remote = self.repo.configuration.remotes.lastObject;
+	NSError *err = nil;
+	GTConfiguration *cfg = [self.repo configurationWithError:&err];
+	if (err) {
+		[Logger error:@"Failed to obtain Configuration obj for Repo."];
+		assert(NO);
+	}
+	
+	GTRemote *remote = cfg.remotes.lastObject;
 	
 	git_remote *origin = remote.git_remote;
 	git_remote_check_cert(remote.git_remote, 0);

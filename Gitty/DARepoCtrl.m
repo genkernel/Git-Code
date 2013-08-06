@@ -64,10 +64,6 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 @synthesize remoteBranches = _remoteBranches;
 @synthesize namedBranches;
 
-- (void)dealloc {
-	[Logger info:@"dealloc"];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:BranchPickerSegue]) {
 		_branchPickerCtrl = segue.destinationViewController;

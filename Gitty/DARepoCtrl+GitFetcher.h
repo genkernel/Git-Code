@@ -9,6 +9,6 @@
 #import "DARepoCtrl.h"
 
 @interface DARepoCtrl (GitFetcher)
-- (NSUInteger)loadCommitsInBranch:(GTBranch *)branch;
+- (NSUInteger)loadCommitsInCurrentBranchOrTag;
 - (void)pull;
 @end

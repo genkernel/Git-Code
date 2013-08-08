@@ -13,7 +13,7 @@
 
 @implementation DARepoCtrl (GitFetcher)
 
-- (NSUInteger)loadCommitsInBranch:(GTBranch *)branch {
+- (NSUInteger)loadCommitsInCurrentBranchOrTag {
 	NSError *err = nil;
 	
 	__block NSUInteger totalCommitsCount = 0;
@@ -22,10 +22,20 @@
 	NSMutableDictionary *commitsOnDate = NSMutableDictionary.new;
 	NSMutableDictionary *authorsOnDate = NSMutableDictionary.new;
 	
-	GTEnumerator *iter = [GTEnumerator.alloc initWithRepository:branch.repository error:&err];
+	GTEnumerator *iter = [GTEnumerator.alloc initWithRepository:self.currentRepo error:&err];
 	
-	if (![iter pushSHA:branch.SHA error:&err]) {
+	NSString *sha = nil;
+	if (self.currentBranch) {
+		sha = self.currentBranch.SHA;
+	} else {
+		sha = self.currentTag.target.SHA;
+	}
+	
+	if (![iter pushSHA:sha error:&err]) {
 		[Logger error:@"Failed to pushSHA while enumarating commits."];
+		
+		[self showErrorMessage:NSLocalizedString(@"Failed to load commits list.", nil)];
+		return 0;
 	}
 	
 	[iter resetWithOptions:GTEnumeratorOptionsTimeSort];
@@ -108,7 +118,10 @@
 		[ctrl reloadCommits];
 		
 		if (isBranchOverlayVisible) {
-			[self.branchPickerCtrl reloadWithBranches:self.remoteBranches];
+			self.branchPickerCtrl.tags = self.tags;
+			self.branchPickerCtrl.branches = self.remoteBranches;
+			
+			[self.branchPickerCtrl reloadUI];
 		}
 		
 		[ctrl loadStats];

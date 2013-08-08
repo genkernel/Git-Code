@@ -167,6 +167,7 @@
 		1893852B17A319B000168FDB /* SSH-Howto.html in Resources */ = {isa = PBXBuildFile; fileRef = 1893852A17A319B000168FDB /* SSH-Howto.html */; };
 		1893852D17A32C9900168FDB /* Feedback.html in Resources */ = {isa = PBXBuildFile; fileRef = 1893852C17A32C9900168FDB /* Feedback.html */; };
 		1893853117A32CD400168FDB /* DAFeedbackCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1893853017A32CD400168FDB /* DAFeedbackCtrl.m */; };
+		189439BB17B2A65B0011C7EB /* DABranchPickerCtrl+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 189439BA17B2A65B0011C7EB /* DABranchPickerCtrl+Animation.m */; };
 		189A5322175922FA00B5BD8D /* DARepoCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A5321175922FA00B5BD8D /* DARepoCtrl.m */; };
 		189A532E1759237C00B5BD8D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189A532D1759237C00B5BD8D /* QuartzCore.framework */; };
 		189A535C1759242800B5BD8D /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A53501759242800B5BD8D /* UIViewAdditions.m */; };
@@ -541,6 +542,8 @@
 		1893852C17A32C9900168FDB /* Feedback.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Feedback.html; sourceTree = "<group>"; };
 		1893852F17A32CD400168FDB /* DAFeedbackCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFeedbackCtrl.h; sourceTree = "<group>"; };
 		1893853017A32CD400168FDB /* DAFeedbackCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAFeedbackCtrl.m; sourceTree = "<group>"; };
+		189439B917B2A65B0011C7EB /* DABranchPickerCtrl+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DABranchPickerCtrl+Animation.h"; sourceTree = "<group>"; };
+		189439BA17B2A65B0011C7EB /* DABranchPickerCtrl+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DABranchPickerCtrl+Animation.m"; sourceTree = "<group>"; };
 		189A5320175922FA00B5BD8D /* DARepoCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARepoCtrl.h; sourceTree = "<group>"; };
 		189A5321175922FA00B5BD8D /* DARepoCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARepoCtrl.m; sourceTree = "<group>"; };
 		189A532D1759237C00B5BD8D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -2133,6 +2136,8 @@
 			children = (
 				18C94431175B93C400A4D7CA /* DABranchPickerCtrl.h */,
 				18C94432175B93C400A4D7CA /* DABranchPickerCtrl.m */,
+				189439B917B2A65B0011C7EB /* DABranchPickerCtrl+Animation.h */,
+				189439BA17B2A65B0011C7EB /* DABranchPickerCtrl+Animation.m */,
 			);
 			name = BranchPickerCtrl;
 			sourceTree = "<group>";
@@ -2628,6 +2633,7 @@
 				18A3D67E17A4265900B38FA8 /* DAStatsDataSource.m in Sources */,
 				18B8751E17ABDBAB004AF69D /* DAFlurry.m in Sources */,
 				18B8752117ABDF77004AF69D /* DAFlurryEvent.m in Sources */,
+				189439BB17B2A65B0011C7EB /* DABranchPickerCtrl+Animation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -31,7 +31,6 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 
 @interface DARepoCtrl ()
-@property (strong, nonatomic, readonly) GTBranch *currentBranch;
 @property (strong, nonatomic, readonly) NSDictionary *commitsOnDateSection;
 @property (strong, nonatomic, readonly) NSDictionary *authorsOnDateSection;
 @property (strong, nonatomic, readonly) NSArray *dateSections;
@@ -49,11 +48,11 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	NSUInteger forgetActionTag;
 	CGFloat statsContainerOffsetBeforeDragging;
 	CGFloat branchContainerOffsetBeforeDragging;
-	NSArray *_remoteBranches;
+	NSArray *_remoteBranches, *_tags;
 	CGFloat headerHeight;
 }
 @synthesize authors = _authors, branches = _branches;
-@synthesize currentBranch = _currentBranch;
+@synthesize currentBranch = _currentBranch, currentTag = _currentTag;
 @synthesize commitsOnDateSection = _commitsOnDateSection;
 @synthesize authorsOnDateSection = _authorsOnDateSection;
 @synthesize dateSections = _dateSections;
@@ -69,7 +68,17 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 		_branchPickerCtrl = segue.destinationViewController;
 		
 		__weak DARepoCtrl *ref = self;
-		self.branchPickerCtrl.completionBlock = ^(GTBranch *selectedBranch){
+		self.branchPickerCtrl.tagSelectedAction = ^(GTTag *selectedTag){
+			[ref setBranchOverlayVisible:NO animated:YES];
+			
+			BOOL changed = [ref selectTag:selectedTag];
+			if (changed) {
+				[ref reloadCommits];
+				
+				[DAFlurry logWorkflowAction:WorkflowActionTagSwitched];
+			}
+		};
+		self.branchPickerCtrl.branchSelectedAction = ^(GTBranch *selectedBranch){
 			[ref setBranchOverlayVisible:NO animated:YES];
 			
 			BOOL changed = [ref selectBranch:selectedBranch];
@@ -78,6 +87,9 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 				
 				[DAFlurry logWorkflowAction:WorkflowActionBranchSwitched];
 			}
+		};
+		self.branchPickerCtrl.cancelAction = ^{
+			[ref setBranchOverlayVisible:NO animated:YES];
 		};
 	} else if ([segue.identifier isEqualToString:DiffSegue]) {
 		DADiffCtrl *ctrl = segue.destinationViewController;
@@ -130,7 +142,9 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	}
 	
 	// Initial loading. Required as of long-time pulling + open via swipe case (so list is not empty).
-	[self.branchPickerCtrl resetWithBranches:self.remoteBranches];
+	self.branchPickerCtrl.tags = self.tags;
+	self.branchPickerCtrl.branches = self.remoteBranches;
+	[self.branchPickerCtrl loadItemsWithoutFilter];
 	
 	// FIXME: come up with better solution.
 	dispatch_async(dispatch_get_main_queue(), ^{
@@ -175,19 +189,24 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 }
 
 - (void)reloadFilters {
+	[self updateTagsFilter];
 	[self updateBranchesFilter];
+}
+
+- (void)updateTagsFilter {
+	NSError *err = nil;
+	
+	_tags = [self.currentRepo allTagsWithError:&err];
+	
+	[Logger info:@"%d Tags loaded.", self.tags.count];
 }
 
 - (void)updateBranchesFilter {
 	NSError *err = nil;
 	
-	[NSObject startMeasurement];
-	{
-		_remoteBranches = [self.currentRepo remoteBranchesWithError:&err];
-	}
-	double period = [NSObject endMeasurement];
+	_remoteBranches = [self.currentRepo remoteBranchesWithError:&err];
 	
-	[Logger info:@"Branches: %d. Counted in %.2f", /*self.localBranches.count, */self.remoteBranches.count, period];
+	[Logger info:@"%d Branches loaded.", self.remoteBranches.count];
 	
 	GTBranch *defaultBranch = nil;
 	NSString *recentBranchName = self.repoServer.recentBranchName;
@@ -216,7 +235,7 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	
 	[NSObject startMeasurement];
 	{
-		commitsCount = [self loadCommitsInBranch:self.currentBranch];
+		commitsCount = [self loadCommitsInCurrentBranchOrTag];
 	}
 	double period = [NSObject endMeasurement];
 	[Logger info:@"%d Commits of %d days loaded in %.2f.", commitsCount, self.dateSections.count, period];
@@ -245,12 +264,26 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	return NO;
 }*/
 
+- (BOOL)selectTag:(GTTag *)tag {
+	if (!tag || self.currentTag == tag) {
+		return NO;
+	}
+	
+	_currentTag = tag;
+	_currentBranch = nil;
+	
+	self.branchCustomTitleLabel.text = tag.name;
+	
+	return YES;
+}
+
 - (BOOL)selectBranch:(GTBranch *)branch {
 	if (!branch || self.currentBranch == branch) {
 		return NO;
 	}
 	
 	_currentBranch = branch;
+	_currentTag = nil;
 	
 	self.repoServer.recentBranchName = branch.shortName;
 	[self.servers save];
@@ -409,7 +442,10 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	BOOL shouldRevealOverlay = !isBranchOverlayVisible;
 	if (shouldRevealOverlay) {
 		// Reload as new branches were pulled in (possibly).
-		[self.branchPickerCtrl resetWithBranches:self.remoteBranches];
+		self.branchPickerCtrl.tags = self.tags;
+		self.branchPickerCtrl.branches = self.remoteBranches;
+		
+		[self.branchPickerCtrl resetUI];
 	}
 	
 	[self setBranchOverlayVisible:shouldRevealOverlay animated:YES];

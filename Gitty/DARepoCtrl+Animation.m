@@ -26,7 +26,7 @@
 		[self.branchOverlay.superview layoutIfNeeded];
 		
 		self.commitsTable.scrollsToTop = !visible;
-		self.branchPickerCtrl.mainTable.scrollsToTop = visible;
+		self.branchPickerCtrl.visibleTable.scrollsToTop = visible;
 	}];
 	
 	NSString *action = visible ? WorkflowActionBranchListShown : WorkflowActionBranchListHidden;

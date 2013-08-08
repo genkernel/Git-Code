@@ -14,8 +14,11 @@
 
 @interface DARepoCtrl ()
 // Sharing private vars to categories.
-@property (strong, nonatomic, readonly) NSArray *remoteBranches;
+@property (strong, nonatomic, readonly) NSArray *remoteBranches, *tags;
 @property (strong, nonatomic, readonly) NSDictionary *namedBranches;
+
+@property (strong, nonatomic, readonly) GTTag *currentTag;
+@property (strong, nonatomic, readonly) GTBranch *currentBranch;
 
 @property (strong, nonatomic, readonly) DABranchPickerCtrl *branchPickerCtrl;
 @end

@@ -157,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rBT-f9-b5q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="565" y="632"/>
+            <point key="canvasLocation" x="459" y="730"/>
         </scene>
         <!--Feedback Ctrl-->
         <scene sceneID="MuF-sG-4r8">
@@ -208,7 +208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Eo-4K-YnM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="912" y="712"/>
+            <point key="canvasLocation" x="820" y="742"/>
         </scene>
         <!--Diff Ctrl-->
         <scene sceneID="BHY-Le-xif">
@@ -726,28 +726,70 @@ yet.</string>
                                     <outlet property="delegate" destination="ALf-gj-3jW" id="DNQ-lp-A2i"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Nvk-ce-TBf">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aGZ-39-Am7" userLabel="Container">
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Nvk-ce-TBf" userLabel="Branches Table">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="320" type="user" id="O79-h8-lPY"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dataSource" destination="ALf-gj-3jW" id="Vmo-I8-K99"/>
+                                            <outlet property="delegate" destination="ALf-gj-3jW" id="F7Y-Tr-EVp"/>
+                                        </connections>
+                                    </tableView>
+                                    <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="K26-um-5tt" userLabel="Tags Table">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="320" type="user" id="hVj-RN-U7C"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dataSource" destination="ALf-gj-3jW" id="HRX-mH-1EW"/>
+                                            <outlet property="delegate" destination="ALf-gj-3jW" id="cZk-eV-coR"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Nvk-ce-TBf" firstAttribute="top" secondItem="aGZ-39-Am7" secondAttribute="top" type="default" id="FXy-MO-Glp"/>
+                                    <constraint firstItem="K26-um-5tt" firstAttribute="leading" secondItem="Nvk-ce-TBf" secondAttribute="trailing" type="user" id="OxS-gh-NgT"/>
+                                    <constraint firstItem="Nvk-ce-TBf" firstAttribute="bottom" secondItem="aGZ-39-Am7" secondAttribute="bottom" type="default" id="Qqi-8Z-oOy"/>
+                                    <constraint firstItem="K26-um-5tt" firstAttribute="top" secondItem="aGZ-39-Am7" secondAttribute="top" type="default" id="VVD-0M-rso"/>
+                                    <constraint firstItem="K26-um-5tt" firstAttribute="bottom" secondItem="aGZ-39-Am7" secondAttribute="bottom" type="default" id="WyM-2h-ODv"/>
+                                    <constraint firstItem="Nvk-ce-TBf" firstAttribute="leading" secondItem="aGZ-39-Am7" secondAttribute="leading" type="user" id="a4w-is-iZI"/>
+                                </constraints>
+                            </view>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bup-5o-kOO">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem title="Branches" id="q7i-Kh-Zcf" userLabel="Branches Item"/>
+                                    <tabBarItem tag="1" title="Tags" id="IPC-0d-ZcX" userLabel="Tags Item"/>
+                                </items>
                                 <connections>
-                                    <outlet property="dataSource" destination="ALf-gj-3jW" id="Vmo-I8-K99"/>
-                                    <outlet property="delegate" destination="ALf-gj-3jW" id="F7Y-Tr-EVp"/>
+                                    <outlet property="delegate" destination="ALf-gj-3jW" id="5Id-Im-ReW"/>
                                 </connections>
-                            </tableView>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Nvk-ce-TBf" firstAttribute="top" secondItem="47U-I9-wod" secondAttribute="bottom" type="user" id="Rbs-cl-4aD"/>
+                            <constraint firstItem="aGZ-39-Am7" firstAttribute="trailing" secondItem="dvG-Hk-BYD" secondAttribute="trailing" type="user" id="0rv-ak-YIh"/>
+                            <constraint firstItem="aGZ-39-Am7" firstAttribute="top" secondItem="47U-I9-wod" secondAttribute="bottom" type="user" id="BTF-4G-fPx"/>
+                            <constraint firstItem="aGZ-39-Am7" firstAttribute="leading" secondItem="dvG-Hk-BYD" secondAttribute="leading" type="user" id="BcZ-YK-h7w"/>
+                            <constraint firstItem="bup-5o-kOO" firstAttribute="trailing" secondItem="dvG-Hk-BYD" secondAttribute="trailing" type="default" id="Kvd-1n-vmr"/>
+                            <constraint firstAttribute="bottom" secondItem="bup-5o-kOO" secondAttribute="bottom" type="user" id="LpD-lW-V0W"/>
+                            <constraint firstItem="bup-5o-kOO" firstAttribute="top" secondItem="aGZ-39-Am7" secondAttribute="bottom" type="user" id="TYq-6f-84x"/>
                             <constraint firstItem="47U-I9-wod" firstAttribute="leading" secondItem="dvG-Hk-BYD" secondAttribute="leading" type="default" id="aSG-F8-roY"/>
-                            <constraint firstItem="Nvk-ce-TBf" firstAttribute="trailing" secondItem="dvG-Hk-BYD" secondAttribute="trailing" type="default" id="edO-uR-CmX"/>
-                            <constraint firstAttribute="bottom" secondItem="Nvk-ce-TBf" secondAttribute="bottom" type="user" id="nHm-ex-bhR"/>
-                            <constraint firstItem="Nvk-ce-TBf" firstAttribute="leading" secondItem="dvG-Hk-BYD" secondAttribute="leading" type="default" id="uQ3-qt-Ghb"/>
+                            <constraint firstItem="bup-5o-kOO" firstAttribute="leading" secondItem="dvG-Hk-BYD" secondAttribute="leading" type="default" id="bhS-0p-hj4"/>
                             <constraint firstItem="47U-I9-wod" firstAttribute="top" secondItem="dvG-Hk-BYD" secondAttribute="top" type="user" id="wYn-yO-dCM"/>
                             <constraint firstItem="47U-I9-wod" firstAttribute="trailing" secondItem="dvG-Hk-BYD" secondAttribute="trailing" type="default" id="wpY-sR-JNS"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mainTable" destination="Nvk-ce-TBf" id="VXs-rQ-euT"/>
+                        <outlet property="branchesTable" destination="Nvk-ce-TBf" id="sGF-nB-ILg"/>
+                        <outlet property="branchesTableLeft" destination="a4w-is-iZI" id="hGA-dd-wRV"/>
                         <outlet property="searchBar" destination="47U-I9-wod" id="e0N-7c-RK5"/>
+                        <outlet property="tabBar" destination="bup-5o-kOO" id="sfh-va-Xa4"/>
+                        <outlet property="tagsTable" destination="K26-um-5tt" id="QHf-cA-0In"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sVo-Pr-CKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -777,7 +819,7 @@ yet.</string>
             <objects>
                 <viewController id="5ae-qc-YmD" customClass="DAStatsCtrl" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MEQ-w2-z7R">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="505"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No new commits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YD7-4m-HGD" userLabel="No Commits Label">
@@ -946,8 +988,11 @@ by </string>
         <class className="DABranchPickerCtrl" superclassName="DABaseCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DABranchPickerCtrl.h"/>
             <relationships>
-                <relationship kind="outlet" name="mainTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="branchesTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="branchesTableLeft" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="tabBar" candidateClass="UITabBar"/>
+                <relationship kind="outlet" name="tagsTable" candidateClass="UITableView"/>
             </relationships>
         </class>
         <class className="DAByAuthorDataSource" superclassName="DAStatsDataSource">

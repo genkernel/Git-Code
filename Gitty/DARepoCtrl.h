@@ -28,6 +28,8 @@ typedef enum {
 	NSMutableDictionary *_statsCommitsByBranch;
 	
 	GTBranch *_currentBranch;
+	GTTag *_currentTag;
+	
 	NSMutableDictionary *_authors, *_branches;
 	NSUInteger _statsCommitsCount;
 	

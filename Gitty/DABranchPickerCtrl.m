@@ -7,70 +7,104 @@
 //
 
 #import "DABranchPickerCtrl.h"
+#import "DABranchPickerCtrl+Animation.h"
 
 @interface DABranchPickerCtrl ()
-@property (strong, nonatomic) NSArray *allBranches;
-@property (strong, nonatomic, readonly) NSArray *visibleBranches;
+// format: [idx]	=>	<NSArray of concrete items>
+@property (strong, nonatomic) NSMutableArray *filteredItems;
 @end
 
 @implementation DABranchPickerCtrl
+@dynamic visibleTable;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	self.mainTable.scrollsToTop = NO;
+	self.tagsTable.scrollsToTop = NO;
+	self.branchesTable.scrollsToTop = NO;
 	
 	[self.searchBar enableAllControlButtons];
 	[self.searchBar setKeyboardAppearance:UIKeyboardAppearanceAlert];
 	
-	[self.mainTable registerClass:UITableViewCell.class forCellReuseIdentifier:UITableViewCell.className];
+	self.tabBar.selectedItem = self.tabBar.items[DABranchList];
+	
+	_filteredItems = [NSMutableArray arrayWithCapacity:DAListModesMax];
+	for (int i = 0; i < DAListModesMax; i++) {
+		self.filteredItems[i] = NSArray.new;
+	}
 }
 
-- (void)resetWithBranches:(NSArray *)branches {
+- (void)loadItemsWithoutFilter {
+	self.filteredItems[DATagList] = self.tags;
+	self.filteredItems[DABranchList] = self.branches;
+}
+
+- (void)resetUI {
 	self.searchBar.text = nil;
 	
-	[self reloadWithBranches:branches];
+	[self reloadUI];
 }
 
-- (void)reloadWithBranches:(NSArray *)branches {
-	_allBranches = branches.copy;
-	
-	[self filterBranchListWithSearchText:self.searchBar.text];
+- (void)reloadUI {
+	[self filterVisibleListWithSearchText:self.searchBar.text];
 	
 	[self.searchBar enableAllControlButtons];
 }
 
-- (void)filterBranchListWithSearchText:(NSString *)text {
+- (void)filterVisibleListWithSearchText:(NSString *)text {
 	if (text.length == 0) {
-		_visibleBranches = self.allBranches;
+		[self loadItemsWithoutFilter];
 		
 	} else if (text.length < 3) {
-		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"shortName beginswith[cd] %@", text];
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name beginswith[cd] %@", text];
+		self.filteredItems[DATagList] = [self.tags filteredArrayUsingPredicate:predicate];
 		
-		_visibleBranches = [self.allBranches filteredArrayUsingPredicate:predicate];
+		predicate = [NSPredicate predicateWithFormat:@"shortName beginswith[cd] %@", text];
+		self.filteredItems[DABranchList] = [self.branches filteredArrayUsingPredicate:predicate];
 		
 	} else {
-		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"shortName contains[cd] %@", text];
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name contains[cd] %@", text];
+		self.filteredItems[DATagList] = [self.tags filteredArrayUsingPredicate:predicate];
 		
-		_visibleBranches = [self.allBranches filteredArrayUsingPredicate:predicate];
+		predicate = [NSPredicate predicateWithFormat:@"shortName contains[cd] %@", text];
+		self.filteredItems[DABranchList] = [self.branches filteredArrayUsingPredicate:predicate];
 	}
 	
-	[self.mainTable reloadData];
+	[self.tagsTable reloadData];
+	[self.branchesTable reloadData];
 }
 
 #pragma mark UITableViewDataSource, UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return self.visibleBranches.count;
+	NSArray *items = self.filteredItems[tableView.tag];
+	return items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	GTBranch *branch = self.visibleBranches[indexPath.row];
+	DAListModes tableType = tableView.tag;
+	NSArray *items = self.filteredItems[tableType];
 	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:UITableViewCell.className];
-	cell.selectionStyle = UITableViewCellSelectionStyleGray;
+	if (!cell) {
+		
+		if (DABranchList == tableType) {
+			cell = [UITableViewCell.alloc initWithStyle:UITableViewCellStyleDefault reuseIdentifier:GTBranch.className];
+		} else {
+			cell = [UITableViewCell.alloc initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:GTTag.className];
+		}
+		
+		cell.selectionStyle = UITableViewCellSelectionStyleGray;
+	}
 	
-	cell.textLabel.text = branch.shortName;
+	if (DABranchList == tableType) {
+		GTBranch *branch = items[indexPath.row];
+		cell.textLabel.text = branch.shortName;
+	} else {
+		GTTag *tag = items[indexPath.row];
+		cell.textLabel.text = tag.name;
+		cell.detailTextLabel.text = tag.message;
+	}
 	
 	return cell;
 }
@@ -81,13 +115,20 @@
 	[self.searchBar resignFirstResponder];
 	[self.searchBar enableAllControlButtons];
 	
-	self.completionBlock(self.visibleBranches[indexPath.row]);
+	DAListModes tableType = tableView.tag;
+	NSArray *items = self.filteredItems[tableType];
+	
+	if (DABranchList == tableType) {
+		self.branchSelectedAction(items[indexPath.row]);
+	} else {
+		self.tagSelectedAction(items[indexPath.row]);
+	}
 }
 
 #pragma mark UISearchBarDelegate
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-	[self filterBranchListWithSearchText:searchBar.text];
+	[self filterVisibleListWithSearchText:searchBar.text];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
@@ -98,7 +139,19 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
 	[searchBar resignFirstResponder];
 	
-	self.completionBlock(nil);
+	self.cancelAction();
+}
+
+#pragma mark UITabBarDelegate
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+	[self setListMode:item.tag animated:YES];
+}
+
+#pragma mark Properties
+
+- (UITableView *)visibleTable {
+	return DABranchList == listMode ? self.branchesTable : self.tagsTable;
 }
 
 @end

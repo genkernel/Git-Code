@@ -59,7 +59,7 @@ NSString *WorkflowActionBranchListShown = @"BranchList Opened", *WorkflowActionB
 NSString *WorkflowActionBranchListTouch = @"BranchList - Touch", *WorkflowActionBranchListDrag = @"BranchList - Drag";
 
 NSString *WorkflowActionRepoForgotten = @"Repo - Forgotten (files only)", *WorkflowActionRepoRemoved = @"Repo - Removed (completely)", *WorkflowActionRepoAllRemoved = @"Repo - All removed";
-NSString *WorkflowActionBranchSwitched = @"Branch switched", *WorkflowActionCustomServerCreated = @"+Custom server created";
+NSString *WorkflowActionBranchSwitched = @"Branch switched", *WorkflowActionTagSwitched = @"Tag switched", *WorkflowActionCustomServerCreated = @"+Custom server created";
 NSString *WorkflowActionByBranchRevealed = @"Stats - byBranch", *WorkflowActionByAuthorRevealed = @"Stats - byAuthor";
 
 NSString *WorkflowActionSSHKeysAdded = @"SSH keys added", *WorkflowActionBadSSHKeysFound = @"Bad SSH keys found", *WorkflowActionLoginUsingCredentials = @"Login with Credentials", *WorkflowActionUnboundSSHKeysFound = @"SSH not bound to Server found.";

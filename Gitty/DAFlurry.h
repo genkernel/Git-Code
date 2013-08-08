@@ -29,7 +29,7 @@ extern NSString *WorkflowActionBranchListShown, *WorkflowActionBranchListHidden;
 extern NSString *WorkflowActionBranchListTouch, *WorkflowActionBranchListDrag;
 
 extern NSString *WorkflowActionRepoForgotten, *WorkflowActionRepoRemoved, *WorkflowActionRepoAllRemoved;
-extern NSString *WorkflowActionBranchSwitched, *WorkflowActionCustomServerCreated;
+extern NSString *WorkflowActionBranchSwitched, *WorkflowActionTagSwitched, *WorkflowActionCustomServerCreated;
 extern NSString *WorkflowActionByBranchRevealed, *WorkflowActionByAuthorRevealed;
 
 extern NSString *WorkflowActionSSHKeysAdded, *WorkflowActionBadSSHKeysFound, *WorkflowActionLoginUsingCredentials, *WorkflowActionUnboundSSHKeysFound;

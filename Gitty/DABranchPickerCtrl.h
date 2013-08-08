@@ -8,14 +8,32 @@
 
 #import "DABaseCtrl.h"
 
-@interface DABranchPickerCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
-// Reloads dataSource and clears search text.
-- (void)resetWithBranches:(NSArray *)branches;
-// reloadWithBranches: does not clear searching text as opposite to resetWithBranches:.
-- (void)reloadWithBranches:(NSArray *)branches;
+typedef enum {
+	DABranchList,
+	DATagList,
+	DAListModesMax
+} DAListModes;
 
-@property (strong, nonatomic) void (^completionBlock)(GTBranch *);
+@interface DABranchPickerCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UITabBarDelegate> {
+	DAListModes listMode;
+}
+@property (strong, nonatomic) NSArray *tags, *branches;
 
+- (void)loadItemsWithoutFilter;
+
+// Invalidates dataSources, Reloads UI and clears search text.
+- (void)resetUI;
+// reloadUI does not clear searching text as opposite to resetUI.
+- (void)reloadUI;
+
+@property (strong, nonatomic) void (^branchSelectedAction)(GTBranch *);
+@property (strong, nonatomic) void (^tagSelectedAction)(GTTag *);
+@property (strong, nonatomic) void (^cancelAction)();
+
+@property (strong, nonatomic) IBOutlet UITabBar *tabBar;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (strong, nonatomic) IBOutlet UITableView *mainTable;
+// visibleTable is @dynamic points to branchesTable or tagsTable.
+@property (strong, nonatomic, readonly) UITableView *visibleTable;
+@property (strong, nonatomic) IBOutlet UITableView *branchesTable, *tagsTable;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *branchesTableLeft;
 @end

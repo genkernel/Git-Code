@@ -37,6 +37,11 @@
 - (void)loadItemsWithoutFilter {
 	self.filteredItems[DATagList] = self.tags;
 	self.filteredItems[DABranchList] = self.branches;
+	
+	BOOL hasTags = self.tags.count > 0;
+	
+	self.tagsTable.hidden = !hasTags;
+	self.noTagsLabel.hidden = hasTags;
 }
 
 - (void)resetUI {

@@ -25,8 +25,8 @@
 		[self.visibleTable.superview layoutIfNeeded];
 		
 	} completion:^(BOOL finished) {
-		self.tagsTable.scrollEnabled = DATagList == listMode;
-		self.branchesTable.scrollEnabled = DABranchList == listMode;
+		self.tagsTable.scrollsToTop = DATagList == listMode;
+		self.branchesTable.scrollsToTop = DABranchList == listMode;
 	}];
 }
 

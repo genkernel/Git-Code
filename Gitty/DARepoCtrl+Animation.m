@@ -119,8 +119,13 @@
 			self.navigationItem.titleView = isStatsShown ? self.weekendTitleView : self.branchCustomTitleContainer;
 		}
 		
-		self.commitsTable.scrollsToTop = !isStatsShown;
 		_statsCtrl.commitsTable.scrollsToTop = isStatsShown;
+		
+		if (isBranchOverlayVisible) {
+			self.branchPickerCtrl.visibleTable.scrollsToTop = !isStatsShown;
+		} else {
+			self.commitsTable.scrollsToTop = !isStatsShown;
+		}
 	}];
 	
 	NSString *name = DAStatsCtrl.className;

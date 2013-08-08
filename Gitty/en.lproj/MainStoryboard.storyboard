@@ -738,25 +738,45 @@ yet.</string>
                                             <outlet property="delegate" destination="ALf-gj-3jW" id="F7Y-Tr-EVp"/>
                                         </connections>
                                     </tableView>
-                                    <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="K26-um-5tt" userLabel="Tags Table">
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGG-WZ-MSu" userLabel="Tags">
+                                        <subviews>
+                                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No tags found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGG-jP-Nd7" userLabel="No Tags Label">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" type="user" id="CDA-rP-qh6"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Cochin-Bold" family="Cochin" pointSize="24"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="K26-um-5tt" userLabel="Tags Table">
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="ALf-gj-3jW" id="HRX-mH-1EW"/>
+                                                    <outlet property="delegate" destination="ALf-gj-3jW" id="cZk-eV-coR"/>
+                                                </connections>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="320" type="user" id="hVj-RN-U7C"/>
+                                            <constraint firstItem="K26-um-5tt" firstAttribute="bottom" secondItem="rGG-WZ-MSu" secondAttribute="bottom" type="user" id="0zD-sG-w0P"/>
+                                            <constraint firstItem="K26-um-5tt" firstAttribute="leading" secondItem="rGG-WZ-MSu" secondAttribute="leading" type="user" id="1RB-Be-SOi"/>
+                                            <constraint firstItem="K26-um-5tt" firstAttribute="trailing" secondItem="rGG-WZ-MSu" secondAttribute="trailing" type="user" id="3ed-y9-c3J"/>
+                                            <constraint firstItem="MGG-jP-Nd7" firstAttribute="leading" secondItem="rGG-WZ-MSu" secondAttribute="leading" type="user" id="Khk-Oj-8qI"/>
+                                            <constraint firstItem="K26-um-5tt" firstAttribute="top" secondItem="rGG-WZ-MSu" secondAttribute="top" type="user" id="R8o-pM-iU8"/>
+                                            <constraint firstAttribute="trailing" secondItem="MGG-jP-Nd7" secondAttribute="trailing" type="user" id="emm-Sn-5RG"/>
+                                            <constraint firstAttribute="width" constant="320" type="user" id="ljI-5k-eBM"/>
+                                            <constraint firstItem="MGG-jP-Nd7" firstAttribute="top" secondItem="rGG-WZ-MSu" secondAttribute="top" constant="150" type="user" id="tma-vu-Umi"/>
                                         </constraints>
-                                        <connections>
-                                            <outlet property="dataSource" destination="ALf-gj-3jW" id="HRX-mH-1EW"/>
-                                            <outlet property="delegate" destination="ALf-gj-3jW" id="cZk-eV-coR"/>
-                                        </connections>
-                                    </tableView>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Nvk-ce-TBf" firstAttribute="top" secondItem="aGZ-39-Am7" secondAttribute="top" type="default" id="FXy-MO-Glp"/>
-                                    <constraint firstItem="K26-um-5tt" firstAttribute="leading" secondItem="Nvk-ce-TBf" secondAttribute="trailing" type="user" id="OxS-gh-NgT"/>
+                                    <constraint firstAttribute="bottom" secondItem="rGG-WZ-MSu" secondAttribute="bottom" type="user" id="HQw-qk-BR1"/>
                                     <constraint firstItem="Nvk-ce-TBf" firstAttribute="bottom" secondItem="aGZ-39-Am7" secondAttribute="bottom" type="default" id="Qqi-8Z-oOy"/>
-                                    <constraint firstItem="K26-um-5tt" firstAttribute="top" secondItem="aGZ-39-Am7" secondAttribute="top" type="default" id="VVD-0M-rso"/>
-                                    <constraint firstItem="K26-um-5tt" firstAttribute="bottom" secondItem="aGZ-39-Am7" secondAttribute="bottom" type="default" id="WyM-2h-ODv"/>
                                     <constraint firstItem="Nvk-ce-TBf" firstAttribute="leading" secondItem="aGZ-39-Am7" secondAttribute="leading" type="user" id="a4w-is-iZI"/>
+                                    <constraint firstItem="rGG-WZ-MSu" firstAttribute="leading" secondItem="Nvk-ce-TBf" secondAttribute="trailing" type="user" id="hYW-Y9-ged"/>
+                                    <constraint firstItem="rGG-WZ-MSu" firstAttribute="top" secondItem="aGZ-39-Am7" secondAttribute="top" type="user" id="tSG-vE-xbJ"/>
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bup-5o-kOO">
@@ -787,6 +807,7 @@ yet.</string>
                     <connections>
                         <outlet property="branchesTable" destination="Nvk-ce-TBf" id="sGF-nB-ILg"/>
                         <outlet property="branchesTableLeft" destination="a4w-is-iZI" id="hGA-dd-wRV"/>
+                        <outlet property="noTagsLabel" destination="MGG-jP-Nd7" id="V40-75-Bgg"/>
                         <outlet property="searchBar" destination="47U-I9-wod" id="e0N-7c-RK5"/>
                         <outlet property="tabBar" destination="bup-5o-kOO" id="sfh-va-Xa4"/>
                         <outlet property="tagsTable" destination="K26-um-5tt" id="QHf-cA-0In"/>
@@ -824,7 +845,7 @@ yet.</string>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No new commits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YD7-4m-HGD" userLabel="No Commits Label">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="26" type="user" id="QH1-9a-Rx8"/>
+                                    <constraint firstAttribute="height" constant="30" type="user" id="QH1-9a-Rx8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Cochin-Bold" family="Cochin" pointSize="24"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -990,6 +1011,7 @@ by </string>
             <relationships>
                 <relationship kind="outlet" name="branchesTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="branchesTableLeft" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="noTagsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="tabBar" candidateClass="UITabBar"/>
                 <relationship kind="outlet" name="tagsTable" candidateClass="UITableView"/>

@@ -717,6 +717,9 @@ yet.</string>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <searchBar contentMode="redraw" barStyle="blackOpaque" placeholder="master" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47U-I9-wod">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" type="user" id="jhg-6y-r7p"/>
+                                </constraints>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -762,10 +765,10 @@ yet.</string>
                                             <constraint firstItem="K26-um-5tt" firstAttribute="leading" secondItem="rGG-WZ-MSu" secondAttribute="leading" type="user" id="1RB-Be-SOi"/>
                                             <constraint firstItem="K26-um-5tt" firstAttribute="trailing" secondItem="rGG-WZ-MSu" secondAttribute="trailing" type="user" id="3ed-y9-c3J"/>
                                             <constraint firstItem="MGG-jP-Nd7" firstAttribute="leading" secondItem="rGG-WZ-MSu" secondAttribute="leading" type="user" id="Khk-Oj-8qI"/>
+                                            <constraint firstAttribute="centerY" secondItem="MGG-jP-Nd7" secondAttribute="centerY" type="user" id="Oz2-1b-9L5"/>
                                             <constraint firstItem="K26-um-5tt" firstAttribute="top" secondItem="rGG-WZ-MSu" secondAttribute="top" type="user" id="R8o-pM-iU8"/>
                                             <constraint firstAttribute="trailing" secondItem="MGG-jP-Nd7" secondAttribute="trailing" type="user" id="emm-Sn-5RG"/>
                                             <constraint firstAttribute="width" constant="320" type="user" id="ljI-5k-eBM"/>
-                                            <constraint firstItem="MGG-jP-Nd7" firstAttribute="top" secondItem="rGG-WZ-MSu" secondAttribute="top" constant="150" type="user" id="tma-vu-Umi"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -781,6 +784,9 @@ yet.</string>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bup-5o-kOO">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" type="user" id="3m8-0d-Rqd"/>
+                                </constraints>
                                 <items>
                                     <tabBarItem title="Branches" id="q7i-Kh-Zcf" userLabel="Branches Item"/>
                                     <tabBarItem tag="1" title="Tags" id="IPC-0d-ZcX" userLabel="Tags Item"/>
@@ -1012,6 +1018,7 @@ by </string>
             <relationships>
                 <relationship kind="outlet" name="branchesTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="branchesTableLeft" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="container" candidateClass="UIView"/>
                 <relationship kind="outlet" name="noTagsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="tabBar" candidateClass="UITabBar"/>

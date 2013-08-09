@@ -28,7 +28,7 @@
 		self.commitsTable.scrollsToTop = !visible;
 		self.branchPickerCtrl.visibleTable.scrollsToTop = visible;
 	} completion:^(BOOL finished) {
-		
+		[self setNavigationBarHidden:isBranchOverlayVisible animated:YES];
 	}];
 	
 	NSString *action = visible ? WorkflowActionBranchListShown : WorkflowActionBranchListHidden;
@@ -136,6 +136,23 @@
 	} else {
 		[DAFlurry logScreenDisappear:name];
 	}
+}
+
+- (void)setNavigationBarHidden:(BOOL)hidden animated:(BOOL)animated {
+	if (self.navigationController.navigationBarHidden == hidden) {
+		return;
+	}
+	
+	[self.navigationController setNavigationBarHidden:hidden animated:animated];
+	
+	CGFloat offset = self.navigationController.navigationBar.height;
+	offset *= hidden ? 1 : -1;
+	
+	self.mainContainerHeight.constant += offset;
+
+	[UIView animateWithDuration:LightningAnimationDuration animations:^{
+		[self.mainContainer.superview layoutIfNeeded];
+	}];
 }
 
 @end

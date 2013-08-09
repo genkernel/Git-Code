@@ -17,12 +17,12 @@
 	listMode = mode;
 	
 	BOOL isBranchesTableVisible = DABranchList == listMode;
-	CGFloat offset = isBranchesTableVisible ? 0 : -self.branchesTable.superview.width;
+	CGFloat offset = isBranchesTableVisible ? 0 : -self.container.width;
 	
 	self.branchesTableLeft.constant = offset;
 	
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
-		[self.visibleTable.superview layoutIfNeeded];
+		[self.container layoutIfNeeded];
 		
 	} completion:^(BOOL finished) {
 		self.tagsTable.scrollsToTop = DATagList == listMode;

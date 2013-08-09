@@ -33,6 +33,8 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UITabBar *tabBar;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
+@property (strong, nonatomic) IBOutlet UIView *container;
+
 // visibleTable is @dynamic points to branchesTable or tagsTable.
 @property (strong, nonatomic, readonly) UITableView *visibleTable;
 @property (strong, nonatomic) IBOutlet UITableView *branchesTable, *tagsTable;

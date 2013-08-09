@@ -42,6 +42,8 @@ typedef enum {
 
 @property (strong, nonatomic) DAGitServer *repoServer;
 
+@property (nonatomic, readonly) NSUInteger statsCommitsCount;
+
 @property (strong, nonatomic, readonly) NSMutableDictionary *authors, *branches;
 // Format: author.name  =>  <NSArray of commits>
 @property (strong, nonatomic, readonly) NSDictionary *statsCommitsByAuthor;

@@ -14,7 +14,4 @@
 
 - (void)setPullingVisible:(BOOL)visible animated:(BOOL)animated;
 - (void)setStatsContainerMode:(DAStatsContainerModes)mode animated:(BOOL)animated;
-
-- (void)loadStatsHeadline;
-- (void)resetStatsHeadline;
 @end

@@ -103,6 +103,7 @@
 		18438B641777AA0600943F9F /* UIImageView+Gravatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B631777AA0600943F9F /* UIImageView+Gravatar.m */; };
 		1852A6251785EFF800B44D81 /* branch-selector.png in Resources */ = {isa = PBXBuildFile; fileRef = 1852A6231785EFF800B44D81 /* branch-selector.png */; };
 		1852A6261785EFF800B44D81 /* branch-selector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1852A6241785EFF800B44D81 /* branch-selector@2x.png */; };
+		1852A8A117B5730900E06DDC /* DAStatsCtrl+Headline.m in Sources */ = {isa = PBXBuildFile; fileRef = 1852A8A017B5730900E06DDC /* DAStatsCtrl+Headline.m */; };
 		1861887B176E145F00666DFB /* DAServerCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18618879176E0FF000666DFB /* DAServerCtrl.m */; };
 		186A92D9177848FB00B2EEF3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186A92D8177848FB00B2EEF3 /* MobileCoreServices.framework */; };
 		186A92E21778522C00B2EEF3 /* DAStatusHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 186A92E01778522C00B2EEF3 /* DAStatusHeader.m */; };
@@ -419,6 +420,9 @@
 		18438B631777AA0600943F9F /* UIImageView+Gravatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Gravatar.m"; sourceTree = "<group>"; };
 		1852A6231785EFF800B44D81 /* branch-selector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "branch-selector.png"; sourceTree = "<group>"; };
 		1852A6241785EFF800B44D81 /* branch-selector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "branch-selector@2x.png"; sourceTree = "<group>"; };
+		1852A89F17B5730900E06DDC /* DAStatsCtrl+Headline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DAStatsCtrl+Headline.h"; sourceTree = "<group>"; };
+		1852A8A017B5730900E06DDC /* DAStatsCtrl+Headline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DAStatsCtrl+Headline.m"; sourceTree = "<group>"; };
+		1852A8A217B573B000E06DDC /* DAStatsCtrl+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DAStatsCtrl+Private.h"; sourceTree = "<group>"; };
 		1861886B176E0BBF00666DFB /* PagerItemView+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PagerItemView+Internal.h"; sourceTree = "<group>"; };
 		1861886C176E0BBF00666DFB /* PagerItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagerItemView.h; sourceTree = "<group>"; };
 		1861886D176E0BBF00666DFB /* PagerItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagerItemView.m; sourceTree = "<group>"; };
@@ -1162,8 +1166,11 @@
 				1810992E179074290018AAB4 /* AuthorHeader */,
 				183F7E42178C550B0051D689 /* DAStatsCtrl.h */,
 				183F7E43178C550B0051D689 /* DAStatsCtrl.m */,
+				1852A8A217B573B000E06DDC /* DAStatsCtrl+Private.h */,
 				18A3D67117A4137400B38FA8 /* DAStatsCtrl+Animation.h */,
 				18A3D67217A4137400B38FA8 /* DAStatsCtrl+Animation.m */,
+				1852A89F17B5730900E06DDC /* DAStatsCtrl+Headline.h */,
+				1852A8A017B5730900E06DDC /* DAStatsCtrl+Headline.m */,
 			);
 			name = StatsCtrl;
 			sourceTree = "<group>";
@@ -2634,6 +2641,7 @@
 				18B8751E17ABDBAB004AF69D /* DAFlurry.m in Sources */,
 				18B8752117ABDF77004AF69D /* DAFlurryEvent.m in Sources */,
 				189439BB17B2A65B0011C7EB /* DABranchPickerCtrl+Animation.m in Sources */,
+				1852A8A117B5730900E06DDC /* DAStatsCtrl+Headline.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

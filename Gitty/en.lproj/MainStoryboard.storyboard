@@ -807,6 +807,7 @@ yet.</string>
                     <connections>
                         <outlet property="branchesTable" destination="Nvk-ce-TBf" id="sGF-nB-ILg"/>
                         <outlet property="branchesTableLeft" destination="a4w-is-iZI" id="hGA-dd-wRV"/>
+                        <outlet property="container" destination="aGZ-39-Am7" id="lQh-J9-Q7V"/>
                         <outlet property="noTagsLabel" destination="MGG-jP-Nd7" id="V40-75-Bgg"/>
                         <outlet property="searchBar" destination="47U-I9-wod" id="e0N-7c-RK5"/>
                         <outlet property="tabBar" destination="bup-5o-kOO" id="sfh-va-Xa4"/>

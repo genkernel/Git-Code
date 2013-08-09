@@ -9,6 +9,7 @@
 #import "DARepoCtrl+StatsLoader.h"
 #import "DARepoCtrl+Private.h"
 #import "DARepoCtrl+Animation.h"
+#import "DAStatsCtrl+Headline.h"
 
 static NSTimeInterval OneDayInterval = 1 DAYS;
 static NSUInteger CommitsExtraCheckingThreshold = 10;
@@ -33,10 +34,10 @@ static NSUInteger CommitsExtraCheckingThreshold = 10;
 			BOOL hasStatsToShow = _statsCommitsCount > 0;
 			
 			if (hasStatsToShow) {
-				[self loadStatsHeadline];
+				[_statsCtrl loadStatsHeadline];
 				[_statsCtrl reloadData];
 			} else {
-				[self resetStatsHeadline];
+				[_statsCtrl resetStatsHeadline];
 				[self setStatsContainerMode:DAStatsHiddenMode animated:NO];
 			}
 			

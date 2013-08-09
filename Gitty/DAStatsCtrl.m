@@ -7,8 +7,8 @@
 //
 
 #import "DAStatsCtrl.h"
+#import "DAStatsCtrl+Private.h"
 #import "DAStatsCtrl+Animation.h"
-#import "DARepoCtrl.h"
 
 #import "DACommitCell.h"
 #import "DACommitBranchCell.h"
@@ -16,7 +16,6 @@
 
 @interface DAStatsCtrl ()
 @property (strong, nonatomic, readonly) NSDictionary *dataSource;
-@property (strong, nonatomic, readonly) DARepoCtrl *repoCtrl;
 
 @property (strong, nonatomic) NSIndexPath *selectedCommitIndexPath;
 @end

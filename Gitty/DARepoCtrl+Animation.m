@@ -27,6 +27,8 @@
 		
 		self.commitsTable.scrollsToTop = !visible;
 		self.branchPickerCtrl.visibleTable.scrollsToTop = visible;
+	} completion:^(BOOL finished) {
+		
 	}];
 	
 	NSString *action = visible ? WorkflowActionBranchListShown : WorkflowActionBranchListHidden;
@@ -134,51 +136,6 @@
 	} else {
 		[DAFlurry logScreenDisappear:name];
 	}
-}
-
-- (void)resetStatsHeadline {
-	_statsCtrl.headlineLabel.attributedText = NSAttributedString.new;
-}
-
-- (void)loadStatsHeadline {
-	// Unique number string - space delimeter at the end.
-	NSString *branchesCount = [NSString stringWithFormat:@"%d ", _statsCommitsByBranch.count];
-	// String uniqueness - 2 spaces.
-	NSString *commitsCount = [NSString stringWithFormat:@" %d ", _statsCommitsCount];
-	// String uniqueness - leading space delimeter.
-	NSString *authorsCount = [NSString stringWithFormat:@" %d", _statsCommitsByAuthor.count];
-	
-	NSString *branchesLiteral = _statsCommitsByBranch.count > 1 ? @"Branches updated with" : @"Branch updated with";
-	NSString *commitsLiteral = _statsCommitsCount > 1 ? @"Commits\nby" : @"Commit\nby";
-	NSString *authorsLiteral = _statsCommitsByAuthor.count > 1 ? @" Authors recently." : @" Author recently.";
-	
-	NSArray *strings = @[branchesCount, branchesLiteral, commitsCount, commitsLiteral, authorsCount, authorsLiteral];
-	
-	NSArray *attributes = @[
-							[self attributesWithForegroundColor:UIColor.acceptingGreenColor],
-							[self attributesWithForegroundColor:UIColor.whiteColor],
-							[self attributesWithForegroundColor:UIColor.acceptingBlueColor],
-							[self attributesWithForegroundColor:UIColor.whiteColor],
-							[self attributesWithForegroundColor:UIColor.cancelingRedColor],
-							[self attributesWithForegroundColor:UIColor.whiteColor]];
-	
-	_statsCtrl.headlineLabel.attributedText = [NSAttributedString stringByJoiningSimpleStrings:strings applyingAttributes:attributes joinString:nil];
-}
-
-- (NSDictionary *)attributesWithForegroundColor:(UIColor *)color {
-	static NSMutableDictionary *attributes = nil;
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		NSMutableParagraphStyle *paragraph = NSMutableParagraphStyle.new;
-		paragraph.alignment = NSTextAlignmentCenter;
-		
-		attributes = NSMutableDictionary.new;
-		attributes[NSFontAttributeName] = _statsCtrl.headlineLabel.font;
-		attributes[NSParagraphStyleAttributeName] = paragraph;
-	});
-	
-	attributes[NSForegroundColorAttributeName] = color;
-	return attributes.copy;
 }
 
 @end

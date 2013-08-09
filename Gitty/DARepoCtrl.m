@@ -51,6 +51,7 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	NSArray *_remoteBranches, *_tags;
 	CGFloat headerHeight;
 }
+@synthesize statsCommitsCount = _statsCommitsCount;
 @synthesize authors = _authors, branches = _branches;
 @synthesize currentBranch = _currentBranch, currentTag = _currentTag;
 @synthesize commitsOnDateSection = _commitsOnDateSection;
@@ -207,6 +208,11 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	_remoteBranches = [self.currentRepo remoteBranchesWithError:&err];
 	
 	[Logger info:@"%d Branches loaded.", self.remoteBranches.count];
+	
+	BOOL isPresentingTag = nil != self.currentTag;
+	if (isPresentingTag) {
+		return;
+	}
 	
 	GTBranch *defaultBranch = nil;
 	NSString *recentBranchName = self.repoServer.recentBranchName;

@@ -788,8 +788,8 @@ yet.</string>
                                     <constraint firstAttribute="height" constant="49" type="user" id="3m8-0d-Rqd"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="Branches" id="q7i-Kh-Zcf" userLabel="Branches Item"/>
-                                    <tabBarItem tag="1" title="Tags" id="IPC-0d-ZcX" userLabel="Tags Item"/>
+                                    <tabBarItem title="Branches" image="bar-branches.png" id="q7i-Kh-Zcf" userLabel="Branches Item"/>
+                                    <tabBarItem tag="1" title="Tags" image="bar-tags.png" id="IPC-0d-ZcX" userLabel="Tags Item"/>
                                 </items>
                                 <connections>
                                     <outlet property="delegate" destination="ALf-gj-3jW" id="5Id-Im-ReW"/>
@@ -1002,6 +1002,8 @@ by </string>
         <image name="Grabber2_wide_top.png" width="90" height="11"/>
         <image name="authors-white.png" width="35" height="21"/>
         <image name="authors.png" width="35" height="21"/>
+        <image name="bar-branches.png" width="44" height="13"/>
+        <image name="bar-tags.png" width="33" height="27"/>
         <image name="branch-selector.png" width="30" height="328"/>
         <image name="branches-white.png" width="29" height="7"/>
         <image name="branches.png" width="29" height="7"/>

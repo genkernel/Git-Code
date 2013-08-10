@@ -18,6 +18,7 @@ typedef enum {
 
 @interface DARepoCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate> {
 	BOOL isBranchOverlayVisible;
+	BOOL isNavBarHiddenByThisCtrl;
 	DAStatsContainerModes statsContainerMode;
 	
 	NSDictionary *_commitsOnDateSection;

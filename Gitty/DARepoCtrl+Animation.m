@@ -142,6 +142,7 @@
 	if (self.navigationController.navigationBarHidden == hidden) {
 		return;
 	}
+	isNavBarHiddenByThisCtrl = hidden;
 	
 	[self.navigationController setNavigationBarHidden:hidden animated:animated];
 	

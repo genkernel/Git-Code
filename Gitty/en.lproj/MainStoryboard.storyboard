@@ -791,6 +791,8 @@ yet.</string>
                                     <tabBarItem title="Branches" image="bar-branches.png" id="q7i-Kh-Zcf" userLabel="Branches Item"/>
                                     <tabBarItem tag="1" title="Tags" image="bar-tags.png" id="IPC-0d-ZcX" userLabel="Tags Item"/>
                                 </items>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="selectedImageTintColor" red="0.0" green="0.50980392159999999" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="ALf-gj-3jW" id="5Id-Im-ReW"/>
                                 </connections>

@@ -160,7 +160,7 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	[super viewWillAppear:animated];
 	[DAFlurry logScreenAppear:self.className];
 	
-	[self.navigationController setNavigationBarHidden:NO animated:animated];
+	[self.navigationController setNavigationBarHidden:isNavBarHiddenByThisCtrl animated:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

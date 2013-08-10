@@ -278,6 +278,9 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	_currentTag = tag;
 	_currentBranch = nil;
 	
+	self.branchPickerCtrl.currentTag = tag;
+	self.branchPickerCtrl.currentBranch = nil;
+	
 	self.branchCustomTitleLabel.text = tag.name;
 	
 	return YES;
@@ -288,8 +291,11 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 		return NO;
 	}
 	
-	_currentBranch = branch;
 	_currentTag = nil;
+	_currentBranch = branch;
+	
+	self.branchPickerCtrl.currentTag = nil;
+	self.branchPickerCtrl.currentBranch = branch;
 	
 	self.repoServer.recentBranchName = branch.shortName;
 	[self.servers save];

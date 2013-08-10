@@ -14,10 +14,12 @@ typedef enum {
 	DAListModesMax
 } DAListModes;
 
-@interface DABranchPickerCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UITabBarDelegate> {
+@interface DABranchPickerCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate> {
 	DAListModes listMode;
 }
 @property (strong, nonatomic) NSArray *tags, *branches;
+@property (weak, nonatomic) GTTag *currentTag;
+@property (weak, nonatomic) GTBranch *currentBranch;
 
 - (void)loadItemsWithoutFilter;
 

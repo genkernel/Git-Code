@@ -22,7 +22,11 @@
 }
 
 - (void)start {
+#ifdef TARGET_IPHONE_SIMULATOR
+	[Logger warn:@"Flurry start skipped for Simulator."];
+#else
 	[Flurry startSession:@"TTMTVBZW6X8MKMCWJGDS"];
+#endif
 }
 
 - (void)logEvent:(DAFlurryEvent *)event {

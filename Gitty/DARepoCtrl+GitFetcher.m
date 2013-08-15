@@ -98,7 +98,7 @@
 	delegate.finishBlock = ^(DAGitAction *pull, NSError *err){
 		ctrl.app.idleTimerDisabled = NO;
 		
-		if (err && GIT_EEXISTS != err.code) {
+		if (err) {
 			// Load stats anyway if nothing was updated.
 			[ctrl loadStats];
 			
@@ -115,7 +115,7 @@
 		}
 		
 		[ctrl reloadFilters];
-		[ctrl reloadCommits];
+		[ctrl reloadCommitsAndOptionallyTable:YES];
 		
 		if (isBranchOverlayVisible) {
 			self.branchPickerCtrl.tags = self.tags;

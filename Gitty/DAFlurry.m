@@ -22,10 +22,10 @@
 }
 
 - (void)start {
-#ifdef TARGET_IPHONE_SIMULATOR
-	[Logger warn:@"Flurry start skipped for Simulator."];
-#else
+#ifdef RELEASE
 	[Flurry startSession:@"TTMTVBZW6X8MKMCWJGDS"];
+#else
+	[Logger warn:@"Skipping Flurry Analytics start as of Debug mode."];
 #endif
 }
 

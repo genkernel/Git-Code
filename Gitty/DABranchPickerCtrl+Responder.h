@@ -8,5 +8,5 @@
 
 #import "DABranchPickerCtrl.h"
 
-@interface DABranchPickerCtrl (Responder) <UISearchBarDelegate, UITabBarDelegate>
+@interface DABranchPickerCtrl (Responder) <UISearchBarDelegate, UITabBarDelegate, UITableViewDataSource, UITableViewDelegate>
 @end

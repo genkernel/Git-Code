@@ -14,7 +14,7 @@ typedef enum {
 	DAListModesMax
 } DAListModes;
 
-@interface DABranchPickerCtrl : DABaseCtrl <UITableViewDataSource, UITableViewDelegate> {
+@interface DABranchPickerCtrl : DABaseCtrl {
 	DAListModes listMode;
 }
 @property (strong, nonatomic) NSArray *tags, *branches;

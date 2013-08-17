@@ -31,6 +31,9 @@
 
 @property (strong, nonatomic) IBOutlet UIView *commitsContainer;
 
+@property (strong, nonatomic) IBOutlet TreeTable *byAuthorProxy, *byBranchProxy;
+
+
 @property (strong, nonatomic) IBOutlet DAByAuthorDataSource *byAuthorDataSource;
 @property (strong, nonatomic) IBOutlet DAByBranchDataSource *byBranchDataSource;
 @end

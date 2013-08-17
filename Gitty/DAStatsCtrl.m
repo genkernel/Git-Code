@@ -27,6 +27,9 @@
 	self.byAuthorTable.scrollsToTop = NO;
 	self.byBranchTable.scrollsToTop = NO;
 	
+	self.byAuthorProxy.closingAnimation = UITableViewRowAnimationFade;
+	self.byBranchProxy.closingAnimation = UITableViewRowAnimationFade;
+	
 	[self.byAuthorDataSource setupForTableView:self.byAuthorTable];
 	[self.byBranchDataSource setupForTableView:self.byBranchTable];
 	

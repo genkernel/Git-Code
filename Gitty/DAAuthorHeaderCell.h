@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DAAuthorHeader : UITableViewCell
+@interface DAAuthorHeaderCell : UITableViewCell
 - (void)loadAuthor:(GTSignature *)author;
 
-@property (strong, nonatomic) IBOutlet UIImageView *avatar;
+@property (nonatomic) BOOL collapsed;
+
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *avatar;
+@property (strong, nonatomic) IBOutlet UIButton *toggleButton;
 @end

@@ -12,10 +12,6 @@
 #import "DACommitBranchCell.h"
 #import "DACommitMessageCell.h"
 
-@interface DAStatsDataSource ()
-@property (strong, nonatomic, readonly) NSMutableSet *closedItems;
-@end
-
 @implementation DAStatsDataSource
 
 - (id)init {
@@ -68,7 +64,7 @@
 	return previousCommitHasSameAuthor;
 }
 
-- (BOOL)treeView:(TreeTable *)proxy toggleCellAtIndexPath:(NSIndexPath *)ip {
+- (BOOL)treeView:(TreeTable *)proxy toggleCellAtIndexPath:(NSIndexPath *)indexPath treeIndexPath:(NSIndexPath *)ip {
 	if ([self.closedItems containsObject:ip]) {
 		[self.closedItems removeObject:ip];
 		
@@ -116,7 +112,7 @@
 		return;
 	}
 	
-	BOOL isJustExpandedCell = [self treeView:proxy toggleCellAtIndexPath:ip];
+	BOOL isJustExpandedCell = [self treeView:proxy toggleCellAtIndexPath:indexPath treeIndexPath:ip];
 	
 	[tableView deselectRowAtIndexPath:indexPath animated:NO];
 	

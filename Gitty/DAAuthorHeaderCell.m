@@ -6,9 +6,10 @@
 //  Copyright (c) 2013 kernel@realm. All rights reserved.
 //
 
-#import "DAAuthorHeader.h"
+#import "DAAuthorHeaderCell.h"
 
-@implementation DAAuthorHeader
+@implementation DAAuthorHeaderCell
+@dynamic collapsed;
 
 - (void)awakeFromNib {
 	[super awakeFromNib];
@@ -19,6 +20,16 @@
 - (void)loadAuthor:(GTSignature *)author {
 	self.nameLabel.text = author.name;
 	[self.avatar setGravatarImageWithEmail:author.email];
+}
+
+#pragma mark Properties
+
+- (BOOL)collapsed {
+	return self.toggleButton.selected;
+}
+
+- (void)setCollapsed:(BOOL)collapsed {
+	self.toggleButton.selected = collapsed;
 }
 
 @end

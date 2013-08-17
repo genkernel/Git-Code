@@ -26,6 +26,9 @@ typedef void (^CellSelectionBlock)(DAStatsDataSource *, NSIndexPath *);
 @property (strong, nonatomic) CellSelectionBlock selectCellAction;
 
 - (void)setupForTableView:(UITableView *)tableView;
+- (BOOL)treeView:(TreeTable *)proxy toggleCellAtIndexPath:(NSIndexPath *)indexPath treeIndexPath:(NSIndexPath *)ip;
+
+@property (strong, nonatomic, readonly) NSMutableSet *closedItems;
 
 // Helpers.
 - (GTCommit *)commitForIndexPath:(NSIndexPath *)indexPath;

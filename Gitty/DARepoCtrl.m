@@ -165,7 +165,7 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	[DAFlurry logProtocol:self.repoServer.transferProtocol];
 	
 	
-	[self testStats];
+//	[self testStats];
 }
 
 - (void)testStats {

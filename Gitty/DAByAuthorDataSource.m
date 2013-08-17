@@ -7,7 +7,7 @@
 //
 
 #import "DAByAuthorDataSource.h"
-#import "DAAuthorHeader.h"
+#import "DAAuthorHeaderCell.h"
 
 @interface DAByAuthorDataSource ()
 @property (strong, nonatomic, readonly) DACommitBranchCell *reusableBranchCell;
@@ -18,11 +18,20 @@
 - (void)setupForTableView:(UITableView *)tableView {
 	[super setupForTableView:tableView];
 	
-	UINib *nib = [UINib nibWithNibName:DAAuthorHeader.className bundle:nil];
-	[tableView registerNib:nib forCellReuseIdentifier:DAAuthorHeader.className];
+	UINib *nib = [UINib nibWithNibName:DAAuthorHeaderCell.className bundle:nil];
+	[tableView registerNib:nib forCellReuseIdentifier:DAAuthorHeaderCell.className];
 	
-	UITableViewCell *header = [tableView dequeueReusableCellWithIdentifier:DAAuthorHeader.className];
+	UITableViewCell *header = [tableView dequeueReusableCellWithIdentifier:DAAuthorHeaderCell.className];
 	headerHeight = header.height;
+}
+
+- (BOOL)treeView:(TreeTable *)proxy toggleCellAtIndexPath:(NSIndexPath *)indexPath treeIndexPath:(NSIndexPath *)ip {
+	BOOL expanded = [super treeView:proxy toggleCellAtIndexPath:indexPath treeIndexPath:ip];
+	
+	DAAuthorHeaderCell *header = (DAAuthorHeaderCell *)[proxy.tableView cellForRowAtIndexPath:indexPath];
+	header.collapsed = !expanded;
+	
+	return expanded;
 }
 
 #pragma mark Internal
@@ -35,13 +44,15 @@
 	return self.reusableBranchCell;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView headerViewAtIndex:(NSInteger)section {
-	NSString *title = self.commits.allKeys[section];
+- (UITableViewCell *)tableView:(UITableView *)tableView headerViewAtIndexPath:(NSIndexPath *)ip {
+	NSString *title = self.commits.allKeys[ip.row];
 	
-	DAAuthorHeader *cell = [tableView dequeueReusableCellWithIdentifier:DAAuthorHeader.className];
+	DAAuthorHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:DAAuthorHeaderCell.className];
 	
 	GTSignature *author = self.authors[title];
 	[cell loadAuthor:author];
+	
+	cell.collapsed = [self.closedItems containsObject:ip];
 	
 	return cell;
 }
@@ -65,7 +76,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (indexPath.length == 2) {
-		return [self tableView:tableView headerViewAtIndex:indexPath.row];
+		return [self tableView:tableView headerViewAtIndexPath:indexPath];
 	}
 	
 	NSUInteger row = [indexPath indexAtPosition:2];

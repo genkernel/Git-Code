@@ -11,7 +11,7 @@
 @interface DAGitStats : NSObject
 + (instancetype)statsForRepository:(GTRepository *)repo;
 
-- (DABranchStats *)exploreBranch:(GTBranch *)branch;
+//- (DABranchStats *)exploreBranch:(GTBranch *)branch;
 
 - (void)performWalkOnBranch:(GTBranch *)branch;
 @end

@@ -29,8 +29,8 @@
 		1804FABC176E87780080AB50 /* NSString+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1804FABB176E87630080AB50 /* NSString+Gitty.m */; };
 		1804FAC0176EAACD0080AB50 /* btn-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 1804FABF176EAACA0080AB50 /* btn-red.png */; };
 		1805AC1F178B322900789D45 /* DAGitServer+Creation.m in Sources */ = {isa = PBXBuildFile; fileRef = 181993D7176D3D1000D4BE1F /* DAGitServer+Creation.m */; };
-		1810993C179074540018AAB4 /* DAAuthorHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810993B179074540018AAB4 /* DAAuthorHeader.m */; };
-		1810993E1790746C0018AAB4 /* DAAuthorHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1810993D1790746C0018AAB4 /* DAAuthorHeader.xib */; };
+		1810993C179074540018AAB4 /* DAAuthorHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810993B179074540018AAB4 /* DAAuthorHeaderCell.m */; };
+		1810993E1790746C0018AAB4 /* DAAuthorHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1810993D1790746C0018AAB4 /* DAAuthorHeaderCell.xib */; };
 		1810994217909BFB0018AAB4 /* DACommitBranchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810994117909BFA0018AAB4 /* DACommitBranchCell.m */; };
 		1810994417909C140018AAB4 /* DACommitBranchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1810994317909C140018AAB4 /* DACommitBranchCell.xib */; };
 		181099491790A6B20018AAB4 /* DATitleHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 181099481790A6B20018AAB4 /* DATitleHeaderCell.m */; };
@@ -211,6 +211,10 @@
 		18DF1BE917BFD8DD007D312A /* DATitleHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF1BE817BFD8DD007D312A /* DATitleHeader.m */; };
 		18DF1BEB17BFD8ED007D312A /* DATitleHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18DF1BEA17BFD8ED007D312A /* DATitleHeader.xib */; };
 		18DF1BEF17BFF7CE007D312A /* DABranchStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF1BEE17BFF7CE007D312A /* DABranchStats.m */; };
+		18DF1C0117C01A31007D312A /* collapse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DF1BFD17C01A31007D312A /* collapse@2x.png */; };
+		18DF1C0217C01A31007D312A /* expand.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DF1BFE17C01A31007D312A /* expand.png */; };
+		18DF1C0317C01A31007D312A /* expand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DF1BFF17C01A31007D312A /* expand@2x.png */; };
+		18DF1C0517C01B55007D312A /* collapse.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DF1C0417C01B55007D312A /* collapse.png */; };
 		18E23ACB17BF7BB6008462A3 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E23ACA17BF7BB6008462A3 /* libFlurry_4.2.3.a */; };
 		18E23ACF17BF7F7E008462A3 /* DAEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E23ACE17BF7F7E008462A3 /* DAEnvironment.m */; };
 		18EADFE6176F05F6005D0F28 /* DAGitUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EADFE0176F05EA005D0F28 /* DAGitUser.m */; };
@@ -326,9 +330,9 @@
 		1804FABD176E8FEA0080AB50 /* NavViewCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavViewCtrl.h; sourceTree = "<group>"; };
 		1804FABE176E8FEA0080AB50 /* NavViewCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavViewCtrl.m; sourceTree = "<group>"; };
 		1804FABF176EAACA0080AB50 /* btn-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-red.png"; sourceTree = "<group>"; };
-		1810993A179074540018AAB4 /* DAAuthorHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAuthorHeader.h; sourceTree = "<group>"; };
-		1810993B179074540018AAB4 /* DAAuthorHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAuthorHeader.m; sourceTree = "<group>"; };
-		1810993D1790746C0018AAB4 /* DAAuthorHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAAuthorHeader.xib; sourceTree = "<group>"; };
+		1810993A179074540018AAB4 /* DAAuthorHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAuthorHeaderCell.h; sourceTree = "<group>"; };
+		1810993B179074540018AAB4 /* DAAuthorHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAuthorHeaderCell.m; sourceTree = "<group>"; };
+		1810993D1790746C0018AAB4 /* DAAuthorHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAAuthorHeaderCell.xib; sourceTree = "<group>"; };
 		1810994017909BFA0018AAB4 /* DACommitBranchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACommitBranchCell.h; sourceTree = "<group>"; };
 		1810994117909BFA0018AAB4 /* DACommitBranchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACommitBranchCell.m; sourceTree = "<group>"; };
 		1810994317909C140018AAB4 /* DACommitBranchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DACommitBranchCell.xib; sourceTree = "<group>"; };
@@ -849,6 +853,10 @@
 		18DF1BEA17BFD8ED007D312A /* DATitleHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DATitleHeader.xib; sourceTree = "<group>"; };
 		18DF1BED17BFF7CE007D312A /* DABranchStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABranchStats.h; sourceTree = "<group>"; };
 		18DF1BEE17BFF7CE007D312A /* DABranchStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABranchStats.m; sourceTree = "<group>"; };
+		18DF1BFD17C01A31007D312A /* collapse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collapse@2x.png"; sourceTree = "<group>"; };
+		18DF1BFE17C01A31007D312A /* expand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expand.png; sourceTree = "<group>"; };
+		18DF1BFF17C01A31007D312A /* expand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "expand@2x.png"; sourceTree = "<group>"; };
+		18DF1C0417C01B55007D312A /* collapse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collapse.png; sourceTree = "<group>"; };
 		18E23ACA17BF7BB6008462A3 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
 		18E23ACD17BF7F7E008462A3 /* DAEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAEnvironment.h; sourceTree = "<group>"; };
 		18E23ACE17BF7F7E008462A3 /* DAEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAEnvironment.m; sourceTree = "<group>"; };
@@ -1010,9 +1018,9 @@
 		1810992E179074290018AAB4 /* AuthorHeader */ = {
 			isa = PBXGroup;
 			children = (
-				1810993A179074540018AAB4 /* DAAuthorHeader.h */,
-				1810993B179074540018AAB4 /* DAAuthorHeader.m */,
-				1810993D1790746C0018AAB4 /* DAAuthorHeader.xib */,
+				1810993A179074540018AAB4 /* DAAuthorHeaderCell.h */,
+				1810993B179074540018AAB4 /* DAAuthorHeaderCell.m */,
+				1810993D1790746C0018AAB4 /* DAAuthorHeaderCell.xib */,
 			);
 			name = AuthorHeader;
 			sourceTree = "<group>";
@@ -1141,6 +1149,7 @@
 		18336043178EBD6A000C1E52 /* Stats */ = {
 			isa = PBXGroup;
 			children = (
+				18DF1BF317C01773007D312A /* Expand */,
 				1833605B178EECC7000C1E52 /* authors-white.png */,
 				1833605C178EECC7000C1E52 /* branches-white.png */,
 				18336057178EE1B7000C1E52 /* authors-white@2x.png */,
@@ -2309,6 +2318,18 @@
 			name = Walk;
 			sourceTree = "<group>";
 		};
+		18DF1BF317C01773007D312A /* Expand */ = {
+			isa = PBXGroup;
+			children = (
+				18DF1C0417C01B55007D312A /* collapse.png */,
+				18DF1BFD17C01A31007D312A /* collapse@2x.png */,
+				18DF1BFE17C01A31007D312A /* expand.png */,
+				18DF1BFF17C01A31007D312A /* expand@2x.png */,
+			);
+			name = Expand;
+			path = Stats/expand;
+			sourceTree = "<group>";
+		};
 		18E23ACC17BF7F66008462A3 /* Env */ = {
 			isa = PBXGroup;
 			children = (
@@ -2621,7 +2642,7 @@
 				1833605A178EE1B7000C1E52 /* branches-white@2x.png in Resources */,
 				1833605D178EECC7000C1E52 /* authors-white.png in Resources */,
 				1833605E178EECC7000C1E52 /* branches-white.png in Resources */,
-				1810993E1790746C0018AAB4 /* DAAuthorHeader.xib in Resources */,
+				1810993E1790746C0018AAB4 /* DAAuthorHeaderCell.xib in Resources */,
 				1810994417909C140018AAB4 /* DACommitBranchCell.xib in Resources */,
 				1810994B1790A6CA0018AAB4 /* DATitleHeaderCell.xib in Resources */,
 				187A29D11795BEC700FE9F19 /* Icon-72.png in Resources */,
@@ -2644,6 +2665,10 @@
 				185837DC17B68AEE00EBB834 /* bar-branches.png in Resources */,
 				185837DD17B68AEE00EBB834 /* bar-branches@2x.png in Resources */,
 				18DF1BEB17BFD8ED007D312A /* DATitleHeader.xib in Resources */,
+				18DF1C0117C01A31007D312A /* collapse@2x.png in Resources */,
+				18DF1C0217C01A31007D312A /* expand.png in Resources */,
+				18DF1C0317C01A31007D312A /* expand@2x.png in Resources */,
+				18DF1C0517C01B55007D312A /* collapse.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2746,7 +2771,7 @@
 				181A6F59178B696D002CA3BE /* DASshCredentials.m in Sources */,
 				183F7E44178C550B0051D689 /* DAStatsCtrl.m in Sources */,
 				183F7E47178C554E0051D689 /* DARepoCtrl+StatsLoader.m in Sources */,
-				1810993C179074540018AAB4 /* DAAuthorHeader.m in Sources */,
+				1810993C179074540018AAB4 /* DAAuthorHeaderCell.m in Sources */,
 				1810994217909BFB0018AAB4 /* DACommitBranchCell.m in Sources */,
 				181099491790A6B20018AAB4 /* DATitleHeaderCell.m in Sources */,
 				18F86F1B17931A4E0055900C /* DASshKeyInfo.m in Sources */,

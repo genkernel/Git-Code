@@ -861,7 +861,7 @@ yet.</string>
                                     <constraint firstAttribute="bottom" secondItem="41d-5k-6sM" secondAttribute="bottom" type="user" id="yot-lU-EWi"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p68-Os-XZM" userLabel="Header">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p68-Os-XZM" userLabel="Header">
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="stats_header.png" translatesAutoresizingMaskIntoConstraints="NO" id="iFz-Y0-zqm" userLabel="Background">
                                         <constraints>
@@ -1061,6 +1061,12 @@ by </string>
         <class className="DARepoCtrl" superclassName="DABaseCtrl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DARepoCtrl.h"/>
             <relationships>
+                <relationship kind="action" name="branchDidDrag:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="action" name="forgetPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="revealBranchPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="statsDidClick:" candidateClass="UIButton"/>
+                <relationship kind="action" name="statsDidDrag:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="action" name="statsModeChanged:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="branchCtrlContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="branchCustomTitleButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="branchCustomTitleContainer" candidateClass="UIView"/>
@@ -1105,7 +1111,7 @@ by </string>
                 <relationship kind="outlet" name="noCommitsLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="DAStatsDataSource" superclassName="DABaseCtrl">
+        <class className="DAStatsDataSource" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DAStatsDataSource.h"/>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">

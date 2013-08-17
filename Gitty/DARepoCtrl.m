@@ -601,7 +601,8 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 }
 
 - (NSString *)cellIdentifierOfClass:(Class)cls {
-	return [NSString stringWithFormat:@"%@-%@", DARepoCtrl.className, cls.className];
+	return cls.className;
+//	return [NSString stringWithFormat:@"%@-%@", DARepoCtrl.className, cls.className];
 }
 
 @end

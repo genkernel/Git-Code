@@ -88,6 +88,8 @@
 	}
 	statsContainerMode = mode;
 	
+	BOOL isStatsShown = DAStatsFullscreenMode == mode;
+	
 	// Elements strict DAStatsContainerModes ordering.
 	CGFloat offsets[] = {
 		50./*stats header img black part height*/ - self.grabButton.height,
@@ -96,6 +98,10 @@
 	};
 	
 	CGFloat y = offsets[mode];
+	if (isStatsShown) {
+		y += self.navigationController.navigationBar.height;
+	}
+	
 	self.mainContainerTop.constant = y;
 	
 	if (DAStatsFullscreenMode != mode) {
@@ -105,7 +111,10 @@
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
 		[self.mainContainer.superview layoutIfNeeded];
 	} completion:^(BOOL finished) {
-		BOOL isStatsShown = DAStatsFullscreenMode == mode;
+		[self setNavigationBarHidden:isStatsShown animated:animated];
+//		dispatch_async(dispatch_get_main_queue(), ^{
+//			[self setNavigationBarHidden:isStatsShown animated:animated];
+//		});
 		
 		self.branchCustomTitleButton.hidden = DAStatsHiddenMode != mode;
 		
@@ -113,12 +122,6 @@
 			self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.statsCustomRightView];
 		} else {
 			self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.forgetButton];
-		}
-		
-		{
-			self.statsTitleWeekdayLabel.text = _statsCustomTitle;
-			self.statsTitleWeekendHintLabel.text = _statsCustomHint;
-			self.navigationItem.titleView = isStatsShown ? self.weekendTitleView : self.branchCustomTitleContainer;
 		}
 		
 		_statsCtrl.commitsTable.scrollsToTop = isStatsShown;

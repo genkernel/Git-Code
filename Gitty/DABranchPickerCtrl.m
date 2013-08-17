@@ -67,7 +67,7 @@
 	if (text.length == 0) {
 		[self loadItemsWithoutFilter];
 		
-	} else if (text.length < 3) {
+	} else if (text.length == 1) {
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name beginswith[cd] %@", text];
 		self.filteredItems[DATagList] = [self.tags filteredArrayUsingPredicate:predicate];
 		

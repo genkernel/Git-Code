@@ -16,7 +16,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 10;
 
 @implementation DARepoCtrl (StatsLoader)
 @dynamic yearMonthDayFormatter, dayOfWeekFormatter;
-@dynamic dayOfWeekTitleFormatter, dayOfMonthTitleFormatter;
+@dynamic dayOfMonthTitleFormatter;
 
 - (void)loadStats {
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
@@ -79,11 +79,9 @@ static NSUInteger CommitsExtraCheckingThreshold = 10;
 	_statsCtrl.isShowingCommitsOfMultipleDays = isCollectingWeekendStats;
 	
 	if (isCollectingWeekendStats) {
-		_statsCustomTitle = [self.dayOfWeekTitleFormatter stringFromDate:yesterdayDate];
-		_statsCustomHint = NSLocalizedString(@"+ weekend", nil);
+		_statsCtrl.headlineSinceDayText = NSLocalizedString(@"since Friday", nil);
 	} else {
-		_statsCustomTitle = NSLocalizedString(@"Yesterday", nil);
-		_statsCustomHint = [self.dayOfMonthTitleFormatter stringFromDate:yesterdayDate];
+		_statsCtrl.headlineSinceDayText = NSLocalizedString(@"yesterday", nil);
 	}
 	
 	NSError *err = nil;
@@ -222,18 +220,6 @@ static NSUInteger CommitsExtraCheckingThreshold = 10;
 		formatter.locale = NSLocale.systemLocale;
 		formatter.timeZone = NSTimeZone.localTimeZone;
 		formatter.dateFormat = @"e";
-	});
-	return formatter;
-}
-
-- (NSDateFormatter *)dayOfWeekTitleFormatter {
-	static NSDateFormatter *formatter = nil;
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		formatter = NSDateFormatter.new;
-		formatter.locale = NSLocale.currentLocale;
-		formatter.timeZone = NSTimeZone.localTimeZone;
-		formatter.dateFormat = @"EEEE";
 	});
 	return formatter;
 }

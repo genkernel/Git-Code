@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xze-n8-Hho">
     <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
         <development version="4600" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -215,7 +216,7 @@
             <objects>
                 <viewController id="HaY-FQ-1Aa" userLabel="Diff Ctrl" customClass="DADiffCtrl" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4ff-iA-Sct">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="94" width="320" height="474"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BEU-y7-wg9" userLabel="Table">
@@ -235,7 +236,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Diff" id="WDB-7T-fRo"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackTranslucent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="table" destination="BEU-y7-wg9" id="CqW-uO-Txe"/>
@@ -456,9 +457,6 @@
                         <outlet property="revealBranchOverlayButton" destination="zgp-Ui-0vb" id="u2r-ht-yl0"/>
                         <outlet property="statsContainer" destination="5al-59-bSE" id="Tgi-tm-bAO"/>
                         <outlet property="statsCustomRightView" destination="BpY-pE-dci" id="ji9-7K-7Z1"/>
-                        <outlet property="statsTitleWeekdayLabel" destination="rIb-gL-nZp" id="0WK-ax-9Rb"/>
-                        <outlet property="statsTitleWeekendHintLabel" destination="J2U-1b-5s0" id="5pp-aK-qBR"/>
-                        <outlet property="weekendTitleView" destination="x4T-hp-lDC" id="VZx-G8-tAi"/>
                         <outletCollection property="statsSwitchModeButtons" destination="3In-m6-JJm" id="nIa-Nn-VQf"/>
                         <outletCollection property="statsSwitchModeButtons" destination="Sl6-Ja-gUI" id="W6a-hR-VWm"/>
                         <segue destination="HaY-FQ-1Aa" kind="push" identifier="DiffSegue" id="Y9V-9u-clg"/>
@@ -554,35 +552,6 @@
                         <constraint firstAttribute="bottom" secondItem="vac-Hg-17Q" secondAttribute="bottom" constant="10" type="user" id="fnP-2h-biB"/>
                         <constraint firstAttribute="trailing" secondItem="M72-wh-dq2" secondAttribute="trailing" type="user" id="vM1-Ev-Ehn"/>
                         <constraint firstAttribute="bottom" secondItem="M72-wh-dq2" secondAttribute="bottom" type="user" id="z1w-Kq-GAv"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" id="x4T-hp-lDC" userLabel="Weekend Custom Title View">
-                    <rect key="frame" x="0.0" y="0.0" width="200" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Saturday" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIb-gL-nZp" userLabel="Day Label">
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="+ weekend" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2U-1b-5s0" userLabel="Hint Label">
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="Qs1-kO-Zm6"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="16"/>
-                            <color key="textColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="J2U-1b-5s0" firstAttribute="leading" secondItem="x4T-hp-lDC" secondAttribute="leading" type="default" id="7Pu-UG-e0q"/>
-                        <constraint firstItem="rIb-gL-nZp" firstAttribute="top" secondItem="x4T-hp-lDC" secondAttribute="top" type="default" id="FWe-4b-Ryo"/>
-                        <constraint firstItem="J2U-1b-5s0" firstAttribute="trailing" secondItem="rIb-gL-nZp" secondAttribute="trailing" type="default" id="Mqe-Uk-4dd"/>
-                        <constraint firstItem="J2U-1b-5s0" firstAttribute="trailing" secondItem="x4T-hp-lDC" secondAttribute="trailing" type="default" id="Pfj-jG-yCR"/>
-                        <constraint firstItem="J2U-1b-5s0" firstAttribute="bottom" secondItem="x4T-hp-lDC" secondAttribute="bottom" type="default" id="YdQ-dX-3LZ"/>
-                        <constraint firstItem="J2U-1b-5s0" firstAttribute="leading" secondItem="rIb-gL-nZp" secondAttribute="leading" type="default" id="rq1-Aq-Si2"/>
-                        <constraint firstAttribute="bottom" secondItem="rIb-gL-nZp" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="t36-91-zOS"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wF1-lh-4Te" userLabel="Forget Button">
@@ -849,9 +818,12 @@ yet.</string>
             <objects>
                 <viewController id="5ae-qc-YmD" customClass="DAStatsCtrl" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MEQ-w2-z7R">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="505"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRB-Zk-ICJ">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No new commits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YD7-4m-HGD" userLabel="No Commits Label">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" type="user" id="QH1-9a-Rx8"/>
@@ -969,12 +941,16 @@ by </string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qRB-Zk-ICJ" firstAttribute="leading" secondItem="MEQ-w2-z7R" secondAttribute="leading" constant="60" id="3of-bv-kSg"/>
                             <constraint firstItem="p68-Os-XZM" firstAttribute="top" secondItem="MEQ-w2-z7R" secondAttribute="top" type="user" id="61W-Uy-Jeg"/>
                             <constraint firstItem="YD7-4m-HGD" firstAttribute="leading" secondItem="MEQ-w2-z7R" secondAttribute="leading" type="user" id="6pH-DS-RWG"/>
+                            <constraint firstItem="qRB-Zk-ICJ" firstAttribute="centerX" secondItem="YD7-4m-HGD" secondAttribute="centerX" type="default" id="9XQ-G7-SR6"/>
                             <constraint firstAttribute="trailing" secondItem="p68-Os-XZM" secondAttribute="trailing" type="user" id="KTR-SS-41Y"/>
+                            <constraint firstAttribute="bottom" secondItem="qRB-Zk-ICJ" secondAttribute="bottom" constant="230" id="McW-D4-SgC"/>
                             <constraint firstAttribute="bottom" secondItem="nyk-WL-JSo" secondAttribute="bottom" type="user" id="NDP-ec-bsq"/>
                             <constraint firstAttribute="trailing" secondItem="YD7-4m-HGD" secondAttribute="trailing" type="user" id="bWZ-NX-PdK"/>
                             <constraint firstItem="nyk-WL-JSo" firstAttribute="trailing" secondItem="MEQ-w2-z7R" secondAttribute="trailing" type="user" id="iN3-Jt-Gzi"/>
+                            <constraint firstItem="qRB-Zk-ICJ" firstAttribute="top" secondItem="MEQ-w2-z7R" secondAttribute="top" constant="231" id="izN-mY-EL0"/>
                             <constraint firstItem="p68-Os-XZM" firstAttribute="leading" secondItem="MEQ-w2-z7R" secondAttribute="leading" type="user" id="rmv-Ou-WZF"/>
                             <constraint firstItem="nyk-WL-JSo" firstAttribute="leading" secondItem="MEQ-w2-z7R" secondAttribute="leading" type="user" id="s6s-82-KIV"/>
                             <constraint firstItem="YD7-4m-HGD" firstAttribute="top" secondItem="MEQ-w2-z7R" secondAttribute="top" constant="220" type="user" id="t5q-Q5-t6L"/>
@@ -994,6 +970,13 @@ by </string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSF-xZ-zWT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="hwk-7L-hAn">
+                    <rect key="frame" x="0.0" y="0.0" width="161" height="30"/>
+                    <segments>
+                        <segment title="Day"/>
+                        <segment title="Week"/>
+                    </segments>
+                </segmentedControl>
                 <customObject id="NwV-q3-KOu" userLabel="byAuthor DataSource" customClass="DAByAuthorDataSource"/>
                 <customObject id="0qf-km-88k" userLabel="byBranch DataSource" customClass="DAByBranchDataSource"/>
             </objects>
@@ -1089,9 +1072,6 @@ by </string>
                 <relationship kind="outlet" name="revealBranchOverlayButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="statsContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="statsCustomRightView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="statsTitleWeekdayLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="statsTitleWeekendHintLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="weekendTitleView" candidateClass="UIView"/>
                 <relationship kind="outletCollection" name="statsSwitchModeButtons" candidateClass="UIButton"/>
             </relationships>
         </class>

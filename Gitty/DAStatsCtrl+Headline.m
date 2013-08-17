@@ -17,7 +17,7 @@
 
 - (void)loadStatsHeadline {
 	// Unique number string - space delimeter at the end.
-	NSString *branchesCount = [NSString stringWithFormat:@"%d ", self.repoCtrl.statsCommitsByAuthor.count];
+	NSString *branchesCount = [NSString stringWithFormat:@"%d ", self.repoCtrl.statsCommitsByBranch.count];
 	// String uniqueness - 2 spaces.
 	NSString *commitsCount = [NSString stringWithFormat:@" %d ", self.repoCtrl.statsCommitsCount];
 	// String uniqueness - leading space delimeter.
@@ -25,10 +25,10 @@
 	
 	NSString *branchesLiteral = self.repoCtrl.statsCommitsByBranch.count > 1 ? @"Branches updated with" : @"Branch updated with";
 	NSString *commitsLiteral = self.repoCtrl.statsCommitsCount > 1 ? @"Commits\nby" : @"Commit\nby";
-	NSString *authorsLiteral = self.repoCtrl.statsCommitsByAuthor.count > 1 ? @" Authors recently." : @" Author recently.";
+	NSString *authorsLiteral = self.repoCtrl.statsCommitsByAuthor.count > 1 ? @" Authors " : @" Author ";
 	
 	
-	NSArray *strings = @[branchesCount, branchesLiteral, commitsCount, commitsLiteral, authorsCount, authorsLiteral];
+	NSArray *strings = @[branchesCount, branchesLiteral, commitsCount, commitsLiteral, authorsCount, authorsLiteral, self.headlineSinceDayText];
 	
 	NSArray *attributes = @[
 						 [self attributesWithForegroundColor:UIColor.acceptingGreenColor],
@@ -36,7 +36,8 @@
 	   [self attributesWithForegroundColor:UIColor.acceptingBlueColor],
 	   [self attributesWithForegroundColor:UIColor.whiteColor],
 	   [self attributesWithForegroundColor:UIColor.cancelingRedColor],
-	   [self attributesWithForegroundColor:UIColor.whiteColor]];
+	   [self attributesWithForegroundColor:UIColor.whiteColor],
+		[self attributesWithForegroundColor:UIColor.whiteColor]];
 	
 	self.headlineLabel.attributedText = [NSAttributedString stringByJoiningSimpleStrings:strings applyingAttributes:attributes joinString:nil];
 }

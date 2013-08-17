@@ -30,6 +30,11 @@ static NSString *BranchPickerSegue = @"BranchPickerSegue";
 static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 
+@interface UITableView (RepoCtrl)
+- (id)dequeueCellOfClass:(Class)cls;
+- (NSString *)cellIdentifierOfClass:(Class)cls;
+@end
+
 @interface DARepoCtrl ()
 @property (strong, nonatomic, readonly) NSDictionary *commitsOnDateSection;
 @property (strong, nonatomic, readonly) NSDictionary *authorsOnDateSection;
@@ -74,7 +79,7 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 			
 			BOOL changed = [ref selectTag:selectedTag];
 			if (changed) {
-				[ref reloadCommits];
+				[ref reloadCommitsAndOptionallyTable:YES];
 				
 				[DAFlurry logWorkflowAction:WorkflowActionTagSwitched];
 			}
@@ -84,7 +89,7 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 			
 			BOOL changed = [ref selectBranch:selectedBranch];
 			if (changed) {
-				[ref reloadCommits];
+				[ref reloadCommitsAndOptionallyTable:YES];
 				
 				[DAFlurry logWorkflowAction:WorkflowActionBranchSwitched];
 			}
@@ -112,16 +117,20 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	_statsSelectedModeButton = self.statsSwitchModeButtons[0];
 	
 	{
-		UINib *nib = [UINib nibWithNibName:DACommitCell.className bundle:nil];
-		[self.commitsTable registerNib:nib forCellReuseIdentifier:DACommitCell.className];
+		NSString *identifier = [self.commitsTable cellIdentifierOfClass:DACommitCell.class];
 		
-		_reuseCell = [self.commitsTable dequeueReusableCellWithIdentifier:DACommitCell.className];
+		UINib *nib = [UINib nibWithNibName:DACommitCell.className bundle:nil];
+		[self.commitsTable registerNib:nib forCellReuseIdentifier:identifier];
+		
+		_reuseCell = [self.commitsTable dequeueCellOfClass:DACommitCell.class];
 	}
 	{
-		UINib *nib = [UINib nibWithNibName:DACommitMessageCell.className bundle:nil];
-		[self.commitsTable registerNib:nib forCellReuseIdentifier:DACommitMessageCell.className];
+		NSString *identifier = [self.commitsTable cellIdentifierOfClass:DACommitMessageCell.class];
 		
-		_reuseSimpleCell = [self.commitsTable dequeueReusableCellWithIdentifier:DACommitMessageCell.className];
+		UINib *nib = [UINib nibWithNibName:DACommitMessageCell.className bundle:nil];
+		[self.commitsTable registerNib:nib forCellReuseIdentifier:identifier];
+		
+		_reuseSimpleCell = [self.commitsTable dequeueCellOfClass:DACommitMessageCell.class];
 	}
 	
 	{
@@ -134,7 +143,7 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	_branches = NSMutableDictionary.new;
 	
 	[self reloadFilters];
-	[self reloadCommits];
+	[self reloadCommitsAndOptionallyTable:NO];
 	
 	if (!self.shouldPull) {
 		[self loadStats];
@@ -228,6 +237,11 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	}
 	
 	if (!defaultBranch) {
+		defaultBranch = [self.currentRepo currentBranchWithError:nil];
+	}
+	
+	// Fallback to master.
+	if (!defaultBranch) {
 		defaultBranch = branches[MasterBranchName];
 		if (!defaultBranch) {
 			defaultBranch = self.remoteBranches.anyObject;
@@ -236,7 +250,7 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	[self selectBranch:defaultBranch];
 }
 
-- (void)reloadCommits {
+- (void)reloadCommitsAndOptionallyTable:(BOOL)shoudReloadTable {
 	NSUInteger commitsCount = 0;
 	
 	[NSObject startMeasurement];
@@ -246,7 +260,9 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	double period = [NSObject endMeasurement];
 	[Logger info:@"%d Commits of %d days loaded in %.2f.", commitsCount, self.dateSections.count, period];
 	
-	[self.commitsTable reloadData];
+	if (shoudReloadTable) {
+		[self.commitsTable reloadData];
+	}
 }
 
 /*
@@ -390,7 +406,7 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	BOOL previousCommitHasSameAuthor = [self isSubsequentCommitAtIndexPath:indexPath];
 	Class cls = previousCommitHasSameAuthor ? DACommitMessageCell.class : DACommitCell.class;
 	
-	UITableViewCell<DADynamicCommitCell> *cell = [tableView dequeueReusableCellWithIdentifier:cls.className];
+	UITableViewCell<DADynamicCommitCell> *cell = [tableView dequeueCellOfClass:cls];
 	
 	[cell setShowsDayName:NO];
 	[cell setShowsTopCellSeparator:indexPath.row > 0];
@@ -572,6 +588,20 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 		formatter.dateFormat = @"EEEE, d MMM, yyyy";
 	});
 	return formatter;
+}
+
+@end
+
+
+@implementation UITableView (RepoCtrl)
+
+- (id)dequeueCellOfClass:(Class)cls {
+	NSString *identifier = [self cellIdentifierOfClass:cls];
+	return [self dequeueReusableCellWithIdentifier:identifier];
+}
+
+- (NSString *)cellIdentifierOfClass:(Class)cls {
+	return [NSString stringWithFormat:@"%@-%@", DARepoCtrl.className, cls.className];
 }
 
 @end

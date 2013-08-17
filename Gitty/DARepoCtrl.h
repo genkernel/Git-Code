@@ -34,8 +34,6 @@ typedef enum {
 	NSMutableDictionary *_authors, *_branches;
 	NSUInteger _statsCommitsCount;
 	
-	NSString *_statsCustomTitle, *_statsCustomHint;
-	
 	DAStatsCtrl *_statsCtrl;
 }
 @property (strong, nonatomic) GTRepository *currentRepo;
@@ -78,17 +76,13 @@ typedef enum {
 
 @property (strong, nonatomic) IBOutlet UIButton *grabButton;
 
-@property (strong, nonatomic) IBOutlet UIView *weekendTitleView;
-@property (strong, nonatomic) IBOutlet UILabel *statsTitleWeekdayLabel;
-@property (strong, nonatomic) IBOutlet UILabel *statsTitleWeekendHintLabel;
-
 @property (strong, nonatomic) IBOutlet UIButton *forgetButton;
 @property (strong, nonatomic) IBOutlet UIView *statsCustomRightView;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *statsSwitchModeButtons;
 
 // Private. Category-visible methods.
 - (void)reloadFilters;
-- (void)reloadCommits;
+- (void)reloadCommitsAndOptionallyTable:(BOOL)shoudReloadTable;
 - (void)addForgetButton;
 
 - (void)presentDiffCtrlForCommit:(GTCommit *)commit;

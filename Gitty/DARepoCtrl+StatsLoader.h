@@ -12,5 +12,5 @@
 - (void)loadStats;
 
 // Private.
-@property (strong, nonatomic, readonly) NSDateFormatter *yearMonthDayFormatter, *dayOfWeekFormatter, *dayOfWeekTitleFormatter, *dayOfMonthTitleFormatter;
+@property (strong, nonatomic, readonly) NSDateFormatter *yearMonthDayFormatter, *dayOfWeekFormatter, *dayOfMonthTitleFormatter;
 @end

@@ -18,6 +18,8 @@
 @property (nonatomic, readonly) BOOL isByBranchTableVisible;
 @property () BOOL isShowingCommitsOfMultipleDays;
 
+@property (strong, nonatomic) NSString *headlineSinceDayText;
+
 // Header.
 @property (strong, nonatomic) IBOutlet UIView *headerContainer;
 @property (strong, nonatomic) IBOutlet UILabel *headlineLabel, *noCommitsLabel;

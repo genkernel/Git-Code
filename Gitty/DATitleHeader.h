@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DATitleHeader : UIView
+@interface DATitleHeader : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @end

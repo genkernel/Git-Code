@@ -377,7 +377,7 @@
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">DAAuthorHeader</string>
-					<string key="superclassName">UIView</string>
+					<string key="superclassName">UITableViewCell</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="avatar">UIImageView</string>
 						<string key="nameLabel">UILabel</string>

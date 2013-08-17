@@ -28,6 +28,8 @@
 
 - (void)setupView {
 	[self.avatar applyAvatarStyle];
+	
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)loadAuthor:(GTSignature *)author {

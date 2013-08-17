@@ -206,6 +206,7 @@
 		18CFED93177C317C00365E5A /* code-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CFED8F177C317C00365E5A /* code-green.png */; };
 		18CFED94177C317C00365E5A /* code-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CFED90177C317C00365E5A /* code-red.png */; };
 		18D9EA3D17554EB400454F3C /* DAGitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9EA3C17554EB400454F3C /* DAGitManager.m */; };
+		18DF1BE117BF9B1E007D312A /* TreeTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF1BE017BF9B1E007D312A /* TreeTable.m */; };
 		18E23ACB17BF7BB6008462A3 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E23ACA17BF7BB6008462A3 /* libFlurry_4.2.3.a */; };
 		18E23ACF17BF7F7E008462A3 /* DAEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E23ACE17BF7F7E008462A3 /* DAEnvironment.m */; };
 		18EADFE6176F05F6005D0F28 /* DAGitUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EADFE0176F05EA005D0F28 /* DAGitUser.m */; };
@@ -835,6 +836,8 @@
 		18CFED90177C317C00365E5A /* code-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "code-red.png"; sourceTree = "<group>"; };
 		18D9EA3B17554EB400454F3C /* DAGitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGitManager.h; sourceTree = "<group>"; };
 		18D9EA3C17554EB400454F3C /* DAGitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitManager.m; sourceTree = "<group>"; };
+		18DF1BDF17BF9B1E007D312A /* TreeTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeTable.h; sourceTree = "<group>"; };
+		18DF1BE017BF9B1E007D312A /* TreeTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeTable.m; sourceTree = "<group>"; };
 		18E23ACA17BF7BB6008462A3 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
 		18E23ACD17BF7F7E008462A3 /* DAEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAEnvironment.h; sourceTree = "<group>"; };
 		18E23ACE17BF7F7E008462A3 /* DAEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAEnvironment.m; sourceTree = "<group>"; };
@@ -1159,6 +1162,7 @@
 		183DA6F3175549BC00140DA8 /* Submodules */ = {
 			isa = PBXGroup;
 			children = (
+				18DF1BDE17BF9B1E007D312A /* TreeTable */,
 				187A29DC1795DFD400FE9F19 /* STUtils */,
 				18F86ECA1793179E0055900C /* ZipArchive */,
 				1861886A176E0BBF00666DFB /* PagerView */,
@@ -2237,6 +2241,16 @@
 			name = Git;
 			sourceTree = "<group>";
 		};
+		18DF1BDE17BF9B1E007D312A /* TreeTable */ = {
+			isa = PBXGroup;
+			children = (
+				18DF1BDF17BF9B1E007D312A /* TreeTable.h */,
+				18DF1BE017BF9B1E007D312A /* TreeTable.m */,
+			);
+			name = TreeTable;
+			path = Submodules/TreeView/TreeTable;
+			sourceTree = "<group>";
+		};
 		18E23ACC17BF7F66008462A3 /* Env */ = {
 			isa = PBXGroup;
 			children = (
@@ -2694,6 +2708,7 @@
 				185837BB17B66D8B00EBB834 /* DABranchPickerCtrl+Style.m in Sources */,
 				185837C817B677A000EBB834 /* DABranchPickerCtrl+Responder.m in Sources */,
 				18E23ACF17BF7F7E008462A3 /* DAEnvironment.m in Sources */,
+				18DF1BE117BF9B1E007D312A /* TreeTable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2801,7 +2816,7 @@
 				GCC_FAST_MATH = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gitty/Gitty-Prefix.pch";
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_UNROLL_LOOPS = YES;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Gitty/Gitty-Info.plist";

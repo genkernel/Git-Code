@@ -13,7 +13,7 @@
 
 typedef void (^CellSelectionBlock)(DAStatsDataSource *, NSIndexPath *);
 
-@interface DAStatsDataSource : DABaseCtrl/*using ctrl for cachedViews support*/ <UITableViewDataSource, UITableViewDelegate> {
+@interface DAStatsDataSource : DABaseCtrl/*using ctrl for cachedViews support*/ <TreeTableDataSource, UITableViewDelegate> {
 	CGFloat headerHeight;
 }
 @property (weak, nonatomic) NSDictionary *commits;

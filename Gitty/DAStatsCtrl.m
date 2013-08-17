@@ -54,7 +54,10 @@
 	[super viewDidAppear:animated];
 	
 	if (self.selectedCommitIndexPath) {
-		[self.commitsTable deselectRowAtIndexPath:self.selectedCommitIndexPath animated:animated];
+		TreeTable *proxy = self.commitsTable.dataSource;
+		NSIndexPath *ip = [proxy tableIndexPathFromTreePath:self.selectedCommitIndexPath];
+		
+		[self.commitsTable deselectRowAtIndexPath:ip animated:animated];
 		
 		_selectedCommitIndexPath = nil;
 	}

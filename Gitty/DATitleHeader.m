@@ -20,8 +20,14 @@
 		self.frame = view.bounds;
 		
 		[self addSubview:view];
+		
+		[self setupView];
     }
     return self;
+}
+
+- (void)setupView {
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 @end

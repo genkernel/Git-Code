@@ -43,9 +43,7 @@
 	return cell;
 }
 
-#pragma mark UITableViewDataSource, UITableViewDelegate
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+- (UITableViewCell *)headerViewAtIndex:(NSInteger)section {
 	NSString *title = self.commits.allKeys[section];
 	
 	NSString *identifier = DATitleHeader.className;
@@ -59,7 +57,16 @@
 	return header;
 }
 
+#pragma mark UITableViewDataSource, UITableViewDelegate
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	TreeTable *proxy = tableView.dataSource;
+	NSIndexPath *ip = [proxy treeIndexPathFromTablePath:indexPath];
+	
+	if (ip.length == 2) {
+		return headerHeight;
+	}
+	
 	id<DADynamicCommitCell> cell = nil;
 	GTCommit *commit = [self commitForIndexPath:indexPath];
 	
@@ -74,6 +81,12 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (indexPath.length == 2) {
+		return [self headerViewAtIndex:indexPath.row];
+	}
+	
+	NSUInteger row = [indexPath indexAtPosition:2];
+	
 	GTCommit *commit = [self commitForIndexPath:indexPath];
 	
 	BOOL previousCommitHasSameAuthor = [self isSubsequentCommitAtIndexPath:indexPath];
@@ -83,7 +96,7 @@
 	UITableViewCell<DADynamicCommitCell> *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
 	
 	[cell setShowsDayName:self.shouldIncludeDayNameInTimestamp];
-	[cell setShowsTopCellSeparator:indexPath.row > 0];
+	[cell setShowsTopCellSeparator:row > 0];
 	
 	[cell loadCommit:commit];
 	

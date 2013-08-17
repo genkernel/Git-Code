@@ -13,3 +13,6 @@
 [submodule "Submodules/ZipArchive"]
 	path = Submodules/ZipArchive
 	url = https://github.com/mattconnolly/ZipArchive.git
+[submodule "Submodules/TreeView"]
+	path = Submodules/TreeView
+	url = https://github.com/genkernel/TreeView.git

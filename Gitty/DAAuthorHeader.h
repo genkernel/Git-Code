@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DAAuthorHeader : UIView
+@interface DAAuthorHeader : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *avatar;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 

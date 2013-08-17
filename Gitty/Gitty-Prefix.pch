@@ -30,6 +30,7 @@
 #import "AFNetworking.h"
 // Submodules.
 #import "PagerView.h"
+#import "TreeTable.h"
 #import "ZipArchive.h"
 
 #import "UIColor+Gitty.h"

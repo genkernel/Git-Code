@@ -839,14 +839,14 @@ yet.</string>
                                             <constraint firstAttribute="width" constant="320" type="user" id="OOu-iR-ijt"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="dataSource" destination="NwV-q3-KOu" id="21o-eK-loX"/>
-                                            <outlet property="delegate" destination="NwV-q3-KOu" id="Jey-2q-m3n"/>
+                                            <outlet property="dataSource" destination="bWH-iN-Twi" id="KaQ-Bs-giy"/>
+                                            <outlet property="delegate" destination="NwV-q3-KOu" id="MDt-oJ-XpF"/>
                                         </connections>
                                     </tableView>
                                     <tableView contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="41d-5k-6sM" userLabel="byBranch Table">
                                         <connections>
-                                            <outlet property="dataSource" destination="0qf-km-88k" id="GHU-yj-xnp"/>
-                                            <outlet property="delegate" destination="0qf-km-88k" id="z5g-pm-ihE"/>
+                                            <outlet property="dataSource" destination="37K-hV-jRQ" id="lHo-Op-4oI"/>
+                                            <outlet property="delegate" destination="0qf-km-88k" id="dm2-cI-HYb"/>
                                         </connections>
                                     </tableView>
                                 </subviews>
@@ -977,7 +977,17 @@ by </string>
                         <segment title="Week"/>
                     </segments>
                 </segmentedControl>
+                <customObject id="bWH-iN-Twi" userLabel="byAuthor Tree Proxy" customClass="TreeTable">
+                    <connections>
+                        <outlet property="dataSource" destination="NwV-q3-KOu" id="HC3-BH-j89"/>
+                    </connections>
+                </customObject>
                 <customObject id="NwV-q3-KOu" userLabel="byAuthor DataSource" customClass="DAByAuthorDataSource"/>
+                <customObject id="37K-hV-jRQ" userLabel="byBranch Tree Proxy" customClass="TreeTable">
+                    <connections>
+                        <outlet property="dataSource" destination="0qf-km-88k" id="GbR-xQ-4WN"/>
+                    </connections>
+                </customObject>
                 <customObject id="0qf-km-88k" userLabel="byBranch DataSource" customClass="DAByBranchDataSource"/>
             </objects>
             <point key="canvasLocation" x="1731" y="-817"/>
@@ -1117,6 +1127,12 @@ by </string>
                 <relationship kind="outlet" name="dataSource"/>
                 <relationship kind="outlet" name="delegate"/>
                 <relationship kind="outlet" name="viewsContainer" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="TreeTable" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TreeTable.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dataSource"/>
             </relationships>
         </class>
         <class className="ViewCtrl" superclassName="UIViewController">

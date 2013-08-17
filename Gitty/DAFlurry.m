@@ -22,11 +22,9 @@
 }
 
 - (void)start {
-#ifdef RELEASE
-	[Flurry startSession:@"TTMTVBZW6X8MKMCWJGDS"];
-#else
-	[Logger warn:@"Skipping Flurry Analytics start as of Debug mode."];
-#endif
+	if (DAEnvironment.current.isRelease) {
+		[Flurry startSession:@"TTMTVBZW6X8MKMCWJGDS"];
+	}
 }
 
 - (void)logEvent:(DAFlurryEvent *)event {

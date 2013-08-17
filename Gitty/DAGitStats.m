@@ -9,16 +9,67 @@
 #import "DAGitStats.h"
 
 @interface DAGitStats ()
-@property (strong, nonatomic) GTRepository *repo;
+@property (strong, nonatomic, readonly) GTRepository *repo;
+@property (strong, nonatomic, readonly) GTEnumerator *iter;
+
+@property (strong, nonatomic, readonly) NSArray *branches, *commits;
 @end
 
 @implementation DAGitStats
 
 + (instancetype)statsForRepository:(GTRepository *)repo {
 	DAGitStats *stats = self.new;
-	stats.repo = repo;
+	[stats load:repo];
 	
 	return stats;
+}
+
+- (void)load:(GTRepository *)repo {
+	_repo = repo;
+	
+	NSArray *branches = [self.repo remoteBranchesWithError:nil];
+	
+	[Logger info:@"\nBranches: (%d): ", branches.count];
+	for (GTBranch *br in branches) {
+		[Logger info:@"%@ : %@", br.shortName, br.SHA];
+	}
+	[Logger info:@"-----"];
+	
+	_branches = branches;
+	
+	[self loadAllCommits];
+}
+
+- (void)loadAllCommits {
+	NSError *err = nil;
+	_iter = [GTEnumerator.alloc initWithRepository:self.repo error:&err];
+	
+	[self.iter resetWithOptions:GTEnumeratorOptionsTimeSort];
+	
+	[self.iter pushGlob:@"refs/remotes/origin/*" error:&err];
+	
+	NSArray *commits = [self.iter allObjectsWithError:&err];
+	
+	[Logger info:@"\nCommits (%d): ", commits.count];
+	for (GTCommit *ci in commits) {
+		[Logger info:@"0x%X %@ : %@ : %@", ci, ci.shortSHA, ci.SHA, ci.messageSummary];
+	}
+	[Logger info:@"-----"];
+	
+	_commits = commits;
+}
+
+- (void)performWalkOnBranch:(GTBranch *)branch {
+	NSError *err = nil;
+	[self.iter pushSHA:branch.SHA error:&err];
+	
+	NSArray *commits = [self.iter allObjectsWithError:&err];
+	
+	[Logger info:@"\n %@ br_commits (%d): ", branch.name, commits.count];
+	for (GTCommit *ci in commits) {
+		[Logger info:@"0x%X %@ : %@ : %@", ci, ci.shortSHA, ci.SHA, ci.messageSummary];
+	}
+	[Logger info:@"-----"];
 }
 
 @end

@@ -6,8 +6,12 @@
 //  Copyright (c) 2013 kernel@realm. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "DABranchStats.h"
 
 @interface DAGitStats : NSObject
 + (instancetype)statsForRepository:(GTRepository *)repo;
+
+- (DABranchStats *)exploreBranch:(GTBranch *)branch;
+
+- (void)performWalkOnBranch:(GTBranch *)branch;
 @end

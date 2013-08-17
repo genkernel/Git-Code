@@ -36,6 +36,8 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 @end
 
 @interface DARepoCtrl ()
+@property (strong, nonatomic, readonly) DAGitStats *stats;
+
 @property (strong, nonatomic, readonly) NSDictionary *commitsOnDateSection;
 @property (strong, nonatomic, readonly) NSDictionary *authorsOnDateSection;
 @property (strong, nonatomic, readonly) NSArray *dateSections;
@@ -161,6 +163,15 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	});
 	
 	[DAFlurry logProtocol:self.repoServer.transferProtocol];
+	
+	
+	[self testStats];
+}
+
+- (void)testStats {
+	_stats = [DAGitStats statsForRepository:self.currentRepo];
+	
+	[self.stats performWalkOnBranch:self.currentBranch];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

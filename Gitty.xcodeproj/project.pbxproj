@@ -210,6 +210,7 @@
 		18DF1BE517BFC13D007D312A /* DAGitStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF1BE417BFC13D007D312A /* DAGitStats.m */; };
 		18DF1BE917BFD8DD007D312A /* DATitleHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF1BE817BFD8DD007D312A /* DATitleHeader.m */; };
 		18DF1BEB17BFD8ED007D312A /* DATitleHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18DF1BEA17BFD8ED007D312A /* DATitleHeader.xib */; };
+		18DF1BEF17BFF7CE007D312A /* DABranchStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF1BEE17BFF7CE007D312A /* DABranchStats.m */; };
 		18E23ACB17BF7BB6008462A3 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E23ACA17BF7BB6008462A3 /* libFlurry_4.2.3.a */; };
 		18E23ACF17BF7F7E008462A3 /* DAEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E23ACE17BF7F7E008462A3 /* DAEnvironment.m */; };
 		18EADFE6176F05F6005D0F28 /* DAGitUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EADFE0176F05EA005D0F28 /* DAGitUser.m */; };
@@ -846,6 +847,8 @@
 		18DF1BE717BFD8DD007D312A /* DATitleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DATitleHeader.h; sourceTree = "<group>"; };
 		18DF1BE817BFD8DD007D312A /* DATitleHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DATitleHeader.m; sourceTree = "<group>"; };
 		18DF1BEA17BFD8ED007D312A /* DATitleHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DATitleHeader.xib; sourceTree = "<group>"; };
+		18DF1BED17BFF7CE007D312A /* DABranchStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABranchStats.h; sourceTree = "<group>"; };
+		18DF1BEE17BFF7CE007D312A /* DABranchStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABranchStats.m; sourceTree = "<group>"; };
 		18E23ACA17BF7BB6008462A3 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
 		18E23ACD17BF7F7E008462A3 /* DAEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAEnvironment.h; sourceTree = "<group>"; };
 		18E23ACE17BF7F7E008462A3 /* DAEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAEnvironment.m; sourceTree = "<group>"; };
@@ -2264,6 +2267,8 @@
 		18DF1BE217BFC11F007D312A /* GitStats */ = {
 			isa = PBXGroup;
 			children = (
+				18DF1BF017BFF9C1007D312A /* Operations */,
+				18DF1BEC17BFF7BC007D312A /* Branch */,
 				18DF1BE317BFC13D007D312A /* DAGitStats.h */,
 				18DF1BE417BFC13D007D312A /* DAGitStats.m */,
 			);
@@ -2278,6 +2283,30 @@
 				18DF1BEA17BFD8ED007D312A /* DATitleHeader.xib */,
 			);
 			name = TittleHeader;
+			sourceTree = "<group>";
+		};
+		18DF1BEC17BFF7BC007D312A /* Branch */ = {
+			isa = PBXGroup;
+			children = (
+				18DF1BED17BFF7CE007D312A /* DABranchStats.h */,
+				18DF1BEE17BFF7CE007D312A /* DABranchStats.m */,
+			);
+			name = Branch;
+			sourceTree = "<group>";
+		};
+		18DF1BF017BFF9C1007D312A /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				18DF1BF217BFFA2A007D312A /* Walk */,
+			);
+			name = Operations;
+			sourceTree = "<group>";
+		};
+		18DF1BF217BFFA2A007D312A /* Walk */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Walk;
 			sourceTree = "<group>";
 		};
 		18E23ACC17BF7F66008462A3 /* Env */ = {
@@ -2741,6 +2770,7 @@
 				18DF1BE117BF9B1E007D312A /* TreeTable.m in Sources */,
 				18DF1BE517BFC13D007D312A /* DAGitStats.m in Sources */,
 				18DF1BE917BFD8DD007D312A /* DATitleHeader.m in Sources */,
+				18DF1BEF17BFF7CE007D312A /* DABranchStats.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

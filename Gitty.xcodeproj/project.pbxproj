@@ -195,7 +195,6 @@
 		18A6254C1775D59700FC27AE /* DAGitPull.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A625481775D57D00FC27AE /* DAGitPull.m */; };
 		18A6254D1776101D00FC27AE /* NavViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1804FABE176E8FEA0080AB50 /* NavViewCtrl.m */; };
 		18A8E20D177B644800DBD973 /* DADiffCtrlDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8E20C177B644800DBD973 /* DADiffCtrlDataSource.m */; };
-		18B8751A17ABDB86004AF69D /* libFlurry_4.2.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B8751917ABDB86004AF69D /* libFlurry_4.2.2.a */; };
 		18B8751E17ABDBAB004AF69D /* DAFlurry.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8751D17ABDBAB004AF69D /* DAFlurry.m */; };
 		18B8752117ABDF77004AF69D /* DAFlurryEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8752017ABDF77004AF69D /* DAFlurryEvent.m */; };
 		18BAA8641758016400154019 /* GitServers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18BAA85F1758016400154019 /* GitServers.plist */; };
@@ -207,6 +206,8 @@
 		18CFED93177C317C00365E5A /* code-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CFED8F177C317C00365E5A /* code-green.png */; };
 		18CFED94177C317C00365E5A /* code-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CFED90177C317C00365E5A /* code-red.png */; };
 		18D9EA3D17554EB400454F3C /* DAGitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9EA3C17554EB400454F3C /* DAGitManager.m */; };
+		18E23ACB17BF7BB6008462A3 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E23ACA17BF7BB6008462A3 /* libFlurry_4.2.3.a */; };
+		18E23ACF17BF7F7E008462A3 /* DAEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E23ACE17BF7F7E008462A3 /* DAEnvironment.m */; };
 		18EADFE6176F05F6005D0F28 /* DAGitUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EADFE0176F05EA005D0F28 /* DAGitUser.m */; };
 		18ECEC7B1780601300740D96 /* code-ctx.png in Resources */ = {isa = PBXBuildFile; fileRef = 18ECEC7A1780601300740D96 /* code-ctx.png */; };
 		18ECEC811780663800740D96 /* code-separator.png in Resources */ = {isa = PBXBuildFile; fileRef = 18ECEC801780663800740D96 /* code-separator.png */; };
@@ -815,7 +816,6 @@
 		18A8E20B177B644800DBD973 /* DADiffCtrlDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADiffCtrlDataSource.h; sourceTree = "<group>"; };
 		18A8E20C177B644800DBD973 /* DADiffCtrlDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADiffCtrlDataSource.m; sourceTree = "<group>"; };
 		18B8751817ABDB86004AF69D /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		18B8751917ABDB86004AF69D /* libFlurry_4.2.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.2.a; sourceTree = "<group>"; };
 		18B8751C17ABDBAB004AF69D /* DAFlurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFlurry.h; sourceTree = "<group>"; };
 		18B8751D17ABDBAB004AF69D /* DAFlurry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAFlurry.m; sourceTree = "<group>"; };
 		18B8751F17ABDF77004AF69D /* DAFlurryEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFlurryEvent.h; sourceTree = "<group>"; };
@@ -835,6 +835,9 @@
 		18CFED90177C317C00365E5A /* code-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "code-red.png"; sourceTree = "<group>"; };
 		18D9EA3B17554EB400454F3C /* DAGitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGitManager.h; sourceTree = "<group>"; };
 		18D9EA3C17554EB400454F3C /* DAGitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitManager.m; sourceTree = "<group>"; };
+		18E23ACA17BF7BB6008462A3 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
+		18E23ACD17BF7F7E008462A3 /* DAEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAEnvironment.h; sourceTree = "<group>"; };
+		18E23ACE17BF7F7E008462A3 /* DAEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAEnvironment.m; sourceTree = "<group>"; };
 		18EADFDF176F05EA005D0F28 /* DAGitUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAGitUser.h; sourceTree = "<group>"; };
 		18EADFE0176F05EA005D0F28 /* DAGitUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAGitUser.m; sourceTree = "<group>"; };
 		18ECEC7A1780601300740D96 /* code-ctx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "code-ctx.png"; sourceTree = "<group>"; };
@@ -899,7 +902,7 @@
 				18FB1311178AEC5A00F844E4 /* libcrypto.a in Frameworks */,
 				18FB1312178AEC5A00F844E4 /* libssh2.a in Frameworks */,
 				18FB1313178AEC5A00F844E4 /* libssl.a in Frameworks */,
-				18B8751A17ABDB86004AF69D /* libFlurry_4.2.2.a in Frameworks */,
+				18E23ACB17BF7BB6008462A3 /* libFlurry_4.2.3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1662,6 +1665,7 @@
 		18933CDE1755395D00E92183 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				18E23ACC17BF7F66008462A3 /* Env */,
 				18B8751B17ABDB93004AF69D /* Flurry */,
 				18438B5E1777A8BB00943F9F /* Gravatar */,
 				18A625431775D52500FC27AE /* LibGit2 */,
@@ -2134,7 +2138,7 @@
 			isa = PBXGroup;
 			children = (
 				18B8751817ABDB86004AF69D /* Flurry.h */,
-				18B8751917ABDB86004AF69D /* libFlurry_4.2.2.a */,
+				18E23ACA17BF7BB6008462A3 /* libFlurry_4.2.3.a */,
 			);
 			path = Flurry;
 			sourceTree = "<group>";
@@ -2231,6 +2235,15 @@
 				18EADFE0176F05EA005D0F28 /* DAGitUser.m */,
 			);
 			name = Git;
+			sourceTree = "<group>";
+		};
+		18E23ACC17BF7F66008462A3 /* Env */ = {
+			isa = PBXGroup;
+			children = (
+				18E23ACD17BF7F7E008462A3 /* DAEnvironment.h */,
+				18E23ACE17BF7F7E008462A3 /* DAEnvironment.m */,
+			);
+			name = Env;
 			sourceTree = "<group>";
 		};
 		18F04E2B176FC83D0035C918 /* Graphics */ = {
@@ -2680,6 +2693,7 @@
 				1852A8A117B5730900E06DDC /* DAStatsCtrl+Headline.m in Sources */,
 				185837BB17B66D8B00EBB834 /* DABranchPickerCtrl+Style.m in Sources */,
 				185837C817B677A000EBB834 /* DABranchPickerCtrl+Responder.m in Sources */,
+				18E23ACF17BF7F7E008462A3 /* DAEnvironment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2784,8 +2798,11 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_FAST_MATH = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gitty/Gitty-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_UNROLL_LOOPS = YES;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Gitty/Gitty-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -2793,6 +2810,7 @@
 					"\"$(SRCROOT)/Libs/lib\"",
 					"\"$(SRCROOT)/Libs/Flurry\"",
 				);
+				LLVM_LTO = NO;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -2810,8 +2828,13 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ANTON ALTUKHOV";
+				GCC_FAST_MATH = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gitty/Gitty-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_UNROLL_LOOPS = YES;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Gitty/Gitty-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -2819,6 +2842,7 @@
 					"\"$(SRCROOT)/Libs/lib\"",
 					"\"$(SRCROOT)/Libs/Flurry\"",
 				);
+				LLVM_LTO = NO;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",

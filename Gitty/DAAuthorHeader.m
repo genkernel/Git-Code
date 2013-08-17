@@ -10,26 +10,10 @@
 
 @implementation DAAuthorHeader
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-		NSArray *views = [NSBundle.mainBundle loadNibNamed:self.className owner:self options:nil];
-		
-		UIView *view = views[0];
-		self.frame = view.bounds;
-		
-		[self addSubview:view];
-		
-		[self setupView];
-    }
-    return self;
-}
-
-- (void)setupView {
-	[self.avatar applyAvatarStyle];
+- (void)awakeFromNib {
+	[super awakeFromNib];
 	
-	self.selectionStyle = UITableViewCellSelectionStyleNone;
+	[self.avatar applyAvatarStyle];
 }
 
 - (void)loadAuthor:(GTSignature *)author {

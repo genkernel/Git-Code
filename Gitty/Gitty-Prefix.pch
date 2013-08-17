@@ -39,6 +39,7 @@
 #import "NSAttributedString+Gitty.h"
 #import "UITextField+Gitty.h"
 
+#import "DAGitStats.h"
 #import "DAGravatar.h"
 #import "DAGitManager.h"
 #import "DASshCredentials.h"

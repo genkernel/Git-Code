@@ -7,50 +7,45 @@
 //
 
 #import "DAByBranchDataSource.h"
-#import "DATitleHeader.h"
+#import "DATitleHeaderCell.h"
 
-#import "DACommitCell.h"
-#import "DACommitBranchCell.h"
-#import "DACommitMessageCell.h"
+@interface DAByBranchDataSource ()
+@property (strong, nonatomic, readonly) DACommitCell *reusableCell;
+@property (strong, nonatomic, readonly) DACommitMessageCell *reusableMessageCell;
+@end
 
 @implementation DAByBranchDataSource
 
-- (id)init {
-	self = [super init];
-	if (self) {
-		DATitleHeader *header = DATitleHeader.new;
-		headerHeight = header.height;
-		[self cacheView:header withIdentifier:DATitleHeader.className];
-	}
-	return self;
+- (void)setupForTableView:(UITableView *)tableView {
+	[super setupForTableView:tableView];
+	
+	UINib *nib = [UINib nibWithNibName:DATitleHeaderCell.className bundle:nil];
+	[tableView registerNib:nib forCellReuseIdentifier:DATitleHeaderCell.className];
+	
+	UITableViewCell *header = [tableView dequeueReusableCellWithIdentifier:DATitleHeaderCell.className];
+	headerHeight = header.height;
 }
 
 #pragma mark Internal
 
 - (DACommitCell *)reusableCellRegisteredByTable:(UITableView *)tableView {
-	static DACommitCell *cell = nil;
-	if (!cell) {
-		cell = [tableView dequeueReusableCellWithIdentifier:DACommitCell.className];
+	if (!self.reusableCell) {
+		_reusableCell = [tableView dequeueReusableCellWithIdentifier:DACommitCell.className];
 	}
-	return cell;
+	return self.reusableCell;
 }
 
 - (DACommitMessageCell *)reusableMessageCellRegisteredByTable:(UITableView *)tableView {
-	static DACommitMessageCell *cell = nil;
-	if (!cell) {
-		cell = [tableView dequeueReusableCellWithIdentifier:DACommitMessageCell.className];
+	if (!self.reusableMessageCell) {
+		_reusableMessageCell = [tableView dequeueReusableCellWithIdentifier:DACommitMessageCell.className];
 	}
-	return cell;
+	return self.reusableMessageCell;
 }
 
-- (UITableViewCell *)headerViewAtIndex:(NSInteger)section {
+- (UITableViewCell *)tableView:(UITableView *)tableView headerViewAtIndex:(NSInteger)section {
 	NSString *title = self.commits.allKeys[section];
 	
-	NSString *identifier = DATitleHeader.className;
-	DATitleHeader *header = (DATitleHeader *)[self cachedViewWithIdentifier:identifier];
-	if (!header) {
-		header = DATitleHeader.new;
-	}
+	DATitleHeaderCell *header = [tableView dequeueReusableCellWithIdentifier:DATitleHeaderCell.className];
 	
 	header.nameLabel.text = title;
 	
@@ -68,9 +63,9 @@
 	}
 	
 	id<DADynamicCommitCell> cell = nil;
-	GTCommit *commit = [self commitForIndexPath:indexPath];
+	GTCommit *commit = [self commitForIndexPath:ip];
 	
-	BOOL previousCommitHasSameAuthor = [self isSubsequentCommitAtIndexPath:indexPath];
+	BOOL previousCommitHasSameAuthor = [self isSubsequentCommitAtIndexPath:ip];
 	if (previousCommitHasSameAuthor) {
 		cell = [self reusableMessageCellRegisteredByTable:tableView];
 	} else {
@@ -82,7 +77,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (indexPath.length == 2) {
-		return [self headerViewAtIndex:indexPath.row];
+		return [self tableView:tableView headerViewAtIndex:indexPath.row];
 	}
 	
 	NSUInteger row = [indexPath indexAtPosition:2];

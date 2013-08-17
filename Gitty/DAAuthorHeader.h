@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface DAAuthorHeader : UITableViewCell
+- (void)loadAuthor:(GTSignature *)author;
+
 @property (strong, nonatomic) IBOutlet UIImageView *avatar;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
-
-- (void)loadAuthor:(GTSignature *)author;
 @end

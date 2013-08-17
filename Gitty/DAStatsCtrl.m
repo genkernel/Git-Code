@@ -10,10 +10,6 @@
 #import "DAStatsCtrl+Private.h"
 #import "DAStatsCtrl+Animation.h"
 
-#import "DACommitCell.h"
-#import "DACommitBranchCell.h"
-#import "DACommitMessageCell.h"
-
 @interface DAStatsCtrl ()
 @property (strong, nonatomic, readonly) NSDictionary *dataSource;
 
@@ -31,13 +27,8 @@
 	self.byAuthorTable.scrollsToTop = NO;
 	self.byBranchTable.scrollsToTop = NO;
 	
-	NSArray *cells = @[DACommitCell.className, DACommitMessageCell.className, DACommitBranchCell.className];
-	
-	for (NSString *className in cells) {
-		UINib *nib = [UINib nibWithNibName:className bundle:nil];
-		[self.byAuthorTable registerNib:nib forCellReuseIdentifier:className];
-		[self.byBranchTable registerNib:nib forCellReuseIdentifier:className];
-	}
+	[self.byAuthorDataSource setupForTableView:self.byAuthorTable];
+	[self.byBranchDataSource setupForTableView:self.byBranchTable];
 	
 	__weak DAStatsCtrl *ctrl = self;
 	CellSelectionBlock select = ^(DAStatsDataSource *dataSource, NSIndexPath *ip){

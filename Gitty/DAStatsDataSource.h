@@ -8,12 +8,15 @@
 
 #import "DABaseCtrl.h"
 
-@class DAStatsCtrl;
+#import "DACommitCell.h"
+#import "DACommitBranchCell.h"
+#import "DACommitMessageCell.h"
+
 @class DAStatsDataSource;
 
 typedef void (^CellSelectionBlock)(DAStatsDataSource *, NSIndexPath *);
 
-@interface DAStatsDataSource : DABaseCtrl/*using ctrl for cachedViews support*/ <TreeTableDataSource, UITableViewDelegate> {
+@interface DAStatsDataSource : NSObject <TreeTableDataSource, UITableViewDelegate> {
 	CGFloat headerHeight;
 }
 @property (weak, nonatomic) NSDictionary *commits;
@@ -21,6 +24,8 @@ typedef void (^CellSelectionBlock)(DAStatsDataSource *, NSIndexPath *);
 
 @property () BOOL shouldIncludeDayNameInTimestamp;
 @property (strong, nonatomic) CellSelectionBlock selectCellAction;
+
+- (void)setupForTableView:(UITableView *)tableView;
 
 // Helpers.
 - (GTCommit *)commitForIndexPath:(NSIndexPath *)indexPath;

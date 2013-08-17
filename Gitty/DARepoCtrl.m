@@ -16,9 +16,9 @@
 
 // Cells.
 #import "DACommitCell.h"
-#import "DACommitMessageCell.h"
-
 #import "DATitleHeader.h"
+#import "DATitleHeaderCell.h"
+#import "DACommitMessageCell.h"
 
 
 static NSString *MasterBranchName = @"master";
@@ -134,9 +134,7 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	}
 	
 	{
-		DATitleHeader *header = DATitleHeader.new;
-		headerHeight = header.height;
-		[self cacheView:header withIdentifier:DATitleHeader.className];
+		headerHeight = DATitleHeader.new.height;
 	}
 	
 	_authors = NSMutableDictionary.new;
@@ -364,6 +362,10 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	return self.dateSections.count;
 }
 
+- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section {
+	[self cacheView:view withIdentifier:view.className];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 	return headerHeight;
 }
@@ -372,16 +374,11 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	DATitleHeader *header = (DATitleHeader *)[self cachedViewWithIdentifier:DATitleHeader.className];
 	if (!header) {
 		header = DATitleHeader.new;
-		header.nameLabel.textColor = UIColor.acceptingGreenColor;
 	}
 	
 	header.nameLabel.text = self.dateSections[section];
 	
 	return header;
-}
-
-- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section {
-	[self cacheView:view withIdentifier:view.className];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

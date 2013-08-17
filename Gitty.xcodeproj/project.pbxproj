@@ -33,8 +33,8 @@
 		1810993E1790746C0018AAB4 /* DAAuthorHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1810993D1790746C0018AAB4 /* DAAuthorHeader.xib */; };
 		1810994217909BFB0018AAB4 /* DACommitBranchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1810994117909BFA0018AAB4 /* DACommitBranchCell.m */; };
 		1810994417909C140018AAB4 /* DACommitBranchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1810994317909C140018AAB4 /* DACommitBranchCell.xib */; };
-		181099491790A6B20018AAB4 /* DATitleHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 181099481790A6B20018AAB4 /* DATitleHeader.m */; };
-		1810994B1790A6CA0018AAB4 /* DATitleHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1810994A1790A6CA0018AAB4 /* DATitleHeader.xib */; };
+		181099491790A6B20018AAB4 /* DATitleHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 181099481790A6B20018AAB4 /* DATitleHeaderCell.m */; };
+		1810994B1790A6CA0018AAB4 /* DATitleHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1810994A1790A6CA0018AAB4 /* DATitleHeaderCell.xib */; };
 		181226661784C3ED00628C2F /* nonewline.png in Resources */ = {isa = PBXBuildFile; fileRef = 181226641784C3ED00628C2F /* nonewline.png */; };
 		181226671784C3ED00628C2F /* nonewline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181226651784C3ED00628C2F /* nonewline@2x.png */; };
 		1812266D1784CE2D00628C2F /* bitbucket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1812266C1784CE2D00628C2F /* bitbucket@2x.png */; };
@@ -207,6 +207,9 @@
 		18CFED94177C317C00365E5A /* code-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CFED90177C317C00365E5A /* code-red.png */; };
 		18D9EA3D17554EB400454F3C /* DAGitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D9EA3C17554EB400454F3C /* DAGitManager.m */; };
 		18DF1BE117BF9B1E007D312A /* TreeTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF1BE017BF9B1E007D312A /* TreeTable.m */; };
+		18DF1BE517BFC13D007D312A /* DAGitStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF1BE417BFC13D007D312A /* DAGitStats.m */; };
+		18DF1BE917BFD8DD007D312A /* DATitleHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF1BE817BFD8DD007D312A /* DATitleHeader.m */; };
+		18DF1BEB17BFD8ED007D312A /* DATitleHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18DF1BEA17BFD8ED007D312A /* DATitleHeader.xib */; };
 		18E23ACB17BF7BB6008462A3 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E23ACA17BF7BB6008462A3 /* libFlurry_4.2.3.a */; };
 		18E23ACF17BF7F7E008462A3 /* DAEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E23ACE17BF7F7E008462A3 /* DAEnvironment.m */; };
 		18EADFE6176F05F6005D0F28 /* DAGitUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EADFE0176F05EA005D0F28 /* DAGitUser.m */; };
@@ -329,9 +332,9 @@
 		1810994117909BFA0018AAB4 /* DACommitBranchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACommitBranchCell.m; sourceTree = "<group>"; };
 		1810994317909C140018AAB4 /* DACommitBranchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DACommitBranchCell.xib; sourceTree = "<group>"; };
 		181099451790A1660018AAB4 /* DADynamicCommitCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DADynamicCommitCell.h; sourceTree = "<group>"; };
-		181099471790A6B20018AAB4 /* DATitleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DATitleHeader.h; sourceTree = "<group>"; };
-		181099481790A6B20018AAB4 /* DATitleHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DATitleHeader.m; sourceTree = "<group>"; };
-		1810994A1790A6CA0018AAB4 /* DATitleHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DATitleHeader.xib; sourceTree = "<group>"; };
+		181099471790A6B20018AAB4 /* DATitleHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DATitleHeaderCell.h; sourceTree = "<group>"; };
+		181099481790A6B20018AAB4 /* DATitleHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DATitleHeaderCell.m; sourceTree = "<group>"; };
+		1810994A1790A6CA0018AAB4 /* DATitleHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DATitleHeaderCell.xib; sourceTree = "<group>"; };
 		181226641784C3ED00628C2F /* nonewline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nonewline.png; sourceTree = "<group>"; };
 		181226651784C3ED00628C2F /* nonewline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nonewline@2x.png"; sourceTree = "<group>"; };
 		1812266C1784CE2D00628C2F /* bitbucket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bitbucket@2x.png"; sourceTree = "<group>"; };
@@ -838,6 +841,11 @@
 		18D9EA3C17554EB400454F3C /* DAGitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitManager.m; sourceTree = "<group>"; };
 		18DF1BDF17BF9B1E007D312A /* TreeTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeTable.h; sourceTree = "<group>"; };
 		18DF1BE017BF9B1E007D312A /* TreeTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeTable.m; sourceTree = "<group>"; };
+		18DF1BE317BFC13D007D312A /* DAGitStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGitStats.h; sourceTree = "<group>"; };
+		18DF1BE417BFC13D007D312A /* DAGitStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitStats.m; sourceTree = "<group>"; };
+		18DF1BE717BFD8DD007D312A /* DATitleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DATitleHeader.h; sourceTree = "<group>"; };
+		18DF1BE817BFD8DD007D312A /* DATitleHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DATitleHeader.m; sourceTree = "<group>"; };
+		18DF1BEA17BFD8ED007D312A /* DATitleHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DATitleHeader.xib; sourceTree = "<group>"; };
 		18E23ACA17BF7BB6008462A3 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
 		18E23ACD17BF7F7E008462A3 /* DAEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAEnvironment.h; sourceTree = "<group>"; };
 		18E23ACE17BF7F7E008462A3 /* DAEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAEnvironment.m; sourceTree = "<group>"; };
@@ -1016,14 +1024,14 @@
 			name = BranchCommitCell;
 			sourceTree = "<group>";
 		};
-		181099461790A6900018AAB4 /* TitleHeader */ = {
+		181099461790A6900018AAB4 /* TitleHeaderCell */ = {
 			isa = PBXGroup;
 			children = (
-				181099471790A6B20018AAB4 /* DATitleHeader.h */,
-				181099481790A6B20018AAB4 /* DATitleHeader.m */,
-				1810994A1790A6CA0018AAB4 /* DATitleHeader.xib */,
+				181099471790A6B20018AAB4 /* DATitleHeaderCell.h */,
+				181099481790A6B20018AAB4 /* DATitleHeaderCell.m */,
+				1810994A1790A6CA0018AAB4 /* DATitleHeaderCell.xib */,
 			);
-			name = TitleHeader;
+			name = TitleHeaderCell;
 			sourceTree = "<group>";
 		};
 		1812266E1784D0BA00628C2F /* Forget */ = {
@@ -1678,6 +1686,7 @@
 				181A6F4B178B694E002CA3BE /* SSHCredentials */,
 				18BAA85E1758016300154019 /* GitServer */,
 				18D9EA3A17554E9E00454F3C /* Git */,
+				18DF1BE217BFC11F007D312A /* GitStats */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -1737,7 +1746,8 @@
 			children = (
 				183F7E41178C54ED0051D689 /* StatsCtrl */,
 				188B2D4F175D3E1C00BD1EEB /* CommitCell */,
-				181099461790A6900018AAB4 /* TitleHeader */,
+				18DF1BE617BFD87C007D312A /* TittleHeader */,
+				181099461790A6900018AAB4 /* TitleHeaderCell */,
 				18C9441C175B6B3E00A4D7CA /* BranchPickerCtrl */,
 				189A5320175922FA00B5BD8D /* DARepoCtrl.h */,
 				189A5321175922FA00B5BD8D /* DARepoCtrl.m */,
@@ -2251,6 +2261,25 @@
 			path = Submodules/TreeView/TreeTable;
 			sourceTree = "<group>";
 		};
+		18DF1BE217BFC11F007D312A /* GitStats */ = {
+			isa = PBXGroup;
+			children = (
+				18DF1BE317BFC13D007D312A /* DAGitStats.h */,
+				18DF1BE417BFC13D007D312A /* DAGitStats.m */,
+			);
+			name = GitStats;
+			sourceTree = "<group>";
+		};
+		18DF1BE617BFD87C007D312A /* TittleHeader */ = {
+			isa = PBXGroup;
+			children = (
+				18DF1BE717BFD8DD007D312A /* DATitleHeader.h */,
+				18DF1BE817BFD8DD007D312A /* DATitleHeader.m */,
+				18DF1BEA17BFD8ED007D312A /* DATitleHeader.xib */,
+			);
+			name = TittleHeader;
+			sourceTree = "<group>";
+		};
 		18E23ACC17BF7F66008462A3 /* Env */ = {
 			isa = PBXGroup;
 			children = (
@@ -2409,7 +2438,7 @@
 			attributes = {
 				CLASSPREFIX = DA;
 				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = "kernel@realm";
+				ORGANIZATIONNAME = ReImpl;
 			};
 			buildConfigurationList = 18933CCF1755395C00E92183 /* Build configuration list for PBXProject "Gitty" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2565,7 +2594,7 @@
 				1833605E178EECC7000C1E52 /* branches-white.png in Resources */,
 				1810993E1790746C0018AAB4 /* DAAuthorHeader.xib in Resources */,
 				1810994417909C140018AAB4 /* DACommitBranchCell.xib in Resources */,
-				1810994B1790A6CA0018AAB4 /* DATitleHeader.xib in Resources */,
+				1810994B1790A6CA0018AAB4 /* DATitleHeaderCell.xib in Resources */,
 				187A29D11795BEC700FE9F19 /* Icon-72.png in Resources */,
 				181873AF179BED8A002FE1A3 /* DAServerCtrl-3.5inches.xib in Resources */,
 				181873B9179C0175002FE1A3 /* overlay-black@2x.png in Resources */,
@@ -2585,6 +2614,7 @@
 				185837D917B6893600EBB834 /* bar-tags.png in Resources */,
 				185837DC17B68AEE00EBB834 /* bar-branches.png in Resources */,
 				185837DD17B68AEE00EBB834 /* bar-branches@2x.png in Resources */,
+				18DF1BEB17BFD8ED007D312A /* DATitleHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2689,7 +2719,7 @@
 				183F7E47178C554E0051D689 /* DARepoCtrl+StatsLoader.m in Sources */,
 				1810993C179074540018AAB4 /* DAAuthorHeader.m in Sources */,
 				1810994217909BFB0018AAB4 /* DACommitBranchCell.m in Sources */,
-				181099491790A6B20018AAB4 /* DATitleHeader.m in Sources */,
+				181099491790A6B20018AAB4 /* DATitleHeaderCell.m in Sources */,
 				18F86F1B17931A4E0055900C /* DASshKeyInfo.m in Sources */,
 				187A29DF1795DFD400FE9F19 /* STKeychain.m in Sources */,
 				182B820517A1A26500D02F73 /* Alert.m in Sources */,
@@ -2709,6 +2739,8 @@
 				185837C817B677A000EBB834 /* DABranchPickerCtrl+Responder.m in Sources */,
 				18E23ACF17BF7F7E008462A3 /* DAEnvironment.m in Sources */,
 				18DF1BE117BF9B1E007D312A /* TreeTable.m in Sources */,
+				18DF1BE517BFC13D007D312A /* DAGitStats.m in Sources */,
+				18DF1BE917BFD8DD007D312A /* DATitleHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

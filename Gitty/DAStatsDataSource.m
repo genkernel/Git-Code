@@ -8,6 +8,10 @@
 
 #import "DAStatsDataSource.h"
 
+#import "DACommitCell.h"
+#import "DACommitBranchCell.h"
+#import "DACommitMessageCell.h"
+
 @interface DAStatsDataSource ()
 @property (strong, nonatomic, readonly) NSMutableSet *closedItems;
 @end
@@ -20,6 +24,15 @@
 		_closedItems = NSMutableSet.new;
 	}
 	return self;
+}
+
+- (void)setupForTableView:(UITableView *)tableView {
+	NSArray *cells = @[DACommitCell.className, DACommitMessageCell.className, DACommitBranchCell.className];
+	
+	for (NSString *className in cells) {
+		UINib *nib = [UINib nibWithNibName:className bundle:nil];
+		[tableView registerNib:nib forCellReuseIdentifier:className];
+	}
 }
 
 #pragma mark Helper methods
@@ -36,34 +49,36 @@
 
 // Commit is Subsequent when its previous commit is prepared by the same Author (in the very same Day).
 - (BOOL)isSubsequentCommitAtIndexPath:(NSIndexPath *)indexPath {
-	NSString *key = self.commits.allKeys[indexPath.section];
-	NSArray *commits = self.commits[key];
-	
-	NSUInteger idx = indexPath.row;
-	GTCommit *commit = commits[idx];
+	NSUInteger section = [indexPath indexAtPosition:1];
+	NSUInteger row = [indexPath indexAtPosition:2];
 	
 	BOOL previousCommitHasSameAuthor = NO;
 	
-	BOOL hasPreviousCommitInSection = idx > 0;
+	BOOL hasPreviousCommitInSection = row > 0;
 	if (hasPreviousCommitInSection) {
-		GTCommit *prevCommit = commits[idx - 1];
+		NSString *key = self.commits.allKeys[section];
+		NSArray *commits = self.commits[key];
+		
+		GTCommit *commit = commits[row];
+		GTCommit *prevCommit = commits[row - 1];
 		
 		previousCommitHasSameAuthor = [commit.author isEqual:prevCommit.author];
-//		previousCommitHasSameAuthor = [commit.author.name isEqualToString:prevCommit.author.name] && [commit.author.email isEqualToString:prevCommit.author.email];
 	}
 	
 	return previousCommitHasSameAuthor;
 }
 
-- (void)treeView:(TreeTable *)proxy toggleCellAtIndexPath:(NSIndexPath *)ip {
+- (BOOL)treeView:(TreeTable *)proxy toggleCellAtIndexPath:(NSIndexPath *)ip {
 	if ([self.closedItems containsObject:ip]) {
 		[self.closedItems removeObject:ip];
 		
 		[proxy expand:ip];
+		return YES;
 	} else {
 		[self.closedItems addObject:ip];
 		
 		[proxy close:ip];
+		return NO;
 	}
 }
 
@@ -78,7 +93,7 @@
 		return 0;
 	}
 	
-	NSString *key = self.commits.allKeys[indexPath.section];
+	NSString *key = self.commits.allKeys[indexPath.row];
 	NSArray *commits = self.commits[key];
 	return commits.count;
 }
@@ -91,14 +106,6 @@
 	NSAssert(NO, @"Impl in subclass.");
 	return nil;
 }
-/*
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-	return headerHeight;
-}
-
-- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section {
-	[self cacheView:view withIdentifier:view.className];
-}*/
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	TreeTable *proxy = tableView.dataSource;
@@ -109,9 +116,15 @@
 		return;
 	}
 	
-	[self treeView:proxy toggleCellAtIndexPath:ip];
+	BOOL isJustExpandedCell = [self treeView:proxy toggleCellAtIndexPath:ip];
 	
 	[tableView deselectRowAtIndexPath:indexPath animated:NO];
+	
+	if (isJustExpandedCell) {
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+		});
+	}
 }
 
 @end

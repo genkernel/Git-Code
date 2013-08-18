@@ -19,34 +19,28 @@ static NSUInteger CommitsExtraCheckingThreshold = 10;
 @dynamic dayOfMonthTitleFormatter;
 
 - (void)loadStats {
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-		_statsCommitsCount = 0;
+	DARepoWalk *walk = [DARepoWalk walkForRepo:self.currentRepo];
+	
+	[self.stats performAsyncOperation:walk completionHandler:^{
+#warning hello
+//		BOOL hasStatsToShow = _statsCommitsCount > 0;
+		BOOL hasStatsToShow = YES;
 		
-		_statsCommitsByAuthor = NSMutableDictionary.new;
-		_statsCommitsByBranch = NSMutableDictionary.new;
-		
-		for (GTBranch *branch in self.remoteBranches) {
-			// TODO: dispatch in extra background queue for large queries (large stats).
-			[self loadStatsForBranch:branch];
+		if (hasStatsToShow) {
+			[_statsCtrl reloadStatsData:walk];
+#warning hello
+//			[_statsCtrl loadStatsHeadline];
+//			[_statsCtrl reloadData];
+		} else {
+			[_statsCtrl resetStatsHeadline];
+			[self setStatsContainerMode:DAStatsHiddenMode animated:NO];
 		}
 		
-		dispatch_async(dispatch_get_main_queue(), ^{
-			BOOL hasStatsToShow = _statsCommitsCount > 0;
-			
-			if (hasStatsToShow) {
-				[_statsCtrl loadStatsHeadline];
-				[_statsCtrl reloadData];
-			} else {
-				[_statsCtrl resetStatsHeadline];
-				[self setStatsContainerMode:DAStatsHiddenMode animated:NO];
-			}
-			
-			[self setPullingVisible:NO animated:YES];
-			[self addForgetButton];
-		});
-	});
+		[self setPullingVisible:NO animated:YES];
+		[self addForgetButton];
+	}];
 }
-
+/*
 - (void)loadStatsForBranch:(GTBranch *)branch {
 	NSDate *todayDate = NSDate.date;
 	
@@ -163,7 +157,7 @@ static NSUInteger CommitsExtraCheckingThreshold = 10;
 			_statsCommitsByAuthor[author] = localCommits;
 		}
 	}
-}
+}*/
 
 - (void)mergeNewBranchCommits:(NSArray *)commits intoArray:(NSMutableArray *)branch {
 	if (branch.count == 0) {

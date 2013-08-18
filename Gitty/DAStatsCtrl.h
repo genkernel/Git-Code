@@ -13,7 +13,7 @@
 @interface DAStatsCtrl : DABaseCtrl {
 	BOOL _isByBranchTableVisible;
 }
-- (void)reloadData;
+- (void)reloadStatsData:(DARepoWalk *)stats;
 
 @property (nonatomic, readonly) BOOL isByBranchTableVisible;
 @property () BOOL isShowingCommitsOfMultipleDays;

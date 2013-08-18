@@ -49,7 +49,7 @@
 	GTEnumerator *iter = [GTEnumerator.alloc initWithRepository:self.repo error:&err];
 	
 	if (![iter pushSHA:self.startSHA error:&err]) {
-		[Logger error:@"Failed to pushSHA while enumarating commits."];
+		[Logger error:@"Failed to pushSHA to enumarate commits."];
 		return;
 	}
 	
@@ -60,7 +60,7 @@
 		_commits = [iter allObjectsWithError:&err];
 	}
 	double period = [NSObject endMeasurement];
-	[Logger info:@"%d Commits loaded in %.2f.", self.commits.count, period];
+	[Logger info:@"%d Commits in %@ branch loaded in %.2f.", self.commits.count, self.branch.shortName, period];
 	
 	[NSObject startMeasurement];
 	{

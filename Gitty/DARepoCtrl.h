@@ -21,14 +21,10 @@ typedef enum {
 	BOOL isNavBarHiddenByThisCtrl;
 	DAStatsContainerModes statsContainerMode;
 	
-	NSMutableDictionary *_statsCommitsByAuthor;
-	NSMutableDictionary *_statsCommitsByBranch;
-	
 	GTBranch *_currentBranch;
 	GTTag *_currentTag;
 	
 	NSMutableDictionary *_branches;
-	NSUInteger _statsCommitsCount;
 	
 	DAStatsCtrl *_statsCtrl;
 	
@@ -41,13 +37,8 @@ typedef enum {
 
 @property (strong, nonatomic, readonly) DAGitStats *stats;
 @property (strong, nonatomic, readonly) DABranchWalk *currentBranchStats;
-@property (nonatomic, readonly) NSUInteger statsCommitsCount;
 
 @property (strong, nonatomic, readonly) NSMutableDictionary *branches;
-// Format: author.name  =>  <NSArray of commits>
-@property (strong, nonatomic, readonly) NSDictionary *statsCommitsByAuthor;
-// Format: branch.name  =>  <NSArray of commits>
-@property (strong, nonatomic, readonly) NSDictionary *statsCommitsByBranch;
 
 @property (strong, nonatomic, readonly) NSDateFormatter *dateSectionTitleFormatter;
 

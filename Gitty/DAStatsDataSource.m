@@ -43,27 +43,6 @@
 	return commits[row];
 }
 
-// Commit is Subsequent when its previous commit is prepared by the same Author (in the very same Day).
-- (BOOL)isSubsequentCommitAtIndexPath:(NSIndexPath *)indexPath {
-	NSUInteger section = [indexPath indexAtPosition:1];
-	NSUInteger row = [indexPath indexAtPosition:2];
-	
-	BOOL previousCommitHasSameAuthor = NO;
-	
-	BOOL hasPreviousCommitInSection = row > 0;
-	if (hasPreviousCommitInSection) {
-		NSString *key = self.commits.allKeys[section];
-		NSArray *commits = self.commits[key];
-		
-		GTCommit *commit = commits[row];
-		GTCommit *prevCommit = commits[row - 1];
-		
-		previousCommitHasSameAuthor = [commit.author isEqual:prevCommit.author];
-	}
-	
-	return previousCommitHasSameAuthor;
-}
-
 - (BOOL)treeView:(TreeTable *)proxy toggleCellAtIndexPath:(NSIndexPath *)indexPath treeIndexPath:(NSIndexPath *)ip {
 	if ([self.closedItems containsObject:ip]) {
 		[self.closedItems removeObject:ip];

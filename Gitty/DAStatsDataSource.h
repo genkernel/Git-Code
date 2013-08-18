@@ -19,6 +19,8 @@ typedef void (^CellSelectionBlock)(DAStatsDataSource *, NSIndexPath *);
 @interface DAStatsDataSource : NSObject <TreeTableDataSource, UITableViewDelegate> {
 	CGFloat headerHeight;
 }
+@property (weak, nonatomic) DARepoWalk *stats;
+
 @property (weak, nonatomic) NSDictionary *commits;
 @property (weak, nonatomic) NSDictionary *authors, *branches;
 
@@ -32,5 +34,4 @@ typedef void (^CellSelectionBlock)(DAStatsDataSource *, NSIndexPath *);
 
 // Helpers.
 - (GTCommit *)commitForIndexPath:(NSIndexPath *)indexPath;
-- (BOOL)isSubsequentCommitAtIndexPath:(NSIndexPath *)indexPath;
 @end

@@ -38,12 +38,9 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	CGFloat branchContainerOffsetBeforeDragging;
 	NSArray *_remoteBranches, *_tags;
 }
-@synthesize statsCommitsCount = _statsCommitsCount;
 @synthesize branches = _branches;
 @synthesize currentBranch = _currentBranch, currentTag = _currentTag;
 @synthesize statsCtrl = _statsCtrl;
-@synthesize statsCommitsByAuthor = _statsCommitsByAuthor;
-@synthesize statsCommitsByBranch = _statsCommitsByBranch;
 // Category-defined ivars synthesized explicitly.
 @synthesize remoteBranches = _remoteBranches;
 @synthesize namedBranches;
@@ -204,17 +201,15 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 		}
 	}
 	
-	if (!defaultBranch) {
-		defaultBranch = [self.currentRepo currentBranchWithError:nil];
-	}
-	
 	// Fallback to master.
 	if (!defaultBranch) {
 		defaultBranch = branches[MasterBranchName];
-		if (!defaultBranch) {
-			defaultBranch = self.remoteBranches.anyObject;
-		}
 	}
+	
+	if (!defaultBranch) {
+		defaultBranch = self.remoteBranches.anyObject;
+	}
+	
 	[self selectBranch:defaultBranch];
 }
 

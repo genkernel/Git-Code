@@ -12,6 +12,7 @@
 
 @interface DAStatsCtrl ()
 @property (strong, nonatomic, readonly) NSDictionary *dataSource;
+@property (strong, nonatomic, readonly) DARepoWalk *stats;
 
 @property (strong, nonatomic) NSIndexPath *selectedCommitIndexPath;
 @end
@@ -57,16 +58,22 @@
 	}
 }
 
-- (void)reloadData {
+- (void)reloadStatsData:(DARepoWalk *)stats {
+	_stats = stats;
+	
+	self.byBranchDataSource.stats = stats;
+	
 #warning hello
 //	self.byAuthorDataSource.authors = self.repoCtrl.authors;
 	self.byAuthorDataSource.branches = self.repoCtrl.branches;
-	self.byAuthorDataSource.commits = self.repoCtrl.statsCommitsByAuthor;
+#warning hello
+//	self.byAuthorDataSource.commits = self.repoCtrl.statsCommitsByAuthor;
 	self.byAuthorDataSource.shouldIncludeDayNameInTimestamp = self.isShowingCommitsOfMultipleDays;
 #warning hello
 //	self.byBranchDataSource.authors = self.repoCtrl.authors;
 	self.byBranchDataSource.branches = self.repoCtrl.branches;
-	self.byBranchDataSource.commits = self.repoCtrl.statsCommitsByBranch;
+#warning hello
+//	self.byBranchDataSource.commits = self.repoCtrl.statsCommitsByBranch;
 	self.byBranchDataSource.shouldIncludeDayNameInTimestamp = self.isShowingCommitsOfMultipleDays;
 	
 	[self.byAuthorTable reloadData];
@@ -83,7 +90,9 @@
 }
 
 - (void)reloadStatusView {
-	BOOL hasNoCommitsToShow = 0 == self.byAuthorDataSource.commits.count;
+	BOOL hasNoCommitsToShow = NO;
+#warning hello
+//	BOOL hasNoCommitsToShow = 0 == self.byAuthorDataSource.commits.count;
 	
 	self.commitsContainer.hidden = hasNoCommitsToShow;
 	self.noCommitsLabel.hidden = !hasNoCommitsToShow;

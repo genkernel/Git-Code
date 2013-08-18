@@ -9,6 +9,7 @@
 #import "DABranchStats.h"
 
 // Operations
+#import "DARepoWalk.h"
 #import "DABranchWalk.h"
 
 @interface DAGitStats : NSObject

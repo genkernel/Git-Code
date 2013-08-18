@@ -14,7 +14,7 @@
 - (void)resetStatsHeadline {
 	self.headlineLabel.attributedText = NSAttributedString.new;
 }
-
+/*
 - (void)loadStatsHeadline {
 	// Unique number string - space delimeter at the end.
 	NSString *branchesCount = [NSString stringWithFormat:@"%d ", self.repoCtrl.statsCommitsByBranch.count];
@@ -40,7 +40,7 @@
 		[self attributesWithForegroundColor:UIColor.whiteColor]];
 	
 	self.headlineLabel.attributedText = [NSAttributedString stringByJoiningSimpleStrings:strings applyingAttributes:attributes joinString:nil];
-}
+}*/
 
 - (NSDictionary *)attributesWithForegroundColor:(UIColor *)color {
 	static NSMutableDictionary *attributes = nil;

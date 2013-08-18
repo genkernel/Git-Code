@@ -26,6 +26,39 @@
 	headerHeight = header.height;
 }
 
+#pragma mark Helper methods
+
+- (GTCommit *)commitForIndexPath:(NSIndexPath *)indexPath {
+	NSUInteger section = [indexPath indexAtPosition:1];
+	NSUInteger row = [indexPath indexAtPosition:2];
+	
+	GTBranch *br = self.stats.heads[section];
+	NSArray *commits = self.stats.headCommits[br.SHA];
+	
+	return commits[row];
+}
+
+// Commit is Subsequent when its previous commit is prepared by the same Author (in the very same Day).
+- (BOOL)isSubsequentCommitAtIndexPath:(NSIndexPath *)indexPath {
+	NSUInteger section = [indexPath indexAtPosition:1];
+	NSUInteger row = [indexPath indexAtPosition:2];
+	
+	BOOL previousCommitHasSameAuthor = NO;
+	
+	BOOL hasPreviousCommitInSection = row > 0;
+	if (hasPreviousCommitInSection) {
+		GTBranch *br = self.stats.heads[section];
+		NSArray *commits = self.stats.headCommits[br.SHA];
+		
+		GTCommit *commit = commits[row];
+		GTCommit *prevCommit = commits[row - 1];
+		
+		previousCommitHasSameAuthor = [commit.author isEqual:prevCommit.author];
+	}
+	
+	return previousCommitHasSameAuthor;
+}
+
 #pragma mark Internal
 
 - (DACommitCell *)reusableCellRegisteredByTable:(UITableView *)tableView {
@@ -43,11 +76,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView headerViewAtIndex:(NSInteger)section {
-	NSString *title = self.commits.allKeys[section];
+	GTBranch *branch = self.stats.heads[section];
 	
 	DATitleHeaderCell *header = [tableView dequeueReusableCellWithIdentifier:DATitleHeaderCell.className];
 	
-	header.nameLabel.text = title;
+	header.nameLabel.text = branch.shortName;
 	
 	return header;
 }
@@ -73,6 +106,21 @@
 	}
 	
 	return [cell heightForCommit:commit];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return self.stats.heads.count;
+}
+
+- (NSUInteger)tableView:(UITableView *)tableView numberOfSubCellsForCellAtIndexPath:(NSIndexPath *)indexPath {
+	if (indexPath.length != 2) {
+		return 0;
+	}
+	
+	GTBranch *br = self.stats.heads[indexPath.row];
+	NSArray *commits = self.stats.headCommits[br.SHA];
+	
+	return commits.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

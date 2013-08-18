@@ -42,25 +42,21 @@
 }
 
 - (void)performAsyncOperation:(id<DAGitOperation>)operation completionHandler:(void(^)())handler {
+	NSOperationQueue *callee = NSOperationQueue.currentQueue;
+	
 	[self.q addOperationWithBlock:^{
 		[operation perform];
+		
+		if (handler) {
+			[callee addOperationWithBlock:^{
+				handler();
+			}];
+		}
 	}];
 }
 
 /*
-	NSArray *branches = [self.repo remoteBranchesWithError:nil];
 	
-	[Logger info:@"\nBranches: (%d): ", branches.count];
-	for (GTBranch *br in branches) {
-		[Logger info:@"%@ : %@", br.shortName, br.SHA];
-	}
-	[Logger info:@"-----"];
-	
-	_branches = branches;
-	
-	[self loadAllCommits];
-}
-
 - (void)loadAllCommits {
 	NSError *err = nil;
 	_iter = [GTEnumerator.alloc initWithRepository:self.repo error:&err];

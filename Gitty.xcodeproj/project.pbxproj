@@ -133,6 +133,7 @@
 		188B2D58175D3E5C00BD1EEB /* DACommitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188B2D57175D3E5C00BD1EEB /* DACommitCell.xib */; };
 		188D756717C0E82800125778 /* DABranchWalk.m in Sources */ = {isa = PBXBuildFile; fileRef = 188D756617C0E82800125778 /* DABranchWalk.m */; };
 		188D756B17C0F8E400125778 /* DARepoCtrl+Table.m in Sources */ = {isa = PBXBuildFile; fileRef = 188D756A17C0F8E300125778 /* DARepoCtrl+Table.m */; };
+		188D756E17C0FD6300125778 /* DARepoWalk.m in Sources */ = {isa = PBXBuildFile; fileRef = 188D756D17C0FD6300125778 /* DARepoWalk.m */; };
 		188F67F6178A1DC8004E3E07 /* stats_header.png in Resources */ = {isa = PBXBuildFile; fileRef = 188F67F4178A1DC8004E3E07 /* stats_header.png */; };
 		188F67F7178A1DC8004E3E07 /* stats_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 188F67F5178A1DC8004E3E07 /* stats_header@2x.png */; };
 		188F6805178A1FA5004E3E07 /* stats_footer.png in Resources */ = {isa = PBXBuildFile; fileRef = 188F6803178A1FA5004E3E07 /* stats_footer.png */; };
@@ -496,6 +497,8 @@
 		188D756817C0E86900125778 /* DAGitOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAGitOperation.h; sourceTree = "<group>"; };
 		188D756917C0F8E300125778 /* DARepoCtrl+Table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DARepoCtrl+Table.h"; sourceTree = "<group>"; };
 		188D756A17C0F8E300125778 /* DARepoCtrl+Table.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DARepoCtrl+Table.m"; sourceTree = "<group>"; };
+		188D756C17C0FD6300125778 /* DARepoWalk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARepoWalk.h; sourceTree = "<group>"; };
+		188D756D17C0FD6300125778 /* DARepoWalk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARepoWalk.m; sourceTree = "<group>"; };
 		188F67F4178A1DC8004E3E07 /* stats_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stats_header.png; sourceTree = "<group>"; };
 		188F67F5178A1DC8004E3E07 /* stats_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stats_header@2x.png"; sourceTree = "<group>"; };
 		188F6803178A1FA5004E3E07 /* stats_footer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stats_footer.png; sourceTree = "<group>"; };
@@ -1445,6 +1448,8 @@
 		188D756417C0E7E400125778 /* RepoWalk */ = {
 			isa = PBXGroup;
 			children = (
+				188D756C17C0FD6300125778 /* DARepoWalk.h */,
+				188D756D17C0FD6300125778 /* DARepoWalk.m */,
 			);
 			name = RepoWalk;
 			sourceTree = "<group>";
@@ -2818,6 +2823,7 @@
 				18DF1BEF17BFF7CE007D312A /* DABranchStats.m in Sources */,
 				188D756717C0E82800125778 /* DABranchWalk.m in Sources */,
 				188D756B17C0F8E400125778 /* DARepoCtrl+Table.m in Sources */,
+				188D756E17C0FD6300125778 /* DARepoWalk.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,6 @@
 #import "DAStatsCtrl.h"
 
 @interface DAStatsCtrl (Headline)
-- (void)loadStatsHeadline;
+//- (void)loadStatsHeadline;
 - (void)resetStatsHeadline;
 @end

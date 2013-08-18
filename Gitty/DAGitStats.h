@@ -8,10 +8,12 @@
 
 #import "DABranchStats.h"
 
+// Operations
+#import "DABranchWalk.h"
+
 @interface DAGitStats : NSObject
 + (instancetype)statsForRepository:(GTRepository *)repo;
 
-//- (DABranchStats *)exploreBranch:(GTBranch *)branch;
-
-- (void)performWalkOnBranch:(GTBranch *)branch;
+- (void)performSyncOperation:(id<DAGitOperation>)operation;
+- (void)performAsyncOperation:(id<DAGitOperation>)operation completionHandler:(void(^)())handler;
 @end

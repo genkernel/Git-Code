@@ -145,7 +145,8 @@ static NSUInteger CommitsExtraCheckingThreshold = 10;
 		
 		NSString *addr = [NSString stringWithFormat:@"0x%X", (int)commit];
 		_branches[addr] = branch;
-		_authors[commit.author.name] = commit.author;
+#warning helloe
+//		_authors[commit.author.name] = commit.author;
 	}
 	
 	if (commitsByBranch.count) {

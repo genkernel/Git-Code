@@ -21,6 +21,11 @@
 @property (strong, nonatomic, readonly) GTBranch *currentBranch;
 
 @property (strong, nonatomic, readonly) DABranchPickerCtrl *branchPickerCtrl;
+
+@property (strong, nonatomic) DACommitCell *reuseCell;
+@property (strong, nonatomic) DACommitMessageCell *reuseSimpleCell;
+
+@property (strong, nonatomic) NSIndexPath *selectedCommitIndexPath;
 @end
 
 #endif

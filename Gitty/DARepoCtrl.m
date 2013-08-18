@@ -7,18 +7,13 @@
 //
 
 #import "DARepoCtrl.h"
+#import "DARepoCtrl+Table.h"
 #import "DARepoCtrl+Private.h"
 #import "DARepoCtrl+Animation.h"
 #import "DARepoCtrl+GitFetcher.h"
 #import "DARepoCtrl+StatsLoader.h"
 
 #import "DAStatsCtrl+Animation.h"
-
-// Cells.
-#import "DACommitCell.h"
-#import "DATitleHeader.h"
-#import "DATitleHeaderCell.h"
-#import "DACommitMessageCell.h"
 
 
 static NSString *MasterBranchName = @"master";
@@ -30,40 +25,22 @@ static NSString *BranchPickerSegue = @"BranchPickerSegue";
 static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 
-@interface UITableView (RepoCtrl)
-- (id)dequeueCellOfClass:(Class)cls;
-- (NSString *)cellIdentifierOfClass:(Class)cls;
-@end
 
 @interface DARepoCtrl ()
-@property (strong, nonatomic, readonly) DAGitStats *stats;
-
-@property (strong, nonatomic, readonly) NSDictionary *commitsOnDateSection;
-@property (strong, nonatomic, readonly) NSDictionary *authorsOnDateSection;
-@property (strong, nonatomic, readonly) NSArray *dateSections;
-
-@property (strong, nonatomic, readonly) NSIndexPath *selectedCommitIndexPath;
-
 @property (strong, nonatomic, readonly) DAStatsCtrl *statsCtrl;
 @property (strong, nonatomic, readonly) UIButton *statsSelectedModeButton;
-
-@property (strong, nonatomic, readonly) DACommitCell *reuseCell;
-@property (strong, nonatomic, readonly) DACommitMessageCell *reuseSimpleCell;
 @end
+
 
 @implementation DARepoCtrl {
 	NSUInteger forgetActionTag;
 	CGFloat statsContainerOffsetBeforeDragging;
 	CGFloat branchContainerOffsetBeforeDragging;
 	NSArray *_remoteBranches, *_tags;
-	CGFloat headerHeight;
 }
 @synthesize statsCommitsCount = _statsCommitsCount;
-@synthesize authors = _authors, branches = _branches;
+@synthesize branches = _branches;
 @synthesize currentBranch = _currentBranch, currentTag = _currentTag;
-@synthesize commitsOnDateSection = _commitsOnDateSection;
-@synthesize authorsOnDateSection = _authorsOnDateSection;
-@synthesize dateSections = _dateSections;
 @synthesize statsCtrl = _statsCtrl;
 @synthesize statsCommitsByAuthor = _statsCommitsByAuthor;
 @synthesize statsCommitsByBranch = _statsCommitsByBranch;
@@ -118,28 +95,23 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	
 	_statsSelectedModeButton = self.statsSwitchModeButtons[0];
 	
-	{
-		NSString *identifier = [self.commitsTable cellIdentifierOfClass:DACommitCell.class];
-		
-		UINib *nib = [UINib nibWithNibName:DACommitCell.className bundle:nil];
-		[self.commitsTable registerNib:nib forCellReuseIdentifier:identifier];
-		
-		_reuseCell = [self.commitsTable dequeueCellOfClass:DACommitCell.class];
-	}
-	{
-		NSString *identifier = [self.commitsTable cellIdentifierOfClass:DACommitMessageCell.class];
-		
-		UINib *nib = [UINib nibWithNibName:DACommitMessageCell.className bundle:nil];
-		[self.commitsTable registerNib:nib forCellReuseIdentifier:identifier];
-		
-		_reuseSimpleCell = [self.commitsTable dequeueCellOfClass:DACommitMessageCell.class];
-	}
+	[self setupCells];
 	
-	{
-		headerHeight = DATitleHeader.new.height;
-	}
+	[self loadInitialData];
 	
-	_authors = NSMutableDictionary.new;
+	// FIXME: come up with better solution.
+	dispatch_async(dispatch_get_main_queue(), ^{
+		self.mainContainerHeight.constant = self.view.height - self.mainContainerTop.constant;
+		[self.mainContainer.superview layoutIfNeeded];
+	});
+	
+	[DAFlurry logProtocol:self.repoServer.transferProtocol];
+}
+
+- (void)loadInitialData {
+	_stats = [DAGitStats statsForRepository:self.currentRepo];
+	
+	
 	_branches = NSMutableDictionary.new;
 	
 	[self reloadFilters];
@@ -155,23 +127,6 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	self.branchPickerCtrl.tags = self.tags;
 	self.branchPickerCtrl.branches = self.remoteBranches;
 	[self.branchPickerCtrl loadItemsWithoutFilter];
-	
-	// FIXME: come up with better solution.
-	dispatch_async(dispatch_get_main_queue(), ^{
-		self.mainContainerHeight.constant = self.view.height - self.mainContainerTop.constant;
-		[self.mainContainer.superview layoutIfNeeded];
-	});
-	
-	[DAFlurry logProtocol:self.repoServer.transferProtocol];
-	
-	
-//	[self testStats];
-}
-
-- (void)testStats {
-	_stats = [DAGitStats statsForRepository:self.currentRepo];
-	
-	[self.stats performWalkOnBranch:self.currentBranch];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -232,6 +187,10 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 		return;
 	}
 	
+	[self loadDefaultBranch];
+}
+
+- (void)loadDefaultBranch {
 	GTBranch *defaultBranch = nil;
 	NSString *recentBranchName = self.repoServer.recentBranchName;
 	
@@ -258,42 +217,6 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	}
 	[self selectBranch:defaultBranch];
 }
-
-- (void)reloadCommitsAndOptionallyTable:(BOOL)shoudReloadTable {
-	NSUInteger commitsCount = 0;
-	
-	[NSObject startMeasurement];
-	{
-		commitsCount = [self loadCommitsInCurrentBranchOrTag];
-	}
-	double period = [NSObject endMeasurement];
-	[Logger info:@"%d Commits of %d days loaded in %.2f.", commitsCount, self.dateSections.count, period];
-	
-	if (shoudReloadTable) {
-		[self.commitsTable reloadData];
-	}
-}
-
-/*
-- (GTBranch *)trackingLocalBranchForRemoteBranch:(GTBranch *)branch {
-	
-}
-
-- (BOOL)isBranchTrackedLocally:(GTBranch *)branch {
-	if (GTBranchTypeLocal == branch.branchType) {
-		return YES;
-	}
-	
-	NSString *branchName = branch.shortName;
-	
-	for (GTBranch *localBranch in self.localBranches) {
-		NSString *name = localBranch.shortName;
-		if ([name isEqualToString:branchName]) {
-			return YES;
-		}
-	}
-	return NO;
-}*/
 
 - (BOOL)selectTag:(GTTag *)tag {
 	if (!tag || self.currentTag == tag) {
@@ -330,108 +253,24 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	return YES;
 }
 
+- (void)reloadCommitsAndOptionallyTable:(BOOL)shoudReloadTable {
+	DABranchWalk *walk = [DABranchWalk walkForBranch:self.currentBranch];
+	
+	[self.stats performSyncOperation:walk];
+	
+	_currentBranchStats = walk;
+	
+	if (shoudReloadTable) {
+		[self.commitsTable reloadData];
+	}
+}
+
 - (void)forgetRepo {
 	[self.navigationController popViewControllerAnimated:YES];
 	
 	[self.git removeExistingRepo:self.repoServer.recentRepoPath forServer:self.repoServer];
 	
 	[DAFlurry logWorkflowAction:WorkflowActionRepoForgotten];
-}
-
-#pragma mark UITableViewDataSource helpers
-
-- (GTCommit *)commitForIndexPath:(NSIndexPath *)indexPath {
-	NSString *title = self.dateSections[indexPath.section];
-	NSArray *commits = self.commitsOnDateSection[title];
-	
-	return commits[indexPath.row];
-}
-
-// Commit is Subsequent when its previous commit is prepared by the same Author in the very same Day.
-- (BOOL)isSubsequentCommitAtIndexPath:(NSIndexPath *)indexPath {
-	NSString *title = self.dateSections[indexPath.section];
-	NSArray *commits = self.commitsOnDateSection[title];
-	
-	NSUInteger idx = indexPath.row;
-	GTCommit *commit = commits[idx];
-	
-	BOOL previousCommitHasSameAuthor = NO;
-	
-	BOOL hasPreviousCommitInSection = idx > 0;
-	if (hasPreviousCommitInSection) {
-		GTCommit *prevCommit = commits[idx - 1];
-		
-		previousCommitHasSameAuthor = [commit.author.name isEqualToString:prevCommit.author.name] && [commit.author.email isEqualToString:prevCommit.author.email];
-	}
-	
-	return previousCommitHasSameAuthor;
-}
-
-#pragma mark UITableViewDataSource, UITableViewDelegate
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return self.dateSections.count;
-}
-
-- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section {
-	[self cacheView:view withIdentifier:view.className];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-	return headerHeight;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-	DATitleHeader *header = (DATitleHeader *)[self cachedViewWithIdentifier:DATitleHeader.className];
-	if (!header) {
-		header = DATitleHeader.new;
-	}
-	
-	header.nameLabel.text = self.dateSections[section];
-	
-	return header;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	NSString *title = self.dateSections[section];
-	NSArray *commits = self.commitsOnDateSection[title];
-	
-	return commits.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	BOOL previousCommitHasSameAuthor = [self isSubsequentCommitAtIndexPath:indexPath];
-	
-	DACommitMessageCell *cell = previousCommitHasSameAuthor ? self.reuseSimpleCell : self.reuseCell;
-	
-	GTCommit *commit = [self commitForIndexPath:indexPath];
-	return [cell heightForCommit:commit];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	GTCommit *commit = [self commitForIndexPath:indexPath];
-	
-	BOOL previousCommitHasSameAuthor = [self isSubsequentCommitAtIndexPath:indexPath];
-	Class cls = previousCommitHasSameAuthor ? DACommitMessageCell.class : DACommitCell.class;
-	
-	UITableViewCell<DADynamicCommitCell> *cell = [tableView dequeueCellOfClass:cls];
-	
-	[cell setShowsDayName:NO];
-	[cell setShowsTopCellSeparator:indexPath.row > 0];
-	
-	[cell loadCommit:commit];
-	
-	return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	_selectedCommitIndexPath = indexPath;
-	
-	NSString *title = self.dateSections[indexPath.section];
-	NSArray *commits = self.commitsOnDateSection[title];
-	
-	GTCommit *commit = commits[indexPath.row];
-	[self presentDiffCtrlForCommit:commit];
 }
 
 - (void)presentDiffCtrlForCommit:(GTCommit *)commit {
@@ -583,34 +422,6 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 			}];
 		}
 	}
-}
-
-#pragma mark Properties
-
-- (NSDateFormatter *)dateSectionTitleFormatter {
-	static NSDateFormatter *formatter = nil;
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		formatter = NSDateFormatter.new;
-		formatter.locale = NSLocale.currentLocale;
-		formatter.dateFormat = @"EEEE, d MMM, yyyy";
-	});
-	return formatter;
-}
-
-@end
-
-
-@implementation UITableView (RepoCtrl)
-
-- (id)dequeueCellOfClass:(Class)cls {
-	NSString *identifier = [self cellIdentifierOfClass:cls];
-	return [self dequeueReusableCellWithIdentifier:identifier];
-}
-
-- (NSString *)cellIdentifierOfClass:(Class)cls {
-	return cls.className;
-//	return [NSString stringWithFormat:@"%@-%@", DARepoCtrl.className, cls.className];
 }
 
 @end

@@ -10,9 +10,10 @@
 
 @interface DAGitStats ()
 @property (strong, nonatomic, readonly) GTRepository *repo;
-@property (strong, nonatomic, readonly) GTEnumerator *iter;
 
-@property (strong, nonatomic, readonly) NSArray *branches, *commits;
+@property (strong, nonatomic, readonly) NSOperationQueue *q;
+//@property (strong, nonatomic, readonly) GTEnumerator *iter;
+//@property (strong, nonatomic, readonly) NSArray *branches, *commits;
 @end
 
 @implementation DAGitStats
@@ -24,9 +25,29 @@
 	return stats;
 }
 
+- (id)init {
+	self = [super init];
+	if (self) {
+		_q = NSOperationQueue.new;
+	}
+	return self;
+}
+
 - (void)load:(GTRepository *)repo {
 	_repo = repo;
-	
+}
+
+- (void)performSyncOperation:(id<DAGitOperation>)operation {
+	[operation perform];
+}
+
+- (void)performAsyncOperation:(id<DAGitOperation>)operation completionHandler:(void(^)())handler {
+	[self.q addOperationWithBlock:^{
+		[operation perform];
+	}];
+}
+
+/*
 	NSArray *branches = [self.repo remoteBranchesWithError:nil];
 	
 	[Logger info:@"\nBranches: (%d): ", branches.count];
@@ -71,5 +92,5 @@
 	}
 	[Logger info:@"-----"];
 }
-
+*/
 @end

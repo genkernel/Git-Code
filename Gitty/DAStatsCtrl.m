@@ -58,12 +58,13 @@
 }
 
 - (void)reloadData {
-	self.byAuthorDataSource.authors = self.repoCtrl.authors;
+#warning hello
+//	self.byAuthorDataSource.authors = self.repoCtrl.authors;
 	self.byAuthorDataSource.branches = self.repoCtrl.branches;
 	self.byAuthorDataSource.commits = self.repoCtrl.statsCommitsByAuthor;
 	self.byAuthorDataSource.shouldIncludeDayNameInTimestamp = self.isShowingCommitsOfMultipleDays;
-	
-	self.byBranchDataSource.authors = self.repoCtrl.authors;
+#warning hello
+//	self.byBranchDataSource.authors = self.repoCtrl.authors;
 	self.byBranchDataSource.branches = self.repoCtrl.branches;
 	self.byBranchDataSource.commits = self.repoCtrl.statsCommitsByBranch;
 	self.byBranchDataSource.shouldIncludeDayNameInTimestamp = self.isShowingCommitsOfMultipleDays;

@@ -131,6 +131,8 @@
 		187D2D751788529000F9126E /* DAServerCtrl+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 187D2D741788529000F9126E /* DAServerCtrl+Animation.m */; };
 		188B2D56175D3E4900BD1EEB /* DACommitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188B2D55175D3E4900BD1EEB /* DACommitCell.m */; };
 		188B2D58175D3E5C00BD1EEB /* DACommitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188B2D57175D3E5C00BD1EEB /* DACommitCell.xib */; };
+		188D756717C0E82800125778 /* DABranchWalk.m in Sources */ = {isa = PBXBuildFile; fileRef = 188D756617C0E82800125778 /* DABranchWalk.m */; };
+		188D756B17C0F8E400125778 /* DARepoCtrl+Table.m in Sources */ = {isa = PBXBuildFile; fileRef = 188D756A17C0F8E300125778 /* DARepoCtrl+Table.m */; };
 		188F67F6178A1DC8004E3E07 /* stats_header.png in Resources */ = {isa = PBXBuildFile; fileRef = 188F67F4178A1DC8004E3E07 /* stats_header.png */; };
 		188F67F7178A1DC8004E3E07 /* stats_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 188F67F5178A1DC8004E3E07 /* stats_header@2x.png */; };
 		188F6805178A1FA5004E3E07 /* stats_footer.png in Resources */ = {isa = PBXBuildFile; fileRef = 188F6803178A1FA5004E3E07 /* stats_footer.png */; };
@@ -489,6 +491,11 @@
 		188B2D54175D3E4900BD1EEB /* DACommitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACommitCell.h; sourceTree = "<group>"; };
 		188B2D55175D3E4900BD1EEB /* DACommitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACommitCell.m; sourceTree = "<group>"; };
 		188B2D57175D3E5C00BD1EEB /* DACommitCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DACommitCell.xib; sourceTree = "<group>"; };
+		188D756517C0E82800125778 /* DABranchWalk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABranchWalk.h; sourceTree = "<group>"; };
+		188D756617C0E82800125778 /* DABranchWalk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABranchWalk.m; sourceTree = "<group>"; };
+		188D756817C0E86900125778 /* DAGitOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAGitOperation.h; sourceTree = "<group>"; };
+		188D756917C0F8E300125778 /* DARepoCtrl+Table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DARepoCtrl+Table.h"; sourceTree = "<group>"; };
+		188D756A17C0F8E300125778 /* DARepoCtrl+Table.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DARepoCtrl+Table.m"; sourceTree = "<group>"; };
 		188F67F4178A1DC8004E3E07 /* stats_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stats_header.png; sourceTree = "<group>"; };
 		188F67F5178A1DC8004E3E07 /* stats_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stats_header@2x.png"; sourceTree = "<group>"; };
 		188F6803178A1FA5004E3E07 /* stats_footer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stats_footer.png; sourceTree = "<group>"; };
@@ -1435,6 +1442,13 @@
 			name = CommitCell;
 			sourceTree = "<group>";
 		};
+		188D756417C0E7E400125778 /* RepoWalk */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = RepoWalk;
+			sourceTree = "<group>";
+		};
 		189016B1175AA38900F19CE4 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1764,6 +1778,8 @@
 				189A5320175922FA00B5BD8D /* DARepoCtrl.h */,
 				189A5321175922FA00B5BD8D /* DARepoCtrl.m */,
 				183F7E35178C52A60051D689 /* DARepoCtrl+Private.h */,
+				188D756917C0F8E300125778 /* DARepoCtrl+Table.h */,
+				188D756A17C0F8E300125778 /* DARepoCtrl+Table.m */,
 				181240F3175BD21100E6F571 /* DARepoCtrl+Animation.h */,
 				181240F4175BD21100E6F571 /* DARepoCtrl+Animation.m */,
 				18A1114B175E2A7000784356 /* DARepoCtrl+GitFetcher.h */,
@@ -2306,16 +2322,20 @@
 		18DF1BF017BFF9C1007D312A /* Operations */ = {
 			isa = PBXGroup;
 			children = (
-				18DF1BF217BFFA2A007D312A /* Walk */,
+				188D756417C0E7E400125778 /* RepoWalk */,
+				18DF1BF217BFFA2A007D312A /* BranchWalk */,
+				188D756817C0E86900125778 /* DAGitOperation.h */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
 		};
-		18DF1BF217BFFA2A007D312A /* Walk */ = {
+		18DF1BF217BFFA2A007D312A /* BranchWalk */ = {
 			isa = PBXGroup;
 			children = (
+				188D756517C0E82800125778 /* DABranchWalk.h */,
+				188D756617C0E82800125778 /* DABranchWalk.m */,
 			);
-			name = Walk;
+			name = BranchWalk;
 			sourceTree = "<group>";
 		};
 		18DF1BF317C01773007D312A /* Expand */ = {
@@ -2796,6 +2816,8 @@
 				18DF1BE517BFC13D007D312A /* DAGitStats.m in Sources */,
 				18DF1BE917BFD8DD007D312A /* DATitleHeader.m in Sources */,
 				18DF1BEF17BFF7CE007D312A /* DABranchStats.m in Sources */,
+				188D756717C0E82800125778 /* DABranchWalk.m in Sources */,
+				188D756B17C0F8E400125778 /* DARepoCtrl+Table.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

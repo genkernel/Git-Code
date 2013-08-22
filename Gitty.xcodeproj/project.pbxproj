@@ -58,6 +58,10 @@
 		181873C0179C1409002FE1A3 /* RecentRepos.png in Resources */ = {isa = PBXBuildFile; fileRef = 181873BE179C1409002FE1A3 /* RecentRepos.png */; };
 		181873C1179C1409002FE1A3 /* RecentRepos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181873BF179C1409002FE1A3 /* RecentRepos@2x.png */; };
 		181A6F59178B696D002CA3BE /* DASshCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A6F58178B696D002CA3BE /* DASshCredentials.m */; };
+		1824404F17C6A12100274B2C /* popup_arrow-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 1824404D17C6A12100274B2C /* popup_arrow-light.png */; };
+		1824405017C6A12100274B2C /* popup_arrow-light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1824404E17C6A12100274B2C /* popup_arrow-light@2x.png */; };
+		1824405817C6A24000274B2C /* DASshTipCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824405617C6A24000274B2C /* DASshTipCtrl.m */; };
+		1824405917C6A24000274B2C /* DASshTipCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1824405717C6A24000274B2C /* DASshTipCtrl.xib */; };
 		182B820517A1A26500D02F73 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B820217A1A26500D02F73 /* Alert.m */; };
 		182B820617A1A26500D02F73 /* AlertQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B820417A1A26500D02F73 /* AlertQueue.m */; };
 		182B820917A1A8B300D02F73 /* NSDictionary+RecentRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B820817A1A8B300D02F73 /* NSDictionary+RecentRepo.m */; };
@@ -384,6 +388,11 @@
 		181993D7176D3D1000D4BE1F /* DAGitServer+Creation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DAGitServer+Creation.m"; sourceTree = "<group>"; };
 		181A6F57178B696D002CA3BE /* DASshCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DASshCredentials.h; sourceTree = "<group>"; };
 		181A6F58178B696D002CA3BE /* DASshCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DASshCredentials.m; sourceTree = "<group>"; };
+		1824404D17C6A12100274B2C /* popup_arrow-light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popup_arrow-light.png"; sourceTree = "<group>"; };
+		1824404E17C6A12100274B2C /* popup_arrow-light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popup_arrow-light@2x.png"; sourceTree = "<group>"; };
+		1824405517C6A24000274B2C /* DASshTipCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DASshTipCtrl.h; sourceTree = "<group>"; };
+		1824405617C6A24000274B2C /* DASshTipCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DASshTipCtrl.m; sourceTree = "<group>"; };
+		1824405717C6A24000274B2C /* DASshTipCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASshTipCtrl.xib; sourceTree = "<group>"; };
 		182B820117A1A26500D02F73 /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
 		182B820217A1A26500D02F73 /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
 		182B820317A1A26500D02F73 /* AlertQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertQueue.h; sourceTree = "<group>"; };
@@ -1170,6 +1179,33 @@
 			name = SSHCredentials;
 			sourceTree = "<group>";
 		};
+		1824404C17C6A12100274B2C /* Arrows */ = {
+			isa = PBXGroup;
+			children = (
+				1824404D17C6A12100274B2C /* popup_arrow-light.png */,
+				1824404E17C6A12100274B2C /* popup_arrow-light@2x.png */,
+			);
+			path = Arrows;
+			sourceTree = "<group>";
+		};
+		1824405117C6A17400274B2C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1824405217C6A18900274B2C /* SSH Tip */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		1824405217C6A18900274B2C /* SSH Tip */ = {
+			isa = PBXGroup;
+			children = (
+				1824405517C6A24000274B2C /* DASshTipCtrl.h */,
+				1824405617C6A24000274B2C /* DASshTipCtrl.m */,
+				1824405717C6A24000274B2C /* DASshTipCtrl.xib */,
+			);
+			name = "SSH Tip";
+			sourceTree = "<group>";
+		};
 		18295512179C77B0002D888A /* GitRepo */ = {
 			isa = PBXGroup;
 			children = (
@@ -1874,6 +1910,7 @@
 		189A531E175922BF00B5BD8D /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				1824405117C6A17400274B2C /* Helpers */,
 				1893852E17A32CBD00168FDB /* Feedback */,
 				1893851A17A30D8600168FDB /* SshInfo */,
 				1871D770179C198500F1D928 /* RecentRepos List */,
@@ -2549,6 +2586,7 @@
 		18F995D1175FBEDB0033A4A0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1824404C17C6A12100274B2C /* Arrows */,
 				182B820E17A1B0E800D02F73 /* Faders */,
 				183C1FD9179FEB080079AD2E /* section_header-alpha.png */,
 				183C1FDA179FEB080079AD2E /* section_header-alpha@2x.png */,
@@ -2786,6 +2824,9 @@
 				18DF1C0217C01A31007D312A /* expand.png in Resources */,
 				18DF1C0317C01A31007D312A /* expand@2x.png in Resources */,
 				18DF1C0517C01B55007D312A /* collapse.png in Resources */,
+				1824404F17C6A12100274B2C /* popup_arrow-light.png in Resources */,
+				1824405017C6A12100274B2C /* popup_arrow-light@2x.png in Resources */,
+				1824405917C6A24000274B2C /* DASshTipCtrl.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2927,6 +2968,7 @@
 				1833E16F17C4FA0100397F7F /* KBCollectionExtensions.m in Sources */,
 				1833E17017C4FA0100397F7F /* Reachability.m in Sources */,
 				1833E17117C4FA0100397F7F /* UIViewAdditions.m in Sources */,
+				1824405817C6A24000274B2C /* DASshTipCtrl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

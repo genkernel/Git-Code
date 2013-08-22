@@ -11,6 +11,7 @@
 #import "DAServerCtrl.h"
 #import "DANewServerCtrl.h"
 #import "DARecentReposCtrl.h"
+#import "DASshTipCtrl.h"
 
 #import "DAGitServer+Creation.h"
 
@@ -113,6 +114,13 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	[DAFlurry logScreenAppear:self.className];
 	
 	[self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	
+//	DASshTipCtrl *ctrl = DASshTipCtrl.viewCtrl;
+//	self.push
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

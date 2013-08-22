@@ -10,9 +10,13 @@
 #import "DAStatsCtrl+Private.h"
 #import "DAStatsCtrl+Animation.h"
 
+static const NSUInteger YesterdayPlusTodayStats = 2;
+
 @interface DAStatsCtrl ()
 @property (strong, nonatomic, readonly) NSDictionary *dataSource;
-@property (strong, nonatomic, readonly) DARepoWalk *stats;
+@property (strong, nonatomic, readonly) DARepoWalk *repoStats, *lastDayStats;
+
+@property (strong, nonatomic, readonly) DAGitLatestDayStats *latestDayFilter;
 
 @property (strong, nonatomic) NSIndexPath *selectedCommitIndexPath;
 @end
@@ -43,6 +47,8 @@
 	};
 	self.byAuthorDataSource.selectCellAction = select;
 	self.byBranchDataSource.selectCellAction = select;
+	
+	_latestDayFilter = [DAGitLatestDayStats filterShowingLatestDaysOfCount:YesterdayPlusTodayStats];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -59,22 +65,12 @@
 }
 
 - (void)reloadStatsData:(DARepoWalk *)stats {
-	_stats = stats;
+	_repoStats = stats;
 	
-	self.byBranchDataSource.stats = stats;
+	_lastDayStats = [stats filter:self.latestDayFilter];
 	
-#warning hello
-//	self.byAuthorDataSource.authors = self.repoCtrl.authors;
-	self.byAuthorDataSource.branches = self.repoCtrl.branches;
-#warning hello
-//	self.byAuthorDataSource.commits = self.repoCtrl.statsCommitsByAuthor;
-	self.byAuthorDataSource.shouldIncludeDayNameInTimestamp = self.isShowingCommitsOfMultipleDays;
-#warning hello
-//	self.byBranchDataSource.authors = self.repoCtrl.authors;
-	self.byBranchDataSource.branches = self.repoCtrl.branches;
-#warning hello
-//	self.byBranchDataSource.commits = self.repoCtrl.statsCommitsByBranch;
-	self.byBranchDataSource.shouldIncludeDayNameInTimestamp = self.isShowingCommitsOfMultipleDays;
+	self.byAuthorDataSource.stats = self.lastDayStats;
+	self.byBranchDataSource.stats = self.lastDayStats;
 	
 	[self.byAuthorTable reloadData];
 	[self.byBranchTable reloadData];
@@ -82,17 +78,8 @@
 	[self reloadStatusView];
 }
 
-- (void)loadByBranchCommits:(NSDictionary *)commits {
-	self.byBranchDataSource.commits = commits;
-	
-	[self.byBranchTable reloadData];
-	[self reloadStatusView];
-}
-
 - (void)reloadStatusView {
-	BOOL hasNoCommitsToShow = NO;
-#warning hello
-//	BOOL hasNoCommitsToShow = 0 == self.byAuthorDataSource.commits.count;
+	BOOL hasNoCommitsToShow = 0 == self.lastDayStats.allCommits.count;
 	
 	self.commitsContainer.hidden = hasNoCommitsToShow;
 	self.noCommitsLabel.hidden = !hasNoCommitsToShow;

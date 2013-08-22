@@ -34,6 +34,16 @@
 	return expanded;
 }
 
+#pragma mark Properties
+
+- (NSArray *)sections {
+	return self.stats.authors;
+}
+
+- (NSDictionary *)sectionItems {
+	return self.stats.authorCommits;
+}
+
 #pragma mark Internal
 
 - (DACommitBranchCell *)reusableBranchCellRegisteredByTable:(UITableView *)tableView {
@@ -45,11 +55,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView headerViewAtIndexPath:(NSIndexPath *)ip {
-	NSString *title = self.commits.allKeys[ip.row];
-	
 	DAAuthorHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:DAAuthorHeaderCell.className];
 	
-	GTSignature *author = self.authors[title];
+	NSString *key = self.sections[ip.row];
+	GTSignature *author = self.stats.authorRefs[key];
+	
 	[cell loadAuthor:author];
 	
 	cell.collapsed = [self.closedItems containsObject:ip];
@@ -79,21 +89,27 @@
 		return [self tableView:tableView headerViewAtIndexPath:indexPath];
 	}
 	
+	NSUInteger section = [indexPath indexAtPosition:1];
 	NSUInteger row = [indexPath indexAtPosition:2];
 	
-	GTCommit *commit = [self commitForIndexPath:indexPath];
+	NSString *key = self.sections[section];
+	GTSignature *author = self.stats.authorRefs[key];
+	
+	NSArray *commits = self.sectionItems[key];
+	GTCommit *commit = commits[row];
 	
 	NSString *identifier = DACommitBranchCell.className;
 	UITableViewCell<DADynamicCommitCell> *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
 	
-	[cell setShowsDayName:self.shouldIncludeDayNameInTimestamp];
+	[cell setShowsDayName:YES];
 	[cell setShowsTopCellSeparator:row > 0];
 	
-	[cell loadCommit:commit];
+	[cell loadCommit:commit author:author];
 	
-	NSString *addr = [NSString stringWithFormat:@"0x%X", (int)commit];
-	GTBranch *branch = self.branches[addr];
-	[((DACommitBranchCell *)cell) loadBranch:branch];
+	NSString *head = self.stats.commitToBranchMap[commit.SHA];
+	GTBranch *br = self.stats.headRefs[head];
+	
+	[((DACommitBranchCell *)cell) loadBranch:br];
 	
 	return cell;
 }

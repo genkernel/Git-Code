@@ -111,7 +111,7 @@
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
 		[self.mainContainer.superview layoutIfNeeded];
 	} completion:^(BOOL finished) {
-//		[self setNavigationBarHidden:isStatsShown animated:animated];
+//		[self setNavigationBarHidden:!isStatsShown animated:animated];
 		
 		self.branchCustomTitleButton.hidden = DAStatsHiddenMode != mode;
 		

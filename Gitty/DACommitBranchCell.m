@@ -42,7 +42,7 @@ static CGFloat CommitMessageMaxHeight = 120.;
 	return height;
 }
 
-- (void)loadCommit:(GTCommit *)commit {
+- (void)loadCommit:(GTCommit *)commit author:(GTSignature *)author {
 	_commit = commit;
 	
 	self.commitLabel.text = [NSString stringWithFormat:@"%@", commit.message];

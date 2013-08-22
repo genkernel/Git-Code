@@ -44,11 +44,11 @@ static CGFloat CommitMessageMaxHeight = 120.;
 	return height;
 }
 
-- (void)loadCommit:(GTCommit *)commit {
-	[super loadCommit:commit];
+- (void)loadCommit:(GTCommit *)commit author:(GTSignature *)author {
+	[super loadCommit:commit author:author];
 	
-	[self.avatar setGravatarImageWithEmail:commit.author.email];
-	self.authorLabel.text = [NSString stringWithFormat:@"%@", commit.author.name];
+	[self.avatar setGravatarImageWithEmail:author.email];
+	self.authorLabel.text = [NSString stringWithFormat:@"%@", author.name];
 }
 
 @end

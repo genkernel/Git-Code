@@ -11,6 +11,8 @@
 // Operations
 #import "DARepoWalk.h"
 #import "DABranchWalk.h"
+// Filters
+#import "DAGitLatestDayStats.h"
 
 @interface DAGitStats : NSObject
 + (instancetype)statsForRepository:(GTRepository *)repo;

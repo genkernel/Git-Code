@@ -49,19 +49,21 @@
 
 // Commit is Subsequent when its previous commit is prepared by the same Author in the very same Day.
 - (BOOL)isSubsequentCommitAtIndexPath:(NSIndexPath *)indexPath {
-	NSString *title = self.currentBranchStats.dateSections[indexPath.section];
-	NSArray *commits = self.currentBranchStats.commitsOnDateSection[title];
-	
 	NSUInteger idx = indexPath.row;
-	GTCommit *commit = commits[idx];
-	
 	BOOL previousCommitHasSameAuthor = NO;
 	
 	BOOL hasPreviousCommitInSection = idx > 0;
 	if (hasPreviousCommitInSection) {
+		NSString *title = self.currentBranchStats.dateSections[indexPath.section];
+		NSArray *commits = self.currentBranchStats.commitsOnDateSection[title];
+		
+		GTCommit *commit = commits[idx];
 		GTCommit *prevCommit = commits[idx - 1];
 		
-		previousCommitHasSameAuthor = [commit.author.name isEqualToString:prevCommit.author.name] && [commit.author.email isEqualToString:prevCommit.author.email];
+		GTSignature *author = [self.currentBranchStats authorForCommit:commit];
+		GTSignature *prevAuthor = [self.currentBranchStats authorForCommit:prevCommit];
+		
+		previousCommitHasSameAuthor = [author isEqual:prevAuthor];
 	}
 	
 	return previousCommitHasSameAuthor;
@@ -110,6 +112,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	GTCommit *commit = [self commitForIndexPath:indexPath];
+	GTSignature *author = [self.currentBranchStats authorForCommit:commit];
 	
 	BOOL previousCommitHasSameAuthor = [self isSubsequentCommitAtIndexPath:indexPath];
 	Class cls = previousCommitHasSameAuthor ? DACommitMessageCell.class : DACommitCell.class;
@@ -119,7 +122,7 @@
 	[cell setShowsDayName:NO];
 	[cell setShowsTopCellSeparator:indexPath.row > 0];
 	
-	[cell loadCommit:commit];
+	[cell loadCommit:commit author:author];
 	
 	return cell;
 }

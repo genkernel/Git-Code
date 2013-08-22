@@ -13,6 +13,8 @@
 #import "DACommitMessageCell.h"
 
 @implementation DAStatsDataSource
+// Impl in subclass.
+@dynamic sections, sectionItems;
 
 - (id)init {
 	self = [super init];
@@ -37,8 +39,8 @@
 	NSUInteger section = [indexPath indexAtPosition:1];
 	NSUInteger row = [indexPath indexAtPosition:2];
 	
-	NSString *key = self.commits.allKeys[section];
-	NSArray *commits = self.commits[key];
+	NSString *key = self.sections[section];
+	NSArray *commits = self.sectionItems[key];
 	
 	return commits[row];
 }
@@ -59,8 +61,8 @@
 
 #pragma mark UITableViewDataSource, UITableViewDelegate
 
-- (BOOL)tableView:(UITableView *)tableView isCellExpanded:(NSIndexPath *)indexPath {
-	return ![self.closedItems containsObject:indexPath];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return self.sections.count;
 }
 
 - (NSUInteger)tableView:(UITableView *)tableView numberOfSubCellsForCellAtIndexPath:(NSIndexPath *)indexPath {
@@ -68,13 +70,14 @@
 		return 0;
 	}
 	
-	NSString *key = self.commits.allKeys[indexPath.row];
-	NSArray *commits = self.commits[key];
+	NSString *key = self.sections[indexPath.row];
+	NSArray *commits = self.sectionItems[key];
+	
 	return commits.count;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return self.commits.count;
+- (BOOL)tableView:(UITableView *)tableView isCellExpanded:(NSIndexPath *)indexPath {
+	return ![self.closedItems containsObject:indexPath];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

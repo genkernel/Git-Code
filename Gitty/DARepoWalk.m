@@ -10,10 +10,20 @@
 
 @interface DARepoWalk ()
 @property (strong, nonatomic) GTRepository *repo;
+
+// (Creation).
+@property (strong, nonatomic, readwrite) NSDictionary *commitToBranchMap;
+@property (strong, nonatomic, readwrite) NSDictionary *commitToAuthorMap;
+
+@property (strong, nonatomic, readwrite) NSArray *allCommits;
+@property (strong, nonatomic, readwrite) NSDictionary *authorCommits;
+@property (strong, nonatomic, readwrite) NSDictionary *authorRefs;
+@property (strong, nonatomic, readwrite) NSDictionary *headCommits;
+@property (strong, nonatomic, readwrite) NSDictionary *headRefs;
 @end
 
 @implementation DARepoWalk
-@dynamic heads;
+@dynamic heads, authors;
 
 + (instancetype)walkForRepo:(GTRepository *)repo {
 	DARepoWalk *walk = self.new;
@@ -22,8 +32,62 @@
 	return walk;
 }
 
-- (void)dealloc {
-	[Logger info:@"HI"];
+- (GTSignature *)authorForCommit:(GTCommit *)commit {
+	NSString *email = self.commitToAuthorMap[commit.SHA];
+	return self.authorRefs[email];
+}
+
+- (id<DAGitOperation>)filter:(id<DAGitOperationFilter>)filter {
+	DARepoWalk *filteredWalk = [DARepoWalk walkForRepo:self.repo];
+	filteredWalk.commitToAuthorMap = self.commitToAuthorMap;
+	filteredWalk.commitToBranchMap = self.commitToBranchMap;
+	
+	filteredWalk.allCommits = [filter filterCommits:self.allCommits];
+	
+	NSSet *allFilteredCommits = [NSSet setWithArray:filteredWalk.allCommits];
+	
+	NSMutableDictionary *filteredHeadRefs = self.headRefs.mutableCopy;
+	NSMutableDictionary *filteredHeadCommits = self.headCommits.mutableCopy;
+	{
+		[self.class filterRefMap:&filteredHeadRefs enumeratedByKeys:self.heads containingCommitsMap:&filteredHeadCommits againstAllCommits:allFilteredCommits];
+	}
+	filteredWalk.headRefs = filteredHeadRefs.copy;
+	filteredWalk.headCommits = filteredHeadCommits.copy;
+	
+	NSMutableDictionary *filteredAuthorRefs = self.authorRefs.mutableCopy;
+	NSMutableDictionary *filteredAuthorCommits = self.authorCommits.mutableCopy;
+	{
+		[self.class filterRefMap:&filteredAuthorRefs enumeratedByKeys:self.authors containingCommitsMap:&filteredAuthorCommits againstAllCommits:allFilteredCommits];
+	}
+	filteredWalk.authorRefs = filteredAuthorRefs.copy;
+	filteredWalk.authorCommits = filteredAuthorCommits.copy;
+	
+	return filteredWalk;
+}
+
++ (void)filterRefMap:(NSMutableDictionary **)refs enumeratedByKeys:(NSArray *)keys containingCommitsMap:(NSMutableDictionary **)commits againstAllCommits:(NSSet *)allFilteredCommits {
+	
+	NSMutableDictionary *filteredRefs = *refs;
+	NSMutableDictionary *filteredCommits = *commits;
+	{
+		for (NSString *key in keys) {
+			NSArray *list = filteredCommits[key];
+			
+			int trailingIdx = 0;
+			for (; trailingIdx < list.count; trailingIdx++) {
+				if (![allFilteredCommits containsObject:list[trailingIdx]]) {
+					break;
+				}
+			}
+			
+			if (0 == trailingIdx) {
+				[filteredRefs removeObjectForKey:key];
+				[filteredCommits removeObjectForKey:key];
+			} else {
+				filteredCommits[key] = [list subarrayWithRange:NSMakeRange(0, trailingIdx)];
+			}
+		}
+	}
 }
 
 - (void)perform {
@@ -64,7 +128,15 @@
 		}
 	}*/
 	
-	[self traverseCommits:commits againstBranches:branches];
+	[NSObject startMeasurement];
+	@autoreleasepool {
+		[self traverseCommits:commits againstBranches:branches];
+	}
+	period = [NSObject endMeasurement];
+	
+	[Logger info:@"\n\n"];
+	[Logger info:@"Stats for repo generated in %.2f (%d commits).", period, commits.count];
+	[Logger info:@"\n"];
 }
 /*
 - (void)performVerboseWalkOnBranch:(GTBranch *)branch iter:(GTEnumerator *)iter {
@@ -82,11 +154,16 @@
 }*/
 
 - (void)traverseCommits:(NSArray *)commits againstBranches:(NSArray *)branches {
-	_statsCommitsByAuthor = NSMutableDictionary.new;
-	_statsCommitsByBranch = NSMutableDictionary.new;
+	self.allCommits = commits.copy;
+	
+	NSMutableDictionary *commitBranchMap = @{}.mutableCopy;
+	NSMutableDictionary *commitToAuthorMap = @{}.mutableCopy;
 	
 	NSMutableDictionary *headRefs = @{}.mutableCopy;
 	NSMutableDictionary *headCommits = @{}.mutableCopy;
+	
+	NSMutableDictionary *authorRefs = @{}.mutableCopy;
+	NSMutableDictionary *authorCommits = @{}.mutableCopy;
 	
 	NSMutableSet *heads = NSMutableSet.new;
 	for (GTBranch *br in branches) {
@@ -101,7 +178,7 @@
 	NSMutableArray *currentHeadCommits = nil;
 	
 	for (GTCommit *ci in commits) {
-		[Logger info:@"ci: %@", ci.shortSHA];
+//		[Logger info:@"ci: %@", ci];
 		
 		if ([heads containsObject:ci.SHA]) {
 			if (currentHead && currentHeadCommits) {
@@ -113,10 +190,30 @@
 		}
 		
 		[currentHeadCommits addObject:ci];
+		commitBranchMap[ci.SHA] = currentHead;
+		
+		@autoreleasepool {
+			GTSignature *author = ci.author;
+			authorRefs[author.email] = author;
+			
+			commitToAuthorMap[ci.SHA] = author.email;
+			
+			NSMutableArray *commitsByAuthor = authorCommits[author.email];
+			if (!commitsByAuthor) {
+				commitsByAuthor = @[].mutableCopy;
+				authorCommits[author.email] = commitsByAuthor;
+			}
+			[commitsByAuthor addObject:ci];
+		}
 	}
 	if (currentHead && currentHeadCommits) {
 		headCommits[currentHead] = currentHeadCommits;
 	}
+	
+	_authorRefs = authorRefs.copy;
+	_authorCommits = authorCommits.copy;
+	
+	_commitToAuthorMap = commitToAuthorMap.copy;
 	
 	BOOL success = NO;
 	NSError *err = nil;
@@ -148,22 +245,34 @@
 			
 			headCommits[currentHead] = heading;
 			headCommits[masterHead] = [headCommits[masterHead] arrayByAddingObjectsFromArray:trailing];
+			
+			for (GTCommit *ci in trailing) {
+				commitBranchMap[ci.SHA] = masterHead;
+			}
 		}
 	} else {
 		// master branch is already in right place
 	}
 	
 	_headCommits = headCommits.copy;
-	
-	[Logger info:@"\n\n"];
-	[Logger info:@"Heads: %@", self.headCommits];
-	[Logger info:@"-----"];
+	_commitToBranchMap = commitBranchMap.copy;
 }
+
+/*
+- (void)filterCommits:(NSArray *)commits byFirstDaysCount:(int)days {
+	for (GTCommit *ci in commits) {
+		
+	}
+}*/
 
 #pragma mark Properties
 
 - (NSArray *)heads {
-	return self.headRefs.allValues;
+	return self.headRefs.allKeys;
+}
+
+- (NSArray *)authors {
+	return self.authorRefs.allKeys;
 }
 
 @end

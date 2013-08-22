@@ -6,9 +6,10 @@
 //  Copyright (c) 2013 ReImpl. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "DAGitOperationFilter.h"
 
 @protocol DAGitOperation <NSObject>
 @required
 - (void)perform;
+- (id<DAGitOperation>)filter:(id<DAGitOperationFilter>)filter;
 @end

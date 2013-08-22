@@ -411,19 +411,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="JSV-Rf-GSV" firstAttribute="leading" secondItem="kRZ-3g-9ce" secondAttribute="leading" type="user" id="3nj-ME-FVf"/>
-                            <constraint firstItem="4lu-SX-On5" firstAttribute="top" secondItem="kRZ-3g-9ce" secondAttribute="top" constant="20" type="user" id="JDI-UP-m3V"/>
+                            <constraint firstItem="5al-59-bSE" firstAttribute="top" secondItem="kRZ-3g-9ce" secondAttribute="top" type="user" id="4Ey-qt-v3q"/>
+                            <constraint firstItem="sVN-2v-uHm" firstAttribute="top" secondItem="kRZ-3g-9ce" secondAttribute="top" type="user" id="Jdg-iA-YGA"/>
                             <constraint firstItem="5al-59-bSE" firstAttribute="leading" secondItem="kRZ-3g-9ce" secondAttribute="leading" type="user" id="NBE-7d-7vn"/>
                             <constraint firstAttribute="trailing" secondItem="sVN-2v-uHm" secondAttribute="trailing" type="user" id="TBK-P1-OWd"/>
-                            <constraint firstItem="sVN-2v-uHm" firstAttribute="centerY" secondItem="kRZ-3g-9ce" secondAttribute="centerY" type="user" id="UGL-lk-nZq"/>
-                            <constraint firstItem="5al-59-bSE" firstAttribute="top" secondItem="kRZ-3g-9ce" secondAttribute="top" type="user" id="Vcd-mk-Gcm"/>
+                            <constraint firstAttribute="bottom" secondItem="5al-59-bSE" secondAttribute="bottom" type="user" id="XWG-GI-s5M"/>
+                            <constraint firstItem="4lu-SX-On5" firstAttribute="top" secondItem="kRZ-3g-9ce" secondAttribute="top" constant="20" type="user" id="Z2k-W2-ukq"/>
                             <constraint firstAttribute="trailing" secondItem="JSV-Rf-GSV" secondAttribute="trailing" type="user" id="Zal-yp-vMq"/>
                             <constraint firstItem="sVN-2v-uHm" firstAttribute="leading" secondItem="kRZ-3g-9ce" secondAttribute="leading" type="user" id="a35-aD-k02"/>
+                            <constraint firstItem="sVN-2v-uHm" firstAttribute="bottom" secondItem="kRZ-3g-9ce" secondAttribute="bottom" type="user" id="a5m-zi-ilV"/>
                             <constraint firstItem="JSV-Rf-GSV" firstAttribute="top" secondItem="kRZ-3g-9ce" secondAttribute="top" type="user" id="cJs-OY-wTR"/>
                             <constraint firstAttribute="trailing" secondItem="5al-59-bSE" secondAttribute="trailing" type="user" id="fkz-OT-6fy"/>
-                            <constraint firstItem="sVN-2v-uHm" firstAttribute="bottom" secondItem="5al-59-bSE" secondAttribute="bottom" type="default" id="jzY-F1-POE"/>
+                            <constraint firstItem="5al-59-bSE" firstAttribute="bottom" secondItem="kRZ-3g-9ce" secondAttribute="bottom" type="user" id="ncI-F2-rEV"/>
                             <constraint firstAttribute="trailing" secondItem="4lu-SX-On5" secondAttribute="trailing" type="user" id="oBN-v4-c2x"/>
                             <constraint firstItem="4lu-SX-On5" firstAttribute="leading" secondItem="kRZ-3g-9ce" secondAttribute="leading" type="user" id="sYk-as-MGP"/>
-                            <constraint firstItem="sVN-2v-uHm" firstAttribute="top" secondItem="kRZ-3g-9ce" secondAttribute="top" type="user" id="yRo-SI-P1I"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -432,8 +433,7 @@
                             <outlet property="titleView" destination="aGc-Wh-uk7" id="1aJ-mk-Z1J"/>
                         </connections>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="branchCtrlContainer" destination="2Lq-hv-Jqk" id="abT-Vt-PYx"/>
@@ -449,7 +449,7 @@
                         <outlet property="grabButton" destination="9Dq-DG-G51" id="2HI-yV-liZ"/>
                         <outlet property="mainContainer" destination="4lu-SX-On5" id="RCo-b7-yus"/>
                         <outlet property="mainContainerHeight" destination="Pkg-d0-TPP" id="T0f-rR-sHG"/>
-                        <outlet property="mainContainerTop" destination="JDI-UP-m3V" id="z88-Lb-EZg"/>
+                        <outlet property="mainContainerTop" destination="Z2k-W2-ukq" id="anU-2I-lUa"/>
                         <outlet property="pullingContainer" destination="JSV-Rf-GSV" id="dQG-rb-wfR"/>
                         <outlet property="pullingContainerTop" destination="cJs-OY-wTR" id="ASB-48-HL5"/>
                         <outlet property="pullingField" destination="nqj-Uv-VZl" id="40X-QR-KzJ"/>
@@ -818,12 +818,9 @@ yet.</string>
             <objects>
                 <viewController id="5ae-qc-YmD" customClass="DAStatsCtrl" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MEQ-w2-z7R">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="505"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRB-Zk-ICJ">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No new commits" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YD7-4m-HGD" userLabel="No Commits Label">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" type="user" id="QH1-9a-Rx8"/>
@@ -941,16 +938,12 @@ by </string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qRB-Zk-ICJ" firstAttribute="leading" secondItem="MEQ-w2-z7R" secondAttribute="leading" constant="60" id="3of-bv-kSg"/>
                             <constraint firstItem="p68-Os-XZM" firstAttribute="top" secondItem="MEQ-w2-z7R" secondAttribute="top" type="user" id="61W-Uy-Jeg"/>
                             <constraint firstItem="YD7-4m-HGD" firstAttribute="leading" secondItem="MEQ-w2-z7R" secondAttribute="leading" type="user" id="6pH-DS-RWG"/>
-                            <constraint firstItem="qRB-Zk-ICJ" firstAttribute="centerX" secondItem="YD7-4m-HGD" secondAttribute="centerX" type="default" id="9XQ-G7-SR6"/>
                             <constraint firstAttribute="trailing" secondItem="p68-Os-XZM" secondAttribute="trailing" type="user" id="KTR-SS-41Y"/>
-                            <constraint firstAttribute="bottom" secondItem="qRB-Zk-ICJ" secondAttribute="bottom" constant="230" id="McW-D4-SgC"/>
                             <constraint firstAttribute="bottom" secondItem="nyk-WL-JSo" secondAttribute="bottom" type="user" id="NDP-ec-bsq"/>
                             <constraint firstAttribute="trailing" secondItem="YD7-4m-HGD" secondAttribute="trailing" type="user" id="bWZ-NX-PdK"/>
                             <constraint firstItem="nyk-WL-JSo" firstAttribute="trailing" secondItem="MEQ-w2-z7R" secondAttribute="trailing" type="user" id="iN3-Jt-Gzi"/>
-                            <constraint firstItem="qRB-Zk-ICJ" firstAttribute="top" secondItem="MEQ-w2-z7R" secondAttribute="top" constant="231" id="izN-mY-EL0"/>
                             <constraint firstItem="p68-Os-XZM" firstAttribute="leading" secondItem="MEQ-w2-z7R" secondAttribute="leading" type="user" id="rmv-Ou-WZF"/>
                             <constraint firstItem="nyk-WL-JSo" firstAttribute="leading" secondItem="MEQ-w2-z7R" secondAttribute="leading" type="user" id="s6s-82-KIV"/>
                             <constraint firstItem="YD7-4m-HGD" firstAttribute="top" secondItem="MEQ-w2-z7R" secondAttribute="top" constant="220" type="user" id="t5q-Q5-t6L"/>

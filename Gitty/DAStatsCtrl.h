@@ -16,7 +16,6 @@
 - (void)reloadStatsData:(DARepoWalk *)stats;
 
 @property (nonatomic, readonly) BOOL isByBranchTableVisible;
-@property () BOOL isShowingCommitsOfMultipleDays;
 
 @property (strong, nonatomic) NSString *headlineSinceDayText;
 

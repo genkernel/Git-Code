@@ -12,7 +12,7 @@
 @protocol DADynamicCommitCell <NSObject>
 @required
 - (CGFloat)heightForCommit:(GTCommit *)commit;
-- (void)loadCommit:(GTCommit *)commit;
+- (void)loadCommit:(GTCommit *)commit author:(GTSignature *)author;
 
 - (void)setShowsTopCellSeparator:(BOOL)shows;
 - (void)setShowsDayName:(BOOL)showsDayName;

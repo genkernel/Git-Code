@@ -96,18 +96,20 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	
 	[self loadInitialData];
 	
+	[DAFlurry logProtocol:self.repoServer.transferProtocol];
+	
+	//
+	[self.navigationController setNavigationBarHidden:isNavBarHiddenByThisCtrl animated:YES];
 	// FIXME: come up with better solution.
-	dispatch_async(dispatch_get_main_queue(), ^{
+	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(LightningAnimationDuration * NSEC_PER_SEC));
+	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 		self.mainContainerHeight.constant = self.view.height - self.mainContainerTop.constant;
 		[self.mainContainer.superview layoutIfNeeded];
 	});
-	
-	[DAFlurry logProtocol:self.repoServer.transferProtocol];
 }
 
 - (void)loadInitialData {
 	_stats = [DAGitStats statsForRepository:self.currentRepo];
-	
 	
 	_branches = NSMutableDictionary.new;
 	
@@ -129,8 +131,6 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	[DAFlurry logScreenAppear:self.className];
-	
-	[self.navigationController setNavigationBarHidden:isNavBarHiddenByThisCtrl animated:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

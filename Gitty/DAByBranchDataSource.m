@@ -26,17 +26,17 @@
 	headerHeight = header.height;
 }
 
-#pragma mark Helper methods
+#pragma mark Properties
 
-- (GTCommit *)commitForIndexPath:(NSIndexPath *)indexPath {
-	NSUInteger section = [indexPath indexAtPosition:1];
-	NSUInteger row = [indexPath indexAtPosition:2];
-	
-	GTBranch *br = self.stats.heads[section];
-	NSArray *commits = self.stats.headCommits[br.SHA];
-	
-	return commits[row];
+- (NSArray *)sections {
+	return self.stats.heads;
 }
+
+- (NSDictionary *)sectionItems {
+	return self.stats.headCommits;
+}
+
+#pragma mark Helper methods
 
 // Commit is Subsequent when its previous commit is prepared by the same Author (in the very same Day).
 - (BOOL)isSubsequentCommitAtIndexPath:(NSIndexPath *)indexPath {
@@ -47,13 +47,16 @@
 	
 	BOOL hasPreviousCommitInSection = row > 0;
 	if (hasPreviousCommitInSection) {
-		GTBranch *br = self.stats.heads[section];
-		NSArray *commits = self.stats.headCommits[br.SHA];
+		NSString *key = self.sections[section];
+		NSArray *commits = self.sectionItems[key];
 		
 		GTCommit *commit = commits[row];
 		GTCommit *prevCommit = commits[row - 1];
 		
-		previousCommitHasSameAuthor = [commit.author isEqual:prevCommit.author];
+		GTSignature *author = [self.stats authorForCommit:commit];
+		GTSignature *prevAuthor = [self.stats authorForCommit:prevCommit];
+		
+		previousCommitHasSameAuthor = [author isEqual:prevAuthor];
 	}
 	
 	return previousCommitHasSameAuthor;
@@ -76,7 +79,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView headerViewAtIndex:(NSInteger)section {
-	GTBranch *branch = self.stats.heads[section];
+	NSString *key = self.sections[section];
+	GTBranch *branch = self.stats.headRefs[key];
 	
 	DATitleHeaderCell *header = [tableView dequeueReusableCellWithIdentifier:DATitleHeaderCell.className];
 	
@@ -108,21 +112,6 @@
 	return [cell heightForCommit:commit];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return self.stats.heads.count;
-}
-
-- (NSUInteger)tableView:(UITableView *)tableView numberOfSubCellsForCellAtIndexPath:(NSIndexPath *)indexPath {
-	if (indexPath.length != 2) {
-		return 0;
-	}
-	
-	GTBranch *br = self.stats.heads[indexPath.row];
-	NSArray *commits = self.stats.headCommits[br.SHA];
-	
-	return commits.count;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (indexPath.length == 2) {
 		return [self tableView:tableView headerViewAtIndex:indexPath.row];
@@ -131,6 +120,7 @@
 	NSUInteger row = [indexPath indexAtPosition:2];
 	
 	GTCommit *commit = [self commitForIndexPath:indexPath];
+	GTSignature *author = [self.stats authorForCommit:commit];
 	
 	BOOL previousCommitHasSameAuthor = [self isSubsequentCommitAtIndexPath:indexPath];
 	Class cls = previousCommitHasSameAuthor ? DACommitMessageCell.class : DACommitCell.class;
@@ -138,10 +128,10 @@
 	NSString *identifier = NSStringFromClass(cls);
 	UITableViewCell<DADynamicCommitCell> *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
 	
-	[cell setShowsDayName:self.shouldIncludeDayNameInTimestamp];
+	[cell setShowsDayName:YES];
 	[cell setShowsTopCellSeparator:row > 0];
 	
-	[cell loadCommit:commit];
+	[cell loadCommit:commit author:author];
 	
 	return cell;
 }

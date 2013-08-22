@@ -19,7 +19,7 @@
 @end
 
 @implementation DABranchWalk
-@dynamic repo;
+@dynamic repo, authors;
 
 + (instancetype)walkForBranch:(GTBranch *)branch {
 	DABranchWalk *walk = self.new;
@@ -41,6 +41,11 @@
 		self.dateSectionTitleFormatter = self.defaultSectionDateFormatter;
 	}
 	return self;
+}
+
+- (GTSignature *)authorForCommit:(GTCommit *)commit {
+	NSString *email = self.commitAuthorMap[commit.SHA];
+	return self.authorRefs[email];
 }
 
 - (void)perform {
@@ -71,11 +76,12 @@
 }
 
 - (void)prepareSections {
-	_authors = NSMutableDictionary.new;
+	NSMutableDictionary *authorRefs = @{}.mutableCopy;
+	NSMutableDictionary *commitAuthorMap = @{}.mutableCopy;
 	
 	NSMutableArray *sections = NSMutableArray.new;
 	NSMutableDictionary *commitsOnDate = NSMutableDictionary.new;
-	NSMutableDictionary *authorsOnDate = NSMutableDictionary.new;
+//	NSMutableDictionary *authorsOnDate = NSMutableDictionary.new;
 	
 	for (GTCommit *commit in self.commits) {
 		
@@ -86,28 +92,42 @@
 			[sections addObject:title];
 		}
 		
-		_authors[commit.author.name] = commit.author;
-		
-		NSMutableArray *commits = commitsOnDate[title];
-		if (!commits) {
-			commits = NSMutableArray.new;
-			commitsOnDate[title] = commits;
-		}
-		[commits addObject:commit];
-		
-		NSMutableArray *authors = authorsOnDate[title];
-		if (!authors) {
-			authors = NSMutableArray.new;
-			authorsOnDate[title] = authors;
-		}
-		if (![authors containsObject:commit.author]) {
-			[authors addObject:commit.author];
+		@autoreleasepool {
+			GTSignature *author = commit.author;
+			
+			authorRefs[author.email] = author;
+			commitAuthorMap[commit.SHA] = author.email;
+			
+			NSMutableArray *commits = commitsOnDate[title];
+			if (!commits) {
+				commits = NSMutableArray.new;
+				commitsOnDate[title] = commits;
+			}
+			[commits addObject:commit];
+			/*
+			NSMutableArray *authors = authorsOnDate[title];
+			if (!authors) {
+				authors = NSMutableArray.new;
+				authorsOnDate[title] = authors;
+			}
+			if (![authors containsObject:author]) {
+				[authors addObject:author];
+			}*/
 		}
 	}
 	
 	_dateSections = sections.copy;
 	_commitsOnDateSection = commitsOnDate.copy;
-	_authorsOnDateSection = authorsOnDate.copy;
+//	_authorsOnDateSection = authorsOnDate.copy;
+	
+	_authorRefs = authorRefs.copy;
+	_commitAuthorMap = commitAuthorMap.copy;
+}
+
+- (id<DAGitOperation>)filter:(id<DAGitOperationFilter>)filter {
+	[Logger info:@"Dummy - %s", __PRETTY_FUNCTION__];
+	
+	return nil;
 }
 
 #pragma mark Properties
@@ -129,6 +149,10 @@
 		formatter.dateFormat = @"EEEE, d MMM, yyyy";
 	});
 	return formatter;
+}
+
+- (NSArray *)authors {
+	return self.authorRefs.allKeys;
 }
 
 @end

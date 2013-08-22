@@ -21,10 +21,9 @@ typedef void (^CellSelectionBlock)(DAStatsDataSource *, NSIndexPath *);
 }
 @property (weak, nonatomic) DARepoWalk *stats;
 
-@property (weak, nonatomic) NSDictionary *commits;
-@property (weak, nonatomic) NSDictionary *authors, *branches;
+@property (weak, nonatomic, readonly) NSArray *sections;
+@property (weak, nonatomic, readonly) NSDictionary *sectionItems;
 
-@property () BOOL shouldIncludeDayNameInTimestamp;
 @property (strong, nonatomic) CellSelectionBlock selectCellAction;
 
 - (void)setupForTableView:(UITableView *)tableView;

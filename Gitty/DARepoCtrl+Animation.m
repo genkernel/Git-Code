@@ -107,13 +107,15 @@
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
 		[self.mainContainer.superview layoutIfNeeded];
 	} completion:^(BOOL finished) {
-//		[self setNavigationBarHidden:!isStatsShown animated:animated];
-		
 		self.branchCustomTitleButton.hidden = DAStatsHiddenMode != mode;
 		
 		if (isStatsShown) {
+			self.navigationItem.titleView = nil;
+			self.title = NSLocalizedString(@"[stats]", nil);
+			
 			self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.statsCustomRightView];
 		} else {
+			self.navigationItem.titleView = self.branchCustomTitleContainer;
 			self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.forgetButton];
 		}
 		

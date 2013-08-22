@@ -9,5 +9,5 @@
 #import "DAGitCloneDelegate.h"
 
 @interface DAGitPullDelegate : DAGitCloneDelegate
-
+@property () unsigned int receivedObjects;
 @end

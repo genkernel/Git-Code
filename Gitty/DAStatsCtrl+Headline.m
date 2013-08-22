@@ -14,21 +14,67 @@
 - (void)resetStatsHeadline {
 	self.headlineLabel.attributedText = NSAttributedString.new;
 }
-/*
+
 - (void)loadStatsHeadline {
+	GTCommit *ci = self.lastDayStats.allCommits.firstObject;
+	
+	NSDateFormatter *formatter = NSDateFormatter.new;
+	formatter.dateFormat = @"yyyy-MM-dd";
+	formatter.timeZone = ci.commitTimeZone;
+	
+	NSDate *commitMidnight = [formatter dateFromString:[formatter stringFromDate:ci.commitDate]];
+	
+	NSDate *now = [formatter dateFromString:[formatter stringFromDate:NSDate.date]];
+	
+	NSTimeInterval interval = [now timeIntervalSinceDate:commitMidnight];
+	int diff = interval / (1 DAYS);
+	
+	NSString *dayString = nil;
+	if (diff >= 365) {
+		int years = diff / 365;
+		dayString = years == 1 ? @"a year ago." : [NSString stringWithFormat:@"%d years ago.", years];
+		
+	} else if (diff >= 30) {
+		int months = diff / 30;
+		dayString = months == 1 ? @"a month ago." : [NSString stringWithFormat:@"%d months ago.", months];
+	
+	} else if (diff >= 7) {
+		dayString = [NSString stringWithFormat:@"%d days ago.", diff];
+		
+	} else if (diff >= 2) {
+		self.dayMonthFormatter.timeZone = ci.commitTimeZone;
+		NSString *date = [self.dayMonthFormatter stringFromDate:ci.commitDate];
+		
+		dayString = [NSString stringWithFormat:@"on %@.", date];
+		
+	} else if (diff == 1) {
+		dayString = @"yesterday.";
+		
+	} else {
+		dayString = @"today";
+	}
+	
+	[self loadStatsHeadlineWithDayPostfix:dayString];
+}
+
+- (void)loadStatsHeadlineWithDayPostfix:(NSString *)daysString {
+	NSUInteger branchesCount = self.lastDayStats.heads.count;
+	NSUInteger authorsCount = self.lastDayStats.authors.count;
+	NSUInteger commitsCount = self.lastDayStats.allCommits.count;
+	
 	// Unique number string - space delimeter at the end.
-	NSString *branchesCount = [NSString stringWithFormat:@"%d ", self.repoCtrl.statsCommitsByBranch.count];
+	NSString *branchesCountString = [NSString stringWithFormat:@"%d ", branchesCount];
 	// String uniqueness - 2 spaces.
-	NSString *commitsCount = [NSString stringWithFormat:@" %d ", self.repoCtrl.statsCommitsCount];
+	NSString *commitsCountString = [NSString stringWithFormat:@" %d ", commitsCount];
 	// String uniqueness - leading space delimeter.
-	NSString *authorsCount = [NSString stringWithFormat:@" %d", self.repoCtrl.statsCommitsByAuthor.count];
+	NSString *authorsCountString = [NSString stringWithFormat:@" %d", authorsCount];
 	
-	NSString *branchesLiteral = self.repoCtrl.statsCommitsByBranch.count > 1 ? @"Branches updated with" : @"Branch updated with";
-	NSString *commitsLiteral = self.repoCtrl.statsCommitsCount > 1 ? @"Commits\nby" : @"Commit\nby";
-	NSString *authorsLiteral = self.repoCtrl.statsCommitsByAuthor.count > 1 ? @" Authors " : @" Author ";
+	NSString *branchesLiteral = branchesCount > 1 ? @"Branches updated with" : @"Branch updated with";
+	NSString *commitsLiteral = commitsCount > 1 ? @"Commits\nby" : @"Commit\nby";
+	NSString *authorsLiteral = authorsCount > 1 ? @" Authors " : @" Author ";
 	
 	
-	NSArray *strings = @[branchesCount, branchesLiteral, commitsCount, commitsLiteral, authorsCount, authorsLiteral, self.headlineSinceDayText];
+	NSArray *strings = @[branchesCountString, branchesLiteral, commitsCountString, commitsLiteral, authorsCountString, authorsLiteral, daysString];
 	
 	NSArray *attributes = @[
 						 [self attributesWithForegroundColor:UIColor.acceptingGreenColor],
@@ -40,7 +86,7 @@
 		[self attributesWithForegroundColor:UIColor.whiteColor]];
 	
 	self.headlineLabel.attributedText = [NSAttributedString stringByJoiningSimpleStrings:strings applyingAttributes:attributes joinString:nil];
-}*/
+}
 
 - (NSDictionary *)attributesWithForegroundColor:(UIColor *)color {
 	static NSMutableDictionary *attributes = nil;
@@ -56,6 +102,17 @@
 	
 	attributes[NSForegroundColorAttributeName] = color;
 	return attributes.copy;
+}
+
+- (NSDateFormatter *)dayMonthFormatter {
+	static NSDateFormatter *formatter = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		formatter = NSDateFormatter.new;
+		formatter.locale = NSLocale.currentLocale;
+		formatter.dateFormat = @"MMMM d";
+	});
+	return formatter;
 }
 
 @end

@@ -11,4 +11,6 @@
 
 @interface DAStatsCtrl ()
 @property (strong, nonatomic, readonly) DARepoCtrl *repoCtrl;
+
+@property (strong, nonatomic, readonly) DARepoWalk *repoStats, *lastDayStats;
 @end

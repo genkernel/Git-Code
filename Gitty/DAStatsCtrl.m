@@ -9,12 +9,12 @@
 #import "DAStatsCtrl.h"
 #import "DAStatsCtrl+Private.h"
 #import "DAStatsCtrl+Animation.h"
+#import "DAStatsCtrl+Headline.h"
 
-static const NSUInteger YesterdayPlusTodayStats = 2;
+static const NSUInteger OneDayStats = 1;
 
 @interface DAStatsCtrl ()
 @property (strong, nonatomic, readonly) NSDictionary *dataSource;
-@property (strong, nonatomic, readonly) DARepoWalk *repoStats, *lastDayStats;
 
 @property (strong, nonatomic, readonly) DAGitLatestDayStats *latestDayFilter;
 
@@ -48,7 +48,7 @@ static const NSUInteger YesterdayPlusTodayStats = 2;
 	self.byAuthorDataSource.selectCellAction = select;
 	self.byBranchDataSource.selectCellAction = select;
 	
-	_latestDayFilter = [DAGitLatestDayStats filterShowingLatestDaysOfCount:YesterdayPlusTodayStats];
+	_latestDayFilter = [DAGitLatestDayStats filterShowingLatestDaysOfCount:OneDayStats];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -76,6 +76,7 @@ static const NSUInteger YesterdayPlusTodayStats = 2;
 	[self.byBranchTable reloadData];
 	
 	[self reloadStatusView];
+	[self loadStatsHeadline];
 }
 
 - (void)reloadStatusView {

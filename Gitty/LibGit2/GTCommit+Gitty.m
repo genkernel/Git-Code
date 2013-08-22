@@ -9,8 +9,8 @@
 #import "GTCommit+Gitty.h"
 
 @implementation GTCommit (Gitty)
-@dynamic authorLocalDate;
 @dynamic calendar;
+@dynamic authorLocalDate;
 
 - (NSCalendar *)calendar {
 	static NSCalendar *calendar = nil;

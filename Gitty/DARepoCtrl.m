@@ -11,7 +11,6 @@
 #import "DARepoCtrl+Private.h"
 #import "DARepoCtrl+Animation.h"
 #import "DARepoCtrl+GitFetcher.h"
-#import "DARepoCtrl+StatsLoader.h"
 
 #import "DAStatsCtrl+Animation.h"
 

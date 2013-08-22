@@ -107,7 +107,6 @@
 		183C1FDC179FEB080079AD2E /* section_header-alpha@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 183C1FDA179FEB080079AD2E /* section_header-alpha@2x.png */; };
 		183DA706175549F900140DA8 /* libObjectiveGit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 183DA703175549D100140DA8 /* libObjectiveGit-iOS.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		183F7E44178C550B0051D689 /* DAStatsCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 183F7E43178C550B0051D689 /* DAStatsCtrl.m */; };
-		183F7E47178C554E0051D689 /* DARepoCtrl+StatsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 183F7E46178C554E0051D689 /* DARepoCtrl+StatsLoader.m */; };
 		18438B181777778200943F9F /* GTCommit+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B171777778200943F9F /* GTCommit+Gitty.m */; };
 		18438B551777A5AD00943F9F /* Cryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B521777A45300943F9F /* Cryptor.m */; };
 		18438B561777A5B000943F9F /* NSString+Cryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 18438B541777A4AF00943F9F /* NSString+Cryptor.m */; };
@@ -464,8 +463,6 @@
 		183F7E35178C52A60051D689 /* DARepoCtrl+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DARepoCtrl+Private.h"; sourceTree = "<group>"; };
 		183F7E42178C550B0051D689 /* DAStatsCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAStatsCtrl.h; sourceTree = "<group>"; };
 		183F7E43178C550B0051D689 /* DAStatsCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAStatsCtrl.m; sourceTree = "<group>"; };
-		183F7E45178C554E0051D689 /* DARepoCtrl+StatsLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DARepoCtrl+StatsLoader.h"; sourceTree = "<group>"; };
-		183F7E46178C554E0051D689 /* DARepoCtrl+StatsLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DARepoCtrl+StatsLoader.m"; sourceTree = "<group>"; };
 		18438B161777778200943F9F /* GTCommit+Gitty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GTCommit+Gitty.h"; path = "LibGit2/GTCommit+Gitty.h"; sourceTree = "<group>"; };
 		18438B171777778200943F9F /* GTCommit+Gitty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GTCommit+Gitty.m"; path = "LibGit2/GTCommit+Gitty.m"; sourceTree = "<group>"; };
 		18438B1D177777C200943F9F /* LibGit2-Helpers.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "LibGit2-Helpers.pch"; path = "LibGit2/LibGit2-Helpers.pch"; sourceTree = "<group>"; };
@@ -1363,10 +1360,10 @@
 				183F7E42178C550B0051D689 /* DAStatsCtrl.h */,
 				183F7E43178C550B0051D689 /* DAStatsCtrl.m */,
 				1852A8A217B573B000E06DDC /* DAStatsCtrl+Private.h */,
-				18A3D67117A4137400B38FA8 /* DAStatsCtrl+Animation.h */,
-				18A3D67217A4137400B38FA8 /* DAStatsCtrl+Animation.m */,
 				1852A89F17B5730900E06DDC /* DAStatsCtrl+Headline.h */,
 				1852A8A017B5730900E06DDC /* DAStatsCtrl+Headline.m */,
+				18A3D67117A4137400B38FA8 /* DAStatsCtrl+Animation.h */,
+				18A3D67217A4137400B38FA8 /* DAStatsCtrl+Animation.m */,
 			);
 			name = StatsCtrl;
 			sourceTree = "<group>";
@@ -1824,12 +1821,12 @@
 		18933CDE1755395D00E92183 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				18706EE0176407430046A2A6 /* Helpers */,
 				18E23ACC17BF7F66008462A3 /* Env */,
 				18B8751B17ABDB93004AF69D /* Flurry */,
 				18438B5E1777A8BB00943F9F /* Gravatar */,
 				18A625431775D52500FC27AE /* LibGit2 */,
 				1804FAAB176E78EC0080AB50 /* Reachability */,
-				18706EE0176407430046A2A6 /* Helpers */,
 				181A6F4B178B694E002CA3BE /* SSHCredentials */,
 				18BAA85E1758016300154019 /* GitServer */,
 				18D9EA3A17554E9E00454F3C /* Git */,
@@ -1905,8 +1902,6 @@
 				181240F4175BD21100E6F571 /* DARepoCtrl+Animation.m */,
 				18A1114B175E2A7000784356 /* DARepoCtrl+GitFetcher.h */,
 				18A1114C175E2A7000784356 /* DARepoCtrl+GitFetcher.m */,
-				183F7E45178C554E0051D689 /* DARepoCtrl+StatsLoader.h */,
-				183F7E46178C554E0051D689 /* DARepoCtrl+StatsLoader.m */,
 			);
 			name = Repo;
 			sourceTree = "<group>";
@@ -2881,7 +2876,6 @@
 				1805AC1F178B322900789D45 /* DAGitServer+Creation.m in Sources */,
 				181A6F59178B696D002CA3BE /* DASshCredentials.m in Sources */,
 				183F7E44178C550B0051D689 /* DAStatsCtrl.m in Sources */,
-				183F7E47178C554E0051D689 /* DARepoCtrl+StatsLoader.m in Sources */,
 				1810993C179074540018AAB4 /* DAAuthorHeaderCell.m in Sources */,
 				1810994217909BFB0018AAB4 /* DACommitBranchCell.m in Sources */,
 				181099491790A6B20018AAB4 /* DATitleHeaderCell.m in Sources */,

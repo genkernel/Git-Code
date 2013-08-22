@@ -17,8 +17,6 @@
 
 @property (nonatomic, readonly) BOOL isByBranchTableVisible;
 
-@property (strong, nonatomic) NSString *headlineSinceDayText;
-
 // Header.
 @property (strong, nonatomic) IBOutlet UIView *headerContainer;
 @property (strong, nonatomic) IBOutlet UILabel *headlineLabel, *noCommitsLabel;
@@ -31,7 +29,6 @@
 @property (strong, nonatomic) IBOutlet UIView *commitsContainer;
 
 @property (strong, nonatomic) IBOutlet TreeTable *byAuthorProxy, *byBranchProxy;
-
 
 @property (strong, nonatomic) IBOutlet DAByAuthorDataSource *byAuthorDataSource;
 @property (strong, nonatomic) IBOutlet DAByBranchDataSource *byBranchDataSource;

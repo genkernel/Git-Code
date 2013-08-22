@@ -9,7 +9,6 @@
 #import "DARepoCtrl+GitFetcher.h"
 #import "DARepoCtrl+Private.h"
 #import "DARepoCtrl+Animation.h"
-#import "DARepoCtrl+StatsLoader.h"
 
 @implementation DARepoCtrl (GitFetcher)
 
@@ -66,6 +65,17 @@
 	pull.delegate = delegate;
 	
 	[self.git request:pull];
+}
+
+- (void)loadStats {
+	DARepoWalk *walk = [DARepoWalk walkForRepo:self.currentRepo];
+	
+	[self.stats performAsyncOperation:walk completionHandler:^{
+		[_statsCtrl reloadStatsData:walk];
+		
+		[self setPullingVisible:NO animated:YES];
+		[self addForgetButton];
+	}];
 }
 
 @end

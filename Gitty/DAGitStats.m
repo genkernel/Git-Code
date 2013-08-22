@@ -63,7 +63,8 @@
 	
 	[self.iter resetWithOptions:GTEnumeratorOptionsTimeSort];
 	
-	[self.iter pushGlob:@"refs/remotes/origin/*" error:&err];
+	[self.iter pushGlob:@"refs/remotes/origin/" error:&err];
+	"refs/remotes/origin / *"
 	
 	NSArray *commits = [self.iter allObjectsWithError:&err];
 	

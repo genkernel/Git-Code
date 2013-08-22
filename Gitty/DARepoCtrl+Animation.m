@@ -98,10 +98,6 @@
 	};
 	
 	CGFloat y = offsets[mode];
-	if (isStatsShown) {
-		y += self.navigationController.navigationBar.height;
-	}
-	
 	self.mainContainerTop.constant = y;
 	
 	if (DAStatsFullscreenMode != mode) {

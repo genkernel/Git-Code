@@ -13,8 +13,6 @@
 
 - (GTSignature *)authorForCommit:(GTCommit *)commit;
 
-@property (nonatomic, readonly) NSUInteger statsCommitsCount;
-
 @property (strong, nonatomic, readonly) NSArray *allCommits;
 
 // Format: <NSString commit.SHA> => <NSString head.SHA>

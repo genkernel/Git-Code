@@ -81,7 +81,6 @@
 	
 	NSMutableArray *sections = NSMutableArray.new;
 	NSMutableDictionary *commitsOnDate = NSMutableDictionary.new;
-//	NSMutableDictionary *authorsOnDate = NSMutableDictionary.new;
 	
 	for (GTCommit *commit in self.commits) {
 		

@@ -10,4 +10,5 @@
 
 @interface DARepoCtrl (GitFetcher)
 - (void)pull;
+- (void)loadStats;
 @end

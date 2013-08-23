@@ -71,6 +71,7 @@
 	
 	DAGitPull *pull = [DAGitPull pullForRepository:self.currentRepo fromServer:self.repoServer];
 	pull.delegate = delegate;
+	pull.authenticationUser = self.authUser;
 	
 	[self.git request:pull];
 }

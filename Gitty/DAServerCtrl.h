@@ -14,6 +14,7 @@
 }
 @property (strong, nonatomic) IBOutlet UITextField *repoField, *userNameField, *userPasswordField;
 @property (strong, nonatomic) IBOutlet UIButton *recentReposButton;
+@property (strong, nonatomic) IBOutlet UIButton *lockUsernameButton, *lockPasswordButton;
 
 @property (strong, nonatomic) IBOutlet UIButton *exploreButton, *loginButton;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *exploringIndicator;
@@ -33,4 +34,6 @@
 
 @property (readonly) BOOL isUsingCredentials;
 @property (strong, nonatomic, readonly) NSString *selectedProtocol;
+
+- (IBAction)lockOrUnlockField:(UIButton *)sender;
 @end

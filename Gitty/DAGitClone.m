@@ -35,8 +35,6 @@
 	NSString *remotePath = [self.manager remotePathForRepoWithName:repoFullName atServer:server];
 	NSURL *remoteURL = [NSURL URLWithString:remotePath];
 	
-//	remoteURL = [NSURL URLWithString:@"https://github.com/genkernel/TreeView.git"];
-	
 	// Local.
 	NSString *path = [self.manager localPathForRepoWithName:repoFullName atServer:server];
 	

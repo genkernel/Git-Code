@@ -13,4 +13,5 @@
 + (instancetype)pullForRepository:(GTRepository *)repo fromServer:(DAGitServer *)server;
 
 @property (strong, nonatomic) DAGitPullDelegate *delegate;
+@property (strong, nonatomic) DAGitUser *authenticationUser;
 @end

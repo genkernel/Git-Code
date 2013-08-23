@@ -39,11 +39,13 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:RepoSegue]) {
-		assert([sender isKindOfClass:GTRepository.class]);
 		
 		DARepoCtrl *ctrl = segue.destinationViewController;
-		ctrl.currentRepo = sender;
 		ctrl.shouldPull = !isRepoCloned;
+		
+		NSDictionary *info = sender;
+		ctrl.authUser = info[@"user"];
+		ctrl.currentRepo = info[@"repo"];
 		
 		ctrl.repoServer = self.currentServer;
 	} else if ([segue.identifier isEqualToString:SshInfoSegue]) {
@@ -119,8 +121,8 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	
-//	DASshTipCtrl *ctrl = DASshTipCtrl.viewCtrl;
-//	self.push
+//	CustomAlert *alert = [CustomAlert alertPresentingCtrl:DASshTipCtrl.viewCtrl];
+//	[AlertQueue.queue enqueueAlert:alert];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -140,15 +142,31 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 
 #pragma mark Internals
 
+- (NSDictionary *)infoDictWithRepo:(GTRepository *)repo user:(DAGitUser *)user {
+	if (user) {
+		return @{@"repo": repo, @"user": user};
+	}
+	return @{@"repo": repo};
+}
+
 - (void)testRepoWithUserString:(NSString *)repoName {
 	BOOL existent = [self.git isLocalRepoExistent:repoName forServer:self.currentServer];
 	isRepoCloned = !existent;
+	
+	DAGitUser *user = nil;
+	if (self.currentCtrl.isUsingCredentials) {
+		user = [DAGitUser userWithName:self.currentCtrl.userNameField.text password:self.currentCtrl.userPasswordField.text];
+		
+		[DAFlurry logWorkflowAction:WorkflowActionLoginUsingCredentials];
+	}
 	
 	if (existent) {
 		[DAFlurry logSuccessServer:self.analyticsCurrentServerName];
 		
 		GTRepository *repo = [self.git localRepoWithName:repoName forServer:self.currentServer];
-		[self performSegueWithIdentifier:RepoSegue sender:repo];
+		NSDictionary *info = [self infoDictWithRepo:repo user:user];
+		
+		[self performSegueWithIdentifier:RepoSegue sender:info];
 		
 		[self.currentCtrl resetProgress];
 		
@@ -156,15 +174,8 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		self.currentServer.recentRepoPath = repoName;
 		[self.servers save];
 		
-		[self.currentCtrl resetCredentials];
+//		[self.currentCtrl resetCredentials];
 	} else {
-		DAGitUser *user = nil;
-		if (self.currentCtrl.isUsingCredentials) {
-			user = [DAGitUser userWithName:self.currentCtrl.userNameField.text password:self.currentCtrl.userPasswordField.text];
-			
-			[DAFlurry logWorkflowAction:WorkflowActionLoginUsingCredentials];
-		}
-		
 		[self cloneRemoteRepoWithName:repoName fromServer:self.currentServer authenticationUser:user];
 	}
 }
@@ -219,13 +230,15 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		[DAFlurry logSuccessServer:self.analyticsCurrentServerName];
 		
 		DAGitClone *clone = (DAGitClone *)action;
-		[self performSegueWithIdentifier:RepoSegue sender:clone.clonedRepo];
+		NSDictionary *info = [self infoDictWithRepo:clone.clonedRepo user:user];
+		
+		[self performSegueWithIdentifier:RepoSegue sender:info];
 		
 		[self.currentServer addOrUpdateRecentRepoWithRelativePath:repoName];
 		self.currentServer.recentRepoPath = repoName;
 		[self.servers save];
 		
-		[self.currentCtrl resetCredentials];
+//		[self.currentCtrl resetCredentials];
 	};
 	
 	DAGitClone *clone = [DAGitClone cloneRepoWithName:repoName fromServer:server];

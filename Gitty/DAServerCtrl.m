@@ -41,6 +41,12 @@
 	
 	self.repoField.rightView = self.recentReposButton;
 	self.repoField.rightViewMode = UITextFieldViewModeUnlessEditing;
+	
+	self.userNameField.rightView = self.lockUsernameButton;
+	self.userNameField.rightViewMode = UITextFieldViewModeAlways;
+	
+	self.userPasswordField.rightView = self.lockPasswordButton;
+	self.userPasswordField.rightViewMode = UITextFieldViewModeAlways;
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -68,12 +74,31 @@
 	[self loadProtocolsWithServer:self.server];
 	[self resetBaseUrlLabel];
 	
-	[self resetCredentials];
+	[self reloadCredentials];
 	[self updateControlButtonsState];
 }
 
 - (void)resetBaseUrlLabel {
 	self.serverBaseUrl.text = [[self.selectedProtocol concat:self.server.gitBaseUrl] concat:@"/"];
+}
+
+-(void)reloadCredentials {
+	NSString *username = [DAAccountCredentials.manager getPasswordForUsername:UsernameKey atServer:self.server];
+	{
+		self.userNameField.text = username;
+		self.lockUsernameButton.enabled = username != nil;
+		self.lockUsernameButton.selected = username != nil;
+	}
+	
+	NSString *password = [DAAccountCredentials.manager getPasswordForUsername:PasswordKey atServer:self.server];
+	{
+		self.userPasswordField.text = password;
+		self.lockPasswordButton.enabled = password != nil;
+		self.lockPasswordButton.selected = password != nil;
+	}
+	
+	BOOL hasUsernameOrPassword = username || password;
+	[self setCredentialsVisible:hasUsernameOrPassword animated:NO];
 }
 
 - (void)resetCredentials {
@@ -159,12 +184,38 @@
 	self.repoField.disabledBackground = nil;
 }
 
+- (void)lockSecureFieldForKey:(NSString *)key value:(NSString *)value {
+	[DAAccountCredentials.manager saveUsername:key password:value onServer:self.server];
+}
+
+- (void)unlockSecureFieldForKey:(NSString *)key {
+	[DAAccountCredentials.manager deleteUsername:key fromServer:self.server];
+}
+
 #pragma mark UITextFieldDelegate
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+	if (textField == self.userNameField) {
+		self.lockUsernameButton.selected = NO;
+		[self unlockSecureFieldForKey:UsernameKey];
+	} else if (textField == self.userPasswordField) {
+		self.lockPasswordButton.selected = NO;
+		[self unlockSecureFieldForKey:PasswordKey];
+	}
+}
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+	
 	if (textField == self.repoField) {
 		return [string isUrlSuitable];
 	}
+	
+	UIButton *lockers[] = {self.lockUsernameButton, self.lockPasswordButton};
+	UIButton *locker = lockers[textField.tag];
+	
+	NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+	locker.enabled = newString.length > 0;
+	
 	return YES;
 }
 
@@ -201,6 +252,32 @@
 	self.server.transferProtocol = self.selectedProtocol;
 	
 	[self resetBaseUrlLabel];
+}
+
+- (IBAction)lockOrUnlockField:(UIButton *)sender {
+	sender.selected = !sender.selected;
+	
+	UITextField *fields[] = {self.userNameField, self.userPasswordField};
+	UITextField *field = fields[sender.tag];
+	
+	NSString *keys[] = {UsernameKey, PasswordKey};
+	NSString *key = keys[sender.tag];
+	
+	if (sender.selected) {
+		if (0 == sender.tag) {
+			if (self.userNameField.isFirstResponder) {
+				[self.userPasswordField becomeFirstResponder];
+			}
+		} else {
+			[self.userPasswordField resignFirstResponder];
+			[self updateControlButtonsState];
+		}
+		
+		[self lockSecureFieldForKey:key value:field.text];
+		
+	} else {
+		[self unlockSecureFieldForKey:key];
+	}
 }
 
 #pragma mark Properties

@@ -55,7 +55,7 @@ static int transferProgressCallback(const git_transfer_progress *progress, void 
 	BOOL isSSH = [server.transferProtocol isEqualToString:SshTransferProtocol];
 	git_cred_acquire_cb auth_cb = isSSH ? cred_acquire_ssh : cred_acquire_userpass;
 	
-	id payloadObject = nil;
+	id payloadObject = self.authenticationUser;
 	if (isSSH) {
 		BOOL hasServerKeys = [DASshCredentials.manager hasSshKeypairSupportForServer:server];
 		payloadObject = hasServerKeys ? server : nil;

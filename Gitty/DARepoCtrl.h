@@ -33,6 +33,7 @@ typedef enum {
 @property (strong, nonatomic) GTRepository *currentRepo;
 @property (nonatomic) BOOL shouldPull;
 
+@property (strong, nonatomic) DAGitUser *authUser;
 @property (strong, nonatomic) DAGitServer *repoServer;
 
 @property (strong, nonatomic, readonly) DAGitStats *stats;

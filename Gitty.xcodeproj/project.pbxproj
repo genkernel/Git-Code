@@ -62,6 +62,15 @@
 		1824405017C6A12100274B2C /* popup_arrow-light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1824404E17C6A12100274B2C /* popup_arrow-light@2x.png */; };
 		1824405817C6A24000274B2C /* DASshTipCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824405617C6A24000274B2C /* DASshTipCtrl.m */; };
 		1824405917C6A24000274B2C /* DASshTipCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1824405717C6A24000274B2C /* DASshTipCtrl.xib */; };
+		1824406017C77B2A00274B2C /* CustomAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824405F17C77B2A00274B2C /* CustomAlert.m */; };
+		1824406A17C7874400274B2C /* AlertCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824406917C7874300274B2C /* AlertCtrl.m */; };
+		1824407617C7996F00274B2C /* DAAccountCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824407517C7996F00274B2C /* DAAccountCredentials.m */; };
+		1824408017C7A61300274B2C /* acc-lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 1824407817C7A61300274B2C /* acc-lock.png */; };
+		1824408117C7A61300274B2C /* acc-locked.png in Resources */ = {isa = PBXBuildFile; fileRef = 1824407917C7A61300274B2C /* acc-locked.png */; };
+		1824408A17C7A98400274B2C /* acc-lock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1824408817C7A98400274B2C /* acc-lock@2x.png */; };
+		1824408B17C7A98400274B2C /* acc-locked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1824408917C7A98400274B2C /* acc-locked@2x.png */; };
+		1824409217C7B24400274B2C /* acc-lock_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 1824409017C7B24400274B2C /* acc-lock_inactive.png */; };
+		1824409317C7B24400274B2C /* acc-lock_inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1824409117C7B24400274B2C /* acc-lock_inactive@2x.png */; };
 		182B820517A1A26500D02F73 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B820217A1A26500D02F73 /* Alert.m */; };
 		182B820617A1A26500D02F73 /* AlertQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B820417A1A26500D02F73 /* AlertQueue.m */; };
 		182B820917A1A8B300D02F73 /* NSDictionary+RecentRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B820817A1A8B300D02F73 /* NSDictionary+RecentRepo.m */; };
@@ -393,6 +402,20 @@
 		1824405517C6A24000274B2C /* DASshTipCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DASshTipCtrl.h; sourceTree = "<group>"; };
 		1824405617C6A24000274B2C /* DASshTipCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DASshTipCtrl.m; sourceTree = "<group>"; };
 		1824405717C6A24000274B2C /* DASshTipCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASshTipCtrl.xib; sourceTree = "<group>"; };
+		1824405E17C77B2A00274B2C /* CustomAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAlert.h; sourceTree = "<group>"; };
+		1824405F17C77B2A00274B2C /* CustomAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAlert.m; sourceTree = "<group>"; };
+		1824406817C7874300274B2C /* AlertCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertCtrl.h; sourceTree = "<group>"; };
+		1824406917C7874300274B2C /* AlertCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertCtrl.m; sourceTree = "<group>"; };
+		1824406C17C788F200274B2C /* CustomAlert+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CustomAlert+Private.h"; sourceTree = "<group>"; };
+		1824406F17C7965700274B2C /* Alert+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Alert+Private.h"; sourceTree = "<group>"; };
+		1824407417C7996F00274B2C /* DAAccountCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAccountCredentials.h; sourceTree = "<group>"; };
+		1824407517C7996F00274B2C /* DAAccountCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAccountCredentials.m; sourceTree = "<group>"; };
+		1824407817C7A61300274B2C /* acc-lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "acc-lock.png"; sourceTree = "<group>"; };
+		1824407917C7A61300274B2C /* acc-locked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "acc-locked.png"; sourceTree = "<group>"; };
+		1824408817C7A98400274B2C /* acc-lock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "acc-lock@2x.png"; sourceTree = "<group>"; };
+		1824408917C7A98400274B2C /* acc-locked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "acc-locked@2x.png"; sourceTree = "<group>"; };
+		1824409017C7B24400274B2C /* acc-lock_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "acc-lock_inactive.png"; sourceTree = "<group>"; };
+		1824409117C7B24400274B2C /* acc-lock_inactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "acc-lock_inactive@2x.png"; sourceTree = "<group>"; };
 		182B820117A1A26500D02F73 /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
 		182B820217A1A26500D02F73 /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
 		182B820317A1A26500D02F73 /* AlertQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertQueue.h; sourceTree = "<group>"; };
@@ -1168,15 +1191,13 @@
 			path = AccessoryHint;
 			sourceTree = "<group>";
 		};
-		181A6F4B178B694E002CA3BE /* SSHCredentials */ = {
+		181A6F4B178B694E002CA3BE /* Credentials */ = {
 			isa = PBXGroup;
 			children = (
-				181A6F57178B696D002CA3BE /* DASshCredentials.h */,
-				181A6F58178B696D002CA3BE /* DASshCredentials.m */,
-				18F86F1917931A4D0055900C /* DASshKeyInfo.h */,
-				18F86F1A17931A4D0055900C /* DASshKeyInfo.m */,
+				1824407317C797FF00274B2C /* User Accounts */,
+				1824407217C797F300274B2C /* SSH Keys */,
 			);
-			name = SSHCredentials;
+			name = Credentials;
 			sourceTree = "<group>";
 		};
 		1824404C17C6A12100274B2C /* Arrows */ = {
@@ -1188,12 +1209,12 @@
 			path = Arrows;
 			sourceTree = "<group>";
 		};
-		1824405117C6A17400274B2C /* Helpers */ = {
+		1824405117C6A17400274B2C /* Tips */ = {
 			isa = PBXGroup;
 			children = (
 				1824405217C6A18900274B2C /* SSH Tip */,
 			);
-			name = Helpers;
+			name = Tips;
 			sourceTree = "<group>";
 		};
 		1824405217C6A18900274B2C /* SSH Tip */ = {
@@ -1204,6 +1225,39 @@
 				1824405717C6A24000274B2C /* DASshTipCtrl.xib */,
 			);
 			name = "SSH Tip";
+			sourceTree = "<group>";
+		};
+		1824407217C797F300274B2C /* SSH Keys */ = {
+			isa = PBXGroup;
+			children = (
+				181A6F57178B696D002CA3BE /* DASshCredentials.h */,
+				181A6F58178B696D002CA3BE /* DASshCredentials.m */,
+				18F86F1917931A4D0055900C /* DASshKeyInfo.h */,
+				18F86F1A17931A4D0055900C /* DASshKeyInfo.m */,
+			);
+			name = "SSH Keys";
+			sourceTree = "<group>";
+		};
+		1824407317C797FF00274B2C /* User Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				1824407417C7996F00274B2C /* DAAccountCredentials.h */,
+				1824407517C7996F00274B2C /* DAAccountCredentials.m */,
+			);
+			name = "User Accounts";
+			sourceTree = "<group>";
+		};
+		1824407717C7A61300274B2C /* Lock */ = {
+			isa = PBXGroup;
+			children = (
+				1824409017C7B24400274B2C /* acc-lock_inactive.png */,
+				1824409117C7B24400274B2C /* acc-lock_inactive@2x.png */,
+				1824408817C7A98400274B2C /* acc-lock@2x.png */,
+				1824408917C7A98400274B2C /* acc-locked@2x.png */,
+				1824407817C7A61300274B2C /* acc-lock.png */,
+				1824407917C7A61300274B2C /* acc-locked.png */,
+			);
+			path = Lock;
 			sourceTree = "<group>";
 		};
 		18295512179C77B0002D888A /* GitRepo */ = {
@@ -1218,10 +1272,16 @@
 		182B820017A1A26500D02F73 /* AlertManager */ = {
 			isa = PBXGroup;
 			children = (
-				182B820117A1A26500D02F73 /* Alert.h */,
-				182B820217A1A26500D02F73 /* Alert.m */,
 				182B820317A1A26500D02F73 /* AlertQueue.h */,
 				182B820417A1A26500D02F73 /* AlertQueue.m */,
+				182B820117A1A26500D02F73 /* Alert.h */,
+				182B820217A1A26500D02F73 /* Alert.m */,
+				1824406F17C7965700274B2C /* Alert+Private.h */,
+				1824405E17C77B2A00274B2C /* CustomAlert.h */,
+				1824405F17C77B2A00274B2C /* CustomAlert.m */,
+				1824406C17C788F200274B2C /* CustomAlert+Private.h */,
+				1824406817C7874300274B2C /* AlertCtrl.h */,
+				1824406917C7874300274B2C /* AlertCtrl.m */,
 			);
 			path = AlertManager;
 			sourceTree = "<group>";
@@ -1863,7 +1923,7 @@
 				18438B5E1777A8BB00943F9F /* Gravatar */,
 				18A625431775D52500FC27AE /* LibGit2 */,
 				1804FAAB176E78EC0080AB50 /* Reachability */,
-				181A6F4B178B694E002CA3BE /* SSHCredentials */,
+				181A6F4B178B694E002CA3BE /* Credentials */,
 				18BAA85E1758016300154019 /* GitServer */,
 				18D9EA3A17554E9E00454F3C /* Git */,
 				18DF1BE217BFC11F007D312A /* GitStats */,
@@ -1910,7 +1970,7 @@
 		189A531E175922BF00B5BD8D /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				1824405117C6A17400274B2C /* Helpers */,
+				1824405117C6A17400274B2C /* Tips */,
 				1893852E17A32CBD00168FDB /* Feedback */,
 				1893851A17A30D8600168FDB /* SshInfo */,
 				1871D770179C198500F1D928 /* RecentRepos List */,
@@ -2586,6 +2646,7 @@
 		18F995D1175FBEDB0033A4A0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1824407717C7A61300274B2C /* Lock */,
 				1824404C17C6A12100274B2C /* Arrows */,
 				182B820E17A1B0E800D02F73 /* Faders */,
 				183C1FD9179FEB080079AD2E /* section_header-alpha.png */,
@@ -2827,6 +2888,12 @@
 				1824404F17C6A12100274B2C /* popup_arrow-light.png in Resources */,
 				1824405017C6A12100274B2C /* popup_arrow-light@2x.png in Resources */,
 				1824405917C6A24000274B2C /* DASshTipCtrl.xib in Resources */,
+				1824408017C7A61300274B2C /* acc-lock.png in Resources */,
+				1824408117C7A61300274B2C /* acc-locked.png in Resources */,
+				1824408A17C7A98400274B2C /* acc-lock@2x.png in Resources */,
+				1824408B17C7A98400274B2C /* acc-locked@2x.png in Resources */,
+				1824409217C7B24400274B2C /* acc-lock_inactive.png in Resources */,
+				1824409317C7B24400274B2C /* acc-lock_inactive@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2969,6 +3036,9 @@
 				1833E17017C4FA0100397F7F /* Reachability.m in Sources */,
 				1833E17117C4FA0100397F7F /* UIViewAdditions.m in Sources */,
 				1824405817C6A24000274B2C /* DASshTipCtrl.m in Sources */,
+				1824406017C77B2A00274B2C /* CustomAlert.m in Sources */,
+				1824406A17C7874400274B2C /* AlertCtrl.m in Sources */,
+				1824407617C7996F00274B2C /* DAAccountCredentials.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,11 @@
+Version 1.1 updates:
+
+New Tags list along with Branch list view.
+
+Stats view:
+  ● expand/collapse author headers to show/hide its commits.
+  ● headline text improved.
+  ● statistics gathering algorithm improved.
+  ● problem when commit merged to different branches was shown 2 or more times fixed.
+
+Fixes & speed-up optimizations.

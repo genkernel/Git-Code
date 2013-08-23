@@ -256,6 +256,7 @@
 										<reference key="IBUIBackgroundColor" ref="888793698"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
+										<int key="IBUITag">1</int>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIContentVerticalAlignment">0</int>
 										<string key="IBUIText">fenaT9ab</string>
@@ -432,15 +433,73 @@
 					<string key="NSClassName">NSImage</string>
 					<string key="NSResourceName">RecentRepos.png</string>
 				</object>
-				<object class="IBUIFontDescription" key="IBUIFontDescription">
+				<object class="IBUIFontDescription" key="IBUIFontDescription" id="308402591">
 					<int key="type">2</int>
 					<double key="pointSize">15</double>
 				</object>
-				<object class="NSFont" key="IBUIFont">
+				<object class="NSFont" key="IBUIFont" id="351044961">
 					<string key="NSName">Helvetica-Bold</string>
 					<double key="NSSize">15</double>
 					<int key="NSfFlags">16</int>
 				</object>
+			</object>
+			<object class="IBUIButton" id="611638191">
+				<reference key="NSNextResponder"/>
+				<int key="NSvFlags">292</int>
+				<string key="NSFrameSize">{50, 31}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView"/>
+				<string key="NSReuseIdentifierKey">_NS:9</string>
+				<bool key="IBUIOpaque">NO</bool>
+				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<int key="IBUIContentHorizontalAlignment">0</int>
+				<int key="IBUIContentVerticalAlignment">0</int>
+				<reference key="IBUIHighlightedTitleColor" ref="888793698"/>
+				<object class="NSColor" key="IBUINormalTitleColor">
+					<int key="NSColorSpace">1</int>
+					<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+				</object>
+				<reference key="IBUINormalTitleShadowColor" ref="599927999"/>
+				<object class="NSCustomResource" key="IBUIDisabledImage" id="955934726">
+					<string key="NSClassName">NSImage</string>
+					<string key="NSResourceName">acc-lock_inactive.png</string>
+				</object>
+				<object class="NSCustomResource" key="IBUISelectedImage" id="281818977">
+					<string key="NSClassName">NSImage</string>
+					<string key="NSResourceName">acc-locked.png</string>
+				</object>
+				<object class="NSCustomResource" key="IBUINormalImage" id="797182661">
+					<string key="NSClassName">NSImage</string>
+					<string key="NSResourceName">acc-lock.png</string>
+				</object>
+				<reference key="IBUIFontDescription" ref="308402591"/>
+				<reference key="IBUIFont" ref="351044961"/>
+			</object>
+			<object class="IBUIButton" id="593439336">
+				<reference key="NSNextResponder"/>
+				<int key="NSvFlags">292</int>
+				<string key="NSFrameSize">{50, 31}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView"/>
+				<string key="NSReuseIdentifierKey">_NS:9</string>
+				<bool key="IBUIOpaque">NO</bool>
+				<int key="IBUITag">1</int>
+				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<int key="IBUIContentHorizontalAlignment">0</int>
+				<int key="IBUIContentVerticalAlignment">0</int>
+				<reference key="IBUIHighlightedTitleColor" ref="888793698"/>
+				<object class="NSColor" key="IBUINormalTitleColor">
+					<int key="NSColorSpace">1</int>
+					<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+				</object>
+				<reference key="IBUINormalTitleShadowColor" ref="599927999"/>
+				<reference key="IBUIDisabledImage" ref="955934726"/>
+				<reference key="IBUISelectedImage" ref="281818977"/>
+				<reference key="IBUINormalImage" ref="797182661"/>
+				<reference key="IBUIFontDescription" ref="308402591"/>
+				<reference key="IBUIFont" ref="351044961"/>
 			</object>
 			<object class="IBUIToolbar" id="68108816">
 				<reference key="NSNextResponder"/>
@@ -617,6 +676,22 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lockUsernameButton</string>
+						<reference key="source" ref="61005913"/>
+						<reference key="destination" ref="611638191"/>
+					</object>
+					<string key="id">vFh-xv-qcX</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lockPasswordButton</string>
+						<reference key="source" ref="61005913"/>
+						<reference key="destination" ref="593439336"/>
+					</object>
+					<string key="id">ORJ-Cg-uTR</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="16153360"/>
 						<reference key="destination" ref="61005913"/>
@@ -641,12 +716,30 @@
 					<string key="id">s7g-YN-fOw</string>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">lockOrUnlockField:</string>
+						<reference key="source" ref="611638191"/>
+						<reference key="destination" ref="61005913"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<string key="id">Irh-TH-1fz</string>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="142821855"/>
 						<reference key="destination" ref="61005913"/>
 					</object>
 					<string key="id">CLd-fE-scS</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">lockOrUnlockField:</string>
+						<reference key="source" ref="593439336"/>
+						<reference key="destination" ref="61005913"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<string key="id">pRu-EC-dUu</string>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2219,6 +2312,18 @@
 						<reference key="object" ref="752389625"/>
 						<reference key="parent" ref="178572577"/>
 					</object>
+					<object class="IBObjectRecord">
+						<string key="id">Syi-AE-zdY</string>
+						<reference key="object" ref="611638191"/>
+						<reference key="parent" ref="0"/>
+						<string key="objectName">Lock Username Button</string>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">q3B-YN-Rj3</string>
+						<reference key="object" ref="593439336"/>
+						<reference key="parent" ref="0"/>
+						<string key="objectName">Lock Password Button</string>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -2346,6 +2451,8 @@
 				</array>
 				<boolean value="NO" key="ROW-yS-uE7.IBViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
 				<boolean value="NO" key="ROW-yS-uE7.showNotes"/>
+				<string key="Syi-AE-zdY.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<real value="3" key="Syi-AE-zdY.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="TCp-OZ-lf9.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="TMd-tf-rZ9.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<reference key="TMd-tf-rZ9.IBUserGuides" ref="0"/>
@@ -2418,6 +2525,8 @@
 				</array>
 				<boolean value="NO" key="pog-FV-vbq.IBViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
 				<boolean value="NO" key="pog-FV-vbq.showNotes"/>
+				<string key="q3B-YN-Rj3.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<real value="3" key="q3B-YN-Rj3.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="qOb-ef-PdI.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="qZ6-by-umw.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="rVY-pD-Wy7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -2503,12 +2612,25 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">DAServerCtrl</string>
 					<string key="superclassName">DABaseCtrl</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">lockOrUnlockField:</string>
+						<string key="NS.object.0">UIButton</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">lockOrUnlockField:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">lockOrUnlockField:</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="credentialsContainer">UIView</string>
 						<string key="exploreButton">UIButton</string>
 						<string key="exploreContainer">UIView</string>
 						<string key="exploreContainerHeightRule">NSLayoutConstraint</string>
 						<string key="exploringIndicator">UIActivityIndicatorView</string>
+						<string key="lockPasswordButton">UIButton</string>
+						<string key="lockUsernameButton">UIButton</string>
 						<string key="loginButton">UIButton</string>
 						<string key="logoIcon">UIImageView</string>
 						<string key="protocolsContainer">DAProtocolsContainer</string>
@@ -2540,6 +2662,14 @@
 						<object class="IBToOneOutletInfo" key="exploringIndicator">
 							<string key="name">exploringIndicator</string>
 							<string key="candidateClassName">UIActivityIndicatorView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lockPasswordButton">
+							<string key="name">lockPasswordButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lockUsernameButton">
+							<string key="name">lockUsernameButton</string>
+							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="loginButton">
 							<string key="name">loginButton</string>
@@ -2627,6 +2757,9 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="RecentRepos.png">{19, 17}</string>
+			<string key="acc-lock.png">{50, 30}</string>
+			<string key="acc-lock_inactive.png">{50, 30}</string>
+			<string key="acc-locked.png">{50, 30}</string>
 			<string key="btn-blue.png">{5, 5}</string>
 			<string key="btn-gray.png">{5, 5}</string>
 			<string key="btn-green.png">{5, 5}</string>

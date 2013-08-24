@@ -223,6 +223,7 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	self.branchPickerCtrl.currentTag = tag;
 	self.branchPickerCtrl.currentBranch = nil;
 	
+	self.title = tag.name;
 	self.branchCustomTitleLabel.text = tag.name;
 	
 	return YES;
@@ -242,17 +243,24 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	self.repoServer.recentBranchName = branch.shortName;
 	[self.servers save];
 	
+	self.title = branch.shortName;
 	self.branchCustomTitleLabel.text = branch.shortName;
 	
 	return YES;
 }
 
 - (void)reloadCommitsAndOptionallyTable:(BOOL)shoudReloadTable {
-	DABranchWalk *walk = [DABranchWalk walkForBranch:self.currentBranch];
+	DABranchWalk *walk = nil;
+	
+	if (self.currentBranch) {
+		walk = [DABranchWalk walkForBranch:self.currentBranch];
+	} else {
+		walk = [DABranchWalk walkForTag:self.currentTag];
+	}
 	
 	[self.stats performSyncOperation:walk];
 	
-	_currentBranchStats = walk;
+	_currentStats = walk;
 	
 	if (shoudReloadTable) {
 		[self.commitsTable reloadData];

@@ -41,8 +41,8 @@
 #pragma mark Internal Helpers
 
 - (GTCommit *)commitForIndexPath:(NSIndexPath *)indexPath {
-	NSString *title = self.currentBranchStats.dateSections[indexPath.section];
-	NSArray *commits = self.currentBranchStats.commitsOnDateSection[title];
+	NSString *title = self.currentStats.dateSections[indexPath.section];
+	NSArray *commits = self.currentStats.commitsOnDateSection[title];
 	
 	return commits[indexPath.row];
 }
@@ -54,14 +54,14 @@
 	
 	BOOL hasPreviousCommitInSection = idx > 0;
 	if (hasPreviousCommitInSection) {
-		NSString *title = self.currentBranchStats.dateSections[indexPath.section];
-		NSArray *commits = self.currentBranchStats.commitsOnDateSection[title];
+		NSString *title = self.currentStats.dateSections[indexPath.section];
+		NSArray *commits = self.currentStats.commitsOnDateSection[title];
 		
 		GTCommit *commit = commits[idx];
 		GTCommit *prevCommit = commits[idx - 1];
 		
-		GTSignature *author = [self.currentBranchStats authorForCommit:commit];
-		GTSignature *prevAuthor = [self.currentBranchStats authorForCommit:prevCommit];
+		GTSignature *author = [self.currentStats authorForCommit:commit];
+		GTSignature *prevAuthor = [self.currentStats authorForCommit:prevCommit];
 		
 		previousCommitHasSameAuthor = [author isEqual:prevAuthor];
 	}
@@ -72,7 +72,7 @@
 #pragma mark UITableViewDataSource, UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return self.currentBranchStats.dateSections.count;
+	return self.currentStats.dateSections.count;
 }
 
 - (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section {
@@ -89,14 +89,14 @@
 		header = DATitleHeader.new;
 	}
 	
-	header.nameLabel.text = self.currentBranchStats.dateSections[section];
+	header.nameLabel.text = self.currentStats.dateSections[section];
 	
 	return header;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	NSString *title = self.currentBranchStats.dateSections[section];
-	NSArray *commits = self.currentBranchStats.commitsOnDateSection[title];
+	NSString *title = self.currentStats.dateSections[section];
+	NSArray *commits = self.currentStats.commitsOnDateSection[title];
 	
 	return commits.count;
 }
@@ -112,7 +112,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	GTCommit *commit = [self commitForIndexPath:indexPath];
-	GTSignature *author = [self.currentBranchStats authorForCommit:commit];
+	GTSignature *author = [self.currentStats authorForCommit:commit];
 	
 	BOOL previousCommitHasSameAuthor = [self isSubsequentCommitAtIndexPath:indexPath];
 	Class cls = previousCommitHasSameAuthor ? DACommitMessageCell.class : DACommitCell.class;
@@ -130,8 +130,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	self.selectedCommitIndexPath = indexPath;
 	
-	NSString *title = self.currentBranchStats.dateSections[indexPath.section];
-	NSArray *commits = self.currentBranchStats.commitsOnDateSection[title];
+	NSString *title = self.currentStats.dateSections[indexPath.section];
+	NSArray *commits = self.currentStats.commitsOnDateSection[title];
 	
 	GTCommit *commit = commits[indexPath.row];
 	[self presentDiffCtrlForCommit:commit];

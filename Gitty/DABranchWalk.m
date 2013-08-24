@@ -136,7 +136,19 @@
 }
 
 - (NSString *)startSHA {
-	return self.branch ? self.branch.SHA : self.tag.SHA;
+	if (self.branch) {
+		return self.branch.SHA;
+	}
+	
+	NSError *err = nil;
+	do {
+		id obj = [self.tag objectByPeelingTagError:&err];
+		if ([obj isKindOfClass:GTCommit.class]) {
+			return ((GTCommit *)obj).SHA;
+		}
+	} while (!err);
+	
+	return self.tag.SHA;
 }
 
 - (NSDateFormatter *)defaultSectionDateFormatter {

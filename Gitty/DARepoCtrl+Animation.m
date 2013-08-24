@@ -111,11 +111,13 @@
 		
 		if (isStatsShown) {
 			self.navigationItem.titleView = nil;
-			self.title = NSLocalizedString(@"[stats]", nil);
+			self.title = NSLocalizedString(@"Stats", nil);
 			
 			self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.statsCustomRightView];
 		} else {
 			self.navigationItem.titleView = self.branchCustomTitleContainer;
+			self.title = self.currentBranch ? self.currentBranch.shortName : self.currentTag.name;
+			
 			self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.forgetButton];
 		}
 		

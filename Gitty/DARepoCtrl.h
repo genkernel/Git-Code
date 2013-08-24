@@ -37,7 +37,7 @@ typedef enum {
 @property (strong, nonatomic) DAGitServer *repoServer;
 
 @property (strong, nonatomic, readonly) DAGitStats *stats;
-@property (strong, nonatomic, readonly) DABranchWalk *currentBranchStats;
+@property (strong, nonatomic, readonly) DABranchWalk *currentStats;
 
 @property (strong, nonatomic, readonly) NSMutableDictionary *branches;
 

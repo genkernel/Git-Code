@@ -10,4 +10,5 @@
 
 @interface DASupportTipCtrl : AlertCtrl
 
+@property (strong, nonatomic) IBOutlet UIButton *gotItButton;
 @end

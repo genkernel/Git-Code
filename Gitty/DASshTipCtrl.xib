@@ -251,7 +251,6 @@
 								<string key="NSFrame">{{197, 190}, {100, 30}}</string>
 								<reference key="NSSuperview" ref="694571350"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="IBUIContentStretch">{{0, 0}, {0.10000000000000001, 0.10000000000000001}}</string>
@@ -290,7 +289,7 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="553920572"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<object class="NSColor" key="IBUIBackgroundColor" id="1068460400">
+						<object class="NSColor" key="IBUIBackgroundColor" id="95525704">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
 						</object>
@@ -301,7 +300,7 @@
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="408205535"/>
-				<reference key="IBUIBackgroundColor" ref="1068460400"/>
+				<reference key="IBUIBackgroundColor" ref="95525704"/>
 				<float key="IBUIAlpha">0.0</float>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<object class="IBUIScreenMetrics" key="IBUISimulatedDestinationMetrics">
@@ -352,12 +351,12 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">gitItPressed:</string>
+						<string key="label">gotItPressed:</string>
 						<reference key="source" ref="450724899"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">128</int>
+					<int key="connectionID">161</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1234,7 +1233,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">160</int>
+			<int key="maxID">161</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1249,6 +1248,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">DASshTipCtrl</string>
 					<string key="superclassName">AlertCtrl</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">gotItPressed:</string>
+						<string key="NS.object.0">UIButton</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">gotItPressed:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">gotItPressed:</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="border">UIImageView</string>
 						<string key="gotItButton">UIButton</string>

@@ -9,6 +9,7 @@
 #import "DABaseCtrl.h"
 
 @interface DASshTipCtrl : AlertCtrl
+
 @property (strong, nonatomic) IBOutlet UIImageView *border;
 @property (strong, nonatomic) IBOutlet UIButton *gotItButton;
 @end

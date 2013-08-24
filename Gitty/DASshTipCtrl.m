@@ -37,7 +37,7 @@
 
 #pragma mark Actions
 
-- (IBAction)gitItPressed:(UIButton *)sender {
+- (IBAction)gotItPressed:(UIButton *)sender {
 	[self.alertPresenter dismissAnimated:YES];
 }
 

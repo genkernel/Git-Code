@@ -12,7 +12,9 @@
 #import "DAServerCtrl+Animation.h"
 #import "DANewServerCtrl.h"
 #import "DARecentReposCtrl.h"
+// Tips.
 #import "DASshTipCtrl.h"
+#import "DASupportTipCtrl.h"
 
 #import "DAGitServer+Creation.h"
 
@@ -119,6 +121,12 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	[self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	
+	[self logLoginAppearAction];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 	[DAFlurry logScreenDisappear:self.className];
@@ -134,8 +142,25 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	}
 }
 
-- (void)logLoginAction {
-	static NSString *login = @"Login.Login-Expand";
+#pragma mark Workflow actions
+
+- (void)logLoginAppearAction {
+	static NSString *login = @"Login.Ctrl-Appear";
+	
+	int actionCounter = [DASettings.currentUserSettings doAction:login];
+	if (3 == actionCounter) {
+		
+		double delayInSeconds = .9;
+		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+		dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+			CustomAlert *alert = [CustomAlert alertPresentingCtrl:DASupportTipCtrl.viewCtrl];
+			[AlertQueue.queue enqueueAlert:alert];
+		});
+	}
+}
+
+- (void)logLoginAuthAction {
+	static NSString *login = @"Login.Auth-Expand";
 	
 	int actionCounter = [DASettings.currentUserSettings doAction:login];
 	if (1 == actionCounter || 5 == actionCounter || 50 == actionCounter) {
@@ -361,7 +386,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	[self.currentCtrl setCredentialsVisible:!self.currentCtrl.isUsingCredentials animated:YES];
 	
 	if (self.currentCtrl.isUsingCredentials) {
-		[self logLoginAction];
+		[self logLoginAuthAction];
 	}
 }
 

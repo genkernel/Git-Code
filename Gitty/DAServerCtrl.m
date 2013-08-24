@@ -239,10 +239,6 @@
 
 #pragma mark Actions
 
-- (IBAction)didClickLogin:(UIButton *)sender {
-	[self setCredentialsVisible:!self.isUsingCredentials animated:YES];
-}
-
 - (IBAction)protocolSelected:(UIButton *)sender {
 	self.selectedProtocolButton.enabled = YES;
 	sender.enabled = NO;

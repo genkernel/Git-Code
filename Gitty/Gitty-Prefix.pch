@@ -45,5 +45,6 @@
 #import "DASshCredentials.h"
 #import "DAAccountCredentials.h"
 #import "DAFlurry.h"
+#import "DASettings.h"
 #import "DAEnvironment.h"
 #endif

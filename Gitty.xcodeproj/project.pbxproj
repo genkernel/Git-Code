@@ -71,6 +71,7 @@
 		1824408B17C7A98400274B2C /* acc-locked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1824408917C7A98400274B2C /* acc-locked@2x.png */; };
 		1824409217C7B24400274B2C /* acc-lock_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 1824409017C7B24400274B2C /* acc-lock_inactive.png */; };
 		1824409317C7B24400274B2C /* acc-lock_inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1824409117C7B24400274B2C /* acc-lock_inactive@2x.png */; };
+		1824409717C8B8C700274B2C /* DASettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824409617C8B8C700274B2C /* DASettings.m */; };
 		182B820517A1A26500D02F73 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B820217A1A26500D02F73 /* Alert.m */; };
 		182B820617A1A26500D02F73 /* AlertQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B820417A1A26500D02F73 /* AlertQueue.m */; };
 		182B820917A1A8B300D02F73 /* NSDictionary+RecentRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B820817A1A8B300D02F73 /* NSDictionary+RecentRepo.m */; };
@@ -221,6 +222,8 @@
 		18A6254B1775D59400FC27AE /* DAGitPullDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6254A1775D59000FC27AE /* DAGitPullDelegate.m */; };
 		18A6254C1775D59700FC27AE /* DAGitPull.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A625481775D57D00FC27AE /* DAGitPull.m */; };
 		18A6254D1776101D00FC27AE /* NavViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1804FABE176E8FEA0080AB50 /* NavViewCtrl.m */; };
+		18A6C4D817C901380019EB51 /* DASupportTipCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6C4D617C901380019EB51 /* DASupportTipCtrl.m */; };
+		18A6C4D917C901380019EB51 /* DASupportTipCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A6C4D717C901380019EB51 /* DASupportTipCtrl.xib */; };
 		18A8E20D177B644800DBD973 /* DADiffCtrlDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8E20C177B644800DBD973 /* DADiffCtrlDataSource.m */; };
 		18B8751E17ABDBAB004AF69D /* DAFlurry.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8751D17ABDBAB004AF69D /* DAFlurry.m */; };
 		18B8752117ABDF77004AF69D /* DAFlurryEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8752017ABDF77004AF69D /* DAFlurryEvent.m */; };
@@ -416,6 +419,8 @@
 		1824408917C7A98400274B2C /* acc-locked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "acc-locked@2x.png"; sourceTree = "<group>"; };
 		1824409017C7B24400274B2C /* acc-lock_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "acc-lock_inactive.png"; sourceTree = "<group>"; };
 		1824409117C7B24400274B2C /* acc-lock_inactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "acc-lock_inactive@2x.png"; sourceTree = "<group>"; };
+		1824409517C8B8C700274B2C /* DASettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DASettings.h; sourceTree = "<group>"; };
+		1824409617C8B8C700274B2C /* DASettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DASettings.m; sourceTree = "<group>"; };
 		182B820117A1A26500D02F73 /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
 		182B820217A1A26500D02F73 /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
 		182B820317A1A26500D02F73 /* AlertQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertQueue.h; sourceTree = "<group>"; };
@@ -900,6 +905,9 @@
 		18A625481775D57D00FC27AE /* DAGitPull.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAGitPull.m; sourceTree = "<group>"; };
 		18A625491775D59000FC27AE /* DAGitPullDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAGitPullDelegate.h; sourceTree = "<group>"; };
 		18A6254A1775D59000FC27AE /* DAGitPullDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAGitPullDelegate.m; sourceTree = "<group>"; };
+		18A6C4D517C901380019EB51 /* DASupportTipCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DASupportTipCtrl.h; sourceTree = "<group>"; };
+		18A6C4D617C901380019EB51 /* DASupportTipCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DASupportTipCtrl.m; sourceTree = "<group>"; };
+		18A6C4D717C901380019EB51 /* DASupportTipCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASupportTipCtrl.xib; sourceTree = "<group>"; };
 		18A8E20B177B644800DBD973 /* DADiffCtrlDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADiffCtrlDataSource.h; sourceTree = "<group>"; };
 		18A8E20C177B644800DBD973 /* DADiffCtrlDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADiffCtrlDataSource.m; sourceTree = "<group>"; };
 		18B8751817ABDB86004AF69D /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
@@ -1212,6 +1220,7 @@
 		1824405117C6A17400274B2C /* Tips */ = {
 			isa = PBXGroup;
 			children = (
+				18A6C4CD17C901160019EB51 /* SupportTip */,
 				1824405217C6A18900274B2C /* SSH Tip */,
 			);
 			name = Tips;
@@ -1258,6 +1267,15 @@
 				1824407917C7A61300274B2C /* acc-locked.png */,
 			);
 			path = Lock;
+			sourceTree = "<group>";
+		};
+		1824409417C8B8A100274B2C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1824409517C8B8C700274B2C /* DASettings.h */,
+				1824409617C8B8C700274B2C /* DASettings.m */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		18295512179C77B0002D888A /* GitRepo */ = {
@@ -1917,6 +1935,7 @@
 		18933CDE1755395D00E92183 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				1824409417C8B8A100274B2C /* Settings */,
 				18706EE0176407430046A2A6 /* Helpers */,
 				18E23ACC17BF7F66008462A3 /* Env */,
 				18B8751B17ABDB93004AF69D /* Flurry */,
@@ -2358,6 +2377,16 @@
 				18438B171777778200943F9F /* GTCommit+Gitty.m */,
 			);
 			name = LibGit2;
+			sourceTree = "<group>";
+		};
+		18A6C4CD17C901160019EB51 /* SupportTip */ = {
+			isa = PBXGroup;
+			children = (
+				18A6C4D517C901380019EB51 /* DASupportTipCtrl.h */,
+				18A6C4D617C901380019EB51 /* DASupportTipCtrl.m */,
+				18A6C4D717C901380019EB51 /* DASupportTipCtrl.xib */,
+			);
+			name = SupportTip;
 			sourceTree = "<group>";
 		};
 		18A8E206177B642800DBD973 /* DataSource */ = {
@@ -2894,6 +2923,7 @@
 				1824408B17C7A98400274B2C /* acc-locked@2x.png in Resources */,
 				1824409217C7B24400274B2C /* acc-lock_inactive.png in Resources */,
 				1824409317C7B24400274B2C /* acc-lock_inactive@2x.png in Resources */,
+				18A6C4D917C901380019EB51 /* DASupportTipCtrl.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3039,6 +3069,8 @@
 				1824406017C77B2A00274B2C /* CustomAlert.m in Sources */,
 				1824406A17C7874400274B2C /* AlertCtrl.m in Sources */,
 				1824407617C7996F00274B2C /* DAAccountCredentials.m in Sources */,
+				1824409717C8B8C700274B2C /* DASettings.m in Sources */,
+				18A6C4D817C901380019EB51 /* DASupportTipCtrl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

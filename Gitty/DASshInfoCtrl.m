@@ -36,6 +36,17 @@
 	[self.webView loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
+#pragma mark UIWebViewDelegate
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+	
+	if (UIWebViewNavigationTypeLinkClicked == navigationType) {
+		[UIApplication.sharedApplication openURL:request.URL];
+		return NO;
+	}
+	return YES;
+}
+
 #pragma mark Actions
 
 - (IBAction)closePressed:(UIBarButtonItem *)sender {

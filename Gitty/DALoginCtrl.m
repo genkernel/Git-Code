@@ -9,6 +9,7 @@
 #import "DALoginCtrl.h"
 #import "DARepoCtrl.h"
 #import "DAServerCtrl.h"
+#import "DAServerCtrl+Animation.h"
 #import "DANewServerCtrl.h"
 #import "DARecentReposCtrl.h"
 #import "DASshTipCtrl.h"
@@ -118,13 +119,6 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	[self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
-	
-//	CustomAlert *alert = [CustomAlert alertPresentingCtrl:DASshTipCtrl.viewCtrl];
-//	[AlertQueue.queue enqueueAlert:alert];
-}
-
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 	[DAFlurry logScreenDisappear:self.className];
@@ -137,6 +131,22 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		return GitServerBitbucket;
 	} else {
 		return GitServerCustom;
+	}
+}
+
+- (void)logLoginAction {
+	static NSString *login = @"Login.Login-Expand";
+	
+	int actionCounter = [DASettings.currentUserSettings doAction:login];
+	if (1 == actionCounter || 5 == actionCounter || 50 == actionCounter) {
+		
+		BOOL isSshSupportedByServer = [DASshCredentials.manager hasSshKeypairSupportForServer:self.currentServer];
+		if (isSshSupportedByServer) {
+			return;
+		}
+		
+		CustomAlert *alert = [CustomAlert alertPresentingCtrl:DASshTipCtrl.viewCtrl];
+		[AlertQueue.queue enqueueAlert:alert];
 	}
 }
 
@@ -253,6 +263,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	
 	((PagerItemView *)ctrl.view).identifier = DAServerCtrl.className;
 	
+	[ctrl.loginButton addTarget:self action:@selector(loginDidClick:) forControlEvents:UIControlEventTouchUpInside];
 	[ctrl.exploreButton addTarget:self action:@selector(exploreDidClick:) forControlEvents:UIControlEventTouchUpInside];
 	[ctrl.recentReposButton addTarget:self action:@selector(recentReposDidClick:) forControlEvents:UIControlEventTouchUpInside];
 	
@@ -345,6 +356,14 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 }
 
 #pragma mark Actions
+
+- (void)loginDidClick:(UIButton *)sender {
+	[self.currentCtrl setCredentialsVisible:!self.currentCtrl.isUsingCredentials animated:YES];
+	
+	if (self.currentCtrl.isUsingCredentials) {
+		[self logLoginAction];
+	}
+}
 
 - (void)exploreDidClick:(UIButton *)sender {
 	[self.currentCtrl startProgressing];

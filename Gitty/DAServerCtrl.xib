@@ -166,7 +166,6 @@
 								<string key="NSFrame">{{150, 60}, {1, 182}}</string>
 								<reference key="NSSuperview" ref="793769138"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<reference key="IBUIBackgroundColor" ref="940618581"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
@@ -413,7 +412,6 @@
 				<string key="NSFrameSize">{26, 17}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<bool key="IBUIOpaque">NO</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -433,23 +431,22 @@
 					<string key="NSClassName">NSImage</string>
 					<string key="NSResourceName">RecentRepos.png</string>
 				</object>
-				<object class="IBUIFontDescription" key="IBUIFontDescription" id="308402591">
+				<object class="IBUIFontDescription" key="IBUIFontDescription" id="95569889">
 					<int key="type">2</int>
 					<double key="pointSize">15</double>
 				</object>
-				<object class="NSFont" key="IBUIFont" id="351044961">
+				<object class="NSFont" key="IBUIFont" id="215789804">
 					<string key="NSName">Helvetica-Bold</string>
 					<double key="NSSize">15</double>
 					<int key="NSfFlags">16</int>
 				</object>
 			</object>
-			<object class="IBUIButton" id="611638191">
+			<object class="IBUIButton" id="955963261">
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<string key="NSFrameSize">{50, 31}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<bool key="IBUIOpaque">NO</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -461,28 +458,27 @@
 					<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 				</object>
 				<reference key="IBUINormalTitleShadowColor" ref="599927999"/>
-				<object class="NSCustomResource" key="IBUIDisabledImage" id="955934726">
+				<object class="NSCustomResource" key="IBUIDisabledImage" id="756978826">
 					<string key="NSClassName">NSImage</string>
 					<string key="NSResourceName">acc-lock_inactive.png</string>
 				</object>
-				<object class="NSCustomResource" key="IBUISelectedImage" id="281818977">
+				<object class="NSCustomResource" key="IBUISelectedImage" id="430215253">
 					<string key="NSClassName">NSImage</string>
 					<string key="NSResourceName">acc-locked.png</string>
 				</object>
-				<object class="NSCustomResource" key="IBUINormalImage" id="797182661">
+				<object class="NSCustomResource" key="IBUINormalImage" id="148114022">
 					<string key="NSClassName">NSImage</string>
 					<string key="NSResourceName">acc-lock.png</string>
 				</object>
-				<reference key="IBUIFontDescription" ref="308402591"/>
-				<reference key="IBUIFont" ref="351044961"/>
+				<reference key="IBUIFontDescription" ref="95569889"/>
+				<reference key="IBUIFont" ref="215789804"/>
 			</object>
-			<object class="IBUIButton" id="593439336">
+			<object class="IBUIButton" id="533091652">
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<string key="NSFrameSize">{50, 31}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<bool key="IBUIOpaque">NO</bool>
 				<int key="IBUITag">1</int>
@@ -495,11 +491,11 @@
 					<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 				</object>
 				<reference key="IBUINormalTitleShadowColor" ref="599927999"/>
-				<reference key="IBUIDisabledImage" ref="955934726"/>
-				<reference key="IBUISelectedImage" ref="281818977"/>
-				<reference key="IBUINormalImage" ref="797182661"/>
-				<reference key="IBUIFontDescription" ref="308402591"/>
-				<reference key="IBUIFont" ref="351044961"/>
+				<reference key="IBUIDisabledImage" ref="756978826"/>
+				<reference key="IBUISelectedImage" ref="430215253"/>
+				<reference key="IBUINormalImage" ref="148114022"/>
+				<reference key="IBUIFontDescription" ref="95569889"/>
+				<reference key="IBUIFont" ref="215789804"/>
 			</object>
 			<object class="IBUIToolbar" id="68108816">
 				<reference key="NSNextResponder"/>
@@ -508,7 +504,6 @@
 				<string key="NSFrameSize">{320, 44}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<bool key="IBUIOpaque">NO</bool>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -678,7 +673,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">lockUsernameButton</string>
 						<reference key="source" ref="61005913"/>
-						<reference key="destination" ref="611638191"/>
+						<reference key="destination" ref="955963261"/>
 					</object>
 					<string key="id">vFh-xv-qcX</string>
 				</object>
@@ -686,7 +681,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">lockPasswordButton</string>
 						<reference key="source" ref="61005913"/>
-						<reference key="destination" ref="593439336"/>
+						<reference key="destination" ref="533091652"/>
 					</object>
 					<string key="id">ORJ-Cg-uTR</string>
 				</object>
@@ -708,17 +703,8 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">didClickLogin:</string>
-						<reference key="source" ref="114661225"/>
-						<reference key="destination" ref="61005913"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<string key="id">s7g-YN-fOw</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">lockOrUnlockField:</string>
-						<reference key="source" ref="611638191"/>
+						<reference key="source" ref="955963261"/>
 						<reference key="destination" ref="61005913"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -735,7 +721,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">lockOrUnlockField:</string>
-						<reference key="source" ref="593439336"/>
+						<reference key="source" ref="533091652"/>
 						<reference key="destination" ref="61005913"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -2314,13 +2300,13 @@
 					</object>
 					<object class="IBObjectRecord">
 						<string key="id">Syi-AE-zdY</string>
-						<reference key="object" ref="611638191"/>
+						<reference key="object" ref="955963261"/>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Lock Username Button</string>
 					</object>
 					<object class="IBObjectRecord">
 						<string key="id">q3B-YN-Rj3</string>
-						<reference key="object" ref="593439336"/>
+						<reference key="object" ref="533091652"/>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Lock Password Button</string>
 					</object>

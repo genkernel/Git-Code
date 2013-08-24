@@ -17,10 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	UIImage *img = [UIImage imageNamed:@"popup_arrow-light.png"];
-	img = [img resizableImageWithCapInsets:UIEdgeInsetsMake(8, 46, 28, 10)];
+	{
+		UIImage *img = [UIImage imageNamed:@"popup_arrow-light.png"];
+		img = [img resizableImageWithCapInsets:UIEdgeInsetsMake(8, 46, 28, 10)];
+		
+		self.border.image = img;
+	}
 	
-	self.border.image = img;
+	[self.gotItButton applyBlueStyle];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -31,8 +35,10 @@
 	}];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
+#pragma mark Actions
+
+- (IBAction)gitItPressed:(UIButton *)sender {
+	[self.alertPresenter dismissAnimated:YES];
 }
 
 @end

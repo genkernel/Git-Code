@@ -1,5 +1,8 @@
 Version 1.1 updates:
 
+
+No need to provide username/password when connecting to private repos via SSH.
+
 Account username/password saving feature.
 
 New Tags list along with Branch list view.

@@ -249,7 +249,6 @@
 								<string key="NSFrame">{{175, 190}, {100, 30}}</string>
 								<reference key="NSSuperview" ref="1046588296"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="IBUIContentStretch">{{0, 0}, {0.10000000000000001, 0.10000000000000001}}</string>
@@ -1343,6 +1342,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">DASupportTipCtrl</string>
 					<string key="superclassName">AlertCtrl</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">gotItPressed:</string>
+						<string key="NS.object.0">UIButton</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">gotItPressed:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">gotItPressed:</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">gotItButton</string>
 						<string key="NS.object.0">UIButton</string>

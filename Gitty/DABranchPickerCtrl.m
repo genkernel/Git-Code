@@ -93,6 +93,12 @@
 }
 
 - (void)setCurrentBranch:(GTBranch *)branch {
+	if (self.currentBranch) {
+		NSUInteger row = [self.branches indexOfObject:self.currentBranch];
+		NSIndexPath *ip = [NSIndexPath indexPathForRow:row inSection:0];
+		[self deselectCellAtIndexPath:ip table:self.branchesTable];
+	}
+	
 	_currentBranch = branch;
 	
 	NSUInteger idx = [self.branches indexOfObject:branch];
@@ -104,6 +110,12 @@
 }
 
 - (void)setCurrentTag:(GTTag *)tag {
+	if (self.currentTag) {
+		NSUInteger row = [self.tags indexOfObject:self.currentTag];
+		NSIndexPath *ip = [NSIndexPath indexPathForRow:row inSection:0];
+		[self deselectCellAtIndexPath:ip table:self.tagsTable];
+	}
+	
 	_currentTag = tag;
 	
 	NSUInteger idx = [self.tags indexOfObject:tag];

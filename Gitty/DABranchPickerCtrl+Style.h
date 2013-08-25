@@ -13,4 +13,5 @@
 
 - (void)updateSelectedCellWithRowNumber:(NSInteger)row inTable:(UITableView *)table;
 - (void)toggleSelectedCellWithNewIndexPath:(NSIndexPath *)ip inTable:(UITableView *)table;
+- (void)deselectCellAtIndexPath:(NSIndexPath *)ip table:(UITableView *)table;
 @end

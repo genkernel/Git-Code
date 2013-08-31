@@ -181,7 +181,6 @@
 		189016F0175AC46400F19CE4 /* UIDevice+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 189016E3175AC46400F19CE4 /* UIDevice+Helper.m */; };
 		189016F1175AC46400F19CE4 /* UncaughtExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 189016E6175AC46400F19CE4 /* UncaughtExceptionHandler.m */; };
 		18901726175AC47000F19CE4 /* ActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189016FA175AC47000F19CE4 /* ActivityIndicatorView.m */; };
-		18901727175AC47000F19CE4 /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189016FD175AC47000F19CE4 /* AlertView.m */; };
 		18901728175AC47000F19CE4 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 18901700175AC47000F19CE4 /* Button.m */; };
 		18901729175AC47000F19CE4 /* ContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18901703175AC47000F19CE4 /* ContainerController.m */; };
 		1890172A175AC47000F19CE4 /* DismissPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18901708175AC47000F19CE4 /* DismissPopupView.m */; };
@@ -616,8 +615,6 @@
 		189016E6175AC46400F19CE4 /* UncaughtExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UncaughtExceptionHandler.m; sourceTree = "<group>"; };
 		189016F9175AC47000F19CE4 /* ActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIndicatorView.h; sourceTree = "<group>"; };
 		189016FA175AC47000F19CE4 /* ActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIndicatorView.m; sourceTree = "<group>"; };
-		189016FC175AC47000F19CE4 /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertView.h; sourceTree = "<group>"; };
-		189016FD175AC47000F19CE4 /* AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertView.m; sourceTree = "<group>"; };
 		189016FF175AC47000F19CE4 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
 		18901700175AC47000F19CE4 /* Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Button.m; sourceTree = "<group>"; };
 		18901702175AC47000F19CE4 /* ContainerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerController.h; sourceTree = "<group>"; };
@@ -1777,7 +1774,6 @@
 				189BCF1F1783572B0023F093 /* PageControl */,
 				18F04E39176FC96F0035C918 /* UITextField */,
 				189016F8175AC47000F19CE4 /* ActivityIndicator */,
-				189016FB175AC47000F19CE4 /* AlertView */,
 				189016FE175AC47000F19CE4 /* Button */,
 				18901701175AC47000F19CE4 /* ContentCtrl */,
 				18901706175AC47000F19CE4 /* DismissPopup */,
@@ -1804,15 +1800,6 @@
 				189016FA175AC47000F19CE4 /* ActivityIndicatorView.m */,
 			);
 			path = ActivityIndicator;
-			sourceTree = "<group>";
-		};
-		189016FB175AC47000F19CE4 /* AlertView */ = {
-			isa = PBXGroup;
-			children = (
-				189016FC175AC47000F19CE4 /* AlertView.h */,
-				189016FD175AC47000F19CE4 /* AlertView.m */,
-			);
-			path = AlertView;
 			sourceTree = "<group>";
 		};
 		189016FE175AC47000F19CE4 /* Button */ = {
@@ -2980,7 +2967,6 @@
 				1812EBF0179AF4C800416064 /* NSAttributedString+Gitty.m in Sources */,
 				1804FA84176E15DB0080AB50 /* PagerItemViewContainer.m in Sources */,
 				18901726175AC47000F19CE4 /* ActivityIndicatorView.m in Sources */,
-				18901727175AC47000F19CE4 /* AlertView.m in Sources */,
 				18901728175AC47000F19CE4 /* Button.m in Sources */,
 				18438B561777A5B000943F9F /* NSString+Cryptor.m in Sources */,
 				1804FA8B176E2AFD0080AB50 /* UIButton+Gitty.m in Sources */,

@@ -90,10 +90,15 @@
 	
 	BOOL isStatsShown = DAStatsFullscreenMode == mode;
 	
+	const CGFloat navBarHeight = self.navigationController.navigationBar.height;
+	const CGFloat statusBarHeight = UIApplication.sharedApplication.statusBarFrame.size.height;
+	const CGFloat topOffset = statusBarHeight + navBarHeight;
+	
 	// Elements strict DAStatsContainerModes ordering.
 	CGFloat offsets[] = {
-		50./*stats header img black part height*/ - self.grabButton.height,
-		-self.grabButton.height,
+		navBarHeight + self.grabButton.height,
+//		50./*stats header img black part height*/ - self.grabButton.height,
+		topOffset - self.grabButton.height,
 		self.view.height - self.grabButton.height
 	};
 	
@@ -149,6 +154,7 @@
 	CGFloat offset = self.navigationController.navigationBar.height;
 	offset *= hidden ? 1 : -1;
 	
+	self.mainContainerTop.constant -= offset;
 	self.mainContainerHeight.constant += offset;
 
 	[UIView animateWithDuration:LightningAnimationDuration animations:^{

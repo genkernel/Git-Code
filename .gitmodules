@@ -16,3 +16,6 @@
 [submodule "Submodules/TreeView"]
 	path = Submodules/TreeView
 	url = https://github.com/genkernel/TreeView.git
+[submodule "Submodules/ViewDeck"]
+	path = Submodules/ViewDeck
+	url = https://github.com/foursquare/ViewDeck.git

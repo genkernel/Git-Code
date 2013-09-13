@@ -98,7 +98,6 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	[DAFlurry logProtocol:self.repoServer.transferProtocol];
 	
 	//
-	[self.navigationController setNavigationBarHidden:isNavBarHiddenByThisCtrl animated:YES];
 	// FIXME: come up with better solution.
 	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(LightningAnimationDuration * NSEC_PER_SEC));
 	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -130,6 +129,8 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	[DAFlurry logScreenAppear:self.className];
+	
+	[self.navigationController setNavigationBarHidden:isNavBarHiddenByThisCtrl animated:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

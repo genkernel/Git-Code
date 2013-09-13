@@ -231,6 +231,9 @@
 		18BAA8641758016400154019 /* GitServers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18BAA85F1758016400154019 /* GitServers.plist */; };
 		18BAA8651758016400154019 /* DAGitServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAA8611758016400154019 /* DAGitServer.m */; };
 		18BAA8661758016400154019 /* DAServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BAA8631758016400154019 /* DAServerManager.m */; };
+		18C4158317DA58CA007B514D /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C4157E17DA58CA007B514D /* IISideController.m */; };
+		18C4158417DA58CA007B514D /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C4158017DA58CA007B514D /* IIViewDeckController.m */; };
+		18C4158517DA58CA007B514D /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C4158217DA58CA007B514D /* IIWrapController.m */; };
 		18C94433175B93C400A4D7CA /* DABranchPickerCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C94432175B93C400A4D7CA /* DABranchPickerCtrl.m */; };
 		18CF75A91788E71200209141 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CF75A81788E71200209141 /* CoreText.framework */; };
 		18CF75B91788E8EE00209141 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CF75B81788E8EE00209141 /* libxml2.2.dylib */; };
@@ -921,6 +924,12 @@
 		18BAA8611758016400154019 /* DAGitServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitServer.m; sourceTree = "<group>"; };
 		18BAA8621758016400154019 /* DAServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAServerManager.h; sourceTree = "<group>"; };
 		18BAA8631758016400154019 /* DAServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAServerManager.m; sourceTree = "<group>"; };
+		18C4157D17DA58CA007B514D /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
+		18C4157E17DA58CA007B514D /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
+		18C4157F17DA58CA007B514D /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
+		18C4158017DA58CA007B514D /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
+		18C4158117DA58CA007B514D /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
+		18C4158217DA58CA007B514D /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
 		18C94431175B93C400A4D7CA /* DABranchPickerCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABranchPickerCtrl.h; sourceTree = "<group>"; };
 		18C94432175B93C400A4D7CA /* DABranchPickerCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABranchPickerCtrl.m; sourceTree = "<group>"; };
 		18CF75A81788E71200209141 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -1449,6 +1458,7 @@
 		183DA6F3175549BC00140DA8 /* Submodules */ = {
 			isa = PBXGroup;
 			children = (
+				18C4157C17DA58CA007B514D /* ViewDeck */,
 				18DF1BDE17BF9B1E007D312A /* TreeTable */,
 				187A29DC1795DFD400FE9F19 /* STUtils */,
 				18F86ECA1793179E0055900C /* ZipArchive */,
@@ -2426,6 +2436,20 @@
 			path = GitServer;
 			sourceTree = "<group>";
 		};
+		18C4157C17DA58CA007B514D /* ViewDeck */ = {
+			isa = PBXGroup;
+			children = (
+				18C4157D17DA58CA007B514D /* IISideController.h */,
+				18C4157E17DA58CA007B514D /* IISideController.m */,
+				18C4157F17DA58CA007B514D /* IIViewDeckController.h */,
+				18C4158017DA58CA007B514D /* IIViewDeckController.m */,
+				18C4158117DA58CA007B514D /* IIWrapController.h */,
+				18C4158217DA58CA007B514D /* IIWrapController.m */,
+			);
+			name = ViewDeck;
+			path = Submodules/ViewDeck/ViewDeck;
+			sourceTree = "<group>";
+		};
 		18C9441C175B6B3E00A4D7CA /* BranchPickerCtrl */ = {
 			isa = PBXGroup;
 			children = (
@@ -2727,6 +2751,11 @@
 				CLASSPREFIX = DA;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = ReImpl;
+				TargetAttributes = {
+					18933CD31755395C00E92183 = {
+						DevelopmentTeam = 79Q5K765J7;
+					};
+				};
 			};
 			buildConfigurationList = 18933CCF1755395C00E92183 /* Build configuration list for PBXProject "Gitty" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2959,6 +2988,7 @@
 				189016ED175AC46400F19CE4 /* NSString+Helper.m in Sources */,
 				18438B611777A8CC00943F9F /* DAGravatar.m in Sources */,
 				189016EE175AC46400F19CE4 /* UIApplication+Filesystem.m in Sources */,
+				18C4158517DA58CA007B514D /* IIWrapController.m in Sources */,
 				1861887B176E145F00666DFB /* DAServerCtrl.m in Sources */,
 				18F04E3C176FC9F80035C918 /* UITextField+Helper.m in Sources */,
 				189016EF175AC46400F19CE4 /* UIApplication+General.m in Sources */,
@@ -2996,6 +3026,7 @@
 				18706EE31764075D0046A2A6 /* UIColor+Gitty.m in Sources */,
 				186A92E21778522C00B2EEF3 /* DAStatusHeader.m in Sources */,
 				186A92F41778BD4C00B2EEF3 /* UITextField+Gitty.m in Sources */,
+				18C4158317DA58CA007B514D /* IISideController.m in Sources */,
 				18A8E20D177B644800DBD973 /* DADiffCtrlDataSource.m in Sources */,
 				18FD1D0C177F4C8900DE4851 /* UIImage+Utils.m in Sources */,
 				18FD1D0D177F4C8C00DE4851 /* UIImage+Resize.m in Sources */,
@@ -3047,6 +3078,7 @@
 				1833E16317C4FA0100397F7F /* AFXMLRequestOperation.m in Sources */,
 				1833E16417C4FA0100397F7F /* UIImageView+AFNetworking.m in Sources */,
 				1833E16517C4FA0100397F7F /* SBJsonParser.m in Sources */,
+				18C4158417DA58CA007B514D /* IIViewDeckController.m in Sources */,
 				1833E16617C4FA0100397F7F /* SBJsonStreamParser.m in Sources */,
 				1833E16717C4FA0100397F7F /* SBJsonStreamParserAccumulator.m in Sources */,
 				1833E16817C4FA0100397F7F /* SBJsonStreamParserAdapter.m in Sources */,
@@ -3167,7 +3199,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_FAST_MATH = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3187,6 +3219,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Submodules/objective-git/libgit2/include $(SRCROOT)/Submodules/ConceptScroll/PagerView $(SRCROOT)/Submodules/ZipArchive/ $(SRCROOT)/Submodules/objective-git/Classes $(SRCROOT)/Submodules/objective-git/Classes/Categories/";
 				WRAPPER_EXTENSION = app;
@@ -3197,8 +3230,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ANTON ALTUKHOV";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_FAST_MATH = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3219,7 +3252,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "94763375-9CE5-48D0-BB74-C849076C8DFC";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "62A31995-E026-488C-8615-AF853435C8F3";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Submodules/objective-git/libgit2/include $(SRCROOT)/Submodules/ConceptScroll/PagerView $(SRCROOT)/Submodules/ZipArchive/ $(SRCROOT)/Submodules/objective-git/Classes $(SRCROOT)/Submodules/objective-git/Classes/Categories/";
 				WRAPPER_EXTENSION = app;
 			};

@@ -83,7 +83,7 @@
 		[_statsCtrl reloadStatsData:walk];
 		
 		[self setPullingVisible:NO animated:YES];
-		[self addForgetButton];
+		[self addBranchesButton];
 	}];
 }
 

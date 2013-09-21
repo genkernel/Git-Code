@@ -8,10 +8,11 @@
 
 #import "DASshInfoCtrl.h"
 
-@interface DASshInfoCtrl ()
-@end
-
 @implementation DASshInfoCtrl
+
+- (BOOL)prefersStatusBarHidden {
+	return YES;
+}
 
 - (void)viewDidLoad {
 	[super viewDidLoad];

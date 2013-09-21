@@ -85,10 +85,6 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	UIImage *img = [UIImage imageNamed:@"branch-selector.png"];
-	img = [img resizableImageWithCapInsets:UIEdgeInsetsMake(0, 24, img.size.height - 100, 0)];
-	[self.revealBranchOverlayButton setBackgroundImage:img forState:UIControlStateNormal];
-	
 	_statsSelectedModeButton = self.statsSwitchModeButtons[0];
 	
 	[self setupCells];
@@ -154,9 +150,9 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	[self setDiffLoadingOverlayVisible:NO animated:NO];
 }
 
-- (void)addForgetButton {
+- (void)addBranchesButton {
 	self.navigationItem.titleView = self.branchCustomTitleContainer;
-	self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.forgetButton];
+	self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.branchesButton];
 }
 
 - (void)reloadFilters {
@@ -392,39 +388,10 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 		}
 	}
 }
-
+// hi
+/*
 - (void)toggleBranchOverlayMode {
 	[self setBranchOverlayVisible:!isBranchOverlayVisible animated:YES];
-}
-
-- (IBAction)branchDidDrag:(UIPanGestureRecognizer *)gr {
-	CGPoint p = [gr translationInView:self.view];
-	
-	if (UIGestureRecognizerStateBegan == gr.state) {
-		branchContainerOffsetBeforeDragging = self.branchOverlayLeft.constant;
-		
-	} else if (UIGestureRecognizerStateChanged == gr.state) {
-		CGFloat x = branchContainerOffsetBeforeDragging + p.x;
-		
-		if (x >= .0 && x < self.view.width) {
-			self.branchOverlayLeft.constant = x;
-		}
-		
-	} else if (UIGestureRecognizerStateEnded == gr.state) {
-		CGFloat offset = fabsf(p.x);
-		
-		if (offset >= BranchOverlyMinDraggingOffsetToSwitchState) {
-			[self toggleBranchOverlayMode];
-			[DAFlurry logWorkflowAction:WorkflowActionBranchListDrag];
-		} else {
-			// Decelerate back to original position (before dragging).
-			self.branchOverlayLeft.constant = branchContainerOffsetBeforeDragging;
-			
-			[UIView animateWithDuration:StandartAnimationDuration animations:^{
-				[self.branchOverlay.superview layoutIfNeeded];
-			}];
-		}
-	}
-}
+}*/
 
 @end

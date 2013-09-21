@@ -26,6 +26,10 @@
 @property (strong, nonatomic) DACommitMessageCell *reuseSimpleCell;
 
 @property (strong, nonatomic) NSIndexPath *selectedCommitIndexPath;
+
+- (void)reloadFilters;
+- (void)addBranchesButton;
+- (void)reloadCommitsAndOptionallyTable:(BOOL)shoudReloadTable;
 @end
 
 #endif

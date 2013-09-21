@@ -12,6 +12,8 @@
 @implementation DARepoCtrl (Animation)
 
 - (void)setBranchOverlayVisible:(BOOL)visible animated:(BOOL)animated {
+	// hi.
+	/*
 	if (isBranchOverlayVisible == visible) {
 		return;
 	}
@@ -29,7 +31,7 @@
 		self.branchPickerCtrl.visibleTable.scrollsToTop = visible;
 	} completion:^(BOOL finished) {
 		[self setNavigationBarHidden:isBranchOverlayVisible animated:YES];
-	}];
+	}];*/
 	
 	NSString *action = visible ? WorkflowActionBranchListShown : WorkflowActionBranchListHidden;
 	[DAFlurry logWorkflowAction:action];
@@ -123,7 +125,7 @@
 			self.navigationItem.titleView = self.branchCustomTitleContainer;
 			self.title = self.currentBranch ? self.currentBranch.shortName : self.currentTag.name;
 			
-			self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.forgetButton];
+			self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.branchesButton];
 		}
 		
 		_statsCtrl.commitsTable.scrollsToTop = isStatsShown;

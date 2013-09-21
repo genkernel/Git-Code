@@ -25,4 +25,7 @@
 + (UIColor *)branchNameTintColor;
 + (UIColor *)authorNameTintColor;
 + (UIColor *)commitNameTintColor;
+
++ (UIColor *)bluringColor;
++ (UIColor *)barBluringColor;
 @end

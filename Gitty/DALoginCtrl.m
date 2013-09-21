@@ -16,6 +16,9 @@
 #import "DASshTipCtrl.h"
 #import "DASupportTipCtrl.h"
 
+#import "DASshInfoCtrl.h"
+#import "DAFeedbackCtrl.h"
+
 #import "DAGitServer+Creation.h"
 
 static const NSUInteger MaximumServersCount = 10;
@@ -24,7 +27,6 @@ static NSString *RepoSegue = @"RepoSegue";
 static NSString *SshInfoSegue = @"SshInfoSegue";
 static NSString *SettingsSegue = @"SettingsSegue";
 static NSString *FeedbackSegue = @"FeedbackSegue";
-static NSString *RecentReposSegue = @"RecentReposSegue";
 
 static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 
@@ -54,19 +56,6 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	} else if ([segue.identifier isEqualToString:SshInfoSegue]) {
 	} else if ([segue.identifier isEqualToString:SettingsSegue]) {
 	} else if ([segue.identifier isEqualToString:FeedbackSegue]) {
-	} else if ([segue.identifier isEqualToString:RecentReposSegue]) {
-		DARecentReposCtrl *ctrl = segue.destinationViewController;
-		ctrl.server = self.currentServer;
-		
-		__weak DALoginCtrl *ref = self;
-		ctrl.cancelAction = ^{
-			[ref dismissViewControllerAnimated:YES completion:nil];
-		};
-		ctrl.selectAction = ^(NSDictionary *repo){
-			ref.currentCtrl.repoField.text = repo.relativePath;
-			
-			[ref dismissViewControllerAnimated:YES completion:nil];
-		};
 	} else {
 		[super prepareForSegue:segue sender:sender];
 	}
@@ -397,7 +386,23 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 }
 
 - (void)recentReposDidClick:(UIButton *)sender {
-	[self performSegueWithIdentifier:RecentReposSegue sender:nil];
+	DARecentReposCtrl *ctrl = [self.storyboard instantiateViewControllerWithIdentifier:DARecentReposCtrl.className];
+	
+	ctrl.server = self.currentServer;
+	ctrl.presentationOption = DASlideFromTopToBottomPresentation;
+	
+	__weak DALoginCtrl *ref = self;
+	
+	ctrl.cancelAction = ^{
+		[ref dismissViewControllerAnimated:YES completion:nil];
+	};
+	ctrl.selectAction = ^(NSDictionary *repo){
+		ref.currentCtrl.repoField.text = repo.relativePath;
+		
+		[ref dismissViewControllerAnimated:YES completion:nil];
+	};
+	
+	[self presentViewController:ctrl animated:YES completion:nil];
 }
 
 - (void)createDidClick:(UIButton *)sender {
@@ -433,6 +438,20 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	[self.pager reloadData];
 	
 	[DAFlurry logWorkflowAction:WorkflowActionCustomServerCreated];
+}
+
+- (IBAction)aboutClicked:(UIButton *)sender {
+	DAFeedbackCtrl *ctrl = [self.storyboard instantiateViewControllerWithIdentifier:DAFeedbackCtrl.className];
+	ctrl.presentationOption = DASlideFromBottomToTopPresentation;
+	
+	[self presentViewController:ctrl animated:YES completion:nil];
+}
+
+- (IBAction)sshClicked:(UIButton *)sender {
+	DASshInfoCtrl *ctrl = [self.storyboard instantiateViewControllerWithIdentifier:DASshInfoCtrl.className];
+	ctrl.presentationOption = DASlideFromBottomToTopPresentation;
+	
+	[self presentViewController:ctrl animated:YES completion:nil];
 }
 
 @end

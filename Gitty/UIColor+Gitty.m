@@ -62,4 +62,27 @@
 	return [UIColor colorWithRed:51./255. green:153./255. blue:1. alpha:1.];
 }
 
++ (UIColor *)bluringColor {
+	static UIColor *color = nil;
+	
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		color = [UIColor colorWithWhite:.9 alpha:1];
+//		color = [UIColor colorWithRed:.66 green:.68 blue:.70 alpha:1];
+	});
+	
+	return color;
+}
+
++ (UIColor *)barBluringColor {
+	static UIColor *color = nil;
+	
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		color = [UIColor darkGrayColor];
+	});
+	
+	return color;
+}
+
 @end

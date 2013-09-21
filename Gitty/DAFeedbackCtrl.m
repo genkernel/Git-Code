@@ -13,6 +13,10 @@
 
 @implementation DAFeedbackCtrl
 
+- (BOOL)prefersStatusBarHidden {
+	return YES;
+}
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
@@ -49,7 +53,6 @@
 	
 	return YES;
 }
-
 
 #pragma mark Actions
 

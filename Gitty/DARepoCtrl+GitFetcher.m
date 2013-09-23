@@ -57,13 +57,6 @@
 		[ctrl reloadFilters];
 		[ctrl reloadCommitsAndOptionallyTable:YES];
 		
-		if (isBranchOverlayVisible) {
-			self.branchPickerCtrl.tags = self.tags;
-			self.branchPickerCtrl.branches = self.remoteBranches;
-			
-			[self.branchPickerCtrl reloadUI];
-		}
-		
 		[ctrl loadStats];
 		
 		[DAFlurry logGitAction:GitActionPullSuccess];

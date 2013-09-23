@@ -9,7 +9,6 @@
 #import "DARepoCtrl.h"
 
 @interface DARepoCtrl (Animation)
-- (void)setBranchOverlayVisible:(BOOL)visible animated:(BOOL)animated;
 - (void)setDiffLoadingOverlayVisible:(BOOL)visible animated:(BOOL)animated;
 
 - (void)setPullingVisible:(BOOL)visible animated:(BOOL)animated;

@@ -24,9 +24,9 @@ extern NSString *GitActionCloneSuccess, *GitActionPullSuccess;
 extern NSString *GitServerGithub, *GitServerBitbucket, *GitServerCustom;
 
 extern NSString *WorkflowActionDiffPortrait, *WorkflowActionDiffLandscape;
-extern NSString *WorkflowActionBranchListShown, *WorkflowActionBranchListHidden;
+//extern NSString *WorkflowActionBranchListShown, *WorkflowActionBranchListHidden;
 
-extern NSString *WorkflowActionBranchListTouch, *WorkflowActionBranchListDrag;
+//extern NSString *WorkflowActionBranchListTouch, *WorkflowActionBranchListDrag;
 
 extern NSString *WorkflowActionRepoForgotten, *WorkflowActionRepoRemoved, *WorkflowActionRepoAllRemoved;
 extern NSString *WorkflowActionBranchSwitched, *WorkflowActionTagSwitched, *WorkflowActionCustomServerCreated;

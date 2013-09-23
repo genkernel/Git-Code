@@ -577,7 +577,7 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="forgetPressed:" destination="Vzr-74-RmI" eventType="touchUpInside" id="k8q-1v-0sZ"/>
+                        <action selector="rightOptionPressed:" destination="Vzr-74-RmI" eventType="touchUpInside" id="dsU-v4-H1A"/>
                     </connections>
                 </button>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="nQg-SP-kER" userLabel="Stats Pan Gesture">
@@ -588,7 +588,6 @@
                 </panGestureRecognizer>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="2BV-GF-X4j" userLabel="Branch Pan Gesture">
                     <connections>
-                        <action selector="branchDidDrag:" destination="Vzr-74-RmI" id="fDc-QJ-pRI"/>
                         <outlet property="delegate" destination="Vzr-74-RmI" id="qIC-ZU-XgM"/>
                     </connections>
                 </panGestureRecognizer>
@@ -704,7 +703,7 @@ yet.</string>
         <!--Branch Picker Ctrl-->
         <scene sceneID="1Ek-4k-NnR">
             <objects>
-                <viewController id="ALf-gj-3jW" customClass="DABranchPickerCtrl" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DABranchPickerCtrl" id="ALf-gj-3jW" customClass="DABranchPickerCtrl" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iWe-fs-zD6"/>
                         <viewControllerLayoutGuide type="bottom" id="geW-fR-ZWc"/>
@@ -732,7 +731,7 @@ yet.</string>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Nvk-ce-TBf" userLabel="Branches Table">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="320" id="O79-h8-lPY"/>
                                         </constraints>
@@ -741,7 +740,7 @@ yet.</string>
                                             <outlet property="delegate" destination="ALf-gj-3jW" id="F7Y-Tr-EVp"/>
                                         </connections>
                                     </tableView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGG-WZ-MSu" userLabel="Tags">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGG-WZ-MSu" userLabel="Tags">
                                         <rect key="frame" x="320" y="0.0" width="320" height="475"/>
                                         <subviews>
                                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No tags found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGG-jP-Nd7" userLabel="No Tags Label">
@@ -755,14 +754,14 @@ yet.</string>
                                             </label>
                                             <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="K26-um-5tt" userLabel="Tags Table">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="ALf-gj-3jW" id="HRX-mH-1EW"/>
                                                     <outlet property="delegate" destination="ALf-gj-3jW" id="cZk-eV-coR"/>
                                                 </connections>
                                             </tableView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="K26-um-5tt" firstAttribute="bottom" secondItem="rGG-WZ-MSu" secondAttribute="bottom" id="0zD-sG-w0P"/>
                                             <constraint firstItem="K26-um-5tt" firstAttribute="leading" secondItem="rGG-WZ-MSu" secondAttribute="leading" id="1RB-Be-SOi"/>
@@ -775,7 +774,7 @@ yet.</string>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Nvk-ce-TBf" firstAttribute="top" secondItem="aGZ-39-Am7" secondAttribute="top" id="FXy-MO-Glp"/>
                                     <constraint firstAttribute="bottom" secondItem="rGG-WZ-MSu" secondAttribute="bottom" id="HQw-qk-BR1"/>
@@ -785,9 +784,8 @@ yet.</string>
                                     <constraint firstItem="rGG-WZ-MSu" firstAttribute="top" secondItem="aGZ-39-Am7" secondAttribute="top" id="tSG-vE-xbJ"/>
                                 </constraints>
                             </view>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bup-5o-kOO">
+                            <tabBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="bup-5o-kOO">
                                 <rect key="frame" x="0.0" y="519" width="320" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="3m8-0d-Rqd"/>
                                 </constraints>
@@ -795,14 +793,13 @@ yet.</string>
                                     <tabBarItem title="Branches" image="bar-branches.png" id="q7i-Kh-Zcf" userLabel="Branches Item"/>
                                     <tabBarItem tag="1" title="Tags" image="bar-tags.png" id="IPC-0d-ZcX" userLabel="Tags Item"/>
                                 </items>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="selectedImageTintColor" red="0.0" green="0.50980392159999999" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="ALf-gj-3jW" id="5Id-Im-ReW"/>
                                 </connections>
                             </tabBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aGZ-39-Am7" firstAttribute="trailing" secondItem="dvG-Hk-BYD" secondAttribute="trailing" id="0rv-ak-YIh"/>
                             <constraint firstItem="aGZ-39-Am7" firstAttribute="top" secondItem="47U-I9-wod" secondAttribute="bottom" id="BTF-4G-fPx"/>
@@ -1085,11 +1082,15 @@ by </string>
     </scenes>
     <resources>
         <image name="Grabber2_wide_top.png" width="90" height="11"/>
+        <image name="Grabber2_wide_top.png" width="90" height="11"/>
+        <image name="authors-white.png" width="35" height="21"/>
         <image name="authors-white.png" width="35" height="21"/>
         <image name="authors.png" width="35" height="21"/>
         <image name="bar-branches.png" width="44" height="13"/>
         <image name="bar-tags.png" width="33" height="27"/>
         <image name="branches-white.png" width="29" height="7"/>
+        <image name="branches-white.png" width="29" height="7"/>
+        <image name="branches.png" width="29" height="7"/>
         <image name="branches.png" width="29" height="7"/>
         <image name="fader-bottom.png" width="2" height="20"/>
         <image name="repo-forget.png" width="30" height="29"/>

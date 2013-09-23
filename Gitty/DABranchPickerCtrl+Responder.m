@@ -34,6 +34,7 @@
 			cell = [UITableViewCell.alloc initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:GTTag.className];
 		}
 		
+		cell.backgroundColor = UIColor.clearColor;
 		cell.selectionStyle = UITableViewCellSelectionStyleGray;
 	}
 	

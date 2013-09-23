@@ -13,11 +13,28 @@
 #import "DABranchPickerCtrl+Animation.h"
 #import "DABranchPickerCtrl+Responder.h"
 
-@interface DABranchPickerCtrl ()
-@end
-
 @implementation DABranchPickerCtrl
 @dynamic visibleTable;
+
+- (BOOL)prefersStatusBarHidden {
+	return YES;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	self = [super initWithCoder:aDecoder];
+	if (self) {
+		_selectedIndexPaths = [NSMutableArray arrayWithCapacity:DAListModesMax];
+		for (int i = 0; i < DAListModesMax; i++) {
+			self.selectedIndexPaths[i] = NSIndexPath.new;
+		}
+		
+		_filteredItems = [NSMutableArray arrayWithCapacity:DAListModesMax];
+		for (int i = 0; i < DAListModesMax; i++) {
+			self.filteredItems[i] = NSArray.new;
+		}
+	}
+	return self;
+}
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -29,19 +46,11 @@
 	[self.searchBar setKeyboardAppearance:UIKeyboardAppearanceAlert];
 	
 	self.tabBar.selectedItem = self.tabBar.items[DABranchList];
-	
-	_selectedIndexPaths = [NSMutableArray arrayWithCapacity:DAListModesMax];
-	for (int i = 0; i < DAListModesMax; i++) {
-		self.selectedIndexPaths[i] = NSIndexPath.new;
-	}
-	
-	_filteredItems = [NSMutableArray arrayWithCapacity:DAListModesMax];
-	for (int i = 0; i < DAListModesMax; i++) {
-		self.filteredItems[i] = NSArray.new;
-	}
 }
 
 - (void)loadItemsWithoutFilter {
+	assert(self.filteredItems);
+	
 	self.filteredItems[DATagList] = self.tags;
 	self.filteredItems[DABranchList] = self.branches;
 	

@@ -56,9 +56,9 @@ NSString *GitServerGithub = @"Github", *GitServerBitbucket = @"Bitbucket", *GitS
 
 NSString *WorkflowActionDiffPortrait = @"Diff - Portrait", *WorkflowActionDiffLandscape = @"Diff - Landscape";
 
-NSString *WorkflowActionBranchListShown = @"BranchList Opened", *WorkflowActionBranchListHidden = @"BranchList Closed";
+//NSString *WorkflowActionBranchListShown = @"BranchList Opened", *WorkflowActionBranchListHidden = @"BranchList Closed";
 
-NSString *WorkflowActionBranchListTouch = @"BranchList - Touch", *WorkflowActionBranchListDrag = @"BranchList - Drag";
+//NSString *WorkflowActionBranchListTouch = @"BranchList - Touch", *WorkflowActionBranchListDrag = @"BranchList - Drag";
 
 NSString *WorkflowActionRepoForgotten = @"Repo - Forgotten (files only)", *WorkflowActionRepoRemoved = @"Repo - Removed (completely)", *WorkflowActionRepoAllRemoved = @"Repo - All removed";
 NSString *WorkflowActionBranchSwitched = @"Branch switched", *WorkflowActionTagSwitched = @"Tag switched", *WorkflowActionCustomServerCreated = @"+Custom server created";

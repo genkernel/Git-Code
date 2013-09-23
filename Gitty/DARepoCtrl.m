@@ -19,7 +19,6 @@ static NSString *MasterBranchName = @"master";
 
 static NSString *DiffSegue = @"DiffSegue";
 static NSString *StatsSegue = @"StatsSegue";
-static NSString *BranchPickerSegue = @"BranchPickerSegue";
 
 static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
@@ -32,7 +31,6 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 
 
 @implementation DARepoCtrl {
-	NSUInteger forgetActionTag;
 	CGFloat statsContainerOffsetBeforeDragging;
 	CGFloat branchContainerOffsetBeforeDragging;
 	NSArray *_remoteBranches, *_tags;
@@ -45,34 +43,7 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 @synthesize namedBranches;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([segue.identifier isEqualToString:BranchPickerSegue]) {
-		_branchPickerCtrl = segue.destinationViewController;
-		
-		__weak DARepoCtrl *ref = self;
-		self.branchPickerCtrl.tagSelectedAction = ^(GTTag *selectedTag){
-			[ref setBranchOverlayVisible:NO animated:YES];
-			
-			BOOL changed = [ref selectTag:selectedTag];
-			if (changed) {
-				[ref reloadCommitsAndOptionallyTable:YES];
-				
-				[DAFlurry logWorkflowAction:WorkflowActionTagSwitched];
-			}
-		};
-		self.branchPickerCtrl.branchSelectedAction = ^(GTBranch *selectedBranch){
-			[ref setBranchOverlayVisible:NO animated:YES];
-			
-			BOOL changed = [ref selectBranch:selectedBranch];
-			if (changed) {
-				[ref reloadCommitsAndOptionallyTable:YES];
-				
-				[DAFlurry logWorkflowAction:WorkflowActionBranchSwitched];
-			}
-		};
-		self.branchPickerCtrl.cancelAction = ^{
-			[ref setBranchOverlayVisible:NO animated:YES];
-		};
-	} else if ([segue.identifier isEqualToString:DiffSegue]) {
+	if ([segue.identifier isEqualToString:DiffSegue]) {
 		DADiffCtrl *ctrl = segue.destinationViewController;
 		ctrl.diff = sender;
 	} else if ([segue.identifier isEqualToString:StatsSegue]) {
@@ -115,11 +86,6 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	} else {
 		[self pull];
 	}
-	
-	// Initial loading. Required as of long-time pulling + open via swipe case (so list is not empty).
-	self.branchPickerCtrl.tags = self.tags;
-	self.branchPickerCtrl.branches = self.remoteBranches;
-	[self.branchPickerCtrl loadItemsWithoutFilter];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -217,9 +183,6 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	_currentTag = tag;
 	_currentBranch = nil;
 	
-	self.branchPickerCtrl.currentTag = tag;
-	self.branchPickerCtrl.currentBranch = nil;
-	
 	self.title = tag.name;
 	self.branchCustomTitleLabel.text = tag.name;
 	
@@ -233,9 +196,6 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	
 	_currentTag = nil;
 	_currentBranch = branch;
-	
-	self.branchPickerCtrl.currentTag = nil;
-	self.branchPickerCtrl.currentBranch = branch;
 	
 	self.repoServer.recentBranchName = branch.shortName;
 	[self.servers save];
@@ -263,14 +223,14 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 		[self.commitsTable reloadData];
 	}
 }
-
+/*
 - (void)forgetRepo {
 	[self.navigationController popViewControllerAnimated:YES];
 	
 	[self.git removeExistingRepo:self.repoServer.recentRepoPath forServer:self.repoServer];
 	
 	[DAFlurry logWorkflowAction:WorkflowActionRepoForgotten];
-}
+}*/
 
 - (void)presentDiffCtrlForCommit:(GTCommit *)commit {
 	if (!commit.isLargeCommit) {
@@ -299,39 +259,50 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	});
 }
 
-#pragma mark UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if (alertView.tag == forgetActionTag) {
-		
-		if (1 == buttonIndex) {
-			[self forgetRepo];
-		}
-	}
-}
-
 #pragma mark Actions
 
-- (IBAction)revealBranchPressed:(UIButton *)sender {
-	BOOL shouldRevealOverlay = !isBranchOverlayVisible;
-	if (shouldRevealOverlay) {
-		// Reload as new branches were pulled in (possibly).
-		self.branchPickerCtrl.tags = self.tags;
-		self.branchPickerCtrl.branches = self.remoteBranches;
+- (IBAction)rightOptionPressed:(UIButton *)button {
+	DABranchPickerCtrl *ctrl = [self.storyboard instantiateViewControllerWithIdentifier:DABranchPickerCtrl.className];
+	ctrl.presentationOption = DASlideFromRightToLeftPresentation;
+	{
+		ctrl.tags = self.tags;
+		ctrl.branches = self.remoteBranches;
 		
-		[self.branchPickerCtrl resetUI];
+		ctrl.currentTag = self.currentTag;
+		ctrl.currentBranch = self.currentBranch;
 	}
 	
-	[self setBranchOverlayVisible:shouldRevealOverlay animated:YES];
+	[ctrl loadItemsWithoutFilter];
 	
-	[DAFlurry logWorkflowAction:WorkflowActionBranchListTouch];
-}
-
-- (IBAction)forgetPressed:(UIButton *)button {
-	NSString *title = NSLocalizedString(@"Forget repo", nil);
-	NSString *message = NSLocalizedString(@"Forgetting this repo will delete all its fetched data from disk.", nil);
+//	[self.branchPickerCtrl resetUI];
 	
-	forgetActionTag = [self showYesNoMessage:message withTitle:title];
+	__weak DARepoCtrl *ref = self;
+	
+	ctrl.tagSelectedAction = ^(GTTag *selectedTag){
+		[ref dismissViewControllerAnimated:YES completion:nil];
+		
+		BOOL changed = [ref selectTag:selectedTag];
+		if (changed) {
+			[ref reloadCommitsAndOptionallyTable:YES];
+			
+			[DAFlurry logWorkflowAction:WorkflowActionTagSwitched];
+		}
+	};
+	ctrl.branchSelectedAction = ^(GTBranch *selectedBranch){
+		[ref dismissViewControllerAnimated:YES completion:nil];
+		
+		BOOL changed = [ref selectBranch:selectedBranch];
+		if (changed) {
+			[ref reloadCommitsAndOptionallyTable:YES];
+			
+			[DAFlurry logWorkflowAction:WorkflowActionBranchSwitched];
+		}
+	};
+	ctrl.cancelAction = ^{
+		[ref dismissViewControllerAnimated:YES completion:nil];
+	};
+	
+	[self presentViewController:ctrl animated:YES completion:nil];
 }
 
 - (IBAction)statsModeChanged:(UIButton *)sender {

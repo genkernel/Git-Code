@@ -20,8 +20,6 @@
 @property (strong, nonatomic, readonly) GTTag *currentTag;
 @property (strong, nonatomic, readonly) GTBranch *currentBranch;
 
-@property (strong, nonatomic, readonly) DABranchPickerCtrl *branchPickerCtrl;
-
 @property (strong, nonatomic) DACommitCell *reuseCell;
 @property (strong, nonatomic) DACommitMessageCell *reuseSimpleCell;
 

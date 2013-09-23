@@ -11,32 +11,6 @@
 
 @implementation DARepoCtrl (Animation)
 
-- (void)setBranchOverlayVisible:(BOOL)visible animated:(BOOL)animated {
-	// hi.
-	/*
-	if (isBranchOverlayVisible == visible) {
-		return;
-	}
-	isBranchOverlayVisible = visible;
-	
-	CGFloat start = visible ? .0 : self.view.width;
-	CGFloat offset = start - self.branchCtrlContainer.x;
-	
-	self.branchOverlayLeft.constant = offset;
-	
-	[UIView animateWithDuration:StandartAnimationDuration animations:^{
-		[self.branchOverlay.superview layoutIfNeeded];
-		
-		self.commitsTable.scrollsToTop = !visible;
-		self.branchPickerCtrl.visibleTable.scrollsToTop = visible;
-	} completion:^(BOOL finished) {
-		[self setNavigationBarHidden:isBranchOverlayVisible animated:YES];
-	}];*/
-	
-	NSString *action = visible ? WorkflowActionBranchListShown : WorkflowActionBranchListHidden;
-	[DAFlurry logWorkflowAction:action];
-}
-
 - (void)setDiffLoadingOverlayVisible:(BOOL)visible animated:(BOOL)animated {
 	BOOL isOverlayVisible = !self.diffLoadingOverlay.hidden;
 	if (isOverlayVisible == visible) {
@@ -130,11 +104,12 @@
 		
 		_statsCtrl.commitsTable.scrollsToTop = isStatsShown;
 		
+		/*
 		if (isBranchOverlayVisible) {
 			self.branchPickerCtrl.visibleTable.scrollsToTop = !isStatsShown;
 		} else {
 			self.commitsTable.scrollsToTop = !isStatsShown;
-		}
+		}*/
 	}];
 	
 	NSString *name = DAStatsCtrl.className;

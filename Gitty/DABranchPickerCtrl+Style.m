@@ -17,7 +17,7 @@
 }
 
 - (UIColor *)titleColor {
-	return UIColor.grayColor;
+	return UIColor.blackColor;
 }
 
 #pragma mark TableView Helper

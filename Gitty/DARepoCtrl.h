@@ -17,7 +17,6 @@ typedef enum {
 } DAStatsContainerModes;
 
 @interface DARepoCtrl : DABaseCtrl {
-	BOOL isBranchOverlayVisible;
 	BOOL isNavBarHiddenByThisCtrl;
 	DAStatsContainerModes statsContainerMode;
 	

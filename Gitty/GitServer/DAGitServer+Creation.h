@@ -16,15 +16,15 @@ extern NSString *TransferProtocol;
 extern NSString *SupportedProtocols;
 extern NSString *RecentRepoPath;
 extern NSString *RecentRepos;
-extern NSString *RecentBranchName;
 
 // Recent repo.
 extern NSString *RecentRepoRelativePath;
 extern NSString *RecentRepoLastAccessDate;
+extern NSString *ActiveBranchName;
 
 @interface DAGitServer (Creation)
 - (void)createSettingsFolderIfNeeded;
-- (NSDictionary *)createRecentRepoWithRelativePath:(NSString *)path;
+- (NSDictionary *)createRecentRepoWithRelativePath:(NSString *)path branchName:(NSString *)branchName;
 
 // Private.
 @property (strong, nonatomic, readonly) NSString *docsPath, *settingsPath;

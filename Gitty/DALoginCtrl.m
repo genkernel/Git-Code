@@ -421,8 +421,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 						   TransferProtocol: @"git://",
 						   SupportedProtocols: @[@"https://", @"git://", @"http://"],
 						   RecentRepoPath: @"",
-						   RecentRepos: @{},
-						   RecentBranchName: @"master"};
+						   RecentRepos: @{}};
 	
 	DAGitServer *server = [DAGitServer serverWithDictionary:info];
 	[self.servers addNewServer:server];

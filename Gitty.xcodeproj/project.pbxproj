@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1801935417FB66880088F4F7 /* DAReposListCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801935217FB66880088F4F7 /* DAReposListCtrl.m */; };
+		1801935517FB66880088F4F7 /* DAReposListCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1801935317FB66880088F4F7 /* DAReposListCtrl.xib */; };
+		1801935817FB6B3B0088F4F7 /* repos-shortcut.png in Resources */ = {isa = PBXBuildFile; fileRef = 1801935617FB6B3B0088F4F7 /* repos-shortcut.png */; };
+		1801935917FB6B3B0088F4F7 /* repos-shortcut@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1801935717FB6B3B0088F4F7 /* repos-shortcut@2x.png */; };
 		1804F4D11780DD3B0040E5D1 /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1804F4D01780DD3B0040E5D1 /* profile@2x.png */; };
 		1804FA7F176E15D80080AB50 /* PagerItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1861886D176E0BBF00666DFB /* PagerItemView.m */; };
 		1804FA84176E15DB0080AB50 /* PagerItemViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1861886F176E0BBF00666DFB /* PagerItemViewContainer.m */; };
@@ -226,6 +230,8 @@
 		18A6C4DC17C926250019EB51 /* popup_arrow-down-center.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A6C4DA17C926250019EB51 /* popup_arrow-down-center.png */; };
 		18A6C4DD17C926250019EB51 /* popup_arrow-down-center@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A6C4DB17C926250019EB51 /* popup_arrow-down-center@2x.png */; };
 		18A8E20D177B644800DBD973 /* DADiffCtrlDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8E20C177B644800DBD973 /* DADiffCtrlDataSource.m */; };
+		18B475B117FF52AD00F5BB4F /* DAQuickRepoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B475B017FF52AD00F5BB4F /* DAQuickRepoCell.m */; };
+		18B475B317FF52C900F5BB4F /* DAQuickRepoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B475B217FF52C900F5BB4F /* DAQuickRepoCell.xib */; };
 		18B8751E17ABDBAB004AF69D /* DAFlurry.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8751D17ABDBAB004AF69D /* DAFlurry.m */; };
 		18B8752117ABDF77004AF69D /* DAFlurryEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8752017ABDF77004AF69D /* DAFlurryEvent.m */; };
 		18BAA8641758016400154019 /* GitServers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18BAA85F1758016400154019 /* GitServers.plist */; };
@@ -337,6 +343,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1801935117FB66880088F4F7 /* DAReposListCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAReposListCtrl.h; sourceTree = "<group>"; };
+		1801935217FB66880088F4F7 /* DAReposListCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAReposListCtrl.m; sourceTree = "<group>"; };
+		1801935317FB66880088F4F7 /* DAReposListCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAReposListCtrl.xib; sourceTree = "<group>"; };
+		1801935617FB6B3B0088F4F7 /* repos-shortcut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "repos-shortcut.png"; path = "Stats/repos-shortcut.png"; sourceTree = "<group>"; };
+		1801935717FB6B3B0088F4F7 /* repos-shortcut@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "repos-shortcut@2x.png"; path = "Stats/repos-shortcut@2x.png"; sourceTree = "<group>"; };
 		1804F4D01780DD3B0040E5D1 /* profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile@2x.png"; sourceTree = "<group>"; };
 		1804FA89176E2A800080AB50 /* UIButton+Gitty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Gitty.h"; sourceTree = "<group>"; };
 		1804FA8A176E2A800080AB50 /* UIButton+Gitty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Gitty.m"; sourceTree = "<group>"; };
@@ -915,6 +926,9 @@
 		18A6C4DB17C926250019EB51 /* popup_arrow-down-center@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popup_arrow-down-center@2x.png"; sourceTree = "<group>"; };
 		18A8E20B177B644800DBD973 /* DADiffCtrlDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADiffCtrlDataSource.h; sourceTree = "<group>"; };
 		18A8E20C177B644800DBD973 /* DADiffCtrlDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADiffCtrlDataSource.m; sourceTree = "<group>"; };
+		18B475AF17FF52AD00F5BB4F /* DAQuickRepoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAQuickRepoCell.h; sourceTree = "<group>"; };
+		18B475B017FF52AD00F5BB4F /* DAQuickRepoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAQuickRepoCell.m; sourceTree = "<group>"; };
+		18B475B217FF52C900F5BB4F /* DAQuickRepoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAQuickRepoCell.xib; sourceTree = "<group>"; };
 		18B8751817ABDB86004AF69D /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		18B8751C17ABDBAB004AF69D /* DAFlurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFlurry.h; sourceTree = "<group>"; };
 		18B8751D17ABDBAB004AF69D /* DAFlurry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAFlurry.m; sourceTree = "<group>"; };
@@ -933,6 +947,7 @@
 		18CF75B81788E8EE00209141 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		18CFED8F177C317C00365E5A /* code-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "code-green.png"; sourceTree = "<group>"; };
 		18CFED90177C317C00365E5A /* code-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "code-red.png"; sourceTree = "<group>"; };
+		18D4C7FC18055BE100EEF856 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Macros.h; path = ../../xlib/xlib/Macros.h; sourceTree = "<group>"; };
 		18D9EA3B17554EB400454F3C /* DAGitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGitManager.h; sourceTree = "<group>"; };
 		18D9EA3C17554EB400454F3C /* DAGitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitManager.m; sourceTree = "<group>"; };
 		18DF1BDF17BF9B1E007D312A /* TreeTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeTable.h; sourceTree = "<group>"; };
@@ -1022,6 +1037,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1801935017FB66600088F4F7 /* ReposListCtrl */ = {
+			isa = PBXGroup;
+			children = (
+				18B475A717FF528D00F5BB4F /* QuickRepoCell */,
+				1801935117FB66880088F4F7 /* DAReposListCtrl.h */,
+				1801935217FB66880088F4F7 /* DAReposListCtrl.m */,
+				1801935317FB66880088F4F7 /* DAReposListCtrl.xib */,
+			);
+			name = ReposListCtrl;
+			sourceTree = "<group>";
+		};
 		1804FA8C176E2D510080AB50 /* Logos */ = {
 			isa = PBXGroup;
 			children = (
@@ -1323,6 +1349,8 @@
 		18336043178EBD6A000C1E52 /* Stats */ = {
 			isa = PBXGroup;
 			children = (
+				1801935617FB6B3B0088F4F7 /* repos-shortcut.png */,
+				1801935717FB6B3B0088F4F7 /* repos-shortcut@2x.png */,
 				18DF1BF317C01773007D312A /* Expand */,
 				1833605B178EECC7000C1E52 /* authors-white.png */,
 				1833605C178EECC7000C1E52 /* branches-white.png */,
@@ -1730,6 +1758,7 @@
 				18901735175AC4BA00F19CE4 /* Service */,
 				189016F2175AC46F00F19CE4 /* UI */,
 				189016CC175AC46400F19CE4 /* System */,
+				18D4C7FC18055BE100EEF856 /* Macros.h */,
 			);
 			name = xlib;
 			sourceTree = "<group>";
@@ -2016,6 +2045,7 @@
 				18DF1BE617BFD87C007D312A /* TittleHeader */,
 				181099461790A6900018AAB4 /* TitleHeaderCell */,
 				18C9441C175B6B3E00A4D7CA /* BranchPickerCtrl */,
+				1801935017FB66600088F4F7 /* ReposListCtrl */,
 				189A5320175922FA00B5BD8D /* DARepoCtrl.h */,
 				189A5321175922FA00B5BD8D /* DARepoCtrl.m */,
 				183F7E35178C52A60051D689 /* DARepoCtrl+Private.h */,
@@ -2403,6 +2433,16 @@
 				18A8E20C177B644800DBD973 /* DADiffCtrlDataSource.m */,
 			);
 			name = DataSource;
+			sourceTree = "<group>";
+		};
+		18B475A717FF528D00F5BB4F /* QuickRepoCell */ = {
+			isa = PBXGroup;
+			children = (
+				18B475AF17FF52AD00F5BB4F /* DAQuickRepoCell.h */,
+				18B475B017FF52AD00F5BB4F /* DAQuickRepoCell.m */,
+				18B475B217FF52C900F5BB4F /* DAQuickRepoCell.xib */,
+			);
+			name = QuickRepoCell;
 			sourceTree = "<group>";
 		};
 		18B8751717ABDB86004AF69D /* Flurry */ = {
@@ -2829,6 +2869,7 @@
 				18438B5C1777A7E100943F9F /* profile.png in Resources */,
 				1804FAB9176E85820080AB50 /* btn-green.png in Resources */,
 				1804FAB8176E857F0080AB50 /* btn-gray.png in Resources */,
+				1801935817FB6B3B0088F4F7 /* repos-shortcut.png in Resources */,
 				18933CE21755395D00E92183 /* InfoPlist.strings in Resources */,
 				18933CF11755395D00E92183 /* MainStoryboard.storyboard in Resources */,
 				18352A301799CD3D000DCF07 /* Grabber_top.png in Resources */,
@@ -2853,6 +2894,7 @@
 				1804FA86176E15E10080AB50 /* PagerView.xib in Resources */,
 				18F995D6175FBEDB0033A4A0 /* section_footer.png in Resources */,
 				18F995D7175FBEDB0033A4A0 /* section_footer@2x.png in Resources */,
+				1801935517FB66880088F4F7 /* DAReposListCtrl.xib in Resources */,
 				18F995D8175FBEDB0033A4A0 /* section_header.png in Resources */,
 				1804FAB7176E857C0080AB50 /* btn-blue.png in Resources */,
 				18F995D9175FBEDB0033A4A0 /* section_header@2x.png in Resources */,
@@ -2872,6 +2914,7 @@
 				1804F4D11780DD3B0040E5D1 /* profile@2x.png in Resources */,
 				18352A2F1799CD3D000DCF07 /* Grabber_bottom@2x.png in Resources */,
 				187C86211781F4A800703592 /* btn-lightgray.png in Resources */,
+				18B475B317FF52C900F5BB4F /* DAQuickRepoCell.xib in Resources */,
 				189BCF14178348F80023F093 /* symbol-plus@2x.png in Resources */,
 				189BCF1A178349AD0023F093 /* symbol-plus.png in Resources */,
 				189BCF1D178353E80023F093 /* symbol-plus_gray.png in Resources */,
@@ -2922,6 +2965,7 @@
 				185837DC17B68AEE00EBB834 /* bar-branches.png in Resources */,
 				185837DD17B68AEE00EBB834 /* bar-branches@2x.png in Resources */,
 				18DF1BEB17BFD8ED007D312A /* DATitleHeader.xib in Resources */,
+				1801935917FB6B3B0088F4F7 /* repos-shortcut@2x.png in Resources */,
 				18DF1C0117C01A31007D312A /* collapse@2x.png in Resources */,
 				18DF1C0217C01A31007D312A /* expand.png in Resources */,
 				18DF1C0317C01A31007D312A /* expand@2x.png in Resources */,
@@ -3028,6 +3072,7 @@
 				181A6F59178B696D002CA3BE /* DASshCredentials.m in Sources */,
 				183F7E44178C550B0051D689 /* DAStatsCtrl.m in Sources */,
 				1810993C179074540018AAB4 /* DAAuthorHeaderCell.m in Sources */,
+				18B475B117FF52AD00F5BB4F /* DAQuickRepoCell.m in Sources */,
 				1810994217909BFB0018AAB4 /* DACommitBranchCell.m in Sources */,
 				181099491790A6B20018AAB4 /* DATitleHeaderCell.m in Sources */,
 				18F86F1B17931A4E0055900C /* DASshKeyInfo.m in Sources */,
@@ -3037,6 +3082,7 @@
 				182B820917A1A8B300D02F73 /* NSDictionary+RecentRepo.m in Sources */,
 				1893852417A3101E00168FDB /* DASshInfoCtrl.m in Sources */,
 				1893853117A32CD400168FDB /* DAFeedbackCtrl.m in Sources */,
+				1801935417FB66880088F4F7 /* DAReposListCtrl.m in Sources */,
 				18A3D67317A4137500B38FA8 /* DAStatsCtrl+Animation.m in Sources */,
 				18A3D67617A41F6600B38FA8 /* DAByAuthorDataSource.m in Sources */,
 				18A3D67B17A4258A00B38FA8 /* DAByBranchDataSource.m in Sources */,
@@ -3203,7 +3249,8 @@
 					"\"$(SRCROOT)/Libs/lib\"",
 					"\"$(SRCROOT)/Libs/Flurry\"",
 				);
-				LLVM_LTO = NO;
+				LLVM_LTO = YES;
+				LLVM_VECTORIZE_LOOPS = YES;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -3237,7 +3284,8 @@
 					"\"$(SRCROOT)/Libs/lib\"",
 					"\"$(SRCROOT)/Libs/Flurry\"",
 				);
-				LLVM_LTO = NO;
+				LLVM_LTO = YES;
+				LLVM_VECTORIZE_LOOPS = YES;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",

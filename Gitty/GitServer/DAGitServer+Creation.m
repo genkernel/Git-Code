@@ -16,11 +16,11 @@ NSString *TransferProtocol = @"TransferProtocol";
 NSString *SupportedProtocols = @"SupportedProtocols";
 NSString *RecentRepoPath = @"RecentRepoPath";
 NSString *RecentRepos = @"RecentRepos";
-NSString *RecentBranchName = @"RecentBranchName";
 
 // Recent repo.
 NSString *RecentRepoRelativePath = @"relativePath";
 NSString *RecentRepoLastAccessDate = @"lastAccessDate";
+NSString *ActiveBranchName = @"activeBranchName";
 
 @implementation DAGitServer (Creation)
 @dynamic docsPath, settingsPath;
@@ -37,8 +37,8 @@ NSString *RecentRepoLastAccessDate = @"lastAccessDate";
 	return [self.docsPath stringByAppendingPathComponent:self.name];
 }
 
-- (NSDictionary *)createRecentRepoWithRelativePath:(NSString *)path {
-	return @{RecentRepoRelativePath: path, RecentRepoLastAccessDate: NSDate.date};
+- (NSDictionary *)createRecentRepoWithRelativePath:(NSString *)path branchName:(NSString *)branchName {
+	return @{RecentRepoRelativePath: path, RecentRepoLastAccessDate: NSDate.date, ActiveBranchName: branchName};
 }
 
 @end

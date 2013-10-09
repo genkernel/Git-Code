@@ -27,6 +27,10 @@ typedef enum {
 } DAFramePresentingAnimations;
 
 @interface DAFrameCtrl : UIViewController
-@property (strong, nonatomic) IBOutlet UIView *mainContainer, *overlayContainer;
+@property (strong, nonatomic) IBOutlet UIView *mainContainer, *overlayContainer, *menuContainer;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *mainTop, *mainLeft, *mainRight, *mainBottom;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *overlayTop, *overlayLeft, *overlayRight, *overlayBottom;
+
+- (void)presentMenuCtrl:(DABaseCtrl *)ctrl animated:(BOOL)animated animationOption:(DAFramePresentingAnimations)option;
+- (void)dismissMenuCtrl:(DABaseCtrl *)ctrl animated:(BOOL)animated;
 @end

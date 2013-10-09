@@ -12,5 +12,8 @@
 - (CGFloat)alphaForOption:(DAFramePresentingAnimations)option;
 - (CGPoint)marginsForOption:(DAFramePresentingAnimations)option;
 
+- (CGFloat)menuAlphaForOption:(DAFramePresentingAnimations)option;
+- (CGPoint)menuMarginsForOption:(DAFramePresentingAnimations)option;
+
 //- (DAFramePresentingAnimations)reversedOptionForOption:(DAFramePresentingAnimations)option;
 @end

@@ -9,7 +9,7 @@
 #import "DAFrameCtrl.h"
 
 @interface DAFrameCtrl ()
-@property (strong, nonatomic, readonly) DABaseCtrl *mainCtrl, *overlayCtrl;
+@property (strong, nonatomic, readonly) DABaseCtrl *mainCtrl, *overlayCtrl, *menuCtrl;
 
 - (void)presentOverlayCtrl:(DABaseCtrl *)ctrl animated:(BOOL)animated animationOption:(DAFramePresentingAnimations)option;
 - (void)dismissOverlayCtrl:(DABaseCtrl *)ctrl animated:(BOOL)animated;

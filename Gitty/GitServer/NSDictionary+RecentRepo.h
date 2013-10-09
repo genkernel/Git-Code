@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDictionary (RecentRepo)
-@property (strong, nonatomic, readonly) NSString *relativePath;
-@property (strong, nonatomic) NSDate *lastAccessDate;
+@property (strong, nonatomic, readonly) NSDate *lastAccessDate;
+@property (strong, nonatomic, readonly) NSString *relativePath, *activeBranchName;
 @end

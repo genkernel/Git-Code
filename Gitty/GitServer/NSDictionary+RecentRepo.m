@@ -10,7 +10,7 @@
 #import "DAGitServer+Creation.h"
 
 @implementation NSDictionary (RecentRepo)
-@dynamic relativePath, lastAccessDate;
+@dynamic relativePath, lastAccessDate, activeBranchName;
 
 - (NSComparisonResult)compare:(NSDictionary *)anotherRepo {
 	return [self.lastAccessDate compare:anotherRepo.lastAccessDate];
@@ -20,6 +20,10 @@
 
 - (NSString *)relativePath {
 	return self[RecentRepoRelativePath];
+}
+
+- (NSString *)activeBranchName {
+	return self[ActiveBranchName];
 }
 
 - (NSDate *)lastAccessDate {

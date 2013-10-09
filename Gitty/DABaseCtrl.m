@@ -17,6 +17,7 @@
 
 @implementation DABaseCtrl
 @dynamic git, servers, app, frameCtrl;
+@dynamic isMenuPresented, isOverlayPresented;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	[super prepareForSegue:segue sender:sender];
@@ -54,6 +55,14 @@
 	}
 	
 	[self.frameCtrl dismissOverlayCtrl:self.frameCtrl.overlayCtrl animated:flag];
+}
+
+- (void)presentMenuCtrl:(DABaseCtrl *)ctrl animated:(BOOL)animated animationOption:(DAFramePresentingAnimations)option {
+	[self.frameCtrl presentMenuCtrl:ctrl animated:animated animationOption:option];
+}
+
+- (void)dismissPresentedMenuAnimated:(BOOL)animated {
+	[self.frameCtrl dismissMenuCtrl:self.frameCtrl.menuCtrl animated:animated];
 }
 
 #pragma mark Public
@@ -101,6 +110,14 @@
 	} else {
 		return (DAFrameCtrl *)self.navigationController.parentViewController;
 	}
+}
+
+- (BOOL)isMenuPresented {
+	return self.frameCtrl.menuCtrl != nil;
+}
+
+- (BOOL)isOverlayPresented {
+	return self.frameCtrl.overlayCtrl != nil;
 }
 
 @end

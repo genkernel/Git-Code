@@ -61,4 +61,34 @@
 	return CGPointMake(x, y);
 }
 
+- (CGFloat)menuAlphaForOption:(DAFramePresentingAnimations)option {
+	return 1;
+}
+
+- (CGPoint)menuMarginsForOption:(DAFramePresentingAnimations)option {
+	CGFloat x = 0, y = 0;
+	CGFloat xMargin = self.menuContainer.width / 6, yMargin = self.menuContainer.height / 10;
+	
+	switch (option) {
+		case DASlideFromLeftToRightPresentation:
+			x = self.menuContainer.width - xMargin;
+			break;
+		case DASlideFromRightToLeftPresentation:
+			x = - self.menuContainer.width + xMargin;
+			break;
+			
+		case DASlideFromTopToBottomPresentation:
+			y = self.menuContainer.height - yMargin;
+			break;
+		case DASlideFromBottomToTopPresentation:
+			y = - self.menuContainer.height + yMargin;
+			break;
+			
+		default:
+			break;
+	}
+	
+	return CGPointMake(x, y);
+}
+
 @end

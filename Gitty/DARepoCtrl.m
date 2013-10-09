@@ -14,6 +14,8 @@
 
 #import "DAStatsCtrl+Animation.h"
 
+#import "DAReposListCtrl.h"
+
 
 static NSString *MasterBranchName = @"master";
 
@@ -26,6 +28,8 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 
 @interface DARepoCtrl ()
 @property (strong, nonatomic, readonly) DAStatsCtrl *statsCtrl;
+@property (strong, nonatomic, readonly) DAReposListCtrl *recentReposCtrl;
+
 @property (strong, nonatomic, readonly) UIButton *statsSelectedModeButton;
 @end
 
@@ -42,6 +46,10 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 @synthesize remoteBranches = _remoteBranches;
 @synthesize namedBranches;
 
+- (BOOL)prefersStatusBarHidden {
+	return YES;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:DiffSegue]) {
 		DADiffCtrl *ctrl = segue.destinationViewController;
@@ -56,21 +64,67 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	self.navigationItem.hidesBackButton = YES;
+	
+//	self.view.layer.shadowColor = UIColor.blackColor.CGColor;
+//	self.view.layer.shadowRadius = 3;
+//	self.view.layer.shadowOffset = CGSizeMake(-3, 0);
+//	self.view.layer.masksToBounds = NO;
+	
 	_statsSelectedModeButton = self.statsSwitchModeButtons[0];
 	
 	[self setupCells];
-	
 	[self loadInitialData];
+	
+	[self loadRecentReposCtrl];
 	
 	[DAFlurry logProtocol:self.repoServer.transferProtocol];
 	
-	//
 	// FIXME: come up with better solution.
 	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(LightningAnimationDuration * NSEC_PER_SEC));
 	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 		self.mainContainerHeight.constant = self.view.height - self.mainContainerTop.constant;
 		[self.mainContainer.superview layoutIfNeeded];
 	});
+}
+
+- (void)loadRecentReposCtrl {
+	_recentReposCtrl = DAReposListCtrl.new;
+	
+	__weak typeof (self) ref = self;
+	
+	self.recentReposCtrl.server = self.repoServer;
+	
+	self.recentReposCtrl.cancelAction = ^{
+		[ref dismissPresentedMenuAnimated:YES];
+	};
+	self.recentReposCtrl.showServersAction = ^{
+		[ref dismissPresentedMenuAnimated:YES];
+		[ref.navigationController popViewControllerAnimated:NO];
+	};
+	self.recentReposCtrl.selectAction = ^(NSDictionary *anotherRepo) {
+		
+		NSString *repoName = anotherRepo.relativePath;
+		
+		[ref.repoServer addOrUpdateRecentRepoWithRelativePath:repoName];
+		ref.repoServer.recentRepoPath = repoName;
+		[ref.servers save];
+		
+		DARepoCtrl *ctrl = [ref.storyboard instantiateViewControllerWithIdentifier:DARepoCtrl.className];
+		
+		ctrl.shouldPull = YES;
+		ctrl.authUser = ref.authUser;
+		ctrl.repoServer = ref.repoServer;
+		
+		ctrl.currentRepo = [ref.git localRepoWithName:repoName forServer:ref.repoServer];
+		
+		[ref dismissPresentedMenuAnimated:YES];
+		
+		NSMutableArray *ctrls = ref.navigationController.viewControllers.mutableCopy;
+		ctrls[ctrls.count - 1] = ctrl;
+		
+		[ref.navigationController setViewControllers:ctrls animated:NO];
+	};
 }
 
 - (void)loadInitialData {
@@ -118,7 +172,9 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 
 - (void)addBranchesButton {
 	self.navigationItem.titleView = self.branchCustomTitleContainer;
+	
 	self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.branchesButton];
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.reposButton];
 }
 
 - (void)reloadFilters {
@@ -150,8 +206,10 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 }
 
 - (void)loadDefaultBranch {
+	NSDictionary *repo = self.repoServer.activeRepo;
+	
 	GTBranch *defaultBranch = nil;
-	NSString *recentBranchName = self.repoServer.recentBranchName;
+	NSString *recentBranchName = repo.activeBranchName ? repo.activeBranchName : MasterBranchName;
 	
 	NSMutableDictionary *branches = [NSMutableDictionary dictionaryWithCapacity:self.remoteBranches.count];
 	for (GTBranch *branch in self.remoteBranches) {
@@ -160,6 +218,7 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 		
 		if ([name isEqualToString:recentBranchName]) {
 			defaultBranch = branch;
+			break;
 		}
 	}
 	
@@ -197,7 +256,8 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	_currentTag = nil;
 	_currentBranch = branch;
 	
-	self.repoServer.recentBranchName = branch.shortName;
+	
+	[self.repoServer addOrUpdateRecentRepoWithRelativePath:self.repoServer.recentRepoPath activeBranchName:branch.shortName];
 	[self.servers save];
 	
 	self.title = branch.shortName;
@@ -261,6 +321,14 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 
 #pragma mark Actions
 
+- (IBAction)leftOptionPressed:(UIButton *)sender {
+	if (self.isMenuPresented) {
+		[self dismissPresentedMenuAnimated:YES];
+	} else {
+		[self presentMenuCtrl:self.recentReposCtrl animated:YES animationOption:DASlideFromLeftToRightPresentation];
+	}
+}
+
 - (IBAction)rightOptionPressed:(UIButton *)button {
 	DABranchPickerCtrl *ctrl = [self.storyboard instantiateViewControllerWithIdentifier:DABranchPickerCtrl.className];
 	ctrl.presentationOption = DASlideFromRightToLeftPresentation;
@@ -273,8 +341,6 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	}
 	
 	[ctrl loadItemsWithoutFilter];
-	
-//	[self.branchPickerCtrl resetUI];
 	
 	__weak DARepoCtrl *ref = self;
 	

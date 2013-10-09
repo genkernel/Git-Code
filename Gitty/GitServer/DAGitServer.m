@@ -17,7 +17,7 @@ NSString *SshTransferProtocol = @"ssh://";
 
 @implementation DAGitServer
 @dynamic saveDict;
-@dynamic reposByAccessTime;
+@dynamic repos, reposByAccessTime, activeRepo;
 // Synthesize for explicitly-defined ivar.
 @synthesize recentReposDict = _recentReposDict;
 
@@ -35,7 +35,6 @@ NSString *SshTransferProtocol = @"ssh://";
 		_transferProtocol = dict[TransferProtocol];
 		_supportedProtocols = dict[SupportedProtocols];
 		_recentRepoPath = dict[RecentRepoPath];
-		_recentBranchName = dict[RecentBranchName];
 		
 		[self createSettingsFolderIfNeeded];
 		
@@ -56,14 +55,30 @@ NSString *SshTransferProtocol = @"ssh://";
 			 TransferProtocol: self.transferProtocol,
 			 SupportedProtocols: self.supportedProtocols,
 			 RecentRepoPath: self.recentRepoPath,
-			 RecentRepos: self.recentReposDict.copy,
-			 RecentBranchName: self.recentBranchName};
+			 RecentRepos: self.recentReposDict.copy};
 }
 
 - (void)addOrUpdateRecentRepoWithRelativePath:(NSString *)path {
-	NSDictionary *repo = [self createRecentRepoWithRelativePath:path];
+	NSDictionary *repo = self.recentReposDict[path];
 	
-	self.recentReposDict[path] = repo;
+	if (repo) {
+		[self addOrUpdateRecentRepoWithRelativePath:path activeBranchName:repo.activeBranchName];
+	} else {
+		[self addNewRecentRepoWithRelativePath:path];
+	}
+}
+
+- (void)addOrUpdateRecentRepoWithRelativePath:(NSString *)path activeBranchName:(NSString *)branchName {
+	if (!branchName) {
+		// Support old config format.
+		branchName = @"master";
+	}
+	
+	self.recentReposDict[path] = [self createRecentRepoWithRelativePath:path branchName:branchName];
+}
+
+- (void)addNewRecentRepoWithRelativePath:(NSString *)path {
+	self.recentReposDict[path] = [self createRecentRepoWithRelativePath:path branchName:@"master"];
 }
 
 - (void)removeRecentRepoByRelativePath:(NSString *)path {
@@ -71,6 +86,14 @@ NSString *SshTransferProtocol = @"ssh://";
 }
 
 #pragma mark Properties
+
+- (NSDictionary *)activeRepo {
+	return self.recentReposDict[self.recentRepoPath];
+}
+
+- (NSDictionary *)repos {
+	return self.recentReposDict;
+}
 
 - (NSArray *)reposByAccessTime {
 	NSArray *items = [self.recentReposDict.allValues sortedArrayUsingSelector:@selector(compare:)];

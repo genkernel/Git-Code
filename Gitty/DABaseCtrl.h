@@ -16,6 +16,11 @@
 @property (strong, nonatomic, readonly) UIApplication *app;
 @property (strong, nonatomic, readonly) DAFrameCtrl *frameCtrl;
 
+@property (nonatomic, readonly) BOOL isMenuPresented, isOverlayPresented;
+
+- (void)presentMenuCtrl:(DABaseCtrl *)ctrl animated:(BOOL)animated animationOption:(DAFramePresentingAnimations)option;
+- (void)dismissPresentedMenuAnimated:(BOOL)animated;
+
 - (UIView *)cachedViewWithIdentifier:(NSString *)identifier;
 - (void)cacheView:(UIView *)view withIdentifier:(NSString *)identifier;
 @end

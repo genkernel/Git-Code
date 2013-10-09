@@ -62,7 +62,7 @@ typedef enum {
 
 @property (strong, nonatomic) IBOutlet UIButton *grabButton;
 
-@property (strong, nonatomic) IBOutlet UIButton *branchesButton;
+@property (strong, nonatomic) IBOutlet UIButton *branchesButton, *reposButton;
 @property (strong, nonatomic) IBOutlet UIView *statsCustomRightView;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *statsSwitchModeButtons;
 

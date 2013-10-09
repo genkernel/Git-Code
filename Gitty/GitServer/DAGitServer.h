@@ -16,12 +16,18 @@ extern NSString *SshTransferProtocol;
 + (instancetype)serverWithDictionary:(NSDictionary *)dict;
 
 - (void)addOrUpdateRecentRepoWithRelativePath:(NSString *)path;
+- (void)addOrUpdateRecentRepoWithRelativePath:(NSString *)path activeBranchName:(NSString *)branchName;
+
+- (void)addNewRecentRepoWithRelativePath:(NSString *)path;
 - (void)removeRecentRepoByRelativePath:(NSString *)path;
 
 @property (strong, nonatomic, readonly) NSDictionary *saveDict;
 
 @property (strong, nonatomic, readonly) NSString *gitBaseUrl;
-@property (strong, nonatomic) NSString *recentRepoPath, *recentBranchName;
+@property (strong, nonatomic) NSString *recentRepoPath;
+@property (strong, nonatomic, readonly) NSDictionary *activeRepo;
+
+@property (strong, nonatomic, readonly) NSDictionary *repos;
 @property (strong, nonatomic, readonly) NSArray *reposByAccessTime;
 
 @property (strong, nonatomic) NSString *transferProtocol;

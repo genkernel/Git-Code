@@ -92,7 +92,7 @@
 #pragma mark UITableViewDataSource, UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	TreeTable *proxy = tableView.dataSource;
+	TreeTable *proxy = (TreeTable *)tableView.dataSource;
 	NSIndexPath *ip = [proxy treeIndexPathFromTablePath:indexPath];
 	
 	if (ip.length == 2) {

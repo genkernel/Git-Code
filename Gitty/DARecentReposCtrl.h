@@ -16,7 +16,5 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *emptyLabel;
 @property (strong, nonatomic) IBOutlet UITableView *reposTable;
-@property (strong, nonatomic) IBOutlet UINavigationItem *customNavigationItem;
 @property (strong, nonatomic) IBOutlet UIButton *forgetButton;
-@property (strong, nonatomic) IBOutlet UIImageView *customLogo;
 @end

@@ -8,9 +8,6 @@
 
 #import "DAFeedbackCtrl.h"
 
-@interface DAFeedbackCtrl ()
-@end
-
 @implementation DAFeedbackCtrl
 
 - (BOOL)prefersStatusBarHidden {
@@ -19,6 +16,8 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	
+	self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithTitle:@"Ok" style:UIBarButtonItemStyleDone target:self action:@selector(closePressed:)];
 	
 	[self.webView disableBounces];
 	

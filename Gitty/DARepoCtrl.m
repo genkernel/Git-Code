@@ -47,7 +47,7 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 @synthesize namedBranches;
 
 - (BOOL)prefersStatusBarHidden {
-	return YES;
+	return NO;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -95,8 +95,11 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	
 	self.recentReposCtrl.server = self.repoServer;
 	
-	self.recentReposCtrl.cancelAction = ^{
+	self.recentReposCtrl.dismissAction = ^{
 		[ref dismissPresentedMenuAnimated:YES];
+		
+		[ref setPullingVisible:YES animated:YES];
+		[ref pull];
 	};
 	self.recentReposCtrl.showServersAction = ^{
 		[ref dismissPresentedMenuAnimated:YES];

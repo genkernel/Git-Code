@@ -24,7 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	self.customNavigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.forgetButton];
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem.alloc initWithTitle:NSLocalizedString(@"Cancel", nil) style:UIBarButtonItemStyleDone target:self action:@selector(cancelPressed:)];
+	self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.forgetButton];
 	
 	NSString *identifier = DARepoCell.className;
 	UINib *nib = [UINib nibWithNibName:identifier bundle:nil];
@@ -50,7 +51,7 @@
 }
 
 - (void)reloadControlsAccordingToCurrentRepos {
-	self.customNavigationItem.rightBarButtonItem.enabled = self.repos.count > 0;
+	self.navigationItem.rightBarButtonItem.enabled = self.repos.count > 0;
 	
 	BOOL shouldShowEmptyMessage = self.repos.count == 0;
 	self.emptyLabel.hidden = !shouldShowEmptyMessage;
@@ -130,7 +131,7 @@
 
 #pragma mark Actions
 
-- (IBAction)cancelDidClicked:(UIBarButtonItem *)sender {
+- (IBAction)cancelPressed:(UIBarButtonItem *)sender {
 	self.cancelAction();
 }
 

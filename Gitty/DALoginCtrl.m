@@ -42,6 +42,10 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	BOOL isRepoCloned;
 }
 
+- (BOOL)prefersStatusBarHidden {
+	return NO;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:RepoSegue]) {
 		
@@ -65,7 +69,6 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
     [super viewDidLoad];
 	
 	self.title = NSLocalizedString(@"Back", nil);
-	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 	
 	_ctrls = NSMutableArray.new;
 	_createCtrl = [self newServerCreationCtrl];

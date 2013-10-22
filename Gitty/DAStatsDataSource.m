@@ -86,7 +86,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	TreeTable *proxy = tableView.dataSource;
+	TreeTable *proxy = (TreeTable *)tableView.dataSource;
 	NSIndexPath *ip = [proxy treeIndexPathFromTablePath:indexPath];
 	
 	if (ip.length == 3) {

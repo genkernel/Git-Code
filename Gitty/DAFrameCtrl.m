@@ -13,9 +13,13 @@
 #import "DABaseCtrl.h"
 
 static NSString *DefaultSegue = @"DefaultSegue";
+static NSString *MenuNavSegue = @"MenuNavSegue";
+static NSString *OverlayNavSegue = @"OverlayNavSegue";
 
 @interface DAFrameCtrl ()
 @property (strong, nonatomic, readonly) UIToolbar *overlayBluringToolbar;
+
+@property (strong, nonatomic, readonly) NavViewCtrl *menuNavCtrl, *overlayNavCtrl;
 @end
 
 @implementation DAFrameCtrl
@@ -31,6 +35,13 @@ static NSString *DefaultSegue = @"DefaultSegue";
 	
 	if ([segue.identifier isEqualToString:DefaultSegue]) {
 		_mainCtrl = segue.destinationViewController;
+		
+	} else if ([segue.identifier isEqualToString:MenuNavSegue]) {
+		_menuNavCtrl = segue.destinationViewController;
+		
+	} else if ([segue.identifier isEqualToString:OverlayNavSegue]) {
+		_overlayNavCtrl = segue.destinationViewController;
+		
 	} else {
 		[Logger warn:@"Unknown segue specified: %@", segue.identifier];
 	}
@@ -81,14 +92,11 @@ static NSString *DefaultSegue = @"DefaultSegue";
 }
 
 - (void)dismissOverlayCtrl:(DABaseCtrl *)ctrl animated:(BOOL)animated {
-	[self.overlayCtrl willMoveToParentViewController:nil];
-	
 	[self animateOverlayContainerWithOption:ctrl.presentationOption completionHandler:^(BOOL finished) {
-		[self.overlayContainer removeAllSubviews];
-		
-		[self.overlayCtrl didMoveToParentViewController:nil];
-		
 		_overlayCtrl = nil;
+		self.overlayNavCtrl.viewControllers = @[];
+		
+		[self setNeedsStatusBarAppearanceUpdate];
 	}];
 }
 
@@ -99,14 +107,10 @@ static NSString *DefaultSegue = @"DefaultSegue";
 	
 	[self applyLightEffectOfColor:UIColor.bluringColor];
 	
-	[self addChildViewController:self.overlayCtrl];
-	
-	self.overlayCtrl.view.frame = self.overlayContainer.bounds;
-	[self.overlayContainer addSubview:self.overlayCtrl.view];
+	[self.overlayNavCtrl setViewControllers:@[self.overlayCtrl]];
 	
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[self animateOverlayContainerWithOption:DASlideToCenterPresentation completionHandler:^(BOOL finished) {
-			[self.overlayCtrl didMoveToParentViewController:self];
 		}];
 	});
 }
@@ -155,8 +159,13 @@ static NSString *DefaultSegue = @"DefaultSegue";
 		self.overlayContainer.alpha = alpha;
 		[self.overlayContainer.superview layoutIfNeeded];
 		
-		[self setNeedsStatusBarAppearanceUpdate];
-	}completion:completionHandler];
+	}completion:^(BOOL finished) {
+		if (completionHandler) {
+			completionHandler(finished);
+		}
+		
+//		[self setNeedsStatusBarAppearanceUpdate];
+	}];
 }
 
 #pragma mark Menu
@@ -250,8 +259,13 @@ static NSString *DefaultSegue = @"DefaultSegue";
 		self.mainContainer.alpha = alpha;
 		[self.mainContainer.superview layoutIfNeeded];
 		
+	}completion:^(BOOL finished) {
+		if (completionHandler) {
+			completionHandler(finished);
+		}
+		
 		[self setNeedsStatusBarAppearanceUpdate];
-	}completion:completionHandler];
+	}];
 }
 
 @end

@@ -55,7 +55,7 @@ static const NSUInteger OneDayStats = 1;
 	[super viewDidAppear:animated];
 	
 	if (self.selectedCommitIndexPath) {
-		TreeTable *proxy = self.commitsTable.dataSource;
+		TreeTable *proxy = (TreeTable *)self.commitsTable.dataSource;
 		NSIndexPath *ip = [proxy tableIndexPathFromTreePath:self.selectedCommitIndexPath];
 		
 		[self.commitsTable deselectRowAtIndexPath:ip animated:animated];
@@ -67,7 +67,7 @@ static const NSUInteger OneDayStats = 1;
 - (void)reloadStatsData:(DARepoWalk *)stats {
 	_repoStats = stats;
 	
-	_lastDayStats = [stats filter:self.latestDayFilter];
+	_lastDayStats = (DARepoWalk *)[stats filter:self.latestDayFilter];
 	
 	self.byAuthorDataSource.stats = self.lastDayStats;
 	self.byBranchDataSource.stats = self.lastDayStats;

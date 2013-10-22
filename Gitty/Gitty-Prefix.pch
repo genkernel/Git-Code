@@ -21,9 +21,7 @@
 #import "LibGit2-Helpers.pch"
 
 // xlib.
-#import "System.h"
-#import "UI.h"
-#import "Graphics.h"
+#import "xlib.h"
 // shared.
 #import "UIViewAdditions.h"
 #import "Reachability.h"

@@ -12,7 +12,7 @@
 @property (strong, nonatomic) DAGitServer *server;
 
 @property (strong, nonatomic) void (^showServersAction)();
-@property (strong, nonatomic) void (^cancelAction)();
+@property (strong, nonatomic) void (^dismissAction)();
 @property (strong, nonatomic) void (^selectAction)(NSDictionary *repo);
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

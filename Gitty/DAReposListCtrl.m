@@ -16,7 +16,7 @@
 @implementation DAReposListCtrl
 
 - (BOOL)prefersStatusBarHidden {
-	return YES;
+	return NO;
 }
 
 - (void)viewDidLoad {
@@ -49,7 +49,7 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
 	if (indexPath.row == 0) {
-		self.cancelAction();
+		self.dismissAction();
 	} else {
 		self.selectAction(self.repos[indexPath.row]);
 	}

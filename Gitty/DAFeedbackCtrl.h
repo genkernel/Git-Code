@@ -9,6 +9,5 @@
 #import "DABaseCtrl.h"
 
 @interface DAFeedbackCtrl : DABaseCtrl <UIWebViewDelegate>
-@property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @end

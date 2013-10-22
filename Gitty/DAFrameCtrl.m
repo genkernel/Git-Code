@@ -107,6 +107,7 @@ static NSString *OverlayNavSegue = @"OverlayNavSegue";
 	
 	[self applyLightEffectOfColor:UIColor.bluringColor];
 	
+	self.overlayNavCtrl.navigationBarHidden = NO;
 	[self.overlayNavCtrl setViewControllers:@[self.overlayCtrl]];
 	
 	dispatch_async(dispatch_get_main_queue(), ^{

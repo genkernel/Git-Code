@@ -42,6 +42,8 @@
 	self.tagsTable.scrollsToTop = NO;
 	self.branchesTable.scrollsToTop = NO;
 	
+	self.navigationController.navigationBarHidden = YES;
+	
 	[self.searchBar enableAllControlButtons];
 	[self.searchBar setKeyboardAppearance:UIKeyboardAppearanceAlert];
 	
@@ -49,7 +51,7 @@
 }
 
 - (void)loadItemsWithoutFilter {
-	assert(self.filteredItems);
+	NSAssert(self.filteredItems, @"nil container - not initialized.");
 	
 	self.filteredItems[DATagList] = self.tags;
 	self.filteredItems[DABranchList] = self.branches;

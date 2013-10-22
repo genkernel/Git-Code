@@ -692,12 +692,13 @@ yet.</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <searchBar contentMode="redraw" barStyle="black" placeholder="master" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47U-I9-wod">
+                            <searchBar contentMode="redraw" placeholder="master" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47U-I9-wod">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="jhg-6y-r7p"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -765,7 +766,7 @@ yet.</string>
                                     <constraint firstItem="rGG-WZ-MSu" firstAttribute="top" secondItem="aGZ-39-Am7" secondAttribute="top" id="tSG-vE-xbJ"/>
                                 </constraints>
                             </view>
-                            <tabBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="bup-5o-kOO">
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bup-5o-kOO">
                                 <rect key="frame" x="0.0" y="519" width="320" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="3m8-0d-Rqd"/>
@@ -775,6 +776,7 @@ yet.</string>
                                     <tabBarItem tag="1" title="Tags" image="bar-tags.png" id="IPC-0d-ZcX" userLabel="Tags Item"/>
                                 </items>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="selectedImageTintColor" red="0.0" green="0.50980392159999999" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="ALf-gj-3jW" id="5Id-Im-ReW"/>
@@ -789,12 +791,17 @@ yet.</string>
                             <constraint firstItem="bup-5o-kOO" firstAttribute="trailing" secondItem="dvG-Hk-BYD" secondAttribute="trailing" id="Kvd-1n-vmr"/>
                             <constraint firstAttribute="bottom" secondItem="bup-5o-kOO" secondAttribute="bottom" id="LpD-lW-V0W"/>
                             <constraint firstItem="bup-5o-kOO" firstAttribute="top" secondItem="aGZ-39-Am7" secondAttribute="bottom" id="TYq-6f-84x"/>
+                            <constraint firstItem="47U-I9-wod" firstAttribute="top" secondItem="iWe-fs-zD6" secondAttribute="bottom" id="VBN-zD-z1N"/>
                             <constraint firstItem="47U-I9-wod" firstAttribute="leading" secondItem="dvG-Hk-BYD" secondAttribute="leading" id="aSG-F8-roY"/>
                             <constraint firstItem="bup-5o-kOO" firstAttribute="leading" secondItem="dvG-Hk-BYD" secondAttribute="leading" id="bhS-0p-hj4"/>
-                            <constraint firstItem="47U-I9-wod" firstAttribute="top" secondItem="dvG-Hk-BYD" secondAttribute="top" id="wYn-yO-dCM"/>
                             <constraint firstItem="47U-I9-wod" firstAttribute="trailing" secondItem="dvG-Hk-BYD" secondAttribute="trailing" id="wpY-sR-JNS"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="branchesTable" destination="Nvk-ce-TBf" id="sGF-nB-ILg"/>
                         <outlet property="branchesTableLeft" destination="a4w-is-iZI" id="hGA-dd-wRV"/>
@@ -1091,11 +1098,15 @@ by </string>
     </scenes>
     <resources>
         <image name="Grabber2_wide_top.png" width="90" height="11"/>
+        <image name="Grabber2_wide_top.png" width="90" height="11"/>
+        <image name="authors-white.png" width="35" height="21"/>
         <image name="authors-white.png" width="35" height="21"/>
         <image name="authors.png" width="35" height="21"/>
         <image name="bar-branches.png" width="44" height="13"/>
         <image name="bar-tags.png" width="33" height="27"/>
         <image name="branches-white.png" width="29" height="7"/>
+        <image name="branches-white.png" width="29" height="7"/>
+        <image name="branches.png" width="29" height="7"/>
         <image name="branches.png" width="29" height="7"/>
         <image name="fader-bottom.png" width="2" height="20"/>
         <image name="repo-forget.png" width="30" height="29"/>

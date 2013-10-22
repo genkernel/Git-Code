@@ -164,8 +164,6 @@ static NSString *OverlayNavSegue = @"OverlayNavSegue";
 		if (completionHandler) {
 			completionHandler(finished);
 		}
-		
-//		[self setNeedsStatusBarAppearanceUpdate];
 	}];
 }
 
@@ -183,14 +181,11 @@ static NSString *OverlayNavSegue = @"OverlayNavSegue";
 }
 
 - (void)dismissMenuCtrl:(DABaseCtrl *)ctrl animated:(BOOL)animated {
-	[self.menuCtrl willMoveToParentViewController:nil];
-	
 	[self animateMenuContainerWithOption:DASlideToCenterPresentation completionHandler:^(BOOL finished) {
-		[self.menuContainer removeAllSubviews];
-		
-		[self.menuCtrl didMoveToParentViewController:nil];
-		
 		_menuCtrl = nil;
+		self.menuNavCtrl.viewControllers = @[];
+		
+		[self setNeedsStatusBarAppearanceUpdate];
 	}];
 }
 
@@ -199,14 +194,11 @@ static NSString *OverlayNavSegue = @"OverlayNavSegue";
 - (void)presentMenuContainerWithOption:(DAFramePresentingAnimations)option {
 	[self prepositionMenuContainerForOption:DASlideToCenterPresentation];
 	
-	[self addChildViewController:self.menuCtrl];
-	
-	self.menuCtrl.view.frame = self.menuContainer.bounds;
-	[self.menuContainer addSubview:self.menuCtrl.view];
+	self.menuNavCtrl.navigationBarHidden = NO;
+	[self.menuNavCtrl setViewControllers:@[self.menuCtrl]];
 	
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[self animateMenuContainerWithOption:option completionHandler:^(BOOL finished) {
-			[self.menuCtrl didMoveToParentViewController:self];
 		}];
 	});
 }
@@ -264,8 +256,6 @@ static NSString *OverlayNavSegue = @"OverlayNavSegue";
 		if (completionHandler) {
 			completionHandler(finished);
 		}
-		
-		[self setNeedsStatusBarAppearanceUpdate];
 	}];
 }
 

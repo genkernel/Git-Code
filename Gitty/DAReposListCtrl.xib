@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DAReposListCtrl">
             <connections>
-                <outlet property="navItem" destination="MHn-Xh-K5q" id="ePG-AC-DD9"/>
                 <outlet property="serversButton" destination="L7P-lR-jFG" id="HNu-7N-8n6"/>
                 <outlet property="tableView" destination="OiV-0p-7m6" id="ta7-nd-hIy"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -19,11 +18,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BT4-Xw-bbY" userLabel="Content">
-                    <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OiV-0p-7m6">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -40,29 +39,11 @@
                         <constraint firstItem="OiV-0p-7m6" firstAttribute="leading" secondItem="BT4-Xw-bbY" secondAttribute="leading" id="pkc-jh-uIY"/>
                     </constraints>
                 </view>
-                <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="f2X-cr-DhD">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="Gct-P2-wb5"/>
-                    </constraints>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <textAttributes key="titleTextAttributes">
-                        <color key="textShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="2"/>
-                    </textAttributes>
-                    <items>
-                        <navigationItem title="Repos" id="MHn-Xh-K5q"/>
-                    </items>
-                </navigationBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="BT4-Xw-bbY" secondAttribute="trailing" id="3Tj-Nt-4pT"/>
-                <constraint firstAttribute="trailing" secondItem="f2X-cr-DhD" secondAttribute="trailing" id="C4p-Ud-Wl0"/>
-                <constraint firstItem="f2X-cr-DhD" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="N8T-uY-mHb"/>
-                <constraint firstItem="BT4-Xw-bbY" firstAttribute="top" secondItem="f2X-cr-DhD" secondAttribute="bottom" id="TIO-Oa-JlM"/>
-                <constraint firstItem="f2X-cr-DhD" firstAttribute="top" secondItem="1" secondAttribute="top" id="UMG-37-a8b"/>
+                <constraint firstItem="BT4-Xw-bbY" firstAttribute="top" secondItem="1" secondAttribute="top" id="mpx-is-m9D"/>
                 <constraint firstItem="BT4-Xw-bbY" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="nUr-7U-i93"/>
                 <constraint firstAttribute="bottom" secondItem="BT4-Xw-bbY" secondAttribute="bottom" id="v4E-3n-wS4"/>
             </constraints>
@@ -72,7 +53,7 @@
         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L7P-lR-jFG" userLabel="L Button - Servers">
             <rect key="frame" x="0.0" y="0.0" width="73" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
             <state key="normal" title="Servers">
                 <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

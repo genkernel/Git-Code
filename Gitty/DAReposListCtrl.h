@@ -16,6 +16,5 @@
 @property (strong, nonatomic) void (^selectAction)(NSDictionary *repo);
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) IBOutlet UINavigationItem *navItem;
 @property (strong, nonatomic) IBOutlet UIButton *serversButton;
 @end

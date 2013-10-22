@@ -15,16 +15,14 @@
 
 @implementation DAReposListCtrl
 
-- (BOOL)prefersStatusBarHidden {
-	return NO;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	self.title = NSLocalizedString(@"Repos", nil);
+	
 	_repos = self.server.reposByAccessTime;
 	
-	self.navItem.leftBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.serversButton];
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem.alloc initWithCustomView:self.serversButton];
 	
 	NSString *identifier = DAQuickRepoCell.className;
 	UINib *nib = [UINib nibWithNibName:identifier bundle:nil];

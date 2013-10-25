@@ -186,6 +186,8 @@ static NSString *OverlayNavSegue = @"OverlayNavSegue";
 		self.menuNavCtrl.viewControllers = @[];
 		
 		[self setNeedsStatusBarAppearanceUpdate];
+		
+		self.dismissMainOverlay.hidden = YES;
 	}];
 }
 
@@ -199,6 +201,7 @@ static NSString *OverlayNavSegue = @"OverlayNavSegue";
 	
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[self animateMenuContainerWithOption:option completionHandler:^(BOOL finished) {
+			self.dismissMainOverlay.hidden = NO;
 		}];
 	});
 }
@@ -257,6 +260,12 @@ static NSString *OverlayNavSegue = @"OverlayNavSegue";
 			completionHandler(finished);
 		}
 	}];
+}
+
+#pragma mark Actions
+
+- (IBAction)dismissMenuPressed:(UIButton *)sender {
+	[self dismissMenuCtrl:self.menuCtrl animated:YES];
 }
 
 @end

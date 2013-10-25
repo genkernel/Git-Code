@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13A598" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eaV-lb-U5t">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
@@ -836,13 +836,37 @@ yet.</string>
                                     <segue destination="Wcr-FD-561" kind="embed" identifier="MenuNavSegue" id="7rJ-yS-t59"/>
                                 </connections>
                             </containerView>
-                            <containerView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W13-SA-qaA" userLabel="Main Container">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUO-Jv-dXe" userLabel="Main Container">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <connections>
-                                    <segue destination="xze-n8-Hho" kind="embed" identifier="DefaultSegue" id="LeQ-Dl-x7u"/>
-                                </connections>
-                            </containerView>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <containerView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W13-SA-qaA" userLabel="Main Ctrl Container">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <connections>
+                                            <segue destination="xze-n8-Hho" kind="embed" identifier="DefaultSegue" id="LeQ-Dl-x7u"/>
+                                        </connections>
+                                    </containerView>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1nX-m9-deU" userLabel="Click-to-Dismiss Overlay Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dismissMenuPressed:" destination="eaV-lb-U5t" eventType="touchUpInside" id="2ZJ-Wd-WTA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="1nX-m9-deU" secondAttribute="bottom" id="7zS-hY-e31"/>
+                                    <constraint firstAttribute="trailing" secondItem="1nX-m9-deU" secondAttribute="trailing" id="JFy-Ry-8uI"/>
+                                    <constraint firstItem="1nX-m9-deU" firstAttribute="top" secondItem="mUO-Jv-dXe" secondAttribute="top" id="axL-Wk-K9w"/>
+                                    <constraint firstItem="1nX-m9-deU" firstAttribute="leading" secondItem="mUO-Jv-dXe" secondAttribute="leading" id="uGp-sJ-uzB"/>
+                                </constraints>
+                            </view>
                             <containerView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Axi-JI-XUy" userLabel="Overlay Container">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -855,24 +879,25 @@ yet.</string>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="B8b-ce-fsm" secondAttribute="bottom" id="1cB-AN-BYW"/>
                             <constraint firstItem="B8b-ce-fsm" firstAttribute="top" secondItem="rrN-qy-xkj" secondAttribute="top" id="2rj-sa-SBb"/>
+                            <constraint firstItem="mUO-Jv-dXe" firstAttribute="top" secondItem="rrN-qy-xkj" secondAttribute="top" id="7Y5-bq-Bos"/>
+                            <constraint firstItem="Q2f-FP-CUF" firstAttribute="top" secondItem="mUO-Jv-dXe" secondAttribute="bottom" id="Hba-Re-J0t"/>
                             <constraint firstItem="Axi-JI-XUy" firstAttribute="leading" secondItem="rrN-qy-xkj" secondAttribute="leading" id="JHd-U7-HzH"/>
                             <constraint firstAttribute="trailing" secondItem="B8b-ce-fsm" secondAttribute="trailing" id="Jy1-PF-Rkq"/>
                             <constraint firstItem="Axi-JI-XUy" firstAttribute="top" secondItem="rrN-qy-xkj" secondAttribute="top" id="MGG-nO-XZO"/>
-                            <constraint firstItem="W13-SA-qaA" firstAttribute="top" secondItem="rrN-qy-xkj" secondAttribute="top" id="Q40-qi-9a3"/>
+                            <constraint firstAttribute="trailing" secondItem="mUO-Jv-dXe" secondAttribute="trailing" id="P2s-8W-mOb"/>
                             <constraint firstAttribute="trailing" secondItem="Axi-JI-XUy" secondAttribute="trailing" id="Wke-Gm-27U"/>
                             <constraint firstItem="B8b-ce-fsm" firstAttribute="leading" secondItem="rrN-qy-xkj" secondAttribute="leading" id="X2d-pa-Ku9"/>
-                            <constraint firstItem="W13-SA-qaA" firstAttribute="leading" secondItem="rrN-qy-xkj" secondAttribute="leading" id="mRg-QM-0nx"/>
-                            <constraint firstAttribute="bottom" secondItem="W13-SA-qaA" secondAttribute="bottom" id="sNe-K9-i5u"/>
-                            <constraint firstAttribute="trailing" secondItem="W13-SA-qaA" secondAttribute="trailing" id="tXX-qV-PtB"/>
+                            <constraint firstItem="mUO-Jv-dXe" firstAttribute="leading" secondItem="rrN-qy-xkj" secondAttribute="leading" id="cMl-am-gGh"/>
                             <constraint firstAttribute="bottom" secondItem="Axi-JI-XUy" secondAttribute="bottom" id="xoz-AP-MQv"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mainBottom" destination="sNe-K9-i5u" id="T3k-Zx-Kqc"/>
-                        <outlet property="mainContainer" destination="W13-SA-qaA" id="dkJ-FA-4YL"/>
-                        <outlet property="mainLeft" destination="mRg-QM-0nx" id="2au-hi-eas"/>
-                        <outlet property="mainRight" destination="tXX-qV-PtB" id="PCF-DM-XBE"/>
-                        <outlet property="mainTop" destination="Q40-qi-9a3" id="SKa-MO-O8Z"/>
+                        <outlet property="dismissMainOverlay" destination="1nX-m9-deU" id="qrK-gD-Zr9"/>
+                        <outlet property="mainBottom" destination="Hba-Re-J0t" id="0sd-Sl-LZx"/>
+                        <outlet property="mainContainer" destination="mUO-Jv-dXe" id="iMR-Nf-n3X"/>
+                        <outlet property="mainLeft" destination="cMl-am-gGh" id="gWj-7H-NgA"/>
+                        <outlet property="mainRight" destination="P2s-8W-mOb" id="x9w-eA-McK"/>
+                        <outlet property="mainTop" destination="7Y5-bq-Bos" id="Hz5-BD-OTa"/>
                         <outlet property="menuContainer" destination="B8b-ce-fsm" id="i8a-22-xLg"/>
                         <outlet property="overlayBottom" destination="xoz-AP-MQv" id="1ih-I0-ft5"/>
                         <outlet property="overlayContainer" destination="Axi-JI-XUy" id="q0J-9r-EQH"/>
@@ -1098,11 +1123,15 @@ by </string>
     </scenes>
     <resources>
         <image name="Grabber2_wide_top.png" width="90" height="11"/>
+        <image name="Grabber2_wide_top.png" width="90" height="11"/>
+        <image name="authors-white.png" width="35" height="21"/>
         <image name="authors-white.png" width="35" height="21"/>
         <image name="authors.png" width="35" height="21"/>
         <image name="bar-branches.png" width="44" height="13"/>
         <image name="bar-tags.png" width="33" height="27"/>
         <image name="branches-white.png" width="29" height="7"/>
+        <image name="branches-white.png" width="29" height="7"/>
+        <image name="branches.png" width="29" height="7"/>
         <image name="branches.png" width="29" height="7"/>
         <image name="fader-bottom.png" width="2" height="20"/>
         <image name="repo-forget.png" width="30" height="29"/>

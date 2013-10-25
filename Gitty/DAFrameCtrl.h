@@ -28,6 +28,8 @@ typedef enum {
 
 @interface DAFrameCtrl : UIViewController
 @property (strong, nonatomic) IBOutlet UIView *mainContainer, *overlayContainer, *menuContainer;
+@property (strong, nonatomic) IBOutlet UIView *dismissMainOverlay;
+
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *mainTop, *mainLeft, *mainRight, *mainBottom;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *overlayTop, *overlayLeft, *overlayRight, *overlayBottom;
 

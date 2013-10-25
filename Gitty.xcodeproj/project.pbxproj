@@ -272,6 +272,7 @@
 		18BFDB16180DA8B700CCF115 /* UIDevice+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BFDB09180DA8B700CCF115 /* UIDevice+Helper.m */; };
 		18BFDB17180DA8B700CCF115 /* UncaughtExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BFDB0C180DA8B700CCF115 /* UncaughtExceptionHandler.m */; };
 		18C94433175B93C400A4D7CA /* DABranchPickerCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C94432175B93C400A4D7CA /* DABranchPickerCtrl.m */; };
+		18CDDB55181B191400218774 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18CDDB54181B191400218774 /* Images.xcassets */; };
 		18CF75A91788E71200209141 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CF75A81788E71200209141 /* CoreText.framework */; };
 		18CF75B91788E8EE00209141 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CF75B81788E8EE00209141 /* libxml2.2.dylib */; };
 		18CFED93177C317C00365E5A /* code-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 18CFED8F177C317C00365E5A /* code-green.png */; };
@@ -1036,6 +1037,7 @@
 		18BFDB0C180DA8B700CCF115 /* UncaughtExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UncaughtExceptionHandler.m; sourceTree = "<group>"; };
 		18C94431175B93C400A4D7CA /* DABranchPickerCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABranchPickerCtrl.h; sourceTree = "<group>"; };
 		18C94432175B93C400A4D7CA /* DABranchPickerCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABranchPickerCtrl.m; sourceTree = "<group>"; };
+		18CDDB54181B191400218774 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		18CF75A81788E71200209141 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		18CF75B41788E89F00209141 /* libDTFoundation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDTFoundation.a; path = "Submodules/DTCoreText/Core/Externals/DTFoundation/build/Release-iphoneos/libDTFoundation.a"; sourceTree = "<group>"; };
 		18CF75B61788E8CA00209141 /* libDTHTMLParser_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDTHTMLParser_iOS.a; path = "Submodules/DTCoreText/Core/Externals/DTFoundation/build/Release-iphoneos/libDTHTMLParser_iOS.a"; sourceTree = "<group>"; };
@@ -1884,6 +1886,7 @@
 				18933CE71755395D00E92183 /* DAAppDelegate.m */,
 				18933CE31755395D00E92183 /* main.m */,
 				18933CE51755395D00E92183 /* Gitty-Prefix.pch */,
+				18CDDB54181B191400218774 /* Images.xcassets */,
 			);
 			path = Gitty;
 			sourceTree = "<group>";
@@ -3186,6 +3189,7 @@
 				1810994B1790A6CA0018AAB4 /* DATitleHeaderCell.xib in Resources */,
 				187A29D11795BEC700FE9F19 /* Icon-72.png in Resources */,
 				181873AF179BED8A002FE1A3 /* DAServerCtrl-3.5inches.xib in Resources */,
+				18CDDB55181B191400218774 /* Images.xcassets in Resources */,
 				181873B9179C0175002FE1A3 /* overlay-black@2x.png in Resources */,
 				181873BB179C019A002FE1A3 /* overlay-black.png in Resources */,
 				181873BD179C08C5002FE1A3 /* DANewServerCtrl-3.5inches.xib in Resources */,
@@ -3495,6 +3499,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -3505,7 +3511,7 @@
 				GCC_UNROLL_LOOPS = YES;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Gitty/Gitty-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/Libs/lib",
 					"$(SRCROOT)/Libs/Flurry",
@@ -3531,6 +3537,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -3543,7 +3551,7 @@
 				GCC_UNROLL_LOOPS = YES;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Gitty/Gitty-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/Libs/lib",
 					"$(SRCROOT)/Libs/Flurry",

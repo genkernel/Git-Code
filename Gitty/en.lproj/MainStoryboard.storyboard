@@ -991,12 +991,14 @@ yet.</string>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p68-Os-XZM" userLabel="Header">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="stats_header.png" translatesAutoresizingMaskIntoConstraints="NO" id="iFz-Y0-zqm" userLabel="Background">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nsE-xZ-Rii" userLabel="Blurring Background">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="kbR-En-W67"/>
+                                            <constraint firstAttribute="height" constant="50" id="dXD-FP-9Lw"/>
                                         </constraints>
-                                    </imageView>
+                                    </view>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="312" translatesAutoresizingMaskIntoConstraints="NO" id="hlC-Gf-Gjv" userLabel="Headline Label">
                                         <rect key="frame" x="4" y="0.0" width="312" height="40"/>
                                         <constraints>
@@ -1061,11 +1063,12 @@ by </string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="hlC-Gf-Gjv" firstAttribute="top" secondItem="p68-Os-XZM" secondAttribute="top" id="I7v-tB-9eh"/>
+                                    <constraint firstItem="nsE-xZ-Rii" firstAttribute="leading" secondItem="p68-Os-XZM" secondAttribute="leading" id="V1a-7e-Zru"/>
                                     <constraint firstAttribute="height" constant="80" id="cMS-on-Rd8"/>
-                                    <constraint firstItem="iFz-Y0-zqm" firstAttribute="top" secondItem="p68-Os-XZM" secondAttribute="top" id="fQ3-tP-kox"/>
+                                    <constraint firstAttribute="trailing" secondItem="nsE-xZ-Rii" secondAttribute="trailing" id="cNj-Mw-y4w"/>
+                                    <constraint firstItem="nsE-xZ-Rii" firstAttribute="top" secondItem="p68-Os-XZM" secondAttribute="top" id="fkV-Kg-tOC"/>
                                     <constraint firstItem="hlC-Gf-Gjv" firstAttribute="leading" secondItem="p68-Os-XZM" secondAttribute="leading" constant="4" id="isT-AL-Lew"/>
                                     <constraint firstAttribute="centerX" secondItem="hlC-Gf-Gjv" secondAttribute="centerX" id="mWW-MD-Fto"/>
-                                    <constraint firstItem="iFz-Y0-zqm" firstAttribute="leading" secondItem="p68-Os-XZM" secondAttribute="leading" id="pcs-Kl-qdo"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1085,6 +1088,7 @@ by </string>
                     </view>
                     <toolbarItems/>
                     <connections>
+                        <outlet property="blurringBackground" destination="nsE-xZ-Rii" id="avK-o0-7KM"/>
                         <outlet property="byAuthorDataSource" destination="NwV-q3-KOu" id="yoz-C2-Otz"/>
                         <outlet property="byAuthorProxy" destination="bWH-iN-Twi" id="ZUJ-lN-Jca"/>
                         <outlet property="byAuthorTable" destination="gnU-QP-WVX" id="xDV-cq-TIb"/>
@@ -1123,20 +1127,15 @@ by </string>
     </scenes>
     <resources>
         <image name="Grabber2_wide_top.png" width="90" height="11"/>
-        <image name="Grabber2_wide_top.png" width="90" height="11"/>
-        <image name="authors-white.png" width="35" height="21"/>
         <image name="authors-white.png" width="35" height="21"/>
         <image name="authors.png" width="35" height="21"/>
         <image name="bar-branches.png" width="44" height="13"/>
         <image name="bar-tags.png" width="33" height="27"/>
         <image name="branches-white.png" width="29" height="7"/>
-        <image name="branches-white.png" width="29" height="7"/>
-        <image name="branches.png" width="29" height="7"/>
         <image name="branches.png" width="29" height="7"/>
         <image name="fader-bottom.png" width="2" height="20"/>
         <image name="repo-forget.png" width="30" height="29"/>
         <image name="repos-shortcut.png" width="19" height="17"/>
-        <image name="stats_header.png" width="320" height="80"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

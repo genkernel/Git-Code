@@ -19,6 +19,8 @@ static const NSUInteger OneDayStats = 1;
 @property (strong, nonatomic, readonly) DAGitLatestDayStats *latestDayFilter;
 
 @property (strong, nonatomic) NSIndexPath *selectedCommitIndexPath;
+
+@property (strong, nonatomic, readonly) UIToolbar *headerBluringToolbar;
 @end
 
 @implementation DAStatsCtrl
@@ -28,6 +30,8 @@ static const NSUInteger OneDayStats = 1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	[self applyLightEffectOnHeader];
 	
 	self.byAuthorTable.scrollsToTop = NO;
 	self.byBranchTable.scrollsToTop = NO;
@@ -62,6 +66,15 @@ static const NSUInteger OneDayStats = 1;
 		
 		_selectedCommitIndexPath = nil;
 	}
+}
+
+- (void)applyLightEffectOnHeader {
+	if (!self.headerBluringToolbar) {
+		_headerBluringToolbar = [UIToolbar.alloc initWithFrame:self.blurringBackground.bounds];
+	}
+	
+	self.headerBluringToolbar.barTintColor = UIColor.blackColor;
+	[self.blurringBackground.layer insertSublayer:self.headerBluringToolbar.layer atIndex:0];
 }
 
 - (void)reloadStatsData:(DARepoWalk *)stats {

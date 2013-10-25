@@ -20,6 +20,7 @@
 // Header.
 @property (strong, nonatomic) IBOutlet UIView *headerContainer;
 @property (strong, nonatomic) IBOutlet UILabel *headlineLabel, *noCommitsLabel;
+@property (strong, nonatomic) IBOutlet UIView *blurringBackground;
 
 // commitsTable is @dynamic and points to visible table: byAuthorTable or byBranchTable.
 @property (strong, nonatomic, readonly) UITableView *commitsTable;

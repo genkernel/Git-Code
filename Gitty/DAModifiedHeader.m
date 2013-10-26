@@ -24,6 +24,9 @@
 		
 		[self addSubview:view];
 		
+		view.translatesAutoresizingMaskIntoConstraints = NO;
+		[view applyFullscreenConstraints];
+		
 		[self applyLightEffectOnBackground];
 		
 //		[view colorizeBorderWithColor:UIColor.blueColor];
@@ -34,10 +37,14 @@
 - (void)applyLightEffectOnBackground {
 	_bluringToolbar = [UIToolbar.alloc initWithFrame:self.bluringBackground.bounds];
 	
+	[self.bluringBackground addSubview:self.bluringToolbar];
+	self.bluringToolbar.translatesAutoresizingMaskIntoConstraints = NO;
+	[self.bluringToolbar applyFullscreenConstraints];
+	
 	self.bluringToolbar.translucent = YES;
 	self.bluringToolbar.barTintColor = UIColor.blackColor;
 	
-	[self.bluringBackground.layer insertSublayer:self.bluringToolbar.layer atIndex:0];
+//	[self.bluringBackground.layer insertSublayer:self.bluringToolbar.layer atIndex:0];
 }
 
 - (void)loadDelta:(GTDiffDelta *)delta {

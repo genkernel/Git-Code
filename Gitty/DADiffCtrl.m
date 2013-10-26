@@ -83,8 +83,9 @@
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+	
 	BOOL hidden = UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
-	[self.navigationController setNavigationBarHidden:hidden];
+	[self.navigationController setNavigationBarHidden:hidden animated:YES];
 	
 	NSString *orintation = UIInterfaceOrientationIsPortrait(toInterfaceOrientation) ? WorkflowActionDiffPortrait : WorkflowActionDiffLandscape;
 	[DAFlurry logWorkflowAction:orintation];

@@ -840,7 +840,7 @@ yet.</string>
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <containerView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W13-SA-qaA" userLabel="Main Ctrl Container">
+                                    <containerView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W13-SA-qaA" userLabel="Main Ctrl Container">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <connections>
@@ -862,8 +862,12 @@ yet.</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="1nX-m9-deU" secondAttribute="bottom" id="7zS-hY-e31"/>
+                                    <constraint firstAttribute="trailing" secondItem="W13-SA-qaA" secondAttribute="trailing" id="8tO-ol-xWR"/>
                                     <constraint firstAttribute="trailing" secondItem="1nX-m9-deU" secondAttribute="trailing" id="JFy-Ry-8uI"/>
+                                    <constraint firstAttribute="bottom" secondItem="W13-SA-qaA" secondAttribute="bottom" id="JJa-Gb-P7t"/>
+                                    <constraint firstItem="W13-SA-qaA" firstAttribute="leading" secondItem="mUO-Jv-dXe" secondAttribute="leading" id="PPO-fR-Ofu"/>
                                     <constraint firstItem="1nX-m9-deU" firstAttribute="top" secondItem="mUO-Jv-dXe" secondAttribute="top" id="axL-Wk-K9w"/>
+                                    <constraint firstItem="W13-SA-qaA" firstAttribute="top" secondItem="mUO-Jv-dXe" secondAttribute="top" id="fdd-YT-bgX"/>
                                     <constraint firstItem="1nX-m9-deU" firstAttribute="leading" secondItem="mUO-Jv-dXe" secondAttribute="leading" id="uGp-sJ-uzB"/>
                                 </constraints>
                             </view>

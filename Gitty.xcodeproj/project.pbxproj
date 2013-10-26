@@ -44,15 +44,12 @@
 		1812266D1784CE2D00628C2F /* bitbucket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1812266C1784CE2D00628C2F /* bitbucket@2x.png */; };
 		181226741784D0BA00628C2F /* repo-forget.png in Resources */ = {isa = PBXBuildFile; fileRef = 181226711784D0BA00628C2F /* repo-forget.png */; };
 		181226761784D48500628C2F /* repo-forget@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181226751784D48500628C2F /* repo-forget@2x.png */; };
-		181240ED175BCD3C00E6F571 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 181240EA175BCD3C00E6F571 /* Icon.png */; };
-		181240EE175BCD3C00E6F571 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181240EB175BCD3C00E6F571 /* Icon@2x.png */; };
 		181240F5175BD21100E6F571 /* DARepoCtrl+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 181240F4175BD21100E6F571 /* DARepoCtrl+Animation.m */; };
 		1812EBF0179AF4C800416064 /* NSAttributedString+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1812EBEF179AF4C800416064 /* NSAttributedString+Gitty.m */; };
 		181429DC178901E100347E1B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181429DB178901E100347E1B /* MessageUI.framework */; };
 		1817091E175BCBEA002A2D93 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1817091B175BCBEA002A2D93 /* Default-568h@2x.png */; };
 		1817091F175BCBEA002A2D93 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1817091C175BCBEA002A2D93 /* Default.png */; };
 		18170920175BCBEA002A2D93 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1817091D175BCBEA002A2D93 /* Default@2x.png */; };
-		18170922175BCC1B002A2D93 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18170921175BCC1B002A2D93 /* Icon-72@2x.png */; };
 		18184B6017555AB5001C58D8 /* DABaseCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18184B5F17555AB5001C58D8 /* DABaseCtrl.m */; };
 		18184B6717556968001C58D8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18184B6617556968001C58D8 /* libz.dylib */; };
 		181873AF179BED8A002FE1A3 /* DAServerCtrl-3.5inches.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181873AE179BED8A002FE1A3 /* DAServerCtrl-3.5inches.xib */; };
@@ -147,7 +144,6 @@
 		1871D780179C1B3F00F1D928 /* DARepoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1871D77F179C1B3F00F1D928 /* DARepoCell.xib */; };
 		1871E9B517EDBB5900A3464C /* DAFrameCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1871E9B417EDBB5900A3464C /* DAFrameCtrl.m */; };
 		1871E9C017EE0C1200A3464C /* DAFrameCtrl+States.m in Sources */ = {isa = PBXBuildFile; fileRef = 1871E9BF17EE0C1200A3464C /* DAFrameCtrl+States.m */; };
-		187A29D11795BEC700FE9F19 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 187A29D01795BEC700FE9F19 /* Icon-72.png */; };
 		187A29DF1795DFD400FE9F19 /* STKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 187A29DE1795DFD400FE9F19 /* STKeychain.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		187A29E21795E05500FE9F19 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187A29E11795E05500FE9F19 /* Security.framework */; };
 		187C86211781F4A800703592 /* btn-lightgray.png in Resources */ = {isa = PBXBuildFile; fileRef = 187C86201781F4A800703592 /* btn-lightgray.png */; };
@@ -416,8 +412,6 @@
 		1812266C1784CE2D00628C2F /* bitbucket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bitbucket@2x.png"; sourceTree = "<group>"; };
 		181226711784D0BA00628C2F /* repo-forget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "repo-forget.png"; sourceTree = "<group>"; };
 		181226751784D48500628C2F /* repo-forget@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "repo-forget@2x.png"; sourceTree = "<group>"; };
-		181240EA175BCD3C00E6F571 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		181240EB175BCD3C00E6F571 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		181240F3175BD21100E6F571 /* DARepoCtrl+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DARepoCtrl+Animation.h"; sourceTree = "<group>"; };
 		181240F4175BD21100E6F571 /* DARepoCtrl+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DARepoCtrl+Animation.m"; sourceTree = "<group>"; };
 		1812EBEE179AF4C800416064 /* NSAttributedString+Gitty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Gitty.h"; sourceTree = "<group>"; };
@@ -426,7 +420,6 @@
 		1817091B175BCBEA002A2D93 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1817091C175BCBEA002A2D93 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		1817091D175BCBEA002A2D93 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		18170921175BCC1B002A2D93 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		18184B5E17555AB5001C58D8 /* DABaseCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABaseCtrl.h; sourceTree = "<group>"; };
 		18184B5F17555AB5001C58D8 /* DABaseCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABaseCtrl.m; sourceTree = "<group>"; };
 		18184B6617556968001C58D8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -585,7 +578,6 @@
 		1871E9BB17EE086500A3464C /* DAFrameCtrl+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DAFrameCtrl+Internal.h"; sourceTree = "<group>"; };
 		1871E9BE17EE0C1200A3464C /* DAFrameCtrl+States.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DAFrameCtrl+States.h"; sourceTree = "<group>"; };
 		1871E9BF17EE0C1200A3464C /* DAFrameCtrl+States.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DAFrameCtrl+States.m"; sourceTree = "<group>"; };
-		187A29D01795BEC700FE9F19 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		187A29DD1795DFD400FE9F19 /* STKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKeychain.h; sourceTree = "<group>"; };
 		187A29DE1795DFD400FE9F19 /* STKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKeychain.m; sourceTree = "<group>"; };
 		187A29E11795E05500FE9F19 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -1277,18 +1269,6 @@
 				187C862A1782451C00703592 /* DAProtocolsContainer.m */,
 			);
 			name = ProtocolsContainer;
-			sourceTree = "<group>";
-		};
-		18170914175BCBB6002A2D93 /* Icons */ = {
-			isa = PBXGroup;
-			children = (
-				187A29D01795BEC700FE9F19 /* Icon-72.png */,
-				181240EA175BCD3C00E6F571 /* Icon.png */,
-				181240EB175BCD3C00E6F571 /* Icon@2x.png */,
-				18170921175BCC1B002A2D93 /* Icon-72@2x.png */,
-			);
-			name = Icons;
-			path = Res/Icons;
 			sourceTree = "<group>";
 		};
 		1817091A175BCBEA002A2D93 /* Backgrounds */ = {
@@ -2797,7 +2777,6 @@
 				1804FA8C176E2D510080AB50 /* Logos */,
 				1817091A175BCBEA002A2D93 /* Backgrounds */,
 				18F995D1175FBEDB0033A4A0 /* UI */,
-				18170914175BCBB6002A2D93 /* Icons */,
 				18933CDF1755395D00E92183 /* Gitty-Info.plist */,
 				18933CE01755395D00E92183 /* InfoPlist.strings */,
 			);
@@ -3124,10 +3103,7 @@
 				1817091F175BCBEA002A2D93 /* Default.png in Resources */,
 				1804FAA4176E768D0080AB50 /* Git-Icon@2x.png in Resources */,
 				18170920175BCBEA002A2D93 /* Default@2x.png in Resources */,
-				18170922175BCC1B002A2D93 /* Icon-72@2x.png in Resources */,
 				1804FA87176E16210080AB50 /* DAServerCtrl.xib in Resources */,
-				181240ED175BCD3C00E6F571 /* Icon.png in Resources */,
-				181240EE175BCD3C00E6F571 /* Icon@2x.png in Resources */,
 				1804FA94176E44450080AB50 /* bitbucket.png in Resources */,
 				188B2D58175D3E5C00BD1EEB /* DACommitCell.xib in Resources */,
 				1871D780179C1B3F00F1D928 /* DARepoCell.xib in Resources */,
@@ -3187,7 +3163,6 @@
 				1810993E1790746C0018AAB4 /* DAAuthorHeaderCell.xib in Resources */,
 				1810994417909C140018AAB4 /* DACommitBranchCell.xib in Resources */,
 				1810994B1790A6CA0018AAB4 /* DATitleHeaderCell.xib in Resources */,
-				187A29D11795BEC700FE9F19 /* Icon-72.png in Resources */,
 				181873AF179BED8A002FE1A3 /* DAServerCtrl-3.5inches.xib in Resources */,
 				18CDDB55181B191400218774 /* Images.xcassets in Resources */,
 				181873B9179C0175002FE1A3 /* overlay-black@2x.png in Resources */,

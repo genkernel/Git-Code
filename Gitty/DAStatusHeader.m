@@ -17,8 +17,7 @@
 @implementation DAStatusHeader
 @dynamic titles;
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
 		NSArray *views = [NSBundle.mainBundle loadNibNamed:self.className owner:self options:nil];
@@ -28,6 +27,9 @@
 		
 		[self addSubview:view];
 		
+		view.translatesAutoresizingMaskIntoConstraints = NO;
+		[view applyFullscreenConstraints];
+		
 		[self applyLightEffectOnBackground];
     }
     return self;
@@ -36,10 +38,14 @@
 - (void)applyLightEffectOnBackground {
 	_bluringToolbar = [UIToolbar.alloc initWithFrame:self.bluringBackground.bounds];
 	
+	[self.bluringBackground addSubview:self.bluringToolbar];
+	self.bluringToolbar.translatesAutoresizingMaskIntoConstraints = NO;
+	[self.bluringToolbar applyFullscreenConstraints];
+	
 	self.bluringToolbar.translucent = YES;
 	self.bluringToolbar.barTintColor = UIColor.blackColor;
 	
-	[self.bluringBackground.layer insertSublayer:self.bluringToolbar.layer atIndex:0];
+//	[self.bluringBackground.layer insertSublayer:self.bluringToolbar.layer atIndex:0];
 }
 
 - (NSString *)titleForChangeType:(GTDiffDeltaType)type {

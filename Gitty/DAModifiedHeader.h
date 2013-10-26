@@ -14,5 +14,6 @@
 @property (strong, nonatomic) IBOutlet DADiffDeltaGraphView *graph;
 @property (strong, nonatomic) IBOutlet UILabel *filenameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *binaryStatusLabel;
+@property (strong, nonatomic) IBOutlet UIView *bluringBackground;
 @property (strong, nonatomic) IBOutlet UILabel *additionsLabel, *deletionsLabel;
 @end

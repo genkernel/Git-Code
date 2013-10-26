@@ -8,6 +8,10 @@
 
 #import "DAModifiedHeader.h"
 
+@interface DAModifiedHeader ()
+@property (strong, nonatomic, readonly) UIToolbar *bluringToolbar;
+@end
+
 @implementation DAModifiedHeader
 
 - (id)init {
@@ -20,9 +24,20 @@
 		
 		[self addSubview:view];
 		
+		[self applyLightEffectOnBackground];
+		
 //		[view colorizeBorderWithColor:UIColor.blueColor];
     }
     return self;
+}
+
+- (void)applyLightEffectOnBackground {
+	_bluringToolbar = [UIToolbar.alloc initWithFrame:self.bluringBackground.bounds];
+	
+	self.bluringToolbar.translucent = YES;
+	self.bluringToolbar.barTintColor = UIColor.blackColor;
+	
+	[self.bluringBackground.layer insertSublayer:self.bluringToolbar.layer atIndex:0];
 }
 
 - (void)loadDelta:(GTDiffDelta *)delta {

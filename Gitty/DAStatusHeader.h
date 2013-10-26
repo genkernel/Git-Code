@@ -13,5 +13,6 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *filenameLabel, *anotherFilenameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *symbolLabel, *anotherSymbolLabel;
+@property (strong, nonatomic) IBOutlet UIView *bluringBackground;
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;
 @end

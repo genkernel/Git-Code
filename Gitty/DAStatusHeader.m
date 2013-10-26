@@ -10,6 +10,8 @@
 
 @interface DAStatusHeader ()
 @property (strong, nonatomic, readonly) NSArray *titles;
+
+@property (strong, nonatomic, readonly) UIToolbar *bluringToolbar;
 @end
 
 @implementation DAStatusHeader
@@ -25,8 +27,19 @@
 		self.frame = view.bounds;
 		
 		[self addSubview:view];
+		
+		[self applyLightEffectOnBackground];
     }
     return self;
+}
+
+- (void)applyLightEffectOnBackground {
+	_bluringToolbar = [UIToolbar.alloc initWithFrame:self.bluringBackground.bounds];
+	
+	self.bluringToolbar.translucent = YES;
+	self.bluringToolbar.barTintColor = UIColor.blackColor;
+	
+	[self.bluringBackground.layer insertSublayer:self.bluringToolbar.layer atIndex:0];
 }
 
 - (NSString *)titleForChangeType:(GTDiffDeltaType)type {

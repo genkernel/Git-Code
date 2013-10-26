@@ -69,11 +69,11 @@ static const NSUInteger OneDayStats = 1;
 }
 
 - (void)applyLightEffectOnHeader {
-	if (!self.headerBluringToolbar) {
-		_headerBluringToolbar = [UIToolbar.alloc initWithFrame:self.blurringBackground.bounds];
-	}
+	_headerBluringToolbar = [UIToolbar.alloc initWithFrame:self.blurringBackground.bounds];
 	
+	self.headerBluringToolbar.translucent = YES;
 	self.headerBluringToolbar.barTintColor = UIColor.blackColor;
+	
 	[self.blurringBackground.layer insertSublayer:self.headerBluringToolbar.layer atIndex:0];
 }
 

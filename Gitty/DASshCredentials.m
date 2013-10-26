@@ -49,7 +49,7 @@ static NSString *ZipExtension = @"zip";
 
 - (BOOL)hasSshKeypairSupportForServer:(DAGitServer *)server {
 	DASshKeyInfo *info = [self keysForServer:server];
-
+	
 	BOOL isPublicKeyExistent = [self.app.fs isFileExistent:info.publicKeyPath];
 	BOOL isPrivateKeyExistent = [self.app.fs isFileExistent:info.publicKeyPath];
 	
@@ -131,6 +131,10 @@ static NSString *ZipExtension = @"zip";
 	
 	DAAlert *alert = [DAAlert plainTextAlertWithTitle:server.name message:message];
 	alert.delegate = item;
+	
+	[alert addButtonWithTitle:NSLocalizedString(@"Cancel", nil)];
+	[alert addButtonWithTitle:NSLocalizedString(@"Ok", nil)];
+	
 	[self.alert enqueueAlert:alert];
 }
 

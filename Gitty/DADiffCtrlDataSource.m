@@ -53,10 +53,20 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 	}
 }
 
+- (NSDictionary *)attributesWithFont:(UIFont *)font {
+	NSMutableDictionary *attributes = @{}.mutableCopy;
+	
+	attributes[NSFontAttributeName] = font;
+	
+	return attributes;
+}
+
+
 - (void)compareCommit:(GTCommit *)commit againstParentCommit:(GTCommit *)oldCommit {
 	// TODO: fetch font directly from corresponding view.
 	UIFont *font = [UIFont fontWithName:@"Courier" size:14.];
-	NSLineBreakMode lineBreakMode = NSLineBreakByClipping;
+	
+	NSDictionary *attributes = [self attributesWithFont:font];
 	
 	const CGFloat lineHeight = font.lineHeight;
 	
@@ -82,9 +92,11 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 			linesCount += hunk.lineCount + 1/*header*/;
 			
 			[hunk enumerateLinesInHunkUsingBlock:^(GTDiffLine *line, BOOL *stop) {
-				CGSize s = [line.content sizeWithFont:font forWidth:4096. lineBreakMode:lineBreakMode];
 				
-				longestLineWidth = MAX(s.width, longestLineWidth);
+				CGSize maxSize = CGSizeMake(4096, 4096);
+				CGRect r = [line.content boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil];
+				
+				longestLineWidth = MAX(r.size.width, longestLineWidth);
 			}];
 		}];
 		

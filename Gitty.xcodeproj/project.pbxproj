@@ -3541,7 +3541,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Anton Altukhov (9P6H56XK58)";
 				GCC_FAST_MATH = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3567,7 +3567,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "62A31995-E026-488C-8615-AF853435C8F3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "08004291-A0AC-412D-9F0A-8279193ECED9";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Submodules/objective-git/libgit2/include $(SRCROOT)/Submodules/ConceptScroll/PagerView $(SRCROOT)/Submodules/ZipArchive/ $(SRCROOT)/Submodules/objective-git/Classes $(SRCROOT)/Submodules/objective-git/Classes/Categories/";
 				WRAPPER_EXTENSION = app;
 			};

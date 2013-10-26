@@ -31,9 +31,12 @@ static CGFloat CommitMessageMaxHeight = 120.;
 }
 
 - (CGFloat)heightForCommit:(GTCommit *)commit {
-	CGSize s = CGSizeMake(self.commitLabel.width, CommitMessageMaxHeight);
-	s = [commit.message sizeWithFont:self.commitLabel.font constrainedToSize:s lineBreakMode:self.commitLabel.lineBreakMode];
+	self.commitLabel.text = commit.message;
 	
+	CGRect r = CGRectMake(0, 0, self.commitLabel.width, CommitMessageMaxHeight);
+	r = [self.commitLabel textRectForBounds:r limitedToNumberOfLines:6];
+	
+	CGSize s = r.size;
 	CGFloat height = InitialCellHeight;
 	
 	BOOL isMultiline = s.height > commitMessageSingleLineHeight;

@@ -27,6 +27,15 @@ static const CGFloat CodeRightMargin = 10.;
 #endif
 }*/
 
+- (NSDictionary *)attributesWithFont:(UIFont *)font {
+	NSMutableDictionary *attributes = @{}.mutableCopy;
+	
+	attributes[NSFontAttributeName] = font;
+//	attributes[NSForegroundColorAttributeName] = color;
+	
+	return attributes;
+}
+
 - (void)loadHunk:(GTDiffHunk *)hunk {
 	CGFloat fontSize = 14;
 	UIFont *font = [UIFont fontWithName:@"Courier" size:fontSize];
@@ -38,6 +47,8 @@ static const CGFloat CodeRightMargin = 10.;
 //	assert(lineHeight * hunk.lineCount == self.height);
 	
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		
+		NSDictionary *attributes = [self attributesWithFont:font];
 		
 		[NSObject startMeasurement];
 		
@@ -59,7 +70,8 @@ static const CGFloat CodeRightMargin = 10.;
 				if (isEOFNewLineStuff) {
 					[noNewLineImg drawAtPoint:CGPointMake(.0, y)];
 				} else {
-					[line.content drawAtPoint:CGPointMake(.0, y) withFont:font];
+//					[line.content drawAtPoint:CGPointMake(.0, y) withFont:font];
+					[line.content drawAtPoint:CGPointMake(.0, y) withAttributes:attributes];
 				}
 				
 				lineNumber++;

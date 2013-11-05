@@ -25,25 +25,13 @@
 	CGFloat offset = self.credentialsContainer.height;
 	offset *= visible ? 1 : -1;
 	
-	self.exploreContainerHeightRule.constant += offset;
+	self.exploreContainerHeight.constant += offset;
 	
 	[UIView animateWithDuration:StandartAnimationDuration animations:^{
-		[self.view layoutIfNeeded];
+		[self.exploreContainer layoutIfNeeded];
 	} completion:^(BOOL finished) {
 		[self updateControlButtonsState];
 	}];
-	
-	/*
-	CGFloat offset = self.credentialsContainer.height;
-	offset *= visible ? 1 : -1;
-	
-	[UIView animateWithDuration:StandartAnimationDuration animations:^{
-		self.exploreContainer.height += offset;
-		
-		
-	} completion:^(BOOL finished) {
-		[self updateControlButtonsState];
-	}];*/
 }
 
 - (void)showAnonymousButton {
@@ -64,6 +52,7 @@
 	if (self.isUsingCredentials) {
 		BOOL isCredentialsSupplied = self.userNameField.text.length && self.userPasswordField.text.length;
 		self.exploreButton.enabled = self.repoField.text.length && isCredentialsSupplied;
+		
 	} else {
 		self.exploreButton.enabled = self.repoField.text.length > 0;
 	}

@@ -4,18 +4,19 @@
 
 #import <Availability.h>
 
-#ifndef __IPHONE_6_0
-#warning "This project uses features only available in iOS SDK 6.0 and later."
+#ifndef __IPHONE_7_0
+#warning "This project uses features only available in iOS SDK 7.0 and later."
 #endif
 
+#warning hi git_ssh
 #define GIT_SSH
 
 #ifdef __OBJC__
-	#import <UIKit/UIKit.h>
-	#import <Foundation/Foundation.h>
-	#import <QuartzCore/QuartzCore.h>
-	#import <MobileCoreServices/MobileCoreServices.h>
-	#import <MessageUI/MessageUI.h>
+#import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+#import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
 #import "ObjectiveGit.h"
 #import "LibGit2-Helpers.pch"

@@ -61,15 +61,17 @@ static int transferProgressCallback(const git_transfer_progress *progress, void 
 		payloadObject = hasServerKeys ? server : nil;
 	}
 	
-	git_remote_set_cred_acquire_cb(origin, auth_cb, (__bridge void *)(payloadObject));
+#warning hi - ld - undefined
+//	git_remote_set_cred_acquire_cb(origin, auth_cb, (__bridge void *)(payloadObject));
 	
 	//	if (options->remote_callbacks &&
 	//	    (error = git_remote_set_callbacks(origin, options->remote_callbacks)) < 0)
 	//		goto on_error;
+#warning hi
+//	git_clone_options opts = [self initOptionsForPull];
 	
-	git_clone_options opts = [self initOptionsForPull];
-	
-	return fetch_from_remote(self.repo.git_repository, remote.git_remote, &opts);
+//	return fetch_from_remote(self.repo.git_repository, remote.git_remote, &opts);
+	return 0;
 }
 
 /*
@@ -94,29 +96,34 @@ static int transferProgressCallback(const git_transfer_progress *progress, void 
  
  git_reference_free(resolved);
  }*/
-
+/*
 - (git_clone_options)initOptionsForPull {
-	git_clone_options opts = [GTRepository initCloneOptions];
+#warning hi
+//	git_clone_options opts = [GTRepository initCloneOptions];
+	git_clone_options opts;
 	
 	opts.bare = 1;
-	opts.transport_flags = GIT_TRANSPORTFLAGS_NO_CHECK_CERT;
+#warning hi
+//	opts.transport_flags = GIT_TRANSPORTFLAGS_NO_CHECK_CERT;
 	
-	opts.fetch_progress_cb = transferProgressCallback;
-	opts.fetch_progress_payload = (__bridge void *)self.delegate.transferProgressBlock;
-	/*
-	DAGitServer *server = DAServerManager.manager.list.lastObject;
-	
-	
-	BOOL isSSH = [server.transferProtocol isEqualToString:SshTransferProtocol];
-	id payloadObject = isSSH ? server : user;
-	git_cred_acquire_cb auth_cb = isSSH ? cred_acquire_ssh : cred_acquire_userpass;
-	
-	opts.cred_acquire_cb = cred_acquire_ssh;
-	opts.cred_acquire_payload = (__bridge void *)(server);
-	 */
-	
+#warning hi
+//	opts.fetch_progress_cb = transferProgressCallback;
+//	opts.fetch_progress_payload = (__bridge void *)self.delegate.transferProgressBlock;
+
+	* - MD
+//	DAGitServer *server = DAServerManager.manager.list.lastObject;
+//	
+//	
+//	BOOL isSSH = [server.transferProtocol isEqualToString:SshTransferProtocol];
+//	id payloadObject = isSSH ? server : user;
+//	git_cred_acquire_cb auth_cb = isSSH ? cred_acquire_ssh : cred_acquire_userpass;
+//	
+//	opts.cred_acquire_cb = cred_acquire_ssh;
+//	opts.cred_acquire_payload = (__bridge void *)(server);
+	 - MD*
+ 
 	return opts;
-}
+}*/
 
 @end
 

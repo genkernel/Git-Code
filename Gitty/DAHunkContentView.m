@@ -60,7 +60,9 @@ static const CGFloat CodeRightMargin = 10.;
 			[self.neutralImg drawInRect:CGRectMake(.0, .0, self.width, lineHeight)];
 			lineNumber++;
 			
-			[hunk enumerateLinesInHunkUsingBlock:^(GTDiffLine *line, BOOL *stop) {
+			// @testme
+			NSError *err = nil;
+			[hunk enumerateLinesInHunk:&err usingBlock:^(GTDiffLine *line, BOOL *stop) {
 				UIImage *lineImg = [self coloredBackgroundImageForLine:line];
 				
 				CGFloat y = lineNumber * lineHeight;
@@ -76,6 +78,10 @@ static const CGFloat CodeRightMargin = 10.;
 				
 				lineNumber++;
 			}];
+			
+			if (err) {
+				[Logger error:@"%@", err];
+			}
 		}
 		UIImage *contextImg = UIGraphicsGetImageFromCurrentImageContext();
 		UIGraphicsEndImageContext();

@@ -10,11 +10,9 @@
 
 @interface DASshCredentials : NSObject
 + (instancetype)manager;
+
 - (void)scanNewKeyArchives;
 
-//- (BOOL)hasSshKeypairGlobalSupport;
 - (BOOL)hasSshKeypairSupportForServer:(DAGitServer *)server;
-
-//- (DASshKeyInfo *)globalKeys;
 - (DASshKeyInfo *)keysForServer:(DAGitServer *)server;
 @end

@@ -1,21 +1,12 @@
-[submodule "Submodules/objective-git"]
-	path = Submodules/objective-git
-	url = https://github.com/genkernel/objective-git.git
-[submodule "Submodules/NSStringMask"]
-	path = Submodules/NSStringMask
-	url = git://github.com/fjcaetano/NSStringMask.git
 [submodule "Submodules/ConceptScroll"]
 	path = Submodules/ConceptScroll
 	url = https://github.com/genkernel/ConceptScroll.git
-[submodule "Submodules/DTCoreText"]
-	path = Submodules/DTCoreText
-	url = https://github.com/Cocoanetics/DTCoreText.git
 [submodule "Submodules/ZipArchive"]
 	path = Submodules/ZipArchive
 	url = https://github.com/mattconnolly/ZipArchive.git
 [submodule "Submodules/TreeView"]
 	path = Submodules/TreeView
 	url = https://github.com/genkernel/TreeView.git
-[submodule "Submodules/ViewDeck"]
-	path = Submodules/ViewDeck
-	url = https://github.com/foursquare/ViewDeck.git
+[submodule "Submodules/STUtils"]
+	path = Submodules/STUtils
+	url = https://github.com/genkernel/STUtils.git

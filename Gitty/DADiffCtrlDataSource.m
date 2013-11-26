@@ -85,22 +85,23 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 		
 		NSMutableArray *hunks = [NSMutableArray arrayWithCapacity:delta.hunkCount];
 		
-		[delta enumerateHunksWithBlock:^(GTDiffHunk *hunk, BOOL *stop) {
+		[delta enumerateHunksUsingBlock:^(GTDiffHunk *hunk, BOOL *stop) {
 			//[Logger info:@"  hunk (lc:%d) : %@", hunk.lineCount, hunk.header];
 			[hunks addObject:hunk];
 			
 			linesCount += hunk.lineCount + 1/*header*/;
 			
-			[hunk enumerateLinesInHunkUsingBlock:^(GTDiffLine *line, BOOL *stop) {
-				
+			NSError *err = nil;
+			[hunk enumerateLinesInHunk:&err usingBlock:^(GTDiffLine *line, BOOL *stop) {
 				CGSize maxSize = CGSizeMake(4096, 4096);
-				CGRect r = [line.content boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil];
+				CGRect r = [line.content boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
 				
 				longestLineWidth = MAX(r.size.width, longestLineWidth);
 			}];
 		}];
 		
-		delta.hunks = hunks;
+#warning hi
+//		delta.hunks = hunks;
 		
 		NSUInteger hunkCount = delta.hunkCount > 0 ? delta.hunkCount - 1 : 0;
 		// TODO: get separator view height directly from owning view.

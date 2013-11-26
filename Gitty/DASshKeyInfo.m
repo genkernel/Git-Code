@@ -15,38 +15,60 @@ static NSString *PrivateKeyFileName = @"id_rsa";
 static NSString *PublicKeyFileName = @"id_rsa.pub";
 
 @interface DASshKeyInfo ()
-@property (strong, nonatomic, readonly) NSString *rootPath;
 @property (strong, nonatomic) DAGitServer *server;
+@property (strong, nonatomic, readonly) NSString *rootPath;
+
+@property (strong, nonatomic, readonly) DASshKeyInfoConfig *cfg;
+@property (strong, nonatomic, readonly) NSString *cfgFilePath;
 @end
 
 @implementation DASshKeyInfo
 @dynamic rootPath, publicKeyPath, privateKeyPath;
-/*
-+ (instancetype)globalKeysInfo {
-	static id info = nil;
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		info = self.new;
-	});
-	return info;
-}*/
 
 + (instancetype)keysInfoForServer:(DAGitServer *)server {
 	DASshKeyInfo *info = self.new;
 	
 	info.server = server;
+	
+	[info loadConfig];
 	[info loadPassphraseFromKeychain];
 	
 	return info;
 }
 
+- (void)loadConfig {
+	
+	NSString *path = [UIApplication.sharedApplication.documentsPath stringByAppendingPathComponent:self.server.name];
+	_cfgFilePath = [path stringByAppendingPathComponent:@".SshInfo.plist"];
+	
+	if ([UIApplication.sharedApplication.fs isFileExistent:self.cfgFilePath]) {
+		NSDictionary *info = [NSDictionary dictionaryWithContentsOfFile:self.cfgFilePath];
+		
+		_cfg = [DASshKeyInfoConfig storageWithInitialProperties:info];
+	} else {
+		_cfg = DASshKeyInfoConfig.new;
+	}
+	
+	_username = self.cfg.username;
+}
+
 - (void)loadPassphraseFromKeychain {
+	if (!self.username) {
+		return;
+	}
+	
 	NSError *err = nil;
-	_passphrase = [STKeychain getPasswordForUsername:self.server.name andServiceName:SshTransferProtocol error:&err];
+	_passphrase = [STKeychain getPasswordForUsername:self.username andServiceName:self.server.name error:&err];
 	
 	if (err) {
 		[Logger error:@"Failed to load existing passphrase from secure keychain for server: %@", self.server.name];
 	}
+}
+
+- (void)updateAndSaveConfigFile {
+	self.cfg.username = self.username;
+	
+	[self.cfg.saveDict writeToFile:self.cfgFilePath atomically:YES];
 }
 
 #pragma mark Properties
@@ -69,18 +91,22 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 	return [self.rootPath stringByAppendingPathComponent:PrivateKeyFileName];
 }
 
-- (void)saveNewPassphrase:(NSString *)passphrase {
+- (void)saveUsername:(NSString *)username passphrase:(NSString *)passphrase {
+	_username = username;
 	_passphrase = passphrase;
 	
 	NSError *err = nil;
-	BOOL saved = [STKeychain storeUsername:self.server.name andPassword:passphrase forServiceName:SshTransferProtocol updateExisting:YES error:&err];
+	BOOL saved = [STKeychain storeUsername:username andPassword:passphrase forServiceName:self.server.name updateExisting:YES error:&err];
 	
 	DAAlert *alert = nil;
 	if (!saved || err) {
 		NSString *fmt = NSLocalizedString(@"Failed to save new passphrase securely for server: %@", nil);
 		alert = [DAAlert errorAlertWithMessage:[NSString stringWithFormat:fmt, self.server.name]];
+		
 	} else {
 		alert = [DAAlert infoAlertWithMessage:NSLocalizedString(@"New SSH keys have been succesfully installed.", nil)];
+		
+		[self updateAndSaveConfigFile];
 		
 		[DAFlurry logWorkflowAction:WorkflowActionSSHKeysAdded];
 	}
@@ -97,8 +123,10 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if (1 == buttonIndex) {
-		UITextField *textField = [alertView textFieldAtIndex:0];
-		[self saveNewPassphrase:textField.text];
+		UITextField *usernameField = [alertView textFieldAtIndex:0];
+		UITextField *passphraseField = [alertView textFieldAtIndex:1];
+		
+		[self saveUsername:usernameField.text passphrase:passphraseField.text];
 	} else {
 		[Logger info:@"SSH passphrase editing skiped with buttonIndex: %d", buttonIndex];
 		[self deleteKeyFiles];

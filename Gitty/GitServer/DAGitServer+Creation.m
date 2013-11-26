@@ -16,11 +16,12 @@ NSString *TransferProtocol = @"TransferProtocol";
 NSString *SupportedProtocols = @"SupportedProtocols";
 NSString *RecentRepoPath = @"RecentRepoPath";
 NSString *RecentRepos = @"RecentRepos";
+//NSString *RecentRepos = @"SshUsername";
 
 // Recent repo.
+NSString *ActiveBranchName = @"activeBranchName";
 NSString *RecentRepoRelativePath = @"relativePath";
 NSString *RecentRepoLastAccessDate = @"lastAccessDate";
-NSString *ActiveBranchName = @"activeBranchName";
 
 @implementation DAGitServer (Creation)
 @dynamic docsPath, settingsPath;

@@ -60,7 +60,10 @@
 	UINib *nib = [UINib nibWithNibName:DAHunkContentView.className bundle:nil];
 	
 	__block NSUInteger hunkNumber = 0;
-	for (GTDiffHunk *hunk in delta.hunks) {
+	
+	// @testme
+	[delta enumerateHunksUsingBlock:^(GTDiffHunk *hunk, BOOL *stop) {
+		//	for (GTDiffHunk *hunk in delta.hunks) {
 		NSArray *views = [nib instantiateWithOwner:self options:nil];
 		DAHunkContentView *view = views[0];
 		
@@ -86,7 +89,8 @@
 		}
 		
 		hunkNumber++;
-	};
+		//	};
+	}];
 	
 	self.scroll.contentSize = CGSizeMake(longestLineWidth, vOffset);
 }

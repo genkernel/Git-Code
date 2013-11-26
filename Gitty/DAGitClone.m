@@ -75,20 +75,48 @@
 		}
 	}
 	
-	BOOL isSSH = [server.transferProtocol isEqualToString:SshTransferProtocol];
-	git_cred_acquire_cb auth_cb = isSSH ? cred_acquire_ssh : cred_acquire_userpass;
+	NSMutableDictionary *opts = @{GTRepositoryCloneOptionsBare: @(YES), GTRepositoryCloneOptionsCheckout: @(NO), GTRepositoryCloneOptionsTransportFlags: @(GTTransportFlagsNoCheckCert)}.mutableCopy;
 	
-	id payloadObject = user;
+	BOOL isSSH = [server.transferProtocol isEqualToString:SshTransferProtocol];
+	
+	BOOL hasServerKeys = NO;
 	if (isSSH) {
-		BOOL hasServerKeys = [DASshCredentials.manager hasSshKeypairSupportForServer:server];
-		payloadObject = hasServerKeys ? server : nil;
+		hasServerKeys = [DASshCredentials.manager hasSshKeypairSupportForServer:server];
+	}
+	
+	GTCredentialProvider *credentials = nil;
+	if (isSSH && hasServerKeys) {
+		
+		credentials = [GTCredentialProvider providerWithBlock:^GTCredential *(GTCredentialType type, NSString *URL, NSString *userName) {
+			
+			DASshKeyInfo *keysInfo = [DASshCredentials.manager keysForServer:server];
+			
+			NSString *username = keysInfo.username;
+			NSString *passphrase = keysInfo.passphrase;
+			
+			NSString *publicKeyPath = keysInfo.publicKeyPath;
+			NSString *privateKeyPath = keysInfo.privateKeyPath;
+			
+			NSURL *publicKeyUrl = [NSURL fileURLWithPath:publicKeyPath];
+			NSURL *privateKeyUrl = [NSURL fileURLWithPath:privateKeyPath];
+			
+			return [GTCredential credentialWithUserName:username publicKeyURL:publicKeyUrl privateKeyURL:privateKeyUrl passphrase:passphrase error:nil];
+		}];
+		
+		opts[GTRepositoryCloneOptionsCredentialProvider] = credentials;
+		
+	} else if (user) {
+		
+		credentials = [GTCredentialProvider providerWithBlock:^GTCredential *(GTCredentialType type, NSString *URL, NSString *userName) {
+			
+			 return [GTCredential credentialWithUserName:user.username password:user.password error:nil];
+		}];
+		
+		opts[GTRepositoryCloneOptionsCredentialProvider] = credentials;
 	}
 	
 	NSError *err = nil;
-	_clonedRepo = [GTRepository cloneFromURL:remoteURL toWorkingDirectory:url
-									  barely:YES withCheckout:NO error:&err
-					   transferProgressBlock:transferProgressBlock checkoutProgressBlock:checkoutProgressBlock
-				   authenticationCallback:auth_cb authenticationPayload:(__bridge void *)payloadObject];
+	_clonedRepo = [GTRepository cloneFromURL:remoteURL toWorkingDirectory:url options:opts error:&err transferProgressBlock:transferProgressBlock checkoutProgressBlock:checkoutProgressBlock];
 	
 	_completionError = err;
 	

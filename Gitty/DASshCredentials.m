@@ -36,29 +36,17 @@ static NSString *ZipExtension = @"zip";
 	}
 	return self;
 }
-/*
-- (BOOL)hasSshKeypairGlobalSupport {
-	DASshKeyInfo *info = DASshKeyInfo.globalKeysInfo;
-	
-	BOOL isPublicKeyExistent = [self.app.fs isFileExistent:info.publicKeyPath];
-	BOOL isPrivateKeyExistent = [self.app.fs isFileExistent:info.publicKeyPath];
-	
-	// TODO: Check passphrase exists for global keys.
-	return isPublicKeyExistent && isPrivateKeyExistent;
-}*/
 
 - (BOOL)hasSshKeypairSupportForServer:(DAGitServer *)server {
 	DASshKeyInfo *info = [self keysForServer:server];
 	
+	BOOL isUsernameProvided = info.username.length > 0;
+	
 	BOOL isPublicKeyExistent = [self.app.fs isFileExistent:info.publicKeyPath];
 	BOOL isPrivateKeyExistent = [self.app.fs isFileExistent:info.publicKeyPath];
 	
-	return isPublicKeyExistent && isPrivateKeyExistent;
+	return isUsernameProvided & isPublicKeyExistent && isPrivateKeyExistent;
 }
-/*
-- (DASshKeyInfo *)globalKeys {
-	return DASshKeyInfo.globalKeysInfo;
-}*/
 
 - (DASshKeyInfo *)keysForServer:(DAGitServer *)server {
 	DASshKeyInfo *key = self.cachedServerKeys[server.name];
@@ -129,7 +117,7 @@ static NSString *ZipExtension = @"zip";
 	
 	NSString *message = NSLocalizedString(@"Passphrase required to install\nnew SSH keys.", nil);
 	
-	DAAlert *alert = [DAAlert plainTextAlertWithTitle:server.name message:message];
+	DAAlert *alert = [DAAlert loginAlertWithTitle:server.name message:message];
 	alert.delegate = item;
 	
 	[alert addButtonWithTitle:NSLocalizedString(@"Cancel", nil)];

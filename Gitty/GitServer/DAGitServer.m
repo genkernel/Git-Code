@@ -36,9 +36,9 @@ NSString *SshTransferProtocol = @"ssh://";
 		_supportedProtocols = dict[SupportedProtocols];
 		_recentRepoPath = dict[RecentRepoPath];
 		
-		[self createSettingsFolderIfNeeded];
-		
 		_recentReposDict = [NSMutableDictionary dictionaryWithDictionary:dict[RecentRepos]];
+		
+		[self createSettingsFolderIfNeeded];
 	}
 	return self;
 }
@@ -57,6 +57,8 @@ NSString *SshTransferProtocol = @"ssh://";
 			 RecentRepoPath: self.recentRepoPath,
 			 RecentRepos: self.recentReposDict.copy};
 }
+
+#pragma mark Recent repo
 
 - (void)addOrUpdateRecentRepoWithRelativePath:(NSString *)path {
 	NSDictionary *repo = self.recentReposDict[path];

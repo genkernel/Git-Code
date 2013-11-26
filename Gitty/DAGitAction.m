@@ -84,12 +84,13 @@ int cred_acquire_ssh(git_cred **out,
 	}
 	
 #ifdef GIT_SSH
+	NSString *username = keysInfo.username;
 	NSString *passphrase = keysInfo.passphrase;
 	
 	NSString *publicKeyPath = keysInfo.publicKeyPath;
 	NSString *privateKeyPath = keysInfo.privateKeyPath;
 	
-	return git_cred_ssh_keyfile_passphrase_new(out, publicKeyPath.UTF8String, privateKeyPath.UTF8String, passphrase.UTF8String);
+	return git_cred_ssh_keyfile_passphrase_new(out, username.UTF8String, publicKeyPath.UTF8String, privateKeyPath.UTF8String, passphrase.UTF8String);
 #else
 #warning GIT_SSH is not implemented.
 	return GIT_ERROR;

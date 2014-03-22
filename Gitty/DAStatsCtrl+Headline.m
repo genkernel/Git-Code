@@ -63,11 +63,11 @@
 	NSUInteger commitsCount = self.lastDayStats.allCommits.count;
 	
 	// Unique number string - space delimeter at the end.
-	NSString *branchesCountString = [NSString stringWithFormat:@"%d ", branchesCount];
+	NSString *branchesCountString = [NSString stringWithFormat:@"%lu ", (unsigned long)branchesCount];
 	// String uniqueness - 2 spaces.
-	NSString *commitsCountString = [NSString stringWithFormat:@" %d ", commitsCount];
+	NSString *commitsCountString = [NSString stringWithFormat:@" %lu ", (unsigned long)commitsCount];
 	// String uniqueness - leading space delimeter.
-	NSString *authorsCountString = [NSString stringWithFormat:@" %d", authorsCount];
+	NSString *authorsCountString = [NSString stringWithFormat:@" %lu", (unsigned long)authorsCount];
 	
 	NSString *branchesLiteral = branchesCount > 1 ? @"Branches updated with" : @"Branch updated with";
 	NSString *commitsLiteral = commitsCount > 1 ? @"Commits\nby" : @"Commit\nby";

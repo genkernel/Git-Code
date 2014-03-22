@@ -22,7 +22,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	DAListModes tableType = tableView.tag;
+	DAListModes tableType = (int)tableView.tag;
 	NSArray *items = self.filteredItems[tableType];
 	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:UITableViewCell.className];
@@ -65,7 +65,7 @@
 	[self.searchBar resignFirstResponder];
 	[self.searchBar enableAllControlButtons];
 	
-	DAListModes tableType = tableView.tag;
+	DAListModes tableType = (int)tableView.tag;
 	NSArray *items = self.filteredItems[tableType];
 	
 	if (DABranchList == tableType) {

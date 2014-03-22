@@ -10,3 +10,9 @@
 [submodule "Submodules/STUtils"]
 	path = Submodules/STUtils
 	url = https://github.com/genkernel/STUtils.git
+[submodule "Submodules/objective-git"]
+	path = Submodules/objective-git
+	url = https://github.com/libgit2/objective-git.git
+[submodule "Submodules/xlib"]
+	path = Submodules/xlib
+	url = /Users/kernel/dev/git/xlib/

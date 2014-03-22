@@ -49,7 +49,7 @@
 
 @end
 
-
+/*
 #pragma mark Static auth_cb helpers
 
 int cred_acquire_userpass(git_cred **out,
@@ -95,4 +95,4 @@ int cred_acquire_ssh(git_cred **out,
 #warning GIT_SSH is not implemented.
 	return GIT_ERROR;
 #endif
-}
+}*/

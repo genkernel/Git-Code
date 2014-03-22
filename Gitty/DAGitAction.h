@@ -8,8 +8,8 @@
 
 #import "DAGitActionDelegate.h"
 
-extern int cred_acquire_userpass(git_cred **, const char *, const char *, unsigned int, void *);
-extern int cred_acquire_ssh(git_cred **out, const char *url, const char *username_from_url, unsigned int allowed_types, void *payload);
+//extern int cred_acquire_userpass(git_cred **, const char *, const char *, unsigned int, void *);
+//extern int cred_acquire_ssh(git_cred **out, const char *url, const char *username_from_url, unsigned int allowed_types, void *payload);
 
 @class DAGitManager;
 

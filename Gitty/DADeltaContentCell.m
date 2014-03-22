@@ -61,9 +61,9 @@
 	
 	__block NSUInteger hunkNumber = 0;
 	
-	// @testme
-	[delta enumerateHunksUsingBlock:^(GTDiffHunk *hunk, BOOL *stop) {
-		//	for (GTDiffHunk *hunk in delta.hunks) {
+	GTDiffPatch *patch = [delta generatePatch:nil];
+	
+	[patch enumerateHunksUsingBlock:^(GTDiffHunk *hunk, BOOL *stop) {
 		NSArray *views = [nib instantiateWithOwner:self options:nil];
 		DAHunkContentView *view = views[0];
 		
@@ -77,7 +77,8 @@
 		
 		vOffset += height;
 		
-		if (hunkNumber < delta.hunkCount - 1) {
+#warning testme: -1
+		if (hunkNumber < patch.hunkCount - 1) {
 			UIImage *img = self.separatorImg;
 			
 			UIImageView *separator = [UIImageView.alloc initWithImage:img];
@@ -89,7 +90,6 @@
 		}
 		
 		hunkNumber++;
-		//	};
 	}];
 	
 	self.scroll.contentSize = CGSizeMake(longestLineWidth, vOffset);

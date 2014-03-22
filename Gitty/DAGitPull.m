@@ -52,6 +52,8 @@ static int transferProgressCallback(const git_transfer_progress *progress, void 
 	git_remote *origin = remote.git_remote;
 	git_remote_check_cert(remote.git_remote, 0);
 	
+#warning new scheme
+	/*
 	BOOL isSSH = [server.transferProtocol isEqualToString:SshTransferProtocol];
 	git_cred_acquire_cb auth_cb = isSSH ? cred_acquire_ssh : cred_acquire_userpass;
 	
@@ -59,7 +61,7 @@ static int transferProgressCallback(const git_transfer_progress *progress, void 
 	if (isSSH) {
 		BOOL hasServerKeys = [DASshCredentials.manager hasSshKeypairSupportForServer:server];
 		payloadObject = hasServerKeys ? server : nil;
-	}
+	}*/
 	
 #warning hi - ld - undefined
 //	git_remote_set_cred_acquire_cb(origin, auth_cb, (__bridge void *)(payloadObject));

@@ -48,14 +48,16 @@ static const CGFloat DefaultSquaresMargin = 3.;
 	
 	NSUInteger count = self.squaresNumber;
 	
+	GTDiffPatch *patch = [delta generatePatch:nil];
+	
 	NSUInteger additionSquaresCount = 0, deletionSquaresCount = 0;
-	NSUInteger totalChangesCount = delta.addedLinesCount + delta.deletedLinesCount;
+	NSUInteger totalChangesCount = patch.addedLinesCount + patch.deletedLinesCount;
 	if (totalChangesCount > 0) {
-		additionSquaresCount = delta.addedLinesCount * count / totalChangesCount;
-		additionSquaresCount = MIN(additionSquaresCount, delta.addedLinesCount);
+		additionSquaresCount = patch.addedLinesCount * count / totalChangesCount;
+		additionSquaresCount = MIN(additionSquaresCount, patch.addedLinesCount);
 		
-		deletionSquaresCount = delta.deletedLinesCount * count / totalChangesCount;
-		deletionSquaresCount = MIN(deletionSquaresCount, delta.deletedLinesCount);
+		deletionSquaresCount = patch.deletedLinesCount * count / totalChangesCount;
+		deletionSquaresCount = MIN(deletionSquaresCount, patch.deletedLinesCount);
 	} else {
 		[Logger error:@"Zero total changed in Diff Delta specified."];
 	}

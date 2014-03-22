@@ -9,5 +9,4 @@
 #import "DAGitActionDelegate.h"
 
 @implementation DAGitActionDelegate
-
 @end

@@ -92,8 +92,7 @@
 #pragma mark UITableViewDataSource, UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	TreeTable *proxy = (TreeTable *)tableView.dataSource;
-	NSIndexPath *ip = [proxy treeIndexPathFromTablePath:indexPath];
+	NSIndexPath *ip = [tableView treeIndexPathFromTablePath:indexPath];
 	
 	if (ip.length == 2) {
 		return headerHeight;

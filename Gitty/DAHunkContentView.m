@@ -8,8 +8,8 @@
 
 #import "DAHunkContentView.h"
 
-static const NSUInteger AverageSymbolsInLine = 50;
-static const CGFloat CodeRightMargin = 10.;
+//static const NSUInteger AverageSymbolsInLine = 50;
+//static const CGFloat CodeRightMargin = 10.;
 
 @interface DAHunkContentView ()
 @property (strong, nonatomic, readonly) UIImage *addedImg, *deletedImg, *neutralImg;

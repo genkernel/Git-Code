@@ -59,8 +59,7 @@ static const NSUInteger OneDayStats = 1;
 	[super viewDidAppear:animated];
 	
 	if (self.selectedCommitIndexPath) {
-		TreeTable *proxy = (TreeTable *)self.commitsTable.dataSource;
-		NSIndexPath *ip = [proxy tableIndexPathFromTreePath:self.selectedCommitIndexPath];
+		NSIndexPath *ip = [self.commitsTable tableIndexPathFromTreePath:self.selectedCommitIndexPath];
 		
 		[self.commitsTable deselectRowAtIndexPath:ip animated:animated];
 		

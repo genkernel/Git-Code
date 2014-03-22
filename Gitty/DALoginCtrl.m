@@ -17,7 +17,7 @@
 #import "DASupportTipCtrl.h"
 
 #import "DASshInfoCtrl.h"
-#import "DAFeedbackCtrl.h"
+//#import "DAFeedbackCtrl.h"
 
 #import "DAGitServer+Creation.h"
 
@@ -242,7 +242,13 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 			if (GIT_EUSER == err.code) {
 				message = NSLocalizedString(@"Invalid user credentials specified.", nil);
 			} else {
-				message = NSLocalizedString(err.localizedDescription, nil);
+				NSError *underlyingErr = err.userInfo[NSUnderlyingErrorKey];
+				
+				if (underlyingErr) {
+					message = NSLocalizedString(underlyingErr.localizedDescription, nil);
+				} else {
+					message = NSLocalizedString(err.localizedDescription, nil);
+				}
 			}
 			
 			[self showErrorMessage:message];
@@ -359,7 +365,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	
 	self.sshButton.hidden = [DASshCredentials.manager hasSshKeypairSupportForServer:self.currentServer];
 	
-	[Logger info:@"Current server (t:%d idx:%d): %@", pagerView.tag, index, self.currentServer];
+//	[Logger info:@"Current server (t:%d idx:%d): %@", pagerView.tag, index, self.currentServer];
 }
 
 #pragma mark PageControlDelegate
@@ -443,10 +449,10 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 }
 
 - (IBAction)aboutClicked:(UIButton *)sender {
-	DAFeedbackCtrl *ctrl = [self.storyboard instantiateViewControllerWithIdentifier:DAFeedbackCtrl.className];
-	ctrl.presentationOption = DASlideFromBottomToTopPresentation;
-	
-	[self presentViewController:ctrl animated:YES completion:nil];
+//	DAFeedbackCtrl *ctrl = [self.storyboard instantiateViewControllerWithIdentifier:DAFeedbackCtrl.className];
+//	ctrl.presentationOption = DASlideFromBottomToTopPresentation;
+//	
+//	[self presentViewController:ctrl animated:YES completion:nil];
 }
 
 - (IBAction)sshClicked:(UIButton *)sender {

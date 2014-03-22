@@ -84,6 +84,7 @@ static NSString *DeletableFolderSuffix = @"md";
 
 - (void)removeExistingRepo:(NSString *)repoName forServer:(DAGitServer *)server {
 	NSString *path = [self localPathForRepoWithName:repoName atServer:server];
+	
 	if ([self.app.fs isDirectoryExistent:path]) {
 		NSString *deletePath = [path stringByAppendingPathExtension:DeletableFolderSuffix];
 		[self.app.fs moveFrom:path to:deletePath];

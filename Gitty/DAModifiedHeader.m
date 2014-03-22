@@ -52,15 +52,18 @@
 	
 	self.filenameLabel.text = delta.newFile.path;
 	
-	NSString *fmt = 1 == delta.addedLinesCount ? @"%d addition" : @"%d additions";
-	self.additionsLabel.text = [NSString stringWithFormat:fmt, delta.addedLinesCount];
+	GTDiffPatch *patch = [delta generatePatch:nil];
 	
-	fmt = 1 == delta.deletedLinesCount ? @"%d deletion" : @"%d deletions";
-	self.deletionsLabel.text = [NSString stringWithFormat:fmt, delta.deletedLinesCount];
+	NSString *fmt = 1 == patch.addedLinesCount ? @"%d addition" : @"%d additions";
+	self.additionsLabel.text = [NSString stringWithFormat:fmt, patch.addedLinesCount];
 	
-	self.additionsLabel.hidden = delta.isBinary;
-	self.deletionsLabel.hidden = delta.isBinary;
-	self.binaryStatusLabel.hidden = !delta.isBinary;
+	fmt = 1 == patch.deletedLinesCount ? @"%d deletion" : @"%d deletions";
+	self.deletionsLabel.text = [NSString stringWithFormat:fmt, patch.deletedLinesCount];
+	
+#warning revamp 'isBinary'
+//	self.additionsLabel.hidden = delta.isBinary;
+//	self.deletionsLabel.hidden = delta.isBinary;
+//	self.binaryStatusLabel.hidden = !delta.isBinary;
 }
 
 @end

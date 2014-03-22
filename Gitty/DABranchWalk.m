@@ -51,6 +51,8 @@
 - (void)perform {
 	NSError *err = nil;
 	
+	assert(self.repo);
+	
 	GTEnumerator *iter = [GTEnumerator.alloc initWithRepository:self.repo error:&err];
 	
 	if (![iter pushSHA:self.startSHA error:&err]) {

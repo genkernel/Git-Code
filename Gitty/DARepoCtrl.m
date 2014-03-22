@@ -23,8 +23,7 @@ static NSString *DiffSegue = @"DiffSegue";
 static NSString *StatsSegue = @"StatsSegue";
 
 static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
-static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
-
+//static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 
 @interface DARepoCtrl ()
 @property (strong, nonatomic, readonly) DAStatsCtrl *statsCtrl;
@@ -32,7 +31,6 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 
 @property (strong, nonatomic, readonly) UIButton *statsSelectedModeButton;
 @end
-
 
 @implementation DARepoCtrl {
 	CGFloat statsContainerOffsetBeforeDragging;
@@ -274,8 +272,10 @@ static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 	
 	if (self.currentBranch) {
 		walk = [DABranchWalk walkForBranch:self.currentBranch];
-	} else {
+	} else if (self.currentTag) {
 		walk = [DABranchWalk walkForTag:self.currentTag];
+	} else {
+		assert(NO);
 	}
 	
 	[self.stats performSyncOperation:walk];

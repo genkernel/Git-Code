@@ -45,16 +45,16 @@
 	return commits[row];
 }
 
-- (BOOL)treeView:(TreeTable *)proxy toggleCellAtIndexPath:(NSIndexPath *)indexPath treeIndexPath:(NSIndexPath *)ip {
+- (BOOL)treeView:(UITableView *)tableView toggleCellAtIndexPath:(NSIndexPath *)indexPath treeIndexPath:(NSIndexPath *)ip {
 	if ([self.closedItems containsObject:ip]) {
 		[self.closedItems removeObject:ip];
 		
-		[proxy expand:ip];
+		[tableView expand:ip];
 		return YES;
 	} else {
 		[self.closedItems addObject:ip];
 		
-		[proxy close:ip];
+		[tableView collapse:ip];
 		return NO;
 	}
 }
@@ -86,15 +86,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	TreeTable *proxy = (TreeTable *)tableView.dataSource;
-	NSIndexPath *ip = [proxy treeIndexPathFromTablePath:indexPath];
+	NSIndexPath *ip = [tableView treeIndexPathFromTablePath:indexPath];
 	
 	if (ip.length == 3) {
 		self.selectCellAction(self, ip);
 		return;
 	}
 	
-	BOOL isJustExpandedCell = [self treeView:proxy toggleCellAtIndexPath:indexPath treeIndexPath:ip];
+	BOOL isJustExpandedCell = [self treeView:tableView toggleCellAtIndexPath:indexPath treeIndexPath:ip];
 	
 	[tableView deselectRowAtIndexPath:indexPath animated:NO];
 	

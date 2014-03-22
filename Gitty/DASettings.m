@@ -32,7 +32,7 @@
 }
 
 - (int)countForAction:(NSString *)name {
-	return [NSUserDefaults.standardUserDefaults integerForKey:name];
+	return (int)[NSUserDefaults.standardUserDefaults integerForKey:name];
 }
 
 @end

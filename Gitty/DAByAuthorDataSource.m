@@ -25,10 +25,10 @@
 	headerHeight = header.height;
 }
 
-- (BOOL)treeView:(TreeTable *)proxy toggleCellAtIndexPath:(NSIndexPath *)indexPath treeIndexPath:(NSIndexPath *)ip {
-	BOOL expanded = [super treeView:proxy toggleCellAtIndexPath:indexPath treeIndexPath:ip];
+- (BOOL)treeView:(UITableView *)tableView toggleCellAtIndexPath:(NSIndexPath *)indexPath treeIndexPath:(NSIndexPath *)ip {
+	BOOL expanded = [super treeView:tableView toggleCellAtIndexPath:indexPath treeIndexPath:ip];
 	
-	DAAuthorHeaderCell *header = (DAAuthorHeaderCell *)[proxy.tableView cellForRowAtIndexPath:indexPath];
+	DAAuthorHeaderCell *header = (DAAuthorHeaderCell *)[tableView cellForRowAtIndexPath:indexPath];
 	header.collapsed = !expanded;
 	
 	return expanded;
@@ -70,8 +70,7 @@
 #pragma mark UITableViewDataSource, UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	TreeTable *proxy = (TreeTable *)tableView.dataSource;
-	NSIndexPath *ip = [proxy treeIndexPathFromTablePath:indexPath];
+	NSIndexPath *ip = [tableView treeIndexPathFromTablePath:indexPath];
 	
 	if (ip.length == 2) {
 		return headerHeight;

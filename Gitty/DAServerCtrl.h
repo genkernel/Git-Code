@@ -22,7 +22,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *serverName, *serverBaseUrl;
 @property (strong, nonatomic) IBOutlet UIView *exploreContainer, *credentialsContainer;
 @property (strong, nonatomic) IBOutlet DAProtocolsContainer *protocolsContainer;
-@property (strong, nonatomic) IBOutlet UIView *repoAccessoryView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *exploreContainerHeight;
 
 - (void)loadServer:(DAGitServer *)server;

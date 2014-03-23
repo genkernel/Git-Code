@@ -121,6 +121,20 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 
 #pragma mark UIAlertViewDelegate
 
+- (void)willPresentAlertView:(UIAlertView *)alertView {
+	static NSString *defaultUsername = @"git";
+	
+	UITextField *usernameField = [alertView textFieldAtIndex:0];
+	
+	usernameField.text = defaultUsername;
+}
+
+- (void)didPresentAlertView:(UIAlertView *)alertView {
+	UITextField *passphraseField = [alertView textFieldAtIndex:1];
+	
+	[passphraseField becomeFirstResponder];
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if (1 == buttonIndex) {
 		UITextField *usernameField = [alertView textFieldAtIndex:0];

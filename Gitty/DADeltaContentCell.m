@@ -77,7 +77,6 @@
 		
 		vOffset += height;
 		
-#warning testme: -1
 		if (hunkNumber < patch.hunkCount - 1) {
 			UIImage *img = self.separatorImg;
 			

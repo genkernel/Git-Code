@@ -31,6 +31,8 @@ static const NSUInteger OneDayStats = 1;
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	self.headlineLabel.attributedText = nil;
+	
 	[self applyLightEffectOnHeader];
 	
 	self.byAuthorTable.scrollsToTop = NO;

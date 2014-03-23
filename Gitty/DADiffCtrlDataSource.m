@@ -102,9 +102,6 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 			}];
 		}];
 		
-#warning hi
-//		delta.hunks = hunks;
-		
 		NSUInteger hunkCount = patch.hunkCount > 0 ? patch.hunkCount - 1 : 0;
 		// TODO: get separator view height directly from owning view.
 		CGFloat separatorHeight = 21.;

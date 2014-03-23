@@ -10,5 +10,7 @@
 #define Gitty_LibGit2_Helpers_pch
 
 #import "GTCommit+Gitty.h"
+#import "GTDiffDelta+Gitty.h"
+#import "GTRepository+Gitty.h"
 
 #endif

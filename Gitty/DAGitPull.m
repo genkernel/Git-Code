@@ -8,7 +8,7 @@
 
 #import "DAGitPull.h"
 
-static int transferProgressCallback(const git_transfer_progress *progress, void *payload);
+//static int transferProgressCallback(const git_transfer_progress *progress, void *payload);
 
 @interface DAGitPull ()
 @property (strong, nonatomic) GTRepository *repo;
@@ -49,86 +49,49 @@ static int transferProgressCallback(const git_transfer_progress *progress, void 
 	
 	GTRemote *remote = cfg.remotes.lastObject;
 	
-	git_remote *origin = remote.git_remote;
-	git_remote_check_cert(remote.git_remote, 0);
-	
-#warning new scheme
-	/*
 	BOOL isSSH = [server.transferProtocol isEqualToString:SshTransferProtocol];
-	git_cred_acquire_cb auth_cb = isSSH ? cred_acquire_ssh : cred_acquire_userpass;
 	
-	id payloadObject = self.authenticationUser;
+	BOOL hasServerKeys = NO;
 	if (isSSH) {
-		BOOL hasServerKeys = [DASshCredentials.manager hasSshKeypairSupportForServer:server];
-		payloadObject = hasServerKeys ? server : nil;
-	}*/
+		hasServerKeys = [DASshCredentials.manager hasSshKeypairSupportForServer:server];
+	}
 	
-#warning hi - ld - undefined
-//	git_remote_set_cred_acquire_cb(origin, auth_cb, (__bridge void *)(payloadObject));
+	DAGitUser *user = self.authenticationUser;
 	
-	//	if (options->remote_callbacks &&
-	//	    (error = git_remote_set_callbacks(origin, options->remote_callbacks)) < 0)
-	//		goto on_error;
-#warning hi
-//	git_clone_options opts = [self initOptionsForPull];
+	GTCredentialProvider *credentials = nil;
+	if (isSSH && hasServerKeys) {
+		
+		credentials = [GTCredentialProvider providerWithBlock:^GTCredential *(GTCredentialType type, NSString *URL, NSString *userName) {
+			
+			DASshKeyInfo *keysInfo = [DASshCredentials.manager keysForServer:server];
+			
+			NSString *username = keysInfo.username;
+			NSString *passphrase = keysInfo.passphrase;
+			
+			NSString *publicKeyPath = keysInfo.publicKeyPath;
+			NSString *privateKeyPath = keysInfo.privateKeyPath;
+			
+			NSURL *publicKeyUrl = [NSURL fileURLWithPath:publicKeyPath];
+			NSURL *privateKeyUrl = [NSURL fileURLWithPath:privateKeyPath];
+			
+			return [GTCredential credentialWithUserName:username publicKeyURL:publicKeyUrl privateKeyURL:privateKeyUrl passphrase:passphrase error:nil];
+		}];
+		
+	} else if (user) {
+		
+		credentials = [GTCredentialProvider providerWithBlock:^GTCredential *(GTCredentialType type, NSString *URL, NSString *userName) {
+			
+			return [GTCredential credentialWithUserName:user.username password:user.password error:nil];
+		}];
+	}
 	
-//	return fetch_from_remote(self.repo.git_repository, remote.git_remote, &opts);
+	[self.repo pullFromRemote:remote credentials:credentials];
+	
 	return 0;
 }
 
-/*
- - (void)demoMergeFromFetchHead {
- //	GIT_MERGE_AUTOMERGE_NORMAL
- 
- GTBranch *branch = nil;
- GTRepository *repo = nil;
- 
- git_reference *resolved;
- int error = git_reference_resolve(&resolved, branch.reference.git_reference);
- if (0 != error) {
- [Logger error:@"err"];
- //		return error;
- }
- 
- git_merge_head *head;
- error = git_merge_head_from_fetchhead(&head, repo.git_repository, branch.name.UTF8String, self.URLString.UTF8String, git_reference_target(resolved));
- if (error != 0) {
- [Logger error:@"err 2"];
- }
- 
- git_reference_free(resolved);
- }*/
-/*
-- (git_clone_options)initOptionsForPull {
-#warning hi
-//	git_clone_options opts = [GTRepository initCloneOptions];
-	git_clone_options opts;
-	
-	opts.bare = 1;
-#warning hi
-//	opts.transport_flags = GIT_TRANSPORTFLAGS_NO_CHECK_CERT;
-	
-#warning hi
-//	opts.fetch_progress_cb = transferProgressCallback;
-//	opts.fetch_progress_payload = (__bridge void *)self.delegate.transferProgressBlock;
-
-	* - MD
-//	DAGitServer *server = DAServerManager.manager.list.lastObject;
-//	
-//	
-//	BOOL isSSH = [server.transferProtocol isEqualToString:SshTransferProtocol];
-//	id payloadObject = isSSH ? server : user;
-//	git_cred_acquire_cb auth_cb = isSSH ? cred_acquire_ssh : cred_acquire_userpass;
-//	
-//	opts.cred_acquire_cb = cred_acquire_ssh;
-//	opts.cred_acquire_payload = (__bridge void *)(server);
-	 - MD*
- 
-	return opts;
-}*/
-
 @end
-
+/*
 static int transferProgressCallback(const git_transfer_progress *progress, void *payload) {
 	if (!payload) {
 		return 0;
@@ -138,4 +101,4 @@ static int transferProgressCallback(const git_transfer_progress *progress, void 
 	block(progress);
 	
 	return 0;
-}
+}*/

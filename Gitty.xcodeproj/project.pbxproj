@@ -224,6 +224,8 @@
 		18F995D8175FBEDB0033A4A0 /* section_header.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F995D4175FBEDB0033A4A0 /* section_header.png */; };
 		18F995D9175FBEDB0033A4A0 /* section_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F995D5175FBEDB0033A4A0 /* section_header@2x.png */; };
 		18FD1D11177F4CAD00DE4851 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FD1D10177F4CAD00DE4851 /* ImageIO.framework */; };
+		1E96996718DEBE7500D02FED /* GTDiffDelta+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E96996618DEBE7500D02FED /* GTDiffDelta+Gitty.m */; };
+		1E969A6318DF03C300D02FED /* GTRepository+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E969A6218DF03C300D02FED /* GTRepository+Gitty.m */; };
 		1ED2A79518DDE27C007AF16E /* libFlurry_4.3.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ED2A79418DDE27C007AF16E /* libFlurry_4.3.2.a */; };
 		1ED2A79618DEB9A6007AF16E /* DAFeedbackCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1893853017A32CD400168FDB /* DAFeedbackCtrl.m */; };
 		1EE40F9318DD6652004E2C04 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE40E7C18DD6651004E2C04 /* AFHTTPRequestOperation.m */; };
@@ -710,6 +712,10 @@
 		18F995D4175FBEDB0033A4A0 /* section_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = section_header.png; sourceTree = "<group>"; };
 		18F995D5175FBEDB0033A4A0 /* section_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "section_header@2x.png"; sourceTree = "<group>"; };
 		18FD1D10177F4CAD00DE4851 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		1E96996518DEBE7500D02FED /* GTDiffDelta+Gitty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTDiffDelta+Gitty.h"; sourceTree = "<group>"; };
+		1E96996618DEBE7500D02FED /* GTDiffDelta+Gitty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTDiffDelta+Gitty.m"; sourceTree = "<group>"; };
+		1E969A6118DF03C300D02FED /* GTRepository+Gitty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTRepository+Gitty.h"; sourceTree = "<group>"; };
+		1E969A6218DF03C300D02FED /* GTRepository+Gitty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTRepository+Gitty.m"; sourceTree = "<group>"; };
 		1ED2A79418DDE27C007AF16E /* libFlurry_4.3.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.2.a; sourceTree = "<group>"; };
 		1EE40E7B18DD6651004E2C04 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		1EE40E7C18DD6651004E2C04 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
@@ -1725,6 +1731,10 @@
 				18438B1D177777C200943F9F /* LibGit2-Helpers.pch */,
 				18438B161777778200943F9F /* GTCommit+Gitty.h */,
 				18438B171777778200943F9F /* GTCommit+Gitty.m */,
+				1E96996518DEBE7500D02FED /* GTDiffDelta+Gitty.h */,
+				1E96996618DEBE7500D02FED /* GTDiffDelta+Gitty.m */,
+				1E969A6118DF03C300D02FED /* GTRepository+Gitty.h */,
+				1E969A6218DF03C300D02FED /* GTRepository+Gitty.m */,
 			);
 			name = LibGit2;
 			sourceTree = "<group>";
@@ -2856,6 +2866,7 @@
 			files = (
 				18933CE41755395D00E92183 /* main.m in Sources */,
 				18933CE81755395D00E92183 /* DAAppDelegate.m in Sources */,
+				1E969A6318DF03C300D02FED /* GTRepository+Gitty.m in Sources */,
 				1EE40F9318DD6652004E2C04 /* AFHTTPRequestOperation.m in Sources */,
 				18933CF41755395D00E92183 /* DALoginCtrl.m in Sources */,
 				1EE40FD018DD6652004E2C04 /* UsersLookup.m in Sources */,
@@ -2878,6 +2889,7 @@
 				189016B4175AA39A00F19CE4 /* DAGitAction.m in Sources */,
 				1871D77E179C1B2F00F1D928 /* DARepoCell.m in Sources */,
 				1EE40FEE18DD6652004E2C04 /* TabBarCtrl.m in Sources */,
+				1E96996718DEBE7500D02FED /* GTDiffDelta+Gitty.m in Sources */,
 				1EE40FAB18DD6652004E2C04 /* ImageUtils.m in Sources */,
 				189016B7175AA49300F19CE4 /* DAGitClone.m in Sources */,
 				1ED2A79618DEB9A6007AF16E /* DAFeedbackCtrl.m in Sources */,

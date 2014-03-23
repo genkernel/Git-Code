@@ -20,9 +20,24 @@ static NSString *OverlayNavSegue = @"OverlayNavSegue";
 @property (strong, nonatomic, readonly) UIToolbar *overlayBluringToolbar;
 
 @property (strong, nonatomic, readonly) NavViewCtrl *menuNavCtrl, *overlayNavCtrl;
+
+@property (strong, nonatomic, readonly) DABaseCtrl *presentedCtrl;
 @end
 
 @implementation DAFrameCtrl
+@dynamic presentedCtrl;
+
+- (BOOL)prefersStatusBarHidden {
+	return self.presentedCtrl.prefersStatusBarHidden;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
+	return self.presentedCtrl.preferredStatusBarUpdateAnimation;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+	return self.presentedCtrl.preferredStatusBarStyle;
+}
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -47,12 +62,15 @@ static NSString *OverlayNavSegue = @"OverlayNavSegue";
 	}
 }
 
+- (DABaseCtrl *)presentedCtrl {
+	BOOL isOverlayPresented = self.overlayCtrl != nil;
+	BOOL isMenuPresented = self.menuCtrl != nil;
+	
+	return isOverlayPresented ? self.overlayCtrl : (isMenuPresented ? self.menuCtrl : self.mainCtrl);
+}
+
 - (NSUInteger)supportedInterfaceOrientations {
-	BOOL isOverlayPresented = !self.overlayContainer.hidden;
-	
-	DABaseCtrl *presentedCtrl = isOverlayPresented ? self.overlayCtrl : self.mainCtrl;
-	
-	return presentedCtrl.supportedInterfaceOrientations;
+	return self.presentedCtrl.supportedInterfaceOrientations;
 }
 
 - (void)applyLightEffectOfColor:(UIColor *)color {
@@ -65,17 +83,11 @@ static NSString *OverlayNavSegue = @"OverlayNavSegue";
 }
 
 - (UIViewController *)childViewControllerForStatusBarStyle {
-	BOOL isOverlayPresented = self.overlayCtrl != nil;
-	BOOL isMenuPresented = self.menuCtrl != nil;
-	
-	return isOverlayPresented ? self.overlayCtrl : (isMenuPresented ? self.menuCtrl : self.mainCtrl);
+	return self.presentedCtrl;
 }
 
 - (UIViewController *)childViewControllerForStatusBarHidden {
-	BOOL isOverlayPresented = self.overlayCtrl != nil;
-	BOOL isMenuPresented = self.menuCtrl != nil;
-	
-	return isOverlayPresented ? self.overlayCtrl : (isMenuPresented ? self.menuCtrl : self.mainCtrl);
+	return self.presentedCtrl;
 }
 
 #pragma mark Overlay

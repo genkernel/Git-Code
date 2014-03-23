@@ -48,6 +48,10 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	return NO;
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+	return UIStatusBarStyleLightContent;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:DiffSegue]) {
 		DADiffCtrl *ctrl = segue.destinationViewController;
@@ -63,6 +67,8 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
     [super viewDidLoad];
 	
 	self.navigationItem.hidesBackButton = YES;
+	
+	self.pullingContainer.backgroundColor = self.navigationController.navigationBar.backgroundColor;
 	
 //	self.view.layer.shadowColor = UIColor.blackColor.CGColor;
 //	self.view.layer.shadowRadius = 3;

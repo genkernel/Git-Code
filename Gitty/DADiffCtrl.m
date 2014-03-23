@@ -43,10 +43,22 @@
 	return self.diff.deltasLongestLineWidths;
 }
 
+#pragma mark StatusBar
+
+- (BOOL)prefersStatusBarHidden {
+	return YES;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+	return UIStatusBarStyleLightContent;
+}
+
 #pragma mark VC lifecircle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+//	[self.view colorizeBorderWithColor:UIColor.redColor];
 	
 	self.title = self.changeCommit.author.name;
 	self.navigationItem.prompt = self.changeCommit.messageSummary;

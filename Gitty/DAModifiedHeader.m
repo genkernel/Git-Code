@@ -60,10 +60,9 @@
 	fmt = 1 == patch.deletedLinesCount ? @"%d deletion" : @"%d deletions";
 	self.deletionsLabel.text = [NSString stringWithFormat:fmt, patch.deletedLinesCount];
 	
-#warning revamp 'isBinary'
-//	self.additionsLabel.hidden = delta.isBinary;
-//	self.deletionsLabel.hidden = delta.isBinary;
-//	self.binaryStatusLabel.hidden = !delta.isBinary;
+	self.additionsLabel.hidden = delta.isBinary;
+	self.deletionsLabel.hidden = delta.isBinary;
+	self.binaryStatusLabel.hidden = !delta.isBinary;
 }
 
 @end

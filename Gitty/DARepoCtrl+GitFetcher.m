@@ -77,6 +77,8 @@
 		
 		[self setPullingVisible:NO animated:YES];
 		[self addBranchesButton];
+		
+		self.grabButton.hidden = NO;
 	}];
 }
 

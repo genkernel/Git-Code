@@ -13,6 +13,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 //	[self genRoundedImage:application];
 	
+//#ifdef GIT_SSH
+//	[Logger info:@"abc"];
+//#endif
+	
 	[DAFlurry.analytics start];
 	
 	if (!IS_IPHONE_5) {

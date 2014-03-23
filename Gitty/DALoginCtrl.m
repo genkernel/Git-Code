@@ -46,6 +46,10 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	return NO;
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+	return UIStatusBarStyleDefault;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:RepoSegue]) {
 		

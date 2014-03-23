@@ -64,9 +64,6 @@
 }
 
 - (void)reloadCurrentServer {
-	BOOL isGithubServer = 0 == [self.servers.list indexOfObject:self.server];
-	self.repoField.inputAccessoryView = isGithubServer ? self.repoAccessoryView : nil;
-	
 	self.serverName.text = self.server.name;
 	self.repoField.text = self.server.recentRepoPath;
 	self.logoIcon.image = [UIImage imageNamed:self.server.logoIconName];

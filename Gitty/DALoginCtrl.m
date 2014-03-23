@@ -17,7 +17,7 @@
 #import "DASupportTipCtrl.h"
 
 #import "DASshInfoCtrl.h"
-//#import "DAFeedbackCtrl.h"
+#import "DAFeedbackCtrl.h"
 
 #import "DAGitServer+Creation.h"
 
@@ -449,10 +449,10 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 }
 
 - (IBAction)aboutClicked:(UIButton *)sender {
-//	DAFeedbackCtrl *ctrl = [self.storyboard instantiateViewControllerWithIdentifier:DAFeedbackCtrl.className];
-//	ctrl.presentationOption = DASlideFromBottomToTopPresentation;
-//	
-//	[self presentViewController:ctrl animated:YES completion:nil];
+	DAFeedbackCtrl *ctrl = [self.storyboard instantiateViewControllerWithIdentifier:DAFeedbackCtrl.className];
+	ctrl.presentationOption = DASlideFromBottomToTopPresentation;
+	
+	[self presentViewController:ctrl animated:YES completion:nil];
 }
 
 - (IBAction)sshClicked:(UIButton *)sender {

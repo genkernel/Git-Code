@@ -225,6 +225,7 @@
 		18F995D9175FBEDB0033A4A0 /* section_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F995D5175FBEDB0033A4A0 /* section_header@2x.png */; };
 		18FD1D11177F4CAD00DE4851 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FD1D10177F4CAD00DE4851 /* ImageIO.framework */; };
 		1ED2A79518DDE27C007AF16E /* libFlurry_4.3.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ED2A79418DDE27C007AF16E /* libFlurry_4.3.2.a */; };
+		1ED2A79618DEB9A6007AF16E /* DAFeedbackCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1893853017A32CD400168FDB /* DAFeedbackCtrl.m */; };
 		1EE40F9318DD6652004E2C04 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE40E7C18DD6651004E2C04 /* AFHTTPRequestOperation.m */; };
 		1EE40F9418DD6652004E2C04 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE40E7E18DD6651004E2C04 /* AFHTTPRequestOperationManager.m */; };
 		1EE40F9518DD6652004E2C04 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE40E8018DD6651004E2C04 /* AFHTTPSessionManager.m */; };
@@ -2879,6 +2880,7 @@
 				1EE40FEE18DD6652004E2C04 /* TabBarCtrl.m in Sources */,
 				1EE40FAB18DD6652004E2C04 /* ImageUtils.m in Sources */,
 				189016B7175AA49300F19CE4 /* DAGitClone.m in Sources */,
+				1ED2A79618DEB9A6007AF16E /* DAFeedbackCtrl.m in Sources */,
 				1EE40FDE18DD6652004E2C04 /* UIApplication+Filesystem.m in Sources */,
 				18EADFE6176F05F6005D0F28 /* DAGitUser.m in Sources */,
 				1846C99918300987009AF284 /* DASshKeyInfoConfig.m in Sources */,

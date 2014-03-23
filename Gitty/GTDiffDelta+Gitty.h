@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 ReImpl. All rights reserved.
 //
 
-#import <ObjectiveGit/ObjectiveGit.h>
-
 @interface GTDiffDelta (Gitty)
 @property (nonatomic, readonly) BOOL isBinary;
 @end

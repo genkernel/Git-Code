@@ -7,8 +7,11 @@
 //
 
 #import "GTRepository+Gitty.h"
-//#import "NSError+Git.h"
+#ifdef DEBUG
 #import <ObjectiveGit/GTCredential+Private.h>
+#else
+#import "GTCredential+Private.h"
+#endif
 
 @implementation GTRepository (Gitty)
 

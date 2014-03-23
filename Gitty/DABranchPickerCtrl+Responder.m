@@ -95,7 +95,7 @@
 #pragma mark UITabBarDelegate
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
-	[self setListMode:item.tag animated:YES];
+	[self setListMode:(int)item.tag animated:YES];
 }
 
 @end

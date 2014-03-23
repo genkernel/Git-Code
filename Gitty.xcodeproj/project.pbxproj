@@ -12,10 +12,6 @@
 		1801935817FB6B3B0088F4F7 /* repos-shortcut.png in Resources */ = {isa = PBXBuildFile; fileRef = 1801935617FB6B3B0088F4F7 /* repos-shortcut.png */; };
 		1801935917FB6B3B0088F4F7 /* repos-shortcut@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1801935717FB6B3B0088F4F7 /* repos-shortcut@2x.png */; };
 		1804F4D11780DD3B0040E5D1 /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1804F4D01780DD3B0040E5D1 /* profile@2x.png */; };
-		1804FA7F176E15D80080AB50 /* PagerItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1861886D176E0BBF00666DFB /* PagerItemView.m */; };
-		1804FA84176E15DB0080AB50 /* PagerItemViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1861886F176E0BBF00666DFB /* PagerItemViewContainer.m */; };
-		1804FA85176E15DE0080AB50 /* PagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18618871176E0BBF00666DFB /* PagerView.m */; };
-		1804FA86176E15E10080AB50 /* PagerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18618872176E0BBF00666DFB /* PagerView.xib */; };
 		1804FA87176E16210080AB50 /* DAServerCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1861887A176E0FF000666DFB /* DAServerCtrl.xib */; };
 		1804FA8B176E2AFD0080AB50 /* UIButton+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1804FA8A176E2A800080AB50 /* UIButton+Gitty.m */; };
 		1804FA8F176E2D640080AB50 /* GitHub-Mark-120px-plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 1804FA8E176E2D510080AB50 /* GitHub-Mark-120px-plus.png */; };
@@ -47,9 +43,6 @@
 		181240F5175BD21100E6F571 /* DARepoCtrl+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 181240F4175BD21100E6F571 /* DARepoCtrl+Animation.m */; };
 		1812EBF0179AF4C800416064 /* NSAttributedString+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1812EBEF179AF4C800416064 /* NSAttributedString+Gitty.m */; };
 		181429DC178901E100347E1B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181429DB178901E100347E1B /* MessageUI.framework */; };
-		1817091E175BCBEA002A2D93 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1817091B175BCBEA002A2D93 /* Default-568h@2x.png */; };
-		1817091F175BCBEA002A2D93 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1817091C175BCBEA002A2D93 /* Default.png */; };
-		18170920175BCBEA002A2D93 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1817091D175BCBEA002A2D93 /* Default@2x.png */; };
 		18184B6017555AB5001C58D8 /* DABaseCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18184B5F17555AB5001C58D8 /* DABaseCtrl.m */; };
 		18184B6717556968001C58D8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18184B6617556968001C58D8 /* libz.dylib */; };
 		181873AF179BED8A002FE1A3 /* DAServerCtrl-3.5inches.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181873AE179BED8A002FE1A3 /* DAServerCtrl-3.5inches.xib */; };
@@ -322,8 +315,12 @@
 		1EE40FF118DD6652004E2C04 /* UITextField+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE40F7918DD6652004E2C04 /* UITextField+Helper.m */; };
 		1EE40FF218DD6652004E2C04 /* UIView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE40F7B18DD6652004E2C04 /* UIView+Helper.m */; };
 		1EE40FF318DD6652004E2C04 /* ViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE40F7D18DD6652004E2C04 /* ViewCtrl.m */; };
-		1EE4100C18DD6784004E2C04 /* libObjectiveGit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EE4100718DD675C004E2C04 /* libObjectiveGit-iOS.a */; };
 		1EE4101018DD68C6004E2C04 /* UIView+Positioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE4100F18DD68C6004E2C04 /* UIView+Positioning.m */; };
+		1EF45ECF18E2A2ED00B84B77 /* libObjectiveGit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF45ECA18E2A2DA00B84B77 /* libObjectiveGit-iOS.a */; };
+		1EF45ED918E2A46000B84B77 /* PagerItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF45ED318E2A46000B84B77 /* PagerItemView.m */; };
+		1EF45EDA18E2A46000B84B77 /* PagerItemViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF45ED518E2A46000B84B77 /* PagerItemViewContainer.m */; };
+		1EF45EDB18E2A46000B84B77 /* PagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF45ED718E2A46000B84B77 /* PagerView.m */; };
+		1EF45EDC18E2A46000B84B77 /* PagerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EF45ED818E2A46000B84B77 /* PagerView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -362,30 +359,30 @@
 			remoteGlobalIDString = C95AB37417E1C47D00120861;
 			remoteInfo = "ZipArchive mac Tests";
 		};
-		1EE4100418DD675C004E2C04 /* PBXContainerItemProxy */ = {
+		1EF45EC718E2A2DA00B84B77 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1EE40FF818DD675B004E2C04 /* ObjectiveGitFramework.xcodeproj */;
+			containerPortal = 1EF45EBB18E2A2D800B84B77 /* ObjectiveGitFramework.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
 			remoteInfo = ObjectiveGit;
 		};
-		1EE4100618DD675C004E2C04 /* PBXContainerItemProxy */ = {
+		1EF45EC918E2A2DA00B84B77 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1EE40FF818DD675B004E2C04 /* ObjectiveGitFramework.xcodeproj */;
+			containerPortal = 1EF45EBB18E2A2D800B84B77 /* ObjectiveGitFramework.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 04DB4645133AB57600D9C624;
 			remoteInfo = "ObjectiveGit-iOS";
 		};
-		1EE4100818DD675C004E2C04 /* PBXContainerItemProxy */ = {
+		1EF45ECB18E2A2DA00B84B77 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1EE40FF818DD675B004E2C04 /* ObjectiveGitFramework.xcodeproj */;
+			containerPortal = 1EF45EBB18E2A2D800B84B77 /* ObjectiveGitFramework.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 88F05A6B16011E5400B7AD1D;
 			remoteInfo = ObjectiveGitTests;
 		};
-		1EE4100A18DD6771004E2C04 /* PBXContainerItemProxy */ = {
+		1EF45ECD18E2A2E200B84B77 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1EE40FF818DD675B004E2C04 /* ObjectiveGitFramework.xcodeproj */;
+			containerPortal = 1EF45EBB18E2A2D800B84B77 /* ObjectiveGitFramework.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 04DB4644133AB57600D9C624;
 			remoteInfo = "ObjectiveGit-iOS";
@@ -441,9 +438,6 @@
 		1812EBEE179AF4C800416064 /* NSAttributedString+Gitty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Gitty.h"; sourceTree = "<group>"; };
 		1812EBEF179AF4C800416064 /* NSAttributedString+Gitty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Gitty.m"; sourceTree = "<group>"; };
 		181429DB178901E100347E1B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		1817091B175BCBEA002A2D93 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		1817091C175BCBEA002A2D93 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		1817091D175BCBEA002A2D93 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		18184B5E17555AB5001C58D8 /* DABaseCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABaseCtrl.h; sourceTree = "<group>"; };
 		18184B5F17555AB5001C58D8 /* DABaseCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABaseCtrl.m; sourceTree = "<group>"; };
 		18184B6617556968001C58D8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -521,14 +515,6 @@
 		185837D817B6893600EBB834 /* bar-tags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar-tags.png"; sourceTree = "<group>"; };
 		185837DA17B68AED00EBB834 /* bar-branches.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar-branches.png"; sourceTree = "<group>"; };
 		185837DB17B68AEE00EBB834 /* bar-branches@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar-branches@2x.png"; sourceTree = "<group>"; };
-		1861886B176E0BBF00666DFB /* PagerItemView+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PagerItemView+Internal.h"; sourceTree = "<group>"; };
-		1861886C176E0BBF00666DFB /* PagerItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagerItemView.h; sourceTree = "<group>"; };
-		1861886D176E0BBF00666DFB /* PagerItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagerItemView.m; sourceTree = "<group>"; };
-		1861886E176E0BBF00666DFB /* PagerItemViewContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagerItemViewContainer.h; sourceTree = "<group>"; };
-		1861886F176E0BBF00666DFB /* PagerItemViewContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagerItemViewContainer.m; sourceTree = "<group>"; };
-		18618870176E0BBF00666DFB /* PagerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagerView.h; sourceTree = "<group>"; };
-		18618871176E0BBF00666DFB /* PagerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagerView.m; sourceTree = "<group>"; };
-		18618872176E0BBF00666DFB /* PagerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagerView.xib; sourceTree = "<group>"; };
 		18618878176E0FF000666DFB /* DAServerCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAServerCtrl.h; sourceTree = "<group>"; };
 		18618879176E0FF000666DFB /* DAServerCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAServerCtrl.m; sourceTree = "<group>"; };
 		1861887A176E0FF000666DFB /* DAServerCtrl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DAServerCtrl.xib; sourceTree = "<group>"; };
@@ -926,9 +912,17 @@
 		1EE40F7C18DD6652004E2C04 /* ViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewCtrl.h; sourceTree = "<group>"; };
 		1EE40F7D18DD6652004E2C04 /* ViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewCtrl.m; sourceTree = "<group>"; };
 		1EE40F8318DD6652004E2C04 /* xlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xlib.h; sourceTree = "<group>"; };
-		1EE40FF818DD675B004E2C04 /* ObjectiveGitFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveGitFramework.xcodeproj; path = "Submodules/objective-git/ObjectiveGitFramework.xcodeproj"; sourceTree = "<group>"; };
 		1EE4100E18DD68C6004E2C04 /* UIView+Positioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Positioning.h"; sourceTree = "<group>"; };
 		1EE4100F18DD68C6004E2C04 /* UIView+Positioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Positioning.m"; sourceTree = "<group>"; };
+		1EF45EBB18E2A2D800B84B77 /* ObjectiveGitFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveGitFramework.xcodeproj; path = "Submodules/objective-git/ObjectiveGitFramework.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		1EF45ED118E2A46000B84B77 /* PagerItemView+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PagerItemView+Internal.h"; sourceTree = "<group>"; };
+		1EF45ED218E2A46000B84B77 /* PagerItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagerItemView.h; sourceTree = "<group>"; };
+		1EF45ED318E2A46000B84B77 /* PagerItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagerItemView.m; sourceTree = "<group>"; };
+		1EF45ED418E2A46000B84B77 /* PagerItemViewContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagerItemViewContainer.h; sourceTree = "<group>"; };
+		1EF45ED518E2A46000B84B77 /* PagerItemViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagerItemViewContainer.m; sourceTree = "<group>"; };
+		1EF45ED618E2A46000B84B77 /* PagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagerView.h; sourceTree = "<group>"; };
+		1EF45ED718E2A46000B84B77 /* PagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagerView.m; sourceTree = "<group>"; };
+		1EF45ED818E2A46000B84B77 /* PagerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PagerView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -936,7 +930,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EE4100C18DD6784004E2C04 /* libObjectiveGit-iOS.a in Frameworks */,
+				1EF45ECF18E2A2ED00B84B77 /* libObjectiveGit-iOS.a in Frameworks */,
 				18D124DA1832499A0097420F /* Accelerate.framework in Frameworks */,
 				18C59A18182C326F006BB964 /* libiconv.dylib in Frameworks */,
 				18646F1A182C2C4700EE08FB /* libZipArchive-ios.a in Frameworks */,
@@ -1116,17 +1110,6 @@
 			name = ProtocolsContainer;
 			sourceTree = "<group>";
 		};
-		1817091A175BCBEA002A2D93 /* Backgrounds */ = {
-			isa = PBXGroup;
-			children = (
-				1817091B175BCBEA002A2D93 /* Default-568h@2x.png */,
-				1817091C175BCBEA002A2D93 /* Default.png */,
-				1817091D175BCBEA002A2D93 /* Default@2x.png */,
-			);
-			name = Backgrounds;
-			path = Res/Backgrounds;
-			sourceTree = "<group>";
-		};
 		181873B7179C0175002FE1A3 /* AccessoryHint */ = {
 			isa = PBXGroup;
 			children = (
@@ -1273,17 +1256,6 @@
 			path = Grabber;
 			sourceTree = "<group>";
 		};
-		183DA6F3175549BC00140DA8 /* Submodules */ = {
-			isa = PBXGroup;
-			children = (
-				1EE40FF818DD675B004E2C04 /* ObjectiveGitFramework.xcodeproj */,
-				187A29DC1795DFD400FE9F19 /* STUtils */,
-				18F86ECA1793179E0055900C /* ZipArchive */,
-				1861886A176E0BBF00666DFB /* PagerView */,
-			);
-			name = Submodules;
-			sourceTree = "<group>";
-		};
 		183F7E41178C54ED0051D689 /* StatsCtrl */ = {
 			isa = PBXGroup;
 			children = (
@@ -1308,7 +1280,7 @@
 				18438B591777A7E100943F9F /* profile.png */,
 			);
 			name = Profile;
-			path = Res/Profile;
+			path = ../Profile;
 			sourceTree = "<group>";
 		};
 		18438B5E1777A8BB00943F9F /* Gravatar */ = {
@@ -1341,22 +1313,6 @@
 				185837D617B6891700EBB834 /* bar-tags@2x.png */,
 			);
 			name = BranchList;
-			sourceTree = "<group>";
-		};
-		1861886A176E0BBF00666DFB /* PagerView */ = {
-			isa = PBXGroup;
-			children = (
-				1861886B176E0BBF00666DFB /* PagerItemView+Internal.h */,
-				1861886C176E0BBF00666DFB /* PagerItemView.h */,
-				1861886D176E0BBF00666DFB /* PagerItemView.m */,
-				1861886E176E0BBF00666DFB /* PagerItemViewContainer.h */,
-				1861886F176E0BBF00666DFB /* PagerItemViewContainer.m */,
-				18618870176E0BBF00666DFB /* PagerView.h */,
-				18618871176E0BBF00666DFB /* PagerView.m */,
-				18618872176E0BBF00666DFB /* PagerView.xib */,
-			);
-			name = PagerView;
-			path = Submodules/ConceptScroll/PagerView;
 			sourceTree = "<group>";
 		};
 		18618877176E0FD300666DFB /* Server */ = {
@@ -1447,7 +1403,7 @@
 				187A29E01795DFE400FE9F19 /* Security */,
 			);
 			name = STUtils;
-			path = Submodules/STUtils/Security;
+			path = ../Submodules/STUtils/Security;
 			sourceTree = "<group>";
 		};
 		187A29E01795DFE400FE9F19 /* Security */ = {
@@ -1463,6 +1419,8 @@
 			isa = PBXGroup;
 			children = (
 				1EE40E4C18DD6651004E2C04 /* xlib */,
+				187A29DC1795DFD400FE9F19 /* STUtils */,
+				18F86ECA1793179E0055900C /* ZipArchive */,
 				18B8751717ABDB86004AF69D /* Flurry */,
 			);
 			path = Libs;
@@ -1522,7 +1480,6 @@
 				18933CD61755395D00E92183 /* Frameworks */,
 				18D9EA3917554BEE00454F3C /* Res */,
 				18878CAA17629E03008BF232 /* Libs */,
-				183DA6F3175549BC00140DA8 /* Submodules */,
 				18933CDD1755395D00E92183 /* Gitty */,
 				18933CD51755395D00E92183 /* Products */,
 			);
@@ -1570,6 +1527,7 @@
 		18933CDD1755395D00E92183 /* Gitty */ = {
 			isa = PBXGroup;
 			children = (
+				18706EE0176407430046A2A6 /* Helpers */,
 				18933CDE1755395D00E92183 /* Service */,
 				18D9EA3417554BE000454F3C /* UI */,
 				18933CE61755395D00E92183 /* DAAppDelegate.h */,
@@ -1585,7 +1543,6 @@
 			isa = PBXGroup;
 			children = (
 				1824409417C8B8A100274B2C /* Settings */,
-				18706EE0176407430046A2A6 /* Helpers */,
 				18E23ACC17BF7F66008462A3 /* Env */,
 				18B8751B17ABDB93004AF69D /* Flurry */,
 				18438B5E1777A8BB00943F9F /* Gravatar */,
@@ -1848,9 +1805,7 @@
 			isa = PBXGroup;
 			children = (
 				1893852817A3184700168FDB /* Html */,
-				18438B571777A7E100943F9F /* Profile */,
 				1804FA8C176E2D510080AB50 /* Logos */,
-				1817091A175BCBEA002A2D93 /* Backgrounds */,
 				18F995D1175FBEDB0033A4A0 /* UI */,
 				18933CDF1755395D00E92183 /* Gitty-Info.plist */,
 				18933CE01755395D00E92183 /* InfoPlist.strings */,
@@ -1949,7 +1904,7 @@
 				18F86F09179317FF0055900C /* ZipArchive.xcodeproj */,
 			);
 			name = ZipArchive;
-			path = Submodules/ZipArchive;
+			path = ../Submodules/ZipArchive;
 			sourceTree = "<group>";
 		};
 		18F86F0A179317FF0055900C /* Products */ = {
@@ -2011,6 +1966,7 @@
 		18F995D1175FBEDB0033A4A0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				18438B571777A7E100943F9F /* Profile */,
 				1824407717C7A61300274B2C /* Lock */,
 				1824404C17C6A12100274B2C /* Arrows */,
 				182B820E17A1B0E800D02F73 /* Faders */,
@@ -2042,6 +1998,7 @@
 		1EE40E4C18DD6651004E2C04 /* xlib */ = {
 			isa = PBXGroup;
 			children = (
+				1EF45EBB18E2A2D800B84B77 /* ObjectiveGitFramework.xcodeproj */,
 				1EE40E7818DD6651004E2C04 /* shared */,
 				1EE40EBB18DD6651004E2C04 /* xlib */,
 			);
@@ -2483,6 +2440,7 @@
 		1EE40F4D18DD6652004E2C04 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1EF45ED018E2A46000B84B77 /* PagerView */,
 				1EE40F4E18DD6652004E2C04 /* ActivityIndicator */,
 				1EE40F5118DD6652004E2C04 /* AlertManager */,
 				1EE40F5C18DD6652004E2C04 /* Button */,
@@ -2598,16 +2556,6 @@
 			path = UITextField;
 			sourceTree = "<group>";
 		};
-		1EE40FF918DD675B004E2C04 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1EE4100518DD675C004E2C04 /* ObjectiveGit.framework */,
-				1EE4100718DD675C004E2C04 /* libObjectiveGit-iOS.a */,
-				1EE4100918DD675C004E2C04 /* ObjectiveGitTests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		1EE4100D18DD68C6004E2C04 /* UIView-Positioning */ = {
 			isa = PBXGroup;
 			children = (
@@ -2616,6 +2564,32 @@
 			);
 			path = "UIView-Positioning";
 			sourceTree = "<group>";
+		};
+		1EF45EBC18E2A2D800B84B77 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1EF45EC818E2A2DA00B84B77 /* ObjectiveGit.framework */,
+				1EF45ECA18E2A2DA00B84B77 /* libObjectiveGit-iOS.a */,
+				1EF45ECC18E2A2DA00B84B77 /* ObjectiveGitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1EF45ED018E2A46000B84B77 /* PagerView */ = {
+			isa = PBXGroup;
+			children = (
+				1EF45ED118E2A46000B84B77 /* PagerItemView+Internal.h */,
+				1EF45ED218E2A46000B84B77 /* PagerItemView.h */,
+				1EF45ED318E2A46000B84B77 /* PagerItemView.m */,
+				1EF45ED418E2A46000B84B77 /* PagerItemViewContainer.h */,
+				1EF45ED518E2A46000B84B77 /* PagerItemViewContainer.m */,
+				1EF45ED618E2A46000B84B77 /* PagerView.h */,
+				1EF45ED718E2A46000B84B77 /* PagerView.m */,
+				1EF45ED818E2A46000B84B77 /* PagerView.xib */,
+			);
+			name = PagerView;
+			path = Submodules/xlib/Incorporare/ConceptScroll/PagerView;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -2631,7 +2605,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				1EE4100B18DD6771004E2C04 /* PBXTargetDependency */,
+				1EF45ECE18E2A2E200B84B77 /* PBXTargetDependency */,
 				18F86F17179318050055900C /* PBXTargetDependency */,
 			);
 			name = Gitty;
@@ -2669,8 +2643,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 1EE40FF918DD675B004E2C04 /* Products */;
-					ProjectRef = 1EE40FF818DD675B004E2C04 /* ObjectiveGitFramework.xcodeproj */;
+					ProductGroup = 1EF45EBC18E2A2D800B84B77 /* Products */;
+					ProjectRef = 1EF45EBB18E2A2D800B84B77 /* ObjectiveGitFramework.xcodeproj */;
 				},
 				{
 					ProductGroup = 18F86F0A179317FF0055900C /* Products */;
@@ -2713,25 +2687,25 @@
 			remoteRef = 1EE40E4A18DD65C4004E2C04 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		1EE4100518DD675C004E2C04 /* ObjectiveGit.framework */ = {
+		1EF45EC818E2A2DA00B84B77 /* ObjectiveGit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = ObjectiveGit.framework;
-			remoteRef = 1EE4100418DD675C004E2C04 /* PBXContainerItemProxy */;
+			remoteRef = 1EF45EC718E2A2DA00B84B77 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		1EE4100718DD675C004E2C04 /* libObjectiveGit-iOS.a */ = {
+		1EF45ECA18E2A2DA00B84B77 /* libObjectiveGit-iOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libObjectiveGit-iOS.a";
-			remoteRef = 1EE4100618DD675C004E2C04 /* PBXContainerItemProxy */;
+			remoteRef = 1EF45EC918E2A2DA00B84B77 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		1EE4100918DD675C004E2C04 /* ObjectiveGitTests.octest */ = {
+		1EF45ECC18E2A2DA00B84B77 /* ObjectiveGitTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ObjectiveGitTests.octest;
-			remoteRef = 1EE4100818DD675C004E2C04 /* PBXContainerItemProxy */;
+			remoteRef = 1EF45ECB18E2A2DA00B84B77 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -2753,19 +2727,16 @@
 				1804FAA5176E768F0080AB50 /* Git-Icon.png in Resources */,
 				18352A381799D6BC000DCF07 /* Grabber2_wide_top.png in Resources */,
 				1804FAA3176E71500080AB50 /* DANewServerCtrl.xib in Resources */,
-				1817091E175BCBEA002A2D93 /* Default-568h@2x.png in Resources */,
-				1817091F175BCBEA002A2D93 /* Default.png in Resources */,
 				1804FAA4176E768D0080AB50 /* Git-Icon@2x.png in Resources */,
 				1EE40FD918DD6652004E2C04 /* Localizable.strings in Resources */,
-				18170920175BCBEA002A2D93 /* Default@2x.png in Resources */,
 				1804FA87176E16210080AB50 /* DAServerCtrl.xib in Resources */,
 				1804FA94176E44450080AB50 /* bitbucket.png in Resources */,
 				188B2D58175D3E5C00BD1EEB /* DACommitCell.xib in Resources */,
 				1871D780179C1B3F00F1D928 /* DARepoCell.xib in Resources */,
 				18F995BE175FAF2E0033A4A0 /* DAModifiedHeader.xib in Resources */,
 				18F995C7175FB31A0033A4A0 /* DAHunkContentView.xib in Resources */,
-				1804FA86176E15E10080AB50 /* PagerView.xib in Resources */,
 				18F995D6175FBEDB0033A4A0 /* section_footer.png in Resources */,
+				1EF45EDC18E2A46000B84B77 /* PagerView.xib in Resources */,
 				18F995D7175FBEDB0033A4A0 /* section_footer@2x.png in Resources */,
 				1801935517FB66880088F4F7 /* DAReposListCtrl.xib in Resources */,
 				18F995D8175FBEDB0033A4A0 /* section_header.png in Resources */,
@@ -2881,6 +2852,7 @@
 				1EE40FC918DD6652004E2C04 /* MutableSocialRequest.m in Sources */,
 				18BAA8661758016400154019 /* DAServerManager.m in Sources */,
 				189A5322175922FA00B5BD8D /* DARepoCtrl.m in Sources */,
+				1EF45EDA18E2A46000B84B77 /* PagerItemViewContainer.m in Sources */,
 				1EE40FF318DD6652004E2C04 /* ViewCtrl.m in Sources */,
 				1EE40FB318DD6652004E2C04 /* TwitterAccount.m in Sources */,
 				18438B641777AA0600943F9F /* UIImageView+Gravatar.m in Sources */,
@@ -2914,11 +2886,11 @@
 				1EE40FCD18DD6652004E2C04 /* FriendIds.m in Sources */,
 				18438B611777A8CC00943F9F /* DAGravatar.m in Sources */,
 				1861887B176E145F00666DFB /* DAServerCtrl.m in Sources */,
+				1EF45EDB18E2A46000B84B77 /* PagerView.m in Sources */,
 				1EE40FC618DD6652004E2C04 /* PostURLRequest.m in Sources */,
 				1EE40FA818DD6652004E2C04 /* KBCollectionExtensions.m in Sources */,
 				1EE40FC018DD6652004E2C04 /* MediaLibrary.m in Sources */,
 				1812EBF0179AF4C800416064 /* NSAttributedString+Gitty.m in Sources */,
-				1804FA84176E15DB0080AB50 /* PagerItemViewContainer.m in Sources */,
 				1EE40FD618DD6652004E2C04 /* NSDate+Helper.m in Sources */,
 				1804FA8B176E2AFD0080AB50 /* UIButton+Gitty.m in Sources */,
 				1804FABC176E87780080AB50 /* NSString+Gitty.m in Sources */,
@@ -2934,12 +2906,12 @@
 				18C94433175B93C400A4D7CA /* DABranchPickerCtrl.m in Sources */,
 				181240F5175BD21100E6F571 /* DARepoCtrl+Animation.m in Sources */,
 				188B2D56175D3E4900BD1EEB /* DACommitCell.m in Sources */,
-				1804FA85176E15DE0080AB50 /* PagerView.m in Sources */,
 				1EE40FAE18DD6652004E2C04 /* UIImage+Masking.m in Sources */,
 				1EE40FE518DD6652004E2C04 /* AlertCtrl.m in Sources */,
 				18A1114D175E2A7000784356 /* DARepoCtrl+GitFetcher.m in Sources */,
 				1EE40FAD18DD6652004E2C04 /* UIImage+Effects.m in Sources */,
 				1804FAA2176E71490080AB50 /* DANewServerCtrl.m in Sources */,
+				1EF45ED918E2A46000B84B77 /* PagerItemView.m in Sources */,
 				1EE40FA018DD6652004E2C04 /* UIImageView+AFNetworking.m in Sources */,
 				18F995B7175F6EB70033A4A0 /* DADiffCtrl.m in Sources */,
 				18F995BC175FAE710033A4A0 /* DAModifiedHeader.m in Sources */,
@@ -2952,7 +2924,6 @@
 				18706EDB1763B3B40046A2A6 /* DADiffDeltaGraphView.m in Sources */,
 				1EE40FE418DD6652004E2C04 /* Alert.m in Sources */,
 				1EE40FCB18DD6652004E2C04 /* FollowerIds.m in Sources */,
-				1804FA7F176E15D80080AB50 /* PagerItemView.m in Sources */,
 				18706EE31764075D0046A2A6 /* UIColor+Gitty.m in Sources */,
 				186A92E21778522C00B2EEF3 /* DAStatusHeader.m in Sources */,
 				186A92F41778BD4C00B2EEF3 /* UITextField+Gitty.m in Sources */,
@@ -3055,10 +3026,10 @@
 			name = "ZipArchive ios";
 			targetProxy = 18F86F16179318050055900C /* PBXContainerItemProxy */;
 		};
-		1EE4100B18DD6771004E2C04 /* PBXTargetDependency */ = {
+		1EF45ECE18E2A2E200B84B77 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ObjectiveGit-iOS";
-			targetProxy = 1EE4100A18DD6771004E2C04 /* PBXContainerItemProxy */;
+			targetProxy = 1EF45ECD18E2A2E200B84B77 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3161,7 +3132,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_FAST_MATH = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gitty/Gitty-Prefix.pch";
@@ -3182,7 +3153,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "113CA3C9-5236-432D-A508-0067024978EE";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Submodules/ConceptScroll/PagerView $(SRCROOT)/Submodules/ZipArchive/ $(SRCROOT)/Submodules/objective-git/Classes $(SRCROOT)/Submodules/objective-git/Classes/Categories/ $(PROJECT_DIR)/Submodules/objective-git/External/libgit2/include $(PROJECT_DIR)/Submodules/objective-git/External/libssh2-ios/include/libssh2 $(BUILT_PRODUCTS_DIR)/usr/local/include";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3220,7 +3191,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BAEA1195-96AB-4014-B18C-43DAD44B6BAD";
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Submodules/ConceptScroll/PagerView $(SRCROOT)/Submodules/ZipArchive/ $(SRCROOT)/Submodules/objective-git/Classes $(SRCROOT)/Submodules/objective-git/Classes/Categories/";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Submodules/ConceptScroll/PagerView $(SRCROOT)/Submodules/ZipArchive/ $(SRCROOT)/Submodules/objective-git/Classes $(SRCROOT)/Submodules/objective-git/Classes/Categories/ $(PROJECT_DIR)/Submodules/objective-git/External/libgit2/include $(PROJECT_DIR)/Submodules/objective-git/External/libssh2-ios/include/libssh2 $(BUILT_PRODUCTS_DIR)/usr/local/include";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

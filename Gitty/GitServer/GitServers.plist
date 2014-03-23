@@ -14,15 +14,7 @@
 		<key>RecentRepoPath</key>
 		<string>github/linguist</string>
 		<key>RecentRepos</key>
-		<dict>
-			<key>libgit2/objective-git</key>
-			<dict>
-				<key>lastAccessDate</key>
-				<date>2013-07-26T12:06:10Z</date>
-				<key>relativePath</key>
-				<string>libgit2/objective-git</string>
-			</dict>
-		</dict>
+		<dict/>
 		<key>SaveDirectoryName</key>
 		<string>github.com</string>
 		<key>SupportedProtocols</key>

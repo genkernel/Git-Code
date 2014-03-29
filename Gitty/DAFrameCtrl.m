@@ -39,12 +39,6 @@ static NSString *OverlayNavSegue = @"OverlayNavSegue";
 	return self.presentedCtrl.preferredStatusBarStyle;
 }
 
-- (void)viewDidLoad {
-	[super viewDidLoad];
-	
-//	[self.mainContainer colorizeBorderWithColor:UIColor.blueColor];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	[super prepareForSegue:segue sender:sender];
 	
@@ -105,6 +99,8 @@ static NSString *OverlayNavSegue = @"OverlayNavSegue";
 
 - (void)dismissOverlayCtrl:(DABaseCtrl *)ctrl animated:(BOOL)animated {
 	[self animateOverlayContainerWithOption:ctrl.presentationOption completionHandler:^(BOOL finished) {
+		self.overlayContainer.hidden = YES;
+		
 		_overlayCtrl = nil;
 		self.overlayNavCtrl.viewControllers = @[];
 		

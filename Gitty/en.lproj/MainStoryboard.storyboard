@@ -258,9 +258,9 @@
                         <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="BEU-y7-wg9" secondAttribute="trailing" id="Akx-nd-gqi"/>
-                            <constraint firstAttribute="bottom" secondItem="BEU-y7-wg9" secondAttribute="bottom" id="RpA-Jv-RsR"/>
+                            <constraint firstItem="BEU-y7-wg9" firstAttribute="top" secondItem="4ff-iA-Sct" secondAttribute="top" id="iw2-Lf-pcE"/>
+                            <constraint firstItem="GN4-pu-90K" firstAttribute="top" secondItem="BEU-y7-wg9" secondAttribute="bottom" id="qVZ-gf-7NA"/>
                             <constraint firstItem="BEU-y7-wg9" firstAttribute="leading" secondItem="4ff-iA-Sct" secondAttribute="leading" id="xhH-CD-LZe"/>
-                            <constraint firstItem="BEU-y7-wg9" firstAttribute="top" secondItem="4ff-iA-Sct" secondAttribute="top" id="xpR-o6-cch"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Diff" id="WDB-7T-fRo"/>
@@ -915,7 +915,7 @@ yet.</string>
             <objects>
                 <navigationController id="xze-n8-Hho" customClass="NavViewCtrl" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7xi-s5-GSX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="7xi-s5-GSX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>

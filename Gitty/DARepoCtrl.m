@@ -16,7 +16,6 @@
 
 #import "DAReposListCtrl.h"
 
-
 static NSString *MasterBranchName = @"master";
 
 static NSString *DiffSegue = @"DiffSegue";

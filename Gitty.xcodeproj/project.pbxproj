@@ -219,7 +219,7 @@
 		18FD1D11177F4CAD00DE4851 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FD1D10177F4CAD00DE4851 /* ImageIO.framework */; };
 		1E96996718DEBE7500D02FED /* GTDiffDelta+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E96996618DEBE7500D02FED /* GTDiffDelta+Gitty.m */; };
 		1E969A6318DF03C300D02FED /* GTRepository+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E969A6218DF03C300D02FED /* GTRepository+Gitty.m */; };
-		1ED2A79518DDE27C007AF16E /* libFlurry_4.3.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ED2A79418DDE27C007AF16E /* libFlurry_4.3.2.a */; };
+		1EC175D318EAD83600A17431 /* libFlurry_4.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC175D218EAD83600A17431 /* libFlurry_4.4.0.a */; };
 		1ED2A79618DEB9A6007AF16E /* DAFeedbackCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1893853017A32CD400168FDB /* DAFeedbackCtrl.m */; };
 		1EE40F9318DD6652004E2C04 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE40E7C18DD6651004E2C04 /* AFHTTPRequestOperation.m */; };
 		1EE40F9418DD6652004E2C04 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE40E7E18DD6651004E2C04 /* AFHTTPRequestOperationManager.m */; };
@@ -702,7 +702,7 @@
 		1E96996618DEBE7500D02FED /* GTDiffDelta+Gitty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTDiffDelta+Gitty.m"; sourceTree = "<group>"; };
 		1E969A6118DF03C300D02FED /* GTRepository+Gitty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTRepository+Gitty.h"; sourceTree = "<group>"; };
 		1E969A6218DF03C300D02FED /* GTRepository+Gitty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTRepository+Gitty.m"; sourceTree = "<group>"; };
-		1ED2A79418DDE27C007AF16E /* libFlurry_4.3.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.2.a; sourceTree = "<group>"; };
+		1EC175D218EAD83600A17431 /* libFlurry_4.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.4.0.a; sourceTree = "<group>"; };
 		1EE40E7B18DD6651004E2C04 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		1EE40E7C18DD6651004E2C04 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		1EE40E7D18DD6651004E2C04 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -944,6 +944,7 @@
 				18BFDA92180DA84F00CCF115 /* CoreLocation.framework in Frameworks */,
 				18FD1D11177F4CAD00DE4851 /* ImageIO.framework in Frameworks */,
 				189A532E1759237C00B5BD8D /* QuartzCore.framework in Frameworks */,
+				1EC175D318EAD83600A17431 /* libFlurry_4.4.0.a in Frameworks */,
 				1804FAB2176E7AF20080AB50 /* SystemConfiguration.framework in Frameworks */,
 				186A92D9177848FB00B2EEF3 /* MobileCoreServices.framework in Frameworks */,
 				18CF75B91788E8EE00209141 /* libxml2.2.dylib in Frameworks */,
@@ -953,7 +954,6 @@
 				18933CD81755395D00E92183 /* UIKit.framework in Frameworks */,
 				18933CDA1755395D00E92183 /* Foundation.framework in Frameworks */,
 				18933CDC1755395D00E92183 /* CoreGraphics.framework in Frameworks */,
-				1ED2A79518DDE27C007AF16E /* libFlurry_4.3.2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1728,8 +1728,8 @@
 		18B8751717ABDB86004AF69D /* Flurry */ = {
 			isa = PBXGroup;
 			children = (
+				1EC175D218EAD83600A17431 /* libFlurry_4.4.0.a */,
 				18B8751817ABDB86004AF69D /* Flurry.h */,
-				1ED2A79418DDE27C007AF16E /* libFlurry_4.3.2.a */,
 			);
 			path = Flurry;
 			sourceTree = "<group>";
@@ -3132,7 +3132,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_FAST_MATH = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gitty/Gitty-Prefix.pch";
@@ -3167,7 +3167,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Anton Altukhov (9P6H56XK58)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_FAST_MATH = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

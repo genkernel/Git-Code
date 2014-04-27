@@ -219,6 +219,9 @@
 		18FD1D11177F4CAD00DE4851 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FD1D10177F4CAD00DE4851 /* ImageIO.framework */; };
 		1E96996718DEBE7500D02FED /* GTDiffDelta+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E96996618DEBE7500D02FED /* GTDiffDelta+Gitty.m */; };
 		1E969A6318DF03C300D02FED /* GTRepository+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E969A6218DF03C300D02FED /* GTRepository+Gitty.m */; };
+		1EADB756190BF6A100038737 /* AMWaveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EADB753190BF6A100038737 /* AMWaveTransition.m */; };
+		1EADB757190BF6A100038737 /* AMWaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EADB755190BF6A100038737 /* AMWaveViewController.m */; };
+		1EADB769190D5E1100038737 /* DANavCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EADB768190D5E1100038737 /* DANavCtrl.m */; };
 		1EC175D318EAD83600A17431 /* libFlurry_4.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC175D218EAD83600A17431 /* libFlurry_4.4.0.a */; };
 		1ED2A79618DEB9A6007AF16E /* DAFeedbackCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1893853017A32CD400168FDB /* DAFeedbackCtrl.m */; };
 		1EE40F9318DD6652004E2C04 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE40E7C18DD6651004E2C04 /* AFHTTPRequestOperation.m */; };
@@ -702,6 +705,12 @@
 		1E96996618DEBE7500D02FED /* GTDiffDelta+Gitty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTDiffDelta+Gitty.m"; sourceTree = "<group>"; };
 		1E969A6118DF03C300D02FED /* GTRepository+Gitty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTRepository+Gitty.h"; sourceTree = "<group>"; };
 		1E969A6218DF03C300D02FED /* GTRepository+Gitty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTRepository+Gitty.m"; sourceTree = "<group>"; };
+		1EADB752190BF6A100038737 /* AMWaveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMWaveTransition.h; sourceTree = "<group>"; };
+		1EADB753190BF6A100038737 /* AMWaveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMWaveTransition.m; sourceTree = "<group>"; };
+		1EADB754190BF6A100038737 /* AMWaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMWaveViewController.h; sourceTree = "<group>"; };
+		1EADB755190BF6A100038737 /* AMWaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMWaveViewController.m; sourceTree = "<group>"; };
+		1EADB767190D5E1100038737 /* DANavCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DANavCtrl.h; sourceTree = "<group>"; };
+		1EADB768190D5E1100038737 /* DANavCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DANavCtrl.m; sourceTree = "<group>"; };
 		1EC175D218EAD83600A17431 /* libFlurry_4.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.4.0.a; sourceTree = "<group>"; };
 		1EE40E7B18DD6651004E2C04 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		1EE40E7C18DD6651004E2C04 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
@@ -1418,6 +1427,7 @@
 		18878CAA17629E03008BF232 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				1EADB751190BF6A100038737 /* AMWaveTransition */,
 				1EE40E4C18DD6651004E2C04 /* xlib */,
 				187A29DC1795DFD400FE9F19 /* STUtils */,
 				18F86ECA1793179E0055900C /* ZipArchive */,
@@ -1789,10 +1799,8 @@
 		18D9EA3417554BE000454F3C /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				18184B5E17555AB5001C58D8 /* DABaseCtrl.h */,
-				18184B5F17555AB5001C58D8 /* DABaseCtrl.m */,
-				1871E9B817EE075D00A3464C /* DABaseCtrl+Internal.h */,
 				18933CEF1755395D00E92183 /* MainStoryboard.storyboard */,
+				1EADB75C190D5DF400038737 /* Base */,
 				1871E9AB17EDBB2400A3464C /* Frame */,
 				189A531E175922BF00B5BD8D /* Login */,
 				189A531F175922D100B5BD8D /* Repo */,
@@ -1993,6 +2001,30 @@
 			);
 			name = UI;
 			path = Res/UI;
+			sourceTree = "<group>";
+		};
+		1EADB751190BF6A100038737 /* AMWaveTransition */ = {
+			isa = PBXGroup;
+			children = (
+				1EADB752190BF6A100038737 /* AMWaveTransition.h */,
+				1EADB753190BF6A100038737 /* AMWaveTransition.m */,
+				1EADB754190BF6A100038737 /* AMWaveViewController.h */,
+				1EADB755190BF6A100038737 /* AMWaveViewController.m */,
+			);
+			name = AMWaveTransition;
+			path = Submodules/AMWaveTransition/AMWaveTransition;
+			sourceTree = SOURCE_ROOT;
+		};
+		1EADB75C190D5DF400038737 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				18184B5E17555AB5001C58D8 /* DABaseCtrl.h */,
+				18184B5F17555AB5001C58D8 /* DABaseCtrl.m */,
+				1871E9B817EE075D00A3464C /* DABaseCtrl+Internal.h */,
+				1EADB767190D5E1100038737 /* DANavCtrl.h */,
+				1EADB768190D5E1100038737 /* DANavCtrl.m */,
+			);
+			name = Base;
 			sourceTree = "<group>";
 		};
 		1EE40E4C18DD6651004E2C04 /* xlib */ = {
@@ -2847,6 +2879,7 @@
 				1EE40F9518DD6652004E2C04 /* AFHTTPSessionManager.m in Sources */,
 				1EE40F9D18DD6652004E2C04 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				18D9EA3D17554EB400454F3C /* DAGitManager.m in Sources */,
+				1EADB756190BF6A100038737 /* AMWaveTransition.m in Sources */,
 				18184B6017555AB5001C58D8 /* DABaseCtrl.m in Sources */,
 				18BAA8651758016400154019 /* DAGitServer.m in Sources */,
 				1EE40FC918DD6652004E2C04 /* MutableSocialRequest.m in Sources */,
@@ -2881,6 +2914,7 @@
 				189016BE175AAD8200F19CE4 /* DAGitCloneDelegate.m in Sources */,
 				1871D77A179C19B200F1D928 /* DARecentReposCtrl.m in Sources */,
 				18A6254C1775D59700FC27AE /* DAGitPull.m in Sources */,
+				1EADB757190BF6A100038737 /* AMWaveViewController.m in Sources */,
 				1EE40FD418DD6652004E2C04 /* DynamicObject.m in Sources */,
 				1EE40FDF18DD6652004E2C04 /* UIApplication+General.m in Sources */,
 				1EE40FCD18DD6652004E2C04 /* FriendIds.m in Sources */,
@@ -2951,6 +2985,7 @@
 				1810994217909BFB0018AAB4 /* DACommitBranchCell.m in Sources */,
 				1EE40FC318DD6652004E2C04 /* GCDAsyncUdpSocket.m in Sources */,
 				181099491790A6B20018AAB4 /* DATitleHeaderCell.m in Sources */,
+				1EADB769190D5E1100038737 /* DANavCtrl.m in Sources */,
 				18F86F1B17931A4E0055900C /* DASshKeyInfo.m in Sources */,
 				1EE40FA518DD6652004E2C04 /* CAComponentDescription.cpp in Sources */,
 				187A29DF1795DFD400FE9F19 /* STKeychain.m in Sources */,
@@ -3153,7 +3188,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "113CA3C9-5236-432D-A508-0067024978EE";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "796C29F5-12E2-45FD-A46C-F2708DFBDD70";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Submodules/ConceptScroll/PagerView $(SRCROOT)/Submodules/ZipArchive/ $(SRCROOT)/Submodules/objective-git/Classes $(SRCROOT)/Submodules/objective-git/Classes/Categories/ $(PROJECT_DIR)/Submodules/objective-git/External/libgit2/include $(PROJECT_DIR)/Submodules/objective-git/External/libssh2-ios/include/libssh2 $(BUILT_PRODUCTS_DIR)/usr/local/include";
 				WRAPPER_EXTENSION = app;
 			};

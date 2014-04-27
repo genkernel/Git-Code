@@ -11,6 +11,8 @@
 @interface DABaseCtrl : ViewCtrl
 @property (nonatomic) DAFramePresentingAnimations presentationOption;
 
+- (id<UIViewControllerAnimatedTransitioning>)animatedTransitioningForOperation:(UINavigationControllerOperation)operation;
+
 @property (strong, nonatomic, readonly) DAGitManager *git;
 @property (strong, nonatomic, readonly) DAServerManager *servers;
 @property (strong, nonatomic, readonly) UIApplication *app;

@@ -16,8 +16,8 @@ typedef enum {
 	DAStatsFullscreenMode
 } DAStatsContainerModes;
 
-@interface DARepoCtrl : DABaseCtrl {
-	BOOL isNavBarHiddenByThisCtrl;
+@interface DARepoCtrl : DABaseCtrl <AMWaveTransitioning> {
+//	BOOL isNavBarHiddenByThisCtrl;
 	DAStatsContainerModes statsContainerMode;
 	
 	GTBranch *_currentBranch;

@@ -62,6 +62,10 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	}
 }
 
+- (id<UIViewControllerAnimatedTransitioning>)animatedTransitioningForOperation:(UINavigationControllerOperation)operation {
+	return [AMWaveTransition transitionWithOperation:operation];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
@@ -152,7 +156,8 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	[super viewWillAppear:animated];
 	[DAFlurry logScreenAppear:self.className];
 	
-	[self.navigationController setNavigationBarHidden:isNavBarHiddenByThisCtrl animated:animated];
+	self.navigationController.navigationBarHidden = NO;
+//	[self.navigationController setNavigationBarHidden:isNavBarHiddenByThisCtrl animated:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -438,5 +443,13 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 - (void)toggleBranchOverlayMode {
 	[self setBranchOverlayVisible:!isBranchOverlayVisible animated:YES];
 }*/
+
+#pragma mark AMWaveTransitioning
+
+- (NSArray *)visibleCells {
+	[Logger info:@"animating cells: %d", self.commitsTable.visibleCells.count];
+	
+	return self.commitsTable.visibleCells;
+}
 
 @end

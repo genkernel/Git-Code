@@ -16,3 +16,6 @@
 [submodule "Submodules/xlib"]
 	path = Submodules/xlib
 	url = /Users/kernel/dev/git/xlib/
+[submodule "Submodules/AMWaveTransition"]
+	path = Submodules/AMWaveTransition
+	url = https://github.com/andreamazz/AMWaveTransition.git

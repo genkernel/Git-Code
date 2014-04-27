@@ -65,6 +65,16 @@
 	[self.frameCtrl dismissMenuCtrl:self.frameCtrl.menuCtrl animated:animated];
 }
 
+- (id<UIViewControllerAnimatedTransitioning>)animatedTransitioningForOperation:(UINavigationControllerOperation)operation {
+	return nil;
+}
+
+#pragma mark AMWaveTransitioning
+
+- (NSArray *)visibleCells {
+	return nil;
+}
+
 #pragma mark Public
 
 - (void)cacheView:(UIView *)view withIdentifier:(NSString *)identifier {

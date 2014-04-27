@@ -28,6 +28,7 @@
 #import "PagerView.h"
 #import "TreeTable.h"
 #import "ZipArchive.h"
+#import "AMWaveTransition.h"
 
 #import "UIColor+Gitty.h"
 #import "UIButton+Gitty.h"

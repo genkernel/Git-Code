@@ -113,7 +113,7 @@
 		[DAFlurry logScreenDisappear:name];
 	}
 }
-
+/*
 - (void)setNavigationBarHidden:(BOOL)hidden animated:(BOOL)animated {
 	if (self.navigationController.navigationBarHidden == hidden) {
 		return;
@@ -131,6 +131,6 @@
 	[UIView animateWithDuration:LightningAnimationDuration animations:^{
 		[self.mainContainer.superview layoutIfNeeded];
 	}];
-}
+}*/
 
 @end

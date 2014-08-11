@@ -17,7 +17,6 @@ typedef enum {
 } DAStatsContainerModes;
 
 @interface DARepoCtrl : DABaseCtrl <AMWaveTransitioning> {
-//	BOOL isNavBarHiddenByThisCtrl;
 	DAStatsContainerModes statsContainerMode;
 	
 	GTBranch *_currentBranch;

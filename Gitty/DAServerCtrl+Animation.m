@@ -27,7 +27,7 @@
 	
 	self.exploreContainerHeight.constant += offset;
 	
-	[UIView animateWithDuration:StandartAnimationDuration animations:^{
+	[UIView animateWithDuration:StandardAnimationDuration animations:^{
 		[self.exploreContainer layoutIfNeeded];
 	} completion:^(BOOL finished) {
 		[self updateControlButtonsState];

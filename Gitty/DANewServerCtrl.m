@@ -37,6 +37,14 @@
 	self.serverUrlField.enabled = NO;
 }
 
+#pragma mark Actions
+
+- (IBAction)hostLinkPressed:(UIButton *)sender {
+	NSURL *url = [NSURL URLWithString:@"http://gitup.reimplement.mobi/2013/07/private-git-server.html"];
+	
+	[UIApplication.sharedApplication openURL:url];
+}
+
 #pragma mark UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {

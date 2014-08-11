@@ -157,7 +157,6 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	[DAFlurry logScreenAppear:self.className];
 	
 	self.navigationController.navigationBarHidden = NO;
-//	[self.navigationController setNavigationBarHidden:isNavBarHiddenByThisCtrl animated:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -313,7 +312,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 		return;
 	}
 	
-	[UIView animateWithDuration:StandartAnimationDuration animations:^{
+	[UIView animateWithDuration:StandardAnimationDuration animations:^{
 		[self setDiffLoadingOverlayVisible:YES animated:NO];
 	}completion:^(BOOL finished) {
 		[self prepareDiffForCommit:commit];
@@ -432,7 +431,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 			// Decelerate back to original position (before dragging).
 			self.mainContainerTop.constant = statsContainerOffsetBeforeDragging;
 			
-			[UIView animateWithDuration:StandartAnimationDuration animations:^{
+			[UIView animateWithDuration:StandardAnimationDuration animations:^{
 				[self.mainContainer.superview layoutIfNeeded];
 			}];
 		}

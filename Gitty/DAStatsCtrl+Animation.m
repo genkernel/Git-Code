@@ -17,7 +17,7 @@
 	
 	self.byAuthorTableLeft.constant = offset;
 	
-	[UIView animateWithDuration:StandartAnimationDuration animations:^{
+	[UIView animateWithDuration:StandardAnimationDuration animations:^{
 		[self.commitsTable.superview layoutIfNeeded];
 	} completion:^(BOOL finished) {
 		self.byAuthorTable.scrollsToTop = !self.isByBranchTableVisible;

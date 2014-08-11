@@ -14,6 +14,7 @@
 #import "DARecentReposCtrl.h"
 // Tips.
 #import "DASshTipCtrl.h"
+#import "DASwipeTipCtrl.h"
 #import "DASupportTipCtrl.h"
 
 #import "DASshInfoCtrl.h"
@@ -121,6 +122,12 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	[super viewDidAppear:animated];
 	
 	[self logLoginAppearAction];
+	
+	if (!DASettings.currentUserSettings.didPresentSwipeToServerHint) {
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			[self presentSwipeToServerHint];
+		});
+	}
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -138,6 +145,12 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	}
 }
 
+- (void)presentSwipeToServerHint {
+	[AlertQueue.queue enqueueAlert:[CustomAlert alertPresentingCtrl:DASwipeTipCtrl.new animated:YES]];
+	
+	DASettings.currentUserSettings.didPresentSwipeToServerHint = YES;
+}
+
 #pragma mark Workflow actions
 
 - (void)logLoginAppearAction {
@@ -149,7 +162,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		double delayInSeconds = 1;
 		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 		dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-			CustomAlert *alert = [CustomAlert alertPresentingCtrl:DASupportTipCtrl.viewCtrl];
+			CustomAlert *alert = [CustomAlert alertPresentingCtrl:DASupportTipCtrl.viewCtrl animated:YES];
 			[AlertQueue.queue enqueueAlert:alert];
 		});
 	}
@@ -166,7 +179,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 			return;
 		}
 		
-		CustomAlert *alert = [CustomAlert alertPresentingCtrl:DASshTipCtrl.viewCtrl];
+		CustomAlert *alert = [CustomAlert alertPresentingCtrl:DASshTipCtrl.viewCtrl animated:YES];
 		[AlertQueue.queue enqueueAlert:alert];
 	}
 }

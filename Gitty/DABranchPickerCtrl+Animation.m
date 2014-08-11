@@ -21,7 +21,7 @@
 	
 	self.branchesTableLeft.constant = offset;
 	
-	[UIView animateWithDuration:StandartAnimationDuration animations:^{
+	[UIView animateWithDuration:StandardAnimationDuration animations:^{
 		[self.container layoutIfNeeded];
 		
 	} completion:^(BOOL finished) {

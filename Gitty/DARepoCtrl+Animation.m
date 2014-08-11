@@ -33,7 +33,7 @@
 	};
 	
 	if (animated) {
-		[UIView animateWithDuration:StandartAnimationDuration animations:actionBlock completion:completionBlock];
+		[UIView animateWithDuration:StandardAnimationDuration animations:actionBlock completion:completionBlock];
 	} else {
 		actionBlock();
 		completionBlock(YES);
@@ -47,7 +47,7 @@
 	
 	self.pullingContainerTop.constant = visible ? .0 : -self.pullingContainer.height;
 	
-	[UIView animateWithDuration:StandartAnimationDuration animations:^{
+	[UIView animateWithDuration:StandardAnimationDuration animations:^{
 		[self.pullingContainer.superview layoutIfNeeded];
 	}completion:^(BOOL finished) {
 		self.pullingContainer.hidden = !visible;
@@ -85,7 +85,7 @@
 		self.mainContainerHeight.constant = self.view.height - y;
 	}
 	
-	[UIView animateWithDuration:StandartAnimationDuration animations:^{
+	[UIView animateWithDuration:StandardAnimationDuration animations:^{
 		[self.mainContainer.superview layoutIfNeeded];
 	} completion:^(BOOL finished) {
 		self.branchCustomTitleButton.hidden = DAStatsHiddenMode != mode;

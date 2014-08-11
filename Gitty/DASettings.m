@@ -35,4 +35,15 @@
 	return (int)[NSUserDefaults.standardUserDefaults integerForKey:name];
 }
 
+#pragma mark Properties
+
+- (BOOL)didPresentSwipeToServerHint {
+	return [NSUserDefaults.standardUserDefaults boolForKey:@"didPresentSwipeToServerHint"];
+}
+
+- (void)setDidPresentSwipeToServerHint:(BOOL)shouldHandle {
+	[NSUserDefaults.standardUserDefaults setBool:shouldHandle forKey:@"didPresentSwipeToServerHint"];
+	[NSUserDefaults.standardUserDefaults synchronize];
+}
+
 @end

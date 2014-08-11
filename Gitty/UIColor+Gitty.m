@@ -35,11 +35,11 @@
 }
 
 + (UIColor *)acceptingGreenColor {
-	return [UIColor colorWithRed:75./255. green:217./255. blue:99./255. alpha:1.];
+	return RGB(75, 217, 99);
 }
 
 + (UIColor *)acceptingBlueColor {
-	return [UIColor colorWithRed:51./255. green:153./255. blue:1. alpha:1.];
+	return RGB(51, 153, 255);
 }
 
 + (UIColor *)inactiveGrayColor {
@@ -47,7 +47,7 @@
 }
 
 + (UIColor *)cancelingRedColor {
-	return [UIColor colorWithRed:1. green:51./255. blue:51./255. alpha:1.];
+	return RGB(255, 51, 51);
 }
 
 + (UIColor *)branchNameTintColor {

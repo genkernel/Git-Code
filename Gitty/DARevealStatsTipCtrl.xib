@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="14A314h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DARevealStatsTipCtrl">
+            <connections>
+                <outlet property="continueButton" destination="DeJ-LB-foY" id="F2M-Y3-Ea5"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view appearanceType="aqua" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nk6-6K-Cx5" userLabel="Content View">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <view appearanceType="aqua" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GwT-Mo-Xwn" userLabel="Top View">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.90000000000000002" colorSpace="deviceRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="64" id="W8N-rX-H4Q"/>
+                            </constraints>
+                        </view>
+                        <view appearanceType="aqua" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYe-ZQ-oLm" userLabel="Middle Transparet View">
+                            <rect key="frame" x="0.0" y="64" width="320" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="WOG-lO-Yo2"/>
+                            </constraints>
+                        </view>
+                        <view appearanceType="aqua" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZ9-qD-uv9" userLabel="Bottom View">
+                            <rect key="frame" x="0.0" y="114" width="320" height="454"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drag-down.png" translatesAutoresizingMaskIntoConstraints="NO" id="tC3-e4-CXE" userLabel="Hint Image View">
+                                    <rect key="frame" x="120" y="15" width="80" height="160"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="w3h-GC-bVo" userLabel="Description Label">
+                                    <rect key="frame" x="15" y="225" width="290" height="72"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <string key="text">Click on highlighted area and
+drag down to reveal
+detailed statistics.</string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DeJ-LB-foY" userLabel="Continue Button">
+                                    <rect key="frame" x="15" y="370" width="289" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="ltu-aH-J9b"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <state key="normal" title="Continue">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="continuePressed:" destination="-1" eventType="touchUpInside" id="hyx-Iq-1Kv"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="w3h-GC-bVo" firstAttribute="leading" secondItem="fZ9-qD-uv9" secondAttribute="leading" constant="15" id="0z6-HH-K2W"/>
+                                <constraint firstItem="DeJ-LB-foY" firstAttribute="leading" secondItem="fZ9-qD-uv9" secondAttribute="leading" constant="15" id="1OY-CK-Bzn"/>
+                                <constraint firstItem="w3h-GC-bVo" firstAttribute="top" secondItem="tC3-e4-CXE" secondAttribute="bottom" constant="50" id="7K3-EN-Kur"/>
+                                <constraint firstAttribute="centerX" secondItem="w3h-GC-bVo" secondAttribute="centerX" id="Dw2-es-8xi"/>
+                                <constraint firstItem="tC3-e4-CXE" firstAttribute="top" secondItem="fZ9-qD-uv9" secondAttribute="top" constant="15" id="GDm-7T-O6z"/>
+                                <constraint firstAttribute="bottom" secondItem="DeJ-LB-foY" secondAttribute="bottom" constant="40" id="HQn-GP-Z1m"/>
+                                <constraint firstAttribute="centerX" secondItem="tC3-e4-CXE" secondAttribute="centerX" id="lj8-sS-sLe"/>
+                                <constraint firstAttribute="centerX" secondItem="DeJ-LB-foY" secondAttribute="centerX" id="vwH-TF-FMw"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="SYe-ZQ-oLm" firstAttribute="top" secondItem="GwT-Mo-Xwn" secondAttribute="bottom" id="0Yk-Zf-b1c"/>
+                        <constraint firstItem="GwT-Mo-Xwn" firstAttribute="leading" secondItem="nk6-6K-Cx5" secondAttribute="leading" id="5kD-UC-c8T"/>
+                        <constraint firstItem="GwT-Mo-Xwn" firstAttribute="top" secondItem="nk6-6K-Cx5" secondAttribute="top" id="9ub-lH-30Z"/>
+                        <constraint firstAttribute="trailing" secondItem="SYe-ZQ-oLm" secondAttribute="trailing" id="A58-R0-aq7"/>
+                        <constraint firstAttribute="trailing" secondItem="GwT-Mo-Xwn" secondAttribute="trailing" id="IxG-Wn-W3Z"/>
+                        <constraint firstItem="SYe-ZQ-oLm" firstAttribute="leading" secondItem="nk6-6K-Cx5" secondAttribute="leading" id="Qn5-IH-whD"/>
+                        <constraint firstItem="fZ9-qD-uv9" firstAttribute="top" secondItem="SYe-ZQ-oLm" secondAttribute="bottom" id="RSw-6j-zvQ"/>
+                        <constraint firstItem="fZ9-qD-uv9" firstAttribute="leading" secondItem="nk6-6K-Cx5" secondAttribute="leading" id="Xno-D0-PfY"/>
+                        <constraint firstAttribute="trailing" secondItem="fZ9-qD-uv9" secondAttribute="trailing" id="qSS-Sz-CcD"/>
+                        <constraint firstAttribute="bottom" secondItem="fZ9-qD-uv9" secondAttribute="bottom" id="uBp-UY-yS5"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="nk6-6K-Cx5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="37y-0p-u4P"/>
+                <constraint firstAttribute="trailing" secondItem="nk6-6K-Cx5" secondAttribute="trailing" id="5k3-Xx-wWr"/>
+                <constraint firstItem="nk6-6K-Cx5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="SHs-ZY-65p"/>
+                <constraint firstAttribute="bottom" secondItem="nk6-6K-Cx5" secondAttribute="bottom" id="rZW-dg-WQl"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="drag-down.png" width="80" height="160"/>
+    </resources>
+</document>

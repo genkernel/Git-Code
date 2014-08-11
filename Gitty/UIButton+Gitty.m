@@ -13,7 +13,7 @@
 - (void)applyGreenStyle {
 	self.backgroundColor = UIColor.acceptingGreenColor;
 	
-	UIImage *img = [UIImage imageNamed:@"btn-green.png"];
+	UIImage *img = [UIImage resizableImageFromColor:UIColor.acceptingGreenColor];
 	[self setBackgroundImage:img forState:UIControlStateNormal];
 	
 	[self applyGeneralStyle];
@@ -22,7 +22,7 @@
 - (void)applyBlueStyle {
 	self.backgroundColor = UIColor.acceptingBlueColor;
 	
-	UIImage *img = [UIImage imageNamed:@"btn-blue.png"];
+	UIImage *img = [UIImage resizableImageFromColor:UIColor.acceptingBlueColor];
 	[self setBackgroundImage:img forState:UIControlStateNormal];
 	
 	[self applyGeneralStyle];
@@ -31,22 +31,21 @@
 - (void)applyRedStyle {
 	self.backgroundColor = UIColor.cancelingRedColor;
 	
-	UIImage *img = [UIImage imageNamed:@"btn-red.png"];
+	UIImage *img = [UIImage resizableImageFromColor:UIColor.cancelingRedColor];
 	[self setBackgroundImage:img forState:UIControlStateNormal];
 	
 	[self applyGeneralStyle];
 }
 
 - (void)applyGeneralStyle {
-	self.layer.cornerRadius = 5.;
-	self.layer.masksToBounds = YES;
+	self.layer.cornerRadius = 2.;
 	
-	[self applyShadowOfRadius:2. withColor:UIColor.blackColor];
+	self.clipsToBounds = YES;
 	
 	[self setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
 	[self setTitleColor:UIColor.lightGrayColor forState:UIControlStateHighlighted];
 	
-	UIImage *img = [UIImage imageNamed:@"btn-gray.png"];
+	UIImage *img = [UIImage resizableImageFromColor:UIColor.inactiveGrayColor];
 	[self setBackgroundImage:img forState:UIControlStateDisabled];
 }
 

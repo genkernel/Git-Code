@@ -131,12 +131,12 @@
                         <constraint firstItem="ELV-uR-VBI" firstAttribute="leading" secondItem="rqY-jg-GkR" secondAttribute="leading" id="v1M-Mx-Kaz"/>
                     </constraints>
                 </view>
-                <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJL-ZC-CoL" userLabel="Host Link Button">
+                <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJL-ZC-CoL" userLabel="Host Link Button">
                     <rect key="frame" x="21" y="421" width="278" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                    <state key="normal" title="How do I host my personal git server?">
+                    <state key="normal" title="How do I create my personal git server?">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>

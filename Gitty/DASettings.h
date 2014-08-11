@@ -14,5 +14,6 @@
 - (int)doAction:(NSString *)name;
 - (int)countForAction:(NSString *)name;
 
+@property (nonatomic) BOOL didPresentRevealStatsHint;
 @property (nonatomic) BOOL didPresentSwipeToServerHint;
 @end

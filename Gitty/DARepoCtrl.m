@@ -15,6 +15,7 @@
 #import "DAStatsCtrl+Animation.h"
 
 #import "DAReposListCtrl.h"
+#import "DARevealStatsTipCtrl.h"
 
 static NSString *MasterBranchName = @"master";
 
@@ -329,6 +330,12 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 			[self performSegueWithIdentifier:DiffSegue sender:diff];
 		});
 	});
+}
+
+- (void)presentRevealStatsHint {
+	[AlertQueue.queue enqueueAlert:[CustomAlert alertPresentingCtrl:DARevealStatsTipCtrl.new animated:YES]];
+	
+	DASettings.currentUserSettings.didPresentRevealStatsHint = YES;
 }
 
 #pragma mark Actions

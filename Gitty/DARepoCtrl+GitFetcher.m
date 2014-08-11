@@ -79,6 +79,12 @@
 		[self addBranchesButton];
 		
 		self.grabButton.hidden = NO;
+		
+		if (!DASettings.currentUserSettings.didPresentRevealStatsHint) {
+			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.75 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+				[self presentRevealStatsHint];
+			});
+		}
 	}];
 }
 

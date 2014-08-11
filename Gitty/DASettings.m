@@ -46,4 +46,13 @@
 	[NSUserDefaults.standardUserDefaults synchronize];
 }
 
+- (BOOL)didPresentRevealStatsHint {
+	return [NSUserDefaults.standardUserDefaults boolForKey:@"didPresentRevealStatsHint"];
+}
+
+- (void)setDidPresentRevealStatsHint:(BOOL)shouldHandle {
+	[NSUserDefaults.standardUserDefaults setBool:shouldHandle forKey:@"didPresentRevealStatsHint"];
+	[NSUserDefaults.standardUserDefaults synchronize];
+}
+
 @end

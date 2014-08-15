@@ -69,7 +69,7 @@ static NSString *ZipExtension = @"zip";
 		
 		NSString *name = fileName.stringByDeletingPathExtension;
 		
-		DAGitServer *server = DAServerManager.manager.namedList[name];
+		DAGitServer *server = [DAServerManager.manager findServerByName:name];
 		if (!server) {
 			NSString *fmt = NSLocalizedString(@"Found ssh archive '%@' but no Server with %@ name exists.", nil);
 			[self showErrorMessage:[NSString stringWithFormat:fmt, fileName, name]];

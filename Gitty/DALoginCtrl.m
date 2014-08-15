@@ -177,6 +177,40 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	self.serverDotsControl.numberOfPages = self.servers.list.count + 1;
 }
 
+- (DAGitServer *)createNewServerWithDictionary:(NSDictionary *)info {
+	DAGitServer *server = [DAGitServer serverWithDictionary:info];
+	[self.servers addNewServer:server];
+	
+	NSString *message = [NSString stringWithFormat:@"'%@' new server has been created.", info[ServerName]];
+	[self showInfoMessage:message];
+	
+	[self.createCtrl resetFields];
+	
+	self.serverDotsControl.numberOfPages = self.servers.list.count + 1;
+	
+	self.pager.defaultPage = [self.servers.list indexOfObject:server] + 1;
+	[self.pager reloadData];
+	
+	[DAFlurry logWorkflowAction:WorkflowActionCustomServerCreated];
+	
+	return server;
+}
+
+- (void)scrollToServer:(DAGitServer *)server animated:(BOOL)animated {
+	if (self.currentServer == server) {
+		return;
+	}
+	
+	NSUInteger idx = [self.servers.list indexOfObject:server];
+	
+	if (idx == NSNotFound) {
+		[Logger error:@"Failed to scroll to specified server. No such server found: %@", server];
+		return;
+	}
+	
+	[self.pager navigateToPage:idx + 1 animated:animated];
+}
+
 #pragma mark Workflow actions
 
 - (void)logLoginAppearAction {
@@ -217,6 +251,14 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		return @{@"repo": repo, @"user": user};
 	}
 	return @{@"repo": repo};
+}
+
+- (void)exploreRepoWithPath:(NSString *)path {
+	[self.currentCtrl startProgressing];
+	
+	self.currentCtrl.repoField.text = path;
+	
+	[self testRepoWithUserString:path];
 }
 
 - (void)testRepoWithUserString:(NSString *)repoName {
@@ -435,9 +477,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 }
 
 - (void)exploreDidClick:(UIButton *)sender {
-	[self.currentCtrl startProgressing];
-	
-	[self testRepoWithUserString:self.currentCtrl.repoField.text];
+	[self exploreRepoWithPath:self.currentCtrl.repoField.text];
 }
 
 - (void)recentReposDidClick:(UIButton *)sender {
@@ -463,7 +503,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 - (void)createDidClick:(UIButton *)sender {
 	NSString *name = self.createCtrl.serverNameField.text;
 	
-	if (self.servers.namedList[name]) {
+	if ([self.servers findServerByName:name]) {
 		[self showErrorMessage:@"Server Name is in use already."];
 		return;
 	}
@@ -478,20 +518,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 						   RecentRepoPath: @"",
 						   RecentRepos: @{}};
 	
-	DAGitServer *server = [DAGitServer serverWithDictionary:info];
-	[self.servers addNewServer:server];
-	
-	NSString *message = [NSString stringWithFormat:@"'%@' has been created.", name];
-	[self showInfoMessage:message];
-	
-	[self.createCtrl resetFields];
-	
-	self.serverDotsControl.numberOfPages = self.servers.list.count + 1;
-	
-	self.pager.defaultPage = [self.servers.list indexOfObject:server] + 1;
-	[self.pager reloadData];
-	
-	[DAFlurry logWorkflowAction:WorkflowActionCustomServerCreated];
+	[self createNewServerWithDictionary:info];
 }
 
 - (IBAction)aboutClicked:(UIButton *)sender {

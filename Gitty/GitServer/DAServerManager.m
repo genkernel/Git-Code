@@ -15,11 +15,9 @@ static NSString *StoreFilename = @"GitServers.plist";
 @end
 
 @implementation DAServerManager {
-	NSMutableDictionary *_namedList;
 	NSMutableArray *_list;
 }
 @synthesize list = _list;
-@synthesize namedList = _namedList;
 @dynamic storePath;
 
 + (instancetype)manager {
@@ -39,40 +37,44 @@ static NSString *StoreFilename = @"GitServers.plist";
 		NSArray *servers = [NSArray arrayWithContentsOfFile:self.storePath];
 
 		_list = [NSMutableArray arrayWithCapacity:servers.count];
-		NSMutableDictionary *items = [NSMutableDictionary dictionaryWithCapacity:servers.count];
+		
 		for (NSDictionary *dict in servers) {
-			DAGitServer *server = [DAGitServer serverWithDictionary:dict];
-			items[server.name] = server;
-			
-			[_list addObject:server];
+			[_list addObject:[DAGitServer serverWithDictionary:dict]];
 		}
-		_namedList = [NSMutableDictionary dictionaryWithDictionary:items];
 	}
 	return self;
 }
 
 - (void)addNewServer:(DAGitServer *)server {
 	[_list addObject:server];
-	_namedList[server.name] = server;
 	
 	[self save];
 }
 
 - (void)removeExistingServer:(DAGitServer *)server {
 	[_list removeObject:server];
-	[_namedList removeObjectForKey:server.name];
 	
 	[self save];
 }
 
 - (void)save {
-	NSMutableArray *saveArr = [NSMutableArray arrayWithCapacity:self.namedList.count];
+	NSMutableArray *saveArr = [NSMutableArray arrayWithCapacity:self.list.count];
 	
 	for (DAGitServer *saveServer in self.list) {
 		[saveArr addObject:saveServer.saveDict];
 	}
 	
 	[saveArr writeToFile:self.storePath atomically:YES];
+}
+
+- (DAGitServer *)findServerByName:(NSString *)name {
+	for (DAGitServer *server in self.list) {
+		if (NSOrderedSame == [name caseInsensitiveCompare:server.name]) {
+			return server;
+		}
+	}
+	
+	return nil;
 }
 
 #pragma mark Properties

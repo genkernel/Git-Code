@@ -13,9 +13,9 @@
 
 - (void)addNewServer:(DAGitServer *)server;
 - (void)removeExistingServer:(DAGitServer *)server;
+- (DAGitServer *)findServerByName:(NSString *)name;
 
 - (void)save;
 
-@property (strong, nonatomic, readonly) NSDictionary *namedList;
 @property (strong, nonatomic, readonly) NSArray *list;
 @end

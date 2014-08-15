@@ -7,6 +7,8 @@
 //
 
 #import "DALoginCtrl.h"
+#import "DALoginCtrl+Operations.h"
+
 #import "DARepoCtrl.h"
 #import "DAServerCtrl.h"
 #import "DAServerCtrl+Animation.h"
@@ -37,10 +39,13 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 @property (strong, nonatomic, readonly) NSMutableArray *ctrls;
 @property (weak, nonatomic, readonly) DAServerCtrl *currentCtrl;
 @property (strong, nonatomic, readonly) DANewServerCtrl *createCtrl;
+
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @end
 
 @implementation DALoginCtrl {
 	BOOL isRepoCloned;
+	NSUInteger deleteCurrentServerActionTag;
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -87,10 +92,13 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		lastActivePageIdx = 1;
 	}
 	
+	
 	BOOL isCreateNewServerDefaultPage = 0 == lastActivePageIdx;
 	if (!isCreateNewServerDefaultPage) {
 		_currentServer = self.servers.list[lastActivePageIdx - 1];
 	}
+	
+	self.deleteButton.hidden = lastActivePageIdx <= 2;
 	
 	self.serverDotsControl.numberOfPages = pagesCount;
 	self.serverDotsControl.currentPage = lastActivePageIdx;
@@ -149,6 +157,24 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	[AlertQueue.queue enqueueAlert:[CustomAlert alertPresentingCtrl:DASwipeTipCtrl.new animated:YES]];
 	
 	DASettings.currentUserSettings.didPresentSwipeToServerHint = YES;
+}
+
+- (void)deleteCurrentServer {
+	self.view.userInteractionEnabled = NO;
+	
+	[self.pager navigateLeftAnimated:YES];
+	
+	self.pager.defaultPage = [self.servers.list indexOfObject:self.currentServer];
+	
+	[self deleteServer:self.currentServer];
+	
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(StandardAnimationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		[self.pager reloadData];
+		
+		self.view.userInteractionEnabled = YES;
+	});
+	
+	self.serverDotsControl.numberOfPages = self.servers.list.count + 1;
 }
 
 #pragma mark Workflow actions
@@ -353,6 +379,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	}
 	
 	[ctrl loadServer:self.servers.list[serverIndex]];
+	
 	return view;
 }
 
@@ -360,6 +387,8 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	self.serverDotsControl.currentPage = index;
 	
 	[[NSUserDefaults standardUserDefaults] setValue:@(index) forKey:LastSessionActivePageIndex];
+	
+	self.deleteButton.hidden = index <= 2;
 	
 	if (0 == index) {
 		// CreateNewServerCtrl.
@@ -477,6 +506,31 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	ctrl.presentationOption = DASlideFromBottomToTopPresentation;
 	
 	[self presentViewController:ctrl animated:YES completion:nil];
+}
+
+- (IBAction)deleteClicked:(UIButton *)sender {
+	if (self.serverDotsControl.currentPage <= 2) {
+		return;
+	}
+	
+	NSString *title = NSLocalizedString(@"Delete server", nil);
+	NSString *message = NSLocalizedString(@"Do you want to delete '%@' server\nand all its repos?", nil);
+	
+	message = [NSString stringWithFormat:message, self.currentServer.name];
+	
+	deleteCurrentServerActionTag = [self showYesNoMessage:message withTitle:title];
+}
+
+#pragma mark UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (alertView.tag == deleteCurrentServerActionTag) {
+		if (0 == buttonIndex) {
+			return;
+		}
+		
+		[self deleteCurrentServer];
+	}
 }
 
 @end

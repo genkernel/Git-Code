@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Gitty.xcodeproj">
+      location = "self:Git Code.xcodeproj">
    </FileRef>
 </Workspace>

@@ -12,6 +12,8 @@
 + (instancetype)manager;
 
 - (void)addNewServer:(DAGitServer *)server;
+- (void)removeExistingServer:(DAGitServer *)server;
+
 - (void)save;
 
 @property (strong, nonatomic, readonly) NSDictionary *namedList;

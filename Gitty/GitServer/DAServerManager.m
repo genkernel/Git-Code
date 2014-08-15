@@ -58,11 +58,20 @@ static NSString *StoreFilename = @"GitServers.plist";
 	[self save];
 }
 
+- (void)removeExistingServer:(DAGitServer *)server {
+	[_list removeObject:server];
+	[_namedList removeObjectForKey:server.name];
+	
+	[self save];
+}
+
 - (void)save {
 	NSMutableArray *saveArr = [NSMutableArray arrayWithCapacity:self.namedList.count];
+	
 	for (DAGitServer *saveServer in self.list) {
 		[saveArr addObject:saveServer.saveDict];
 	}
+	
 	[saveArr writeToFile:self.storePath atomically:YES];
 }
 

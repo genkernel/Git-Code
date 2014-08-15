@@ -292,6 +292,7 @@
 		1E28EE6F1998EA9D00006C75 /* PagerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E28EE681998EA9D00006C75 /* PagerView.xib */; };
 		1E28EE701998EA9D00006C75 /* TreeTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E28EE6B1998EA9D00006C75 /* TreeTable.m */; };
 		1E28EE741998EB5800006C75 /* UIView+Positioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E28EE731998EB5800006C75 /* UIView+Positioning.m */; };
+		1E3FE4C4199E532700BDECB8 /* DALoginCtrl+Operations.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3FE4C3199E532700BDECB8 /* DALoginCtrl+Operations.m */; };
 		1E96996718DEBE7500D02FED /* GTDiffDelta+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E96996618DEBE7500D02FED /* GTDiffDelta+Gitty.m */; };
 		1E969A6318DF03C300D02FED /* GTRepository+Gitty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E969A6218DF03C300D02FED /* GTRepository+Gitty.m */; };
 		1EADB756190BF6A100038737 /* AMWaveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EADB753190BF6A100038737 /* AMWaveTransition.m */; };
@@ -334,6 +335,7 @@
 		1EE40FA818DD6652004E2C04 /* KBCollectionExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE40EB218DD6651004E2C04 /* KBCollectionExtensions.m */; };
 		1EE40FA918DD6652004E2C04 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE40EB518DD6651004E2C04 /* Reachability.m */; };
 		1EE40FAA18DD6652004E2C04 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EE40EBA18DD6651004E2C04 /* UIViewAdditions.m */; };
+		1EEF76B5199E4BD6003B465D /* trashbin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EEF76B4199E4BD6003B465D /* trashbin@2x.png */; };
 		1EF45ECF18E2A2ED00B84B77 /* libObjectiveGit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF45ECA18E2A2DA00B84B77 /* libObjectiveGit-iOS.a */; };
 /* End PBXBuildFile section */
 
@@ -584,14 +586,14 @@
 		189016BC175AAD8200F19CE4 /* DAGitCloneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGitCloneDelegate.h; sourceTree = "<group>"; };
 		189016BD175AAD8200F19CE4 /* DAGitCloneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitCloneDelegate.m; sourceTree = "<group>"; };
 		189016BF175AB42B00F19CE4 /* DAGitAction+ManagerAccess.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DAGitAction+ManagerAccess.h"; sourceTree = "<group>"; };
-		18933CD41755395D00E92183 /* Gitty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gitty.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18933CD41755395D00E92183 /* Git Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Git Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18933CD71755395D00E92183 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		18933CD91755395D00E92183 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		18933CDB1755395D00E92183 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		18933CDF1755395D00E92183 /* Gitty-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Gitty-Info.plist"; path = "Gitty/Gitty-Info.plist"; sourceTree = "<group>"; };
+		18933CDF1755395D00E92183 /* Git Code-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Git Code-Info.plist"; path = "Gitty/Git Code-Info.plist"; sourceTree = "<group>"; };
 		18933CE11755395D00E92183 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		18933CE31755395D00E92183 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		18933CE51755395D00E92183 /* Gitty-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gitty-Prefix.pch"; sourceTree = "<group>"; };
+		18933CE51755395D00E92183 /* Git Code-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Git Code-Prefix.pch"; sourceTree = "<group>"; };
 		18933CE61755395D00E92183 /* DAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAAppDelegate.h; sourceTree = "<group>"; };
 		18933CE71755395D00E92183 /* DAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DAAppDelegate.m; sourceTree = "<group>"; };
 		18933CF01755395D00E92183 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -879,6 +881,8 @@
 		1E28EE6B1998EA9D00006C75 /* TreeTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeTable.m; sourceTree = "<group>"; };
 		1E28EE721998EB5800006C75 /* UIView+Positioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Positioning.h"; sourceTree = "<group>"; };
 		1E28EE731998EB5800006C75 /* UIView+Positioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Positioning.m"; sourceTree = "<group>"; };
+		1E3FE4C2199E532700BDECB8 /* DALoginCtrl+Operations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DALoginCtrl+Operations.h"; sourceTree = "<group>"; };
+		1E3FE4C3199E532700BDECB8 /* DALoginCtrl+Operations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DALoginCtrl+Operations.m"; sourceTree = "<group>"; };
 		1E96996518DEBE7500D02FED /* GTDiffDelta+Gitty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTDiffDelta+Gitty.h"; sourceTree = "<group>"; };
 		1E96996618DEBE7500D02FED /* GTDiffDelta+Gitty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTDiffDelta+Gitty.m"; sourceTree = "<group>"; };
 		1E969A6118DF03C300D02FED /* GTRepository+Gitty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTRepository+Gitty.h"; sourceTree = "<group>"; };
@@ -960,6 +964,7 @@
 		1EE40EB618DD6651004E2C04 /* shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shared.h; sourceTree = "<group>"; };
 		1EE40EB918DD6651004E2C04 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
 		1EE40EBA18DD6651004E2C04 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
+		1EEF76B4199E4BD6003B465D /* trashbin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trashbin@2x.png"; sourceTree = "<group>"; };
 		1EF45EBB18E2A2D800B84B77 /* ObjectiveGitFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveGitFramework.xcodeproj; path = "Submodules/objective-git/ObjectiveGitFramework.xcodeproj"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -1071,6 +1076,7 @@
 		1804FAB3176E85790080AB50 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				1EEF76B4199E4BD6003B465D /* trashbin@2x.png */,
 				185837DE17B68C3B00EBB834 /* BranchList */,
 				1812266E1784D0BA00628C2F /* Forget */,
 				1ECD53BF199931B7006C5C38 /* btn-blue.png */,
@@ -1531,7 +1537,7 @@
 		18933CD51755395D00E92183 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				18933CD41755395D00E92183 /* Gitty.app */,
+				18933CD41755395D00E92183 /* Git Code.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1576,7 +1582,7 @@
 				18933CE61755395D00E92183 /* DAAppDelegate.h */,
 				18933CE71755395D00E92183 /* DAAppDelegate.m */,
 				18933CE31755395D00E92183 /* main.m */,
-				18933CE51755395D00E92183 /* Gitty-Prefix.pch */,
+				18933CE51755395D00E92183 /* Git Code-Prefix.pch */,
 				18CDDB54181B191400218774 /* Images.xcassets */,
 			);
 			path = Gitty;
@@ -1646,6 +1652,8 @@
 				18618877176E0FD300666DFB /* Server */,
 				18933CF21755395D00E92183 /* DALoginCtrl.h */,
 				18933CF31755395D00E92183 /* DALoginCtrl.m */,
+				1E3FE4C2199E532700BDECB8 /* DALoginCtrl+Operations.h */,
+				1E3FE4C3199E532700BDECB8 /* DALoginCtrl+Operations.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1849,7 +1857,7 @@
 				1893852817A3184700168FDB /* Html */,
 				1804FA8C176E2D510080AB50 /* Logos */,
 				18F995D1175FBEDB0033A4A0 /* UI */,
-				18933CDF1755395D00E92183 /* Gitty-Info.plist */,
+				18933CDF1755395D00E92183 /* Git Code-Info.plist */,
 				18933CE01755395D00E92183 /* InfoPlist.strings */,
 			);
 			name = Res;
@@ -2740,9 +2748,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		18933CD31755395C00E92183 /* Gitty */ = {
+		18933CD31755395C00E92183 /* Git Code */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 18933CF71755395D00E92183 /* Build configuration list for PBXNativeTarget "Gitty" */;
+			buildConfigurationList = 18933CF71755395D00E92183 /* Build configuration list for PBXNativeTarget "Git Code" */;
 			buildPhases = (
 				18933CD01755395C00E92183 /* Sources */,
 				18933CD11755395C00E92183 /* Frameworks */,
@@ -2754,9 +2762,9 @@
 				1EF45ECE18E2A2E200B84B77 /* PBXTargetDependency */,
 				18F86F17179318050055900C /* PBXTargetDependency */,
 			);
-			name = Gitty;
+			name = "Git Code";
 			productName = Gitty;
-			productReference = 18933CD41755395D00E92183 /* Gitty.app */;
+			productReference = 18933CD41755395D00E92183 /* Git Code.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2774,7 +2782,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 18933CCF1755395C00E92183 /* Build configuration list for PBXProject "Gitty" */;
+			buildConfigurationList = 18933CCF1755395C00E92183 /* Build configuration list for PBXProject "Git Code" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -2799,7 +2807,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				18933CD31755395C00E92183 /* Gitty */,
+				18933CD31755395C00E92183 /* Git Code */,
 			);
 		};
 /* End PBXProject section */
@@ -2897,6 +2905,7 @@
 				18CFED93177C317C00365E5A /* code-green.png in Resources */,
 				18CFED94177C317C00365E5A /* code-red.png in Resources */,
 				1ECD53C4199931B7006C5C38 /* btn-blue.png in Resources */,
+				1EEF76B5199E4BD6003B465D /* trashbin@2x.png in Resources */,
 				1E28EE431998EA3B00006C75 /* Localizable.strings in Resources */,
 				18ECEC7B1780601300740D96 /* code-ctx.png in Resources */,
 				18ECEC811780663800740D96 /* code-separator.png in Resources */,
@@ -3121,6 +3130,7 @@
 				1E28EE331998EA3B00006C75 /* PostURLRequest.m in Sources */,
 				1E28EE251998EA3B00006C75 /* Cryptor.m in Sources */,
 				1893852417A3101E00168FDB /* DASshInfoCtrl.m in Sources */,
+				1E3FE4C4199E532700BDECB8 /* DALoginCtrl+Operations.m in Sources */,
 				1801935417FB66880088F4F7 /* DAReposListCtrl.m in Sources */,
 				18A3D67317A4137500B38FA8 /* DAStatsCtrl+Animation.m in Sources */,
 				1E28EE5C1998EA3B00006C75 /* UISearchBar+Helper.m in Sources */,
@@ -3295,11 +3305,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_FAST_MATH = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Gitty/Gitty-Prefix.pch";
+				GCC_PREFIX_HEADER = "Gitty/Git Code-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_UNROLL_LOOPS = YES;
 				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "Gitty/Gitty-Info.plist";
+				INFOPLIST_FILE = "Gitty/Git Code-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/Libs/Flurry",
@@ -3311,7 +3321,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Git Code";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "08004291-A0AC-412D-9F0A-8279193ECED9";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Submodules/ConceptScroll/PagerView $(SRCROOT)/Submodules/ZipArchive/ $(SRCROOT)/Submodules/objective-git/Classes $(SRCROOT)/Submodules/objective-git/Classes/Categories/ $(PROJECT_DIR)/Submodules/objective-git/External/libgit2/include $(PROJECT_DIR)/Submodules/objective-git/External/libssh2-ios/include/libssh2 $(BUILT_PRODUCTS_DIR)/usr/local/include";
@@ -3331,12 +3341,12 @@
 				GCC_FAST_MATH = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Gitty/Gitty-Prefix.pch";
+				GCC_PREFIX_HEADER = "Gitty/Git Code-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_UNROLL_LOOPS = YES;
 				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "Gitty/Gitty-Info.plist";
+				INFOPLIST_FILE = "Gitty/Git Code-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/Libs/Flurry",
@@ -3348,7 +3358,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Git Code";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C8B38DAB-87D0-4B4E-A958-FD6D7EC15361";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Submodules/ConceptScroll/PagerView $(SRCROOT)/Submodules/ZipArchive/ $(SRCROOT)/Submodules/objective-git/Classes $(SRCROOT)/Submodules/objective-git/Classes/Categories/ $(PROJECT_DIR)/Submodules/objective-git/External/libgit2/include $(PROJECT_DIR)/Submodules/objective-git/External/libssh2-ios/include/libssh2 $(BUILT_PRODUCTS_DIR)/usr/local/include";
@@ -3359,7 +3369,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		18933CCF1755395C00E92183 /* Build configuration list for PBXProject "Gitty" */ = {
+		18933CCF1755395C00E92183 /* Build configuration list for PBXProject "Git Code" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				18933CF51755395D00E92183 /* Debug */,
@@ -3368,7 +3378,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		18933CF71755395D00E92183 /* Build configuration list for PBXNativeTarget "Gitty" */ = {
+		18933CF71755395D00E92183 /* Build configuration list for PBXNativeTarget "Git Code" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				18933CF81755395D00E92183 /* Debug */,

@@ -45,7 +45,7 @@
                                             <constraint firstAttribute="height" constant="16" id="B5B-18-9sJ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="14"/>
-                                        <state key="normal" title="GitUp by kernel@realm">
+                                        <state key="normal" title="Git Code by kernel@realm">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -75,6 +75,16 @@
                                             <action selector="sshClicked:" destination="2" eventType="touchUpInside" id="Ewk-gt-RBC"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWg-o7-ez5" userLabel="Delete Button">
+                                        <rect key="frame" x="254" y="0.0" width="66" height="40"/>
+                                        <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <state key="normal" image="trashbin.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteClicked:" destination="2" eventType="touchUpInside" id="EbB-Mu-VWq"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -85,8 +95,11 @@
                                     <constraint firstItem="7Dc-50-UuZ" firstAttribute="leading" secondItem="KAI-yE-VWF" secondAttribute="leading" id="W7F-Cw-zm1"/>
                                     <constraint firstItem="7Dc-50-UuZ" firstAttribute="top" secondItem="KAI-yE-VWF" secondAttribute="top" id="a7A-Sh-3Dp"/>
                                     <constraint firstAttribute="bottom" secondItem="z6o-Y7-frk" secondAttribute="bottom" id="aFR-9s-3HF"/>
+                                    <constraint firstAttribute="bottom" secondItem="GWg-o7-ez5" secondAttribute="bottom" id="lbe-PU-4dj"/>
                                     <constraint firstItem="z6o-Y7-frk" firstAttribute="leading" secondItem="KAI-yE-VWF" secondAttribute="leading" id="lqt-8I-4Lv"/>
                                     <constraint firstAttribute="trailing" secondItem="fyj-w3-0Vn" secondAttribute="trailing" id="q83-Rq-2eq"/>
+                                    <constraint firstAttribute="trailing" secondItem="GWg-o7-ez5" secondAttribute="trailing" id="rw9-Eg-w1w"/>
+                                    <constraint firstItem="GWg-o7-ez5" firstAttribute="top" secondItem="KAI-yE-VWF" secondAttribute="top" id="zBo-nT-TRF"/>
                                     <constraint firstItem="z6o-Y7-frk" firstAttribute="top" secondItem="KAI-yE-VWF" secondAttribute="top" id="zUT-ka-dll"/>
                                 </constraints>
                             </view>
@@ -105,6 +118,7 @@
                     <navigationItem key="navigationItem" id="mmw-MC-RMR"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="deleteButton" destination="GWg-o7-ez5" id="S2P-Nq-8iG"/>
                         <outlet property="pager" destination="kU8-2w-rFv" id="u9d-dF-ala"/>
                         <outlet property="serverDotsControl" destination="7Dc-50-UuZ" id="ki0-JE-RGk"/>
                         <outlet property="sshButton" destination="z6o-Y7-frk" id="M3f-fG-n1N"/>
@@ -826,7 +840,6 @@ yet.</string>
                         <subviews>
                             <containerView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B8b-ce-fsm" userLabel="Menu Container">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="Wcr-FD-561" kind="embed" identifier="MenuNavSegue" id="7rJ-yS-t59"/>
@@ -834,18 +847,15 @@ yet.</string>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUO-Jv-dXe" userLabel="Main Container">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <containerView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W13-SA-qaA" userLabel="Main Ctrl Container">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <connections>
                                             <segue destination="xze-n8-Hho" kind="embed" identifier="DefaultSegue" id="LeQ-Dl-x7u"/>
                                         </connections>
                                     </containerView>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1nX-m9-deU" userLabel="Click-to-Dismiss Overlay Button">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -869,7 +879,6 @@ yet.</string>
                             </view>
                             <containerView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Axi-JI-XUy" userLabel="Overlay Container">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="J6X-eZ-Kb4" kind="embed" identifier="OverlayNavSegue" id="ZE8-rH-VgJ"/>
@@ -993,7 +1002,6 @@ yet.</string>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nsE-xZ-Rii" userLabel="Blurring Background">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="dXD-FP-9Lw"/>
@@ -1136,6 +1144,7 @@ by </string>
         <image name="fader-bottom.png" width="2" height="20"/>
         <image name="repo-forget.png" width="30" height="29"/>
         <image name="repos-shortcut.png" width="19" height="17"/>
+        <image name="trashbin.png" width="36" height="36"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

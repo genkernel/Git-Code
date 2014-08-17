@@ -17,6 +17,8 @@
 #import "DAReposListCtrl.h"
 #import "DARevealStatsTipCtrl.h"
 
+#import "DALoginCtrl+Internal.h"
+
 static NSString *MasterBranchName = @"master";
 
 static NSString *DiffSegue = @"DiffSegue";
@@ -74,15 +76,17 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	
 	self.pullingContainer.backgroundColor = self.navigationController.navigationBar.backgroundColor;
 	
-//	self.view.layer.shadowColor = UIColor.blackColor.CGColor;
-//	self.view.layer.shadowRadius = 3;
-//	self.view.layer.shadowOffset = CGSizeMake(-3, 0);
-//	self.view.layer.masksToBounds = NO;
-	
 	_statsSelectedModeButton = self.statsSwitchModeButtons[0];
 	
 	[self setupCells];
-	[self loadInitialData];
+	
+	if (![self loadInitialData]) {
+		DALoginCtrl *loginCtrl = (DALoginCtrl *)self.navigationController.viewControllers.firstObject;
+		
+		loginCtrl.repoCtrlDidFailToProcessRepoAsInvalid = YES;
+		
+		return;
+	}
 	
 	[self loadRecentReposCtrl];
 	
@@ -138,19 +142,24 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	};
 }
 
-- (void)loadInitialData {
+- (BOOL)loadInitialData {
 	_stats = [DAGitStats statsForRepository:self.currentRepo];
 	
 	_branches = NSMutableDictionary.new;
 	
 	[self reloadFilters];
-	[self reloadCommitsAndOptionallyTable:NO];
+	
+	if (![self reloadCommitsAndOptionallyTable:NO]) {
+		return NO;
+	}
 	
 	if (!self.shouldPull) {
 		[self loadStats];
 	} else {
 		[self pull];
 	}
+	
+	return YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -167,6 +176,13 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
+	
+	DALoginCtrl *loginCtrl = (DALoginCtrl *)self.navigationController.viewControllers.firstObject;
+	if (loginCtrl.repoCtrlDidFailToProcessRepoAsInvalid) {
+		[self.navigationController popViewControllerAnimated:YES];
+		
+		return;
+	}
 	
 	if (self.selectedCommitIndexPath) {
 		[self.commitsTable deselectRowAtIndexPath:self.selectedCommitIndexPath animated:animated];
@@ -277,7 +293,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	return YES;
 }
 
-- (void)reloadCommitsAndOptionallyTable:(BOOL)shoudReloadTable {
+- (BOOL)reloadCommitsAndOptionallyTable:(BOOL)shoudReloadTable {
 	DABranchWalk *walk = nil;
 	
 	if (self.currentBranch) {
@@ -285,7 +301,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	} else if (self.currentTag) {
 		walk = [DABranchWalk walkForTag:self.currentTag];
 	} else {
-		assert(NO);
+		return NO;
 	}
 	
 	[self.stats performSyncOperation:walk];
@@ -295,15 +311,9 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	if (shoudReloadTable) {
 		[self.commitsTable reloadData];
 	}
+	
+	return YES;
 }
-/*
-- (void)forgetRepo {
-	[self.navigationController popViewControllerAnimated:YES];
-	
-	[self.git removeExistingRepo:self.repoServer.recentRepoPath forServer:self.repoServer];
-	
-	[DAFlurry logWorkflowAction:WorkflowActionRepoForgotten];
-}*/
 
 - (void)presentDiffCtrlForCommit:(GTCommit *)commit {
 	if (!commit.isLargeCommit) {

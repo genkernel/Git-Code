@@ -7,6 +7,7 @@
 //
 
 #import "DALoginCtrl.h"
+#import "DALoginCtrl+Internal.h"
 #import "DALoginCtrl+Operations.h"
 
 #import "DARepoCtrl.h"
@@ -46,6 +47,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 @implementation DALoginCtrl {
 	BOOL isRepoCloned;
 	NSUInteger deleteCurrentServerActionTag;
+	NSUInteger deleteInvalidRepoActionTag;
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -135,6 +137,14 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 			[self presentSwipeToServerHint];
 		});
+	}
+	
+	if (self.repoCtrlDidFailToProcessRepoAsInvalid) {
+		_repoCtrlDidFailToProcessRepoAsInvalid = NO;
+		
+		NSString *message = NSLocalizedString(@"Repository is invalid.\n\nDelete this repository from\nrecent repos list and\ntry to clone again.\n\n(Previous clone operation failed?)", nil);
+		
+		deleteInvalidRepoActionTag = [self showErrorMessage:message];
 	}
 }
 
@@ -284,9 +294,9 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		
 		[self.currentServer addOrUpdateRecentRepoWithRelativePath:repoName];
 		self.currentServer.recentRepoPath = repoName;
+		
 		[self.servers save];
 		
-//		[self.currentCtrl resetCredentials];
 	} else {
 		[self cloneRemoteRepoWithName:repoName fromServer:self.currentServer authenticationUser:user];
 	}
@@ -373,7 +383,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	
 	[ctrl.loginButton addTarget:self action:@selector(loginDidClick:) forControlEvents:UIControlEventTouchUpInside];
 	[ctrl.exploreButton addTarget:self action:@selector(exploreDidClick:) forControlEvents:UIControlEventTouchUpInside];
-	[ctrl.recentReposButton addTarget:self action:@selector(recentReposDidClick:) forControlEvents:UIControlEventTouchUpInside];
+	[ctrl.recentReposButton addTarget:self action:@selector(recentReposDidClick) forControlEvents:UIControlEventTouchUpInside];
 	
 	return ctrl;
 }
@@ -480,7 +490,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	[self exploreRepoWithPath:self.currentCtrl.repoField.text];
 }
 
-- (void)recentReposDidClick:(UIButton *)sender {
+- (void)recentReposDidClick {
 	DARecentReposCtrl *ctrl = [self.storyboard instantiateViewControllerWithIdentifier:DARecentReposCtrl.className];
 	
 	ctrl.server = self.currentServer;
@@ -557,6 +567,9 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		}
 		
 		[self deleteCurrentServer];
+		
+	} else if (alertView.tag == deleteInvalidRepoActionTag) {
+		[self recentReposDidClick];
 	}
 }
 

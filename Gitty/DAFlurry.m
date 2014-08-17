@@ -66,6 +66,9 @@ NSString *WorkflowActionByBranchRevealed = @"Stats - byBranch", *WorkflowActionB
 
 NSString *WorkflowActionSSHKeysAdded = @"SSH keys added", *WorkflowActionBadSSHKeysFound = @"Bad SSH keys found", *WorkflowActionLoginUsingCredentials = @"Login with Credentials", *WorkflowActionUnboundSSHKeysFound = @"SSH not bound to Server found.";
 
+NSString *WorkflowActionServerRemoved = @"Server Removed";
+NSString *WorkflowActionRepoCreatedExternallyViaProtocolScheme = @"Repo Created Externally (Scheme)";
+
 @implementation DAFlurry (GittyEvents)
 
 + (void)logSuccessServer:(NSString *)name {

@@ -7,12 +7,18 @@
 //
 
 #import "DAGitManager.h"
+#import "DAGitManager+Internal.h"
 #import "DAGitManager+ActionsInterface.h"
+
 #import "DAGitAction+ManagerAccess.h"
 
 static id sharedInstance = nil;
 static NSString *RepoRootFolderName = @"Repos";
 static NSString *DeletableFolderSuffix = @"md";
+
+@interface DAGitManager ()
+@property (nonatomic, nonatomic, readwrite) dispatch_queue_t q;
+@end
 
 @implementation DAGitManager
 @dynamic app;
@@ -37,6 +43,9 @@ static NSString *DeletableFolderSuffix = @"md";
 	if (self) {
 		_repoRootPath = [self.app.cachesPath stringByAppendingPathComponent:RepoRootFolderName];
 		[self.app.fs createDirectoryIfNotExists:self.repoRootPath];
+		
+		// libgit module is not multithreaded.
+		_q = dispatch_queue_create("gitcode.qit.operations", DISPATCH_QUEUE_SERIAL);
 	}
 	return self;
 }
@@ -49,8 +58,7 @@ static NSString *DeletableFolderSuffix = @"md";
 	action.manager = self;
 	action.delegateQueue = queue;
 	
-	dispatch_queue_t q = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-	dispatch_async(q, ^{
+	dispatch_async(self.q, ^{
 		[action exec];
 		[action finilize];
 	});

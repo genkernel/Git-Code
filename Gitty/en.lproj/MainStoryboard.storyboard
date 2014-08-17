@@ -321,7 +321,7 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4lu-SX-On5" userLabel="Main Container">
                                 <rect key="frame" x="0.0" y="84" width="320" height="484"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="a4a-3k-Zyy" userLabel="Commits Table">
+                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="a4a-3k-Zyy" userLabel="Commits Table">
                                         <rect key="frame" x="0.0" y="30" width="320" height="454"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <sections/>
@@ -330,6 +330,32 @@
                                             <outlet property="delegate" destination="Vzr-74-RmI" id="0KQ-2g-aiC"/>
                                         </connections>
                                     </tableView>
+                                    <view appearanceType="aqua" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5yb-gn-g4a" userLabel="Loading Overlay">
+                                        <rect key="frame" x="0.0" y="30" width="320" height="454"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <activityIndicatorView appearanceType="aqua" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="3ZT-rF-RGB">
+                                                <rect key="frame" x="142" y="149" width="37" height="37"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </activityIndicatorView>
+                                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading branch commits ..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="iFx-Zy-5RL" userLabel="Info Label">
+                                                <rect key="frame" x="30" y="196" width="260" height="27"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Cochin-Bold" family="Cochin" pointSize="22"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" white="1" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="centerY" secondItem="3ZT-rF-RGB" secondAttribute="centerY" constant="60" id="KGy-DL-8bA"/>
+                                            <constraint firstAttribute="centerX" secondItem="iFx-Zy-5RL" secondAttribute="centerX" id="V7F-gV-bZe"/>
+                                            <constraint firstAttribute="centerX" secondItem="3ZT-rF-RGB" secondAttribute="centerX" id="a9T-9b-ouv"/>
+                                            <constraint firstItem="iFx-Zy-5RL" firstAttribute="top" secondItem="3ZT-rF-RGB" secondAttribute="bottom" constant="10" id="aWG-qF-cxK"/>
+                                        </constraints>
+                                    </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="fader-bottom.png" translatesAutoresizingMaskIntoConstraints="NO" id="5FE-g9-Ql5" userLabel="Fading Effect (Bottom)">
                                         <rect key="frame" x="0.0" y="464" width="320" height="20"/>
                                         <constraints>
@@ -365,7 +391,11 @@
                                     <constraint firstItem="5FE-g9-Ql5" firstAttribute="leading" secondItem="4lu-SX-On5" secondAttribute="leading" id="Ywa-gZ-fNq"/>
                                     <constraint firstAttribute="trailing" secondItem="5FE-g9-Ql5" secondAttribute="trailing" id="ZMX-uT-s0Q"/>
                                     <constraint firstItem="a4a-3k-Zyy" firstAttribute="top" secondItem="4lu-SX-On5" secondAttribute="top" constant="30" id="b7P-9A-3GU"/>
+                                    <constraint firstAttribute="bottom" secondItem="5yb-gn-g4a" secondAttribute="bottom" id="bIs-HZ-eEP"/>
+                                    <constraint firstItem="5yb-gn-g4a" firstAttribute="top" secondItem="4lu-SX-On5" secondAttribute="top" constant="30" id="bry-my-vGV"/>
+                                    <constraint firstAttribute="trailing" secondItem="5yb-gn-g4a" secondAttribute="trailing" id="dhp-re-aYt"/>
                                     <constraint firstItem="9Dq-DG-G51" firstAttribute="top" secondItem="4lu-SX-On5" secondAttribute="top" id="ibn-y2-Yzz"/>
+                                    <constraint firstItem="5yb-gn-g4a" firstAttribute="leading" secondItem="4lu-SX-On5" secondAttribute="leading" id="ith-JL-Yrk"/>
                                     <constraint firstItem="9Dq-DG-G51" firstAttribute="leading" secondItem="4lu-SX-On5" secondAttribute="leading" id="ny2-NK-aBG"/>
                                     <constraint firstAttribute="bottom" secondItem="5FE-g9-Ql5" secondAttribute="bottom" id="qid-XW-hVe"/>
                                     <constraint firstAttribute="trailing" secondItem="a4a-3k-Zyy" secondAttribute="trailing" id="rWA-GC-RnZ"/>
@@ -374,7 +404,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSV-Rf-GSV" userLabel="Pulling Container">
                                 <rect key="frame" x="0.0" y="64" width="320" height="50"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Pulling..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nqj-Uv-VZl" userLabel="Pulling Action Text Field">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Fetching updates from server ..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nqj-Uv-VZl" userLabel="Pulling Action Text Field">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="JAg-x1-wXi"/>
@@ -455,6 +485,9 @@
                         <outlet property="branchCustomTitleButton" destination="M72-wh-dq2" id="sS1-Q5-bg3"/>
                         <outlet property="branchCustomTitleContainer" destination="aGc-Wh-uk7" id="URk-tT-EHr"/>
                         <outlet property="branchCustomTitleLabel" destination="vac-Hg-17Q" id="CBw-G2-cGV"/>
+                        <outlet property="branchStatsInfoLabel" destination="iFx-Zy-5RL" id="V6v-tt-ykb"/>
+                        <outlet property="branchStatsLoadingContainer" destination="5yb-gn-g4a" id="EzU-Yg-88Y"/>
+                        <outlet property="branchStatsLoadingIndicator" destination="3ZT-rF-RGB" id="sB8-7A-jMF"/>
                         <outlet property="branchesButton" destination="wF1-lh-4Te" id="Go3-t8-BdY"/>
                         <outlet property="commitsTable" destination="a4a-3k-Zyy" id="Iyl-TG-lZQ"/>
                         <outlet property="diffLoadingIndicator" destination="dbq-vd-6p3" id="KWF-wg-1WZ"/>

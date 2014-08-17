@@ -888,6 +888,7 @@
 		1E969A6118DF03C300D02FED /* GTRepository+Gitty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTRepository+Gitty.h"; sourceTree = "<group>"; };
 		1E969A6218DF03C300D02FED /* GTRepository+Gitty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTRepository+Gitty.m"; sourceTree = "<group>"; };
 		1E9877F919A0F25300821078 /* DALoginCtrl+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DALoginCtrl+Internal.h"; sourceTree = "<group>"; };
+		1E98780619A1102F00821078 /* DAGitManager+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DAGitManager+Internal.h"; sourceTree = "<group>"; };
 		1EADB752190BF6A100038737 /* AMWaveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMWaveTransition.h; sourceTree = "<group>"; };
 		1EADB753190BF6A100038737 /* AMWaveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMWaveTransition.m; sourceTree = "<group>"; };
 		1EADB754190BF6A100038737 /* AMWaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMWaveViewController.h; sourceTree = "<group>"; };
@@ -1871,6 +1872,7 @@
 				189016B1175AA38900F19CE4 /* Actions */,
 				18D9EA3B17554EB400454F3C /* DAGitManager.h */,
 				18D9EA3C17554EB400454F3C /* DAGitManager.m */,
+				1E98780619A1102F00821078 /* DAGitManager+Internal.h */,
 				189016B9175AA6D700F19CE4 /* DAGitManager+ActionsInterface.h */,
 				189016BA175AA6D800F19CE4 /* DAGitManager+ActionsInterface.m */,
 				18EADFDF176F05EA005D0F28 /* DAGitUser.h */,

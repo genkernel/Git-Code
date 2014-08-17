@@ -39,11 +39,13 @@
 		BOOL hasZeroReceivedObjects = thisDelegate.receivedObjects == 0;
 		
 		if (err && hasZeroReceivedObjects) {
-			// Load stats anyway if nothing was updated.
-			[ctrl loadStats];
-			
 			if (GIT_EEXISTS == err.code) {
 				// Repo is up to date. No updates fetched.
+				
+				// Load stats anyway if nothing was updated.
+				[ctrl loadStats];
+				
+				[DAFlurry logGitAction:GitActionPullSuccess];
 			} else {
 				Alert *alert = [Alert errorAlertWithMessage:err.localizedDescription];
 				[AlertQueue.queue enqueueAlert:alert];
@@ -54,8 +56,10 @@
 			return;
 		}
 		
-		[ctrl reloadFilters];
-		[ctrl reloadCommitsAndOptionallyTable:YES];
+		if (!hasZeroReceivedObjects) {
+			[ctrl reloadFilters];
+			[ctrl reloadCommitsTable];
+		}
 		
 		[ctrl loadStats];
 		

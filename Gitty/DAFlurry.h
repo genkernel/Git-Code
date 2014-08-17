@@ -34,6 +34,9 @@ extern NSString *WorkflowActionByBranchRevealed, *WorkflowActionByAuthorRevealed
 
 extern NSString *WorkflowActionSSHKeysAdded, *WorkflowActionBadSSHKeysFound, *WorkflowActionLoginUsingCredentials, *WorkflowActionUnboundSSHKeysFound;
 
+extern NSString *WorkflowActionServerRemoved;
+extern NSString *WorkflowActionRepoCreatedExternallyViaProtocolScheme;
+
 @interface DAFlurry (GittyEvents)
 + (void)logSuccessServer:(NSString *)name;
 + (void)logInvalidServer:(NSString *)name;

@@ -25,23 +25,29 @@ static NSString *DiffSegue = @"DiffSegue";
 static NSString *StatsSegue = @"StatsSegue";
 
 static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
-//static const CGFloat BranchOverlyMinDraggingOffsetToSwitchState = 100.;
 
 @interface DARepoCtrl ()
 @property (strong, nonatomic, readonly) DAStatsCtrl *statsCtrl;
 @property (strong, nonatomic, readonly) DAReposListCtrl *recentReposCtrl;
 
 @property (strong, nonatomic, readonly) UIButton *statsSelectedModeButton;
+
+@property (weak, nonatomic) IBOutlet UIView *branchStatsLoadingContainer;
+@property (weak, nonatomic) IBOutlet UILabel *branchStatsInfoLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *branchStatsLoadingIndicator;
 @end
 
 @implementation DARepoCtrl {
+	NSArray *_remoteBranches, *_tags;
+	
 	CGFloat statsContainerOffsetBeforeDragging;
 	CGFloat branchContainerOffsetBeforeDragging;
-	NSArray *_remoteBranches, *_tags;
 }
 @synthesize branches = _branches;
-@synthesize currentBranch = _currentBranch, currentTag = _currentTag;
+@synthesize currentBranch = _currentBranch;
+@synthesize currentTag = _currentTag;
 @synthesize statsCtrl = _statsCtrl;
+
 // Category-defined ivars synthesized explicitly.
 @synthesize remoteBranches = _remoteBranches;
 @synthesize namedBranches;
@@ -149,7 +155,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	
 	[self reloadFilters];
 	
-	if (![self reloadCommitsAndOptionallyTable:NO]) {
+	if (![self reloadCommitsTable]) {
 		return NO;
 	}
 	
@@ -293,24 +299,41 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	return YES;
 }
 
-- (BOOL)reloadCommitsAndOptionallyTable:(BOOL)shoudReloadTable {
+- (BOOL)reloadCommitsTable {
+	NSString *message = nil;
 	DABranchWalk *walk = nil;
 	
 	if (self.currentBranch) {
+		message = NSLocalizedString(@"Loading '%@' branch ...", nil);
+		message = [NSString stringWithFormat:message, self.currentBranch.shortName];
+		
 		walk = [DABranchWalk walkForBranch:self.currentBranch];
 	} else if (self.currentTag) {
+		message = NSLocalizedString(@"Loading '%@' tag ...", nil);
+		message = [NSString stringWithFormat:message, self.currentTag.name];
+		
 		walk = [DABranchWalk walkForTag:self.currentTag];
 	} else {
 		return NO;
 	}
 	
-	[self.stats performSyncOperation:walk];
+	self.branchStatsInfoLabel.text = message;
+	
+	self.commitsTable.hidden = YES;
+	
+	[self.branchStatsLoadingIndicator startAnimating];
+	self.branchStatsLoadingContainer.hidden = NO;
+	
+	
+	[self.stats performAsyncOperation:walk completionHandler:^{
+		self.commitsTable.hidden = NO;
+		[self.commitsTable reloadData];
+		
+		[self.branchStatsLoadingIndicator stopAnimating];
+		self.branchStatsLoadingContainer.hidden = YES;
+	}];
 	
 	_currentStats = walk;
-	
-	if (shoudReloadTable) {
-		[self.commitsTable reloadData];
-	}
 	
 	return YES;
 }
@@ -378,7 +401,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 		
 		BOOL changed = [ref selectTag:selectedTag];
 		if (changed) {
-			[ref reloadCommitsAndOptionallyTable:YES];
+			[ref reloadCommitsTable];
 			
 			[DAFlurry logWorkflowAction:WorkflowActionTagSwitched];
 		}
@@ -388,7 +411,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 		
 		BOOL changed = [ref selectBranch:selectedBranch];
 		if (changed) {
-			[ref reloadCommitsAndOptionallyTable:YES];
+			[ref reloadCommitsTable];
 			
 			[DAFlurry logWorkflowAction:WorkflowActionBranchSwitched];
 		}

@@ -17,6 +17,6 @@
 @interface DAGitStats : NSObject
 + (instancetype)statsForRepository:(GTRepository *)repo;
 
-- (void)performSyncOperation:(id<DAGitOperation>)operation;
+//- (void)performSyncOperation:(id<DAGitOperation>)operation;
 - (void)performAsyncOperation:(id<DAGitOperation>)operation completionHandler:(void(^)())handler;
 @end

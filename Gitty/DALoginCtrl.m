@@ -185,6 +185,8 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	});
 	
 	self.serverDotsControl.numberOfPages = self.servers.list.count + 1;
+	
+	[DAFlurry logWorkflowAction:WorkflowActionServerRemoved];
 }
 
 - (DAGitServer *)createNewServerWithDictionary:(NSDictionary *)info {
@@ -364,9 +366,8 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		
 		[self.currentServer addOrUpdateRecentRepoWithRelativePath:repoName];
 		self.currentServer.recentRepoPath = repoName;
-		[self.servers save];
 		
-//		[self.currentCtrl resetCredentials];
+		[self.servers save];
 	};
 	
 	DAGitClone *clone = [DAGitClone cloneRepoWithName:repoName fromServer:server];

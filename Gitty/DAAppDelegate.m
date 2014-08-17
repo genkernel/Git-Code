@@ -111,6 +111,8 @@
 	
 	[loginCtrl exploreRepoWithPath:repoPath];
 	
+	[DAFlurry logWorkflowAction:WorkflowActionRepoCreatedExternallyViaProtocolScheme];
+	
 	return YES;
 }
 

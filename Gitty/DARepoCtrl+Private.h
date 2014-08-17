@@ -28,7 +28,7 @@
 - (void)reloadFilters;
 - (void)addBranchesButton;
 - (void)presentRevealStatsHint;
-- (BOOL)reloadCommitsAndOptionallyTable:(BOOL)shoudReloadTable;
+- (BOOL)reloadCommitsTable;
 @end
 
 #endif

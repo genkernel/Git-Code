@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 ReImpl. All rights reserved.
 //
 
-#import "DAGitOperation.h"
+#import "DAGitBaseOperation.h"
 
-@interface DABranchWalk : NSObject <DAGitOperation>
+@interface DABranchWalk : DAGitBaseOperation
 + (instancetype)walkForBranch:(GTBranch *)branch;
 + (instancetype)walkForTag:(GTTag *)tag;
 
@@ -16,7 +16,6 @@
 
 @property (strong, nonatomic) NSDateFormatter *dateSectionTitleFormatter;
 
-@property (strong, nonatomic, readonly) NSArray *commits;
 // Format: <NSArray of author.email NSStrings> => <GTSignature instance>
 @property (strong, nonatomic, readonly) NSArray *authors;
 // Format: <NSString author.email> => <GTSignature instance>
@@ -26,5 +25,4 @@
 
 @property (strong, nonatomic, readonly) NSArray *dateSections;
 @property (strong, nonatomic, readonly) NSDictionary *commitsOnDateSection;
-//@property (strong, nonatomic, readonly) NSDictionary *authorsOnDateSection;
 @end

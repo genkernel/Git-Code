@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A314h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eaV-lb-U5t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A329f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eaV-lb-U5t">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -493,6 +493,9 @@
                         <outlet property="diffLoadingIndicator" destination="dbq-vd-6p3" id="KWF-wg-1WZ"/>
                         <outlet property="diffLoadingOverlay" destination="sVN-2v-uHm" id="5Yw-in-kCp"/>
                         <outlet property="grabButton" destination="9Dq-DG-G51" id="2HI-yV-liZ"/>
+                        <outlet property="loadMoreCommitsButton" destination="ive-Ob-Vbw" id="tGd-a6-Rln"/>
+                        <outlet property="loadMoreFooter" destination="K4J-XU-eiU" id="9tv-a1-o28"/>
+                        <outlet property="loadMoreIndicator" destination="Cdd-iT-hlJ" id="R8G-je-5J5"/>
                         <outlet property="mainContainer" destination="4lu-SX-On5" id="RCo-b7-yus"/>
                         <outlet property="mainContainerHeight" destination="Pkg-d0-TPP" id="T0f-rR-sHG"/>
                         <outlet property="mainContainerTop" destination="Z2k-W2-ukq" id="anU-2I-lUa"/>
@@ -509,6 +512,37 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1R-XF-xY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view appearanceType="aqua" contentMode="scaleToFill" id="K4J-XU-eiU" userLabel="Load More Table Footer">
+                    <rect key="frame" x="0.0" y="224" width="320" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <activityIndicatorView hidden="YES" appearanceType="aqua" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Cdd-iT-hlJ" userLabel="Loading Indicator">
+                            <rect key="frame" x="61" y="124" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </activityIndicatorView>
+                        <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ive-Ob-Vbw" userLabel="Load More Commits Button">
+                            <rect key="frame" x="57" y="112" width="46" height="60"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                            <state key="normal" title="Load More">
+                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="loadMoreCommitsPressed:" destination="Vzr-74-RmI" eventType="touchUpInside" id="aW6-vB-PVB"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="ive-Ob-Vbw" firstAttribute="top" secondItem="K4J-XU-eiU" secondAttribute="top" id="5dC-bC-eIr"/>
+                        <constraint firstItem="ive-Ob-Vbw" firstAttribute="leading" secondItem="K4J-XU-eiU" secondAttribute="leading" id="AkI-BC-KZE"/>
+                        <constraint firstAttribute="trailing" secondItem="ive-Ob-Vbw" secondAttribute="trailing" id="S2C-m4-uMd"/>
+                        <constraint firstAttribute="bottom" secondItem="ive-Ob-Vbw" secondAttribute="bottom" id="Xr7-8c-loj"/>
+                        <constraint firstAttribute="centerY" secondItem="Cdd-iT-hlJ" secondAttribute="centerY" id="b0f-KF-3nm"/>
+                        <constraint firstAttribute="centerX" secondItem="Cdd-iT-hlJ" secondAttribute="centerX" id="vuD-Tu-REJ"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" id="BpY-pE-dci" userLabel="Stats Custom Right View">
                     <rect key="frame" x="0.0" y="0.0" width="90" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

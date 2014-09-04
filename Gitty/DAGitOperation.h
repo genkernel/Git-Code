@@ -12,4 +12,9 @@
 @required
 - (void)perform;
 - (id<DAGitOperation>)filter:(id<DAGitOperationFilter>)filter;
+
+@property (nonatomic, readonly) BOOL hasMoreCommitsToProcess;
+
+@optional
+@property (strong, nonatomic) id<DAGitOperationFilter> filter;
 @end

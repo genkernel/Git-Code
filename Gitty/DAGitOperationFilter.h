@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @protocol DAGitOperationFilter <NSObject>
-//- (BOOL)isValidCommit:(GTCommit *)commit;
+@required
+- (BOOL)filterNextCommit:(GTCommit *)ci;
 - (NSArray *)filterCommits:(NSArray *)list;
+
+//- (BOOL)isValidCommit:(GTCommit *)commit;
+
+@property (nonatomic, readonly) NSUInteger processedCommitsCount;
 @end

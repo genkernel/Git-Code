@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 ReImpl. All rights reserved.
 //
 
-#import "DAGitOperation.h"
+#import "DAGitBaseOperation.h"
 
-@interface DARepoWalk : NSObject <DAGitOperation>
+@interface DARepoWalk : DAGitBaseOperation
 + (instancetype)walkForRepo:(GTRepository *)repo;
 
 - (GTSignature *)authorForCommit:(GTCommit *)commit;

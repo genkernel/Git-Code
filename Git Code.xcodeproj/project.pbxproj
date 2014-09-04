@@ -188,7 +188,6 @@
 		18DF1BE517BFC13D007D312A /* DAGitStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF1BE417BFC13D007D312A /* DAGitStats.m */; };
 		18DF1BE917BFD8DD007D312A /* DATitleHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF1BE817BFD8DD007D312A /* DATitleHeader.m */; };
 		18DF1BEB17BFD8ED007D312A /* DATitleHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18DF1BEA17BFD8ED007D312A /* DATitleHeader.xib */; };
-		18DF1BEF17BFF7CE007D312A /* DABranchStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DF1BEE17BFF7CE007D312A /* DABranchStats.m */; };
 		18DF1C0117C01A31007D312A /* collapse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DF1BFD17C01A31007D312A /* collapse@2x.png */; };
 		18DF1C0217C01A31007D312A /* expand.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DF1BFE17C01A31007D312A /* expand.png */; };
 		18DF1C0317C01A31007D312A /* expand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DF1BFF17C01A31007D312A /* expand@2x.png */; };
@@ -220,6 +219,9 @@
 		1E07335C19B88CDA00E80EC9 /* RIGlobalAppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E07335719B88CDA00E80EC9 /* RIGlobalAppSettings.m */; };
 		1E07336119B88D5600E80EC9 /* WMGeoBlockerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E07335F19B88D5600E80EC9 /* WMGeoBlockerWindow.m */; };
 		1E07336219B88D5600E80EC9 /* WMGeoBlockerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E07336019B88D5600E80EC9 /* WMGeoBlockerWindow.xib */; };
+		1E07336619B89A9800E80EC9 /* DAGitLatestCommitStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E07336519B89A9800E80EC9 /* DAGitLatestCommitStats.m */; };
+		1E07336919B89E4C00E80EC9 /* DAGitBaseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E07336819B89E4C00E80EC9 /* DAGitBaseOperation.m */; };
+		1E07336C19B89FF200E80EC9 /* DAGitOperationBaseFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E07336B19B89FF200E80EC9 /* DAGitOperationBaseFilter.m */; };
 		1E28ED3C1998E89A00006C75 /* swipe-gesture-hint@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E28ED3B1998E89A00006C75 /* swipe-gesture-hint@2x.png */; };
 		1E28ED4A1998EA2000006C75 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E28ED431998EA2000006C75 /* TPKeyboardAvoidingCollectionView.m */; };
 		1E28ED4B1998EA2000006C75 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E28ED451998EA2000006C75 /* TPKeyboardAvoidingScrollView.m */; };
@@ -509,7 +511,7 @@
 		18352A371799D6BC000DCF07 /* Grabber2_wide_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Grabber2_wide_top@2x.png"; sourceTree = "<group>"; };
 		183C1FD9179FEB080079AD2E /* section_header-alpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "section_header-alpha.png"; sourceTree = "<group>"; };
 		183C1FDA179FEB080079AD2E /* section_header-alpha@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "section_header-alpha@2x.png"; sourceTree = "<group>"; };
-		183F7E35178C52A60051D689 /* DARepoCtrl+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DARepoCtrl+Private.h"; sourceTree = "<group>"; };
+		183F7E35178C52A60051D689 /* DARepoCtrl+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DARepoCtrl+Internal.h"; sourceTree = "<group>"; };
 		183F7E42178C550B0051D689 /* DAStatsCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAStatsCtrl.h; sourceTree = "<group>"; };
 		183F7E43178C550B0051D689 /* DAStatsCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAStatsCtrl.m; sourceTree = "<group>"; };
 		18438B161777778200943F9F /* GTCommit+Gitty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GTCommit+Gitty.h"; path = "LibGit2/GTCommit+Gitty.h"; sourceTree = "<group>"; };
@@ -681,8 +683,6 @@
 		18DF1BE717BFD8DD007D312A /* DATitleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DATitleHeader.h; sourceTree = "<group>"; };
 		18DF1BE817BFD8DD007D312A /* DATitleHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DATitleHeader.m; sourceTree = "<group>"; };
 		18DF1BEA17BFD8ED007D312A /* DATitleHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DATitleHeader.xib; sourceTree = "<group>"; };
-		18DF1BED17BFF7CE007D312A /* DABranchStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABranchStats.h; sourceTree = "<group>"; };
-		18DF1BEE17BFF7CE007D312A /* DABranchStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABranchStats.m; sourceTree = "<group>"; };
 		18DF1BFD17C01A31007D312A /* collapse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collapse@2x.png"; sourceTree = "<group>"; };
 		18DF1BFE17C01A31007D312A /* expand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expand.png; sourceTree = "<group>"; };
 		18DF1BFF17C01A31007D312A /* expand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "expand@2x.png"; sourceTree = "<group>"; };
@@ -732,6 +732,12 @@
 		1E07335E19B88D5600E80EC9 /* WMGeoBlockerWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMGeoBlockerWindow.h; sourceTree = "<group>"; };
 		1E07335F19B88D5600E80EC9 /* WMGeoBlockerWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMGeoBlockerWindow.m; sourceTree = "<group>"; };
 		1E07336019B88D5600E80EC9 /* WMGeoBlockerWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMGeoBlockerWindow.xib; sourceTree = "<group>"; };
+		1E07336419B89A9800E80EC9 /* DAGitLatestCommitStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGitLatestCommitStats.h; sourceTree = "<group>"; };
+		1E07336519B89A9800E80EC9 /* DAGitLatestCommitStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitLatestCommitStats.m; sourceTree = "<group>"; };
+		1E07336719B89E4C00E80EC9 /* DAGitBaseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGitBaseOperation.h; sourceTree = "<group>"; };
+		1E07336819B89E4C00E80EC9 /* DAGitBaseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitBaseOperation.m; sourceTree = "<group>"; };
+		1E07336A19B89FF200E80EC9 /* DAGitOperationBaseFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGitOperationBaseFilter.h; sourceTree = "<group>"; };
+		1E07336B19B89FF200E80EC9 /* DAGitOperationBaseFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGitOperationBaseFilter.m; sourceTree = "<group>"; };
 		1E28ED3B1998E89A00006C75 /* swipe-gesture-hint@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "swipe-gesture-hint@2x.png"; sourceTree = "<group>"; };
 		1E28ED421998EA2000006C75 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
 		1E28ED431998EA2000006C75 /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
@@ -1115,8 +1121,11 @@
 		180F2AC017C3B5B600DE1E15 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
-				180F2AC817C3B5C500DE1E15 /* LatestDay */,
 				180F2AC917C3B70300DE1E15 /* DAGitOperationFilter.h */,
+				1E07336A19B89FF200E80EC9 /* DAGitOperationBaseFilter.h */,
+				1E07336B19B89FF200E80EC9 /* DAGitOperationBaseFilter.m */,
+				1E07336319B89A6F00E80EC9 /* LatestCommit */,
+				180F2AC817C3B5C500DE1E15 /* LatestDay */,
 			);
 			name = Filters;
 			sourceTree = "<group>";
@@ -1696,7 +1705,7 @@
 				1801935017FB66600088F4F7 /* ReposListCtrl */,
 				189A5320175922FA00B5BD8D /* DARepoCtrl.h */,
 				189A5321175922FA00B5BD8D /* DARepoCtrl.m */,
-				183F7E35178C52A60051D689 /* DARepoCtrl+Private.h */,
+				183F7E35178C52A60051D689 /* DARepoCtrl+Internal.h */,
 				188D756917C0F8E300125778 /* DARepoCtrl+Table.h */,
 				188D756A17C0F8E300125778 /* DARepoCtrl+Table.m */,
 				181240F3175BD21100E6F571 /* DARepoCtrl+Animation.h */,
@@ -1910,7 +1919,6 @@
 			children = (
 				180F2AC017C3B5B600DE1E15 /* Filters */,
 				18DF1BF017BFF9C1007D312A /* Operations */,
-				18DF1BEC17BFF7BC007D312A /* Branch */,
 				18DF1BE317BFC13D007D312A /* DAGitStats.h */,
 				18DF1BE417BFC13D007D312A /* DAGitStats.m */,
 			);
@@ -1927,21 +1935,14 @@
 			name = TittleHeader;
 			sourceTree = "<group>";
 		};
-		18DF1BEC17BFF7BC007D312A /* Branch */ = {
-			isa = PBXGroup;
-			children = (
-				18DF1BED17BFF7CE007D312A /* DABranchStats.h */,
-				18DF1BEE17BFF7CE007D312A /* DABranchStats.m */,
-			);
-			name = Branch;
-			sourceTree = "<group>";
-		};
 		18DF1BF017BFF9C1007D312A /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				188D756817C0E86900125778 /* DAGitOperation.h */,
+				1E07336719B89E4C00E80EC9 /* DAGitBaseOperation.h */,
+				1E07336819B89E4C00E80EC9 /* DAGitBaseOperation.m */,
 				188D756417C0E7E400125778 /* RepoWalk */,
 				18DF1BF217BFFA2A007D312A /* BranchWalk */,
-				188D756817C0E86900125778 /* DAGitOperation.h */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -2139,6 +2140,15 @@
 				1E07336019B88D5600E80EC9 /* WMGeoBlockerWindow.xib */,
 			);
 			path = GeoBlockerWindow;
+			sourceTree = "<group>";
+		};
+		1E07336319B89A6F00E80EC9 /* LatestCommit */ = {
+			isa = PBXGroup;
+			children = (
+				1E07336419B89A9800E80EC9 /* DAGitLatestCommitStats.h */,
+				1E07336519B89A9800E80EC9 /* DAGitLatestCommitStats.m */,
+			);
+			name = LatestCommit;
 			sourceTree = "<group>";
 		};
 		1E28ED411998EA2000006C75 /* TPKeyboardAvoiding */ = {
@@ -3122,6 +3132,7 @@
 				18D9EA3D17554EB400454F3C /* DAGitManager.m in Sources */,
 				1E28EE3F1998EA3B00006C75 /* NSArray+AAV.m in Sources */,
 				1EADB756190BF6A100038737 /* AMWaveTransition.m in Sources */,
+				1E07336C19B89FF200E80EC9 /* DAGitOperationBaseFilter.m in Sources */,
 				1E28EE6D1998EA9D00006C75 /* PagerItemViewContainer.m in Sources */,
 				1E28EE571998EA3B00006C75 /* PageControl.m in Sources */,
 				1E28EE6C1998EA9D00006C75 /* PagerItemView.m in Sources */,
@@ -3155,10 +3166,12 @@
 				189016BE175AAD8200F19CE4 /* DAGitCloneDelegate.m in Sources */,
 				1E28EE4A1998EA3B00006C75 /* UIDevice+Hardware.m in Sources */,
 				1E28EE551998EA3B00006C75 /* Label.m in Sources */,
+				1E07336619B89A9800E80EC9 /* DAGitLatestCommitStats.m in Sources */,
 				1871D77A179C19B200F1D928 /* DARecentReposCtrl.m in Sources */,
 				1E28EE1A1998EA3B00006C75 /* UIImage+Effects.m in Sources */,
 				1E28EE521998EA3B00006C75 /* Button.m in Sources */,
 				18A6254C1775D59700FC27AE /* DAGitPull.m in Sources */,
+				1E07336919B89E4C00E80EC9 /* DAGitBaseOperation.m in Sources */,
 				1EADB757190BF6A100038737 /* AMWaveViewController.m in Sources */,
 				18438B611777A8CC00943F9F /* DAGravatar.m in Sources */,
 				1861887B176E145F00666DFB /* DAServerCtrl.m in Sources */,
@@ -3266,7 +3279,6 @@
 				18E23ACF17BF7F7E008462A3 /* DAEnvironment.m in Sources */,
 				18DF1BE517BFC13D007D312A /* DAGitStats.m in Sources */,
 				18DF1BE917BFD8DD007D312A /* DATitleHeader.m in Sources */,
-				18DF1BEF17BFF7CE007D312A /* DABranchStats.m in Sources */,
 				188D756717C0E82800125778 /* DABranchWalk.m in Sources */,
 				1ECD53B31998F0F9006C5C38 /* NSNumber+Helper.m in Sources */,
 				1E28EE421998EA3B00006C75 /* NSFileManager+Helper.m in Sources */,

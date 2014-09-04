@@ -7,7 +7,7 @@
 //
 
 #import "DARepoCtrl+GitFetcher.h"
-#import "DARepoCtrl+Private.h"
+#import "DARepoCtrl+Internal.h"
 #import "DARepoCtrl+Animation.h"
 
 @implementation DARepoCtrl (GitFetcher)

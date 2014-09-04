@@ -16,6 +16,8 @@
 @property (strong, nonatomic, readonly) NSString *startSHA;
 
 @property (strong, nonatomic, readonly) NSDateFormatter *defaultSectionDateFormatter;
+
+@property (strong, nonatomic, readonly) NSString *nextCommitSHA;
 @end
 
 @implementation DABranchWalk
@@ -49,42 +51,77 @@
 }
 
 - (void)perform {
-	NSError *err = nil;
-	
 	assert(self.repo);
 	
+	_hasMoreCommitsToProcess = YES;
+	
+	NSUInteger processedCommitsCount = 0;
+	[NSObject startMeasurement];
+	{
+		processedCommitsCount = [self loadSections];
+	}
+	double period = [NSObject endMeasurement];
+	[Logger info:@"Branch statistics gathered for %d commits in %.2f.", processedCommitsCount, period];
+}
+/*
+- (NSUInteger)countAllCommits {
+	NSError *err = nil;
 	GTEnumerator *iter = [GTEnumerator.alloc initWithRepository:self.repo error:&err];
 	
 	if (![iter pushSHA:self.startSHA error:&err]) {
+		[Logger error:@"Failed to pushSHA to count commits."];
+		return 0;
+	}
+	
+	return [iter countRemainingObjects:&err];
+}*/
+
+- (NSUInteger)loadSections {
+	NSUInteger processedCommitsCount = 0;
+	
+	NSMutableDictionary *authorRefs = _authorRefs ? _authorRefs.mutableCopy : @{}.mutableCopy;
+	NSMutableDictionary *commitAuthorMap = _commitAuthorMap ? _commitAuthorMap.mutableCopy : @{}.mutableCopy;
+	
+	NSMutableArray *sections = _dateSections ? _dateSections.mutableCopy : @[].mutableCopy;
+	NSMutableDictionary *commitsOnDate = _commitsOnDateSection ? _commitsOnDateSection.mutableCopy : @{}.mutableCopy;
+	
+	
+	NSError *err = nil;
+	GTEnumerator *iter = [GTEnumerator.alloc initWithRepository:self.repo error:&err];
+	
+	NSString *sha = self.nextCommitSHA ? self.nextCommitSHA : self.startSHA;
+	if (![iter pushSHA:sha error:&err]) {
 		[Logger error:@"Failed to pushSHA to enumarate commits."];
-		return;
+		return 0;
 	}
 	
 	[iter resetWithOptions:GTEnumeratorOptionsTimeSort];
 	
-	[NSObject startMeasurement];
-	{
-		_commits = [iter allObjectsWithError:&err];
-	}
-	double period = [NSObject endMeasurement];
-	[Logger info:@"%d Commits in %@ branch loaded in %.2f.", self.commits.count, self.branch.shortName, period];
 	
-	[NSObject startMeasurement];
-	{
-		[self prepareSections];
-	}
-	period = [NSObject endMeasurement];
-	[Logger info:@"Branch statistics gethered in %.2f.", period];
-}
-
-- (void)prepareSections {
-	NSMutableDictionary *authorRefs = @{}.mutableCopy;
-	NSMutableDictionary *commitAuthorMap = @{}.mutableCopy;
+	size_t idx = self.filter.processedCommitsCount;
 	
-	NSMutableArray *sections = NSMutableArray.new;
-	NSMutableDictionary *commitsOnDate = NSMutableDictionary.new;
-	
-	for (GTCommit *commit in self.commits) {
+	for ( ; YES; idx++) {
+//	for (GTCommit *commit in self.commits) {
+		BOOL success = NO;
+		NSError *err = nil;
+		
+		GTCommit *commit = [iter nextObjectWithSuccess:&success error:&err];
+		
+		if (!success) {
+			[Logger error:@"Failed to retrieve next commit. %@", err];
+			break;
+		}
+		
+		if (!commit) {
+			_hasMoreCommitsToProcess = NO;
+			break;
+		}
+		
+		_nextCommitSHA = commit.SHA;
+		
+		if (![self.filter filterNextCommit:commit]) {
+			break;
+		}
 		
 		self.dateSectionTitleFormatter.timeZone = commit.commitTimeZone;
 		NSString *title = [self.dateSectionTitleFormatter stringFromDate:commit.commitDate];
@@ -105,30 +142,18 @@
 				commitsOnDate[title] = commits;
 			}
 			[commits addObject:commit];
-			/*
-			NSMutableArray *authors = authorsOnDate[title];
-			if (!authors) {
-				authors = NSMutableArray.new;
-				authorsOnDate[title] = authors;
-			}
-			if (![authors containsObject:author]) {
-				[authors addObject:author];
-			}*/
 		}
+		
+		processedCommitsCount++;
 	}
 	
 	_dateSections = sections.copy;
 	_commitsOnDateSection = commitsOnDate.copy;
-//	_authorsOnDateSection = authorsOnDate.copy;
 	
 	_authorRefs = authorRefs.copy;
 	_commitAuthorMap = commitAuthorMap.copy;
-}
-
-- (id<DAGitOperation>)filter:(id<DAGitOperationFilter>)filter {
-	[Logger info:@"Dummy - %s", __PRETTY_FUNCTION__];
 	
-	return nil;
+	return processedCommitsCount;
 }
 
 #pragma mark Properties

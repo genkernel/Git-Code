@@ -8,7 +8,7 @@
 
 #import "DARepoCtrl.h"
 #import "DARepoCtrl+Table.h"
-#import "DARepoCtrl+Private.h"
+#import "DARepoCtrl+Internal.h"
 #import "DARepoCtrl+Animation.h"
 #import "DARepoCtrl+GitFetcher.h"
 
@@ -24,6 +24,7 @@ static NSString *MasterBranchName = @"master";
 static NSString *DiffSegue = @"DiffSegue";
 static NSString *StatsSegue = @"StatsSegue";
 
+static const NSUInteger showCommitsCountStep = 50;
 static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 
 @interface DARepoCtrl ()
@@ -35,9 +36,14 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 @property (weak, nonatomic) IBOutlet UIView *branchStatsLoadingContainer;
 @property (weak, nonatomic) IBOutlet UILabel *branchStatsInfoLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *branchStatsLoadingIndicator;
+
+@property (strong, nonatomic) IBOutlet UIView *loadMoreFooter;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadMoreIndicator;
+@property (weak, nonatomic) IBOutlet UIButton *loadMoreCommitsButton;
 @end
 
 @implementation DARepoCtrl {
+	BOOL isCurrentlyLoadingMoreCommits;
 	NSArray *_remoteBranches, *_tags;
 	
 	CGFloat statsContainerOffsetBeforeDragging;
@@ -308,24 +314,30 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 		message = [NSString stringWithFormat:message, self.currentBranch.shortName];
 		
 		walk = [DABranchWalk walkForBranch:self.currentBranch];
+		
 	} else if (self.currentTag) {
 		message = NSLocalizedString(@"Loading '%@' tag ...", nil);
 		message = [NSString stringWithFormat:message, self.currentTag.name];
 		
 		walk = [DABranchWalk walkForTag:self.currentTag];
+		
 	} else {
 		return NO;
 	}
 	
-	self.branchStatsInfoLabel.text = message;
+	walk.filter = [DAGitLatestCommitStats filterShowingLatestCommitsOfCount:showCommitsCountStep];
 	
 	self.commitsTable.hidden = YES;
+	self.branchStatsInfoLabel.text = message;
 	
 	[self.branchStatsLoadingIndicator startAnimating];
 	self.branchStatsLoadingContainer.hidden = NO;
 	
-	
 	[self.stats performAsyncOperation:walk completionHandler:^{
+		BOOL hasMoreCommitsToShow = walk.hasMoreCommitsToProcess;
+		
+		self.commitsTable.tableFooterView = hasMoreCommitsToShow ? self.loadMoreFooter : nil;
+		
 		self.commitsTable.hidden = NO;
 		[self.commitsTable reloadData];
 		
@@ -477,6 +489,44 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 		}
 	}
 }
+
+- (IBAction)loadMoreCommitsPressed:(UIButton *)sender {
+	if (isCurrentlyLoadingMoreCommits) {
+		return;
+	}
+	
+	isCurrentlyLoadingMoreCommits = YES;
+	
+	self.loadMoreCommitsButton.hidden = YES;
+	[self.loadMoreIndicator startAnimating];
+	
+	
+	DABranchWalk *walk = self.currentStats;
+	
+	DAGitLatestCommitStats *filter = (DAGitLatestCommitStats *)walk.filter;
+	
+	if (![filter isKindOfClass:DAGitLatestCommitStats.class]) {
+		[Logger error:@"Filter is not of %@ type.", DAGitLatestCommitStats.className];
+		return;
+	}
+	
+	filter.latestCommitsCount += showCommitsCountStep;
+	
+	[self.stats performAsyncOperation:walk completionHandler:^{
+		BOOL hasMoreCommitsToShow = walk.hasMoreCommitsToProcess;
+		
+		self.commitsTable.tableFooterView = hasMoreCommitsToShow ? self.loadMoreFooter : nil;
+		
+		self.commitsTable.hidden = NO;
+		[self.commitsTable reloadData];
+		
+		isCurrentlyLoadingMoreCommits = NO;
+		
+		self.loadMoreCommitsButton.hidden = NO;
+		[self.loadMoreIndicator stopAnimating];
+	}];
+}
+
 // hi
 /*
 - (void)toggleBranchOverlayMode {
@@ -486,7 +536,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 #pragma mark AMWaveTransitioning
 
 - (NSArray *)visibleCells {
-	[Logger info:@"animating cells: %d", self.commitsTable.visibleCells.count];
+//	[Logger info:@"animating cells: %d", self.commitsTable.visibleCells.count];
 	
 	return self.commitsTable.visibleCells;
 }

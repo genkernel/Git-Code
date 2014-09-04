@@ -7,7 +7,7 @@
 //
 
 #import "DARepoCtrl+Animation.h"
-#import "DARepoCtrl+Private.h"
+#import "DARepoCtrl+Internal.h"
 
 @implementation DARepoCtrl (Animation)
 

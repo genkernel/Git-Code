@@ -7,7 +7,7 @@
 //
 
 #import "DARepoCtrl+Table.h"
-#import "DARepoCtrl+Private.h"
+#import "DARepoCtrl+Internal.h"
 
 @interface UITableView (RepoCtrl)
 - (id)dequeueCellOfClass:(Class)cls;

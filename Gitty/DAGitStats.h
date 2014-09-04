@@ -6,13 +6,12 @@
 //  Copyright (c) 2013 kernel@realm. All rights reserved.
 //
 
-#import "DABranchStats.h"
-
 // Operations
 #import "DARepoWalk.h"
 #import "DABranchWalk.h"
 // Filters
 #import "DAGitLatestDayStats.h"
+#import "DAGitLatestCommitStats.h"
 
 @interface DAGitStats : NSObject
 + (instancetype)statsForRepository:(GTRepository *)repo;

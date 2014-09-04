@@ -32,7 +32,7 @@ static int pullTransferProgressCallback(const git_transfer_progress *progress, v
 }
 
 static int pullCompletionCallback(git_remote_completion_type type, void *data) {
-	NSLog(@"%s", __PRETTY_FUNCTION__);
+//	NSLog(@"%s", __PRETTY_FUNCTION__);
 	return GIT_OK;
 }
 
@@ -46,7 +46,7 @@ static int pullCompletionCallback(git_remote_completion_type type, void *data) {
 	remote_callbacks.credentials = GTCredentialAcquireCallback;
 	
 	payload.transferProgressBlock = ^(const git_transfer_progress *progress) {
-		NSLog(@"%s %d %d %d", __PRETTY_FUNCTION__, progress->total_objects, progress->received_objects, progress->local_objects );
+//		NSLog(@"%s %d %d %d", __PRETTY_FUNCTION__, progress->total_objects, progress->received_objects, progress->local_objects );
 	};
 	remote_callbacks.transfer_progress = pullTransferProgressCallback;
 	remote_callbacks.completion = pullCompletionCallback;
@@ -70,9 +70,9 @@ static int pullCompletionCallback(git_remote_completion_type type, void *data) {
 		NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
 	}
 	
+	/*
 	const git_transfer_progress *stats = git_remote_stats(remote);
 	
-	/*
 	gitError = git_remote_connect(remote, GIT_DIRECTION_FETCH);
 	if (gitError != GIT_OK) {
 		error = [NSError git_errorFor:gitError description:@"Failed to open remote connection."];
@@ -97,13 +97,15 @@ static int pullCompletionCallback(git_remote_completion_type type, void *data) {
 		NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
 	}
 	
+	/*
 	if (stats->local_objects > 0) {
 		printf("\rReceived %d/%d objects in %zu bytes (used %d local objects)\n",
 			   stats->indexed_objects, stats->total_objects, stats->received_bytes, stats->local_objects);
 	} else{
 		printf("\rReceived %d/%d objects in %zu bytes\n",
 			   stats->indexed_objects, stats->total_objects, stats->received_bytes);
-	}
+	}*/
+	 
 	/*
 	git_remote_disconnect(remote);
 	gitError = git_remote_update_tips(remote, signature.git_signature, NULL);

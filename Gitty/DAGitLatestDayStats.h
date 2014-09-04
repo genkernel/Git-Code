@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 ReImpl. All rights reserved.
 //
 
-#import "DAGitOperationFilter.h"
+#import "DAGitOperationBaseFilter.h"
 
-@interface DAGitLatestDayStats : NSObject <DAGitOperationFilter>
+@interface DAGitLatestDayStats : DAGitOperationBaseFilter
 + (instancetype)filterShowingLatestDaysOfCount:(NSUInteger)days;
 
 @property (nonatomic, readonly) NSUInteger latestDays;

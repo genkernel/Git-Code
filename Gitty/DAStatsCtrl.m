@@ -11,8 +11,6 @@
 #import "DAStatsCtrl+Animation.h"
 #import "DAStatsCtrl+Headline.h"
 
-static const NSUInteger OneDayStats = 1;
-
 @interface DAStatsCtrl ()
 @property (strong, nonatomic, readonly) NSDictionary *dataSource;
 
@@ -54,7 +52,7 @@ static const NSUInteger OneDayStats = 1;
 	self.byAuthorDataSource.selectCellAction = select;
 	self.byBranchDataSource.selectCellAction = select;
 	
-	_latestDayFilter = [DAGitLatestDayStats filterShowingLatestDaysOfCount:OneDayStats];
+	_latestDayFilter = [DAGitLatestDayStats filterShowingLatestDaysOfCount:1];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

@@ -20,6 +20,8 @@
 
 // xlib.
 #import "xlib.h"
+#import "ReImpl.h"
+#import "Affiliate.h"
 // shared.
 #import "UIViewAdditions.h"
 #import "Reachability.h"

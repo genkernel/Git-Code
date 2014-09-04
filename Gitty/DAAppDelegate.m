@@ -8,8 +8,9 @@
 
 #import "DAAppDelegate.h"
 
-#import "DAFrameCtrl+Internal.h"
 #import "DALoginCtrl.h"
+#import "DAFrameCtrl+Internal.h"
+#import "WMGeoBlockerWindow.h"
 
 #import "DAGitServer+Creation.h"
 
@@ -33,6 +34,8 @@
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		[DAGitManager.manager scanAllDeletableLocalReposAndDelete];
 	});
+	
+	[WMGeoBlockerWindow checkCurrentCountry];
 	
     return YES;
 }

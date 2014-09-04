@@ -212,6 +212,14 @@
 		18F995D8175FBEDB0033A4A0 /* section_header.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F995D4175FBEDB0033A4A0 /* section_header.png */; };
 		18F995D9175FBEDB0033A4A0 /* section_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F995D5175FBEDB0033A4A0 /* section_header@2x.png */; };
 		18FD1D11177F4CAD00DE4851 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FD1D10177F4CAD00DE4851 /* ImageIO.framework */; };
+		1E07334519B88BB900E80EC9 /* libFlurry_5.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E07334419B88BB900E80EC9 /* libFlurry_5.3.0.a */; };
+		1E07335819B88CDA00E80EC9 /* iTunesAffiliateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E07334A19B88CDA00E80EC9 /* iTunesAffiliateManager.m */; };
+		1E07335919B88CDA00E80EC9 /* NSString+iTunesAffiliate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E07334C19B88CDA00E80EC9 /* NSString+iTunesAffiliate.m */; };
+		1E07335A19B88CDA00E80EC9 /* RIGeoIp.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E07335019B88CDA00E80EC9 /* RIGeoIp.m */; };
+		1E07335B19B88CDA00E80EC9 /* RIGeoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E07335319B88CDA00E80EC9 /* RIGeoManager.m */; };
+		1E07335C19B88CDA00E80EC9 /* RIGlobalAppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E07335719B88CDA00E80EC9 /* RIGlobalAppSettings.m */; };
+		1E07336119B88D5600E80EC9 /* WMGeoBlockerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E07335F19B88D5600E80EC9 /* WMGeoBlockerWindow.m */; };
+		1E07336219B88D5600E80EC9 /* WMGeoBlockerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E07336019B88D5600E80EC9 /* WMGeoBlockerWindow.xib */; };
 		1E28ED3C1998E89A00006C75 /* swipe-gesture-hint@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E28ED3B1998E89A00006C75 /* swipe-gesture-hint@2x.png */; };
 		1E28ED4A1998EA2000006C75 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E28ED431998EA2000006C75 /* TPKeyboardAvoidingCollectionView.m */; };
 		1E28ED4B1998EA2000006C75 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E28ED451998EA2000006C75 /* TPKeyboardAvoidingScrollView.m */; };
@@ -298,7 +306,6 @@
 		1EADB756190BF6A100038737 /* AMWaveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EADB753190BF6A100038737 /* AMWaveTransition.m */; };
 		1EADB757190BF6A100038737 /* AMWaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EADB755190BF6A100038737 /* AMWaveViewController.m */; };
 		1EADB769190D5E1100038737 /* DANavCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EADB768190D5E1100038737 /* DANavCtrl.m */; };
-		1EC175D318EAD83600A17431 /* libFlurry_4.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC175D218EAD83600A17431 /* libFlurry_4.4.0.a */; };
 		1ECD53AF1998EFC0006C5C38 /* DASwipeTipCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD53AD1998EFC0006C5C38 /* DASwipeTipCtrl.m */; };
 		1ECD53B01998EFC0006C5C38 /* DASwipeTipCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ECD53AE1998EFC0006C5C38 /* DASwipeTipCtrl.xib */; };
 		1ECD53B31998F0F9006C5C38 /* NSNumber+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ECD53B21998F0F9006C5C38 /* NSNumber+Helper.m */; };
@@ -640,7 +647,6 @@
 		18B475AF17FF52AD00F5BB4F /* DAQuickRepoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAQuickRepoCell.h; sourceTree = "<group>"; };
 		18B475B017FF52AD00F5BB4F /* DAQuickRepoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAQuickRepoCell.m; sourceTree = "<group>"; };
 		18B475B217FF52C900F5BB4F /* DAQuickRepoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAQuickRepoCell.xib; sourceTree = "<group>"; };
-		18B8751817ABDB86004AF69D /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		18B8751C17ABDBAB004AF69D /* DAFlurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFlurry.h; sourceTree = "<group>"; };
 		18B8751D17ABDBAB004AF69D /* DAFlurry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAFlurry.m; sourceTree = "<group>"; };
 		18B8751F17ABDF77004AF69D /* DAFlurryEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFlurryEvent.h; sourceTree = "<group>"; };
@@ -709,6 +715,23 @@
 		18F995D4175FBEDB0033A4A0 /* section_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = section_header.png; sourceTree = "<group>"; };
 		18F995D5175FBEDB0033A4A0 /* section_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "section_header@2x.png"; sourceTree = "<group>"; };
 		18FD1D10177F4CAD00DE4851 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		1E07334319B88BB900E80EC9 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		1E07334419B88BB900E80EC9 /* libFlurry_5.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_5.3.0.a; sourceTree = "<group>"; };
+		1E07334719B88CDA00E80EC9 /* Affiliate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Affiliate.h; sourceTree = "<group>"; };
+		1E07334919B88CDA00E80EC9 /* iTunesAffiliateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunesAffiliateManager.h; sourceTree = "<group>"; };
+		1E07334A19B88CDA00E80EC9 /* iTunesAffiliateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTunesAffiliateManager.m; sourceTree = "<group>"; };
+		1E07334B19B88CDA00E80EC9 /* NSString+iTunesAffiliate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+iTunesAffiliate.h"; sourceTree = "<group>"; };
+		1E07334C19B88CDA00E80EC9 /* NSString+iTunesAffiliate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+iTunesAffiliate.m"; sourceTree = "<group>"; };
+		1E07334F19B88CDA00E80EC9 /* RIGeoIp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIGeoIp.h; sourceTree = "<group>"; };
+		1E07335019B88CDA00E80EC9 /* RIGeoIp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIGeoIp.m; sourceTree = "<group>"; };
+		1E07335219B88CDA00E80EC9 /* RIGeoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIGeoManager.h; sourceTree = "<group>"; };
+		1E07335319B88CDA00E80EC9 /* RIGeoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIGeoManager.m; sourceTree = "<group>"; };
+		1E07335419B88CDA00E80EC9 /* ReImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReImpl.h; sourceTree = "<group>"; };
+		1E07335619B88CDA00E80EC9 /* RIGlobalAppSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIGlobalAppSettings.h; sourceTree = "<group>"; };
+		1E07335719B88CDA00E80EC9 /* RIGlobalAppSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIGlobalAppSettings.m; sourceTree = "<group>"; };
+		1E07335E19B88D5600E80EC9 /* WMGeoBlockerWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMGeoBlockerWindow.h; sourceTree = "<group>"; };
+		1E07335F19B88D5600E80EC9 /* WMGeoBlockerWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMGeoBlockerWindow.m; sourceTree = "<group>"; };
+		1E07336019B88D5600E80EC9 /* WMGeoBlockerWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WMGeoBlockerWindow.xib; sourceTree = "<group>"; };
 		1E28ED3B1998E89A00006C75 /* swipe-gesture-hint@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "swipe-gesture-hint@2x.png"; sourceTree = "<group>"; };
 		1E28ED421998EA2000006C75 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
 		1E28ED431998EA2000006C75 /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
@@ -895,7 +918,6 @@
 		1EADB755190BF6A100038737 /* AMWaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMWaveViewController.m; sourceTree = "<group>"; };
 		1EADB767190D5E1100038737 /* DANavCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DANavCtrl.h; sourceTree = "<group>"; };
 		1EADB768190D5E1100038737 /* DANavCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DANavCtrl.m; sourceTree = "<group>"; };
-		1EC175D218EAD83600A17431 /* libFlurry_4.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.4.0.a; sourceTree = "<group>"; };
 		1ECD53AC1998EFC0006C5C38 /* DASwipeTipCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DASwipeTipCtrl.h; sourceTree = "<group>"; };
 		1ECD53AD1998EFC0006C5C38 /* DASwipeTipCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DASwipeTipCtrl.m; sourceTree = "<group>"; };
 		1ECD53AE1998EFC0006C5C38 /* DASwipeTipCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASwipeTipCtrl.xib; sourceTree = "<group>"; };
@@ -989,7 +1011,7 @@
 				18BFDA92180DA84F00CCF115 /* CoreLocation.framework in Frameworks */,
 				18FD1D11177F4CAD00DE4851 /* ImageIO.framework in Frameworks */,
 				189A532E1759237C00B5BD8D /* QuartzCore.framework in Frameworks */,
-				1EC175D318EAD83600A17431 /* libFlurry_4.4.0.a in Frameworks */,
+				1E07334519B88BB900E80EC9 /* libFlurry_5.3.0.a in Frameworks */,
 				1804FAB2176E7AF20080AB50 /* SystemConfiguration.framework in Frameworks */,
 				186A92D9177848FB00B2EEF3 /* MobileCoreServices.framework in Frameworks */,
 				18CF75B91788E8EE00209141 /* libxml2.2.dylib in Frameworks */,
@@ -1468,6 +1490,7 @@
 		18878CAA17629E03008BF232 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				1EF45EBB18E2A2D800B84B77 /* ObjectiveGitFramework.xcodeproj */,
 				1EADB751190BF6A100038737 /* AMWaveTransition */,
 				1EE40E4C18DD6651004E2C04 /* xlib */,
 				187A29DC1795DFD400FE9F19 /* STUtils */,
@@ -1783,8 +1806,8 @@
 		18B8751717ABDB86004AF69D /* Flurry */ = {
 			isa = PBXGroup;
 			children = (
-				1EC175D218EAD83600A17431 /* libFlurry_4.4.0.a */,
-				18B8751817ABDB86004AF69D /* Flurry.h */,
+				1E07334319B88BB900E80EC9 /* Flurry.h */,
+				1E07334419B88BB900E80EC9 /* libFlurry_5.3.0.a */,
 			);
 			path = Flurry;
 			sourceTree = "<group>";
@@ -1850,6 +1873,7 @@
 				189A531E175922BF00B5BD8D /* Login */,
 				189A531F175922D100B5BD8D /* Repo */,
 				18F995B0175F6EA00033A4A0 /* Diff */,
+				1E07335D19B88D5600E80EC9 /* GeoBlockerWindow */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -2047,6 +2071,74 @@
 			);
 			name = UI;
 			path = Res/UI;
+			sourceTree = "<group>";
+		};
+		1E07334619B88CDA00E80EC9 /* affiliate */ = {
+			isa = PBXGroup;
+			children = (
+				1E07334719B88CDA00E80EC9 /* Affiliate.h */,
+				1E07334819B88CDA00E80EC9 /* iTunes */,
+			);
+			path = affiliate;
+			sourceTree = "<group>";
+		};
+		1E07334819B88CDA00E80EC9 /* iTunes */ = {
+			isa = PBXGroup;
+			children = (
+				1E07334919B88CDA00E80EC9 /* iTunesAffiliateManager.h */,
+				1E07334A19B88CDA00E80EC9 /* iTunesAffiliateManager.m */,
+				1E07334B19B88CDA00E80EC9 /* NSString+iTunesAffiliate.h */,
+				1E07334C19B88CDA00E80EC9 /* NSString+iTunesAffiliate.m */,
+			);
+			path = iTunes;
+			sourceTree = "<group>";
+		};
+		1E07334D19B88CDA00E80EC9 /* reimpl.mobi */ = {
+			isa = PBXGroup;
+			children = (
+				1E07334E19B88CDA00E80EC9 /* geoip */,
+				1E07335119B88CDA00E80EC9 /* GeoManager */,
+				1E07335419B88CDA00E80EC9 /* ReImpl.h */,
+				1E07335519B88CDA00E80EC9 /* settings */,
+			);
+			path = reimpl.mobi;
+			sourceTree = "<group>";
+		};
+		1E07334E19B88CDA00E80EC9 /* geoip */ = {
+			isa = PBXGroup;
+			children = (
+				1E07334F19B88CDA00E80EC9 /* RIGeoIp.h */,
+				1E07335019B88CDA00E80EC9 /* RIGeoIp.m */,
+			);
+			path = geoip;
+			sourceTree = "<group>";
+		};
+		1E07335119B88CDA00E80EC9 /* GeoManager */ = {
+			isa = PBXGroup;
+			children = (
+				1E07335219B88CDA00E80EC9 /* RIGeoManager.h */,
+				1E07335319B88CDA00E80EC9 /* RIGeoManager.m */,
+			);
+			path = GeoManager;
+			sourceTree = "<group>";
+		};
+		1E07335519B88CDA00E80EC9 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				1E07335619B88CDA00E80EC9 /* RIGlobalAppSettings.h */,
+				1E07335719B88CDA00E80EC9 /* RIGlobalAppSettings.m */,
+			);
+			path = settings;
+			sourceTree = "<group>";
+		};
+		1E07335D19B88D5600E80EC9 /* GeoBlockerWindow */ = {
+			isa = PBXGroup;
+			children = (
+				1E07335E19B88D5600E80EC9 /* WMGeoBlockerWindow.h */,
+				1E07335F19B88D5600E80EC9 /* WMGeoBlockerWindow.m */,
+				1E07336019B88D5600E80EC9 /* WMGeoBlockerWindow.xib */,
+			);
+			path = GeoBlockerWindow;
 			sourceTree = "<group>";
 		};
 		1E28ED411998EA2000006C75 /* TPKeyboardAvoiding */ = {
@@ -2594,8 +2686,9 @@
 		1EE40E4C18DD6651004E2C04 /* xlib */ = {
 			isa = PBXGroup;
 			children = (
+				1E07334619B88CDA00E80EC9 /* affiliate */,
+				1E07334D19B88CDA00E80EC9 /* reimpl.mobi */,
 				1E28ED581998EA3B00006C75 /* xlib */,
-				1EF45EBB18E2A2D800B84B77 /* ObjectiveGitFramework.xcodeproj */,
 				1EE40E7818DD6651004E2C04 /* shared */,
 			);
 			name = xlib;
@@ -2901,6 +2994,7 @@
 				1804FA8F176E2D640080AB50 /* GitHub-Mark-120px-plus.png in Resources */,
 				186A92E31778522C00B2EEF3 /* DAStatusHeader.xib in Resources */,
 				18352A341799D362000DCF07 /* Grabber2_top.png in Resources */,
+				1E07336219B88D5600E80EC9 /* WMGeoBlockerWindow.xib in Resources */,
 				186A92E61778534F00B2EEF3 /* section_status.png in Resources */,
 				186A92E71778534F00B2EEF3 /* section_status@2x.png in Resources */,
 				1ECD53BA19990F86006C5C38 /* DARevealStatsTipCtrl.xib in Resources */,
@@ -3053,6 +3147,7 @@
 				1E28EE461998EA3B00006C75 /* NSObject+Runtime.m in Sources */,
 				1EE40FA418DD6652004E2C04 /* DCRejectionFilter.cpp in Sources */,
 				1E28EE1D1998EA3B00006C75 /* UIImage+Utils.m in Sources */,
+				1E07336119B88D5600E80EC9 /* WMGeoBlockerWindow.m in Sources */,
 				1EE40FAA18DD6652004E2C04 /* UIViewAdditions.m in Sources */,
 				1E28EE191998EA3B00006C75 /* UIBezierPath+curved.m in Sources */,
 				189016BB175AA6D800F19CE4 /* DAGitManager+ActionsInterface.m in Sources */,
@@ -3076,6 +3171,7 @@
 				1E28EE3C1998EA3B00006C75 /* UserShow.m in Sources */,
 				1804FAAE176E79160080AB50 /* DAReachabilityManager.m in Sources */,
 				1E28ED4D1998EA2000006C75 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				1E07335C19B88CDA00E80EC9 /* RIGlobalAppSettings.m in Sources */,
 				1E28EE201998EA3B00006C75 /* TwitterAccount.m in Sources */,
 				1E28EE4B1998EA3B00006C75 /* UIDevice+Helper.m in Sources */,
 				18438B181777778200943F9F /* GTCommit+Gitty.m in Sources */,
@@ -3105,6 +3201,7 @@
 				187C862B1782451D00703592 /* DAProtocolsContainer.m in Sources */,
 				1EE40F9B18DD6652004E2C04 /* AFURLSessionManager.m in Sources */,
 				18F15474178622C200322369 /* DACommitMessageCell.m in Sources */,
+				1E07335819B88CDA00E80EC9 /* iTunesAffiliateManager.m in Sources */,
 				1E28EE401998EA3B00006C75 /* NSDate+Helper.m in Sources */,
 				1E28EE291998EA3B00006C75 /* NSDictionary+JSON.m in Sources */,
 				1EE40FA118DD6652004E2C04 /* UIProgressView+AFNetworking.m in Sources */,
@@ -3130,6 +3227,7 @@
 				187A29DF1795DFD400FE9F19 /* STKeychain.m in Sources */,
 				1E28EE1F1998EA3B00006C75 /* MakeAccountCategory.m in Sources */,
 				1EE40F9718DD6652004E2C04 /* AFSecurityPolicy.m in Sources */,
+				1E07335A19B88CDA00E80EC9 /* RIGeoIp.m in Sources */,
 				182B820917A1A8B300D02F73 /* NSDictionary+RecentRepo.m in Sources */,
 				1E28EE331998EA3B00006C75 /* PostURLRequest.m in Sources */,
 				1E28EE251998EA3B00006C75 /* Cryptor.m in Sources */,
@@ -3157,6 +3255,7 @@
 				1E28EE341998EA3B00006C75 /* Purchaser.m in Sources */,
 				1E28EE481998EA3B00006C75 /* UIApplication+Filesystem.m in Sources */,
 				185837BB17B66D8B00EBB834 /* DABranchPickerCtrl+Style.m in Sources */,
+				1E07335919B88CDA00E80EC9 /* NSString+iTunesAffiliate.m in Sources */,
 				1EE40F9E18DD6652004E2C04 /* UIAlertView+AFNetworking.m in Sources */,
 				1E28EE2B1998EA3B00006C75 /* LocationManager.m in Sources */,
 				185837C817B677A000EBB834 /* DABranchPickerCtrl+Responder.m in Sources */,
@@ -3186,6 +3285,7 @@
 				1EE40F9C18DD6652004E2C04 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				1824409717C8B8C700274B2C /* DASettings.m in Sources */,
 				1EE40F9918DD6652004E2C04 /* AFURLRequestSerialization.m in Sources */,
+				1E07335B19B88CDA00E80EC9 /* RIGeoManager.m in Sources */,
 				18A6C4D817C901380019EB51 /* DASupportTipCtrl.m in Sources */,
 				1E28EE371998EA3B00006C75 /* SocialRequest.m in Sources */,
 				1EE40FA318DD6652004E2C04 /* FFTBufferManager.cpp in Sources */,

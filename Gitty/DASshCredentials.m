@@ -42,8 +42,8 @@ static NSString *ZipExtension = @"zip";
 	
 	BOOL isUsernameProvided = info.username.length > 0;
 	
-	BOOL isPublicKeyExistent = [self.app.fs isFileExistent:info.publicKeyPath];
-	BOOL isPrivateKeyExistent = [self.app.fs isFileExistent:info.publicKeyPath];
+	BOOL isPublicKeyExistent = [self.app.fs isFileExistentAtPath:info.publicKeyPath];
+	BOOL isPrivateKeyExistent = [self.app.fs isFileExistentAtPath:info.publicKeyPath];
 	
 	return isUsernameProvided & isPublicKeyExistent && isPrivateKeyExistent;
 }
@@ -62,7 +62,7 @@ static NSString *ZipExtension = @"zip";
 	for (NSString *fileName in files) {
 		NSString *path = [self.app.documentsPath stringByAppendingPathComponent:fileName];
 		
-		BOOL isFile = [self.app.fs isFileExistent:path];
+		BOOL isFile = [self.app.fs isFileExistentAtPath:path];
 		if (!isFile || ![path.pathExtension isEqualToString:ZipExtension]) {
 			continue;
 		}
@@ -80,7 +80,7 @@ static NSString *ZipExtension = @"zip";
 			continue;
 		}
 		
-		[Logger info:@"Found new SSH keys archive for server: %@", name];
+		[LLog info:@"Found new SSH keys archive for server: %@", name];
 		
 		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 			[self unzipServerArchiveAtPath:path server:server];
@@ -89,8 +89,10 @@ static NSString *ZipExtension = @"zip";
 }
 
 - (void)unzipServerArchiveAtPath:(NSString *)path server:(DAGitServer *)server {
-	NSString *fileName = path.lastPathComponent;
+//	NSString *fileName = path.lastPathComponent;
 	
+#warning disabled - unzipping disabled
+	/*
 	ZipArchive *arch = [ZipArchive.alloc initWithFileManager:self.app.fs];
 	
 	[arch UnzipOpenFile:path];
@@ -98,7 +100,7 @@ static NSString *ZipExtension = @"zip";
 	[arch UnzipCloseFile];
 	
 	if (arch.unzippedFiles.count < 2) {
-		[Logger error:@"Failed to unzip keys from path: %@", path];
+		[LLog error:@"Failed to unzip keys from path: %@", path];
 		
 		NSString *fmt = NSLocalizedString(@"Failed to unzip & install SSH keys from archive: %@", nil);
 		NSString *message = [NSString stringWithFormat:fmt, fileName];
@@ -108,7 +110,7 @@ static NSString *ZipExtension = @"zip";
 	} else {
 		[self requestCredentialsForServer:server];
 	}
-	
+	*/
 	[self.app.fs removeItemAtPath:path error:nil];
 }
 
@@ -117,11 +119,13 @@ static NSString *ZipExtension = @"zip";
 	
 	NSString *message = NSLocalizedString(@"Passphrase required to install\nnew SSH keys.", nil);
 	
-	DAAlert *alert = [DAAlert loginAlertWithTitle:server.name message:message];
+	DAAlert *alert = [DAAlert alertWithTitle:server.name message:message];
 	alert.delegate = item;
 	
-	[alert addButtonWithTitle:NSLocalizedString(@"Cancel", nil)];
-	[alert addButtonWithTitle:NSLocalizedString(@"Ok", nil)];
+	[alert addButtonWithTitle:NSLocalizedString(@"Cancel", nil) actionHandler:^(UIAlertAction * _Nonnull action) {
+	}];
+	[alert addButtonWithTitle:NSLocalizedString(@"Ok", nil) actionHandler:^(UIAlertAction * _Nonnull action) {
+	}];
 	
 	[self.alert enqueueAlert:alert];
 }

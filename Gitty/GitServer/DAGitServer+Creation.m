@@ -27,7 +27,7 @@ NSString *RecentRepoLastAccessDate = @"lastAccessDate";
 @dynamic docsPath, settingsPath;
 
 - (void)createSettingsFolderIfNeeded {
-	[UIApplication.sharedApplication.fs createDirectoryIfNotExists:self.settingsPath];
+	[UIApplication.sharedApplication.fs createDirectoryIfNotExistsAtPath:self.settingsPath];
 }
 
 - (NSString *)docsPath {

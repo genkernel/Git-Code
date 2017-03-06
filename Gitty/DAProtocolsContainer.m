@@ -26,7 +26,7 @@ static const CGFloat MarginBetweenButtons = 6.;
 	
 	return CGSizeMake(width, height);
 	
-//	[Logger info:@"0x%X (subviews: %d) intrinsicSize: %@", self, self.subviews.count, NSStringFromCGSize(s)];
+//	[LLog info:@"0x%X (subviews: %d) intrinsicSize: %@", self, self.subviews.count, NSStringFromCGSize(s)];
 }
 
 - (void)removeAllButtonsAndResetLayout {
@@ -50,10 +50,16 @@ static const CGFloat MarginBetweenButtons = 6.;
 - (void)insertAndLayoutNextProtocolButton:(UIButton *)button {
 	CGFloat leftMargin = .0;
 	
-	UIButton *previousButton = nil;
+	UIView *previousButton = nil;
+	NSLayoutAttribute attribute = NSLayoutAttributeLeft;
+	
 	if (self.subviews.count) {
 		leftMargin = MarginBetweenButtons;
 		previousButton = self.subviews.lastObject;
+		attribute = NSLayoutAttributeRight;
+	} else {
+		previousButton = self;
+		attribute = NSLayoutAttributeLeft;
 	}
 	
 	[self addSubview:button];
@@ -61,7 +67,11 @@ static const CGFloat MarginBetweenButtons = 6.;
 	NSArray *width = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[button(>=40)]" options:NSLayoutFormatAlignAllTop metrics:nil views:NSDictionaryOfVariableBindings(button)];
 	[button addConstraints:width];
 	
-	NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:previousButton attribute:NSLayoutAttributeRight multiplier:1. constant:leftMargin];
+	
+	NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1. constant:0];
+	[self addConstraint:top];
+	
+	NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:previousButton attribute:attribute multiplier:1. constant:leftMargin];
 	[self addConstraint:constraint];
 }
 

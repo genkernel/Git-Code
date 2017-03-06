@@ -61,7 +61,7 @@
 		processedCommitsCount = [self loadSections];
 	}
 	double period = [NSObject endMeasurement];
-	[Logger info:@"Branch statistics gathered for %d commits in %.2f.", processedCommitsCount, period];
+	[LLog info:@"Branch statistics gathered for %d commits in %.2f.", processedCommitsCount, period];
 }
 /*
 - (NSUInteger)countAllCommits {
@@ -69,7 +69,7 @@
 	GTEnumerator *iter = [GTEnumerator.alloc initWithRepository:self.repo error:&err];
 	
 	if (![iter pushSHA:self.startSHA error:&err]) {
-		[Logger error:@"Failed to pushSHA to count commits."];
+		[LLog error:@"Failed to pushSHA to count commits."];
 		return 0;
 	}
 	
@@ -91,7 +91,7 @@
 	
 	NSString *sha = self.nextCommitSHA ? self.nextCommitSHA : self.startSHA;
 	if (![iter pushSHA:sha error:&err]) {
-		[Logger error:@"Failed to pushSHA to enumarate commits."];
+		[LLog error:@"Failed to pushSHA to enumarate commits."];
 		return 0;
 	}
 	
@@ -108,7 +108,7 @@
 		GTCommit *commit = [iter nextObjectWithSuccess:&success error:&err];
 		
 		if (!success) {
-			[Logger error:@"Failed to retrieve next commit. %@", err];
+			[LLog error:@"Failed to retrieve next commit. %@", err];
 			break;
 		}
 		
@@ -164,7 +164,7 @@
 
 - (NSString *)startSHA {
 	if (self.branch) {
-		return self.branch.SHA;
+		return self.branch.OID.SHA;
 	}
 	
 	NSError *err = nil;

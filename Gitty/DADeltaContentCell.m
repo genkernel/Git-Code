@@ -22,7 +22,7 @@
 		UIView *view = views[0];
 		
 		if (view.height != self.contentView.height) {
-			[Logger error:@"%@.scroll.height != cell.contentView.height", self.className];
+			[LLog error:@"%@.scroll.height != cell.contentView.height", self.className];
 			view.height = self.contentView.height;
 		}
 		

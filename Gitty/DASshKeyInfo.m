@@ -41,7 +41,7 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 	NSString *path = [UIApplication.sharedApplication.documentsPath stringByAppendingPathComponent:self.server.name];
 	_cfgFilePath = [path stringByAppendingPathComponent:@".SshInfo.plist"];
 	
-	if ([UIApplication.sharedApplication.fs isFileExistent:self.cfgFilePath]) {
+	if ([UIApplication.sharedApplication.fs isFileExistentAtPath:self.cfgFilePath]) {
 		NSDictionary *info = [NSDictionary dictionaryWithContentsOfFile:self.cfgFilePath];
 		
 		_cfg = [DASshKeyInfoConfig storageWithInitialProperties:info];
@@ -61,7 +61,7 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 	_passphrase = [STKeychain getPasswordForUsername:self.username andServiceName:self.server.name error:&err];
 	
 	if (err) {
-		[Logger error:@"Failed to load existing passphrase from secure keychain for server: %@", self.server.name];
+		[LLog error:@"Failed to load existing passphrase from secure keychain for server: %@", self.server.name];
 	}
 }
 
@@ -142,7 +142,7 @@ static NSString *PublicKeyFileName = @"id_rsa.pub";
 		
 		[self saveUsername:usernameField.text passphrase:passphraseField.text];
 	} else {
-		[Logger info:@"SSH passphrase editing skiped with buttonIndex: %d", buttonIndex];
+		[LLog info:@"SSH passphrase editing skiped with buttonIndex: %d", buttonIndex];
 		[self deleteKeyFiles];
 	}
 	

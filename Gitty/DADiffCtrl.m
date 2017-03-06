@@ -90,7 +90,7 @@
 	self.navigationItem.rightBarButtonItem = rightButton;
 }
 
-- (NSUInteger)supportedInterfaceOrientations {
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
 	return UIInterfaceOrientationMaskAll;
 }
 
@@ -141,7 +141,7 @@
 		[view performSelector:@selector(loadDelta:) withObject:delta];
 	}
 //	double period = [NSObject endMeasurement];
-//	[Logger info:@"Header loaded in %.2f", period];
+//	[LLog info:@"Header loaded in %.2f", period];
 	
 	return view;
 }
@@ -195,7 +195,7 @@
 		[cell loadDelta:delta withLongestLineOfWidth:longestLineWidth];
 	}
 	//double period = [NSObject endMeasurement];
-	//[Logger info:@"Cell loaded in %.2f", period];
+	//[LLog info:@"Cell loaded in %.2f", period];
 	
 	return cell;
 }

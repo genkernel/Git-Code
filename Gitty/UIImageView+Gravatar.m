@@ -9,15 +9,20 @@
 #import "UIImageView+Gravatar.h"
 #import "DAGravatar.h"
 
+@import AFNetworking;
+
 @implementation UIImageView (Gravatar)
 
 - (void)setGravatarImageWithEmail:(NSString *)email {
 	if (!email) {
-		[Logger error:@"nil author's email specified. %s", __PRETTY_FUNCTION__];
+		[LLog error:@"nil author's email specified. %s", __PRETTY_FUNCTION__];
 		return;
 	}
+	
+	UIImage *placeholder = [UIImage imageNamed:@"profile"];
 	NSURL *url = [DAGravatar.manager getUrlForEmail:email];
-	[self setImageWithURL:url placeholderImage:[UIImage imageNamed:@"profile.png"]];
+	
+	[self setImageWithURL:url placeholderImage:placeholder];
 }
 
 - (void)applyAvatarStyle {

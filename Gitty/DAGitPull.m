@@ -7,6 +7,7 @@
 //
 
 #import "DAGitPull.h"
+#import <ObjectiveGit/git2/errors.h>
 
 //static int transferProgressCallback(const git_transfer_progress *progress, void *payload);
 
@@ -26,24 +27,21 @@
 }
 
 - (void)exec {
-	int code = [self pullFromServer:self.server];
+	BOOL success = [self pullFromServer:self.server];
 	
-	if (GIT_EEXISTS == code) {
-		NSDictionary *info = @{NSLocalizedDescriptionKey: @"Repo is up to date."};
-		_completionError = [NSError errorWithDomain:@"libgit2" code:code userInfo:info];
-	} else if (GIT_OK != code) {
+	if (!success) {
 		NSString *desc = [NSString stringWithFormat:@"Pull failed for %@ server.\n\nCheck your network connection.", self.server.name];
 		
 		NSDictionary *info = @{NSLocalizedDescriptionKey: desc};
-		_completionError = [NSError errorWithDomain:@"libgit2" code:code userInfo:info];
+		_completionError = [NSError errorWithDomain:@"libgit2" code:0 userInfo:info];
 	}
 }
 
-- (int)pullFromServer:(DAGitServer *)server {
+- (git_error_code)pullFromServer:(DAGitServer *)server {
 	NSError *err = nil;
 	GTConfiguration *cfg = [self.repo configurationWithError:&err];
 	if (err) {
-		[Logger error:@"Failed to obtain Configuration obj for Repo."];
+		[LLog error:@"Failed to obtain Configuration obj for Repo."];
 		assert(NO);
 	}
 	
@@ -60,7 +58,6 @@
 	
 	GTCredentialProvider *credentials = nil;
 	if (isSSH && hasServerKeys) {
-		
 		credentials = [GTCredentialProvider providerWithBlock:^GTCredential *(GTCredentialType type, NSString *URL, NSString *userName) {
 			
 			DASshKeyInfo *keysInfo = [DASshCredentials.manager keysForServer:server];
@@ -85,9 +82,7 @@
 		}];
 	}
 	
-	[self.repo pullFromRemote:remote credentials:credentials];
-	
-	return 0;
+	return [self.repo pullFromRemote:remote credentials:credentials];
 }
 
 @end

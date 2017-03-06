@@ -16,7 +16,7 @@
 @dynamic app, isCompletedSuccessfully;
 
 - (void)exec {
-	[Logger error:@"Dummy. %s", __PRETTY_FUNCTION__];
+	[LLog error:@"Dummy. %s", __PRETTY_FUNCTION__];
 }
 
 - (void)finilize {
@@ -26,9 +26,9 @@
 		}];
 	} else {
 		if (self.isCompletedSuccessfully) {
-			[Logger warn:@"Git action(%@) has finished successfully.", self.className];
+			[LLog warn:@"Git action(%@) has finished successfully.", self.className];
 		} else {
-			[Logger error:@"Git action(%@) failed with error: %@", self.className, self.completionError];
+			[LLog error:@"Git action(%@) failed with error: %@", self.className, self.completionError];
 		}
 	}
 }
@@ -60,7 +60,7 @@ int cred_acquire_userpass(git_cred **out,
 {
 	DAGitUser *user = (__bridge DAGitUser *)(payload);
 	if (!user) {
-		[Logger error:@"nil authentication user specified."];
+		[LLog error:@"nil authentication user specified."];
 		return GIT_EUSER;
 	}
 	

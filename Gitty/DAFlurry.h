@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 kernel@realm. All rights reserved.
 //
 
-#import "Flurry.h"
 #import "DAFlurryEvent.h"
 
 @interface DAFlurry : NSObject

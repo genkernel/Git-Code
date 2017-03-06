@@ -52,7 +52,7 @@ static NSString *OverlayNavSegue = @"OverlayNavSegue";
 		_overlayNavCtrl = segue.destinationViewController;
 		
 	} else {
-		[Logger warn:@"Unknown segue specified: %@", segue.identifier];
+		[LLog warn:@"Unknown segue specified: %@", segue.identifier];
 	}
 }
 
@@ -63,7 +63,7 @@ static NSString *OverlayNavSegue = @"OverlayNavSegue";
 	return isOverlayPresented ? self.overlayCtrl : (isMenuPresented ? self.menuCtrl : self.mainCtrl);
 }
 
-- (NSUInteger)supportedInterfaceOrientations {
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
 	return self.presentedCtrl.supportedInterfaceOrientations;
 }
 
@@ -88,8 +88,8 @@ static NSString *OverlayNavSegue = @"OverlayNavSegue";
 
 - (void)presentOverlayCtrl:(DABaseCtrl *)ctrl animated:(BOOL)animated animationOption:(DAFramePresentingAnimations)option {
 	if (self.overlayCtrl) {
-		[Logger error:@"Another Overlay ctrl is currently presented."];
-		[Logger error:@"Dismiss current Overlay ctrl before presenting new one."];
+		[LLog error:@"Another Overlay ctrl is currently presented."];
+		[LLog error:@"Dismiss current Overlay ctrl before presenting new one."];
 		return;
 	}
 	_overlayCtrl = ctrl;
@@ -179,8 +179,8 @@ static NSString *OverlayNavSegue = @"OverlayNavSegue";
 
 - (void)presentMenuCtrl:(DABaseCtrl *)ctrl animated:(BOOL)animated animationOption:(DAFramePresentingAnimations)option {
 	if (self.menuCtrl) {
-		[Logger error:@"Another Menu ctrl is currently presented."];
-		[Logger error:@"Dismiss current Menu ctrl before presenting new one."];
+		[LLog error:@"Another Menu ctrl is currently presented."];
+		[LLog error:@"Dismiss current Menu ctrl before presenting new one."];
 		return;
 	}
 	_menuCtrl = ctrl;

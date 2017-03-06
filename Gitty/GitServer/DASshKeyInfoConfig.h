@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 ReImpl. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "DynamicObject.h"
 
 @interface DASshKeyInfoConfig : DynamicObject
 @property (strong, nonatomic) NSString *username;

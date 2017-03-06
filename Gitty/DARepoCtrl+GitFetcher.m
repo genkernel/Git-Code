@@ -20,18 +20,19 @@
 	__weak DAGitPullDelegate *thisDelegate = delegate;
 	
 	delegate.transferProgressBlock = ^(const git_transfer_progress *progress){
-		[Logger info:@"repo.pull progress: %d/%d", progress->received_objects, progress->total_objects];
+		[LLog info:@"repo.pull progress: %d/%d", progress->received_objects, progress->total_objects];
 		
 		if (0 == progress->total_objects) {
-			[Logger warn:@"0 total_objects specified during pulling."];
+			[LLog warn:@"0 total_objects specified during pulling."];
 			return;
 		}
 		
 		thisDelegate.receivedObjects = progress->received_objects;
 		
-		CGFloat percent = (CGFloat)progress->received_objects / progress->total_objects;
+//		CGFloat percent = (CGFloat)progress->received_objects / progress->total_objects;
 		
-		[ctrl.pullingField setProgress:percent progressColor:UIColor.acceptingGreenColor backgroundColor:UIColor.blackColor];
+#warning disabled
+//		[ctrl.pullingField setProgress:percent progressColor:UIColor.acceptingGreenColor backgroundColor:UIColor.blackColor];
 	};
 	delegate.finishBlock = ^(DAGitAction *pull, NSError *err){
 		ctrl.app.idleTimerDisabled = NO;

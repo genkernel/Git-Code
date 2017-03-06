@@ -21,14 +21,13 @@
 	return instance;
 }
 
-- (id)init {
+- (id)init {	
 	self = [super init];
 	if (self) {
-#ifdef RELEASE
-		_isRelease = YES;
-#endif
 #ifdef DEBUG
 		_isDebug = YES;
+#else
+		_isRelease = YES;
 #endif
 	}
 	return self;

@@ -27,7 +27,9 @@
 	NSDate *now = [formatter dateFromString:[formatter stringFromDate:NSDate.date]];
 	
 	NSTimeInterval interval = [now timeIntervalSinceDate:commitMidnight];
-	int diff = interval / (1 DAYS);
+	
+	const int secondsInOneDay = 60 * 60 * 24;
+	int diff = interval / (1 * secondsInOneDay);
 	
 	NSString *dayString = nil;
 	if (diff >= 365) {

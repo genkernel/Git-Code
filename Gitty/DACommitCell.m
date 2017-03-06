@@ -27,7 +27,8 @@ static CGFloat CommitMessageMaxHeight = 120.;
 - (void)prepareForReuse {
 	[super prepareForReuse];
 	
-	[self.avatar cancelImageRequestOperation];
+#warning disabled
+//	[self.avatar cancelImageRequestOperation];
 }
 
 - (CGFloat)heightForCommit:(GTCommit *)commit {

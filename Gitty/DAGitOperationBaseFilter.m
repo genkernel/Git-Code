@@ -12,13 +12,13 @@
 @synthesize processedCommitsCount = _processedCommitsCount;
 
 - (BOOL)filterNextCommit:(GTCommit *)ci {
-	[Logger info:@"Dummy. %s", __PRETTY_FUNCTION__];
+	[LLog info:@"Dummy. %s", __PRETTY_FUNCTION__];
 	
 	return NO;
 }
 
 - (NSArray *)filterCommits:(NSArray *)list {
-	[Logger info:@"Dummy. %s", __PRETTY_FUNCTION__];
+	[LLog info:@"Dummy. %s", __PRETTY_FUNCTION__];
 	
 	return nil;
 }

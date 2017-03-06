@@ -8,6 +8,8 @@
 
 #import "DAFlurry.h"
 
+#warning Flurry lib dependency removed & invoking code commented
+
 @implementation DAFlurry
 
 + (instancetype)analytics {
@@ -23,26 +25,26 @@
 
 - (void)start {
 	if (DAEnvironment.current.isRelease) {
-		[Flurry startSession:@"TTMTVBZW6X8MKMCWJGDS"];
+//		[Flurry startSession:@"TTMTVBZW6X8MKMCWJGDS"];
 	}
 }
 
 - (void)logEvent:(DAFlurryEvent *)event {
-//	[Logger info:@"%@: %@", event.name, event.params];
+//	[LLog info:@"%@: %@", event.name, event.params];
 	
-	[Flurry logEvent:event.name withParameters:event.params];
+//	[Flurry logEvent:event.name withParameters:event.params];
 }
 
 - (void)startTimedEvent:(DAFlurryEvent *)event {
-//	[Logger info:@" ->  %@", event.params];
+//	[LLog info:@" ->  %@", event.params];
 	
-	[Flurry logEvent:event.name withParameters:event.params timed:YES];
+//	[Flurry logEvent:event.name withParameters:event.params timed:YES];
 }
 
 - (void)endTimedEvent:(DAFlurryEvent *)event {
-//	[Logger info:@" <-  %@", event.params];
+//	[LLog info:@" <-  %@", event.params];
 	
-	[Flurry logEvent:event.name withParameters:event.params];
+//	[Flurry logEvent:event.name withParameters:event.params];
 }
 
 @end

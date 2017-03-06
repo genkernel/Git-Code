@@ -226,7 +226,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	
 	_tags = [self.currentRepo allTagsWithError:&err];
 	
-	[Logger info:@"%d Tags loaded.", self.tags.count];
+	[LLog info:@"%d Tags loaded.", self.tags.count];
 }
 
 - (void)updateBranchesFilter {
@@ -234,7 +234,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	
 	_remoteBranches = [self.currentRepo remoteBranchesWithError:&err];
 	
-	[Logger info:@"%d Branches loaded.", self.remoteBranches.count];
+	[LLog info:@"%d Branches loaded.", self.remoteBranches.count];
 	
 	BOOL isPresentingTag = nil != self.currentTag;
 	if (isPresentingTag) {
@@ -506,7 +506,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 	DAGitLatestCommitStats *filter = (DAGitLatestCommitStats *)walk.filter;
 	
 	if (![filter isKindOfClass:DAGitLatestCommitStats.class]) {
-		[Logger error:@"Filter is not of %@ type.", DAGitLatestCommitStats.className];
+		[LLog error:@"Filter is not of %@ type.", DAGitLatestCommitStats.className];
 		return;
 	}
 	
@@ -536,7 +536,7 @@ static const CGFloat StatsContainerMinDraggingOffsetToSwitchState = 100.;
 #pragma mark AMWaveTransitioning
 
 - (NSArray *)visibleCells {
-//	[Logger info:@"animating cells: %d", self.commitsTable.visibleCells.count];
+//	[LLog info:@"animating cells: %d", self.commitsTable.visibleCells.count];
 	
 	return self.commitsTable.visibleCells;
 }

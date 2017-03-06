@@ -80,14 +80,14 @@
 			}];
 			
 			if (err) {
-				[Logger error:@"%@", err];
+				[LLog error:@"%@", err];
 			}
 		}
 		UIImage *contextImg = UIGraphicsGetImageFromCurrentImageContext();
 		UIGraphicsEndImageContext();
 		
 		double period = [NSObject endMeasurement];
-		[Logger info:@"Image generated in %.2f", period];
+		[LLog info:@"Image generated in %.2f", period];
 		
 		
 		dispatch_async(dispatch_get_main_queue(), ^{

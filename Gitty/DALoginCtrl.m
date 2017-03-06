@@ -25,6 +25,8 @@
 
 #import "DAGitServer+Creation.h"
 
+@import ObjectiveGit;
+
 static const NSUInteger MaximumServersCount = 10;
 
 static NSString *RepoSegue = @"RepoSegue";
@@ -144,7 +146,9 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		
 		NSString *message = NSLocalizedString(@"Repository is invalid.\n\nDelete this repository from\nrecent repos list and\ntry to clone again.\n\n(Previous clone operation failed?)", nil);
 		
-		deleteInvalidRepoActionTag = [self showErrorMessage:message];
+#warning disabled
+//		deleteInvalidRepoActionTag = [self showErrorMessage:message];
+		[self showErrorMessage:message];
 	}
 }
 
@@ -216,7 +220,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	NSUInteger idx = [self.servers.list indexOfObject:server];
 	
 	if (idx == NSNotFound) {
-		[Logger error:@"Failed to scroll to specified server. No such server found: %@", server];
+		[LLog error:@"Failed to scroll to specified server. No such server found: %@", server];
 		return;
 	}
 	
@@ -315,7 +319,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	DAGitCloneDelegate *delegate = DAGitCloneDelegate.new;
 	delegate.transferProgressBlock = ^(const git_transfer_progress *progress){
 		if (0 == progress->total_objects) {
-			[Logger warn:@"0 total_objects specified during repo cloning."];
+			[LLog warn:@"0 total_objects specified during repo cloning."];
 			return;
 		}
 		CGFloat percent = (CGFloat)progress->received_objects / progress->total_objects;
@@ -323,7 +327,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	};
 	delegate.checkoutProgressBlock = ^(NSString *path, NSUInteger completedSteps, NSUInteger totalSteps){
 		// 'Bare' repo is not checked out.
-		[Logger info:@"clone.checkout.checkout %d/%d", completedSteps, totalSteps];
+		[LLog info:@"clone.checkout.checkout %d/%d", completedSteps, totalSteps];
 	};
 	delegate.finishBlock = ^(DAGitAction *action, NSError *err){
 		self.pager.userInteractionEnabled = YES;
@@ -336,9 +340,11 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 		if (err) {
 			NSString *message = nil;
 			
-			if (GIT_EUSER == err.code) {
-				message = NSLocalizedString(@"Invalid user credentials specified.", nil);
-			} else {
+#warning disabled
+//			if (git_error_code.GIT_EUSER == err.code) {
+//				message = NSLocalizedString(@"Invalid user credentials specified.", nil);
+//			} else {
+			{
 				NSError *underlyingErr = err.userInfo[NSUnderlyingErrorKey];
 				
 				if (underlyingErr) {
@@ -464,7 +470,7 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	
 	self.sshButton.hidden = [DASshCredentials.manager hasSshKeypairSupportForServer:self.currentServer];
 	
-//	[Logger info:@"Current server (t:%d idx:%d): %@", pagerView.tag, index, self.currentServer];
+//	[LLog info:@"Current server (t:%d idx:%d): %@", pagerView.tag, index, self.currentServer];
 }
 
 #pragma mark PageControlDelegate
@@ -555,8 +561,10 @@ static NSString *LastSessionActivePageIndex = @"LastSessionActivePageIndex";
 	NSString *message = NSLocalizedString(@"Do you want to delete '%@' server\nand all its repos?", nil);
 	
 	message = [NSString stringWithFormat:message, self.currentServer.name];
-	
-	deleteCurrentServerActionTag = [self showYesNoMessage:message withTitle:title];
+
+#warning disabled
+//	deleteCurrentServerActionTag = [self showYesNoMessage:message withTitle:title];
+	[self showYesNoMessage:message withTitle:title];
 }
 
 #pragma mark UIAlertViewDelegate

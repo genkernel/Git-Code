@@ -34,7 +34,7 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 		[self prepareDiff];
 	}
 	double period = [NSObject endMeasurement];
-	[Logger info:@"Diff created in %.2f.", period];
+	[LLog info:@"Diff created in %.2f.", period];
 }
 
 - (void)prepareDiff {
@@ -44,7 +44,7 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 	
 	BOOL isFirstInitialCommit = 0 == self.changeCommit.parents.count;
 	if (isFirstInitialCommit) {
-		[Logger info:@"Preparing Diff for First(initial) commit."];
+		[LLog info:@"Preparing Diff for First(initial) commit."];
 		[self compareCommit:self.changeCommit againstParentCommit:nil];
 	} else {
 		for (GTCommit *parent in self.changeCommit.parents) {
@@ -78,7 +78,7 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 	[diff enumerateDeltasUsingBlock:^(GTDiffDelta *delta, BOOL *stop) {
 		[self.deltas addObject:delta];
 		
-		//[Logger info:@"delta (t:%d-b:%d-hc:%d): a:%d/d:%d/c:%d", delta.type, delta.isBinary, delta.hunkCount, delta.addedLinesCount, delta.deletedLinesCount, delta.contextLinesCount];
+		//[LLog info:@"delta (t:%d-b:%d-hc:%d): a:%d/d:%d/c:%d", delta.type, delta.isBinary, delta.hunkCount, delta.addedLinesCount, delta.deletedLinesCount, delta.contextLinesCount];
 		
 		__block NSUInteger linesCount = 0;
 		__block CGFloat longestLineWidth = .0;
@@ -88,7 +88,7 @@ static const NSUInteger DiffFileMaxSize = 32 * 1024;	// 32 kb.
 		NSMutableArray *hunks = [NSMutableArray arrayWithCapacity:patch.hunkCount];
 		
 		[patch enumerateHunksUsingBlock:^(GTDiffHunk *hunk, BOOL *stop) {
-			//[Logger info:@"  hunk (lc:%d) : %@", hunk.lineCount, hunk.header];
+			//[LLog info:@"  hunk (lc:%d) : %@", hunk.lineCount, hunk.header];
 			[hunks addObject:hunk];
 			
 			linesCount += hunk.lineCount + 1/*header*/;

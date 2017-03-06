@@ -22,10 +22,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	[super prepareForSegue:segue sender:sender];
 	
-	[Logger error:@"Unknown segue specified: %@", segue.identifier];
+	[LLog error:@"Unknown segue specified: %@", segue.identifier];
 }
 
-- (NSUInteger)supportedInterfaceOrientations {
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
 	return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
 }
 

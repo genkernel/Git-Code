@@ -10,22 +10,15 @@
 
 #import "DALoginCtrl.h"
 #import "DAFrameCtrl+Internal.h"
-#import "WMGeoBlockerWindow.h"
 
 #import "DAGitServer+Creation.h"
 
 @implementation DAAppDelegate
 
+#pragma mark - UIApplicationDelegate
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//	[self genRoundedImage:application];
-	
-//#ifdef GIT_SSH
-//	[Logger info:@"abc"];
-//#endif
-	
-	[DAFlurry.analytics start];
-	
-	if (!IS_IPHONE_5) {
+	if (UIScreen.mainScreen.bounds.size.height < 568) {
 		[ViewCtrl setDevicePostfix:@"-3.5inches"];
 	}
 	
@@ -34,8 +27,6 @@
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		[DAGitManager.manager scanAllDeletableLocalReposAndDelete];
 	});
-	
-	[WMGeoBlockerWindow checkCurrentCountry];
 	
     return YES;
 }
@@ -124,24 +115,11 @@
 - (void)createSharedCacheForApplication:(UIApplication *)app {
 	NSString *cacheDirectoryName = @"NetworkCache";
 	
-	const NSUInteger memotyCapacity = 4 * 1024 * 1024;
-	const NSUInteger diskCapacity = 16 * 1024 * 1024;
+	const NSUInteger memotyCapacity = 10 * 1024 * 1024;
+	const NSUInteger diskCapacity = 20 * 1024 * 1024;
 	NSURLCache *cache = [NSURLCache.alloc initWithMemoryCapacity:memotyCapacity diskCapacity:diskCapacity diskPath:cacheDirectoryName];
 	
 	NSURLCache.sharedURLCache = cache;
-}
-
-- (void)genRoundedImage:(UIApplication *)app {
-	UIView *v = [UIView.alloc initWithFrame:CGRectMake(0, 0, 88, 256)];
-	v.layer.masksToBounds = YES;
-	v.layer.cornerRadius = 7;
-	
-	v.backgroundColor = UIColor.acceptingGreenColor;
-	
-	UIImage *img = v.screeshotWithCurrentContext;
-	
-	NSData *data = UIImagePNGRepresentation(img);
-	[data writeToFile:[app.documentsPath concat:@"/123.png"] atomically:YES];
 }
 
 @end

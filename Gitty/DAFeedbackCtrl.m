@@ -19,7 +19,8 @@
 	
 	self.navigationItem.rightBarButtonItem = [UIBarButtonItem.alloc initWithTitle:@"Ok" style:UIBarButtonItemStyleDone target:self action:@selector(closePressed:)];
 	
-	[self.webView disableBounces];
+#warning disabled
+//	[self.webView disableBounces];
 	
 	[self loadHtmlGuide];
 }

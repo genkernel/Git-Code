@@ -144,7 +144,7 @@
 	}
 	
 	if (!self.selectedProtocolButton) {
-		[Logger error:@"No transfer protocol selected by default."];
+		[LLog error:@"No transfer protocol selected by default."];
 		_selectedProtocolButton = container.subviews.anyObject;
 	}
 	
@@ -153,7 +153,7 @@
 
 - (void)setProgress:(CGFloat)updatedProgress {
 	if (updatedProgress < .0 || updatedProgress > 1.) {
-		[Logger error:@"Invalid progress specified. %s", __PRETTY_FUNCTION__];
+		[LLog error:@"Invalid progress specified. %s", __PRETTY_FUNCTION__];
         return;
     }
 	
@@ -163,7 +163,8 @@
 	
 	progress = updatedProgress;
 	
-	[self.repoField setProgress:progress progressColor:UIColor.acceptingGreenColor backgroundColor:UIColor.whiteColor];
+#warning disabled
+//	[self.repoField setProgress:progress progressColor:UIColor.acceptingGreenColor backgroundColor:UIColor.whiteColor];
 }
 
 - (void)startProgressing {

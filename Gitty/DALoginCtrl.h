@@ -7,6 +7,7 @@
 //
 
 #import "DABaseCtrl.h"
+#import "PagerView.h"
 
 @interface DALoginCtrl : DABaseCtrl <PagerViewDataSource, PagerViewDelegate, PageControlDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *sshButton;

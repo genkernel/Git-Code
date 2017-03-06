@@ -26,9 +26,7 @@
 		self.frame = view.bounds;
 		
 		[self addSubview:view];
-		
-		view.translatesAutoresizingMaskIntoConstraints = NO;
-		[view applyFullscreenConstraints];
+		[view pinToSuperviewEdgesNative];
 		
 		[self applyLightEffectOnBackground];
     }
@@ -39,8 +37,7 @@
 	_bluringToolbar = [UIToolbar.alloc initWithFrame:self.bluringBackground.bounds];
 	
 	[self.bluringBackground addSubview:self.bluringToolbar];
-	self.bluringToolbar.translatesAutoresizingMaskIntoConstraints = NO;
-	[self.bluringToolbar applyFullscreenConstraints];
+	[self.bluringToolbar pinToSuperviewEdgesNative];
 	
 	self.bluringToolbar.translucent = YES;
 	self.bluringToolbar.barTintColor = UIColor.blackColor;

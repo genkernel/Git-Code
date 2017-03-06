@@ -42,7 +42,7 @@ static NSString *DeletableFolderSuffix = @"md";
 	self = [super init];
 	if (self) {
 		_repoRootPath = [self.app.cachesPath stringByAppendingPathComponent:RepoRootFolderName];
-		[self.app.fs createDirectoryIfNotExists:self.repoRootPath];
+		[self.app.fs createDirectoryIfNotExistsAtPath:self.repoRootPath];
 		
 		// libgit module is not multithreaded.
 		_q = dispatch_queue_create("gitcode.qit.operations", DISPATCH_QUEUE_SERIAL);
@@ -66,9 +66,9 @@ static NSString *DeletableFolderSuffix = @"md";
 
 - (void)requestRecursiveDeleteBackgroundOperationPath:(NSString *)path {
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-		[self.app.fs deleteDirectoryAndItsContents:path];
+		[self.app.fs deleteDirectoryAndItsContentsAtPath:path];
 		
-		[Logger info:@"Repo deleted: %@", path];
+		[LLog info:@"Repo deleted: %@", path];
 	});
 }
 
@@ -92,11 +92,11 @@ static NSString *DeletableFolderSuffix = @"md";
 
 - (void)removeExistingRepo:(NSString *)repoName forServer:(DAGitServer *)server {
 	NSString *path = [self localPathForRepoWithName:repoName atServer:server];
-	
-	if ([self.app.fs isDirectoryExistent:path]) {
+
+	if ([self.app.fs isDirectoryExistentAtPath:path]) {
 		NSString *deletePath = [path stringByAppendingPathExtension:DeletableFolderSuffix];
-		[self.app.fs moveFrom:path to:deletePath];
-		
+		[self.app.fs moveItemAtPath:path toPath:deletePath error:nil];
+
 		[self requestRecursiveDeleteBackgroundOperationPath:deletePath];
 	}
 }
@@ -105,24 +105,25 @@ static NSString *DeletableFolderSuffix = @"md";
 	NSArray *servers = [self.app.fs contentsOfDirectoryAtPath:self.repoRootPath error:nil];
 	for (NSString *serverName in servers) {
 		NSString *serverPath = [self.repoRootPath stringByAppendingPathComponent:serverName];
-		if (![self.app.fs isDirectoryExistent:serverPath]) {
+		
+		if (![self.app.fs isDirectoryExistentAtPath:serverPath]) {
 			continue;
 		}
 		
 		NSArray *users = [self.app.fs contentsOfDirectoryAtPath:serverPath error:nil];
 		for (NSString *userName in users) {
 			NSString *userPath = [serverPath stringByAppendingPathComponent:userName];
-			if (![self.app.fs isDirectoryExistent:userPath]) {
+			if (![self.app.fs isDirectoryExistentAtPath:userPath]) {
 				continue;
 			}
 			
 			NSArray *repos = [self.app.fs contentsOfDirectoryAtPath:userPath error:nil];
 			for (NSString *repoName in repos) {
 				NSString *repoPath = [userPath stringByAppendingPathComponent:repoName];
-				if (![self.app.fs isDirectoryExistent:repoPath]) {
+				
+				if (![self.app.fs isDirectoryExistentAtPath:repoPath]) {
 					continue;
 				}
-				
 				if (![repoPath.pathExtension isEqualToString:DeletableFolderSuffix]) {
 					continue;
 				}

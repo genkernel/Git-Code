@@ -59,7 +59,7 @@ static const CGFloat DefaultSquaresMargin = 3.;
 		deletionSquaresCount = patch.deletedLinesCount * count / totalChangesCount;
 		deletionSquaresCount = MIN(deletionSquaresCount, patch.deletedLinesCount);
 	} else {
-		[Logger error:@"Zero total changed in Diff Delta specified."];
+		[LLog error:@"Zero total changed in Diff Delta specified."];
 	}
 	
 	const CGFloat widthForAllSquares = self.width -  (self.squaresMargin * (self.squaresNumber + 1));

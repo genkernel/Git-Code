@@ -89,7 +89,8 @@ static NSString *StoreFilename = @"GitServers.plist";
 
 - (void)copyInitialStoreFileIfNeeded {
 	NSFileManager *fs = UIApplication.sharedApplication.fs;
-	if ([fs isFileExistent:self.storePath]) {
+	
+	if ([fs isFileExistentAtPath:self.storePath]) {
 		return;
 	}
 	

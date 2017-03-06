@@ -7,5 +7,5 @@
 //
 
 @interface GTRepository (Gitty)
-- (void)pullFromRemote:(GTRemote *)_remote credentials:(GTCredentialProvider *)credentialProvider;
+- (BOOL)pullFromRemote:(GTRemote *)_remote credentials:(GTCredentialProvider *)credentialProvider;
 @end

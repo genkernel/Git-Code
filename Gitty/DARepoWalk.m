@@ -96,7 +96,7 @@
 	GTEnumerator *iter = [GTEnumerator.alloc initWithRepository:self.repo error:&err];
 	
 	if (![iter pushGlob:@"refs/remotes/origin/*" error:&err]) {
-		[Logger error:@"Failed to pushGlob to enumarate commits."];
+		[LLog error:@"Failed to pushGlob to enumarate commits."];
 		return;
 	}
 	
@@ -109,19 +109,19 @@
 		commits = [iter allObjectsWithError:&err];
 	}
 	double period = [NSObject endMeasurement];
-	[Logger info:@"%d Commits in Repository loaded in %.2f.", commits.count, period];
+	[LLog info:@"%d Commits in Repository loaded in %.2f.", commits.count, period];
 	
 	NSArray *branches = [self.repo remoteBranchesWithError:nil];
 	
 	/*
 	// verbose.
 	{
-		[Logger info:@"\n\n"];
-		[Logger info:@"All Commits in repo (%d): ", commits.count];
+		[LLog info:@"\n\n"];
+		[LLog info:@"All Commits in repo (%d): ", commits.count];
 		for (GTCommit *ci in commits) {
-			[Logger info:@"0x%X %@ : %@ : %@", ci, ci.shortSHA, ci.SHA, ci.messageSummary];
+			[LLog info:@"0x%X %@ : %@ : %@", ci, ci.shortSHA, ci.SHA, ci.messageSummary];
 		}
-		[Logger info:@"-----"];
+		[LLog info:@"-----"];
 		
 		for (GTBranch *br in branches) {
 			[self performVerboseWalkOnBranch:br iter:iter];
@@ -134,9 +134,9 @@
 	}
 	period = [NSObject endMeasurement];
 	
-	[Logger info:@"\n\n"];
-	[Logger info:@"Stats for repo generated in %.2f (%d commits).", period, commits.count];
-	[Logger info:@"\n"];
+	[LLog info:@"\n\n"];
+	[LLog info:@"Stats for repo generated in %.2f (%d commits).", period, commits.count];
+	[LLog info:@"\n"];
 }
 /*
 - (void)performVerboseWalkOnBranch:(GTBranch *)branch iter:(GTEnumerator *)iter {
@@ -145,12 +145,12 @@
 	
 	NSArray *commits = [iter allObjectsWithError:&err];
 	
-	[Logger info:@"\n\n"];
-	[Logger info:@"%@ br_commits (%d): ", branch.name, commits.count];
+	[LLog info:@"\n\n"];
+	[LLog info:@"%@ br_commits (%d): ", branch.name, commits.count];
 	for (GTCommit *ci in commits) {
-		[Logger info:@"0x%X %@ : %@ : %@", ci, ci.shortSHA, ci.SHA, ci.messageSummary];
+		[LLog info:@"0x%X %@ : %@ : %@", ci, ci.shortSHA, ci.SHA, ci.messageSummary];
 	}
-	[Logger info:@"-----"];
+	[LLog info:@"-----"];
 }*/
 
 - (void)traverseCommits:(NSArray *)commits againstBranches:(NSArray *)branches {
@@ -167,9 +167,9 @@
 	
 	NSMutableSet *heads = NSMutableSet.new;
 	for (GTBranch *br in branches) {
-		[heads addObject:br.SHA];
+		[heads addObject:br.OID.SHA];
 		
-		headRefs[br.SHA] = br;
+		headRefs[br.OID.SHA] = br;
 	}
 	
 	_headRefs = headRefs.copy;
@@ -178,7 +178,7 @@
 	NSMutableArray *currentHeadCommits = nil;
 	
 	for (GTCommit *ci in commits) {
-//		[Logger info:@"ci: %@", ci];
+//		[LLog info:@"ci: %@", ci];
 		
 		if ([heads containsObject:ci.SHA]) {
 			if (currentHead && currentHeadCommits) {
@@ -221,11 +221,11 @@
 	GTBranch *masterBranch = [self.repo currentBranchWithError:&err];
 	masterBranch = [masterBranch trackingBranchWithError:&err success:&success];
 	if (!success || !masterBranch) {
-		[Logger error:@"Failed to retrieve upstream branch for local head branch. %s", __PRETTY_FUNCTION__];
+		[LLog error:@"Failed to retrieve upstream branch for local head branch. %s", __PRETTY_FUNCTION__];
 		return;
 	}
 	
-	NSString *masterHead = masterBranch.SHA;
+	NSString *masterHead = masterBranch.OID.SHA;
 	
 	if (![masterHead isEqualToString:currentHead]) {
 		size_t ahead = 0, behind = 0;
@@ -234,9 +234,9 @@
 		
 		success = [masterBranch calculateAhead:&ahead behind:&behind relativeTo:latestBranch error:&err];
 		if (!success) {
-			[Logger error:@"Failed to calculateAhead:Behind: between %@ and %@. %s", masterBranch.shortName, latestBranch.shortName, __PRETTY_FUNCTION__];
+			[LLog error:@"Failed to calculateAhead:Behind: between %@ and %@. %s", masterBranch.shortName, latestBranch.shortName, __PRETTY_FUNCTION__];
 		} else {
-			[Logger info:@"%@ branch is ahead by %d commits against %@ branch which is %d commits behind.", masterBranch.shortName, ahead, latestBranch.shortName, behind];
+			[LLog info:@"%@ branch is ahead by %d commits against %@ branch which is %d commits behind.", masterBranch.shortName, ahead, latestBranch.shortName, behind];
 			
 			NSUInteger tailSize = [headCommits[currentHead] count] - behind;
 			

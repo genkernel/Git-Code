@@ -59,7 +59,7 @@
 }
 
 - (void)forgetAllRepos {
-	[Logger info:@"Forgeting all repos."];
+	[LLog info:@"Forgeting all repos."];
 	
 	for (NSDictionary *repo in self.repos) {
 		[self forgetRepo:repo];
@@ -139,7 +139,9 @@
 	NSString *title = NSLocalizedString(@"Forget all repos", nil);
 	NSString *message = NSLocalizedString(@"This operation will forget all repos and delete its fetched data from disk.\n\nContinue?", nil);
 	
-	forgetAllActionTag = [self showYesNoMessage:message withTitle:title];
+#warning disabled
+//	forgetAllActionTag = [self showYesNoMessage:message withTitle:title];
+	[self showYesNoMessage:message withTitle:title];
 }
 
 @end

@@ -38,9 +38,10 @@
 	// Local.
 	NSString *path = [self.manager localPathForRepoWithName:repoFullName atServer:server];
 	
-	if ([self.app.fs isDirectoryExistent:path]) {
-		[Logger warn:@"Cleaning directory out before cloning: %@", path];
-		[self.app.fs deleteDirectoryAndItsContents:path];
+	if ([self.app.fs isDirectoryExistentAtPath:path]) {
+		[LLog warn:@"Cleaning directory out before cloning: %@", path];
+		
+		[self.app.fs deleteDirectoryAndItsContentsAtPath:path];
 	}
 	
 	NSURL *url = [NSURL fileURLWithPath:path isDirectory:YES];
@@ -55,7 +56,7 @@
 			};
 		} else {
 			transferProgressBlock = ^(const git_transfer_progress *progress){
-				[Logger info:@"transferProgressBlock (%d). %d/%d", progress->received_bytes, progress->received_objects, progress->total_objects];
+				[LLog info:@"transferProgressBlock (%d). %d/%d", progress->received_bytes, progress->received_objects, progress->total_objects];
 			};
 		}
 	}
@@ -70,12 +71,12 @@
 			};
 		} else {
 			checkoutProgressBlock = ^(NSString *path, NSUInteger completedSteps, NSUInteger totalSteps) {
-				[Logger info:@"checkoutProgressBlock"];
+				[LLog info:@"checkoutProgressBlock"];
 			};
 		}
 	}
 	
-	NSMutableDictionary *opts = @{GTRepositoryCloneOptionsBare: @(YES), GTRepositoryCloneOptionsCheckout: @(NO), GTRepositoryCloneOptionsTransportFlags: @(GTTransportFlagsNoCheckCert)}.mutableCopy;
+	NSMutableDictionary *opts = @{GTRepositoryCloneOptionsBare: @(YES), GTRepositoryCloneOptionsCheckout: @(NO)/*, GTRepositoryCloneOptionsTransportFlags: @(GTTransportFlagsNoCheckCert)*/}.mutableCopy;
 	
 	BOOL isSSH = [server.transferProtocol isEqualToString:SshTransferProtocol];
 	
@@ -116,7 +117,16 @@
 	}
 	
 	NSError *err = nil;
-	_clonedRepo = [GTRepository cloneFromURL:remoteURL toWorkingDirectory:url options:opts error:&err transferProgressBlock:transferProgressBlock checkoutProgressBlock:checkoutProgressBlock];
+	
+//	_clonedRepo = [GTRepository cloneFromURL:<#(nonnull NSURL *)#> toWorkingDirectory:<#(nonnull NSURL *)#> options:<#(nullable NSDictionary *)#> error:<#(NSError * _Nullable __autoreleasing * _Nullable)#> transferProgressBlock:
+//		<#code#>
+//	} checkoutProgressBlock:^(NSString * _Nullable path, NSUInteger completedSteps, NSUInteger totalSteps) {
+//		<#code#>
+//	};
+	
+	_clonedRepo = [GTRepository cloneFromURL:remoteURL toWorkingDirectory:url options:opts error:&err transferProgressBlock:^(const git_transfer_progress * _Nonnull progress, BOOL * _Nonnull stop) {
+		transferProgressBlock(progress);
+	} checkoutProgressBlock:checkoutProgressBlock];
 	
 	_completionError = err;
 	

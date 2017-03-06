@@ -4,8 +4,8 @@
 
 #import <Availability.h>
 
-#ifndef __IPHONE_7_0
-#warning "This project uses features only available in iOS SDK 7.0 and later."
+#ifndef __IPHONE_9_3
+#warning "This project uses features only available in iOS SDK 9.3 and later."
 #endif
 
 #ifdef __OBJC__
@@ -18,32 +18,30 @@
 #import "ObjectiveGit.h"
 #import "LibGit2-Helpers.pch"
 
-// xlib.
 #import "xlib.h"
-#import "ReImpl.h"
-#import "Affiliate.h"
-// shared.
-#import "UIViewAdditions.h"
-#import "Reachability.h"
-#import "AFNetworking.h"
 // Submodules.
 #import "PagerView.h"
 #import "TreeTable.h"
-#import "ZipArchive.h"
 #import "AMWaveTransition.h"
 
 #import "UIColor+Gitty.h"
 #import "UIButton+Gitty.h"
 #import "NSString+Gitty.h"
 #import "UITextField+Gitty.h"
+#import "UIApplication+Gitty.h"
 #import "NSAttributedString+Gitty.h"
 
+#import "DAFlurry.h"
 #import "DAGitStats.h"
 #import "DAGravatar.h"
 #import "DAGitManager.h"
 #import "DASshCredentials.h"
 #import "DAAccountCredentials.h"
-#import "DAFlurry.h"
 #import "DASettings.h"
 #import "DAEnvironment.h"
+
+#import "Git_Code-Swift.h"
+
+#define	GIT_EEXISTS	-4
+
 #endif

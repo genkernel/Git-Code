@@ -13,11 +13,11 @@
 @synthesize hasMoreCommitsToProcess = _hasMoreCommitsToProcess;
 
 - (void)perform {
-	[Logger info:@"Dummy. %s", __PRETTY_FUNCTION__];
+	[LLog info:@"Dummy. %s", __PRETTY_FUNCTION__];
 }
 
 - (id<DAGitOperation>)filter:(id<DAGitOperationFilter>)filter {
-	[Logger info:@"Dummy. %s", __PRETTY_FUNCTION__];
+	[LLog info:@"Dummy. %s", __PRETTY_FUNCTION__];
 	
 	return nil;
 }

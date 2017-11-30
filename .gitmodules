@@ -1,21 +1,9 @@
 [submodule "Submodules/ConceptScroll"]
 	path = Submodules/ConceptScroll
 	url = https://github.com/genkernel/ConceptScroll
-[submodule "Submodules/ZipArchive"]
-	path = Submodules/ZipArchive
-	url = https://github.com/mattconnolly/ZipArchive.git
 [submodule "Submodules/TreeView"]
 	path = Submodules/TreeView
 	url = https://github.com/genkernel/TreeView
-[submodule "Submodules/STUtils"]
-	path = Submodules/STUtils
-	url = https://github.com/genkernel/STUtils.git
-[submodule "Submodules/xlib"]
-	path = Submodules/xlib
-	url = /Users/kernel/dev/git/xlib/
 [submodule "Submodules/AMWaveTransition"]
 	path = Submodules/AMWaveTransition
 	url = https://github.com/andreamazz/AMWaveTransition.git
-[submodule "Submodules/objective-git"]
-	path = Submodules/objective-git
-	url = https://github.com/libgit2/objective-git.git
